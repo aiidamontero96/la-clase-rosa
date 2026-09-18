@@ -1,0 +1,4262 @@
+[
+  {
+    "text": "¿Cuántos dinosaurios hay?",
+    "kinds": [
+      "contar"
+    ]
+  },
+  {
+    "text": "¿Qué viene después?",
+    "kinds": [
+      "series"
+    ]
+  },
+  {
+    "text": "Mira estos dinosaurios",
+    "kinds": [
+      "falta"
+    ]
+  },
+  {
+    "text": "¿Qué dinosaurio falta?",
+    "kinds": [
+      "falta"
+    ]
+  },
+  {
+    "text": "¿Cuál tiene otra forma?",
+    "kinds": [
+      "intruso"
+    ]
+  },
+  {
+    "text": "¿Qué comía Tiranosaurio rex?",
+    "kinds": [
+      "clasificar"
+    ]
+  },
+  {
+    "text": "¿Qué comía Triceratops?",
+    "kinds": [
+      "clasificar"
+    ]
+  },
+  {
+    "text": "¿Qué comía Estegosaurio?",
+    "kinds": [
+      "clasificar"
+    ]
+  },
+  {
+    "text": "¿Qué comía Braquiosaurio?",
+    "kinds": [
+      "clasificar"
+    ]
+  },
+  {
+    "text": "¿Qué comía Velociraptor?",
+    "kinds": [
+      "clasificar"
+    ]
+  },
+  {
+    "text": "¿Qué comía Anquilosaurio?",
+    "kinds": [
+      "clasificar"
+    ]
+  },
+  {
+    "text": "¿Qué comía Diplodocus?",
+    "kinds": [
+      "clasificar"
+    ]
+  },
+  {
+    "text": "¿Qué comía Parasaurolofo?",
+    "kinds": [
+      "clasificar"
+    ]
+  },
+  {
+    "text": "¿Qué comía Espinosaurio?",
+    "kinds": [
+      "clasificar"
+    ]
+  },
+  {
+    "text": "Busca una letra igual",
+    "kinds": [
+      "letras"
+    ]
+  },
+  {
+    "text": "Busca su letra minúscula",
+    "kinds": [
+      "letras"
+    ]
+  },
+  {
+    "text": "¿Cómo te sientes?",
+    "kinds": [
+      "emociones"
+    ]
+  },
+  {
+    "text": "jueves, 10 de septiembre de 2026",
+    "kinds": [
+      "calendario"
+    ]
+  },
+  {
+    "text": "¿Qué vemos en el cielo?",
+    "kinds": [
+      "tiempo"
+    ]
+  },
+  {
+    "text": "Tiranosaurio rex. Tenía una cabeza grande y unos brazos muy cortos. Caminaba sobre dos patas.",
+    "kinds": [
+      "dino"
+    ]
+  },
+  {
+    "text": "Triceratops. Tenía tres cuernos y una gran gola detrás de la cabeza. Comía plantas.",
+    "kinds": [
+      "dino"
+    ]
+  },
+  {
+    "text": "Estegosaurio. Tenía placas sobre el lomo y púas en la cola. No sabemos con seguridad para qué servían todas sus placas.",
+    "kinds": [
+      "dino"
+    ]
+  },
+  {
+    "text": "Braquiosaurio. Su cuello era largo y sus patas delanteras eran más largas que las traseras. Comía plantas.",
+    "kinds": [
+      "dino"
+    ]
+  },
+  {
+    "text": "Velociraptor. Era bastante más pequeño que el de muchas películas. Tenía plumas, pero no podía volar.",
+    "kinds": [
+      "dino"
+    ]
+  },
+  {
+    "text": "Anquilosaurio. Su cuerpo estaba protegido por placas óseas. Su cola terminaba en una maza.",
+    "kinds": [
+      "dino"
+    ]
+  },
+  {
+    "text": "Diplodocus. Tenía un cuello largo y una cola muy larga, parecida a un látigo. Se alimentaba de plantas.",
+    "kinds": [
+      "dino"
+    ]
+  },
+  {
+    "text": "Parasaurolofo. Tenía una cresta larga que se curvaba hacia atrás. Comía plantas.",
+    "kinds": [
+      "dino"
+    ]
+  },
+  {
+    "text": "Espinosaurio. Tenía una gran vela en la espalda y un hocico alargado. Entre su alimento había peces.",
+    "kinds": [
+      "dino"
+    ]
+  },
+  {
+    "text": "Todos los dinosaurios comían plantas.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "El Triceratops tenía tres cuernos.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "Las personas convivieron con el Tiranosaurio rex.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "Los dinosaurios ponían huevos.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "El Velociraptor tenía plumas.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "Un dinosaurio de juguete es un fósil.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "Las aves son dinosaurios actuales.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "Sabemos el color exacto de todos los dinosaurios.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "Todos los dinosaurios vivieron al mismo tiempo.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "El Diplodocus comía plantas.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "Hacer espuma con vinagre es hacer lava real.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "Las huellas pueden dar pistas sobre animales del pasado.",
+    "kinds": [
+      "verdadero"
+    ]
+  },
+  {
+    "text": "Sin ser lámpara ilumino y por el cielo camino.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Tengo hojas y no soy árbol; me abres para escuchar un relato.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Caigo de una nube, mojo el suelo y lleno el charco.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Soy redonda, salto y ruedo; conmigo compartes un juego.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Tengo punta y dejo un camino cuando dibujo.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Dos hojas no soy, dos ruedas tampoco: corto papel poquito a poco.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Aunque no es la pata, te dice que alguien pasó.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Guardo una cría dentro; mi cáscara es su casa al principio.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Con paciencia observo rocas y busco pistas del pasado.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "En una roca me quedé, una vida antigua te contaré.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "No hablo, pero enseño: guardo objetos para aprender del pasado.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "No soy una ensalada, pero plantas es lo que como.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Tengo una gran cabeza y dos brazos cortitos.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Mis tres cuernos y mi gola te dan una pista.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Llevo grandes placas sobre la espalda.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Mis patas de delante son muy altas y mi cuello es largo.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Tengo plumas y una cola larga, pero no vuelo.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Tengo armadura en el cuerpo y una maza en la cola.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Mi cola es larguísima, como un látigo.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Una cresta larga se curva detrás de mi cabeza.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Mi espalda parece llevar una vela y mi hocico es largo.",
+    "kinds": [
+      "adivinanza"
+    ]
+  },
+  {
+    "text": "Buscamos parejas juntos",
+    "kinds": [
+      "memory"
+    ]
+  },
+  {
+    "text": "dinosaurio. Un grupo de animales. Muchos vivieron hace muchísimo tiempo; las aves son dinosaurios actuales.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "fósil. Un resto o una señal de un ser vivo antiguo conservado en la roca.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "paleontólogo, paleontóloga. Persona que investiga la vida del pasado a través de fósiles.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "huevo. Muchos animales nacen de huevos. Los dinosaurios también ponían huevos.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "huella. La marca que deja una pata o un pie al pisar.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "esqueleto. El conjunto de huesos que sostiene el cuerpo.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "volcán. Una abertura por la que pueden salir materiales del interior de la Tierra.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "herbívoro. Animal que come plantas.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "carnívoro. Animal que come otros animales.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "excavación. Trabajo cuidadoso para descubrir lo que hay bajo el suelo.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "museo. Lugar donde observamos, cuidamos y aprendemos de objetos y colecciones.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "tiempo prehistórico. Un pasado muy lejano. Los dinosaurios no avianos vivieron antes de que hubiera personas.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "¿Cuál es igual al modelo?",
+    "kinds": [
+      "parejas"
+    ]
+  },
+  {
+    "text": "Busca el grupo con esta cantidad",
+    "kinds": [
+      "cantidades"
+    ]
+  },
+  {
+    "text": "¿Dónde hay más?",
+    "kinds": [
+      "comparar"
+    ]
+  },
+  {
+    "text": "¿Dónde hay menos?",
+    "kinds": [
+      "comparar"
+    ]
+  },
+  {
+    "text": "Si los juntamos, ¿cuántos hay?",
+    "kinds": [
+      "juntar"
+    ]
+  },
+  {
+    "text": "¿Qué número viene después?",
+    "kinds": [
+      "siguiente"
+    ]
+  },
+  {
+    "text": "Toca el dibujo más grande",
+    "kinds": [
+      "tamanos"
+    ]
+  },
+  {
+    "text": "Toca el dibujo más pequeño",
+    "kinds": [
+      "tamanos"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? ABEJA.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? ELEFANTE.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? ISLA.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? OSO.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? UVAS.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? ANILLO.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? ESTRELLA.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? IMÁN.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? OJO.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza? UNICORNIO.",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? SOL.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? CASA.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? PEZ.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? LUNA.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? PAN.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? PATO.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? PELOTA.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? MARIPOSA.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? MANZANA.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? ELEFANTE.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? ZAPATO.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das? BICICLETA.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Busca el mismo color",
+    "kinds": [
+      "colores"
+    ]
+  },
+  {
+    "text": "Mira los dibujos, de izquierda a derecha",
+    "kinds": [
+      "orden"
+    ]
+  },
+  {
+    "text": "¿Qué dibujo estaba el primero?",
+    "kinds": [
+      "orden"
+    ]
+  },
+  {
+    "text": "¿Qué dibujo estaba el último?",
+    "kinds": [
+      "orden"
+    ]
+  },
+  {
+    "text": "¿Qué dibujo estaba en el medio?",
+    "kinds": [
+      "orden"
+    ]
+  },
+  {
+    "text": "¿Qué dibujo está arriba?",
+    "kinds": [
+      "posiciones"
+    ]
+  },
+  {
+    "text": "¿Qué dibujo está abajo?",
+    "kinds": [
+      "posiciones"
+    ]
+  },
+  {
+    "text": "Está lloviendo. ¿Qué abrimos para cubrirnos?",
+    "kinds": [
+      "asociaciones"
+    ]
+  },
+  {
+    "text": "Vamos a limpiar los dientes. ¿Qué usamos?",
+    "kinds": [
+      "asociaciones"
+    ]
+  },
+  {
+    "text": "Queremos pintar con témpera. ¿Qué usamos?",
+    "kinds": [
+      "asociaciones"
+    ]
+  },
+  {
+    "text": "La planta necesita agua. ¿Qué le llevamos?",
+    "kinds": [
+      "asociaciones"
+    ]
+  },
+  {
+    "text": "La puerta está cerrada con llave. ¿Qué la abre?",
+    "kinds": [
+      "asociaciones"
+    ]
+  },
+  {
+    "text": "Vamos a caminar por la calle. ¿Qué nos ponemos en los pies?",
+    "kinds": [
+      "asociaciones"
+    ]
+  },
+  {
+    "text": "Hay sopa en el plato. ¿Con qué la comemos?",
+    "kinds": [
+      "asociaciones"
+    ]
+  },
+  {
+    "text": "Vamos a lavarnos las manos. Además de agua, ¿qué usamos?",
+    "kinds": [
+      "asociaciones"
+    ]
+  },
+  {
+    "text": "Coloca cada pieza en su lugar. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "puzzle"
+    ]
+  },
+  {
+    "text": "Ordena los dibujos de pequeño a grande. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "ordenar-piezas"
+    ]
+  },
+  {
+    "text": "Pon 1 fruta en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 2 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 3 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 4 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 5 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 6 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 7 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 8 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 9 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 10 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Lila y el huevo viajero. Lila encuentra un huevo junto al camino. «Alguien debe de estar buscándolo», piensa. Antes de tocarlo, mira a su alrededor. ¿Dónde buscamos a su familia? Junto al árbol. Siguiendo las huellas",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "Toca la caja para descubrir una sorpresa.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Caza del rojo. Señala algo rojo desde tu sitio. Compara dos objetos: ¿qué cambia además del color?",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Eco de dos palmas. Haz dos palmadas y una pausa. El grupo copia. Cambia por una palmada y un toque en las rodillas.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Una pieza desaparece. Muestra un bloque, un lápiz y un vaso. Tápalos, retira uno y pregunta cuál falta.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "El círculo viajero. Señala dos objetos que tengan una parte circular. Rodéalos con el dedo en el aire.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Tres compañeros de colección. Muestra tres bloques. Busca otro grupo con la misma cantidad, contando uno a uno.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Rima que salta. Di gato, pato y mesa. Repite despacio. ¿Qué dos palabras terminan de manera parecida?",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Sigue mi serie. Alterna palma y rodilla dos veces. Deja que el grupo añada el siguiente movimiento.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "La torre crece. Coloca dos bloques y añade uno. Cuenta tocando cada bloque: ¿cuántos hay ahora?",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Veo, veo con, m, . Nombra mesa, mano y sol. Alarga el sonido inicial, m, . Señala las dos que empiezan igual.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Un intruso redondo. Muestra tres círculos y un cuadrado. Pregunta cuál elegirían como diferente y escucha su razón.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Manos espejo. Levanta ambas manos; abre una y cierra otra. Tu pareja copia como en un espejo.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "La bolsa misteriosa. Describe un lápiz sin mostrarlo: alargado, sirve para dibujar. El grupo propone qué puede ser.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Un paso por sílaba. Di lu-na, pe-lo-ta y sol. Da un paso o un toque de mano por cada sílaba.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Del pequeño al grande. Ordena tres bloques de tamaños claramente distintos. Explica cuál pondrías en medio.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Dado de dedos. Enseña tres dedos. Construye esa cantidad con piezas grandes. Comprueba tocando.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Dos colores, dos grupos. Reparte seis piezas de dos colores. Cada participante coloca una en su grupo.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Dentro del aro. Coloca un bloque dentro y otro fuera de un aro. Cambia la posición al escuchar la consigna.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "El saludo elegido. Ofrece saludo con mano, gesto o palabra. Cada persona elige, sin obligar al contacto físico.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Memoria de dos sonidos. Haz palma y chasquido de lengua. Repite en el mismo orden; luego cambia el orden.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "¿Verdad o fantasía?. Di: los dinosaurios iban en bicicleta. Separa lo que inventamos en cuentos de lo que investigamos.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Encuentra tu inicial. Muestra dos letras grandes. Cada niño señala si alguna está al principio de su nombre.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "La lluvia va y viene. Golpea suavemente muslos, después despacio y luego para. Sigue la señal visual de la maestra.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Un plato para cada uno. Da tres figuras y tres platos. Reparte un plato por figura sin que sobre ninguna.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "¿Cuántos de un vistazo?. Enseña brevemente dos puntos. Permite mirar de nuevo y contar si hace falta.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "La palabra larga. Di tren y mariposa con palmadas. Compara el número de golpes, no el tamaño del animal.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Huella gemela. Entre tres tarjetas de huellas, encuentra la que es igual al modelo y explica qué has mirado.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Sombra geométrica. Muestra el contorno de un triángulo y tres formas. Busca la pareja.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Llega otro invitado. Pon un muñeco junto a otro. Relata: había uno y llega otro. Junta y cuenta.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Antes de merendar. Ordena dos gestos: lavarse las manos y comer. Explica qué hacemos primero.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "El color escondido. Muestra un círculo azul y un cuadrado azul. Nombra lo que comparten aunque sean diferentes.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Dos pistas para elegir. Entre piezas grandes y pequeñas, pide una grande y circular. Primero repasa cada pista.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "La voz de un gigante. Di hola con voz suave, luego grave sin gritar. Inventa una voz de dinosaurio de cuento.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "La letra camuflada. Coloca una M entre O, A y M. Busca la misma que el modelo sin exigir su nombre.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Estatuas cómodas. Muévete por tu espacio y congélate con una señal. También se puede jugar sentado con brazos.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Pasa la sonrisa. Una persona hace un gesto alegre; otra lo interpreta. Admitimos que puede significar cosas distintas.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "La pareja que ayuda. Dos niños transportan una tela con una pelota blanda. Acuerdan ir despacio y parar juntos.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "¿Quién tiene menos?. Compara dos bloques con cuatro. Empareja uno a uno para ver dónde sobran.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Cambia solo una cosa. Construye círculo rojo y círculo azul. ¿Qué cambió y qué sigue igual?",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Serie de tres gestos. Palma, brazos arriba, pausa. Repite la unidad dos veces y vuelve a comenzar.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "El mensaje amable. Un muñeco necesita una pieza. Ensaya: ¿me la prestas cuando termines?",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Repite el recorrido. Traza en el aire un camino horizontal y una curva. Recréalo con un cordón sobre la mesa.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Fósil o juguete. Muestra una ilustración de un fósil y una figura. Explica que el juguete representa, pero no es un fósil.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Los huevos se reúnen. Pon dos óvalos de papel a un lado y dos al otro. Reúne y cuenta los cuatro.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Palabras del museo. Nombra lupa, brocha y museo. Explica para qué usarías una de ellas en el rincón.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Delante del modelo. Mueve un muñeco delante o detrás de una caja. Permite señalar en vez de hablar.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "¿Qué escuchamos?. Cierra los ojos solo si quieres. Escucha durante diez segundos y cuenta un sonido que has notado.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "La torre equilibrada. Con tres bloques, prueba dos maneras de construir. ¿Cuál se mantiene y qué cambiaste?",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Completa hasta tres. Muestra un marco con tres espacios y ocupa uno. Coloca las piezas que faltan.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Pregunta de investigador. Muestra dos dinosaurios. Completa oralmente: quiero saber por qué… Acepta dictado o gesto.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Un cierre tranquilo. Abre y cierra las manos lentamente tres veces. Di, señala o dibuja algo que te gustaría repetir.",
+    "kinds": [
+      "challenge"
+    ]
+  },
+  {
+    "text": "Buenos días con las manos. Buenos días, aquí estoy.. Con mis manos digo hola hoy.. Si prefiero saludar. con mi voz lo puedo dar.",
+    "kinds": [
+      "cancion"
+    ]
+  },
+  {
+    "text": "A contar despacito. Una pieza, otra más.. Con mi dedo contarás.. Cuando todas toco yo,. digo cuántas tengo hoy.",
+    "kinds": [
+      "cancion"
+    ]
+  },
+  {
+    "text": "La ronda del turno. Ahora escucho, luego voy.. Una idea te doy hoy.. Si no quiero conversar,. mi turno puede pasar.",
+    "kinds": [
+      "cancion"
+    ]
+  },
+  {
+    "text": "Pies de dinosaurio. Paso grande, paso lento.. Muevo brazos, paro y siento.. Si sentado quiero estar,. con las manos puedo andar.",
+    "kinds": [
+      "cancion"
+    ]
+  },
+  {
+    "text": "Hora de recoger. Cada cosa a su lugar.. Yo te ayudo a terminar.. Poco a poco, junto a ti,. nuestro rincón queda así.",
+    "kinds": [
+      "cancion"
+    ]
+  },
+  {
+    "text": "Cerramos la asamblea. Una idea llevo hoy,. otra escucho y otra doy.. Mi cuerpo se va a estirar,. otro juego va a empezar.",
+    "kinds": [
+      "cancion"
+    ]
+  },
+  {
+    "text": "¡Buenos días, clase!",
+    "kinds": [
+      "saludo"
+    ]
+  },
+  {
+    "text": "¿Cuántos hemos venido?",
+    "kinds": [
+      "asistencia"
+    ]
+  },
+  {
+    "text": "¿En qué estación estamos?",
+    "kinds": [
+      "estacion"
+    ]
+  },
+  {
+    "text": "Hoy cuidamos de la clase",
+    "kinds": [
+      "encargado"
+    ]
+  },
+  {
+    "text": "El número protagonista 1. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "El número protagonista 2. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "El número protagonista 3. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "El número protagonista 4. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "El número protagonista 5. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "El número protagonista 6. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "La letra protagonista",
+    "kinds": [
+      "letra"
+    ]
+  },
+  {
+    "text": "Así es mi nombre",
+    "kinds": [
+      "nombre"
+    ]
+  },
+  {
+    "text": "¿Qué te ha hecho sonreír esta mañana?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo notas en tu cuerpo que estás enfadado?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué puedes pedir cuando necesitas ayuda?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Dónde te gusta estar cuando buscas tranquilidad?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué podríamos hacer si alguien está triste?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Puedes mostrar alegría solo con las manos?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué te da un poquito de miedo y quién te acompaña?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cuándo te has sentido orgulloso de intentarlo?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo te gustaría que te hablaran si te equivocas?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué emoción traerías hoy dentro de una mochila?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Con qué personas te gusta pasar tiempo fuera del cole?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué juego podrías enseñar a alguien de tu casa?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Quién te cuenta historias o te canta canciones?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué tarea pequeña te gusta hacer en casa?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué comida disfrutáis preparando juntos?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué lugar te gusta visitar con las personas que te cuidan?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué harías para recibir con cariño a alguien que llega?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué objeto de casa te recuerda un momento bonito?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo avisamos en casa de que necesitamos descansar?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué te gustaría preguntar a una persona mayor de tu familia?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo invitarías a jugar a alguien que está mirando?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué podemos hacer si dos personas quieren el mismo juguete?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué juego funciona mejor si colaboramos?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo sabes que tu compañero quiere parar?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué te gusta que hagan tus amigos por ti?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo podríamos reparar una torre que hemos tirado sin querer?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo ayudarías a alguien que acaba de llegar a clase?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Podemos jugar juntos aunque nos gusten cosas diferentes?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué palabras usarías para pedir un turno?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo celebrarías un logro de otra persona?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué pasaría si los zapatos pudieran hablar?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo sería una casa para una mariposa?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿A dónde viajaría nuestra alfombra si volara?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué guardarías en una caja de inventos?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo sería un dinosaurio que solo aparece en los cuentos?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué sonido tendría una nube si cantara?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué harías con una llave que abre una puerta diminuta?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué inventarías para recoger los juguetes jugando?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo sería un jardín debajo del mar?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué le preguntarías a una estrella?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué cambios has visto hoy en el cielo?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué necesita una planta para crecer?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué podríamos observar sin molestar a una hormiga?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿En qué se parecen dos hojas que hemos encontrado?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué sonidos escuchas si guardamos silencio un momento?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué podríamos hacer para cuidar el patio?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Dónde crees que se esconde el agua de un charco cuando desaparece?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo podemos saber si algo está vivo?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué animales conoces que nazcan de huevos?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué preguntas te hace pensar una piedra?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué rincón te apetece visitar y por qué?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Dónde encontrarías lo necesario para pintar?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué podemos hacer para que todos veamos el cuento?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo sabemos dónde guardar cada material?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué has descubierto en clase esta semana?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué te gustaría enseñar a otro grupo?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo podemos caminar por el aula sin chocar?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué harías si no encuentras tu botella?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué lugar del cole te resulta más tranquilo?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué cambiarías de nuestro rincón de construcción?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué hacemos antes de empezar a merendar?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo sabes que tienes sed?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué podrías hacer cuando tu cuerpo pide descanso?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo prepararías tu espacio para pintar?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué pasos seguimos para recoger la plastilina?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo podemos cuidar los libros?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué necesitas comprobar antes de salir al patio?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo pedimos ayuda para abrocharnos una prenda?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué hacemos con un pañuelo usado?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo dejamos la mesa para la siguiente persona?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo sabes que dos grupos tienen la misma cantidad?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿De cuántas maneras puedes ordenar tres bloques?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué podríamos probar si una torre se cae?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué tienen en común una rueda y un plato?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo llevarías agua sin usar las manos como cuenco?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Puede un objeto pertenecer a dos grupos diferentes?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué crees que ocurrirá si añadimos otra pieza?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo podríamos comprobar cuál camino es más largo?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué harías primero para encontrar una pieza perdida?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Podemos dar dos respuestas distintas y que las dos sirvan?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo describirías una pelota sin decir su nombre?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué pasó primero esta mañana al llegar al cole?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué contarías de una imagen donde alguien comparte?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo explicarías las reglas de tu juego favorito?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué final inventarías para un cuento que acaba en una puerta?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué palabras usarías para describir una tela suave?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué sonido haría una lluvia pequeñita?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Puedes contar algo usando las palabras primero y después?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué pregunta harías para conocer mejor a un compañero?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo contarías una aventura con una hoja y una caja?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué creemos saber sobre los dinosaurios?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué nos gustaría investigar sobre ellos?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo podríamos averiguar qué comían?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué pistas nos puede dar una huella?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿En qué se parecen y en qué se diferencian estos dos dinosaurios?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué llevaríamos a una excavación de juego?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Cómo cuidaríamos un fósil frágil?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué necesitaría nuestro museo para que otros lo entiendan?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué cambiarías de tu idea inicial después de observar una imagen?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "¿Qué pregunta sobre dinosaurios todavía no hemos respondido?",
+    "kinds": [
+      "question"
+    ]
+  },
+  {
+    "text": "Lila y el huevo viajero. Bajo el árbol descansa un dinosaurio de cuello largo. Ha oído una llamada cerca de las flores. Lila quiere avisar de que ha encontrado el huevo. ¿Cómo lo hacemos? Pedimos ayuda. Cantamos suavemente",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "Lila y el huevo viajero. Las huellas llegan hasta un charco. Al otro lado hay una familia buscando su huevo. Lila los ve, pero ellos aún no la han visto. ¿Cómo los avisamos? Levantamos las manos. Los llamamos desde aquí",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "Lila y el huevo viajero. El dinosaurio llama a la familia y los acompaña hasta el huevo. Lila espera a su lado. «Gracias por ayudarnos», dicen. Entre todos preparan un lugar tranquilo para descansar. ¿A quién podemos pedir ayuda nosotros?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "Lila y el huevo viajero. La canción de Lila llega hasta las flores. La familia se acerca y reconoce su huevo. Lila les enseña su canción y todos la repiten muy bajito. El camino se llena de voces amigas. ¿Inventamos una canción para despedirnos?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "Lila y el huevo viajero. Lila mueve las manos despacio. La familia la ve y vuelve por el sendero que rodea el charco. Encuentran el huevo y dan las gracias con un abrazo de dinosaurio imaginario. ¿De qué maneras podemos dar las gracias?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "Lila y el huevo viajero. «¡Estamos aquí!», llama Lila. La familia escucha y sigue su voz hasta el huevo. Después dibujan juntos una señal en el camino para poder volver a encontrarse. ¿Cómo sería la señal que dibujaríamos?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La semilla de nuestra clase. En una caja aparece una semilla diminuta. La clase quiere cuidarla y observar qué ocurre. Tenemos tierra y un recipiente. ¿Dónde preparamos su rincón? Cerca de la ventana. En un rincón del patio",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La semilla de nuestra clase. La semilla ya está en la tierra, junto a la luz. Cada día podemos observarla sin sacarla de su sitio. ¿Cómo nos organizamos para cuidarla? Hacemos turnos. La observamos juntos",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La semilla de nuestra clase. Buscamos un lugar del patio que podamos visitar. La tierra está preparada. Queremos recordar dónde plantamos la semilla. ¿Qué ponemos a su lado? Una pequeña señal. Un círculo de piedras",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La semilla de nuestra clase. La clase prepara turnos para mirar la tierra y regar cuando hace falta. Pasan muchos días. Una mañana aparece un brote. Lo dibujamos y compartimos la alegría de verlo crecer. ¿Qué encargo te gustaría tener?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La semilla de nuestra clase. Cada mañana observamos juntos el recipiente. Unos días parece que nada cambia. Seguimos cuidándolo. Después de muchos días, asoman dos hojitas y descubrimos que esperar también forma parte del cuidado. ¿Qué otras cosas necesitan tiempo?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La semilla de nuestra clase. Dibujamos una semilla en la señal. Así todos saben dónde está y la cuidan al pasar. Con agua, luz y tiempo aparece un brote. Añadimos una hoja al dibujo del cartel. ¿Qué dibujaríamos cuando la planta creciera más?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La semilla de nuestra clase. Colocamos las piedras alrededor, dejando espacio para crecer. Visitamos el rincón y cuidamos la tierra. Muchos días después vemos un brote. Las piedras nos ayudan a encontrarlo sin pisarlo. ¿Cómo cuidamos los seres vivos del patio?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La mochila de los sonidos. Nora lleva una mochila con un libro vacío. Quiere llenarlo de sonidos que pueda recordar. Al salir escucha dos pistas. ¿Cuál seguimos primero? Un miau suave. Un cuac junto al agua",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La mochila de los sonidos. Un gato está al sol. Dice «miau» y se estira. Nora escucha desde un poquito más lejos para no molestarlo. ¿Cómo guardamos este sonido en nuestro libro? Dibujamos al gato. Inventamos un ritmo",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La mochila de los sonidos. Un pato dice «cuac, cuac». Nora escucha dos sonidos. El agua hace un ruido suave al moverse. ¿Qué sonido queremos recordar? La voz del pato. El sonido del agua",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La mochila de los sonidos. Nora dibuja al gato y escribe con ayuda la palabra MIAU. Al volver a clase enseña el dibujo. Todos recuerdan el sonido y cuentan cuándo han visto un gato. ¿Cómo dibujarías un sonido?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La mochila de los sonidos. Nora inventa dos palmas suaves y una pausa para recordar al gato. En clase enseña el ritmo. Cada compañero añade un gesto y juntos crean una pequeña canción. ¿Repetimos dos palmas y una pausa?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La mochila de los sonidos. Nora dibuja un pato y dos círculos: uno por cada «cuac». En clase señala los círculos y todos repiten los sonidos. Su libro ya tiene una página que se puede mirar y escuchar. ¿Cuántos círculos dibujarías para tres sonidos?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "La mochila de los sonidos. Nora mueve suavemente las manos y hace «shhh» para recordar el agua. Al volver, la clase inventa gestos para el viento, la lluvia y el mar. El libro vacío se convierte en un libro de recuerdos. ¿Qué sonido tranquilo te gusta escuchar?",
+    "kinds": [
+      "cuento"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Sin ser lámpara ilumino y por el cielo camino.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Sin ser lámpara ilumino y por el cielo camino. El sol",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo hojas y no soy árbol; me abres para escuchar un relato.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo hojas y no soy árbol; me abres para escuchar un relato. Un libro",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Caigo de una nube, mojo el suelo y lleno el charco.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Caigo de una nube, mojo el suelo y lleno el charco. La lluvia",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Soy redonda, salto y ruedo; conmigo compartes un juego.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Soy redonda, salto y ruedo; conmigo compartes un juego. La pelota",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo punta y dejo un camino cuando dibujo.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo punta y dejo un camino cuando dibujo. Un lápiz",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Dos hojas no soy, dos ruedas tampoco: corto papel poquito a poco.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Dos hojas no soy, dos ruedas tampoco: corto papel poquito a poco. Las tijeras",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Aunque no es la pata, te dice que alguien pasó.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Aunque no es la pata, te dice que alguien pasó. La huella",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Guardo una cría dentro; mi cáscara es su casa al principio.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Guardo una cría dentro; mi cáscara es su casa al principio. El huevo",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Con paciencia observo rocas y busco pistas del pasado.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Con paciencia observo rocas y busco pistas del pasado. La paleontóloga o el paleontólogo",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. En una roca me quedé, una vida antigua te contaré.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. En una roca me quedé, una vida antigua te contaré. El fósil",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. No hablo, pero enseño: guardo objetos para aprender del pasado.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. No hablo, pero enseño: guardo objetos para aprender del pasado. El museo",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. No soy una ensalada, pero plantas es lo que como.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. No soy una ensalada, pero plantas es lo que como. Un herbívoro",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo una gran cabeza y dos brazos cortitos.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo una gran cabeza y dos brazos cortitos. Tiranosaurio rex",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Mis tres cuernos y mi gola te dan una pista.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Mis tres cuernos y mi gola te dan una pista. Triceratops",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Llevo grandes placas sobre la espalda.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Llevo grandes placas sobre la espalda. Stegosaurus",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Mis patas de delante son muy altas y mi cuello es largo.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Mis patas de delante son muy altas y mi cuello es largo. Brachiosaurus",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo plumas y una cola larga, pero no vuelo.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo plumas y una cola larga, pero no vuelo. Velociraptor",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo armadura en el cuerpo y una maza en la cola.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Tengo armadura en el cuerpo y una maza en la cola. Ankylosaurus",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Mi cola es larguísima, como un látigo.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Mi cola es larguísima, como un látigo. Diplodocus",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Una cresta larga se curva detrás de mi cabeza.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Una cresta larga se curva detrás de mi cabeza. Parasaurolophus",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Mi espalda parece llevar una vela y mi hocico es largo.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Escucha las pistas. Mi espalda parece llevar una vela y mi hocico es largo. Spinosaurus",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué te ha hecho sonreír esta mañana?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo notas en tu cuerpo que estás enfadado?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué puedes pedir cuando necesitas ayuda?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Dónde te gusta estar cuando buscas tranquilidad?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué podríamos hacer si alguien está triste?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Puedes mostrar alegría solo con las manos?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué te da un poquito de miedo y quién te acompaña?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cuándo te has sentido orgulloso de intentarlo?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo te gustaría que te hablaran si te equivocas?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué emoción traerías hoy dentro de una mochila?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Con qué personas te gusta pasar tiempo fuera del cole?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué juego podrías enseñar a alguien de tu casa?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Quién te cuenta historias o te canta canciones?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué tarea pequeña te gusta hacer en casa?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué comida disfrutáis preparando juntos?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué lugar te gusta visitar con las personas que te cuidan?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué harías para recibir con cariño a alguien que llega?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué objeto de casa te recuerda un momento bonito?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo avisamos en casa de que necesitamos descansar?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué te gustaría preguntar a una persona mayor de tu familia?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo invitarías a jugar a alguien que está mirando?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué podemos hacer si dos personas quieren el mismo juguete?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué juego funciona mejor si colaboramos?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo sabes que tu compañero quiere parar?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué te gusta que hagan tus amigos por ti?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo podríamos reparar una torre que hemos tirado sin querer?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo ayudarías a alguien que acaba de llegar a clase?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Podemos jugar juntos aunque nos gusten cosas diferentes?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué palabras usarías para pedir un turno?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo celebrarías un logro de otra persona?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué pasaría si los zapatos pudieran hablar?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo sería una casa para una mariposa?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿A dónde viajaría nuestra alfombra si volara?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué guardarías en una caja de inventos?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo sería un dinosaurio que solo aparece en los cuentos?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué sonido tendría una nube si cantara?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué harías con una llave que abre una puerta diminuta?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué inventarías para recoger los juguetes jugando?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo sería un jardín debajo del mar?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué le preguntarías a una estrella?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué cambios has visto hoy en el cielo?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué necesita una planta para crecer?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué podríamos observar sin molestar a una hormiga?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿En qué se parecen dos hojas que hemos encontrado?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué sonidos escuchas si guardamos silencio un momento?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué podríamos hacer para cuidar el patio?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Dónde crees que se esconde el agua de un charco cuando desaparece?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo podemos saber si algo está vivo?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué animales conoces que nazcan de huevos?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué preguntas te hace pensar una piedra?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué rincón te apetece visitar y por qué?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Dónde encontrarías lo necesario para pintar?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué podemos hacer para que todos veamos el cuento?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo sabemos dónde guardar cada material?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué has descubierto en clase esta semana?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué te gustaría enseñar a otro grupo?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo podemos caminar por el aula sin chocar?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué harías si no encuentras tu botella?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué lugar del cole te resulta más tranquilo?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué cambiarías de nuestro rincón de construcción?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué hacemos antes de empezar a merendar?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo sabes que tienes sed?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué podrías hacer cuando tu cuerpo pide descanso?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo prepararías tu espacio para pintar?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué pasos seguimos para recoger la plastilina?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo podemos cuidar los libros?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué necesitas comprobar antes de salir al patio?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo pedimos ayuda para abrocharnos una prenda?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué hacemos con un pañuelo usado?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo dejamos la mesa para la siguiente persona?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo sabes que dos grupos tienen la misma cantidad?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿De cuántas maneras puedes ordenar tres bloques?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué podríamos probar si una torre se cae?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué tienen en común una rueda y un plato?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo llevarías agua sin usar las manos como cuenco?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Puede un objeto pertenecer a dos grupos diferentes?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué crees que ocurrirá si añadimos otra pieza?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo podríamos comprobar cuál camino es más largo?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué harías primero para encontrar una pieza perdida?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Podemos dar dos respuestas distintas y que las dos sirvan?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo describirías una pelota sin decir su nombre?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué pasó primero esta mañana al llegar al cole?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué contarías de una imagen donde alguien comparte?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo explicarías las reglas de tu juego favorito?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué final inventarías para un cuento que acaba en una puerta?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué palabras usarías para describir una tela suave?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué sonido haría una lluvia pequeñita?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Puedes contar algo usando las palabras primero y después?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué pregunta harías para conocer mejor a un compañero?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo contarías una aventura con una hoja y una caja?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué creemos saber sobre los dinosaurios?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué nos gustaría investigar sobre ellos?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo podríamos averiguar qué comían?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué pistas nos puede dar una huella?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿En qué se parecen y en qué se diferencian estos dos dinosaurios?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué llevaríamos a una excavación de juego?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Cómo cuidaríamos un fósil frágil?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué necesitaría nuestro museo para que otros lo entiendan?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué cambiarías de tu idea inicial después de observar una imagen?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Una pregunta para conversar. ¿Qué pregunta sobre dinosaurios todavía no hemos respondido?",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Estiramos los brazos hacia el cielo y los bajamos despacio. Podemos hacerlo sentados.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Hacemos tres palmas suaves y después una pausa.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Movemos las manos como si fueran mariposas.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Nos hacemos pequeños como una semilla y nos estiramos como una planta.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Dibujamos un círculo en el aire con un dedo.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Movemos los hombros arriba y abajo tres veces.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Imaginamos que somos árboles y movemos las ramas con el viento.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Saludamos con una mano, con la otra y con las dos.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Tocamos nuestra cabeza y después nuestros hombros.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Hacemos una cara de sorpresa y después una cara tranquila.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Imaginamos que sostenemos una nube: abrimos y cerramos las manos despacio.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Movemos el cuerpo. Damos dos pasos en el sitio o dos toques suaves sobre las piernas.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Busca algo que tenga forma de círculo y señálalo.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Nombra algo que podamos encontrar en el patio.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Enseña con los dedos una cantidad y deja que la clase la descubra.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Piensa en una palabra que empiece como ABEJA.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Nombra dos cosas que sirven para pintar.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Haz un gesto para que adivinemos una acción.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Escoge dos objetos y cuenta en qué se parecen.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Di una palabra y acompáñala con palmadas.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Busca con la mirada algo azul.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Inventamos un saludo para toda la clase.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Piensa en algo que sea pequeño y algo que sea grande.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "Un reto pequeño. Di una manera de ayudar a un compañero.",
+    "kinds": [
+      "sorpresa"
+    ]
+  },
+  {
+    "text": "¡Hola, peques! ¿Jugamos juntos? Mirad con calma. ¡Vamos a descubrirlo!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Mira con calma. Puedes probar otra opción.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Lo habéis encontrado juntos.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¿Cómo lo has pensado? Podemos contarlo a la clase.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Lo has encontrado!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Muy bien!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Buen trabajo!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Lo has conseguido!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Qué bien lo has pensado!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Un aplauso para ti!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Lo habéis conseguido!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Una pareja!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Habéis encontrado todas las parejas. ¡Un aplauso para toda la clase!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Hemos llegado al nido!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡El jardín está lleno de flores!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡Nuestro jardín está lleno de flores!",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Lo habéis completado pieza a pieza.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Primero toca una pieza.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Mira con calma. Prueba otro lugar.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "La pieza sigue disponible. Puedes tocar su lugar.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¿Qué hemos descubierto hoy?",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Había dinosaurios que comían plantas y otros que comían animales.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Tres cuernos y una gola detrás de la cabeza.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El Tiranosaurio rex vivió muchísimo antes de que existieran las personas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Los fósiles de huevos y nidos nos dan pistas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Tenía plumas, aunque no podía volar.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Es una representación. Un fósil es un resto o una señal antigua conservada.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Las aves pertenecen a un grupo de dinosaurios que sobrevivió.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En muchos casos no lo sabemos. Los colores de estas ilustraciones son imaginados.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Hubo dinosaurios en épocas muy diferentes.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Su cuello largo le ayudaba a alcanzar vegetación.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Nuestra espuma es un modelo de juego, no lava.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Algunas huellas se conservaron como fósiles.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El sol",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Un libro",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "La lluvia",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "La pelota",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Un lápiz",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Las tijeras",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "La huella",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "El huevo",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "La paleontóloga o el paleontólogo",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "El fósil",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "El museo",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Un herbívoro",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Tiranosaurio rex",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Triceratops",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Stegosaurus",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Brachiosaurus",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Velociraptor",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Ankylosaurus",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Diplodocus",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Parasaurolophus",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Spinosaurus",
+    "kinds": [
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Has encontrado dos dibujos iguales.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 1. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 2. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 3. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 4. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 5. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 6. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 7. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 8. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 9. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 10. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 es más que 1. 1 es menos que 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 es más que 2. 2 es menos que 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 es más que 1. 1 es menos que 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 es más que 3. 3 es menos que 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 es más que 4. 4 es menos que 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 es más que 5. 5 es menos que 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 es más que 2. 2 es menos que 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 es más que 3. 3 es menos que 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 es más que 4. 4 es menos que 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 es más que 1. 1 es menos que 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 es más que 2. 2 es menos que 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 es más que 3. 3 es menos que 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 es más que 1. 1 es menos que 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 es más que 2. 2 es menos que 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 es más que 1. 1 es menos que 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 es más que 6. 6 es menos que 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 es más que 7. 7 es menos que 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 es más que 8. 8 es menos que 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 es más que 9. 9 es menos que 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 es más que 5. 5 es menos que 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 es más que 6. 6 es menos que 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 es más que 7. 7 es menos que 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 es más que 8. 8 es menos que 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 es más que 4. 4 es menos que 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 es más que 5. 5 es menos que 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 es más que 6. 6 es menos que 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 es más que 7. 7 es menos que 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 es más que 3. 3 es menos que 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 es más que 4. 4 es menos que 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 es más que 5. 5 es menos que 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 es más que 6. 6 es menos que 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 es más que 2. 2 es menos que 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 es más que 3. 3 es menos que 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 es más que 4. 4 es menos que 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 es más que 5. 5 es menos que 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 es más que 1. 1 es menos que 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 es más que 2. 2 es menos que 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 es más que 3. 3 es menos que 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 es más que 4. 4 es menos que 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 es más que 1. 1 es menos que 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 es más que 2. 2 es menos que 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 es más que 3. 3 es menos que 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 es más que 1. 1 es menos que 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 es más que 2. 2 es menos que 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 es más que 1. 1 es menos que 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 1 juntos hacen 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 2 juntos hacen 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 1 juntos hacen 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 y 1 juntos hacen 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 2 juntos hacen 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 y 2 juntos hacen 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 3 juntos hacen 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 3 juntos hacen 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 y 3 juntos hacen 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 y 1 juntos hacen 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 y 1 juntos hacen 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 y 2 juntos hacen 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 y 2 juntos hacen 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 y 3 juntos hacen 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 y 3 juntos hacen 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 4 juntos hacen 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 4 juntos hacen 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 y 4 juntos hacen 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 y 4 juntos hacen 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 y 4 juntos hacen 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 5 juntos hacen 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 5 juntos hacen 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 y 5 juntos hacen 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 y 5 juntos hacen 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 y 5 juntos hacen 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 6 juntos hacen 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 6 juntos hacen 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 y 6 juntos hacen 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 y 6 juntos hacen 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 7 juntos hacen 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 7 juntos hacen 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 y 7 juntos hacen 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 8 juntos hacen 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 8 juntos hacen 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 9 juntos hacen 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 1, 2, 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 2, 3, 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 3, 4, 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 4, 5, 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 5, 6, 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 6, 7, 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 7, 8, 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 8, 9, 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Es el mismo dibujo, pero este es el más grande.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Es el mismo dibujo, pero este es el más pequeño.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ABEJA empieza por A. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ELEFANTE empieza por E. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ISLA empieza por I. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "OSO empieza por O. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "UVAS empieza por U. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ANILLO empieza por A. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ESTRELLA empieza por E. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "IMÁN empieza por I. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "OJO empieza por O. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "UNICORNIO empieza por U. La decimos despacito.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "SOL: 1 palmada.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "CA · SA: 2 palmadas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "PEZ: 1 palmada.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "LU · NA: 2 palmadas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "PAN: 1 palmada.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "PA · TO: 2 palmadas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "PE · LO · TA: 3 palmadas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "MA · RI · PO · SA: 4 palmadas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "MAN · ZA · NA: 3 palmadas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "E · LE · FAN · TE: 4 palmadas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ZA · PA · TO: 3 palmadas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "BI · CI · CLE · TA: 4 palmadas.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Los dos son de color rojo. ¿Ves algo de ese color en clase?",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Los dos son de color azul. ¿Ves algo de ese color en clase?",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Los dos son de color amarillo. ¿Ves algo de ese color en clase?",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Los dos son de color verde. ¿Ves algo de ese color en clase?",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Los dos son de color naranja. ¿Ves algo de ese color en clase?",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Los dos son de color morado. ¿Ves algo de ese color en clase?",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de gato estaba el primero.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de flor estaba el último.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de coche estaba el primero.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de mariposa estaba el último.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de rana estaba el primero.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de globo estaba el último.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de balón estaba el primero.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de conejo estaba el último.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de pez estaba el primero.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de manzana estaba el último.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de fresa estaba el primero.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de oso de peluche estaba el último.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de flor estaba en el medio.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de fresa estaba el último.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de oso de peluche estaba el primero.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de pez estaba en el medio.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de conejo estaba en el medio.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de rana estaba el último.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de globo estaba el primero.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de coche estaba en el medio.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de gato está arriba.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de balón está abajo.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de coche está arriba.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de pez está abajo.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de rana está arriba.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de fresa está abajo.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de balón está arriba.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de gato está abajo.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de pez está arriba.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de coche está abajo.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de fresa está arriba.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El dibujo de rana está abajo.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El paraguas nos cubre de la lluvia.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Nos cepillamos los dientes con un cepillo.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El pincel nos ayuda a pintar con témpera.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Las plantas necesitan agua para vivir.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Usamos la llave para abrir la cerradura.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Las zapatillas protegen nuestros pies.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "La cuchara nos ayuda a comer la sopa.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Nos lavamos las manos con agua y jabón.",
+    "kinds": [
+      "feedback"
+    ]
+  }
+]

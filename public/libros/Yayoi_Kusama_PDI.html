@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Yayoi Kusama: Desde aquí hasta el infinito · PDI</title>
+  <style>
+    :root{color-scheme:light;--red:#d92d42;--ink:#29232a;--paper:#fffaf5}*{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif;text-transform:uppercase}
+    body{display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}.toolbar,.controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:white;border-bottom:1px solid #ead9df}.toolbar strong{font-size:clamp(.8rem,1.8vw,1.1rem)}
+    button,a{min-height:48px;border:0;border-radius:12px;padding:10px 17px;background:var(--red);color:white;font:800 1rem/1 Arial,sans-serif;text-decoration:none;cursor:pointer}.secondary{background:white;color:var(--red);border:2px solid #e3b5c0}
+    main{min-height:0;display:grid;place-items:center;padding:12px;background:#f5ede8}.stage{display:grid;place-items:center;width:100%;height:100%;min-height:0}img{display:block;max-width:100%;max-height:calc(100dvh - 145px);object-fit:contain;box-shadow:0 8px 28px #381f2828;background:white}.cover-copy{display:none}.stage.cover-layout{width:min(1180px,100%);height:auto;max-height:calc(100dvh - 145px);aspect-ratio:16/9;grid-template-columns:minmax(250px,.72fr) minmax(340px,1.28fr);overflow:hidden;border-radius:22px;background:#b62642;box-shadow:0 12px 36px #351c2838}.cover-layout img{width:100%;height:100%;max-height:none;box-shadow:none}.cover-layout .cover-copy{height:100%;display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,5vw,72px);color:white;background:radial-gradient(circle at 82% 17%,#f8db4d 0 22px,transparent 23px),radial-gradient(circle at 70% 78%,#f8db4d 0 34px,transparent 35px),radial-gradient(circle at 18% 22%,#fff 0 11px,transparent 12px),radial-gradient(circle at 88% 48%,#fff 0 15px,transparent 16px),#b62642}.cover-copy span{font-weight:900;letter-spacing:.16em}.cover-copy h1{max-width:680px;margin:18px 0;font-size:clamp(2rem,5vw,5.3rem);line-height:.94}.cover-copy p{margin:0;font-weight:900;letter-spacing:.08em}
+    .controls{border-top:1px solid #ead9df;border-bottom:0}.controls output{font-weight:900}.controls div{display:flex;gap:10px}.hidden{visibility:hidden}
+    @media(max-width:560px){.toolbar span{display:none}.toolbar,.controls{padding:8px}.controls button,.toolbar a{font-size:.78rem;padding:9px 11px}.stage.cover-layout{grid-template-columns:minmax(130px,.8fr) minmax(175px,1.2fr);border-radius:12px}.cover-layout .cover-copy{padding:14px}.cover-copy h1{font-size:clamp(1.1rem,6vw,2rem);margin:8px 0}.cover-copy span,.cover-copy p{font-size:.6rem}}
+  </style>
+</head>
+<body>
+  <header class="toolbar"><strong>YAYOI KUSAMA · DESDE AQUÍ HASTA EL INFINITO</strong><span>LIBRO PARA PDI</span><a class="secondary" href="../index.html#kusama">VOLVER A LA CLASE ROSA</a></header>
+  <main><div class="stage" id="stage"><img id="page" src="../assets/stories/yayoi/page-01.webp" width="1093" height="1439" alt="PÁGINA 1 DEL LIBRO DE YAYOI KUSAMA"><section class="cover-copy" aria-label="Título del cuento"><span>YAYOI KUSAMA</span><h1>DESDE AQUÍ HASTA EL INFINITO</h1><p>UN LIBRO PARA MIRAR JUNTOS</p></section></div></main>
+  <footer class="controls"><div><button id="prev" type="button">← ANTERIOR</button><button id="next" type="button">SIGUIENTE →</button></div><output id="counter" aria-live="polite">PÁGINA 1 DE 14</output><button id="full" type="button" class="secondary">PANTALLA COMPLETA</button></footer>
+  <script>
+    const total=14,image=document.querySelector('#page'),stage=document.querySelector('#stage'),counter=document.querySelector('#counter'),previous=document.querySelector('#prev'),next=document.querySelector('#next');let page=1;
+    function show(value){page=Math.min(total,Math.max(1,value));image.src='../assets/stories/yayoi/page-'+String(page).padStart(2,'0')+'.webp';image.alt='PÁGINA '+page+' DEL LIBRO DE YAYOI KUSAMA';stage.classList.toggle('cover-layout',page===1);counter.textContent='PÁGINA '+page+' DE '+total;previous.classList.toggle('hidden',page===1);next.textContent=page===total?'VOLVER AL PRINCIPIO':'SIGUIENTE →';}
+    previous.addEventListener('click',()=>show(page-1));next.addEventListener('click',()=>show(page===total?1:page+1));document.querySelector('#full').addEventListener('click',()=>document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen?.());document.addEventListener('keydown',event=>{if(event.key==='ArrowRight')show(page===total?1:page+1);if(event.key==='ArrowLeft')show(page-1);});show(1);
+  </script>
+</body>
+</html>

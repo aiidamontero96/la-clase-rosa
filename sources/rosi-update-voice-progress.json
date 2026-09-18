@@ -1,0 +1,188 @@
+{
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "rate": 0.94,
+  "completed": 27,
+  "total": 27,
+  "clips": [
+    {
+      "key": "¡hola, pequeños paleontólogos",
+      "text": "¡Hola, pequeños paleontólogos!",
+      "spoken": "¡Hola, pequeños paleontólogos!",
+      "file": "rosi/8e78577dc5920344.mp3"
+    },
+    {
+      "key": "soy rosi. me encanta explorar, aunque a veces se me despistan las pistas",
+      "text": "Soy Rosi. Me encanta explorar, aunque a veces se me despistan las pistas.",
+      "spoken": "Soy Rosi. Me encanta explorar, aunque a veces se me despistan las pistas.",
+      "file": "rosi/dd55531438d3f0a8.mp3"
+    },
+    {
+      "key": "¡mirad! he encontrado unas huellas junto a mi mochila",
+      "text": "¡Mirad! He encontrado unas huellas junto a mi mochila.",
+      "spoken": "¡Mirad! He encontrado unas huellas junto a mi mochila.",
+      "file": "rosi/3b20d547e811e3bb.mp3"
+    },
+    {
+      "key": "¿serán de un dinosaurio? vamos a mirar con mucho cuidado",
+      "text": "¿Serán de un dinosaurio? Vamos a mirar con mucho cuidado.",
+      "spoken": "¿Serán de un dinosaurio? Vamos a mirar con mucho cuidado.",
+      "file": "rosi/8a9d13aa2b1cdec8.mp3"
+    },
+    {
+      "key": "tristán y emma, hoy sois mis ayudantes de exploración",
+      "text": "Tristán y Emma, hoy sois mis ayudantes de exploración.",
+      "spoken": "Tristán y Emma, hoy sois mis ayudantes de exploración.",
+      "file": "rosi/e181b2d9a3702de8.mp3"
+    },
+    {
+      "key": "tristán, ayúdame a observar los dinosaurios",
+      "text": "Tristán, ayúdame a observar los dinosaurios.",
+      "spoken": "Tristán, ayúdame a observar los dinosaurios.",
+      "file": "rosi/a5bf37a41f598f28.mp3"
+    },
+    {
+      "key": "emma, fíjate bien en sus formas",
+      "text": "Emma, fíjate bien en sus formas.",
+      "spoken": "Emma, fíjate bien en sus formas.",
+      "file": "rosi/16d9578e954a912d.mp3"
+    },
+    {
+      "key": "y los demás pequeños paleontólogos también podéis ayudarnos",
+      "text": "Y los demás pequeños paleontólogos también podéis ayudarnos.",
+      "spoken": "Y los demás pequeños paleontólogos también podéis ayudarnos.",
+      "file": "rosi/ec007fe351fa2aa8.mp3"
+    },
+    {
+      "key": "primero compararemos sus cuerpos. después, se esconderán dos dinosaurios",
+      "text": "Primero compararemos sus cuerpos. Después, se esconderán dos dinosaurios.",
+      "spoken": "Primero compararemos sus cuerpos. Después, se esconderán dos dinosaurios.",
+      "file": "rosi/753cb3f388f34e37.mp3",
+      "seconds": 6.979
+    },
+    {
+      "key": "recordad las pistas y el orden. nos esperan varios retos",
+      "text": "Recordad las pistas y el orden. Nos esperan varios retos.",
+      "spoken": "Recordad las pistas y el orden. Nos esperan varios retos.",
+      "file": "rosi/f91520796dc563bf.mp3",
+      "seconds": 6.043
+    },
+    {
+      "key": "¡creo que ya tengo todas mis pistas! ¿empezamos la misión",
+      "text": "¡Creo que ya tengo todas mis pistas! ¿Empezamos la misión?",
+      "spoken": "¡Creo que ya tengo todas mis pistas! ¿Empezamos la misión?",
+      "file": "rosi/44243e60c4e662b8.mp3"
+    },
+    {
+      "key": "¿qué dinosaurio es",
+      "text": "¿Qué dinosaurio es?",
+      "spoken": "¿Qué dinosaurio es?",
+      "file": "rosi-missions/7224de3ad5b07ffd.mp3",
+      "seconds": 2.213
+    },
+    {
+      "key": "observa la silueta",
+      "text": "Observa la silueta.",
+      "spoken": "Observa la silueta.",
+      "file": "rosi-missions/f2df0853cd32612b.mp3",
+      "seconds": 2.638
+    },
+    {
+      "key": "¿a qué dinosaurio pertenece",
+      "text": "¿A qué dinosaurio pertenece?",
+      "spoken": "¿A qué dinosaurio pertenece?",
+      "file": "rosi-missions/5f655f9366fea001.mp3",
+      "seconds": 2.809
+    },
+    {
+      "key": "mira los cuatro dinosaurios",
+      "text": "Mira los cuatro dinosaurios.",
+      "spoken": "Mira los cuatro dinosaurios.",
+      "file": "rosi-missions/25efeb4d4bf7d2e1.mp3",
+      "seconds": 3.064
+    },
+    {
+      "key": "después se esconderán dos",
+      "text": "Después se esconderán dos.",
+      "spoken": "Después se esconderán dos.",
+      "file": "rosi-missions/a028168f9cb17b1f.mp3",
+      "seconds": 2.809
+    },
+    {
+      "key": "elige los dos dinosaurios que se han escondido",
+      "text": "Elige los dos dinosaurios que se han escondido.",
+      "spoken": "Elige los dos dinosaurios que se han escondido.",
+      "file": "rosi-missions/a3a92aaf44b2dd8c.mp3",
+      "seconds": 3.915
+    },
+    {
+      "key": "mira los cuatro dinosaurios y recuerda su orden",
+      "text": "Mira los cuatro dinosaurios y recuerda su orden.",
+      "spoken": "Mira los cuatro dinosaurios y recuerda su orden.",
+      "file": "rosi-missions/046d51c69c8927db.mp3",
+      "seconds": 4.255
+    },
+    {
+      "key": "coloca los cuatro dinosaurios en el mismo orden",
+      "text": "Coloca los cuatro dinosaurios en el mismo orden.",
+      "spoken": "Coloca los cuatro dinosaurios en el mismo orden.",
+      "file": "rosi-missions/63c2276d3cd441a2.mp3",
+      "seconds": 4.17
+    },
+    {
+      "key": "fíjate en el número",
+      "text": "Fíjate en el número.",
+      "spoken": "Fíjate en el número.",
+      "file": "rosi-missions/118428ae6c96718a.mp3",
+      "seconds": 2.213
+    },
+    {
+      "key": "¿cuántos huevos faltan para completar el nido",
+      "text": "¿Cuántos huevos faltan para completar el nido?",
+      "spoken": "¿Cuántos huevos faltan para completar el nido?",
+      "file": "rosi-missions/db048e44717dda6a.mp3",
+      "seconds": 3.66
+    },
+    {
+      "key": "junta los dos grupos de huevos",
+      "text": "Junta los dos grupos de huevos.",
+      "spoken": "Junta los dos grupos de huevos.",
+      "file": "rosi-missions/74388e4d38ad2cca.mp3",
+      "seconds": 2.894
+    },
+    {
+      "key": "¿cuántos hay en total",
+      "text": "¿Cuántos hay en total?",
+      "spoken": "¿Cuántos hay en total?",
+      "file": "rosi-missions/bc07a2f9307d6e0d.mp3",
+      "seconds": 2.298
+    },
+    {
+      "key": "elige un dinosaurio y después su grupo de alimentación",
+      "text": "Elige un dinosaurio y después su grupo de alimentación.",
+      "spoken": "Elige un dinosaurio y después su grupo de alimentación.",
+      "file": "rosi-missions/f84c0602653cf09f.mp3",
+      "seconds": 4.681
+    },
+    {
+      "key": "hay que colocar a los seis",
+      "text": "Hay que colocar a los seis.",
+      "spoken": "Hay que colocar a los seis.",
+      "file": "rosi-missions/9316776d56c88b8e.mp3",
+      "seconds": 2.638
+    },
+    {
+      "key": "observa el grupo que se repite",
+      "text": "Observa el grupo que se repite.",
+      "spoken": "Observa el grupo que se repite.",
+      "file": "rosi-missions/55a21d1a763c40cb.mp3",
+      "seconds": 2.809
+    },
+    {
+      "key": "completa los dos huecos de la serie",
+      "text": "Completa los dos huecos de la serie.",
+      "spoken": "Completa los dos huecos de la serie.",
+      "file": "rosi-missions/a2a01a199ab99353.mp3",
+      "seconds": 3.234
+    }
+  ]
+}

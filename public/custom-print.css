@@ -1,0 +1,38 @@
+/* Every length uses the same unit: millimetres on paper, proportional in preview. */
+.print-sheet{--u:1mm;box-sizing:border-box;width:calc(210 * var(--u));height:calc(296 * var(--u));background:white;color:#302932;font-family:Arial,sans-serif;padding:calc(10 * var(--u));margin:0 auto;display:block;break-inside:avoid;page-break-inside:avoid}
+.print-sheet *{box-sizing:border-box}.print-sheet + .print-sheet{break-before:page;page-break-before:always}
+.print-sheet>header{height:calc(18 * var(--u));display:flex;flex-direction:column;justify-content:center;gap:calc(2 * var(--u));border-bottom:1px solid #bcb0b6;margin-bottom:calc(4 * var(--u))}
+.print-sheet>header strong{font-size:calc(4.9 * var(--u))}.print-sheet>header span{font-size:calc(3.5 * var(--u));color:#62565d}
+.custom-print-grid{height:calc(243 * var(--u));display:grid;gap:calc(3 * var(--u));grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}
+.custom-print-grid.size-grande{grid-template-rows:repeat(2,minmax(0,1fr))}.custom-print-grid.size-pequena{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}
+.custom-print-grid.count-ten{grid-template-columns:1fr;grid-template-rows:repeat(3,minmax(0,1fr));gap:calc(4 * var(--u))}
+.count-ten .custom-print-card{display:grid;grid-template-columns:calc(43 * var(--u)) minmax(0,1fr) calc(23 * var(--u));grid-template-rows:1fr;gap:calc(5 * var(--u));padding:calc(4 * var(--u)) calc(7 * var(--u))}
+.count-ten .custom-print-card h3{font-size:calc(4.6 * var(--u))}.count-ten .print-collection{grid-template-columns:repeat(5,1fr)!important;grid-template-rows:repeat(2,1fr)!important;gap:calc(1.5 * var(--u));height:100%}.count-ten .print-collection img{max-height:calc(24 * var(--u))}.count-ten .write-number{width:calc(20 * var(--u));height:calc(16 * var(--u));justify-self:center}
+.custom-print-card{border:1px dashed #82717c;border-radius:calc(3 * var(--u));padding:calc(4 * var(--u));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(3 * var(--u));overflow:hidden;min-width:0;min-height:0;break-inside:avoid;page-break-inside:avoid}
+.custom-print-card h3{font:bold calc(4.2 * var(--u))/1.2 Arial,sans-serif;margin:0;text-align:center;flex-shrink:0}
+.custom-print-card>strong{font-size:calc(4.9 * var(--u));line-height:1.2;text-align:center;max-width:100%;overflow-wrap:anywhere}
+.custom-print-card img{display:block;object-fit:contain;max-width:100%;min-height:0}
+.custom-print-card .print-main-picture{width:80%;height:70%;max-height:calc(75 * var(--u))}
+.print-collection{display:grid;grid-template-columns:repeat(var(--columns,3),minmax(0,1fr));grid-template-rows:repeat(var(--rows,2),minmax(0,1fr));justify-content:center;align-items:center;justify-items:center;gap:calc(2 * var(--u));width:100%;flex:1;min-height:0}
+.print-collection img{width:100%;height:100%;max-height:calc(28 * var(--u));min-width:0}.write-number{width:calc(16 * var(--u));height:calc(11 * var(--u));flex-shrink:0;border:1px solid #51454f;border-radius:calc(2 * var(--u))}
+.print-series{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--u);align-items:center;width:100%}.print-series img{width:100%;height:calc(15 * var(--u))}.print-hole{display:grid;place-items:center;border:1px dashed #64565f;border-radius:calc(2 * var(--u));height:calc(15 * var(--u));font-size:calc(6 * var(--u))}
+.cut-label{font:normal calc(3.2 * var(--u))/1.2 Arial,sans-serif;margin:calc(2 * var(--u)) 0 0}.print-cutouts{display:flex;gap:calc(3 * var(--u))}.print-cutouts img{width:calc(17 * var(--u));height:calc(17 * var(--u));border:1px dashed #64565f;padding:var(--u)}
+.print-memory-group{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:calc(3 * var(--u));height:80%;width:100%}.print-memory-group img{height:70%;width:42%}.print-memory-group img:only-child{width:85%;height:90%}
+.print-sheet>footer{height:calc(9 * var(--u));display:flex;align-items:center;font-size:calc(2.8 * var(--u));color:#62565d;line-height:1.2}
+.size-pequena .custom-print-card{padding:calc(2.5 * var(--u));gap:calc(2 * var(--u))}.size-pequena .custom-print-card h3{font-size:calc(3.2 * var(--u))}.size-pequena .custom-print-card>strong{font-size:calc(3.5 * var(--u))}.size-pequena .print-collection{gap:var(--u)}.size-pequena .print-collection img{height:100%;max-height:calc(14 * var(--u))}.size-pequena .write-number{width:calc(12 * var(--u));height:calc(8 * var(--u))}.size-pequena .print-series img,.size-pequena .print-hole{height:calc(10 * var(--u))}.size-pequena .print-cutouts img{width:calc(12 * var(--u));height:calc(12 * var(--u))}
+.print-bn img{filter:grayscale(1)}
+.print-outline img{filter:none}.print-outline .custom-print-card,.print-outline .print-hole{background:white}.print-outline *{color:#111!important}
+.custom-print-document{margin:0;background:#ede8eb}.print-document-tools{padding:20px;text-align:center;font:16px/1.5 Arial,sans-serif}.print-document-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.print-document-tools button{padding:14px 24px;border:1px solid transparent;border-radius:10px;background:#a6295d;color:white;font-size:17px;cursor:pointer}.print-document-tools .print-back-button{background:white;color:#8a214d;border-color:#d8afc0}.print-document-tools button:disabled{opacity:.5}.print-document-tools p{font-size:14px}
+@media screen{
+ .custom-print-document .print-sheet{margin:20px auto;box-shadow:0 5px 28px #29121b1a}
+ .custom-preview .print-sheet{--u:calc(100cqw / 210);width:100%;box-shadow:0 3px 16px #4d1c3912;border-radius:2px}
+ .custom-print-document .print-pages-screen{container-type:inline-size;width:min(794px,calc(100% - 24px));margin:0 auto}
+ .print-pages-screen .print-sheet{--u:calc(100cqw / 210);width:100%}
+}
+@media print{
+ html,body.custom-print-document{width:210mm;margin:0!important;padding:0!important;min-height:0!important;background:white}
+ .print-document-tools{display:none!important}
+ .custom-print-document .print-sheet{--u:1mm;margin:0;box-shadow:none}
+ .print-sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .print-pages-screen{display:block;width:auto;margin:0;padding:0;container-type:normal}
+}

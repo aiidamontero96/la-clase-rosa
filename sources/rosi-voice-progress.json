@@ -1,0 +1,85 @@
+{
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "rate": 0.94,
+  "completed": 11,
+  "total": 11,
+  "clips": [
+    {
+      "key": "¡hola, pequeños paleontólogos",
+      "text": "¡Hola, pequeños paleontólogos!",
+      "spoken": "¡Hola, pequeños paleontólogos!",
+      "file": "8e78577dc5920344.mp3",
+      "seconds": 3.404
+    },
+    {
+      "key": "soy rosi. me encanta explorar, aunque a veces se me despistan las pistas",
+      "text": "Soy Rosi. Me encanta explorar, aunque a veces se me despistan las pistas.",
+      "spoken": "Soy Rosi. Me encanta explorar, aunque a veces se me despistan las pistas.",
+      "file": "dd55531438d3f0a8.mp3",
+      "seconds": 7.149
+    },
+    {
+      "key": "¡mirad! he encontrado unas huellas junto a mi mochila",
+      "text": "¡Mirad! He encontrado unas huellas junto a mi mochila.",
+      "spoken": "¡Mirad! He encontrado unas huellas junto a mi mochila.",
+      "file": "3b20d547e811e3bb.mp3",
+      "seconds": 5.447
+    },
+    {
+      "key": "¿serán de un dinosaurio? vamos a mirar con mucho cuidado",
+      "text": "¿Serán de un dinosaurio? Vamos a mirar con mucho cuidado.",
+      "spoken": "¿Serán de un dinosaurio? Vamos a mirar con mucho cuidado.",
+      "file": "8a9d13aa2b1cdec8.mp3",
+      "seconds": 5.532
+    },
+    {
+      "key": "tristán y emma, hoy sois mis ayudantes de exploración",
+      "text": "Tristán y Emma, hoy sois mis ayudantes de exploración.",
+      "spoken": "Tristán y Emma, hoy sois mis ayudantes de exploración.",
+      "file": "e181b2d9a3702de8.mp3",
+      "seconds": 4.681
+    },
+    {
+      "key": "tristán, ayúdame a observar los dinosaurios",
+      "text": "Tristán, ayúdame a observar los dinosaurios.",
+      "spoken": "Tristán, ayúdame a observar los dinosaurios.",
+      "file": "a5bf37a41f598f28.mp3",
+      "seconds": 4.34
+    },
+    {
+      "key": "emma, fíjate bien en sus formas",
+      "text": "Emma, fíjate bien en sus formas.",
+      "spoken": "Emma, fíjate bien en sus formas.",
+      "file": "16d9578e954a912d.mp3",
+      "seconds": 3.404
+    },
+    {
+      "key": "y los demás pequeños paleontólogos también podéis ayudarnos",
+      "text": "Y los demás pequeños paleontólogos también podéis ayudarnos.",
+      "spoken": "Y los demás pequeños paleontólogos también podéis ayudarnos.",
+      "file": "ec007fe351fa2aa8.mp3",
+      "seconds": 4.936
+    },
+    {
+      "key": "primero miraremos. después, un dinosaurio se esconderá",
+      "text": "Primero miraremos. Después, un dinosaurio se esconderá.",
+      "spoken": "Primero miraremos. Después, un dinosaurio se esconderá.",
+      "file": "d6a1a3d39025b1b9.mp3",
+      "seconds": 5.191
+    },
+    {
+      "key": "pensad un poquito y señalad el que falta",
+      "text": "Pensad un poquito y señalad el que falta.",
+      "spoken": "Pensad un poquito y señalad el que falta.",
+      "file": "cf1aa55b970cd995.mp3",
+      "seconds": 3.915
+    },
+    {
+      "key": "¡creo que ya tengo todas mis pistas! ¿empezamos la misión",
+      "text": "¡Creo que ya tengo todas mis pistas! ¿Empezamos la misión?",
+      "spoken": "¡Creo que ya tengo todas mis pistas! ¿Empezamos la misión?",
+      "file": "44243e60c4e662b8.mp3",
+      "seconds": 5.702
+    }
+  ]
+}

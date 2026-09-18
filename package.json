@@ -1,0 +1,16 @@
+{
+  "name": "la-clase-rosa",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-site.cjs",
+    "db:generate": "drizzle-kit generate",
+    "test": "node scripts/check-app.cjs && node scripts/check-pdi.cjs && node scripts/check-print.cjs && node scripts/check-voice.cjs && node scripts/check-rosi.cjs && node scripts/check-rosi-missions.cjs && node scripts/check-worker.mjs",
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.10",
+    "drizzle-orm": "0.45.2",
+    "vite": "^6.4.1"
+  }
+}

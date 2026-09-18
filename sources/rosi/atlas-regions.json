@@ -1,0 +1,244 @@
+{
+  "asset": "rosi-atlas.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "coordinate_system": "pixels, origin top left; bbox_xyxy right and bottom are exclusive",
+  "bound_method": "connected component of alpha > 127; recommended_crop adds up to 8 px padding, stopping at gaps between adjacent parts",
+  "regions": {
+    "head": {
+      "bbox_xyxy": [
+        45,
+        28,
+        633,
+        627
+      ],
+      "recommended_crop_xywh": [
+        37,
+        20,
+        604,
+        615
+      ]
+    },
+    "body": {
+      "bbox_xyxy": [
+        687,
+        110,
+        1231,
+        649
+      ],
+      "recommended_crop_xywh": [
+        679,
+        102,
+        560,
+        555
+      ]
+    },
+    "arm_canvas_left": {
+      "bbox_xyxy": [
+        89,
+        771,
+        278,
+        1092
+      ],
+      "recommended_crop_xywh": [
+        81,
+        763,
+        205,
+        337
+      ]
+    },
+    "arm_canvas_right": {
+      "bbox_xyxy": [
+        410,
+        768,
+        604,
+        1093
+      ],
+      "recommended_crop_xywh": [
+        402,
+        760,
+        210,
+        341
+      ]
+    },
+    "open_eyebrow_canvas_left": {
+      "bbox_xyxy": [
+        764,
+        677,
+        869,
+        724
+      ],
+      "recommended_crop_xywh": [
+        756,
+        669,
+        121,
+        57
+      ]
+    },
+    "open_eyebrow_canvas_right": {
+      "bbox_xyxy": [
+        988,
+        678,
+        1092,
+        725
+      ],
+      "recommended_crop_xywh": [
+        980,
+        670,
+        120,
+        56
+      ]
+    },
+    "open_eye_canvas_left": {
+      "bbox_xyxy": [
+        735,
+        728,
+        886,
+        863
+      ],
+      "recommended_crop_xywh": [
+        727,
+        726,
+        167,
+        145
+      ]
+    },
+    "open_eye_canvas_right": {
+      "bbox_xyxy": [
+        968,
+        728,
+        1120,
+        863
+      ],
+      "recommended_crop_xywh": [
+        960,
+        726,
+        168,
+        145
+      ]
+    },
+    "closed_eyebrow_canvas_left": {
+      "bbox_xyxy": [
+        768,
+        888,
+        871,
+        933
+      ],
+      "recommended_crop_xywh": [
+        760,
+        880,
+        119,
+        56
+      ]
+    },
+    "closed_eyebrow_canvas_right": {
+      "bbox_xyxy": [
+        980,
+        888,
+        1083,
+        933
+      ],
+      "recommended_crop_xywh": [
+        972,
+        880,
+        119,
+        56
+      ]
+    },
+    "closed_eye_canvas_left": {
+      "bbox_xyxy": [
+        731,
+        939,
+        881,
+        1034
+      ],
+      "recommended_crop_xywh": [
+        723,
+        936,
+        166,
+        106
+      ]
+    },
+    "closed_eye_canvas_right": {
+      "bbox_xyxy": [
+        969,
+        939,
+        1119,
+        1034
+      ],
+      "recommended_crop_xywh": [
+        961,
+        936,
+        166,
+        106
+      ]
+    },
+    "open_mouth": {
+      "bbox_xyxy": [
+        720,
+        1079,
+        907,
+        1189
+      ],
+      "recommended_crop_xywh": [
+        712,
+        1071,
+        203,
+        126
+      ]
+    },
+    "closed_smile": {
+      "bbox_xyxy": [
+        951,
+        1089,
+        1134,
+        1170
+      ],
+      "recommended_crop_xywh": [
+        943,
+        1081,
+        199,
+        97
+      ]
+    }
+  },
+  "grouped_facial_regions": {
+    "open_eye_pair_with_brows": {
+      "bbox_xyxy": [
+        735,
+        677,
+        1120,
+        863
+      ],
+      "recommended_crop_xywh": [
+        727,
+        669,
+        401,
+        202
+      ]
+    },
+    "closed_eye_pair_with_brows": {
+      "bbox_xyxy": [
+        731,
+        888,
+        1119,
+        1034
+      ],
+      "recommended_crop_xywh": [
+        723,
+        880,
+        404,
+        162
+      ]
+    }
+  },
+  "visual_notes": [
+    "Head has a subtle baked-in curved smile despite request to omit mouth; mouth sprites can be placed at the lower center of the snout.",
+    "Body omits head and both arms; shoulder joints and backpack straps remain in body asset.",
+    "Atlas is a mild three-quarter 3D view, with all requested detachable parts coherent and separated.",
+    "Actual atlas size returned by the built-in tool is 1254\u00d71254 rather than the preferred 2048\u00d72048; no regeneration performed.",
+    "No pixels were modified, resized, redrawn or regenerated."
+  ]
+}

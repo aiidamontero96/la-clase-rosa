@@ -1,0 +1,240 @@
+/* Shared spacing, with equal icon cells and a centred working area. */
+@media screen {
+  .topbar { padding-inline: max(24px, calc((100% - 1248px) / 2)); }
+  .nav-link { gap: 10px; min-height: 46px; }
+  .nav-icon { letter-spacing: 0; }
+  .page-head > div:first-child, .access > span:last-child { min-width: 0; }
+  .access { padding: 16px; gap: 12px; }
+  .custom-workshop { max-width: 1120px; margin-inline: auto; grid-template-columns: 320px minmax(0, 1fr); gap: 32px; }
+  .custom-controls { display: block; padding: 24px; }
+  .custom-controls fieldset { min-width: 0; border: 0; padding: 0 0 22px; margin: 0 0 22px; border-bottom: 1px solid var(--line); }
+  .custom-controls legend { display: flex; align-items: center; gap: 9px; font: 800 1rem Nunito, sans-serif; margin-bottom: 16px; padding: 0; }
+  .workshop-step { display: grid; place-items: center; width: 27px; height: 27px; flex: 0 0 27px; background: var(--pink); color: var(--rose); border-radius: 50%; font-size: .85rem; }
+  .print-type-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .print-type { flex-direction: column; gap: 8px; background: white; color: var(--ink); border: 1px solid var(--line); padding: 14px 6px; font-size: .9rem; }
+  .print-type > span { display: grid; place-items: center; width: 32px; height: 32px; font: 900 1.65rem/1 Nunito, sans-serif; color: var(--rose); }
+  .print-type:hover, .print-type[aria-pressed=true] { background: var(--pink); color: var(--dark); border-color: var(--rose); }
+  .custom-controls .print-type-hint { margin: 12px 0 0; min-height: 2.8em; }
+  .print-fields { display: grid; gap: 14px; }
+  .print-fields + button { margin-top: 14px; width: 100%; }
+  .custom-controls select { width: 100%; }
+  .workshop-print-action > button { width: 100%; }
+  .workshop-print-action .hint { margin: 12px 0 0; text-align: center; }
+  .custom-preview-wrap { width: 100%; max-width: 620px; margin-inline: auto; padding: 20px; background: #f3ecef; border: 1px solid #e5d9e0; border-radius: 20px; }
+  .preview-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; }
+  .preview-heading h2 { font-size: 1rem; margin: 0; }
+  .preview-heading .tag { background: white; font-size: .7rem; }
+  .custom-preview { display: block; container-type: inline-size; }
+  .preview-pagination { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 18px; font-size: .875rem; }
+  .preview-pagination button { width: 42px; padding: 8px; }
+}
+@media screen and (max-width: 1120px) {
+  .custom-workshop { grid-template-columns: 280px minmax(0, 1fr); gap: 20px; }
+  .custom-controls, .custom-preview-wrap { padding: 18px; }
+  .access-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media screen and (max-width: 950px) {
+  .custom-workshop { grid-template-columns: 1fr; max-width: 680px; }
+  .custom-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .custom-controls fieldset { margin: 0; }
+  .custom-controls .print-type-field, .workshop-print-action { grid-column: 1 / -1; }
+  .print-type-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .custom-controls .print-type-hint { min-height: 0; }
+}
+@media screen and (max-width: 520px) {
+  .topbar { padding-inline: 16px; }
+  .custom-controls { display: block; }
+  .custom-controls fieldset { margin-bottom: 20px; }
+  .print-type-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .print-type { font-size: .875rem; padding: 12px 6px; }
+  .custom-preview-wrap { padding: 12px; }
+  .preview-heading { gap: 6px; }
+  .preview-heading h2 { font-size: .9rem; }
+}
+
+.voice-sample{padding:0 16px 16px}.voice-sample .hint{margin:10px 0 0}
+
+/* Proyecto anual de Yayoi Kusama: puntos, repetición y espacios para crear. */
+@media screen {
+  .home-grid { align-items: start; }
+  .home-projects { display: grid; gap: 18px; min-width: 0; }
+  .home-projects .dino-panel, .kusama-panel { min-height: 300px; }
+  .kusama-panel { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; background: #f8dc45; border-color: #d8bd2f; }
+  .kusama-panel .eyebrow { color: #6d1848; }
+  .kusama-panel h2 { color: #2e1d2a; font-size: 1.7rem; margin: 8px 0; }
+  .kusama-panel p { color: #493c26; font-size: .95rem; max-width: 290px; margin: 0 0 12px; }
+  .kusama-panel .button { margin-top: auto; background: #6d1848; }
+  .kusama-home-art { width: 170px; height: 104px; object-fit: cover; align-self: flex-end; margin: -6px -4px 10px 0; border: 3px solid #2b232b; border-radius: 18px; box-shadow: 7px 7px 0 #fff5; }
+  .kusama-banner { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 34px; align-items: center; overflow: hidden; margin-bottom: 24px; background: #fff8d6; border-color: #e1c648; }
+  .kusama-banner h1 { color: #5e1740; }
+  .kusama-banner p { max-width: 760px; }
+  .kusama-banner .hint { color: #68552a; margin-bottom: 0; }
+  .kusama-hero-art { width: 260px; height: 220px; object-fit: cover; justify-self: end; border: 4px solid #30242c; border-radius: 24px; box-shadow: 16px 16px 0 #efabc5; transform: rotate(2deg); }
+  .kusama-about { display: grid; grid-template-columns: minmax(250px, .82fr) minmax(0, 1.35fr); gap: 34px; align-items: center; background: #fffdf3; border-color: #e2c94e; }
+  .kusama-about figure { margin: 0; }
+  .kusama-about figure img { width: 100%; height: auto; aspect-ratio: 1; display: block; object-fit: contain; background: white; border-radius: 22px; border: 4px solid #2e252c; box-shadow: 11px 11px 0 #f3d539; }
+  .kusama-hero-art.kusama-hero-portrait { width: min(260px, 100%); height: auto; aspect-ratio: 1; object-fit: contain; background: white; }
+  .kusama-about figcaption { margin-top: 16px; color: var(--muted); font-size: .78rem; }
+  .kusama-about h2 { margin: 7px 0 12px; color: #59163c; }
+  .kusama-about p { line-height: 1.65; }
+  .kusama-clues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 18px 0; }
+  .kusama-clues span { min-height: 82px; display: grid; place-items: center; align-content: center; gap: 3px; padding: 9px; border-radius: 16px; background: #fff2a9; color: #4a3240; text-align: center; font-size: .82rem; font-weight: 800; }
+  .kusama-clues b { color: #c82f68; font-size: 1.55rem; line-height: 1; }
+  .kusama-about aside { padding: 15px 17px; border-left: 6px solid #d93270; border-radius: 0 14px 14px 0; background: #fff0f5; }
+  .kusama-about aside p { margin: 4px 0 0; }
+  .resource-preview .kusama-activity-art { width: 100%; height: 100%; object-fit: cover; box-shadow: none; transform: none; mix-blend-mode: normal; border-radius: 12px; background: white; }
+  .resource-preview:hover .kusama-activity-art { transform: scale(1.025); }
+  .dialog-preview .kusama-activity-art { aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+  .card-materials { display: grid; gap: 4px; margin: 0 0 12px; padding: 11px 12px; border-radius: 10px; background: #f7f1f4; color: #5f5260; font-size: .8rem; line-height: 1.45; }
+  .card-materials strong { color: var(--ink); font: 800 .8rem Nunito, sans-serif; }
+  .printable-status { display: inline-flex; align-items: center; align-self: flex-start; margin: 0 0 16px; padding: 6px 9px; border-radius: 8px; font-size: .75rem; font-weight: 800; line-height: 1.25; }
+  .printable-status.has-printable { color: #235d4f; background: #e5f2eb; }
+  .printable-status.no-printable { color: #695b43; background: #f7f0dd; }
+  .printable-detail { margin: 15px 0 20px; padding: 13px 15px; border-radius: 12px; font-size: .9rem; }
+  .printable-detail p { margin: 5px 0 0; }
+  .printable-detail.has-printable { color: #235d4f; background: #e5f2eb; }
+  .printable-detail.no-printable { color: #695b43; background: #f7f0dd; }
+  .example-caption { padding: 15px 3px 0; }
+  .example-caption strong { font: 800 .9rem Nunito, sans-serif; }
+  .example-caption p { margin: 5px 0 0; color: var(--muted); font-size: .875rem; }
+  .kusama-stages .project-step { border-top: 8px solid #f1cf32; }
+  .kusama-stages .project-step:nth-child(2) { border-top-color: #e96091; }
+  .kusama-stages .project-step:nth-child(3) { border-top-color: #332432; }
+  .project-activity-list { margin: 18px 0 0; padding-left: 22px; }
+  .project-activity-list li { margin: 9px 0; padding-left: 2px; font-size: .95rem; }
+  .project-activity-list a { font-weight: 700; }
+}
+@media screen and (max-width: 780px) {
+  .kusama-banner { grid-template-columns: minmax(0, 1fr) 170px; gap: 18px; padding: 22px; }
+  .kusama-about { grid-template-columns: 220px minmax(0, 1fr); gap: 22px; }
+  .kusama-hero-art { width: 160px; height: 150px; box-shadow: 9px 9px 0 #efabc5; }
+}
+@media screen and (max-width: 480px) {
+  .home-projects .dino-panel, .kusama-panel { min-height: 0; }
+  .kusama-panel h2 { font-size: 1.45rem; }
+  .kusama-home-art { width: 135px; height: 75px; }
+  .kusama-banner { grid-template-columns: 1fr; }
+  .kusama-about { grid-template-columns: 1fr; }
+  .kusama-about figure { max-width: 430px; margin: 0 auto; }
+  .kusama-clues { grid-template-columns: 1fr; }
+  .kusama-hero-art { width: 150px; height: 120px; justify-self: center; }
+}
+.brand-teacher{width:52px;height:52px;object-fit:contain;flex:0 0 52px;filter:drop-shadow(0 4px 7px #70204022)}
+.morning-title{justify-content:flex-start}.teacher-welcome{display:flex;align-items:center;gap:8px;margin-left:auto;padding:5px 12px 5px 5px;border:1px solid #ead6df;border-radius:999px;background:#fff8fb;color:var(--dark);font-weight:800;font-size:.82rem;white-space:nowrap}.teacher-welcome img{width:52px;height:52px;object-fit:contain;border-radius:50%;background:#fce9ef}
+@media screen and (max-width:520px){.brand-teacher{width:48px;height:48px;flex-basis:48px}.teacher-welcome span{display:none}.teacher-welcome{padding:3px;margin-left:auto}.teacher-welcome img{width:46px;height:46px}}
+
+/* Momentos del curso y vídeo de Kusama para la PDI. */
+@media screen {
+  .year-intro{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-bottom:22px;background:linear-gradient(135deg,#fff1f6,#fff9dd)}
+  .year-intro h2{margin:6px 0}.year-intro p{max-width:760px;margin-bottom:0}.year-intro>span{font-size:clamp(4rem,9vw,7rem);color:#d54f84}
+  .year-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .year-card{display:flex;flex-direction:column;padding:23px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}
+  .year-card:nth-child(3n+2){background:#fff9e8}.year-card:nth-child(3n+3){background:#f2f8ef}
+  .year-card-head{display:flex;align-items:center;gap:15px}.year-card-head>span{display:grid;place-items:center;width:64px;height:64px;flex:0 0 64px;border-radius:18px;background:#f9dfe9;font-size:2.2rem}.year-card small{font-weight:900;color:var(--rose);letter-spacing:.09em}.year-card h2{margin:3px 0;font-size:1.3rem}.year-card h3{font-size:.85rem;margin:14px 0 4px}.year-card ul{padding-left:20px;margin:6px 0 20px}.year-card li{margin:7px 0;line-height:1.45}.year-card .button{align-self:flex-start}
+  .year-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto}.year-actions .button{margin-top:0}
+  .year-printables{margin-top:12px;border:1px solid #ead7df;border-radius:14px;background:#fff8fb;overflow:hidden}
+  .year-printables summary{display:flex;justify-content:space-between;gap:10px;padding:12px 14px;color:#7b2750;font-size:.82rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}
+  .year-printables summary span{color:#776873;font-size:.75rem;font-weight:700;text-transform:none;letter-spacing:0}
+  .year-printables>div{display:grid;gap:1px;border-top:1px solid #ead7df;background:#ead7df}
+  .year-printables>div button{min-height:40px;justify-content:flex-start;padding:9px 13px;border:0;border-radius:0;background:white;color:#5e2140;text-align:left;font-size:.82rem}
+  .year-printables>div button:hover{background:#fce9ef}
+  .printable-card .resource-preview{height:135px;padding:10px}
+  .printable-card .resource-preview img{width:78px;height:110px;transform:rotate(-2deg)}
+  .printable-card .resource-body{padding:15px}
+  .printable-card .resource-body>p{display:none}
+  .printable-card .resource-body h3{font-size:1rem;margin-bottom:12px}
+  .printable-card .resource-actions .button,.printable-card .resource-actions button{width:100%}
+  .print-options small{display:block;margin-top:7px;color:var(--muted);font-size:.78rem}
+  .print-dialog-actions{display:grid;grid-template-columns:1fr 1fr}
+  .source-note{margin:8px 0 14px;padding:9px 11px;border-left:4px solid #c68b28;border-radius:0 9px 9px 0;background:#fff7dd;color:#69501f;font-size:.78rem;line-height:1.4}
+  .kusama-video{display:grid;grid-template-columns:minmax(240px,.65fr) minmax(0,1.35fr);align-items:center;gap:26px;margin-top:20px;background:#fff8d6;border-color:#e1c648}.kusama-video h2{margin:6px 0 10px;color:#5e1740}.video-frame{position:relative;overflow:hidden;width:100%;aspect-ratio:16/9;border:4px solid #30242c;border-radius:18px;background:#211c20;box-shadow:10px 10px 0 #efabc5}.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+}
+@media screen and (max-width:760px){.year-grid,.kusama-video{grid-template-columns:1fr}.year-intro>span{display:none}}
+@media screen and (max-width:460px){.year-card{padding:18px}}
+
+/* Controles grandes y claros para la asamblea en la PDI. */
+.assembly-date-display{font-size:clamp(2.8rem,7vw,6rem)!important;letter-spacing:.025em}
+.duty-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:min(1050px,94vw);margin:22px auto}
+.duty-card{display:flex;flex-direction:column;align-items:center;gap:12px;padding:22px;border:3px solid #e6bfd0;border-radius:22px;background:white;box-shadow:var(--shadow)}
+.duty-card>span{font-size:3rem}.duty-card h3{font-size:1.45rem;margin:0}.duty-card select{width:100%;font-size:1.05rem;font-weight:800;text-align:center}.duty-result{display:grid;place-items:center;min-height:62px;width:100%;padding:10px;border-radius:14px;background:#fff0c5;color:#702040;font:900 clamp(1.35rem,2.4vw,2rem)/1.15 Nunito,sans-serif}
+.assembly-duties{margin-top:22px;background:linear-gradient(135deg,#fffaf0,#fff1f6)}.assembly-duties-head{display:flex;justify-content:space-between;align-items:center;gap:18px}.assembly-duties-head h2{margin:5px 0}.assembly-duties-head p{margin:0;color:var(--muted)}.assembly-duties .duty-grid{width:100%;margin:20px 0 0}.assembly-duties .duty-card{border-width:2px;box-shadow:none}.assembly-duties .duty-card>span{font-size:2.4rem}.assembly-duties .duty-result{font-size:1.35rem}
+.story-yayoi-cover figure{padding:18px}.yayoi-landscape-cover{width:min(1180px,100%);max-height:calc(100dvh - 180px);aspect-ratio:16/9;display:grid;grid-template-columns:minmax(250px,.72fr) minmax(340px,1.28fr);overflow:hidden;border-radius:22px;background:#b62642;box-shadow:0 12px 36px #351c2838}.yayoi-landscape-cover>img{width:100%!important;height:100%;max-height:none!important;object-fit:contain;background:white;box-shadow:none!important}.yayoi-landscape-cover>section{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,5vw,72px);color:white;text-align:left;background:radial-gradient(circle at 82% 17%,#f8db4d 0 22px,transparent 23px),radial-gradient(circle at 70% 78%,#f8db4d 0 34px,transparent 35px),radial-gradient(circle at 18% 22%,#fff 0 11px,transparent 12px),radial-gradient(circle at 88% 48%,#fff 0 15px,transparent 16px),#b62642}.yayoi-landscape-cover span{font:900 clamp(1rem,2vw,1.45rem)/1 Nunito,sans-serif;letter-spacing:.16em}.yayoi-landscape-cover h2{max-width:680px;margin:18px 0;font:900 clamp(2rem,5vw,5.3rem)/.94 Nunito,sans-serif}.yayoi-landscape-cover p{margin:0!important;font-size:clamp(.9rem,1.6vw,1.35rem)!important;font-weight:900;letter-spacing:.08em}
+.story-actions,.kusama-book-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.kusama-files{margin-top:20px;padding:18px;border:2px solid #e1c648;border-radius:16px;background:#fffbea}.kusama-files h3{margin:0 0 6px}.kusama-files p{margin:0 0 13px;color:#68552a}
+@media screen and (max-width:760px){.duty-grid{grid-template-columns:1fr}.duty-card{padding:17px}.yayoi-landscape-cover{grid-template-columns:minmax(135px,.8fr) minmax(180px,1.2fr);border-radius:14px}.yayoi-landscape-cover>section{padding:16px}.yayoi-landscape-cover h2{margin:8px 0;font-size:clamp(1.25rem,6vw,2.2rem)}.yayoi-landscape-cover span{font-size:.7rem}.yayoi-landscape-cover p{font-size:.65rem!important}}
+
+/* Ajustes de orden, lectura infantil y controles compactos. */
+.pdi-assembly-steps{grid-auto-rows:1fr}
+.pdi-assembly-steps li,.pdi-assembly-steps button{height:100%}
+.pdi-assembly-steps strong{font-size:clamp(.88rem,1.25vw,1rem);line-height:1.25}
+.attendance-name{text-transform:uppercase;font-weight:900;letter-spacing:.025em}
+.pattern-empty{border:0;background:transparent}
+.pattern-bn img{filter:grayscale(1)}.pattern-coloring .shape{background:white!important}
+.vector-shape{border:0!important;background:transparent!important;overflow:visible;clip-path:none!important;-webkit-clip-path:none!important}
+.vector-shape .shape-fill{fill:#e76a91;stroke:#41323d;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;shape-rendering:geometricPrecision}
+.vector-shape.blue .shape-fill{fill:#5698ca}.vector-shape.yellow .shape-fill{fill:#edc34f}.vector-shape.green .shape-fill{fill:#7fb18c}
+.pattern-coloring .vector-shape .shape-fill{fill:#fff}
+.pattern-coloring .shape:not(.vector-shape){border-width:1.5px}
+.workshop-cell:has(.pattern-empty){border-color:transparent;background:#fff}
+.pattern-workshop .workshop-controls{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr)) auto;align-items:end}
+.pattern-print-button{white-space:nowrap;align-self:end}
+.pattern-a4-preview{container-type:inline-size;width:min(100%,780px);margin:22px auto 10px;padding:12px;overflow:hidden;border:1px solid #e5d9e0;border-radius:16px;background:#eee7e9}
+.pattern-sheet{--u:1mm;width:calc(210 * var(--u));height:calc(297 * var(--u));margin:0 auto;padding:calc(6 * var(--u)) calc(8 * var(--u));overflow:hidden;box-sizing:border-box;display:grid;grid-template-rows:calc(18 * var(--u)) minmax(0,1fr) calc(7 * var(--u));background:#fff;color:#302932;font-family:Arial,sans-serif}
+.pattern-sheet *{box-sizing:border-box}
+.pattern-a4-preview .pattern-sheet{--u:calc((100cqw - 24px)/210);box-shadow:0 5px 24px #3b1b2920}
+.pattern-sheet>header{display:flex;align-items:center;justify-content:space-between;gap:calc(5 * var(--u));padding-bottom:calc(3 * var(--u));border-bottom:1px solid #b9adb3}
+.pattern-sheet>header div{display:grid;gap:calc(1 * var(--u))}
+.pattern-sheet>header strong{font-size:calc(5 * var(--u));line-height:1}
+.pattern-sheet>header span,.pattern-sheet>header p,.pattern-sheet>footer{margin:0;font-size:calc(3 * var(--u));line-height:1.15}
+.pattern-sheet>header p{white-space:nowrap}
+.pattern-series-list{display:grid;grid-template-rows:repeat(var(--pattern-count),max-content);align-content:space-evenly;gap:calc(2 * var(--u));min-height:0;padding:calc(1.5 * var(--u)) 0}
+.pattern-sheet .pattern-exercise{display:grid;grid-template-rows:auto auto;min-height:0}
+.pattern-sheet .pattern-exercise h2{margin:0 0 calc(.8 * var(--u));font:bold calc(3.2 * var(--u))/1.1 Arial,sans-serif}
+.pattern-sheet .pattern-print-row{display:grid;grid-template-columns:repeat(var(--pattern-items),minmax(0,1fr));gap:calc(1.8 * var(--u));min-height:0}
+.pattern-sheet .workshop-cell{display:flex;align-items:center;justify-content:center;width:auto;height:auto;aspect-ratio:1;min-width:0;min-height:0;border:1px solid #9b8b93;border-radius:calc(1.5 * var(--u));background:#fff}
+.pattern-sheet .workshop-cell img{width:86%;height:86%;object-fit:contain}
+.pattern-sheet .workshop-cell .shape{width:80%;height:80%;margin:0}
+.pattern-sheet .workshop-cell:has(.pattern-empty){border:1px solid #9b8b93;background:#fff}
+.pattern-sheet .pattern-empty{border:0!important;background:transparent}
+.pattern-sheet>footer{display:flex;align-items:end;border-top:1px solid #ccc;color:#62565d}
+.pattern-print-document{margin:0;background:#ece7e9}
+.pattern-print-document>.pattern-sheet{margin:0 auto}
+.pattern-print-tools{display:flex;justify-content:center;gap:10px;padding:18px}
+.pattern-print-tools button{padding:10px 16px;border:0;border-radius:10px;background:#8d2858;color:#fff;font-weight:800;cursor:pointer}
+.pattern-print-tools button:last-child{background:#555}
+@media print{
+  html,body.pattern-print-document{margin:0!important;padding:0!important;background:#fff}
+  .pattern-print-tools{display:none!important}
+  .pattern-print-document>.pattern-sheet{--u:1mm;margin:0}
+  .pattern-sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.song-link-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+.song-link-list li{display:flex;align-items:center;padding:0;overflow:hidden;min-width:0}
+.song-card{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:14px;min-width:0;flex:1;color:var(--dark);text-decoration:none;background:#fff}
+.song-card:hover{background:#fff8fb}
+.song-thumb{position:relative;display:grid!important;place-items:center;width:150px;height:84px;padding:0!important;overflow:hidden;background:linear-gradient(135deg,#f8dbe7,#f7e7b9);color:#fff!important}
+.song-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.song-thumb b{position:relative;z-index:1;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#a6295dde;box-shadow:0 2px 8px #4a183e44;font-size:1rem;padding-left:2px}
+.song-card>span{display:grid;gap:3px;padding-right:12px;color:var(--dark)}
+.song-card strong{font:900 1rem/1.2 Nunito,sans-serif}
+.song-card small{font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+.song-link-list li>button{margin-right:8px;flex:none}
+.song-placeholder{display:grid!important;place-items:center;width:150px;height:84px;padding:0!important;background:var(--pink);font-size:2.3rem}
+.pdi-teacher-tools{margin:0 0 20px;border:1px solid var(--line);border-radius:16px;background:#fffdfb;overflow:hidden}
+.pdi-teacher-tools>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;cursor:pointer;font-weight:800;color:var(--dark)}
+.pdi-teacher-tools>summary small{color:var(--muted);font-weight:600}
+.pdi-teacher-tools[open]>summary{border-bottom:1px solid var(--line);background:#fff7fa}
+.pdi-teacher-tools .aula-setup-grid{padding:18px;margin:0}
+.adventure-track.puntos{max-width:100%;color:#185b3d;background:#eff9f2;border-color:#9dc9aa}
+.adventure-track.puntos .adventure-step{color:#2a8a57;border:2px solid #77b78f;background:#fff;font:900 1.8rem/1 Nunito,sans-serif}
+.adventure-track.puntos .adventure-step.done{color:#1f7a49;background:#dff3e5;border-color:#3f9862}
+.story-fullscreen-fallback #projector{position:fixed;inset:0;z-index:9999;display:block;max-width:none;max-height:none;width:100vw;height:100dvh}
+.story-fullscreen-fallback .projection-toolbar{position:relative;z-index:1;width:100%;flex:0 0 auto}
+.story-fullscreen-fallback .story-reader-frame{padding:0}
+.story-fullscreen-fallback .story-reader-frame iframe{min-height:calc(100dvh - 74px);border-radius:0}
+.story-fullscreen-fallback .story-reader-frame+.story-reader-credits{display:none}
+.story-fullscreen-fallback .story-image-only figure img{max-height:100dvh}
+#projector:fullscreen,#projector:-webkit-full-screen{width:100vw;height:100dvh;max-width:none;max-height:none;background:#fffaf5}
+#projector:fullscreen .story-reader-frame iframe,#projector:-webkit-full-screen .story-reader-frame iframe{min-height:calc(100dvh - 74px)}
+@media(max-width:980px){.pattern-workshop .workshop-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.pattern-print-button{width:100%}.song-link-list{grid-template-columns:1fr}}
+@media(max-width:520px){.pattern-workshop .workshop-controls{grid-template-columns:1fr}.song-card{grid-template-columns:112px minmax(0,1fr)}.song-thumb{width:112px;height:68px}.pdi-teacher-tools>summary small{display:none}.attendance-count-grid{grid-template-columns:1fr}}
