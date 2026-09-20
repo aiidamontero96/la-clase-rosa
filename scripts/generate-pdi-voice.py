@@ -13,7 +13,11 @@ parser.add_argument('--input',default='sources/pdi-voice-clips.json');parser.add
 root=Path(__file__).resolve().parents[1]
 clips=json.loads((root/args.input).read_text())
 out=root/args.output;out.mkdir(parents=True,exist_ok=True)
-remaining=[row for row in clips if not (out/row['file']).exists()]
+def valid_audio(path):
+ return path.exists() and path.is_file() and path.stat().st_size > 500
+def clip_text(row):
+ return row.get('spoken') or row.get('text') or ''
+remaining=[row for row in clips if not valid_audio(out/row['file'])]
 if args.limit:remaining=remaining[:args.limit]
 torch.set_num_threads(6);torch.manual_seed(20260910)
 model=Qwen3TTSModel.from_pretrained(os.environ.get('ROSA_TTS_MODEL','Qwen/Qwen3-TTS-12Hz-0.6B-Base'),device_map='cpu',dtype=torch.bfloat16,attn_implementation='sdpa')
@@ -31,9 +35,9 @@ started=time.time();done=0
 print(json.dumps({'status':'ready','remaining':len(remaining),'batch_size':args.batch_size}),flush=True)
 start=0
 while start<len(remaining):
- size=min(args.batch_size,64 if len(remaining[start]['spoken'])<80 else 32)
+ size=min(args.batch_size,64 if len(clip_text(remaining[start]))<80 else 32)
  batch=remaining[start:start+size];t=time.time()
- texts=[row.get('spoken',row['text']) for row in batch]
+ texts=[clip_text(row) for row in batch]
  max_tokens=max(96,min(600,int(max(map(len,texts))*1.6)))
  print(json.dumps({'generating':len(batch),'first':batch[0]['key']}),flush=True)
  wavs,sr=model.generate_voice_clone(text=texts,language=['Spanish']*len(batch),voice_clone_prompt=prompt,non_streaming_mode=True,max_new_tokens=max_tokens)
@@ -48,5 +52,5 @@ while start<len(remaining):
    row['seconds']=round(duration/.94,3);done+=1
  start+=len(batch)
  print(json.dumps({'done':done,'total':len(remaining),'batch_seconds':round(time.time()-t,1),'elapsed_seconds':round(time.time()-started,1),'last':batch[-1]['key']}),flush=True)
- (root/args.progress).write_text(json.dumps({'model':'Qwen/Qwen3-TTS-12Hz-0.6B-Base','rate':.94,'completed':sum((out/row['file']).exists() for row in clips),'total':len(clips),'clips':clips},ensure_ascii=False,indent=2)+'\n')
+ (root/args.progress).write_text(json.dumps({'model':'Qwen/Qwen3-TTS-12Hz-0.6B-Base','rate':.94,'completed':sum(valid_audio(out/row['file']) for row in clips),'total':len(clips),'clips':clips},ensure_ascii=False,indent=2)+'\n')
 print('COMPLETE',flush=True)

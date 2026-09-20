@@ -3,3 +3,10 @@ dist/
 *.tar.gz
 generated_images/
 __pycache__/
+
+# Informe temporal del generador de voz (no versionar)
+sources/scenes-voice-pending.json
+
+# Progreso local reanudable del clon de voz Qwen (no versionar)
+sources/scenes-voice-generation-progress.json
+.venv-pdi-voice/

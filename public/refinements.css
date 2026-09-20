@@ -176,6 +176,15 @@
 .pattern-coloring .vector-shape .shape-fill{fill:#fff}
 .pattern-coloring .shape:not(.vector-shape){border-width:1.5px}
 .workshop-cell:has(.pattern-empty){border-color:transparent;background:#fff}
+
+.pattern-workshop-summary{display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;list-style:none}
+.pattern-workshop-summary::-webkit-details-marker{display:none}
+.pattern-workshop-summary>span{display:grid;gap:4px}
+.pattern-workshop-summary strong{font:800 1.5rem/1.2 Nunito,system-ui,sans-serif;color:var(--ink)}
+.pattern-workshop-summary small{font-size:.95rem;color:var(--muted)}
+.pattern-workshop-summary::after{content:'+';display:grid;place-items:center;width:40px;height:40px;flex:0 0 40px;border:1px solid var(--line);border-radius:50%;font-size:1.65rem;font-weight:700;color:var(--dark);background:#fff}
+.pattern-workshop[open]>.pattern-workshop-summary::after{content:'−'}
+.pattern-workshop-body{padding-top:22px}
 .pattern-workshop .workshop-controls{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr)) auto;align-items:end}
 .pattern-print-button{white-space:nowrap;align-self:end}
 .pattern-a4-preview{container-type:inline-size;width:min(100%,780px);margin:22px auto 10px;padding:12px;overflow:hidden;border:1px solid #e5d9e0;border-radius:16px;background:#eee7e9}

@@ -19,9 +19,8 @@ window.ROSA_PDI = (() => {
     ['nombre-inicial', '¿De quién es la inicial?', 'A', 'Mira una letra y elige el nombre de la clase que empieza por ella.', 'Lenguaje'],
     ['nombre-letras', 'Contamos las letras', '123', 'Cuenta las letras de los nombres de la clase, sin contar los espacios.', 'Matemáticas'],
     ['nombre-compara', 'Nombres largos y cortos', '↔', 'Compara dos nombres y descubre cuál tiene más o menos letras.', 'Lógica'],
-    ['nombre-falta', '¿Qué nombre falta?', '?', 'Observa varios nombres, los tapamos y recuerda cuál falta.', 'Lenguaje'],
     ['fechas-especiales', 'El año en nuestra clase', '🎉', 'Halloween, Navidad, Paz, Andalucía y otros momentos del curso.', 'Asamblea'],
-    ['disfraces', '¿De qué voy disfrazado?', '🎭', 'Aparece un disfraz real al azar y elegimos su nombre entre tres respuestas.', 'Lenguaje'],
+    ['disfraces', '¿De qué voy disfrazado?', '🎭', 'Aparece un disfraz real al azar y elegimos su nombre entre tres respuestas.', 'Carnaval'],
     ['dino-vocabulario', 'Vocabulario dinosaurio', '🦕 A', 'Descubre palabras del mundo de los dinosaurios con imágenes grandes.', 'Proyecto'],
     ['dino-buscar', 'Busca el dinosaurio', '🔎🦕', 'Escucha el nombre y localiza el dinosaurio correcto.', 'Proyecto'],
     ['dino-patas', 'Dos o cuatro patas', '2 · 4', 'Observa cómo caminaba cada dinosaurio y elige dos o cuatro patas.', 'Proyecto'],
@@ -198,7 +197,7 @@ window.ROSA_PDI = (() => {
       explanation = situation[4];
     } else if(kind==='nombre-inicial'){
       const student=at(students,n),initial=student[0].toLocaleUpperCase('es-ES');
-      prompt='¿Qué nombre empieza por '+initial+'?';
+      prompt='¿De quién es la inicial? ¿Qué nombre empieza por '+initial+'?';
       visual='<div class="pdi-name-initial">'+initial+'</div>';
       const others=students.filter(name=>name!==student&&name[0].toLocaleUpperCase('es-ES')!==initial);
       options=[student,...Array.from({length:level===1?1:level===2?2:3},(_,i)=>at(others,n+i*3+1))].map(name=>option(name,name));

@@ -1,8 +1,608 @@
 [
   {
+    "text": "MIRA LA SERIE. ¿QUÉ DEBERÍA IR EN EL HUECO?",
+    "key": "mira la serie. ¿qué debería ir en el hueco",
+    "file": "scene-9be8ce0943d5fd48.mp3"
+  },
+  {
+    "text": "DOS TRIÁNGULOS Y UN CÍRCULO. ¿QUÉ VIENE AHORA?",
+    "key": "dos triángulos y un círculo. ¿qué viene ahora",
+    "file": "scene-ebfb12b29d68021d.mp3"
+  },
+  {
+    "text": "ROJO, AZUL, ROJO, AZUL… ¿QUÉ CUENTA SIGUE?",
+    "key": "rojo, azul, rojo, azul… ¿qué cuenta sigue",
+    "file": "scene-4eaccfca81003615.mp3"
+  },
+  {
+    "text": "TRIÁNGULO, CÍRCULO, TRIÁNGULO, CÍRCULO… ¿QUÉ SIGUE?",
+    "key": "triángulo, círculo, triángulo, círculo… ¿qué sigue",
+    "file": "scene-324053dbf6fc8b63.mp3"
+  },
+  {
+    "text": "TOCA LA VOCAL A",
+    "key": "toca la vocal a",
+    "file": "scene-ae69b6867d415319.mp3"
+  },
+  {
+    "text": "¿QUÉ VOCAL ESTÁ REPASANDO?",
+    "key": "¿qué vocal está repasando",
+    "file": "scene-67882fb03468ea09.mp3"
+  },
+  {
+    "text": "¿QUÉ VOCAL VES EN LA PIZARRA?",
+    "key": "¿qué vocal ves en la pizarra",
+    "file": "scene-ebc3b755ab7ee793.mp3"
+  },
+  {
+    "text": "¿QUÉ VOCAL HA CONSTRUIDO CON BLOQUES?",
+    "key": "¿qué vocal ha construido con bloques",
+    "file": "scene-1bc0e71b0b20e5c2.mp3"
+  },
+  {
+    "text": "¿Cómo te sientes? Todas las emociones tienen su lugar. Puedes elegir o pasar turno.",
+    "key": "¿cómo te sientes? todas las emociones tienen su lugar. puedes elegir o pasar turno",
+    "file": "scene-36dbc7e70f3d7e7d.mp3"
+  },
+  {
+    "text": "¿Qué vemos en el cielo? Miremos por la ventana.",
+    "key": "¿qué vemos en el cielo? miremos por la ventana",
+    "file": "scene-4db9ed1a8608c772.mp3"
+  },
+  {
+    "text": "amistad. Cariño y confianza entre personas que se cuidan y disfrutan juntas.",
+    "key": "amistad. cariño y confianza entre personas que se cuidan y disfrutan juntas",
+    "file": "scene-5398407af223129f.mp3"
+  },
+  {
+    "text": "alegría. Una emoción agradable que puede aparecer cuando algo nos gusta.",
+    "key": "alegría. una emoción agradable que puede aparecer cuando algo nos gusta",
+    "file": "scene-67a39fa56a615bfc.mp3"
+  },
+  {
+    "text": "calma. Un momento en el que el cuerpo y la mente están tranquilos.",
+    "key": "calma. un momento en el que el cuerpo y la mente están tranquilos",
+    "file": "scene-f3f8185761f89532.mp3"
+  },
+  {
+    "text": "curiosidad. Ganas de mirar, preguntar y descubrir cosas nuevas.",
+    "key": "curiosidad. ganas de mirar, preguntar y descubrir cosas nuevas",
+    "file": "scene-59f0e2b214c18923.mp3"
+  },
+  {
+    "text": "ayudar. Hacer algo para que otra persona pueda continuar o se sienta acompañada.",
+    "key": "ayudar. hacer algo para que otra persona pueda continuar o se sienta acompañada",
+    "file": "scene-6ed1dacded9e386b.mp3"
+  },
+  {
+    "text": "compartir. Usar algo con otras personas o dejar que también lo disfruten.",
+    "key": "compartir. usar algo con otras personas o dejar que también lo disfruten",
+    "file": "scene-566224c17a586e60.mp3"
+  },
+  {
+    "text": "escuchar. Prestar atención a sonidos o a lo que otra persona quiere contar.",
+    "key": "escuchar. prestar atención a sonidos o a lo que otra persona quiere contar",
+    "file": "scene-c67f4c3e59c88bf8.mp3"
+  },
+  {
+    "text": "imaginar. Crear ideas, historias o imágenes dentro de nuestra mente.",
+    "key": "imaginar. crear ideas, historias o imágenes dentro de nuestra mente",
+    "file": "scene-7196a2ed03ebe862.mp3"
+  },
+  {
+    "text": "pregunta. Una frase que usamos cuando queremos saber o comprender algo.",
+    "key": "pregunta. una frase que usamos cuando queremos saber o comprender algo",
+    "file": "scene-c2ccbfc388b397bd.mp3"
+  },
+  {
+    "text": "respuesta. Lo que decimos, mostramos o hacemos para contestar una pregunta.",
+    "key": "respuesta. lo que decimos, mostramos o hacemos para contestar una pregunta",
+    "file": "scene-a85d69399feee49f.mp3"
+  },
+  {
+    "text": "equipo. Personas que colaboran para conseguir algo juntas.",
+    "key": "equipo. personas que colaboran para conseguir algo juntas",
+    "file": "scene-49e4831ed883bf00.mp3"
+  },
+  {
+    "text": "turno. El momento en que le toca participar a cada persona.",
+    "key": "turno. el momento en que le toca participar a cada persona",
+    "file": "scene-b83686434cfcf781.mp3"
+  },
+  {
+    "text": "respeto. Tratar con cuidado a las personas, los animales, los objetos y los lugares.",
+    "key": "respeto. tratar con cuidado a las personas, los animales, los objetos y los lugares",
+    "file": "scene-4964e3df6905fc81.mp3"
+  },
+  {
+    "text": "paciencia. Saber esperar y seguir intentándolo con tranquilidad.",
+    "key": "paciencia. saber esperar y seguir intentándolo con tranquilidad",
+    "file": "scene-feb2c61a9236a2f3.mp3"
+  },
+  {
+    "text": "valiente. Quien intenta algo aunque sienta un poco de miedo o inseguridad.",
+    "key": "valiente. quien intenta algo aunque sienta un poco de miedo o inseguridad",
+    "file": "scene-2dcbe6a44b7a80ea.mp3"
+  },
+  {
+    "text": "suave. Algo que se nota delicado al tocarlo, o que se hace sin fuerza.",
+    "key": "suave. algo que se nota delicado al tocarlo, o que se hace sin fuerza",
+    "file": "scene-6493f5b7ad5153af.mp3"
+  },
+  {
+    "text": "enorme. Algo de tamaño muy, muy grande.",
+    "key": "enorme. algo de tamaño muy, muy grande",
+    "file": "scene-35dd0c0ce016a23d.mp3"
+  },
+  {
+    "text": "diminuto. Algo tan pequeño que tenemos que mirar con atención.",
+    "key": "diminuto. algo tan pequeño que tenemos que mirar con atención",
+    "file": "scene-162daf7d5a8750a2.mp3"
+  },
+  {
+    "text": "redondo. Algo que tiene forma de círculo o se parece a una pelota.",
+    "key": "redondo. algo que tiene forma de círculo o se parece a una pelota",
+    "file": "scene-63d1f6490eccb593.mp3"
+  },
+  {
+    "text": "transparente. Deja pasar la luz y permite ver lo que hay detrás.",
+    "key": "transparente. deja pasar la luz y permite ver lo que hay detrás",
+    "file": "scene-6032b36868506ae4.mp3"
+  },
+  {
+    "text": "brillante. Refleja mucha luz o parece tener luz propia.",
+    "key": "brillante. refleja mucha luz o parece tener luz propia",
+    "file": "scene-6c13b3ed01bb6007.mp3"
+  },
+  {
+    "text": "equilibrio. Mantenerse estable sin caer o repartir bien el peso.",
+    "key": "equilibrio. mantenerse estable sin caer o repartir bien el peso",
+    "file": "scene-ec93eca1df25e929.mp3"
+  },
+  {
+    "text": "ritmo. Una repetición de sonidos o movimientos que podemos seguir.",
+    "key": "ritmo. una repetición de sonidos o movimientos que podemos seguir",
+    "file": "scene-d24d8e2633ecca1c.mp3"
+  },
+  {
+    "text": "serie. Un grupo de elementos que sigue una regla y se repite.",
+    "key": "serie. un grupo de elementos que sigue una regla y se repite",
+    "file": "scene-1a68b65583d177d0.mp3"
+  },
+  {
+    "text": "cantidad. Cuántos elementos hay en un grupo.",
+    "key": "cantidad. cuántos elementos hay en un grupo",
+    "file": "scene-fe6239588c0a91bb.mp3"
+  },
+  {
+    "text": "Escribe tu nombre. Miramos y decimos el nombre. Tocamos cada letra de izquierda a derecha.",
+    "key": "escribe tu nombre. miramos y decimos el nombre. tocamos cada letra de izquierda a derecha",
+    "file": "scene-dfeb1bdab65b4a78.mp3"
+  },
+  {
+    "text": "Escribe tu nombre. Busca las letras en orden. Empieza por la primera letra.",
+    "key": "escribe tu nombre. busca las letras en orden. empieza por la primera letra",
+    "file": "scene-3bfe693a5564587d.mp3"
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por T?",
+    "key": "¿de quién es la inicial? ¿qué nombre empieza por t",
+    "file": "scene-edcfed7e9fcd43c0.mp3"
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por S?",
+    "key": "¿de quién es la inicial? ¿qué nombre empieza por s",
+    "file": "scene-fac851352ed2963b.mp3"
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por A?",
+    "key": "¿de quién es la inicial? ¿qué nombre empieza por a",
+    "file": "scene-1e9ca4a29eb58442.mp3"
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por M?",
+    "key": "¿de quién es la inicial? ¿qué nombre empieza por m",
+    "file": "scene-7f04121562f81d8b.mp3"
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por F?",
+    "key": "¿de quién es la inicial? ¿qué nombre empieza por f",
+    "file": "scene-4c14cefe32238e8c.mp3"
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por E?",
+    "key": "¿de quién es la inicial? ¿qué nombre empieza por e",
+    "file": "scene-87fa3db4a6be77fc.mp3"
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por Á?",
+    "key": "¿de quién es la inicial? ¿qué nombre empieza por á",
+    "file": "scene-89bc4cf2d464abc7.mp3"
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por J?",
+    "key": "¿de quién es la inicial? ¿qué nombre empieza por j",
+    "file": "scene-fcf2a337a925c006.mp3"
+  },
+  {
+    "text": "¿Cuántas letras tiene este nombre?",
+    "key": "¿cuántas letras tiene este nombre",
+    "file": "scene-8c311af633d1b896.mp3"
+  },
+  {
+    "text": "¿Qué nombre tiene más letras?",
+    "key": "¿qué nombre tiene más letras",
+    "file": "scene-68835426e9d8c7db.mp3"
+  },
+  {
+    "text": "¿Qué nombre tiene menos letras?",
+    "key": "¿qué nombre tiene menos letras",
+    "file": "scene-1d331ab1108ff4c6.mp3"
+  },
+  {
+    "text": "¿Qué podemos decorar con puntos como Yayoi Kusama?",
+    "key": "¿qué podemos decorar con puntos como yayoi kusama",
+    "file": "scene-51a8e4a042099bd1.mp3"
+  },
+  {
+    "text": "¿Qué forma se repite en una guirnalda de bolas?",
+    "key": "¿qué forma se repite en una guirnalda de bolas",
+    "file": "scene-51f0884663d637af.mp3"
+  },
+  {
+    "text": "¿Qué gesto ayuda a cuidar la paz en clase?",
+    "key": "¿qué gesto ayuda a cuidar la paz en clase",
+    "file": "scene-d6236d6e39c61304.mp3"
+  },
+  {
+    "text": "¿Qué colores vemos en la bandera de Andalucía?",
+    "key": "¿qué colores vemos en la bandera de andalucía",
+    "file": "scene-564ea2075a1fcb69.mp3"
+  },
+  {
+    "text": "¿Qué podemos usar para transformarnos jugando?",
+    "key": "¿qué podemos usar para transformarnos jugando",
+    "file": "scene-2b06b75977e60040.mp3"
+  },
+  {
+    "text": "¿Qué cambio podemos observar en el patio?",
+    "key": "¿qué cambio podemos observar en el patio",
+    "file": "scene-ff7b5b1a4eed9096.mp3"
+  },
+  {
+    "text": "¿Qué hacemos antes de pasar una página?",
+    "key": "¿qué hacemos antes de pasar una página",
+    "file": "scene-2a788cd6048b14f5.mp3"
+  },
+  {
+    "text": "¿Qué podemos recordar juntos?",
+    "key": "¿qué podemos recordar juntos",
+    "file": "scene-5e395fe48afc237a.mp3"
+  },
+  {
+    "text": "¿DE QUÉ VA DISFRAZADO?",
+    "key": "¿de qué va disfrazado",
+    "file": "scene-a2e6f2e7b1c66b9d.mp3"
+  },
+  {
+    "text": "¿QUÉ PALABRA ES?",
+    "key": "¿qué palabra es",
+    "file": "scene-76e4bec272feb03f.mp3"
+  },
+  {
+    "text": "BUSCA AL T. REX",
+    "key": "busca al tiranosaurio rex",
+    "file": "scene-ca8676a48858956a.mp3"
+  },
+  {
+    "text": "BUSCA AL TRICERATOPS",
+    "key": "busca al triceratops",
+    "file": "scene-26ef35e6fd124636.mp3"
+  },
+  {
+    "text": "BUSCA AL ESTEGOSAURIO",
+    "key": "busca al estegosaurio",
+    "file": "scene-b541611529fe8b3c.mp3"
+  },
+  {
+    "text": "BUSCA AL BRAQUIOSAURIO",
+    "key": "busca al braquiosaurio",
+    "file": "scene-6effe614f1ebb576.mp3"
+  },
+  {
+    "text": "BUSCA AL VELOCIRAPTOR",
+    "key": "busca al velociraptor",
+    "file": "scene-b42a4c9f26f9ac8e.mp3"
+  },
+  {
+    "text": "BUSCA AL ANQUILOSAURIO",
+    "key": "busca al anquilosaurio",
+    "file": "scene-4dfd4a63016bb917.mp3"
+  },
+  {
+    "text": "BUSCA AL DIPLODOCUS",
+    "key": "busca al diplodocus",
+    "file": "scene-89cf1a4de1b59fd1.mp3"
+  },
+  {
+    "text": "BUSCA AL PARASAUROLOFO",
+    "key": "busca al parasaurolofo",
+    "file": "scene-6db116684f09d1f4.mp3"
+  },
+  {
+    "text": "BUSCA AL ESPINOSAURIO",
+    "key": "busca al espinosaurio",
+    "file": "scene-a177876a2f732f59.mp3"
+  },
+  {
+    "text": "¿CAMINABA SOBRE DOS O CUATRO PATAS?",
+    "key": "¿caminaba sobre dos o cuatro patas",
+    "file": "scene-22f8d6b208459760.mp3"
+  },
+  {
+    "text": "¿CÓMO NOS MOVEMOS COMO ESTE DINOSAURIO?",
+    "key": "¿cómo nos movemos como este dinosaurio",
+    "file": "scene-733d4eac3dde7409.mp3"
+  },
+  {
+    "text": "¿CUÁNTOS HAY?",
+    "key": "¿cuántos hay",
+    "file": "scene-823fd138b713ab5a.mp3"
+  },
+  {
+    "text": "BUSCA: PULPO",
+    "key": "busca: pulpo",
+    "file": "scene-4563801afe3873a9.mp3"
+  },
+  {
+    "text": "BUSCA: PEZ",
+    "key": "busca: pez",
+    "file": "scene-4018f23cb3d48dfb.mp3"
+  },
+  {
+    "text": "BUSCA: CANGREJO",
+    "key": "busca: cangrejo",
+    "file": "scene-e2d042ab534252a4.mp3"
+  },
+  {
+    "text": "BUSCA: DELFÍN",
+    "key": "busca: delfín",
+    "file": "scene-dc11af2db73b13a1.mp3"
+  },
+  {
+    "text": "BUSCA: TORTUGA",
+    "key": "busca: tortuga",
+    "file": "scene-4e6d08f3a11b034b.mp3"
+  },
+  {
+    "text": "BUSCA: BALLENA",
+    "key": "busca: ballena",
+    "file": "scene-9a42123cf2a0d7eb.mp3"
+  },
+  {
+    "text": "CAMINAMOS DESPACIO POR NUESTRO ESPACIO.",
+    "key": "caminamos despacio por nuestro espacio",
+    "file": "scene-7199af920081afa7.mp3"
+  },
+  {
+    "text": "AMARILLO: PASOS MUY PEQUEÑOS.",
+    "key": "amarillo: pasos muy pequeños",
+    "file": "scene-fd0c514feaf5fad2.mp3"
+  },
+  {
+    "text": "ROJO: PARAMOS COMO ESTATUAS.",
+    "key": "rojo: paramos como estatuas",
+    "file": "scene-efe843858118775d.mp3"
+  },
+  {
+    "text": "VERDE: VOLVEMOS A CAMINAR.",
+    "key": "verde: volvemos a caminar",
+    "file": "scene-cc90861358301302.mp3"
+  },
+  {
+    "text": "AHORA UNA COMPAÑERA DA LAS SEÑALES.",
+    "key": "ahora una compañera da las señales",
+    "file": "scene-c4baa55f8f9f9da1.mp3"
+  },
+  {
+    "text": "SENTADOS, ABRIMOS Y CERRAMOS LAS MANOS DESPACIO.",
+    "key": "sentados, abrimos y cerramos las manos despacio",
+    "file": "scene-7efbd3a22f715d3c.mp3"
+  },
+  {
+    "text": "Ictiosaurio. Mi cuerpo parece el de un delfín. Tengo aletas y un hocico largo.",
+    "key": "ictiosaurio. mi cuerpo parece el de un delfín. tengo aletas y un hocico largo",
+    "file": "scene-d83dfa1c099631c2.mp3"
+  },
+  {
     "text": "UNA CAJA, MUCHAS PREGUNTAS. Al llegar a clase, la seño Rosa ve unas huellas junto a una caja. La clase se acerca despacio. ¿Quién la habrá dejado?",
     "key": "una caja, muchas preguntas. al llegar a clase, la seño rosa ve unas huellas junto a una caja. la clase se acerca despacio. ¿quién la habrá dejado",
     "file": "scene-66d09951b03ebbb8.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Buscad tres detalles en la imagen. Cada niño puede señalar uno.",
+    "key": "miramos sin prisa. buscad tres detalles en la imagen. cada niño puede señalar uno",
+    "file": "scene-22d35ec9f8abfddf.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. Un fósil es un resto o una señal de un ser vivo del pasado. Un juguete lo representa.",
+    "key": "una pista nueva. un fósil es un resto o una señal de un ser vivo del pasado. un juguete lo representa",
+    "file": "scene-9e5f0d815b527d31.mp3"
+  },
+  {
+    "text": "LA MESA DE INVESTIGACIÓN. La seño Rosa nos invita a observar. Señala algo que pueda ayudarnos a investigar y explica para qué sirve.",
+    "key": "la mesa de investigación. la seño rosa nos invita a observar. señala algo que pueda ayudarnos a investigar y explica para qué sirve",
+    "file": "scene-51c2c4c319d45b48.mp3"
+  },
+  {
+    "text": "NUESTRO PEQUEÑO MUSEO. Elige una pista de esta semana. Explica qué sabes a una pareja y deja que te haga una pregunta.",
+    "key": "nuestro pequeño museo. elige una pista de esta semana. explica qué sabes a una pareja y deja que te haga una pregunta",
+    "file": "scene-90a2201269319653.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa abre un libro del pasado. Entre las plantas asoma una cabeza enorme. La clase busca una pista para descubrir su nombre.",
+    "key": "una caja, muchas preguntas. la seño rosa abre un libro del pasado. entre las plantas asoma una cabeza enorme. la clase busca una pista para descubrir su nombre",
+    "file": "scene-2f55619638d86847.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Contad sus cuernos con tres dedos. Comparadlos con sus cuatro patas.",
+    "key": "miramos sin prisa. contad sus cuernos con tres dedos. comparadlos con sus cuatro patas",
+    "file": "scene-a58495f7940fa837.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. El Triceratops tenía tres cuernos y comía plantas.",
+    "key": "una pista nueva. el triceratops tenía tres cuernos y comía plantas",
+    "file": "scene-d52864ecdf13e566.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. En el museo hay una silueta grande. La seño Rosa pregunta: ¿qué parte miramos primero? La clase señala la cabeza y la cola.",
+    "key": "una caja, muchas preguntas. en el museo hay una silueta grande. la seño rosa pregunta: ¿qué parte miramos primero? la clase señala la cabeza y la cola",
+    "file": "scene-2bf4a5ae015040d2.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Señalad cabeza, brazos, patas y cola. Buscad la parte más larga.",
+    "key": "miramos sin prisa. señalad cabeza, brazos, patas y cola. buscad la parte más larga",
+    "file": "scene-afbb3ebf7b29af46.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. Caminaba sobre dos patas. Su cabeza era grande y sus brazos eran cortos.",
+    "key": "una pista nueva. caminaba sobre dos patas. su cabeza era grande y sus brazos eran cortos",
+    "file": "scene-961254be04749d6f.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. Hoy la seño Rosa trae una lámina con una fila de placas. Parecen montañas sobre una espalda. Buscamos al animal entero.",
+    "key": "una caja, muchas preguntas. hoy la seño rosa trae una lámina con una fila de placas. parecen montañas sobre una espalda. buscamos al animal entero",
+    "file": "scene-0182f882e02f7162.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Recorred la fila de placas con el dedo en el aire, sin tocar la pantalla todos a la vez.",
+    "key": "miramos sin prisa. recorred la fila de placas con el dedo en el aire, sin tocar la pantalla todos a la vez",
+    "file": "scene-58e115ad8b0b5d9d.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. El Estegosaurio tenía placas en el lomo y púas en la cola.",
+    "key": "una pista nueva. el estegosaurio tenía placas en el lomo y púas en la cola",
+    "file": "scene-1919c50eb5145d45.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. En el libro hay hojas muy altas. La seño Rosa pregunta qué animal podría alcanzarlas. La clase mira por encima de los árboles.",
+    "key": "una caja, muchas preguntas. en el libro hay hojas muy altas. la seño rosa pregunta qué animal podría alcanzarlas. la clase mira por encima de los árboles",
+    "file": "scene-c11a5bd5f9170f25.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Comparad cuello y cabeza. ¿Qué parte es más larga?",
+    "key": "miramos sin prisa. comparad cuello y cabeza. ¿qué parte es más larga",
+    "file": "scene-cb1955894959ace4.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. Sus patas delanteras eran más largas que las traseras. Comía plantas.",
+    "key": "una pista nueva. sus patas delanteras eran más largas que las traseras. comía plantas",
+    "file": "scene-f522a3af27d0e0e7.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa nos invita a seguir una línea larga en el libro. No es un camino: es la cola de un Diplodocus.",
+    "key": "una caja, muchas preguntas. la seño rosa nos invita a seguir una línea larga en el libro. no es un camino: es la cola de un diplodocus",
+    "file": "scene-ec567c6b30ed1728.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Marcamos con los brazos un cuello largo y una cola todavía más larga.",
+    "key": "miramos sin prisa. marcamos con los brazos un cuello largo y una cola todavía más larga",
+    "file": "scene-81f7b2881743a0ef.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. Tenía un cuello largo y una cola muy larga. Caminaba sobre cuatro patas.",
+    "key": "una pista nueva. tenía un cuello largo y una cola muy larga. caminaba sobre cuatro patas",
+    "file": "scene-49a74c4b1436b620.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. En el museo encontramos una pluma de muestra. La seño Rosa pregunta si todos los animales con plumas pueden volar. Pensamos un momento.",
+    "key": "una caja, muchas preguntas. en el museo encontramos una pluma de muestra. la seño rosa pregunta si todos los animales con plumas pueden volar. pensamos un momento",
+    "file": "scene-f2c2bcafd1b0f676.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Buscad las plumas y comparadlas con las de un pájaro que conozcáis.",
+    "key": "miramos sin prisa. buscad las plumas y comparadlas con las de un pájaro que conozcáis",
+    "file": "scene-c9856c5990cebf8e.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. Tenía plumas, pero no podía volar. Era mucho más pequeño que en muchas películas.",
+    "key": "una pista nueva. tenía plumas, pero no podía volar. era mucho más pequeño que en muchas películas",
+    "file": "scene-204cd841cac2bbee.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa abre la caja de las pistas. Hoy hay una imagen de un lomo cubierto de placas. Parece una armadura.",
+    "key": "una caja, muchas preguntas. la seño rosa abre la caja de las pistas. hoy hay una imagen de un lomo cubierto de placas. parece una armadura",
+    "file": "scene-7c775c52888fca80.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Señalad la armadura y la maza. Dibujad su forma con el dedo en el aire.",
+    "key": "miramos sin prisa. señalad la armadura y la maza. dibujad su forma con el dedo en el aire",
+    "file": "scene-8402a055f4f2fe2b.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. Su cuerpo tenía placas duras y su cola terminaba en una maza.",
+    "key": "una pista nueva. su cuerpo tenía placas duras y su cola terminaba en una maza",
+    "file": "scene-a848acf1caef55eb.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. Detrás de unas plantas del libro aparece una cabeza con una curva larga. La seño Rosa pregunta: ¿son cuernos o es una cresta?",
+    "key": "una caja, muchas preguntas. detrás de unas plantas del libro aparece una cabeza con una curva larga. la seño rosa pregunta: ¿son cuernos o es una cresta",
+    "file": "scene-8666a6cfddfc5eff.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Seguid la curva de la cresta con la mano. Comparadla con los cuernos del Triceratops.",
+    "key": "miramos sin prisa. seguid la curva de la cresta con la mano. comparadla con los cuernos del triceratops",
+    "file": "scene-f7a02c1504f9f5c8.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. Tenía una cresta larga que se curvaba hacia atrás. Comía plantas.",
+    "key": "una pista nueva. tenía una cresta larga que se curvaba hacia atrás. comía plantas",
+    "file": "scene-59cdfd4acb0ffd1c.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa abre una página junto al agua. En ella hay peces y un dinosaurio con una espalda muy especial.",
+    "key": "una caja, muchas preguntas. la seño rosa abre una página junto al agua. en ella hay peces y un dinosaurio con una espalda muy especial",
+    "file": "scene-f7c64294f4122871.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Buscad su hocico, su vela y su cola. ¿En qué se diferencia del T. rex?",
+    "key": "miramos sin prisa. buscad su hocico, su vela y su cola. ¿en qué se diferencia del tiranosaurio rex",
+    "file": "scene-67351f0663860c62.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. Tenía un hocico alargado y una gran vela sobre la espalda. Comía peces, entre otros animales.",
+    "key": "una pista nueva. tenía un hocico alargado y una gran vela sobre la espalda. comía peces, entre otros animales",
+    "file": "scene-80feda526d59d516.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. Hoy la seño Rosa nos propone un viaje imaginario al mar antiguo. La luz atraviesa el agua. Hay peces y conchas en espiral.",
+    "key": "una caja, muchas preguntas. hoy la seño rosa nos propone un viaje imaginario al mar antiguo. la luz atraviesa el agua. hay peces y conchas en espiral",
+    "file": "scene-cf0f2ed7756a2faa.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Observad las aletas. ¿Tiene patas como el Triceratops?",
+    "key": "miramos sin prisa. observad las aletas. ¿tiene patas como el triceratops",
+    "file": "scene-865281fd4ca2906d.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. El Ictiosaurio era un reptil marino. No era un dinosaurio ni un pez.",
+    "key": "una pista nueva. el ictiosaurio era un reptil marino. no era un dinosaurio ni un pez",
+    "file": "scene-b3fc07a28788b8fc.mp3"
+  },
+  {
+    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa anuncia que hoy abrimos el museo de la clase. Cada equipo elige un descubrimiento para enseñar a las visitas.",
+    "key": "una caja, muchas preguntas. la seño rosa anuncia que hoy abrimos el museo de la clase. cada equipo elige un descubrimiento para enseñar a las visitas",
+    "file": "scene-43be6af6e065613d.mp3"
+  },
+  {
+    "text": "MIRAMOS SIN PRISA. Elegid una ficha y explicad una pista sin decir el nombre. La clase intenta descubrirlo.",
+    "key": "miramos sin prisa. elegid una ficha y explicad una pista sin decir el nombre. la clase intenta descubrirlo",
+    "file": "scene-9cec0de8c77bc6a9.mp3"
+  },
+  {
+    "text": "UNA PISTA NUEVA. Los fósiles nos ayudan a conocer animales del pasado. Podemos seguir haciendo preguntas.",
+    "key": "una pista nueva. los fósiles nos ayudan a conocer animales del pasado. podemos seguir haciendo preguntas",
+    "file": "scene-0c2affc66aab9e57.mp3"
   },
   {
     "text": "Un fósil es un resto o una señal de un ser vivo del pasado. Un juguete lo representa.",
@@ -20,11 +620,6 @@
     "file": "scene-621fcdd4552d8338.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Buscad tres detalles en la imagen. Cada niño puede señalar uno.",
-    "key": "miramos sin prisa. buscad tres detalles en la imagen. cada niño puede señalar uno",
-    "file": "scene-22d35ec9f8abfddf.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Un juguete representa un dinosaurio. Un fósil es una señal del pasado.",
     "key": "comparamos dos animales. un juguete representa un dinosaurio. un fósil es una señal del pasado",
     "file": "scene-4de02023ce921483.mp3"
@@ -33,11 +628,6 @@
     "text": "HABLAMOS POR TURNOS. Completa la frase: «Yo veo…». Después escucha a otra persona y busca una cosa que no habías visto.",
     "key": "hablamos por turnos. completa la frase: «yo veo…». después escucha a otra persona y busca una cosa que no habías visto",
     "file": "scene-dabee3318bfeb107.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. Un fósil es un resto o una señal de un ser vivo del pasado. Un juguete lo representa.",
-    "key": "una pista nueva. un fósil es un resto o una señal de un ser vivo del pasado. un juguete lo representa",
-    "file": "scene-9e5f0d815b527d31.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Qué usamos para mirar una pista pequeña?",
@@ -50,11 +640,6 @@
     "file": "scene-ff9c694e1b460b26.mp3"
   },
   {
-    "text": "LA MESA DE INVESTIGACIÓN. La seño Rosa nos invita a observar. Señala algo que pueda ayudarnos a investigar y explica para qué sirve.",
-    "key": "la mesa de investigación. la seño rosa nos invita a observar. señala algo que pueda ayudarnos a investigar y explica para qué sirve",
-    "file": "scene-51c2c4c319d45b48.mp3"
-  },
-  {
     "text": "JUGAMOS A RECORDAR. Mira estas dos láminas. Recuerda una pista de cada animal. Después podemos taparlas.",
     "key": "jugamos a recordar. mira estas dos láminas. recuerda una pista de cada animal. después podemos taparlas",
     "file": "scene-cac265fd97c8bc96.mp3"
@@ -65,11 +650,6 @@
     "file": "scene-581435975243f239.mp3"
   },
   {
-    "text": "NUESTRO PEQUEÑO MUSEO. Elige una pista de esta semana. Explica qué sabes a una pareja y deja que te haga una pregunta.",
-    "key": "nuestro pequeño museo. elige una pista de esta semana. explica qué sabes a una pareja y deja que te haga una pregunta",
-    "file": "scene-90a2201269319653.mp3"
-  },
-  {
     "text": "UNA PREGUNTA PARA LA CLASE. ¿Qué usamos para mirar una pista pequeña?",
     "key": "una pregunta para la clase. ¿qué usamos para mirar una pista pequeña",
     "file": "scene-20d0434e6ba93fc9.mp3"
@@ -78,11 +658,6 @@
     "text": "GUARDAMOS LO APRENDIDO. Antes pensaba… Ahora sé… La seño Rosa escucha nuestras ideas. ¿Qué nos gustaría investigar después?",
     "key": "guardamos lo aprendido. antes pensaba… ahora sé… la seño rosa escucha nuestras ideas. ¿qué nos gustaría investigar después",
     "file": "scene-f8f41fe578271f57.mp3"
-  },
-  {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa abre un libro del pasado. Entre las plantas asoma una cabeza enorme. La clase busca una pista para descubrir su nombre.",
-    "key": "una caja, muchas preguntas. la seño rosa abre un libro del pasado. entre las plantas asoma una cabeza enorme. la clase busca una pista para descubrir su nombre",
-    "file": "scene-2f55619638d86847.mp3"
   },
   {
     "text": "El Triceratops tenía tres cuernos y comía plantas.",
@@ -100,19 +675,9 @@
     "file": "scene-b55116288198a260.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Contad sus cuernos con tres dedos. Comparadlos con sus cuatro patas.",
-    "key": "miramos sin prisa. contad sus cuernos con tres dedos. comparadlos con sus cuatro patas",
-    "file": "scene-a58495f7940fa837.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Busca tres cuernos en Triceratops y placas en Estegosaurio.",
     "key": "comparamos dos animales. busca tres cuernos en triceratops y placas en estegosaurio",
     "file": "scene-74b67538bdda6714.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. El Triceratops tenía tres cuernos y comía plantas.",
-    "key": "una pista nueva. el triceratops tenía tres cuernos y comía plantas",
-    "file": "scene-d52864ecdf13e566.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Cuántos cuernos tiene?",
@@ -123,11 +688,6 @@
     "text": "UNA PREGUNTA PARA LA CLASE. ¿Cuántos cuernos tiene?",
     "key": "una pregunta para la clase. ¿cuántos cuernos tiene",
     "file": "scene-2dea31a4fb74dfd3.mp3"
-  },
-  {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. En el museo hay una silueta grande. La seño Rosa pregunta: ¿qué parte miramos primero? La clase señala la cabeza y la cola.",
-    "key": "una caja, muchas preguntas. en el museo hay una silueta grande. la seño rosa pregunta: ¿qué parte miramos primero? la clase señala la cabeza y la cola",
-    "file": "scene-2bf4a5ae015040d2.mp3"
   },
   {
     "text": "Caminaba sobre dos patas. Su cabeza era grande y sus brazos eran cortos.",
@@ -145,19 +705,9 @@
     "file": "scene-a04ba4ee7834a15c.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Señalad cabeza, brazos, patas y cola. Buscad la parte más larga.",
-    "key": "miramos sin prisa. señalad cabeza, brazos, patas y cola. buscad la parte más larga",
-    "file": "scene-afbb3ebf7b29af46.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Compara dos patas grandes con cuatro patas. Señala los brazos cortos del Tiranosaurio.",
     "key": "comparamos dos animales. compara dos patas grandes con cuatro patas. señala los brazos cortos del tiranosaurio",
     "file": "scene-f002a2e020967cc5.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. Caminaba sobre dos patas. Su cabeza era grande y sus brazos eran cortos.",
-    "key": "una pista nueva. caminaba sobre dos patas. su cabeza era grande y sus brazos eran cortos",
-    "file": "scene-961254be04749d6f.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Cómo son sus brazos?",
@@ -175,11 +725,6 @@
     "file": "scene-d7263a1117cf1ca0.mp3"
   },
   {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. Hoy la seño Rosa trae una lámina con una fila de placas. Parecen montañas sobre una espalda. Buscamos al animal entero.",
-    "key": "una caja, muchas preguntas. hoy la seño rosa trae una lámina con una fila de placas. parecen montañas sobre una espalda. buscamos al animal entero",
-    "file": "scene-0182f882e02f7162.mp3"
-  },
-  {
     "text": "El Estegosaurio tenía placas en el lomo y púas en la cola.",
     "key": "el estegosaurio tenía placas en el lomo y púas en la cola",
     "file": "scene-af0785d81934156b.mp3"
@@ -195,19 +740,9 @@
     "file": "scene-004540b4e5f95a49.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Recorred la fila de placas con el dedo en el aire, sin tocar la pantalla todos a la vez.",
-    "key": "miramos sin prisa. recorred la fila de placas con el dedo en el aire, sin tocar la pantalla todos a la vez",
-    "file": "scene-58e115ad8b0b5d9d.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Busca las placas del Estegosaurio y la armadura del Anquilosaurio.",
     "key": "comparamos dos animales. busca las placas del estegosaurio y la armadura del anquilosaurio",
     "file": "scene-485ada2a1c7927ab.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. El Estegosaurio tenía placas en el lomo y púas en la cola.",
-    "key": "una pista nueva. el estegosaurio tenía placas en el lomo y púas en la cola",
-    "file": "scene-1919c50eb5145d45.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Dónde están las placas?",
@@ -225,11 +760,6 @@
     "file": "scene-b3ba18877adb04ef.mp3"
   },
   {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. En el libro hay hojas muy altas. La seño Rosa pregunta qué animal podría alcanzarlas. La clase mira por encima de los árboles.",
-    "key": "una caja, muchas preguntas. en el libro hay hojas muy altas. la seño rosa pregunta qué animal podría alcanzarlas. la clase mira por encima de los árboles",
-    "file": "scene-c11a5bd5f9170f25.mp3"
-  },
-  {
     "text": "Sus patas delanteras eran más largas que las traseras. Comía plantas.",
     "key": "sus patas delanteras eran más largas que las traseras. comía plantas",
     "file": "scene-2cf258bb871bb2fc.mp3"
@@ -245,19 +775,9 @@
     "file": "scene-37a3ce7d4a47a4d6.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Comparad cuello y cabeza. ¿Qué parte es más larga?",
-    "key": "miramos sin prisa. comparad cuello y cabeza. ¿qué parte es más larga",
-    "file": "scene-cb1955894959ace4.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Señala un cuello largo y otro más corto.",
     "key": "comparamos dos animales. señala un cuello largo y otro más corto",
     "file": "scene-63000170b0795cf6.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. Sus patas delanteras eran más largas que las traseras. Comía plantas.",
-    "key": "una pista nueva. sus patas delanteras eran más largas que las traseras. comía plantas",
-    "file": "scene-f522a3af27d0e0e7.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Qué buscaba para comer?",
@@ -275,11 +795,6 @@
     "file": "scene-1e9c3e0e090733eb.mp3"
   },
   {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa nos invita a seguir una línea larga en el libro. No es un camino: es la cola de un Diplodocus.",
-    "key": "una caja, muchas preguntas. la seño rosa nos invita a seguir una línea larga en el libro. no es un camino: es la cola de un diplodocus",
-    "file": "scene-ec567c6b30ed1728.mp3"
-  },
-  {
     "text": "Tenía un cuello largo y una cola muy larga. Caminaba sobre cuatro patas.",
     "key": "tenía un cuello largo y una cola muy larga. caminaba sobre cuatro patas",
     "file": "scene-8fcc8a3a9ec0d961.mp3"
@@ -295,19 +810,9 @@
     "file": "scene-8561e3d12c66a937.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Marcamos con los brazos un cuello largo y una cola todavía más larga.",
-    "key": "miramos sin prisa. marcamos con los brazos un cuello largo y una cola todavía más larga",
-    "file": "scene-81f7b2881743a0ef.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Los dos tienen cuellos largos. Compara sus colas y la altura de sus cuerpos.",
     "key": "comparamos dos animales. los dos tienen cuellos largos. compara sus colas y la altura de sus cuerpos",
     "file": "scene-8d04487209604e8f.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. Tenía un cuello largo y una cola muy larga. Caminaba sobre cuatro patas.",
-    "key": "una pista nueva. tenía un cuello largo y una cola muy larga. caminaba sobre cuatro patas",
-    "file": "scene-49a74c4b1436b620.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Qué parte parece un látigo largo?",
@@ -325,11 +830,6 @@
     "file": "scene-008cd162ac3aa2a0.mp3"
   },
   {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. En el museo encontramos una pluma de muestra. La seño Rosa pregunta si todos los animales con plumas pueden volar. Pensamos un momento.",
-    "key": "una caja, muchas preguntas. en el museo encontramos una pluma de muestra. la seño rosa pregunta si todos los animales con plumas pueden volar. pensamos un momento",
-    "file": "scene-f2c2bcafd1b0f676.mp3"
-  },
-  {
     "text": "Tenía plumas, pero no podía volar. Era mucho más pequeño que en muchas películas.",
     "key": "tenía plumas, pero no podía volar. era mucho más pequeño que en muchas películas",
     "file": "scene-19f157b98bf7b74d.mp3"
@@ -345,19 +845,9 @@
     "file": "scene-22cf1eb8d2469b48.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Buscad las plumas y comparadlas con las de un pájaro que conozcáis.",
-    "key": "miramos sin prisa. buscad las plumas y comparadlas con las de un pájaro que conozcáis",
-    "file": "scene-c9856c5990cebf8e.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Los dos caminan sobre dos patas. Busca las plumas del Velociraptor.",
     "key": "comparamos dos animales. los dos caminan sobre dos patas. busca las plumas del velociraptor",
     "file": "scene-3f7e24de2f978142.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. Tenía plumas, pero no podía volar. Era mucho más pequeño que en muchas películas.",
-    "key": "una pista nueva. tenía plumas, pero no podía volar. era mucho más pequeño que en muchas películas",
-    "file": "scene-204cd841cac2bbee.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Podía volar?",
@@ -375,11 +865,6 @@
     "file": "scene-cd66655e9a693d8d.mp3"
   },
   {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa abre la caja de las pistas. Hoy hay una imagen de un lomo cubierto de placas. Parece una armadura.",
-    "key": "una caja, muchas preguntas. la seño rosa abre la caja de las pistas. hoy hay una imagen de un lomo cubierto de placas. parece una armadura",
-    "file": "scene-7c775c52888fca80.mp3"
-  },
-  {
     "text": "Su cuerpo tenía placas duras y su cola terminaba en una maza.",
     "key": "su cuerpo tenía placas duras y su cola terminaba en una maza",
     "file": "scene-db5421e93cfc8d85.mp3"
@@ -395,19 +880,9 @@
     "file": "scene-4a9d226e867f61a3.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Señalad la armadura y la maza. Dibujad su forma con el dedo en el aire.",
-    "key": "miramos sin prisa. señalad la armadura y la maza. dibujad su forma con el dedo en el aire",
-    "file": "scene-8402a055f4f2fe2b.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Señala la maza de una cola y las púas de la otra.",
     "key": "comparamos dos animales. señala la maza de una cola y las púas de la otra",
     "file": "scene-1ee8dd88ec9bf6d3.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. Su cuerpo tenía placas duras y su cola terminaba en una maza.",
-    "key": "una pista nueva. su cuerpo tenía placas duras y su cola terminaba en una maza",
-    "file": "scene-a848acf1caef55eb.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Qué tenía al final de la cola?",
@@ -425,11 +900,6 @@
     "file": "scene-c9939e3daf39fa08.mp3"
   },
   {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. Detrás de unas plantas del libro aparece una cabeza con una curva larga. La seño Rosa pregunta: ¿son cuernos o es una cresta?",
-    "key": "una caja, muchas preguntas. detrás de unas plantas del libro aparece una cabeza con una curva larga. la seño rosa pregunta: ¿son cuernos o es una cresta",
-    "file": "scene-8666a6cfddfc5eff.mp3"
-  },
-  {
     "text": "SEGUIMOS LA PISTA. Es el Parasaurolofo. La cresta sale de su cabeza y se curva hacia atrás. El Triceratops tiene otra forma de cabeza.",
     "key": "seguimos la pista. es el parasaurolofo. la cresta sale de su cabeza y se curva hacia atrás. el triceratops tiene otra forma de cabeza",
     "file": "scene-927a4542f0896d8e.mp3"
@@ -440,19 +910,9 @@
     "file": "scene-024268ca1e127042.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Seguid la curva de la cresta con la mano. Comparadla con los cuernos del Triceratops.",
-    "key": "miramos sin prisa. seguid la curva de la cresta con la mano. comparadla con los cuernos del triceratops",
-    "file": "scene-f7a02c1504f9f5c8.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Busca una cresta y tres cuernos. ¿Están en la misma parte del cuerpo?",
     "key": "comparamos dos animales. busca una cresta y tres cuernos. ¿están en la misma parte del cuerpo",
     "file": "scene-8e7d0eab59401e2a.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. Tenía una cresta larga que se curvaba hacia atrás. Comía plantas.",
-    "key": "una pista nueva. tenía una cresta larga que se curvaba hacia atrás. comía plantas",
-    "file": "scene-59cdfd4acb0ffd1c.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Dónde tenía la cresta?",
@@ -470,11 +930,6 @@
     "file": "scene-6564899c73909d4b.mp3"
   },
   {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa abre una página junto al agua. En ella hay peces y un dinosaurio con una espalda muy especial.",
-    "key": "una caja, muchas preguntas. la seño rosa abre una página junto al agua. en ella hay peces y un dinosaurio con una espalda muy especial",
-    "file": "scene-f7c64294f4122871.mp3"
-  },
-  {
     "text": "Tenía un hocico alargado y una gran vela sobre la espalda. Comía peces, entre otros animales.",
     "key": "tenía un hocico alargado y una gran vela sobre la espalda. comía peces, entre otros animales",
     "file": "scene-8d59284b266df039.mp3"
@@ -490,19 +945,9 @@
     "file": "scene-7742952a1041ce61.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Buscad su hocico, su vela y su cola. ¿En qué se diferencia del T. rex?",
-    "key": "miramos sin prisa. buscad su hocico, su vela y su cola. ¿en qué se diferencia del tiranosaurio rex",
-    "file": "scene-67351f0663860c62.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Mira los dos hocicos. ¿Cuál es más alargado?",
     "key": "comparamos dos animales. mira los dos hocicos. ¿cuál es más alargado",
     "file": "scene-02fbaac6301162f7.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. Tenía un hocico alargado y una gran vela sobre la espalda. Comía peces, entre otros animales.",
-    "key": "una pista nueva. tenía un hocico alargado y una gran vela sobre la espalda. comía peces, entre otros animales",
-    "file": "scene-80feda526d59d516.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Qué podía comer?",
@@ -520,11 +965,6 @@
     "file": "scene-72fdb88d5f01c8f4.mp3"
   },
   {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. Hoy la seño Rosa nos propone un viaje imaginario al mar antiguo. La luz atraviesa el agua. Hay peces y conchas en espiral.",
-    "key": "una caja, muchas preguntas. hoy la seño rosa nos propone un viaje imaginario al mar antiguo. la luz atraviesa el agua. hay peces y conchas en espiral",
-    "file": "scene-cf0f2ed7756a2faa.mp3"
-  },
-  {
     "text": "El Ictiosaurio era un reptil marino. No era un dinosaurio ni un pez.",
     "key": "el ictiosaurio era un reptil marino. no era un dinosaurio ni un pez",
     "file": "scene-5532bbcb2f3c3977.mp3"
@@ -540,19 +980,9 @@
     "file": "scene-b157e2d6fc8fcfc7.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Observad las aletas. ¿Tiene patas como el Triceratops?",
-    "key": "miramos sin prisa. observad las aletas. ¿tiene patas como el triceratops",
-    "file": "scene-865281fd4ca2906d.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Señala las aletas y las patas. No se desplazan de la misma manera.",
     "key": "comparamos dos animales. señala las aletas y las patas. no se desplazan de la misma manera",
     "file": "scene-a8394ea4d21af77f.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. El Ictiosaurio era un reptil marino. No era un dinosaurio ni un pez.",
-    "key": "una pista nueva. el ictiosaurio era un reptil marino. no era un dinosaurio ni un pez",
-    "file": "scene-b3fc07a28788b8fc.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Dónde vivía?",
@@ -570,11 +1000,6 @@
     "file": "scene-45f7d84e7ee93117.mp3"
   },
   {
-    "text": "UNA CAJA, MUCHAS PREGUNTAS. La seño Rosa anuncia que hoy abrimos el museo de la clase. Cada equipo elige un descubrimiento para enseñar a las visitas.",
-    "key": "una caja, muchas preguntas. la seño rosa anuncia que hoy abrimos el museo de la clase. cada equipo elige un descubrimiento para enseñar a las visitas",
-    "file": "scene-43be6af6e065613d.mp3"
-  },
-  {
     "text": "Los fósiles nos ayudan a conocer animales del pasado. Podemos seguir haciendo preguntas.",
     "key": "los fósiles nos ayudan a conocer animales del pasado. podemos seguir haciendo preguntas",
     "file": "scene-4239b9d51e14d391.mp3"
@@ -590,19 +1015,9 @@
     "file": "scene-c8fd182f06f1cf4f.mp3"
   },
   {
-    "text": "MIRAMOS SIN PRISA. Elegid una ficha y explicad una pista sin decir el nombre. La clase intenta descubrirlo.",
-    "key": "miramos sin prisa. elegid una ficha y explicad una pista sin decir el nombre. la clase intenta descubrirlo",
-    "file": "scene-9cec0de8c77bc6a9.mp3"
-  },
-  {
     "text": "COMPARAMOS DOS ANIMALES. Elige uno y descríbelo sin decir su nombre.",
     "key": "comparamos dos animales. elige uno y descríbelo sin decir su nombre",
     "file": "scene-a8f7f78f40875025.mp3"
-  },
-  {
-    "text": "UNA PISTA NUEVA. Los fósiles nos ayudan a conocer animales del pasado. Podemos seguir haciendo preguntas.",
-    "key": "una pista nueva. los fósiles nos ayudan a conocer animales del pasado. podemos seguir haciendo preguntas",
-    "file": "scene-0c2affc66aab9e57.mp3"
   },
   {
     "text": "PENSAMOS Y ELEGIMOS. ¿Qué hace quien investiga?",
@@ -660,24 +1075,14 @@
     "file": "scene-cf00ae18fab49234.mp3"
   },
   {
-    "text": "¿Quién ha venido? Miramos los nombres de nuestra clase.",
-    "key": "¿quién ha venido? miramos los nombres de nuestra clase",
-    "file": "scene-0f9aa39fe8398973.mp3"
+    "text": "¿Quién ha venido hoy? Toca un nombre para tachar a quien no ha venido hoy.",
+    "key": "¿quién ha venido hoy? toca un nombre para tachar a quien no ha venido hoy",
+    "file": "scene-87cd5249cc79e984.mp3"
   },
   {
     "text": "Los encargados de hoy. Vamos a elegir quién se encargará de los saludos, de las luces y del material.",
     "key": "los encargados de hoy. vamos a elegir quién se encargará de los saludos, de las luces y del material",
     "file": "scene-45ca29815de82489.mp3"
-  },
-  {
-    "text": "¿Cómo te sientes? Todas las emociones tienen su lugar. Puedes elegir o pasar turno.",
-    "key": "¿cómo te sientes? todas las emociones tienen su lugar. puedes elegir o pasar turno",
-    "file": "scene-36dbc7e70f3d7e7d.mp3"
-  },
-  {
-    "text": "¿Qué vemos en el cielo? Miremos por la ventana.",
-    "key": "¿qué vemos en el cielo? miremos por la ventana",
-    "file": "scene-4db9ed1a8608c772.mp3"
   },
   {
     "text": "El número protagonista 7. Enséñalo con los dedos.",
@@ -715,11 +1120,6 @@
     "file": "scene-e2e5d924ceea4051.mp3"
   },
   {
-    "text": "Ictiosaurio. Mi cuerpo parece el de un delfín. Tengo aletas y un hocico largo.",
-    "key": "ictiosaurio. mi cuerpo parece el de un delfín. tengo aletas y un hocico largo",
-    "file": "scene-d83dfa1c099631c2.mp3"
-  },
-  {
     "text": "Ictiosaurio. Comía otros animales.",
     "key": "ictiosaurio. comía otros animales",
     "file": "scene-b43eb1619f17358f.mp3"
@@ -728,41 +1128,6 @@
     "text": "Ictiosaurio. Vivía en el mar. Era un reptil marino, no un dinosaurio. Respiraba aire.",
     "key": "ictiosaurio. vivía en el mar. era un reptil marino, no un dinosaurio. respiraba aire",
     "file": "scene-9981202fff73ce79.mp3"
-  },
-  {
-    "text": "CAMINAMOS DESPACIO POR NUESTRO ESPACIO.",
-    "key": "caminamos despacio por nuestro espacio",
-    "file": "scene-7199af920081afa7.mp3"
-  },
-  {
-    "text": "AMARILLO: PASOS MUY PEQUEÑOS.",
-    "key": "amarillo: pasos muy pequeños",
-    "file": "scene-fd0c514feaf5fad2.mp3"
-  },
-  {
-    "text": "ROJO: PARAMOS COMO ESTATUAS.",
-    "key": "rojo: paramos como estatuas",
-    "file": "scene-efe843858118775d.mp3"
-  },
-  {
-    "text": "VERDE: VOLVEMOS A CAMINAR.",
-    "key": "verde: volvemos a caminar",
-    "file": "scene-cc90861358301302.mp3"
-  },
-  {
-    "text": "AHORA UNA COMPAÑERA DA LAS SEÑALES.",
-    "key": "ahora una compañera da las señales",
-    "file": "scene-c4baa55f8f9f9da1.mp3"
-  },
-  {
-    "text": "SENTADOS, ABRIMOS Y CERRAMOS LAS MANOS DESPACIO.",
-    "key": "sentados, abrimos y cerramos las manos despacio",
-    "file": "scene-7efbd3a22f715d3c.mp3"
-  },
-  {
-    "text": "¿CUÁNTOS HAY?",
-    "key": "¿cuántos hay",
-    "file": "scene-823fd138b713ab5a.mp3"
   },
   {
     "text": "HEMOS DESCUBIERTO QUÉ SE REPITE.",
@@ -828,36 +1193,6 @@
     "text": "BUSCA: COPO",
     "key": "busca: copo",
     "file": "scene-8c172cf2e09c5b3d.mp3"
-  },
-  {
-    "text": "BUSCA: PULPO",
-    "key": "busca: pulpo",
-    "file": "scene-4563801afe3873a9.mp3"
-  },
-  {
-    "text": "BUSCA: PEZ",
-    "key": "busca: pez",
-    "file": "scene-4018f23cb3d48dfb.mp3"
-  },
-  {
-    "text": "BUSCA: CANGREJO",
-    "key": "busca: cangrejo",
-    "file": "scene-e2d042ab534252a4.mp3"
-  },
-  {
-    "text": "BUSCA: DELFÍN",
-    "key": "busca: delfín",
-    "file": "scene-dc11af2db73b13a1.mp3"
-  },
-  {
-    "text": "BUSCA: TORTUGA",
-    "key": "busca: tortuga",
-    "file": "scene-4e6d08f3a11b034b.mp3"
-  },
-  {
-    "text": "BUSCA: BALLENA",
-    "key": "busca: ballena",
-    "file": "scene-9a42123cf2a0d7eb.mp3"
   },
   {
     "text": "BUSCA: COHETE",

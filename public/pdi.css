@@ -95,3 +95,42 @@
 @media(prefers-reduced-motion:reduce){
   .pdi-celebration,.pdi-happy-face,.pdi-star{animation:none}
 }
+
+/* Series ilustradas: escenas grandes y respuestas visuales para PDI. */
+.projection-main[data-game="series-ilustradas"]{justify-content:flex-start;padding-top:18px}
+.projection-main[data-game="series-ilustradas"]>h2{font-size:clamp(1.65rem,3vw,2.6rem);margin:10px 0 14px}
+.illustrated-series-progress{margin-bottom:2px}
+.illustrated-series-scene{margin:0;width:min(900px,88vw);display:flex;justify-content:center}
+.illustrated-series-scene img{display:block;width:100%;height:auto;max-height:46vh;object-fit:contain;border-radius:22px;box-shadow:0 12px 32px #5d3b2b24;background:#fff}
+.projection-main .illustrated-series-hint{margin:12px 0 4px;font-size:clamp(.95rem,1.7vw,1.2rem);font-weight:800;color:#6b5961}
+.projection-main[data-game="series-ilustradas"] .choice-grid{margin:12px 0 6px;gap:14px}
+.projection-main[data-game="series-ilustradas"] .choice{min-width:190px;min-height:105px;padding:12px 18px}
+.illustrated-series-option{display:flex;align-items:center;justify-content:center;gap:12px;font-size:1.05rem}
+.illustrated-series-option strong{max-width:115px;line-height:1.05}
+.illustrated-series-shape{display:inline-block;width:62px;height:62px;flex:0 0 62px;border:3px solid #5f463b;box-shadow:inset 0 -5px 0 #0000000c}
+.illustrated-series-shape.circle{border-radius:50%}
+.illustrated-series-shape.triangle{clip-path:polygon(50% 0,100% 100%,0 100%);border:0}
+.illustrated-series-shape.red{background:#ef4438}
+.illustrated-series-shape.blue{background:#2d7fd0}
+.illustrated-series-shape.yellow{background:#f5bf2e}
+@media(max-width:780px){.illustrated-series-scene{width:min(760px,94vw)}.illustrated-series-scene img{max-height:41vh}.projection-main[data-game="series-ilustradas"] .choice{min-width:145px}.illustrated-series-option{gap:8px}.illustrated-series-shape{width:50px;height:50px;flex-basis:50px}}
+.illustrated-pdi-spotlight{display:grid;grid-template-columns:minmax(220px,360px) 1fr;gap:24px;align-items:center;margin-bottom:22px;overflow:hidden}
+.illustrated-pdi-spotlight>img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px}
+.illustrated-pdi-spotlight h2{margin:5px 0 8px}
+.illustrated-pdi-spotlight p{max-width:680px}
+@media(max-width:780px){.illustrated-pdi-spotlight{grid-template-columns:1fr}.illustrated-pdi-spotlight>img{max-height:280px}}
+
+/* Error visible y leído en «Escribe tu nombre». */
+.pdi-letter-bank .name-letter.incorrect{border-color:#bd334d;background:#ffe5e8;color:#8d1730;box-shadow:0 0 0 3px #bd334d22;animation:rosa-name-error .22s ease-in-out 2}
+@keyframes rosa-name-error{50%{transform:translateX(5px)}}
+
+/* Vocales ilustradas: actividad extra solo en PDI. */
+.projection-main[data-game="vocales-ilustradas"]{justify-content:flex-start;padding-top:18px}
+.projection-main[data-game="vocales-ilustradas"]>h2{font-size:clamp(1.7rem,3.2vw,2.75rem);margin:10px 0 14px}
+.illustrated-language-progress{margin-bottom:2px}
+.illustrated-language-scene{margin:0;width:min(900px,88vw);display:flex;justify-content:center}
+.illustrated-language-scene img{display:block;width:100%;height:auto;max-height:50vh;object-fit:contain;border-radius:22px;box-shadow:0 12px 32px #5d3b2b24;background:#fff}
+.projection-main[data-game="vocales-ilustradas"] .choice-grid{margin:14px 0 6px;gap:16px}
+.projection-main[data-game="vocales-ilustradas"] .choice{min-width:150px;min-height:88px;font-size:clamp(2.2rem,5vw,3.8rem);padding:10px 24px}
+@media(max-width:780px){.illustrated-language-scene{width:min(760px,94vw)}.illustrated-language-scene img{max-height:43vh}.projection-main[data-game="vocales-ilustradas"] .choice{min-width:105px}}
+@media(prefers-reduced-motion:reduce){.pdi-letter-bank .name-letter.incorrect{animation:none}}
