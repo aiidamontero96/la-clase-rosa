@@ -1,0 +1,494 @@
+/* PDI viewport fitting: keep classroom activities visible without vertical scrolling. */
+#projector:has(.projection-main){
+  overflow:hidden;
+  overscroll-behavior:none;
+}
+#projector:has(.projection-main) #projection-content{
+  height:100dvh;
+  min-height:0;
+  max-height:100dvh;
+  overflow:hidden;
+}
+#projector:has(.projection-main) .projection-toolbar,
+#projector:has(.projection-main) .aula-projection-controls,
+#projector:has(.projection-main) #adventure-progress,
+#projector:has(.projection-main) .projection-footer{
+  flex:0 0 auto;
+}
+#projector:has(.projection-main) .projection-main{
+  flex:1 1 auto;
+  min-height:0;
+  width:min(1280px,96vw);
+  margin:0 auto;
+  padding:clamp(8px,1.8dvh,20px) 0;
+  overflow:hidden;
+}
+#projector:has(.projection-main) .projection-main>*{
+  max-width:100%;
+}
+
+/* The weather routine was the main tall layout: the scene, six answers and result now fit together. */
+#projector .projection-main.weather-routine{
+  justify-content:center;
+  gap:clamp(4px,1dvh,10px)!important;
+  padding-block:6px!important;
+}
+#projector .weather-routine .weather-scene{
+  width:min(760px,64vw);
+  height:clamp(125px,24dvh,210px);
+  min-height:0;
+  max-height:24dvh!important;
+  aspect-ratio:auto!important;
+  flex:0 1 auto;
+}
+#projector .weather-routine h2{
+  font-size:clamp(1.65rem,2.7vw,2.35rem);
+  line-height:1.08;
+  margin:0!important;
+}
+#projector .weather-routine .emotion-choices{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  width:min(1100px,94vw);
+  max-width:1100px;
+  gap:8px;
+  margin:4px 0;
+}
+#projector .weather-routine .choice{
+  min-width:0;
+  min-height:clamp(58px,8dvh,76px);
+  padding:5px 8px;
+  font-size:clamp(.95rem,1.45vw,1.2rem);
+  line-height:1.08;
+}
+#projector .weather-routine .choice span{
+  font-size:clamp(1.7rem,3vw,2.4rem);
+  line-height:1;
+  margin-bottom:2px;
+}
+#projector .weather-routine .feedback{
+  min-height:24px;
+  margin:0;
+  font-size:clamp(1rem,1.5vw,1.2rem);
+  line-height:1.2;
+}
+
+/* Compact the whole projected activity on the common 768–900 px-high classroom displays. */
+@media (min-width:760px) and (max-height:900px){
+  #projector:has(.projection-main) .projection-toolbar{
+    min-height:46px;
+    padding:8px 20px;
+  }
+  #projector:has(.projection-main) .projection-toolbar button{
+    min-height:36px;
+    padding:7px 11px;
+  }
+  #projector:has(.projection-main) .aula-projection-controls{
+    gap:6px;
+    padding:5px 14px;
+  }
+  #projector:has(.projection-main) .aula-projection-controls>button,
+  #projector:has(.projection-main) .aula-projection-controls .aula-level select{
+    min-height:36px;
+    padding-block:6px;
+  }
+  #projector:has(.projection-main) .voice-settings>summary{
+    min-height:36px;
+    padding:7px 11px;
+  }
+  #projector:has(.projection-main) .projection-main{
+    padding-block:6px;
+  }
+  #projector:has(.projection-main) .projection-main>h2{
+    font-size:clamp(1.65rem,3vw,2.65rem);
+    line-height:1.12;
+    margin:4px 0 10px;
+  }
+  #projector:has(.projection-main) .projection-main>p{
+    font-size:clamp(1rem,1.55vw,1.2rem);
+    line-height:1.3;
+    margin-bottom:8px;
+  }
+  #projector:has(.projection-main) .choice-grid{
+    gap:9px;
+    margin:6px 0;
+  }
+  #projector:has(.projection-main) .choice{
+    min-height:64px;
+    padding:8px 12px;
+    font-size:clamp(1.2rem,2vw,1.8rem);
+  }
+  #projector:has(.projection-main) .choice img{
+    width:135px;
+    height:105px;
+  }
+  #projector:has(.projection-main) .game-stage{
+    gap:10px;
+    margin:6px 0 10px;
+  }
+  #projector:has(.projection-main) .game-stage .token{
+    font-size:2.8rem;
+  }
+  #projector:has(.projection-main) .game-stage img{
+    width:88px;
+    height:88px;
+  }
+  #projector:has(.projection-main) .feedback{
+    min-height:26px;
+    margin-top:3px;
+    font-size:1.1rem;
+  }
+  #projector:has(.projection-main) .projection-footer{
+    gap:8px;
+    padding:7px 14px;
+  }
+  #projector:has(.projection-main) .projection-footer button{
+    min-height:42px;
+    padding:8px 14px;
+    font-size:1rem;
+  }
+  #projector:has(.projection-main) .memory-grid{
+    gap:8px;
+    width:min(700px,90vw);
+  }
+  #projector:has(.projection-main) .memory-card{
+    min-height:clamp(82px,13dvh,116px);
+    font-size:2.2rem;
+  }
+  #projector:has(.projection-main) .memory-card img{
+    height:clamp(70px,11dvh,100px);
+  }
+  #projector:has(.projection-main) .illustrated-series-scene img,
+  #projector:has(.projection-main) .illustrated-language-scene img{
+    max-height:31dvh;
+  }
+  #projector:has(.projection-main) .pdi-dino-presentation>img{
+    height:min(31dvh,280px);
+    min-height:0;
+  }
+  #projector:has(.projection-main) .pdi-dino-image{
+    height:min(28dvh,235px);
+  }
+  #projector:has(.projection-main) .routine-scene-banner{
+    height:min(17dvh,130px);
+    margin-bottom:5px;
+  }
+  #projector:has(.projection-main) .attendance-scene-banner{
+    width:min(370px,40vw);
+    height:auto;
+    max-height:30dvh;
+  }
+  #projector:has(.projection-main) .classroom-scene{
+    gap:6px;
+  }
+  #projector:has(.projection-main) .classroom-scene h2{
+    margin:2px;
+    font-size:clamp(1.65rem,2.7vw,2.25rem);
+  }
+  #projector:has(.projection-main) .classroom-scene>p{
+    font-size:1.1rem;
+    margin-bottom:5px;
+  }
+  #projector:has(.projection-main) .projection-main:has(.storyboard){
+    gap:7px;
+    padding:7px 20px;
+  }
+  #projector:has(.projection-main) .storyboard{
+    gap:16px;
+  }
+  #projector:has(.projection-main) .illustrated-scene>img{
+    max-height:34dvh;
+    aspect-ratio:auto;
+  }
+  #projector:has(.projection-main) .projection-main .story-caption h2{
+    margin-bottom:8px;
+    font-size:clamp(1.35rem,2vw,2rem);
+  }
+  #projector:has(.projection-main) .projection-main .story-caption p{
+    font-size:clamp(1rem,1.45vw,1.35rem);
+    line-height:1.3;
+  }
+  #projector:has(.projection-main) .lesson-dots{
+    margin-top:2px;
+  }
+}
+
+/* Rosi: real fullscreen uses the whole panel but keeps header, scene and controls visible at once. */
+@media (min-width:701px){
+  .rosi-dialog:fullscreen,
+  .rosi-dialog.rosi-expanded{
+    width:100vw;
+    height:100dvh;
+    max-width:none;
+    max-height:100dvh;
+    margin:0;
+    border-radius:0;
+    overflow:hidden;
+  }
+  .rosi-dialog:fullscreen .rosi-player,
+  .rosi-dialog.rosi-expanded .rosi-player{
+    width:100vw;
+    height:100dvh;
+    max-width:none;
+    margin:0;
+    display:grid;
+    grid-template-rows:auto minmax(0,1fr) auto;
+    overflow:hidden;
+  }
+  .rosi-dialog:fullscreen .rosi-player-header,
+  .rosi-dialog.rosi-expanded .rosi-player-header{
+    padding:clamp(8px,1.5dvh,14px) 22px;
+  }
+  .rosi-dialog:fullscreen .rosi-stage,
+  .rosi-dialog.rosi-expanded .rosi-stage{
+    width:100%;
+    height:100%;
+    min-height:0;
+    max-height:none;
+    aspect-ratio:auto;
+  }
+  .rosi-dialog:fullscreen .rosi-controls,
+  .rosi-dialog.rosi-expanded .rosi-controls{
+    flex:0 0 auto;
+    padding:8px 20px 7px;
+  }
+  .rosi-dialog:fullscreen .rosi-progress,
+  .rosi-dialog.rosi-expanded .rosi-progress{
+    margin-bottom:7px;
+  }
+  .rosi-dialog:fullscreen .rosi-control-buttons button,
+  .rosi-dialog.rosi-expanded .rosi-control-buttons button{
+    min-height:44px;
+    padding:8px 12px;
+  }
+  .rosi-dialog:fullscreen .rosi-transcript,
+  .rosi-dialog.rosi-expanded .rosi-transcript{
+    display:none;
+  }
+}
+
+/* If the browser cannot enter the Fullscreen API, the existing fallback should look identical. */
+.story-fullscreen-fallback #projector:has(.projection-main){
+  overflow:hidden;
+}
+.story-fullscreen-fallback #projector:has(.projection-main) #projection-content{
+  height:100dvh;
+  max-height:100dvh;
+}
+
+/* v2 · La vista normal y la pantalla completa ya no son visualmente idénticas. */
+@media (min-width:900px){
+  #projector:has(.projection-main):not(:fullscreen){
+    width:min(1500px,96vw);
+    height:min(920px,94dvh);
+    max-width:96vw;
+    max-height:94dvh;
+    border-radius:22px;
+  }
+  #projector:has(.projection-main):not(:fullscreen) #projection-content{
+    height:100%;
+    max-height:100%;
+  }
+}
+
+/* El modo PDI real aprovecha un poco más el panel sin deformar el contenido. */
+#projector:fullscreen .projection-main,
+#projector:-webkit-full-screen .projection-main,
+.story-fullscreen-fallback #projector .projection-main{
+  width:min(1500px,98vw);
+}
+
+/*
+ * Tiempo: seis respuestas no deben obligar a aplastar la escena en una sola fila.
+ * En pantallas de aula usamos 3 columnas x 2 filas y colocamos SOL Y NUBES
+ * justo debajo de NUBES para que el conjunto sea fácil de leer desde lejos.
+ */
+@media (min-width:760px){
+  #projector .projection-main.weather-routine{
+    gap:clamp(6px,1.1dvh,12px)!important;
+    padding-block:8px!important;
+  }
+  #projector .weather-routine .weather-scene{
+    width:min(820px,72vw);
+    height:auto!important;
+    aspect-ratio:16/6.4!important;
+    min-height:180px;
+    max-height:30dvh!important;
+  }
+  #projector .weather-routine h2{
+    font-size:clamp(1.9rem,3vw,2.75rem);
+    margin:0!important;
+  }
+  #projector .weather-routine .emotion-choices{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(170px,1fr));
+    width:min(900px,90vw);
+    max-width:900px;
+    gap:10px 14px;
+    margin:2px 0;
+  }
+  #projector .weather-routine .choice{
+    min-width:0;
+    min-height:clamp(72px,9dvh,92px);
+    padding:8px 12px;
+    font-size:clamp(1.05rem,1.7vw,1.4rem);
+    line-height:1.08;
+  }
+  #projector .weather-routine .choice span{
+    font-size:clamp(2rem,3.5vw,2.85rem);
+    margin-bottom:3px;
+  }
+  #projector .weather-routine .choice:nth-child(4){grid-column:1;grid-row:2}
+  #projector .weather-routine .choice:nth-child(6){grid-column:2;grid-row:2}
+  #projector .weather-routine .choice:nth-child(5){grid-column:3;grid-row:2}
+  #projector .weather-routine .choice:nth-child(6){font-size:clamp(.98rem,1.55vw,1.28rem)}
+  #projector .weather-routine .feedback{
+    min-height:26px;
+    margin:0;
+    font-size:clamp(1.05rem,1.6vw,1.3rem);
+  }
+}
+
+/* En pantalla completa la escena gana presencia de verdad. */
+@media (min-width:760px){
+  #projector:fullscreen .weather-routine .weather-scene,
+  #projector:-webkit-full-screen .weather-routine .weather-scene,
+  .story-fullscreen-fallback #projector .weather-routine .weather-scene{
+    width:min(980px,78vw);
+    min-height:210px;
+    max-height:32dvh!important;
+  }
+  #projector:fullscreen .weather-routine .emotion-choices,
+  #projector:-webkit-full-screen .weather-routine .emotion-choices,
+  .story-fullscreen-fallback #projector .weather-routine .emotion-choices{
+    width:min(960px,88vw);
+    max-width:960px;
+  }
+  #projector:fullscreen .weather-routine .choice,
+  #projector:-webkit-full-screen .weather-routine .choice,
+  .story-fullscreen-fallback #projector .weather-routine .choice{
+    min-height:clamp(78px,9.5dvh,100px);
+  }
+}
+
+/* v3 · Pantalla completa: ocupar el visor real sin ampliar hasta recortar contenido. */
+#projector:has(.projection-main) #projection-content{
+  height:100%;
+  max-height:100%;
+  min-height:0;
+}
+
+#projector:fullscreen,
+#projector:-webkit-full-screen,
+.story-fullscreen-fallback #projector{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100dvh!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin:0!important;
+  border-radius:0!important;
+  overflow:hidden!important;
+}
+
+#projector:fullscreen #projection-content,
+#projector:-webkit-full-screen #projection-content,
+.story-fullscreen-fallback #projector #projection-content{
+  width:100%;
+  height:100%!important;
+  max-height:100%!important;
+  min-height:0;
+}
+
+/*
+ * Tiempo se adapta al alto que realmente queda entre cabecera, voz y pie.
+ * Las dos filas crecen o encogen dentro de ese espacio; nunca empujan el
+ * mensaje final por debajo del pie de la actividad.
+ */
+@media (min-width:760px){
+  #projector .projection-main.weather-routine{
+    display:grid!important;
+    grid-template-columns:1fr;
+    grid-template-rows:minmax(135px,1.18fr) auto minmax(150px,1fr) auto;
+    align-content:stretch;
+    justify-items:center;
+    row-gap:clamp(4px,.8dvh,8px)!important;
+    width:min(1120px,96vw);
+    padding:5px 0!important;
+    overflow:hidden;
+  }
+  #projector .weather-routine .weather-scene{
+    align-self:stretch;
+    width:min(900px,78vw);
+    height:100%!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+  }
+  #projector .weather-routine h2{
+    align-self:center;
+    margin:0!important;
+    font-size:clamp(1.9rem,3vw,2.7rem);
+    line-height:1.04;
+  }
+  #projector .weather-routine .emotion-choices{
+    align-self:stretch;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(170px,1fr));
+    grid-template-rows:repeat(2,minmax(0,1fr));
+    width:min(940px,92vw);
+    max-width:940px;
+    height:100%;
+    min-height:0;
+    gap:8px 12px;
+    margin:0;
+  }
+  #projector .weather-routine .choice{
+    height:100%;
+    min-height:0!important;
+    padding:6px 12px;
+    font-size:clamp(1.02rem,1.65vw,1.35rem);
+    line-height:1.05;
+  }
+  #projector .weather-routine .choice span{
+    font-size:clamp(1.9rem,3.25vw,2.7rem);
+    margin-bottom:2px;
+  }
+  #projector .weather-routine .feedback{
+    align-self:center;
+    min-height:0!important;
+    margin:0!important;
+    line-height:1.15;
+    font-size:clamp(1rem,1.5vw,1.25rem);
+  }
+
+  /* El espacio extra de fullscreen se reparte; no se fuerzan alturas mayores. */
+  #projector:fullscreen .weather-routine .weather-scene,
+  #projector:-webkit-full-screen .weather-routine .weather-scene,
+  .story-fullscreen-fallback #projector .weather-routine .weather-scene{
+    width:min(960px,80vw);
+    min-height:0!important;
+    max-height:none!important;
+  }
+  #projector:fullscreen .weather-routine .emotion-choices,
+  #projector:-webkit-full-screen .weather-routine .emotion-choices,
+  .story-fullscreen-fallback #projector .weather-routine .emotion-choices{
+    width:min(980px,90vw);
+    max-width:980px;
+  }
+  #projector:fullscreen .weather-routine .choice,
+  #projector:-webkit-full-screen .weather-routine .choice,
+  .story-fullscreen-fallback #projector .weather-routine .choice{
+    min-height:0!important;
+  }
+}
+
+/* En pantallas PDI algo más bajas reservamos siempre sitio para feedback y navegación. */
+@media (min-width:760px) and (max-height:820px){
+  #projector .projection-main.weather-routine{
+    grid-template-rows:minmax(115px,1fr) auto minmax(132px,.95fr) auto;
+  }
+  #projector .weather-routine h2{font-size:clamp(1.7rem,2.7vw,2.35rem)}
+  #projector .weather-routine .choice span{font-size:clamp(1.7rem,3vw,2.35rem)}
+}
