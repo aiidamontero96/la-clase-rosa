@@ -81,7 +81,7 @@ window.ROSA_PLAY=(()=>{
     return {kind,title:kind==='movimiento'?'Movemos el cuerpo':'Un reto pequeño',icon:kind==='movimiento'?'🙌':'⭐',text:(kind==='movimiento'?movements:quick)[index%12]};
   }
   function printCards(settings){
-    const theme=themes[settings.theme]||themes.Dinosaurios,total=[4,6,12].includes(settings.count)?settings.count:6,max=[3,6,10].includes(settings.max)?settings.max:6;
+    const theme=themes[settings.theme]||themes.Dinosaurios,total=[4,6,8].includes(settings.count)?settings.count:6,max=[3,6,10].includes(settings.max)?settings.max:6;
     const cards=[];
     for(let i=0;i<total;i++){
       const index=settings.type==='memory'?Math.floor(i/2):i,item=theme[(index+(settings.seed||0))%theme.length],amount=settings.type==='contar'&&max===10?10:(i+(settings.seed||0))%max+1;
@@ -101,12 +101,28 @@ window.ROSA_PLAY=(()=>{
     }
     return cards;
   }
+  function studentNameField(){
+    return '<div class="sheet-name-field"><strong>NOMBRE</strong><img class="sheet-start-hand" src="assets/brand/mano-inicio-nombre.png" alt="Empieza aquí" width="96" height="96"><span aria-hidden="true"></span></div>';
+  }
+  function studentDateBrand(){
+    return '<div class="sheet-date-field sheet-date-full"><strong>FECHA</strong><span aria-hidden="true"></span></div>';
+  }
   function printSheets(settings,onlyPage=null){
-    const cards=printCards(settings),countTen=settings.type==='contar'&&settings.max===10,perPage=countTen?3:({grande:4,mediana:6,pequena:12}[settings.size]||6);
+    const cards=printCards(settings),countTen=settings.type==='contar'&&settings.max===10;
+    const total=[4,6,8].includes(Number(settings.count))?Number(settings.count):6;
+    const perPage=countTen?3:total;
     const label={contar:'Contamos',memory:'Parejas para jugar',series:'Series para completar',tarjetas:'Tarjetas de vocabulario'}[settings.type]||'Tarjetas';
     const pages=[];
-    for(let i=0;i<cards.length;i+=perPage){if(onlyPage!==null&&i/perPage!==onlyPage)continue;pages.push('<section class="print-sheet '+(settings.ink==='bn'?'print-bn':settings.ink==='coloring'?'print-outline':'')+'"><header><strong>La Clase Rosa · '+label+'</strong><span>'+esc(settings.theme)+' · '+(i/perPage+1)+' / '+Math.ceil(cards.length/perPage)+'</span></header><div class="custom-print-grid '+(countTen?'count-ten':'size-'+(settings.size||'mediana'))+'">'+cards.slice(i,i+perPage).join('')+'</div><footer>Infantil · '+(settings.type==='series'?'Completa los huecos dibujando o usando tus piezas guardadas.':'Recorta las tarjetas con ayuda de una persona adulta.')+'</footer></section>');}
+    for(let i=0;i<cards.length;i+=perPage){
+      if(onlyPage!==null&&i/perPage!==onlyPage)continue;
+      const pageCards=cards.slice(i,i+perPage);
+      pages.push('<section class="print-sheet print-count-'+pageCards.length+' '+(settings.ink==='bn'?'print-bn':settings.ink==='coloring'?'print-outline':'')+'">'+
+        '<header><strong>La Clase Rosa · '+label+'</strong><span>'+esc(settings.theme)+' · '+(i/perPage+1)+' / '+Math.ceil(cards.length/perPage)+'</span></header>'+
+        studentNameField()+
+        '<div class="custom-print-grid '+(countTen?'count-ten':'count-'+pageCards.length)+'">'+pageCards.join('')+'</div>'+
+        studentDateBrand()+
+        '</section>');
+    }
     return pages.join('');
-  }
-  return {gameCatalog,stories,themes,pieces,pieceArt,surprise,printCards,printSheets,picture};
+  }  return {gameCatalog,stories,themes,pieces,pieceArt,surprise,printCards,printSheets,picture};
 })();

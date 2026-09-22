@@ -17,7 +17,7 @@ window.ROSA_SHEETS=(()=>{
     Rutinas:[asset('hello','Saludar'),asset('open-book','Leer'),asset('writing','Escribir'),asset('playing-teddy','Jugar'),asset('kicking-ball','Moverse'),asset('watering','Cuidar')],
     'Higiene y autonomía':[asset('handwashing','Lavarse las manos'),asset('brushing-teeth','Cepillarse los dientes'),asset('coat','Ponerse el abrigo'),asset('tidy-toys','Recoger'),asset('watering','Regar'),asset('hello','Saludar')]
   });
-  const ui={mode:'numeros',nameType:'repasar',dinoType:'conocer',dinoId:'trex',thinkType:'intruso',student:'',customText:'',theme:'Naturaleza',level:1,ink:'color',seed:0,cutouts:false,number:3,numberType:'cantidad',shapeType:'reconocer',traceType:'caminos'};
+  const ui={mode:'numeros',nameType:'repasar',dinoType:'conocer',dinoId:'trex',thinkType:'intruso',student:'',customText:'',theme:'Naturaleza',level:1,ink:'color',seed:0,cutouts:false,number:3,numberType:'cantidad',shapeType:'reconocer',traceType:'caminos',polyType:'torres',polyCount:4};
   const select=(label,key,values)=>'<label class="field"><span>'+label+'</span><select data-studio-setting="'+key+'">'+values.map(v=>'<option value="'+esc(v[0])+'"'+(String(ui[key])===String(v[0])?' selected':'')+'>'+esc(v[1])+'</option>').join('')+'</select></label>';
   const img=(item,cls='')=>'<img class="'+cls+'" src="'+esc(ui.ink==='coloring'?outlineSrc(item.src):item.src)+'" alt="'+esc(item.label)+'">';
   function controls(){
@@ -26,11 +26,18 @@ window.ROSA_SHEETS=(()=>{
     if(ui.mode==='formas')return select('Actividad','shapeType',[['reconocer','Reconocer y rodear'],['continuar','Continuar una serie'],['dibujar','Repasar y dibujar']])+ink;
     if(ui.mode==='trazos')return select('Actividad','traceType',[['caminos','Caminos rectos y curvos'],['patrones','Continúo el trazo']])+ink;
     if(ui.mode==='nombre')return select('Alumno o alumna','student',[...roster.filter(Boolean).map(n=>[n,n]),['__custom__','Otro nombre o palabra…']])+(ui.student==='__custom__'?'<label class="field"><span>Escribe el nombre o la palabra</span><input type="text" maxlength="30" value="'+esc(ui.customText)+'" data-studio-custom placeholder="Por ejemplo: ROSA"></label>':'')+select('Modelo de ficha','nameType',[['repasar','Repasar y copiar'],['inicial','Mi inicial'],['letras','Construyo mi nombre'],['contar','¿Cuántas letras tiene?']])+ink;
+    if(ui.mode==='policubos')return select('Tipo de ficha','polyType',[['torres','Torres de policubos'],['sumas','Sumas con policubos'],['restas','Restas con policubos']])+select('Actividades por folio','polyCount',[[4,'4 actividades · grandes'],[6,'6 actividades · medianas'],[8,'8 actividades · compactas']])+ink;
     if(ui.mode==='dino')return select('Dinosaurio','dinoId',window.ROSA.dinosaurs.map(d=>[d.id,d.short]))+select('Actividad','dinoType',[['conocer','El dinosaurio y su huella'],['camino','Sigue sus huellas'],['encuentra','Encuentra su huella'],['contar','Cuenta sus huellas']])+(ui.dinoType==='conocer'?'':select('Nivel','level',[[1,'Primeros pasos'],[2,'Practicamos'],[3,'Un reto más']]))+ink;
     return select('Actividad','thinkType',[['intruso','Encuentra el intruso'],['sombras','Une con su sombra'],['busca','Busca y rodea'],['clasifica','Clasifica en dos grupos']])+select('Vocabulario','theme',['Naturaleza','Animales','Emociones','El tiempo','Rutinas'].map(v=>[v,v]))+ink;
   }
-  function panel(){if(!ui.student)ui.student=roster[0];return '<section class="panel studio-panel"><div class="studio-intro"><div><span class="eyebrow">GENERADORES PERSONALIZADOS</span><h2>Fichas con un propósito</h2><p>Elige qué practicar. Después ajusta dos o tres opciones y prepara tu A4.</p></div><span class="tag">Listas para usar · sin recortar</span></div><div class="studio-simple-picker">'+select('1. ¿Qué quieres trabajar?','mode',[['numeros','Números y cantidades'],['formas','Formas y series'],['nombre','Nombre y letras'],['pensar','Atención visual'],['trazos','Trazos y caminos'],['dino','Huellas de dinosaurios']])+'</div><div class="studio-workspace"><div class="studio-controls">'+controls()+(ui.mode==='pensar'&&ui.thinkType==='clasifica'?'<label class="check-label"><input type="checkbox" data-studio-cutouts'+(ui.cutouts?' checked':'')+'> Incluir piezas recortables</label>':'')+'<div class="studio-actions"><button type="button" data-action="studio-shuffle" class="secondary">↻ Cambiar ejercicios</button><button type="button" data-action="studio-print">Preparar impresión</button></div></div><div class="studio-preview" aria-label="Vista previa">'+sheet()+'</div></div></section>';}
-  function header(title,instruction){return '<header><strong>La Clase Rosa · '+esc(title)+'</strong><span>'+esc(instruction)+'</span><i>Nombre: ____________________ &nbsp;&nbsp; Fecha: __________</i></header>';}
+  function panel(){if(!ui.student)ui.student=roster[0];return '<section class="panel studio-panel"><div class="studio-intro"><div><span class="eyebrow">GENERADORES PERSONALIZADOS</span><h2>Fichas con un propósito</h2><p>Elige qué practicar. Después ajusta dos o tres opciones y prepara tu A4.</p></div><span class="tag">Listas para usar · sin recortar</span></div><div class="studio-simple-picker">'+select('1. ¿Qué quieres trabajar?','mode',[['numeros','Números y cantidades'],['formas','Formas y series'],['nombre','Nombre y letras'],['pensar','Atención visual'],['trazos','Trazos y caminos'],['dino','Huellas de dinosaurios'],['policubos','Policubos']])+'</div><div class="studio-workspace"><div class="studio-controls">'+controls()+(ui.mode==='pensar'&&ui.thinkType==='clasifica'?'<label class="check-label"><input type="checkbox" data-studio-cutouts'+(ui.cutouts?' checked':'')+'> Incluir piezas recortables</label>':'')+'<div class="studio-actions"><button type="button" data-action="studio-shuffle" class="secondary">↻ Cambiar ejercicios</button><button type="button" data-action="studio-print">Preparar impresión</button></div></div><div class="studio-preview" aria-label="Vista previa">'+sheet()+'</div></div></section>';}
+  function header(title,instruction){return '<header><strong>La Clase Rosa · '+esc(title)+'</strong><span>'+esc(instruction)+'</span></header>';}
+  function studentNameField(){
+    return '<div class="studio-student-name"><strong>NOMBRE</strong><img class="studio-start-hand" src="assets/brand/mano-inicio-nombre.png" alt="Empieza aquí" width="96" height="96"><span aria-hidden="true"></span></div>';
+  }
+  function studentDateBrand(){
+    return '<div class="studio-date-field studio-date-full"><strong>FECHA</strong><span aria-hidden="true"></span></div>';
+  }
   function nameSheet(){const chosen=ui.student==='__custom__'?ui.customText:ui.student,name=(chosen||'MI NOMBRE').toLocaleUpperCase('es-ES'),letters=[...name.replace(/\s/g,'')],initial=letters[0]||'A';let body='';
     if(ui.nameType==='repasar')body='<h2>Repaso mi nombre y después lo escribo</h2>'+Array.from({length:3},(_,i)=>'<div class="trace-name" style="--fade:'+(0.25+i*.12)+'">'+esc(name)+'</div>').join('')+'<div class="copy-line"></div><div class="copy-line"></div>';
     else if(ui.nameType==='inicial')body='<h2>Mi nombre empieza por…</h2><div class="initial-letter">'+esc(initial)+'</div><p>Repasa la letra con el dedo y decórala con puntos.</p><div class="letter-hunt">'+[initial,'A','M',initial,'S','E',initial,'O'].sort((a,b)=>(a.charCodeAt(0)+ui.seed)%7-(b.charCodeAt(0)+ui.seed)%7).map(l=>'<span class="'+(l===initial?'target':'')+'">'+esc(l)+'</span>').join('')+'</div>';
@@ -70,11 +77,88 @@ window.ROSA_SHEETS=(()=>{
   }
   function traceSheet(){const paths=['M20 40 H680','M20 45 Q100 0 180 45 T340 45 T500 45 T680 45','M20 55 L100 15 L180 55 L260 15 L340 55 L420 15 L500 55 L580 15 L680 55','M20 50 Q60 0 100 50 T180 50 T260 50 T340 50 T420 50 T500 50 T580 50 T680 50'];return header('Trazos y caminos','Primero sigo el camino con el dedo. Después uso una cera.')+'<main><h2>'+ (ui.traceType==='caminos'?'DEL PUNTO HASTA LA META':'CONTINÚA EL CAMINO')+'</h2><div class="trace-exercises">'+paths.map((d,i)=>'<svg viewBox="0 0 710 80" role="img" aria-label="Camino '+(i+1)+'"><circle cx="20" cy="'+(i===0?40:i===1?45:i===2?55:50)+'" r="6" fill="#222"/><path d="'+d+'" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="5 7"'+(ui.traceType==='patrones'?' pathLength="100"':'')+'/>'+(ui.traceType==='patrones'?'<rect x="360" y="0" width="340" height="80" fill="white"/>':'')+'<path d="M695 10 V70" stroke="#222" stroke-width="2"/></svg>').join('')+'</div><h2>AHORA INVENTA UN CAMINO</h2><div class="drawing-space"></div></main>';}
 
-  function sheet(){return '<section class="studio-sheet '+(ui.ink==='bn'?'studio-bn':ui.ink==='coloring'?'studio-outline':'')+'">'+(ui.mode==='numeros'?numberSheet():ui.mode==='formas'?shapeSheet():ui.mode==='trazos'?traceSheet():ui.mode==='nombre'?nameSheet():ui.mode==='dino'?dinoSheet():thinkSheet())+'<footer>Infantil 4 años · La Clase Rosa</footer></section>';}
-  function printHTML(){return '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="'+esc(new URL('.',location.href).href)+'"><title>Mi ficha · La Clase Rosa</title><link rel="stylesheet" href="sheet-studio.css?rev=5"><style>@page{size:A4 portrait;margin:0}</style></head><body class="studio-print-document"><div class="studio-print-tools"><button onclick="window.print()">Imprimir / Guardar PDF</button><button class="back" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{history.back()}">← Volver a la app</button></div>'+sheet()+'</body></html>';}
+  const POLY_COLORS=[
+    ['pink','#f15a9b'],['blue','#3f8fe8'],['orange','#ff9636'],['green','#28b96f'],
+    ['yellow','#ffd83d'],['purple','#8d55cc'],['red','#f04444'],['cyan','#39c5d5']
+  ];
+  const polyRand=(i,offset=0)=>{
+    let x=((Number(ui.seed)||0)+1)*73856093 ^ (i+1)*19349663 ^ (offset+1)*83492791;
+    x=Math.imul(x^(x>>>13),1274126177);
+    return (x^(x>>>16))>>>0;
+  };
+  const polyColor=(i,offset=0)=>POLY_COLORS[polyRand(i,offset)%POLY_COLORS.length];
+  const polyCube=(color)=>'<span class="poly-cube poly-'+esc(color[0])+'" style="--cube-color:'+esc(color[1])+'" aria-hidden="true"></span>';
+  const polyGroup=(n,color)=>'<span class="poly-group">'+Array.from({length:n},()=>polyCube(color)).join('')+'</span>';
+  const polyNum=(i,offset,min,max)=>min+(polyRand(i+17,offset+31)%(max-min+1));
+  const POLY_SUM_PAIRS=Array.from({length:5},(_,ai)=>Array.from({length:5},(_,bi)=>[ai+1,bi+1])).flat();
+  const POLY_REST_PAIRS=Array.from({length:6},(_,ai)=>{
+    const a=ai+3;
+    return Array.from({length:a-1},(_,bi)=>[a,bi+1]);
+  }).flat();
+  function polyPair(kind,i){
+    const list=kind==='sum'?POLY_SUM_PAIRS:POLY_REST_PAIRS;
+    const step=kind==='sum'?7:5;
+    const base=polyRand(kind==='sum'?101:211,7)%list.length;
+    return list[(base+i*step)%list.length];
+  }
+
+  function polyTowerCard(i){
+    const targets=Array.from({length:4},(_,j)=>{
+      const color=polyColor(i*2,j);
+      const amount=polyNum(i,j,2,8);
+      return '<div class="poly-tower-target">'+polyCube(color)+'<strong>'+amount+'</strong></div>';
+    }).join('');
+    return '<article class="poly-card poly-tower-card"><span class="poly-card-number">'+(i+1)+'</span><div class="poly-tower-targets">'+targets+'</div></article>';
+  }
+
+  function polySumCard(i){
+    const [a,b]=polyPair('sum',i);
+    const ca=polyColor(i,0),cb=polyColor(i,3);
+    return '<article class="poly-card poly-op-card"><span class="poly-card-number">'+(i+1)+'</span>'+ 
+      '<div class="poly-math-layout">'+
+        '<div class="poly-operand">'+polyGroup(a,ca)+'<i class="poly-number-box"></i></div>'+ 
+        '<b class="poly-math-sign">+</b>'+ 
+        '<div class="poly-operand">'+polyGroup(b,cb)+'<i class="poly-number-box"></i></div>'+ 
+        '<b class="poly-math-equals">=</b>'+ 
+        '<div class="poly-result-column"><span class="poly-result-spacer"></span><i class="poly-result-box"></i></div>'+ 
+      '</div></article>';
+  }
+  function polySubtractCard(i){
+    const [a,b]=polyPair('rest',i);
+    const color=polyColor(i,1);
+    return '<article class="poly-card poly-op-card"><span class="poly-card-number">'+(i+1)+'</span>'+ 
+      '<div class="poly-math-layout">'+
+        '<div class="poly-operand">'+polyGroup(a,color)+'<i class="poly-number-box"></i></div>'+ 
+        '<b class="poly-math-sign">−</b>'+ 
+        '<div class="poly-operand">'+polyGroup(b,color)+'<i class="poly-number-box"></i></div>'+ 
+        '<b class="poly-math-equals">=</b>'+ 
+        '<div class="poly-result-column"><span class="poly-result-spacer"></span><i class="poly-result-box"></i></div>'+ 
+      '</div></article>';
+  }
+  function policubosSheet(){
+    const count=[4,6,8].includes(Number(ui.polyCount))?Number(ui.polyCount):4;
+    const type=['torres','sumas','restas'].includes(ui.polyType)?ui.polyType:'torres';
+    const title={torres:'TORRES DE POLICUBOS',sumas:'SUMAS CON POLICUBOS',restas:'RESTAS CON POLICUBOS'}[type];
+    const instruction={
+      torres:'Mira el color y el número. Construye cada torre con esa cantidad de piezas.',
+      sumas:'Cuenta los policubos, suma y escribe el resultado.',
+      restas:'Cuenta, quita y descubre cuántos quedan.'
+    }[type];
+    const headerLine={
+      torres:'Torres · '+count+' actividades',
+      sumas:'Sumas · '+count+' actividades',
+      restas:'Restas · '+count+' actividades'
+    }[type];
+    const cards=Array.from({length:count},(_,i)=>type==='torres'?polyTowerCard(i):type==='sumas'?polySumCard(i):polySubtractCard(i)).join('');
+    return header('Policubos',headerLine+' · '+({color:'Color',bn:'Blanco y negro',coloring:'Solo contorno'}[ui.ink]||'Color'))+
+      '<main class="poly-main poly-'+type+' poly-count-'+count+'"><div class="poly-title"><h2>'+title+'</h2><p>'+instruction+'</p></div><div class="poly-grid">'+cards+'</div></main>';
+  }
+
+  function sheet(){return '<section class="studio-sheet '+(ui.ink==='bn'?'studio-bn':ui.ink==='coloring'?'studio-outline':'')+'">'+studentNameField()+(ui.mode==='numeros'?numberSheet():ui.mode==='formas'?shapeSheet():ui.mode==='trazos'?traceSheet():ui.mode==='nombre'?nameSheet():ui.mode==='dino'?dinoSheet():ui.mode==='policubos'?policubosSheet():thinkSheet())+studentDateBrand()+'</section>';}
+  function printHTML(){return '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="'+esc(new URL('.',location.href).href)+'"><title>Mi ficha · La Clase Rosa</title><link rel="stylesheet" href="sheet-studio.css?rev=17"><style>@page{size:A4 portrait;margin:0}</style></head><body class="studio-print-document"><div class="studio-print-tools"><button onclick="window.print()">Imprimir / Guardar PDF</button><button class="back" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{history.back()}">← Volver a la app</button></div>'+sheet()+'</body></html>';}
   function openPrint(){const win=window.open('','_blank');if(!win){window.toast?.('Permite la ventana de impresión y vuelve a intentarlo.');return;}win.document.open();win.document.write(printHTML());win.document.close();}
   function refresh(){window.render?.();}
   function handle(action,value){if(action==='studio-mode'){ui.mode=value;refresh();return true;}if(action==='studio-shuffle'){ui.seed++;refresh();return true;}if(action==='studio-print'){openPrint();return true;}return false;}
-  function change(target){if(target.dataset.studioCustom!==undefined){ui.customText=target.value.trim().slice(0,30);refresh();return true;}if(target.dataset.studioSetting){const key=target.dataset.studioSetting;if(key in ui){ui[key]=key==='level'?Number(target.value):target.value;refresh();}return true;}if(target.dataset.studioCutouts!==undefined){ui.cutouts=target.checked;refresh();return true;}return false;}
+  function change(target){if(target.dataset.studioCustom!==undefined){ui.customText=target.value.trim().slice(0,30);refresh();return true;}if(target.dataset.studioSetting){const key=target.dataset.studioSetting;if(key in ui){ui[key]=['level','polyCount'].includes(key)?Number(target.value):target.value;refresh();}return true;}if(target.dataset.studioCutouts!==undefined){ui.cutouts=target.checked;refresh();return true;}return false;}
   return {ui,panel,sheet,printHTML,handle,change,getRoster:()=>[...roster]};
 })();

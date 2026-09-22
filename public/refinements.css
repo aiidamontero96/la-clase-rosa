@@ -247,3 +247,94 @@
 #projector:fullscreen .story-reader-frame iframe,#projector:-webkit-full-screen .story-reader-frame iframe{min-height:calc(100dvh - 74px)}
 @media(max-width:980px){.pattern-workshop .workshop-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.pattern-print-button{width:100%}.song-link-list{grid-template-columns:1fr}}
 @media(max-width:520px){.pattern-workshop .workshop-controls{grid-template-columns:1fr}.song-card{grid-template-columns:112px minmax(0,1fr)}.song-thumb{width:112px;height:68px}.pdi-teacher-tools>summary small{display:none}.attendance-count-grid{grid-template-columns:1fr}}
+
+/* === SERIES A4 · CAMPOS INFANTIL Y PIE DE DATOS === */
+.pattern-sheet{
+  --u:1mm;
+  width:calc(210 * var(--u));
+  height:calc(297 * var(--u));
+  margin:0 auto;
+  padding:calc(6 * var(--u));
+  overflow:hidden;
+  box-sizing:border-box;
+  display:grid;
+  grid-template-rows:calc(26 * var(--u)) minmax(0,1fr) calc(26 * var(--u));
+  gap:calc(2 * var(--u));
+  background:#fff;
+  color:#302932;
+  font-family:Arial,sans-serif;
+}
+.pattern-sheet *{box-sizing:border-box}
+.pattern-student-name{
+  width:100%;
+  border:1.6px solid #51454f;
+  border-radius:calc(3 * var(--u));
+  display:grid;
+  grid-template-columns:auto calc(18 * var(--u)) minmax(0,1fr);
+  align-items:center;
+  gap:calc(3 * var(--u));
+  padding:0 calc(5 * var(--u));
+}
+.pattern-student-name strong,.pattern-date-field strong{font:bold calc(4.6 * var(--u))/1 Arial,sans-serif}
+.pattern-student-name img{width:calc(18 * var(--u));height:calc(18 * var(--u));object-fit:contain}
+.pattern-student-name span,.pattern-date-field span{height:calc(14 * var(--u));border-bottom:1px solid #8b8087}
+.pattern-series-list{display:grid;grid-template-rows:repeat(var(--pattern-count),minmax(0,1fr));align-content:stretch;gap:calc(1.2 * var(--u));min-height:0;padding:0}
+.pattern-sheet .pattern-exercise{display:grid;grid-template-rows:auto minmax(0,1fr);align-content:center;min-height:0}
+.pattern-sheet .pattern-exercise h2{margin:0 0 calc(.5 * var(--u));font:bold calc(3 * var(--u))/1.05 Arial,sans-serif}
+.pattern-sheet .pattern-print-row{display:grid;grid-template-columns:repeat(var(--pattern-items),minmax(0,1fr));gap:calc(1.6 * var(--u));align-items:center;min-height:0;height:100%}
+.pattern-sheet .workshop-cell{display:flex;align-items:center;justify-content:center;width:auto;max-height:100%;aspect-ratio:1;min-width:0;min-height:0;border:1px solid #9b8b93;border-radius:calc(1.5 * var(--u));background:#fff}
+.pattern-sheet .workshop-cell img{width:88%;height:88%;object-fit:contain}
+.pattern-sheet .workshop-cell .shape{width:82%;height:82%;margin:0}
+.pattern-student-footer{width:100%;display:grid;grid-template-columns:7fr 3fr;border:1.6px solid #51454f;border-radius:calc(3 * var(--u));overflow:hidden}
+.pattern-date-field{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:calc(3 * var(--u));padding:0 calc(5 * var(--u));border-right:1.6px solid #51454f}
+.pattern-footer-meta{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:calc(1 * var(--u));padding:calc(2 * var(--u)) calc(2.5 * var(--u));text-align:left;overflow:hidden}
+.pattern-footer-meta strong{font:bold calc(2.8 * var(--u))/1.05 Arial,sans-serif;white-space:normal}
+.pattern-footer-meta span{font:normal calc(2.15 * var(--u))/1.12 Arial,sans-serif;white-space:normal;overflow-wrap:anywhere}
+.pattern-count-4 .pattern-exercise h2{font-size:calc(3.4 * var(--u))}
+.pattern-count-4 .pattern-print-row{gap:calc(2.2 * var(--u))}
+.pattern-count-8 .pattern-exercise h2{font-size:calc(2.65 * var(--u))}
+.pattern-count-8 .pattern-print-row{gap:calc(1.2 * var(--u))}
+.pattern-a4-preview .pattern-sheet{--u:calc((100cqw - 24px)/210);box-shadow:0 5px 24px #3b1b2920}
+@media print{
+  .pattern-print-document>.pattern-sheet{--u:1mm;margin:0}
+}
+
+/* === SERIES A4 V3 UNIFICADAS === */
+.pattern-sheet{
+  padding:calc(5 * var(--u))!important;display:grid!important;
+  grid-template-rows:calc(15 * var(--u)) calc(25 * var(--u)) minmax(0,1fr) calc(25 * var(--u))!important;
+  gap:calc(2 * var(--u))!important;
+}
+.pattern-sheet>header{
+  grid-row:1!important;min-height:0;margin:0!important;padding:0 0 calc(1.5 * var(--u))!important;
+  display:grid!important;align-content:center!important;gap:calc(.8 * var(--u))!important;border-bottom:1px solid #b9adb3!important;
+}
+.pattern-sheet>header strong{font:bold calc(4.5 * var(--u))/1 Arial,sans-serif!important}
+.pattern-sheet>header span{font:normal calc(2.8 * var(--u))/1.1 Arial,sans-serif!important;color:#62565d}
+.pattern-student-name{
+  grid-row:2!important;width:100%!important;border:1.5px solid #51454f!important;border-radius:calc(3 * var(--u))!important;
+  display:grid!important;grid-template-columns:auto calc(18 * var(--u)) minmax(0,1fr)!important;align-items:center!important;
+  gap:calc(3 * var(--u))!important;padding:0 calc(5 * var(--u))!important;
+}
+.pattern-student-name strong,.pattern-date-field strong{font:bold calc(4.6 * var(--u))/1 Arial,sans-serif!important}
+.pattern-student-name img{width:calc(18 * var(--u))!important;height:calc(18 * var(--u))!important;object-fit:contain}
+.pattern-student-name span,.pattern-date-field span{height:calc(14 * var(--u))!important;border-bottom:1px solid #8b8087}
+.pattern-series-list{
+  grid-row:3!important;width:100%!important;min-width:0!important;min-height:0!important;
+  display:grid!important;grid-template-rows:repeat(var(--pattern-count),minmax(0,1fr))!important;
+  align-content:stretch!important;gap:calc(1 * var(--u))!important;padding:0!important;
+}
+.pattern-sheet .pattern-exercise{min-width:0!important;min-height:0!important}
+.pattern-sheet .pattern-print-row{width:100%!important;min-width:0!important;height:100%!important;grid-template-columns:repeat(var(--pattern-items),minmax(0,1fr))!important}
+.pattern-date-full{
+  grid-row:4!important;width:100%!important;border:1.5px solid #51454f!important;border-radius:calc(3 * var(--u))!important;
+  display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;align-items:center!important;
+  gap:calc(3 * var(--u))!important;padding:0 calc(5 * var(--u))!important;
+}
+.pattern-student-footer,.pattern-footer-meta,.pattern-brand{display:none!important}
+.pattern-count-4 .pattern-print-row{gap:calc(2.5 * var(--u))!important}
+.pattern-count-4 .pattern-exercise h2{font-size:calc(3.5 * var(--u))!important}
+.pattern-count-4 .workshop-cell img{width:94%!important;height:94%!important}
+.pattern-count-6 .pattern-print-row{gap:calc(1.8 * var(--u))!important}
+.pattern-count-8 .pattern-print-row{gap:calc(1.1 * var(--u))!important}
+.pattern-count-8 .pattern-exercise h2{font-size:calc(2.6 * var(--u))!important}

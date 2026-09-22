@@ -8,7 +8,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.utils import ImageReader
 from PIL import Image, ImageOps, ImageDraw, ImageFont, ImageFilter
-import fitz
+import pymupdf as fitz
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA=json.loads(subprocess.check_output(['node','scripts/export-data.cjs'],cwd=ROOT))
@@ -21,6 +21,9 @@ W,H=595.276,841.89
 ROSE=HexColor('#9c305b'); INK=HexColor('#302c35')
 COLORS=['#df678d','#5087b8','#e9b640','#79a980']
 ASSETS=ROOT/'sources'
+BRAND_ICON=OUT/'assets/brand/seno-rosa-icon.png'
+HAND_ICON=OUT/'assets/brand/mano-inicio-nombre.png'
+SHEET_IDS={'laberintos','trazos-rectos','trazos-curvos','puntos','busca-dino','descubrimiento','kusama-series-puntos','kusama-redes-imprimible','curso-otono','curso-halloween','curso-navidad','curso-paz','curso-andalucia','curso-primavera','curso-fin','trazos-guiados','primavera-actividades','carnaval-cuatro-actividades','kusama-colorea-retrato','kusama-colorea-personaje','curso-otono-hoja','curso-halloween-calabaza','curso-halloween-busca','curso-navidad-arbol','curso-navidad-bolas','curso-paz-corazon','curso-carnaval-disfraz','curso-andalucia-28f','curso-primavera-mariposa','curso-fin-retrato','juntar','series-ab','series-aab','series-abb','series-abc','series-aabb','crea-series'}
 Image.open(ASSETS/'classroom-paper.png').save(OUT/'assets/fondo-aula.webp',quality=85)
 sheet=Image.open(ASSETS/'dinosaur-sheet.png').convert('RGB')
 for i,d in enumerate(DATA['dinosaurs']):
@@ -74,6 +77,7 @@ def wrap(txt,font,size,width):
 class Material:
     def __init__(self,r,bw,coloring=False):
         self.r=r;self.bw=bw;self.coloring=coloring;self.page=0
+        self.worksheet=r['id'] in SHEET_IDS;self._worksheet_transform=False
         suffix='-colorear' if coloring else ('-bn' if bw else '')
         self.path=OUT/'pdf'/(r['id']+suffix+'.pdf')
         self.c=canvas.Canvas(str(self.path),pagesize=(W,H),pageCompression=1)
@@ -88,22 +92,69 @@ class Material:
             else: c.drawString(x,y,line)
             y-=size*1.35
         return y
+    def _draw_sheet_header(self,title):
+        c=self.c;x=18;w=W-36;y=H-42
+        c.saveState()
+        c.setFillColor(black if self.bw else INK)
+        c.setFont('RosaBold',11);c.drawString(x,y,'La Clase Rosa · '+str(title))
+        c.setStrokeColor(HexColor('#b9adb3'));c.setLineWidth(.6);c.line(x,y-8,x+w,y-8)
+        c.restoreState()
+    def _draw_sheet_header(self,title):
+        c=self.c;x=18;w=W-36;y=H-42
+        c.saveState()
+        c.setFillColor(black if self.bw else INK)
+        c.setFont('RosaBold',11);c.drawString(x,y,'La Clase Rosa · '+str(title))
+        c.setStrokeColor(HexColor('#b9adb3'));c.setLineWidth(.6);c.line(x,y-8,x+w,y-8)
+        c.restoreState()
+    def _draw_name_field(self):
+        c=self.c;x=18;y=H-108;w=W-36;h=54
+        c.saveState();c.setStrokeColor(HexColor('#51454f'));c.setLineWidth(1.2)
+        c.roundRect(x,y,w,h,8,stroke=1,fill=0)
+        c.setFillColor(black if self.bw else INK);c.setFont('RosaBold',12)
+        c.drawString(x+14,y+22,'NOMBRE')
+        if HAND_ICON.is_file():
+            hand=Image.open(HAND_ICON).convert('RGB')
+            if self.bw:hand=ImageOps.grayscale(hand).convert('RGB')
+            c.drawImage(ImageReader(hand),x+88,y+7,40,40,preserveAspectRatio=True,anchor='c',mask='auto')
+        c.setStrokeColor(HexColor('#8b8087'));c.setLineWidth(.8)
+        c.line(x+140,y+17,x+w-14,y+17);c.restoreState()
+    def _draw_date_brand(self):
+        c=self.c;x=18;y=14;w=W-36;h=54
+        c.saveState();c.setStrokeColor(HexColor('#51454f'));c.setLineWidth(1.2)
+        c.roundRect(x,y,w,h,8,stroke=1,fill=0)
+        c.setFillColor(black if self.bw else INK);c.setFont('RosaBold',11.5)
+        c.drawString(x+14,y+22,'FECHA')
+        c.setStrokeColor(HexColor('#8b8087'));c.setLineWidth(.8)
+        c.line(x+72,y+17,x+w-14,y+17)
+        c.restoreState()
+    def _end_page(self):
+        if self.worksheet and self._worksheet_transform:
+            self.c.restoreState();self._worksheet_transform=False;self._draw_date_brand()
     def new(self,subtitle=None):
-        if self.page:self.c.showPage()
+        if self.page:
+            self._end_page();self.c.showPage()
         self.page+=1;c=self.c
-        c.setFillColor(black if self.bw else ROSE);c.setFont('RosaBold',11)
-        c.drawString(32,H-32,'LA CLASE ROSA')
-        c.setFont('Rosa',9);c.drawRightString(W-32,H-32,'INFANTIL · 4 AÑOS')
+        if self.worksheet:
+            title=self.r['title'] if not subtitle else subtitle
+            self._draw_sheet_header(title)
+            self._draw_name_field()
+            c.saveState();sx=.94;sy=.79;c.translate((W-W*sx)/2,88);c.scale(sx,sy)
+            self._worksheet_transform=True
+        else:
+            c.setFillColor(black if self.bw else ROSE);c.setFont('RosaBold',11)
+            c.drawString(32,H-32,'LA CLASE ROSA')
+            c.setFont('Rosa',9);c.drawRightString(W-32,H-32,'INFANTIL · 4 AÑOS')
         title=self.r['title'] if not subtitle else subtitle
         size=20
         while pdfmetrics.stringWidth(title,'RosaBold',size)>W-64:size-=.5
         self.text(title,32,H-64,W-64,size,True)
         self.text(self.r['instructions'],32,H-86,W-64,9)
-        c.setStrokeColor(HexColor('#bbbbbb') if self.bw else HexColor('#dec7d1'));c.setLineWidth(.6)
-        c.line(32,35,W-32,35)
-        footer=self.r.get('sourceNote') or ('Material de aula · Supervisión adulta · '+('Para colorear' if self.coloring else ('Bajo consumo de tinta' if self.bw else 'Color')))
-        self.text(footer,32,22,470,7.5)
-        c.setFont('Rosa',8);c.drawRightString(W-32,22,str(self.page))
+        if not self.worksheet:
+            c.setStrokeColor(HexColor('#bbbbbb') if self.bw else HexColor('#dec7d1'));c.setLineWidth(.6)
+            c.line(32,35,W-32,35)
+            footer=self.r.get('sourceNote') or ('Material de aula · Supervisión adulta · '+('Para colorear' if self.coloring else ('Bajo consumo de tinta' if self.bw else 'Color')))
+            self.text(footer,32,22,470,7.5)
+            c.setFont('Rosa',8);c.drawRightString(W-32,22,str(self.page))
     def rect(self,x,y,w,h,fill=False,dashed=False):
         c=self.c;c.setStrokeColor(HexColor('#777777') if self.bw else HexColor('#cdb4bf'));c.setLineWidth(1)
         if dashed:c.setDash(4,3)
@@ -155,7 +206,9 @@ class Material:
             self.text(label,x+10,y+27,w-20,12,True,True)
             if more:self.text(more[0],x+10,y+h-24,w-20,9,center=True)
         self.cards(items,draw,cols,rows)
-    def finish(self):self.c.save();return self.page
+    def finish(self):
+        self._end_page();self.c.save()
+        return self.page
 
 KUSAMA_COLORS=['#f1c928','#d93672','#28232b','#4c87bd','#63a36d','#ef7e45']
 def kdot(m,x,y,radius,color_index=0,dashed=False,mark=True):
@@ -821,12 +874,35 @@ def build_one(r,bw,coloring=False):
     return m.finish()
 
 def build_external(r):
-    """Keep the supplied color PDF and derive print-friendly monochrome variants."""
+    """Keep supplied material and wrap worksheet pages with student fields."""
     source=ROOT/'sources'/'imported'/r['externalPdf']
     if not source.is_file():raise FileNotFoundError(source)
     color_target=OUT/'pdf'/(r['id']+'.pdf')
-    shutil.copyfile(source,color_target)
-    doc=fitz.open(source); rendered=[]
+    if r['id'] in SHEET_IDS:
+        src=fitz.open(source);wrapped=fitz.open()
+        for source_page in src:
+            page=wrapped.new_page(width=W,height=H)
+            x=24; right=W-24; split=x+(right-x)*.70
+            name_rect=fitz.Rect(x,18,right,82)
+            date_rect=fitz.Rect(x,H-80,right,H-16)
+            page.draw_rect(name_rect,color=(.32,.27,.31),width=1.2)
+            page.insert_text((x+14,57),'NOMBRE',fontname='helv',fontsize=12,color=(.19,.17,.21))
+            if HAND_ICON.is_file():
+                page.insert_image(fitz.Rect(x+90,30,x+130,70),filename=str(HAND_ICON),keep_proportion=True)
+            page.draw_line((x+142,61),(right-14,61),color=(.55,.50,.53),width=.8)
+            target=fitz.Rect(36,92,W-36,H-94)
+            page.show_pdf_page(target,src,source_page.number,keep_proportion=True)
+            page.draw_rect(date_rect,color=(.32,.27,.31),width=1.2)
+            page.draw_line((split,H-80),(split,H-16),color=(.32,.27,.31),width=1.2)
+            page.insert_text((x+14,H-42),'FECHA',fontname='helv',fontsize=11.5,color=(.19,.17,.21))
+            page.draw_line((x+72,H-39),(split-12,H-39),color=(.55,.50,.53),width=.8)
+            if BRAND_ICON.is_file():
+                page.insert_image(fitz.Rect(split+10,H-70,split+50,H-30),filename=str(BRAND_ICON),keep_proportion=True)
+            page.insert_text((split+54,H-43),'La Clase Rosa',fontname='helv',fontsize=8.5,color=(.61,.19,.36))
+        wrapped.save(color_target,garbage=4,deflate=True);wrapped.close();src.close()
+    else:
+        shutil.copyfile(source,color_target)
+    doc=fitz.open(color_target);rendered=[]
     for page in doc:
         pix=page.get_pixmap(matrix=fitz.Matrix(1.25,1.25),alpha=False)
         rendered.append(Image.frombytes('RGB',[pix.width,pix.height],pix.samples))

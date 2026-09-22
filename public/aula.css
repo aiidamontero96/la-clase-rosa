@@ -71,3 +71,241 @@
 @media(prefers-reduced-motion:reduce){.surprise-box:hover>span{animation:none}.piece-ghost{transform:none}}
 .creator-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 22px}.creator-tabs button{justify-content:center;border:2px solid #d9c2cc;background:white;color:var(--rose)}.creator-tabs button.active{background:var(--rose);border-color:var(--rose);color:white;box-shadow:0 4px 12px #7f244728}.count-ten-note{display:grid;gap:3px;border:1px solid #e0bcca;border-radius:12px;padding:11px 13px;background:#fff7fa}.count-ten-note strong{color:var(--rose)}.count-ten-note span{font-size:.86rem;color:var(--muted)}
 @media(max-width:560px){.creator-tabs{grid-template-columns:1fr}}
+
+/* === CREA TUS FICHAS · HUB ROBUSTO V1 === */
+.creator-hub{
+  margin:22px 0 26px;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(145deg,#fff,#fff8fb);
+  box-shadow:0 12px 32px rgba(79,38,57,.06);
+}
+.creator-hub-heading{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:18px;
+}
+.creator-hub-heading h2{
+  margin:4px 0 6px;
+  font-size:clamp(1.35rem,2.1vw,1.85rem);
+}
+.creator-hub-heading p{
+  margin:0;
+  max-width:720px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.creator-hub-badge{
+  flex:0 0 auto;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff0f6;
+  color:#8a214d;
+  font-size:.83rem;
+  font-weight:800;
+  white-space:nowrap;
+}
+.creator-entry-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.creator-entry-card{
+  appearance:none;
+  width:100%;
+  min-height:220px;
+  display:grid;
+  grid-template-columns:54px minmax(0,1fr);
+  grid-template-rows:1fr auto;
+  column-gap:16px;
+  row-gap:14px;
+  text-align:left;
+  padding:22px;
+  border:1px solid #dfcfd6;
+  border-radius:20px;
+  background:#fff;
+  color:var(--ink);
+  cursor:pointer;
+  box-shadow:0 5px 16px rgba(72,38,53,.04);
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.creator-entry-card:hover{
+  transform:translateY(-2px);
+  border-color:#bd6b8e;
+  box-shadow:0 12px 26px rgba(91,38,62,.10);
+}
+.creator-entry-card:focus-visible{
+  outline:3px solid rgba(166,41,93,.28);
+  outline-offset:3px;
+}
+.creator-entry-card.active{
+  border-color:#a6295d;
+  background:linear-gradient(145deg,#fff,#fff4f8);
+  box-shadow:0 0 0 2px rgba(166,41,93,.09),0 12px 28px rgba(91,38,62,.08);
+}
+.creator-entry-quick.active{
+  border-color:#5688a8;
+  background:linear-gradient(145deg,#fff,#f5fbff);
+  box-shadow:0 0 0 2px rgba(86,136,168,.09),0 12px 28px rgba(42,86,116,.08);
+}
+.creator-entry-icon{
+  width:54px;
+  height:54px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  background:#fce4ee;
+  color:#972551;
+  font-size:1.7rem;
+  font-weight:900;
+}
+.creator-entry-quick .creator-entry-icon{
+  background:#e7f4fb;
+  color:#356e92;
+}
+.creator-entry-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.creator-entry-kicker{
+  margin-bottom:5px;
+  color:#8a6575;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.creator-entry-copy>strong{
+  font-size:1.23rem;
+  line-height:1.2;
+}
+.creator-entry-copy>small{
+  display:block;
+  margin-top:8px;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.45;
+}
+.creator-entry-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:14px;
+}
+.creator-entry-tags i{
+  font-style:normal;
+  padding:5px 8px;
+  border-radius:999px;
+  background:#f7f3f5;
+  color:#65545c;
+  font-size:.74rem;
+  font-weight:700;
+}
+.creator-entry-cta{
+  grid-column:1/-1;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:13px;
+  border-top:1px solid #eee4e8;
+  color:#8a214d;
+  font-weight:850;
+}
+.creator-entry-quick .creator-entry-cta{color:#356e92}
+.creator-entry-cta b{font-size:1.15rem}
+
+.creator-workspace-shell{
+  margin-top:4px;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:#fff;
+  box-shadow:0 14px 36px rgba(71,37,52,.06);
+  scroll-margin-top:84px;
+}
+.creator-switcher{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:20px;
+  padding:7px;
+  border-radius:15px;
+  background:#f7f3f5;
+}
+.creator-switcher-label{
+  margin:0 4px 0 6px;
+  color:var(--muted);
+  font-size:.83rem;
+  font-weight:800;
+}
+.creator-switch{
+  min-height:38px!important;
+  padding:8px 13px!important;
+  border:1px solid transparent!important;
+  border-radius:10px!important;
+  background:transparent!important;
+  color:#66545d!important;
+  box-shadow:none!important;
+}
+.creator-switch.active{
+  background:#fff!important;
+  border-color:#decbd4!important;
+  color:#8a214d!important;
+  box-shadow:0 2px 8px rgba(72,38,53,.06)!important;
+}
+.creator-workspace-heading{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  margin:0 0 18px;
+  padding:0 2px 16px;
+  border-bottom:1px solid #eee5e9;
+}
+.creator-workspace-heading h2{margin:3px 0 4px}
+.creator-workspace-heading p{margin:0;color:var(--muted)}
+.creator-series-shortcut{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  min-height:40px;
+  padding:9px 13px;
+  border:1px solid #dfc4d0;
+  border-radius:12px;
+  background:#fff8fb;
+  color:#8a214d;
+  font-weight:800;
+  text-decoration:none;
+}
+.creator-workspace-shell .studio-panel{
+  margin-bottom:0;
+  box-shadow:none;
+}
+.creator-workspace-shell .studio-intro{
+  display:none;
+}
+
+@media(max-width:800px){
+  .creator-hub{padding:18px}
+  .creator-hub-heading{display:grid;gap:12px}
+  .creator-hub-badge{justify-self:start}
+  .creator-entry-grid{grid-template-columns:1fr}
+  .creator-entry-card{min-height:190px}
+  .creator-workspace-shell{padding:16px}
+  .creator-workspace-heading{display:grid}
+  .creator-series-shortcut{justify-self:start}
+}
+@media(max-width:520px){
+  .creator-entry-card{
+    grid-template-columns:44px minmax(0,1fr);
+    padding:16px;
+  }
+  .creator-entry-icon{width:44px;height:44px;border-radius:13px;font-size:1.35rem}
+  .creator-switcher-label{width:100%;margin-bottom:2px}
+  .creator-switch{flex:1 1 auto}
+}

@@ -36,3 +36,84 @@
  .print-sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
  .print-pages-screen{display:block;width:auto;margin:0;padding:0;container-type:normal}
 }
+
+/* === CAMPOS INFANTIL FINALES === */
+.print-sheet{
+  --u:1mm;
+  box-sizing:border-box;
+  width:calc(210 * var(--u));
+  height:calc(296 * var(--u));
+  background:white;
+  color:#302932;
+  font-family:Arial,sans-serif;
+  padding:calc(8 * var(--u));
+  margin:0 auto;
+  display:grid;
+  grid-template-rows:calc(24 * var(--u)) calc(15 * var(--u)) minmax(0,1fr) calc(24 * var(--u));
+  gap:calc(2 * var(--u));
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
+.sheet-name-field{
+  width:100%;
+  border:1.5px solid #51454f;
+  border-radius:calc(3 * var(--u));
+  display:grid;
+  grid-template-columns:auto calc(17 * var(--u)) minmax(0,1fr);
+  align-items:center;
+  gap:calc(3 * var(--u));
+  padding:0 calc(5 * var(--u));
+}
+.sheet-name-field strong,.sheet-date-field strong{font:bold calc(4.4 * var(--u))/1 Arial,sans-serif}
+.sheet-start-hand{width:calc(17 * var(--u));height:calc(17 * var(--u));object-fit:contain}
+.sheet-name-field span,.sheet-date-field span{height:calc(13 * var(--u));border-bottom:1px solid #8b8087}
+.print-sheet>header{height:auto;display:flex;flex-direction:column;justify-content:center;gap:calc(1 * var(--u));border-bottom:1px solid #bcb0b6;margin:0}
+.custom-print-grid{height:auto;min-height:0}
+.sheet-student-footer{width:100%;display:grid;grid-template-columns:7fr 3fr;border:1.5px solid #51454f;border-radius:calc(3 * var(--u));overflow:hidden}
+.sheet-date-field{min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:calc(3 * var(--u));padding:0 calc(5 * var(--u));border-right:1.5px solid #51454f}
+.sheet-brand{min-width:0;display:flex;align-items:center;justify-content:center;gap:calc(2 * var(--u));padding:calc(1 * var(--u));font:bold calc(3.4 * var(--u))/1.05 Arial,sans-serif;text-align:center}
+.sheet-brand img{width:calc(17 * var(--u));height:calc(17 * var(--u));object-fit:contain}
+.custom-print-grid.size-pequena{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}
+.print-sheet>footer{display:none!important}
+
+/* === CAMPOS ALUMNO V3 UNIFICADOS === */
+.print-sheet{
+  padding:calc(5 * var(--u))!important;
+  display:grid!important;
+  grid-template-rows:calc(15 * var(--u)) calc(25 * var(--u)) minmax(0,1fr) calc(25 * var(--u))!important;
+  gap:calc(2 * var(--u))!important;
+}
+.print-sheet>header{
+  grid-row:1;height:auto!important;margin:0!important;padding:0 0 calc(1.5 * var(--u))!important;
+  display:grid!important;align-content:center;gap:calc(.8 * var(--u))!important;border-bottom:1px solid #b9adb3!important;
+}
+.print-sheet>header strong{font-size:calc(4.5 * var(--u))!important;line-height:1}
+.print-sheet>header span{font-size:calc(2.9 * var(--u))!important;line-height:1.1}
+.sheet-name-field{
+  grid-row:2;width:100%!important;min-width:0;border:1.5px solid #51454f!important;border-radius:calc(3 * var(--u))!important;
+  display:grid!important;grid-template-columns:auto calc(18 * var(--u)) minmax(0,1fr)!important;align-items:center!important;
+  gap:calc(3 * var(--u))!important;padding:0 calc(5 * var(--u))!important;
+}
+.sheet-name-field strong,.sheet-date-field strong{font:bold calc(4.6 * var(--u))/1 Arial,sans-serif!important}
+.sheet-start-hand{width:calc(18 * var(--u))!important;height:calc(18 * var(--u))!important;object-fit:contain}
+.sheet-name-field span,.sheet-date-field span{height:calc(14 * var(--u))!important;border-bottom:1px solid #8b8087}
+.custom-print-grid{
+  grid-row:3;width:100%!important;height:100%!important;min-height:0!important;display:grid!important;gap:calc(3 * var(--u))!important;
+}
+.custom-print-grid.count-4{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important}
+.custom-print-grid.count-6{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(3,minmax(0,1fr))!important}
+.custom-print-grid.count-8{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(4,minmax(0,1fr))!important}
+.sheet-date-full{
+  grid-row:4;width:100%!important;min-width:0;border:1.5px solid #51454f!important;border-radius:calc(3 * var(--u))!important;
+  display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;align-items:center!important;
+  gap:calc(3 * var(--u))!important;padding:0 calc(5 * var(--u))!important;
+}
+.sheet-student-footer,.sheet-brand,.print-sheet>footer{display:none!important}
+.print-count-4 .custom-print-card{padding:calc(6 * var(--u))!important}
+.print-count-4 .custom-print-card .print-main-picture{width:88%!important;height:78%!important;max-height:none!important}
+.print-count-4 .print-collection img{max-height:calc(38 * var(--u))!important}
+.print-count-4 .print-series img,.print-count-4 .print-hole{height:calc(24 * var(--u))!important}
+.print-count-6 .custom-print-card .print-main-picture{width:84%!important;height:74%!important}
+.print-count-6 .print-collection img{max-height:calc(31 * var(--u))!important}
+.print-count-8 .custom-print-card{padding:calc(3 * var(--u))!important}
+.print-count-8 .custom-print-card .print-main-picture{width:78%!important;height:68%!important}

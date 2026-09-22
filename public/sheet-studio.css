@@ -11,3 +11,822 @@
 @media(max-width:900px){.studio-intro{display:grid}.roster-editor{width:100%}.studio-workspace{grid-template-columns:1fr}.studio-controls{grid-template-columns:1fr 1fr}.studio-actions{grid-column:1/-1;grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.studio-mode-grid{grid-template-columns:1fr}.studio-mode{min-height:90px}.roster-grid,.studio-controls{grid-template-columns:1fr}.studio-actions{grid-column:auto;grid-template-columns:1fr}.studio-preview{padding:8px}.studio-preview .studio-sheet{--u:calc((100cqw - 16px)/210)}}
 .studio-simple-picker{margin:16px 0}.studio-simple-picker .field{max-width:440px}.studio-simple-picker select{font-size:1.1rem;min-height:48px}.worksheet-shape{width:calc(17.2 * var(--u));height:calc(17.2 * var(--u));flex-shrink:0}.worksheet-dots{display:flex;flex-wrap:wrap;gap:calc(3.44 * var(--u));align-items:center;max-width:calc(111.11 * var(--u))}.worksheet-dots i{display:block;width:calc(6.61 * var(--u));height:calc(6.61 * var(--u));border:2px solid #222;border-radius:50%;background:white;flex-shrink:0}.number-trace{display:flex;justify-content:space-around;font-size:calc(23.81 * var(--u));font-weight:800;color:#bcbcbc;margin:calc(5.29 * var(--u)) 0}.number-exercises,.shape-exercises{display:grid;gap:calc(7.41 * var(--u));margin:calc(5.82 * var(--u)) 0}.number-exercises>div,.shape-exercises>div{display:flex;align-items:center;gap:calc(4.76 * var(--u));min-height:calc(22.75 * var(--u));border-bottom:1px solid #bbb;padding-bottom:calc(4.76 * var(--u))}.number-exercises b,.shape-exercises i{width:calc(15.34 * var(--u));height:calc(15.34 * var(--u));border:1.5px solid #222;margin-left:auto;flex-shrink:0}.shape-exercises i{margin-left:0}.shape-exercises strong{border-right:2px solid #555;padding-right:calc(3.97 * var(--u))}.complete-number-space{min-width:calc(26.46 * var(--u));min-height:calc(18.52 * var(--u));flex:1;border-bottom:1px dashed #555}.trace-exercises{display:grid;gap:calc(10.05 * var(--u));margin:calc(6.61 * var(--u)) 0}.trace-exercises svg{width:100%;height:calc(22.49 * var(--u))}.studio-sheet h2{line-height:1.3}.studio-sheet main>h2{margin:calc(4.23 * var(--u)) 0}.studio-sheet .drawing-space{min-height:calc(26.46 * var(--u))}
+
+/* === CAMPOS INFANTIL FINALES === */
+.studio-sheet{
+  --u:1mm;
+  width:calc(210 * var(--u));
+  height:calc(297 * var(--u));
+  padding:calc(8 * var(--u));
+  background:white;
+  color:#302932;
+  font-family:Arial,sans-serif;
+  box-sizing:border-box;
+  display:grid;
+  grid-template-rows:calc(24 * var(--u)) calc(19 * var(--u)) minmax(0,1fr) calc(24 * var(--u));
+  gap:calc(2 * var(--u));
+  overflow:hidden;
+}
+.studio-sheet *{box-sizing:border-box}
+.studio-student-name{
+  width:100%;
+  border:1.5px solid #51454f;
+  border-radius:calc(3 * var(--u));
+  display:grid;
+  grid-template-columns:auto calc(17 * var(--u)) minmax(0,1fr);
+  align-items:center;
+  gap:calc(3 * var(--u));
+  padding:0 calc(5 * var(--u));
+}
+.studio-student-name strong,.studio-date-field strong{font:bold calc(4.4 * var(--u))/1 Arial,sans-serif}
+.studio-start-hand{width:calc(17 * var(--u));height:calc(17 * var(--u));object-fit:contain}
+.studio-student-name span,.studio-date-field span{height:calc(13 * var(--u));border-bottom:1px solid #8b8087}
+.studio-sheet>header{border-bottom:1px solid #b9adb3;display:grid;align-content:center;gap:calc(1 * var(--u));padding-bottom:calc(1.5 * var(--u))}
+.studio-sheet>header strong{font-size:calc(4.7 * var(--u))}
+.studio-sheet>header span{font-size:calc(3 * var(--u));color:#62565d}
+.studio-sheet>main{padding:calc(2 * var(--u)) 0;min-height:0;overflow:hidden}
+.studio-sheet h2{font:bold calc(4.8 * var(--u))/1.15 Arial,sans-serif;text-align:center;margin:0 0 calc(4 * var(--u))}
+.studio-sheet p{font-size:calc(3.4 * var(--u));text-align:center}
+.studio-student-footer{width:100%;display:grid;grid-template-columns:7fr 3fr;border:1.5px solid #51454f;border-radius:calc(3 * var(--u));overflow:hidden}
+.studio-date-field{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:calc(3 * var(--u));padding:0 calc(5 * var(--u));border-right:1.5px solid #51454f}
+.studio-brand{display:flex;align-items:center;justify-content:center;gap:calc(2 * var(--u));font:bold calc(3.3 * var(--u))/1.05 Arial,sans-serif;text-align:center;padding:calc(1 * var(--u))}
+.studio-brand img{width:calc(17 * var(--u));height:calc(17 * var(--u));object-fit:contain}
+.studio-sheet main>h2{margin:calc(2 * var(--u)) 0}
+.studio-sheet .drawing-space{min-height:calc(18 * var(--u));height:auto;margin:calc(2.5 * var(--u))}
+.studio-sheet .number-trace{font-size:calc(19 * var(--u));margin:calc(2.5 * var(--u)) 0}
+.studio-sheet .number-exercises,.studio-sheet .shape-exercises{gap:calc(4.2 * var(--u));margin:calc(3 * var(--u)) 0}
+.studio-sheet .number-exercises>div,.studio-sheet .shape-exercises>div{min-height:calc(20 * var(--u));padding-bottom:calc(3 * var(--u))}
+.studio-sheet .letter-boxes.empty{margin-top:calc(2 * var(--u))}
+.studio-sheet .letter-boxes span{height:calc(19 * var(--u))}
+
+/* === CAMPOS ALUMNO V3 UNIFICADOS === */
+.studio-sheet{
+  padding:calc(5 * var(--u))!important;display:grid!important;
+  grid-template-rows:calc(17 * var(--u)) calc(25 * var(--u)) minmax(0,1fr) calc(25 * var(--u))!important;
+  gap:calc(2 * var(--u))!important;
+}
+.studio-sheet>header{
+  grid-row:1!important;min-height:0;margin:0!important;padding:0 0 calc(1.5 * var(--u))!important;
+  display:grid!important;grid-template-columns:1fr!important;align-content:center!important;gap:calc(.7 * var(--u))!important;
+  border-bottom:1px solid #b9adb3!important;
+}
+.studio-sheet>header strong{font-size:calc(4.5 * var(--u))!important;line-height:1}
+.studio-sheet>header span{grid-column:1!important;font-size:calc(2.9 * var(--u))!important;line-height:1.1}
+.studio-student-name{
+  grid-row:2!important;width:100%!important;border:1.5px solid #51454f!important;border-radius:calc(3 * var(--u))!important;
+  display:grid!important;grid-template-columns:auto calc(18 * var(--u)) minmax(0,1fr)!important;align-items:center!important;
+  gap:calc(3 * var(--u))!important;padding:0 calc(5 * var(--u))!important;
+}
+.studio-student-name strong,.studio-date-field strong{font:bold calc(4.6 * var(--u))/1 Arial,sans-serif!important}
+.studio-start-hand{width:calc(18 * var(--u))!important;height:calc(18 * var(--u))!important;object-fit:contain}
+.studio-student-name span,.studio-date-field span{height:calc(14 * var(--u))!important;border-bottom:1px solid #8b8087}
+.studio-sheet>main{grid-row:3!important;width:100%!important;min-width:0!important;min-height:0!important;padding:calc(2 * var(--u)) 0!important;overflow:hidden!important}
+.studio-date-full{
+  grid-row:4!important;width:100%!important;border:1.5px solid #51454f!important;border-radius:calc(3 * var(--u))!important;
+  display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;align-items:center!important;
+  gap:calc(3 * var(--u))!important;padding:0 calc(5 * var(--u))!important;
+}
+.studio-student-footer,.studio-brand{display:none!important}
+.studio-sheet .drawing-space{width:100%!important;max-width:none!important;margin:calc(3 * var(--u)) 0!important}
+.studio-sheet .letter-boxes.empty{
+  width:100%!important;max-width:none!important;margin:calc(3 * var(--u)) 0!important;padding:0!important;border:0!important;
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:calc(5 * var(--u))!important;
+}
+.studio-sheet .letter-boxes.empty span{width:100%!important;height:calc(27 * var(--u))!important}
+.studio-sheet .letter-hunt,.studio-sheet .copy-line,.studio-sheet .trace-name,.studio-sheet .footprint-path,
+.studio-sheet .shape-exercises,.studio-sheet .number-exercises,.studio-sheet .trace-exercises{
+  width:100%!important;max-width:none!important;
+}
+
+/* === APROVECHAR TODO EL ALTO V4 === */
+.studio-sheet>main{
+  height:100%!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-evenly!important;
+  align-items:stretch!important;
+  gap:calc(2.5 * var(--u))!important;
+  overflow:hidden!important;
+}
+.studio-sheet>main>h2,
+.studio-sheet>main>p{
+  flex:0 0 auto!important;
+  margin:calc(1.2 * var(--u)) 0!important;
+}
+.studio-sheet>main>.number-trace,
+.studio-sheet>main>.number-exercises,
+.studio-sheet>main>.shape-exercises,
+.studio-sheet>main>.trace-exercises,
+.studio-sheet>main>.letter-hunt,
+.studio-sheet>main>.letter-boxes,
+.studio-sheet>main>.drawing-space,
+.studio-sheet>main>.footprint-path,
+.studio-sheet>main>.dino-footprint-pair,
+.studio-sheet>main>.footprint-find,
+.studio-sheet>main>.count-footprints,
+.studio-sheet>main>.intruder-rows,
+.studio-sheet>main>.shadow-match,
+.studio-sheet>main>.visual-search,
+.studio-sheet>main>.classify-boxes,
+.studio-sheet>main>.classify-cutouts{
+  flex:1 1 0!important;
+  min-height:0!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+}
+.studio-sheet .number-exercises,
+.studio-sheet .shape-exercises,
+.studio-sheet .trace-exercises,
+.studio-sheet .count-footprints,
+.studio-sheet .intruder-rows{
+  align-content:space-evenly!important;
+}
+.studio-sheet .number-exercises>div,
+.studio-sheet .shape-exercises>div,
+.studio-sheet .count-footprints>div{
+  min-height:0!important;
+  height:auto!important;
+}
+.studio-sheet .trace-exercises{
+  display:grid!important;
+  grid-template-rows:repeat(4,minmax(0,1fr))!important;
+}
+.studio-sheet .trace-exercises svg{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+}
+.studio-sheet .drawing-space{
+  height:auto!important;
+  min-height:calc(34 * var(--u))!important;
+}
+.studio-sheet .letter-boxes.empty{
+  align-items:stretch!important;
+}
+.studio-sheet .letter-boxes.empty span{
+  height:100%!important;
+  min-height:calc(28 * var(--u))!important;
+}
+.studio-sheet .trace-name,
+.studio-sheet .copy-line,
+.studio-sheet .name-model,
+.studio-sheet .initial-letter{
+  flex:0 1 auto!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:calc(1.5 * var(--u)) 0!important;
+}
+
+/* === GENERADOR POLICUBOS V1 === */
+.poly-main{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:grid!important;
+  grid-template-rows:auto minmax(0,1fr)!important;
+  gap:calc(2 * var(--u))!important;
+  padding:0!important;
+  overflow:hidden!important;
+}
+.poly-title{text-align:center;flex:none!important;margin:0!important}
+.poly-title h2{margin:0!important;font:bold calc(5.1 * var(--u))/1.05 Arial,sans-serif!important}
+.poly-title p{margin:calc(1 * var(--u)) 0 0!important;font-size:calc(3 * var(--u))!important;line-height:1.15!important}
+.poly-grid{min-height:0;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(3 * var(--u))}
+.poly-count-4 .poly-grid{grid-template-rows:repeat(2,minmax(0,1fr))}
+.poly-count-6 .poly-grid{grid-template-rows:repeat(3,minmax(0,1fr))}
+.poly-count-8 .poly-grid{grid-template-rows:repeat(4,minmax(0,1fr));gap:calc(2 * var(--u))}
+.poly-card{
+  position:relative;min-width:0;min-height:0;overflow:hidden;border:1.3px solid #8f8188;
+  border-radius:calc(3 * var(--u));background:#fff;padding:calc(4 * var(--u));
+}
+.poly-card-number{
+  position:absolute;top:calc(2 * var(--u));left:calc(2 * var(--u));width:calc(8 * var(--u));height:calc(8 * var(--u));
+  border-radius:50%;display:grid;place-items:center;background:#f7d9e7;font:bold calc(3.7 * var(--u))/1 Arial,sans-serif;
+}
+.poly-cube{
+  --cube-size:calc(15 * var(--u));position:relative;display:inline-block;width:var(--cube-size);
+  height:calc(var(--cube-size) * .82);flex:0 0 auto;background:var(--cube-color);border:1.4px solid #202020;
+  border-radius:calc(.5 * var(--u));
+}
+.poly-cube::before{
+  content:"";position:absolute;left:27%;top:-21%;width:46%;height:22%;background:var(--cube-color);
+  border:1.4px solid #202020;border-bottom:0;border-radius:calc(.4 * var(--u)) calc(.4 * var(--u)) 0 0;
+}
+.poly-cube::after{
+  content:"";position:absolute;left:31%;top:23%;width:34%;aspect-ratio:1;border:1.4px solid #202020;
+  border-radius:50%;background:transparent;
+}
+.studio-bn .poly-cube,.studio-outline .poly-cube{--cube-color:#fff!important}
+.poly-tower-card{display:grid;align-items:center;padding-top:calc(11 * var(--u))}
+.poly-tower-targets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:calc(3 * var(--u));align-items:center;justify-items:center}
+.poly-tower-target{display:grid;justify-items:center;align-content:center;gap:calc(2 * var(--u))}
+.poly-tower-target strong{font:bold calc(7 * var(--u))/1 Arial,sans-serif}
+.poly-op-card{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:calc(3 * var(--u));align-items:center;padding-top:calc(11 * var(--u))}
+.poly-op-visual{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:calc(3 * var(--u))}
+.poly-op-visual>b,.poly-rest-visual>b{font:bold calc(7 * var(--u))/1 Arial,sans-serif}
+.poly-group{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:calc(1.2 * var(--u));min-width:0}
+.poly-rest-visual{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:calc(3 * var(--u))}
+.poly-rest-visual>div{display:flex;align-items:center;justify-content:center}
+.poly-equation{display:grid;grid-template-columns:1fr auto 1fr auto 1.2fr;align-items:center;gap:calc(2 * var(--u))}
+.poly-equation b{font:bold calc(6.5 * var(--u))/1 Arial,sans-serif}
+.poly-equation i{display:block;height:calc(14 * var(--u));border:1.6px solid #777;border-radius:calc(2 * var(--u));background:#fff}
+.poly-equation i.result{border-width:2px}
+.poly-count-4 .poly-cube{--cube-size:calc(18 * var(--u))}
+.poly-count-4 .poly-tower-target strong{font-size:calc(8 * var(--u))}
+.poly-count-4 .poly-card{padding:calc(5 * var(--u));padding-top:calc(12 * var(--u))}
+.poly-count-4 .poly-equation i{height:calc(17 * var(--u))}
+.poly-count-6 .poly-cube{--cube-size:calc(14 * var(--u))}
+.poly-count-6 .poly-card{padding:calc(3.5 * var(--u));padding-top:calc(10 * var(--u))}
+.poly-count-6 .poly-tower-target strong{font-size:calc(6.5 * var(--u))}
+.poly-count-6 .poly-equation i{height:calc(12 * var(--u))}
+.poly-count-8 .poly-title h2{font-size:calc(4.4 * var(--u))!important}
+.poly-count-8 .poly-title p{font-size:calc(2.55 * var(--u))!important}
+.poly-count-8 .poly-cube{--cube-size:calc(11 * var(--u))}
+.poly-count-8 .poly-card{padding:calc(2.5 * var(--u));padding-top:calc(8.5 * var(--u))}
+.poly-count-8 .poly-card-number{width:calc(6.5 * var(--u));height:calc(6.5 * var(--u));font-size:calc(3 * var(--u))}
+.poly-count-8 .poly-tower-targets{gap:calc(1.5 * var(--u))}
+.poly-count-8 .poly-tower-target{gap:calc(1 * var(--u))}
+.poly-count-8 .poly-tower-target strong{font-size:calc(5 * var(--u))}
+.poly-count-8 .poly-op-visual,.poly-count-8 .poly-rest-visual{gap:calc(1.5 * var(--u))}
+.poly-count-8 .poly-group{gap:calc(.7 * var(--u))}
+.poly-count-8 .poly-equation{gap:calc(1.2 * var(--u))}
+.poly-count-8 .poly-equation i{height:calc(9 * var(--u))}
+.poly-count-8 .poly-equation b,.poly-count-8 .poly-op-visual>b,.poly-count-8 .poly-rest-visual>b{font-size:calc(4.8 * var(--u))}
+
+/* === POLICUBOS V2: MAS ESPACIO Y OPERACIONES HORIZONTALES === */
+.poly-main{
+  grid-template-rows:auto minmax(0,1fr)!important;
+  gap:calc(1.2 * var(--u))!important;
+}
+.poly-title{margin:0!important;padding:0!important}
+.poly-title h2{margin:0!important;font-size:calc(4.2 * var(--u))!important;line-height:1!important}
+.poly-title p{margin:calc(.6 * var(--u)) 0 0!important;font-size:calc(2.6 * var(--u))!important;line-height:1.08!important}
+
+.poly-torres .poly-grid{height:100%!important;align-self:stretch!important}
+.poly-torres .poly-card{padding-top:calc(8 * var(--u))!important}
+.poly-torres.poly-count-4 .poly-card{padding-top:calc(9 * var(--u))!important}
+.poly-torres.poly-count-6 .poly-card{padding-top:calc(7 * var(--u))!important}
+.poly-torres.poly-count-8 .poly-card{padding-top:calc(6 * var(--u))!important}
+
+.poly-op-card{display:block!important;padding-top:calc(10 * var(--u))!important}
+.poly-math-layout{
+  width:100%;height:100%;min-height:0;display:grid;
+  grid-template-columns:minmax(0,1fr) calc(8 * var(--u)) minmax(0,1fr) calc(7 * var(--u)) minmax(calc(16 * var(--u)),.72fr);
+  gap:calc(1.6 * var(--u));align-items:stretch;
+}
+.poly-operand,.poly-result-column{
+  min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;
+  align-items:end;justify-items:stretch;gap:calc(2 * var(--u));
+}
+.poly-operand .poly-group{
+  width:100%;height:100%;min-height:0;align-content:center;justify-content:center;align-self:stretch;
+}
+.poly-number-box,.poly-result-box{
+  display:block;width:100%;height:calc(15 * var(--u));box-sizing:border-box;
+  border:1.6px solid #777;border-radius:calc(2 * var(--u));background:#fff;
+}
+.poly-result-box{width:82%;justify-self:center;border-width:2px}
+.poly-result-spacer{display:block;min-height:0}
+.poly-math-sign,.poly-math-equals{
+  align-self:end;justify-self:center;margin-bottom:calc(3.7 * var(--u));
+  font:bold calc(7 * var(--u))/1 Arial,sans-serif;
+}
+.poly-math-equals{width:100%;text-align:center}
+
+.poly-sumas.poly-count-4 .poly-math-layout,
+.poly-restas.poly-count-4 .poly-math-layout{
+  grid-template-columns:minmax(0,1fr) calc(9 * var(--u)) minmax(0,1fr) calc(8 * var(--u)) minmax(calc(18 * var(--u)),.72fr);
+  gap:calc(2.2 * var(--u));
+}
+.poly-sumas.poly-count-4 .poly-number-box,
+.poly-restas.poly-count-4 .poly-number-box,
+.poly-sumas.poly-count-4 .poly-result-box,
+.poly-restas.poly-count-4 .poly-result-box{height:calc(18 * var(--u))}
+
+.poly-sumas.poly-count-6 .poly-math-layout,
+.poly-restas.poly-count-6 .poly-math-layout{gap:calc(1.5 * var(--u))}
+.poly-sumas.poly-count-6 .poly-number-box,
+.poly-restas.poly-count-6 .poly-number-box,
+.poly-sumas.poly-count-6 .poly-result-box,
+.poly-restas.poly-count-6 .poly-result-box{height:calc(13 * var(--u))}
+
+/* 8 actividades: una sola columna de franjas horizontales */
+.poly-sumas.poly-count-8 .poly-grid,
+.poly-restas.poly-count-8 .poly-grid{
+  grid-template-columns:1fr!important;
+  grid-template-rows:repeat(8,minmax(0,1fr))!important;
+  gap:calc(1.4 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-card,
+.poly-restas.poly-count-8 .poly-card{
+  padding:calc(1.5 * var(--u)) calc(3 * var(--u))!important;
+  padding-left:calc(8.5 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-card-number,
+.poly-restas.poly-count-8 .poly-card-number{
+  top:50%!important;transform:translateY(-50%);
+  left:calc(1.2 * var(--u))!important;width:calc(6 * var(--u))!important;height:calc(6 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-math-layout,
+.poly-restas.poly-count-8 .poly-math-layout{
+  grid-template-columns:minmax(0,1fr) calc(6 * var(--u)) minmax(0,1fr) calc(5.5 * var(--u)) minmax(calc(13 * var(--u)),.58fr);
+  gap:calc(1 * var(--u));align-items:center;
+}
+.poly-sumas.poly-count-8 .poly-operand,
+.poly-restas.poly-count-8 .poly-operand,
+.poly-sumas.poly-count-8 .poly-result-column,
+.poly-restas.poly-count-8 .poly-result-column{
+  grid-template-rows:minmax(0,1fr) calc(8 * var(--u));gap:calc(.5 * var(--u));
+}
+.poly-sumas.poly-count-8 .poly-cube,
+.poly-restas.poly-count-8 .poly-cube{--cube-size:calc(9.5 * var(--u))!important}
+.poly-sumas.poly-count-8 .poly-group,
+.poly-restas.poly-count-8 .poly-group{flex-wrap:nowrap!important;gap:calc(.45 * var(--u))!important}
+.poly-sumas.poly-count-8 .poly-number-box,
+.poly-restas.poly-count-8 .poly-number-box,
+.poly-sumas.poly-count-8 .poly-result-box,
+.poly-restas.poly-count-8 .poly-result-box{
+  height:calc(8 * var(--u))!important;border-radius:calc(1.3 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-result-box,
+.poly-restas.poly-count-8 .poly-result-box{width:74%!important}
+.poly-sumas.poly-count-8 .poly-math-sign,
+.poly-restas.poly-count-8 .poly-math-sign,
+.poly-sumas.poly-count-8 .poly-math-equals,
+.poly-restas.poly-count-8 .poly-math-equals{
+  align-self:end!important;margin-bottom:calc(1.2 * var(--u))!important;font-size:calc(4.7 * var(--u))!important;
+}
+
+
+/* === POLICUBOS V3 · SUMAS Y RESTAS SIEMPRE EN TARJETAS VERTICALES === */
+
+/* Reducimos un poco el bloque de título para ganar zona útil arriba y abajo. */
+.poly-sumas .poly-main,
+.poly-restas .poly-main{
+  grid-template-rows:auto minmax(0,1fr)!important;
+  gap:calc(.9 * var(--u))!important;
+}
+.poly-sumas .poly-title,
+.poly-restas .poly-title{
+  margin:0!important;
+  padding:0!important;
+}
+.poly-sumas .poly-title h2,
+.poly-restas .poly-title h2{
+  margin:0!important;
+  font-size:calc(4.1 * var(--u))!important;
+  line-height:1!important;
+}
+.poly-sumas .poly-title p,
+.poly-restas .poly-title p{
+  margin:calc(.45 * var(--u)) 0 0!important;
+  font-size:calc(2.45 * var(--u))!important;
+  line-height:1.05!important;
+}
+
+/* Todas las composiciones quedan en rejilla de tarjetas verticales. */
+.poly-sumas .poly-grid,
+.poly-restas .poly-grid{
+  width:100%!important;
+  height:100%!important;
+  align-self:stretch!important;
+  align-content:stretch!important;
+  justify-content:stretch!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:calc(1.5 * var(--u)) calc(1.8 * var(--u))!important;
+}
+.poly-sumas.poly-count-4 .poly-grid,
+.poly-restas.poly-count-4 .poly-grid{
+  grid-template-rows:repeat(2,minmax(0,1fr))!important;
+}
+.poly-sumas.poly-count-6 .poly-grid,
+.poly-restas.poly-count-6 .poly-grid{
+  grid-template-rows:repeat(3,minmax(0,1fr))!important;
+}
+.poly-sumas.poly-count-8 .poly-grid,
+.poly-restas.poly-count-8 .poly-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(4,minmax(0,1fr))!important;
+  gap:calc(1.25 * var(--u)) calc(1.55 * var(--u))!important;
+}
+
+/* Más alto útil dentro de la tarjeta y menos desperdicio. */
+.poly-sumas .poly-card,
+.poly-restas .poly-card{
+  display:block!important;
+  padding:calc(8.2 * var(--u)) calc(2.8 * var(--u)) calc(2.2 * var(--u))!important;
+}
+.poly-sumas.poly-count-4 .poly-card,
+.poly-restas.poly-count-4 .poly-card{
+  padding:calc(9 * var(--u)) calc(3 * var(--u)) calc(2.5 * var(--u))!important;
+}
+.poly-sumas.poly-count-6 .poly-card,
+.poly-restas.poly-count-6 .poly-card{
+  padding:calc(8 * var(--u)) calc(2.8 * var(--u)) calc(2.2 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-card,
+.poly-restas.poly-count-8 .poly-card{
+  padding:calc(7.2 * var(--u)) calc(2.4 * var(--u)) calc(1.8 * var(--u))!important;
+}
+
+/* El número vuelve siempre a su sitio superior izquierdo (quitamos la versión horizontal). */
+.poly-sumas.poly-count-8 .poly-card-number,
+.poly-restas.poly-count-8 .poly-card-number{
+  top:calc(1.2 * var(--u))!important;
+  left:calc(1.2 * var(--u))!important;
+  transform:none!important;
+  width:calc(6 * var(--u))!important;
+  height:calc(6 * var(--u))!important;
+}
+
+/* Estructura vertical de operaciones: cubos arriba de su número, resultado estrecho. */
+.poly-sumas .poly-math-layout,
+.poly-restas .poly-math-layout{
+  width:100%;
+  height:100%;
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) calc(7.6 * var(--u)) minmax(0,1fr) calc(6.2 * var(--u)) minmax(calc(14 * var(--u)), .64fr)!important;
+  gap:calc(1.1 * var(--u));
+  align-items:stretch!important;
+}
+.poly-sumas .poly-operand,
+.poly-restas .poly-operand,
+.poly-sumas .poly-result-column,
+.poly-restas .poly-result-column{
+  min-width:0;
+  min-height:0;
+  display:grid;
+  grid-template-rows:minmax(0,1fr) auto;
+  align-items:end;
+  gap:calc(1.05 * var(--u))!important;
+}
+.poly-sumas .poly-operand .poly-group,
+.poly-restas .poly-operand .poly-group{
+  width:100%;
+  height:100%;
+  min-height:0;
+  align-content:center;
+  justify-content:center;
+  align-self:stretch;
+}
+.poly-sumas .poly-number-box,
+.poly-restas .poly-number-box,
+.poly-sumas .poly-result-box,
+.poly-restas .poly-result-box{
+  height:calc(12 * var(--u))!important;
+}
+.poly-sumas .poly-result-box,
+.poly-restas .poly-result-box{
+  width:72%!important;
+  justify-self:center;
+}
+.poly-sumas .poly-math-sign,
+.poly-restas .poly-math-sign,
+.poly-sumas .poly-math-equals,
+.poly-restas .poly-math-equals{
+  align-self:end!important;
+  justify-self:center!important;
+  margin-bottom:calc(2.2 * var(--u))!important;
+  font-size:calc(5.6 * var(--u))!important;
+}
+
+/* 4 tarjetas: muy amplias. */
+.poly-sumas.poly-count-4 .poly-math-layout,
+.poly-restas.poly-count-4 .poly-math-layout{
+  grid-template-columns:minmax(0,1fr) calc(8.2 * var(--u)) minmax(0,1fr) calc(6.8 * var(--u)) minmax(calc(16 * var(--u)), .67fr)!important;
+  gap:calc(1.35 * var(--u))!important;
+}
+.poly-sumas.poly-count-4 .poly-number-box,
+.poly-restas.poly-count-4 .poly-number-box,
+.poly-sumas.poly-count-4 .poly-result-box,
+.poly-restas.poly-count-4 .poly-result-box{
+  height:calc(14 * var(--u))!important;
+}
+
+/* 6 tarjetas: equilibrio. */
+.poly-sumas.poly-count-6 .poly-math-layout,
+.poly-restas.poly-count-6 .poly-math-layout{
+  grid-template-columns:minmax(0,1fr) calc(7.6 * var(--u)) minmax(0,1fr) calc(6.2 * var(--u)) minmax(calc(14 * var(--u)), .64fr)!important;
+  gap:calc(1.05 * var(--u))!important;
+}
+.poly-sumas.poly-count-6 .poly-number-box,
+.poly-restas.poly-count-6 .poly-number-box,
+.poly-sumas.poly-count-6 .poly-result-box,
+.poly-restas.poly-count-6 .poly-result-box{
+  height:calc(11.5 * var(--u))!important;
+}
+
+/* 8 tarjetas: siguen verticales, pero ligeramente más compactas. */
+.poly-sumas.poly-count-8 .poly-math-layout,
+.poly-restas.poly-count-8 .poly-math-layout{
+  grid-template-columns:minmax(0,1fr) calc(6.4 * var(--u)) minmax(0,1fr) calc(5.4 * var(--u)) minmax(calc(12 * var(--u)), .58fr)!important;
+  gap:calc(.8 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-operand,
+.poly-restas.poly-count-8 .poly-operand,
+.poly-sumas.poly-count-8 .poly-result-column,
+.poly-restas.poly-count-8 .poly-result-column{
+  gap:calc(.7 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-group,
+.poly-restas.poly-count-8 .poly-group{
+  gap:calc(.35 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-cube,
+.poly-restas.poly-count-8 .poly-cube{
+  --cube-size:calc(8.6 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-number-box,
+.poly-restas.poly-count-8 .poly-number-box,
+.poly-sumas.poly-count-8 .poly-result-box,
+.poly-restas.poly-count-8 .poly-result-box{
+  height:calc(8.8 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-math-sign,
+.poly-restas.poly-count-8 .poly-math-sign,
+.poly-sumas.poly-count-8 .poly-math-equals,
+.poly-restas.poly-count-8 .poly-math-equals{
+  margin-bottom:calc(1.5 * var(--u))!important;
+  font-size:calc(4.6 * var(--u))!important;
+}
+
+
+/* === POLICUBOS V4: TODAS LAS SUMAS Y RESTAS EN HORIZONTAL === */
+.poly-sumas .poly-grid,
+.poly-restas .poly-grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  width:100%!important;
+  height:100%!important;
+  align-content:stretch!important;
+  gap:calc(1.5 * var(--u))!important;
+}
+.poly-sumas.poly-count-4 .poly-grid,
+.poly-restas.poly-count-4 .poly-grid{grid-template-rows:repeat(4,minmax(0,1fr))!important}
+.poly-sumas.poly-count-6 .poly-grid,
+.poly-restas.poly-count-6 .poly-grid{grid-template-rows:repeat(6,minmax(0,1fr))!important;gap:calc(1.3 * var(--u))!important}
+.poly-sumas.poly-count-8 .poly-grid,
+.poly-restas.poly-count-8 .poly-grid{grid-template-rows:repeat(8,minmax(0,1fr))!important;gap:calc(1.1 * var(--u))!important}
+
+.poly-sumas .poly-title,
+.poly-restas .poly-title{margin:0!important;padding:0!important}
+.poly-sumas .poly-title h2,
+.poly-restas .poly-title h2{margin:0!important;font-size:calc(4 * var(--u))!important;line-height:1!important}
+.poly-sumas .poly-title p,
+.poly-restas .poly-title p{margin:calc(.35 * var(--u)) 0 0!important;font-size:calc(2.35 * var(--u))!important;line-height:1.05!important}
+
+.poly-sumas .poly-card,
+.poly-restas .poly-card{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  padding:calc(1.8 * var(--u)) calc(3 * var(--u)) calc(1.8 * var(--u)) calc(10 * var(--u))!important;
+}
+.poly-sumas .poly-card-number,
+.poly-restas .poly-card-number{
+  top:50%!important;
+  left:calc(1.5 * var(--u))!important;
+  transform:translateY(-50%)!important;
+  width:calc(6.5 * var(--u))!important;
+  height:calc(6.5 * var(--u))!important;
+  font-size:calc(3 * var(--u))!important;
+}
+
+.poly-sumas .poly-math-layout,
+.poly-restas .poly-math-layout{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) calc(7 * var(--u)) minmax(0,1fr) calc(6 * var(--u)) minmax(calc(14 * var(--u)),.55fr)!important;
+  gap:calc(1.2 * var(--u))!important;
+  align-items:stretch!important;
+}
+.poly-sumas .poly-operand,
+.poly-restas .poly-operand,
+.poly-sumas .poly-result-column,
+.poly-restas .poly-result-column{
+  display:grid!important;
+  grid-template-rows:minmax(0,1fr) auto!important;
+  min-width:0!important;
+  min-height:0!important;
+  align-items:end!important;
+  gap:calc(.7 * var(--u))!important;
+}
+.poly-sumas .poly-operand .poly-group,
+.poly-restas .poly-operand .poly-group{
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  justify-content:center!important;
+  align-items:center!important;
+  align-content:center!important;
+  gap:calc(.45 * var(--u))!important;
+}
+.poly-sumas .poly-number-box,
+.poly-restas .poly-number-box,
+.poly-sumas .poly-result-box,
+.poly-restas .poly-result-box{display:block!important;height:calc(8.5 * var(--u))!important;border-radius:calc(1.4 * var(--u))!important}
+.poly-sumas .poly-result-box,
+.poly-restas .poly-result-box{width:72%!important;justify-self:center!important}
+.poly-sumas .poly-math-sign,
+.poly-restas .poly-math-sign,
+.poly-sumas .poly-math-equals,
+.poly-restas .poly-math-equals{
+  align-self:end!important;
+  justify-self:center!important;
+  margin-bottom:calc(1.55 * var(--u))!important;
+  font-size:calc(4.8 * var(--u))!important;
+  line-height:1!important;
+}
+
+.poly-sumas.poly-count-4 .poly-card,
+.poly-restas.poly-count-4 .poly-card{padding-top:calc(2.6 * var(--u))!important;padding-bottom:calc(2.6 * var(--u))!important}
+.poly-sumas.poly-count-4 .poly-cube,
+.poly-restas.poly-count-4 .poly-cube{--cube-size:calc(13.5 * var(--u))!important}
+.poly-sumas.poly-count-4 .poly-number-box,
+.poly-restas.poly-count-4 .poly-number-box,
+.poly-sumas.poly-count-4 .poly-result-box,
+.poly-restas.poly-count-4 .poly-result-box{height:calc(11 * var(--u))!important}
+.poly-sumas.poly-count-4 .poly-math-sign,
+.poly-restas.poly-count-4 .poly-math-sign,
+.poly-sumas.poly-count-4 .poly-math-equals,
+.poly-restas.poly-count-4 .poly-math-equals{margin-bottom:calc(2.2 * var(--u))!important;font-size:calc(5.5 * var(--u))!important}
+
+.poly-sumas.poly-count-6 .poly-cube,
+.poly-restas.poly-count-6 .poly-cube{--cube-size:calc(11.2 * var(--u))!important}
+.poly-sumas.poly-count-6 .poly-number-box,
+.poly-restas.poly-count-6 .poly-number-box,
+.poly-sumas.poly-count-6 .poly-result-box,
+.poly-restas.poly-count-6 .poly-result-box{height:calc(9.5 * var(--u))!important}
+
+.poly-sumas.poly-count-8 .poly-card,
+.poly-restas.poly-count-8 .poly-card{padding-top:calc(1.2 * var(--u))!important;padding-bottom:calc(1.2 * var(--u))!important}
+.poly-sumas.poly-count-8 .poly-cube,
+.poly-restas.poly-count-8 .poly-cube{--cube-size:calc(8.8 * var(--u))!important}
+.poly-sumas.poly-count-8 .poly-number-box,
+.poly-restas.poly-count-8 .poly-number-box,
+.poly-sumas.poly-count-8 .poly-result-box,
+.poly-restas.poly-count-8 .poly-result-box{height:calc(7.3 * var(--u))!important}
+.poly-sumas.poly-count-8 .poly-math-sign,
+.poly-restas.poly-count-8 .poly-math-sign,
+.poly-sumas.poly-count-8 .poly-math-equals,
+.poly-restas.poly-count-8 .poly-math-equals{margin-bottom:calc(1.15 * var(--u))!important;font-size:calc(4.2 * var(--u))!important}
+
+.poly-sumas.poly-count-4 .poly-grid,
+.poly-sumas.poly-count-6 .poly-grid,
+.poly-sumas.poly-count-8 .poly-grid,
+.poly-restas.poly-count-4 .poly-grid,
+.poly-restas.poly-count-6 .poly-grid,
+.poly-restas.poly-count-8 .poly-grid{grid-template-columns:1fr!important}
+
+
+/* === POLICUBOS V5: EVITAR SOLAPE DEL NUMERO DE ACTIVIDAD === */
+/* Reservamos una franja real para el número de actividad. Así, incluso con 5 policubos,
+   el primer grupo nunca puede invadir el círculo 1/2/3/4... */
+.poly-sumas .poly-card,
+.poly-restas .poly-card{
+  padding-left:calc(13.5 * var(--u))!important;
+}
+.poly-sumas .poly-card-number,
+.poly-restas .poly-card-number{
+  left:calc(2 * var(--u))!important;
+  width:calc(5.8 * var(--u))!important;
+  height:calc(5.8 * var(--u))!important;
+  z-index:3!important;
+}
+.poly-sumas .poly-operand .poly-group,
+.poly-restas .poly-operand .poly-group{
+  box-sizing:border-box!important;
+  padding-inline:calc(.4 * var(--u))!important;
+}
+
+/* Con 8 ganamos un poco de ancho sin volver a acercarnos al número. */
+.poly-sumas.poly-count-8 .poly-card,
+.poly-restas.poly-count-8 .poly-card{
+  padding-left:calc(12.5 * var(--u))!important;
+}
+.poly-sumas.poly-count-8 .poly-card-number,
+.poly-restas.poly-count-8 .poly-card-number{
+  left:calc(1.8 * var(--u))!important;
+  width:calc(5.4 * var(--u))!important;
+  height:calc(5.4 * var(--u))!important;
+}
+
+/* === IMPRESION A4 CENTRADA V2 === */
+
+/* Vista de "Preparar impresión": centrada en la ventana, sin recortar FECHA. */
+body.studio-print-document{
+  width:100%!important;
+  min-width:100%!important;
+  height:auto!important;
+  min-height:100vh!important;
+  margin:0!important;
+  padding:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  background:#ece7e9!important;
+}
+.studio-print-document>.studio-print-tools{
+  width:100%!important;
+  flex:0 0 auto!important;
+}
+.studio-print-document>.studio-sheet{
+  flex:0 0 auto!important;
+  width:210mm!important;
+  min-width:210mm!important;
+  max-width:210mm!important;
+  height:auto!important;
+  min-height:297mm!important;
+  max-height:none!important;
+  margin:0 auto 28px!important;
+  overflow:visible!important;
+  box-sizing:border-box!important;
+}
+
+/* PDF / impresora */
+@media print{
+  @page{
+    size:A4 portrait;
+    margin:0;
+  }
+
+  html{
+    width:210mm!important;
+    margin:0!important;
+    padding:0!important;
+    background:#fff!important;
+  }
+
+  body.studio-print-document{
+    display:block!important;
+    width:210mm!important;
+    min-width:210mm!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    background:#fff!important;
+    overflow:visible!important;
+  }
+
+  .studio-print-tools{
+    display:none!important;
+  }
+
+  /*
+    Se imprime la ficha nativa de 210×297 mm al 94%.
+    Así caben NOMBRE + actividad + FECHA en una única página,
+    y al reducir ancho y alto a la vez quedan márgenes simétricos.
+  */
+  .studio-print-document>.studio-sheet{
+    width:210mm!important;
+    min-width:210mm!important;
+    max-width:210mm!important;
+    height:auto!important;
+    min-height:297mm!important;
+    max-height:none!important;
+
+    zoom:.94!important;
+
+    margin:4mm auto 0!important;
+    padding:10mm!important;
+    box-sizing:border-box!important;
+    overflow:visible!important;
+
+    break-inside:avoid!important;
+    page-break-inside:avoid!important;
+    break-after:avoid!important;
+    page-break-after:avoid!important;
+
+    -webkit-print-color-adjust:exact!important;
+    print-color-adjust:exact!important;
+  }
+
+  .studio-print-document>.studio-sheet>*,
+  .studio-print-document>.studio-sheet main,
+  .studio-print-document .poly-main,
+  .studio-print-document .poly-grid,
+  .studio-print-document .poly-card{
+    break-inside:avoid!important;
+    page-break-inside:avoid!important;
+  }
+
+  /* Nunca dejamos que FECHA fuerce un salto propio. */
+  .studio-print-document .studio-student-date,
+  .studio-print-document [class*="student-date"],
+  .studio-print-document [class*="date-field"],
+  .studio-print-document footer{
+    break-before:avoid!important;
+    page-break-before:avoid!important;
+    break-inside:avoid!important;
+    page-break-inside:avoid!important;
+  }
+}

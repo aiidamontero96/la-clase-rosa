@@ -1,8 +1,10 @@
 'use strict';
 (() => {
   const LOGIN_KEY = 'rosa-login-session-v1';
-  const LOGIN_USER = 'rosamve';
-  const LOGIN_PASSWORD = '2121';
+  const LOGIN_USERS = [
+    { user: 'rosamve', password: '2121' },
+    { user: 'veronicajb', password: '1234' }
+  ];
   const root = document.documentElement;
 
   function loginIsOpen() {
@@ -44,7 +46,8 @@
     const password = layer.querySelector('#rosa-login-password');
     form.addEventListener('submit', event => {
       event.preventDefault();
-      const ok = user.value.trim().toLocaleLowerCase('es-ES') === LOGIN_USER && password.value === LOGIN_PASSWORD;
+      const username = user.value.trim().toLocaleLowerCase('es-ES');
+      const ok = LOGIN_USERS.some(account => account.user === username && account.password === password.value);
       if (ok) {
         try { sessionStorage.setItem(LOGIN_KEY, 'ok'); } catch {}
         unlock();

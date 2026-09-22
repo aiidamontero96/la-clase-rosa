@@ -90,3 +90,38 @@ body{background:#fcf5f1 url('assets/fondo-aula.webp') repeat;background-size:750
   .top-brand-copy strong{font-size:1rem}
   .menu-button,.top-favorite{width:40px;height:40px;min-height:40px}
 }
+
+/* === HOVER PASTEL + CTA CREA TUS FICHAS V1 === */
+
+/* Hover general más suave: evita el azul marino que tapaba el contenido. */
+button:hover,
+.button:hover{
+  background:rgba(255,88,101,.13);
+  color:var(--dark);
+  border-color:rgba(166,41,93,.20);
+}
+
+.secondary:hover{
+  background:rgba(255,230,234,.62);
+  color:var(--dark);
+  border-color:rgba(166,41,93,.22);
+}
+
+.quiet:hover{
+  background:rgba(252,233,239,.62);
+}
+
+/* CTA de HOME: mismo tamaño y estructura, pero más reconocible. */
+.home-welcome-actions .home-create-sheets{
+  background:linear-gradient(135deg,#e8f8f1,#eef0ff);
+  color:#315b57;
+  border-color:#b9ddd1;
+  box-shadow:0 7px 18px rgba(49,91,87,.10);
+}
+.home-welcome-actions .home-create-sheets:hover{
+  background:linear-gradient(135deg,#dff4ea,#e5e8ff);
+  color:#284d49;
+  border-color:#9fcfc0;
+  box-shadow:0 9px 22px rgba(49,91,87,.13);
+  transform:translateY(-1px);
+}

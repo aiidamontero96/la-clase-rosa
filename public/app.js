@@ -38,11 +38,91 @@ const PATTERN_TYPES=['AB','AAB','ABB','ABC','AABB'];
 const PATTERN_THEMES={'Dinosaurios':['dino:trex','dino:triceratops','dino:stegosaurus'],'Animales':['🐱','🦆','🐰'],'Espacio':['⭐','🌙','☀️'],'Hojas':['🌿','🍂','🍃'],'Emociones':['🙂','😢','😮'],'Juguetes':['⚽','🚗','🧸'],'Formas':['shape:0','shape:1','shape:2'],'Colores':['color:0','color:1','color:2']};
 function tokenMarkup(token,ink='color'){if(token.startsWith('shape:'))return shape(Number(token.slice(6)));if(token.startsWith('color:'))return '<span class="shape circle '+['','blue','yellow'][Number(token.slice(6))]+'" role="img" aria-label="'+['rosa','azul','amarillo'][Number(token.slice(6))]+'"></span>';let src=token.startsWith('dino:')?'assets/dinos-pdi/'+token.slice(5)+'.webp':'assets/symbols/'+[...token].map(c=>c.codePointAt(0).toString(16)).join('-')+'.png';if(ink==='coloring')src=src.replace(/(\.[a-z0-9]+)$/i,'-outline$1');return '<img src="'+src+'" width="85" height="85" alt="'+E(token.startsWith('dino:')?token.slice(5):token)+'">';}
 function patternForRow(variant=0){return patternState.pattern==='MIX'?PATTERN_TYPES[variant%PATTERN_TYPES.length]:patternState.pattern;}
-function patternRowMarkup(task=patternState.task,variant=0,printable=false){const p=patternForRow(variant),items=PATTERN_THEMES[patternState.theme],len=printable?(patternState.count===4?6:8):Math.max(p.length*3,8),gapSets=len===6?[[1,4],[2,5],[1,3],[2,4]]:[[2,6],[1,5],[3,7],[2,6]],gaps=printable?gapSets[variant%4]:[2,5],shown=Math.min(len-2,Math.max(p.length*2,printable?4:p.length*2)),rowTask=patternState.pattern==='MIX'?'continuar':task;return '<div class="'+(printable?'pattern-print-row':'workshop-strip')+'">'+Array.from({length:len},(_,i)=>{const empty=rowTask==='copiar'?i>=p.length:rowTask==='falta'?gaps.includes(i):i>=shown;const token=items[(p[i%p.length].charCodeAt(0)-65+variant)%items.length];return '<div class="workshop-cell">'+(empty?'<span class="pattern-empty" aria-label="Espacio para completar"></span>':tokenMarkup(token,patternState.ink))+'</div>';}).join('')+'</div>';}
+const TASK_MIXES={
+  MIX_C_CU:['continuar','copiar'],
+  MIX_C_QF:['continuar','falta'],
+  MIX_CU_QF:['copiar','falta'],
+  MIX_ALL:['continuar','copiar','falta']
+};
+function taskForRow(variant=0){
+  const tasks=TASK_MIXES[patternState.task];
+  return tasks?tasks[variant%tasks.length]:patternState.task;
+}
+function isTaskMix(task=patternState.task){return Boolean(TASK_MIXES[task]);}
+function patternRowMarkup(task=patternState.task,variant=0,printable=false){
+  const p=patternForRow(variant),items=PATTERN_THEMES[patternState.theme];
+  const len=printable?(patternState.count===4?6:8):Math.max(p.length*3,8);
+  const gapSets=len===6?[[1,4],[2,5],[1,3],[2,4]]:[[2,6],[1,5],[3,7],[2,6]];
+  const gaps=printable?gapSets[variant%4]:[2,5];
+  const shown=Math.min(len-2,Math.max(p.length*2,printable?4:p.length*2));
+  const tasks=TASK_MIXES[task];
+  const rowTask=tasks?tasks[variant%tasks.length]:task;
+  return '<div class="'+(printable?'pattern-print-row':'workshop-strip')+'">'+Array.from({length:len},(_,i)=>{
+    const empty=rowTask==='copiar'?i>=p.length:rowTask==='falta'?gaps.includes(i):i>=shown;
+    const token=items[(p[i%p.length].charCodeAt(0)-65+variant)%items.length];
+    return '<div class="workshop-cell">'+(empty?'<span class="pattern-empty" aria-label="Espacio para completar"></span>':tokenMarkup(token,patternState.ink))+'</div>';
+  }).join('')+'</div>';
+}
 function patternMarkup(){return patternRowMarkup();}
-function patternSheetMarkup(){const task=patternState.pattern==='MIX'?'continuar':patternState.task,instruction={continuar:'Continúa la serie',copiar:'Copia la unidad',falta:'Encuentra lo que falta'}[task],patternItems=patternState.count===4?6:8,rows=Array.from({length:patternState.count},(_,i)=>'<section class="pattern-exercise"><h2>Serie '+(i+1)+' · '+instruction+(patternState.pattern==='MIX'?' · '+patternForRow(i):'')+'</h2>'+patternRowMarkup(task,i,true)+'</section>').join('');return '<section class="pattern-sheet pattern-'+patternState.ink+' pattern-count-'+patternState.count+'" style="--pattern-count:'+patternState.count+';--pattern-items:'+patternItems+'"><header><div><strong>La Clase Rosa · '+E(patternState.theme)+'</strong><span>'+(patternState.pattern==='MIX'?'MIX · Un patrón distinto en cada fila':'Patrón '+patternState.pattern)+' · '+({color:'Color',bn:'Blanco y negro',coloring:'Solo contorno'}[patternState.ink]||'Color')+'</span></div><p>Nombre: ____________________</p></header><div class="pattern-series-list">'+rows+'</div><footer>Infantil 4 años · Observa la unidad que se repite y completa los huecos.</footer></section>';}
-function patternWorkshop(){const mixed=patternState.pattern==='MIX';return '<details class="panel no-print pattern-workshop"'+(patternWorkshopOpen?' open':'')+' style="margin-bottom:22px"><summary class="pattern-workshop-summary"><span><strong>Taller de series</strong><small>Genera 4, 6 u 8 series grandes en un A4</small></span></summary><div class="pattern-workshop-body"><div class="workshop-controls"><label class="field">Patrón<select data-workshop="pattern">'+[...PATTERN_TYPES,'MIX'].map(p=>'<option value="'+p+'"'+(p===patternState.pattern?' selected':'')+'>'+(p==='MIX'?'MIX · Una serie de cada tipo':p)+'</option>').join('')+'</select></label><label class="field">Tema<select data-workshop="theme">'+Object.keys(PATTERN_THEMES).map(p=>'<option'+(p===patternState.theme?' selected':'')+'>'+p+'</option>').join('')+'</select></label><label class="field">Propuesta<select data-workshop="task"'+(mixed?' disabled aria-describedby="mix-help"':'')+'>'+[['continuar','Continuar'],['copiar','Copiar la unidad'],['falta','Encontrar lo que falta']].map(a=>'<option value="'+a[0]+'"'+((mixed?'continuar':patternState.task)===a[0]?' selected':'')+'>'+a[1]+'</option>').join('')+'</select></label><label class="field">Series por folio<select data-workshop="count">'+[4,6,8].map(n=>'<option value="'+n+'"'+(n===patternState.count?' selected':'')+'>'+n+'</option>').join('')+'</select></label><label class="field">Versión<select data-workshop="ink">'+[['color','Color'],['bn','Blanco y negro'],['coloring','Solo contorno']].map(option=>'<option value="'+option[0]+'"'+(option[0]===patternState.ink?' selected':'')+'>'+option[1]+'</option>').join('')+'</select></label>'+btn('Imprimir '+patternState.count+' series','pattern-print','','secondary pattern-print-button')+'</div><div id="pattern-example" class="pattern-a4-preview" aria-label="Vista previa A4 de la ficha">'+patternSheetMarkup()+'</div><p class="hint" id="mix-help">'+(mixed?'MIX alterna un patrón distinto en cada fila y siempre propone continuar la serie. ':'')+'La vista previa es la misma hoja que se imprimirá. Los huecos quedan totalmente blancos.</p></div></details>';}
-function printPattern(){const win=window.open('','_blank');if(!win){toast('Permite abrir la ventana de impresión y vuelve a intentarlo.');return;}win.document.open();win.document.write('<!doctype html><html lang="es"><head><base href="'+E(new URL('.',location.href).href)+'"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Series · La Clase Rosa</title><link rel="stylesheet" href="styles.css?rev=11"><link rel="stylesheet" href="refinements.css?rev=21"><style>@page{size:A4 portrait;margin:0}</style></head><body class="pattern-print-document"><div class="pattern-print-tools"><button onclick="window.print()">Imprimir / Guardar PDF</button><button class="secondary" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{history.back()}">← Volver a Matemáticas</button></div>'+patternSheetMarkup()+'</body></html>');win.document.close();}
+function patternNameField(){
+  return '<div class="pattern-student-name"><strong>NOMBRE</strong><img src="assets/brand/mano-inicio-nombre.png" alt="Empieza aquí" width="96" height="96"><span aria-hidden="true"></span></div>';
+}
+function patternDateField(){
+  return '<div class="pattern-date-field pattern-date-full"><strong>FECHA</strong><span aria-hidden="true"></span></div>';
+}
+function patternTaskLabel(task){
+  return {
+    continuar:'C · Continuar',
+    copiar:'CU · Copiar la unidad',
+    falta:'QF · Qué falta',
+    MIX_C_CU:'C + CU',
+    MIX_C_QF:'C + QF',
+    MIX_CU_QF:'CU + QF',
+    MIX_ALL:'C + CU + QF'
+  }[task]||task;
+}
+function patternSheetMarkup(){
+  const instruction={continuar:'Continúa la serie',copiar:'Copia la unidad',falta:'Encuentra lo que falta'};
+  const patternItems=patternState.count===4?6:8;
+  const rows=Array.from({length:patternState.count},(_,i)=>{
+    const rowTask=taskForRow(i);
+    return '<section class="pattern-exercise"><h2>Serie '+(i+1)+' · '+instruction[rowTask]+(patternState.pattern==='MIX'?' · '+patternForRow(i):'')+'</h2>'+patternRowMarkup(patternState.task,i,true)+'</section>';
+  }).join('');
+  const patternInfo=patternState.pattern==='MIX'?'MIX · AB · AAB · ABB · ABC · AABB':'Patrón '+patternState.pattern;
+  const ink={color:'Color',bn:'Blanco y negro',coloring:'Solo contorno'}[patternState.ink]||'Color';
+  return '<section class="pattern-sheet pattern-'+patternState.ink+' pattern-count-'+patternState.count+'" style="--pattern-count:'+patternState.count+';--pattern-items:'+patternItems+'">'+
+    '<header><strong>La Clase Rosa · '+E(patternState.theme)+'</strong><span>'+E(patternInfo+' · '+patternTaskLabel(patternState.task)+' · '+ink)+'</span></header>'+
+    patternNameField()+
+    '<div class="pattern-series-list">'+rows+'</div>'+
+    patternDateField()+
+    '</section>';
+}
+
+function patternWorkshop(){
+  const mixedPattern=patternState.pattern==='MIX',mixedTask=isTaskMix(patternState.task);
+  const taskOptions=[
+    ['continuar','C · Continuar'],
+    ['copiar','CU · Copiar la unidad'],
+    ['falta','QF · Qué falta'],
+    ['MIX_C_CU','C + CU'],
+    ['MIX_C_QF','C + QF'],
+    ['MIX_CU_QF','CU + QF'],
+    ['MIX_ALL','C + CU + QF']
+  ];
+  return '<details class="panel no-print pattern-workshop"'+(patternWorkshopOpen?' open':'')+' style="margin-bottom:22px"><summary class="pattern-workshop-summary"><span><strong>Taller de series</strong><small>Genera 4, 6 u 8 series grandes en un A4</small></span></summary><div class="pattern-workshop-body"><div class="workshop-controls">'+
+  '<label class="field">Patrón<select data-workshop="pattern">'+[...PATTERN_TYPES,'MIX'].map(p=>'<option value="'+p+'"'+(p===patternState.pattern?' selected':'')+'>'+(p==='MIX'?'MIX · AB, AAB, ABB, ABC y AABB':p)+'</option>').join('')+'</select></label>'+
+  '<label class="field">Tema<select data-workshop="theme">'+Object.keys(PATTERN_THEMES).map(p=>'<option'+(p===patternState.theme?' selected':'')+'>'+p+'</option>').join('')+'</select></label>'+
+  '<label class="field">Propuesta<select data-workshop="task">'+taskOptions.map(a=>'<option value="'+a[0]+'"'+(patternState.task===a[0]?' selected':'')+'>'+a[1]+'</option>').join('')+'</select></label>'+
+  '<label class="field">Series por folio<select data-workshop="count">'+[4,6,8].map(n=>'<option value="'+n+'"'+(n===patternState.count?' selected':'')+'>'+n+'</option>').join('')+'</select></label>'+
+  '<label class="field">Versión<select data-workshop="ink">'+[['color','Color'],['bn','Blanco y negro'],['coloring','Solo contorno']].map(option=>'<option value="'+option[0]+'"'+(option[0]===patternState.ink?' selected':'')+'>'+option[1]+'</option>').join('')+'</select></label>'+
+  btn('Imprimir '+patternState.count+' series','pattern-print','','secondary pattern-print-button')+
+  '</div><div id="pattern-example" class="pattern-a4-preview" aria-label="Vista previa A4 de la ficha">'+patternSheetMarkup()+'</div>'+
+  '<p class="hint" id="mix-help">Siglas: C = continuar, CU = copiar la unidad, QF = qué falta. '+
+    (mixedPattern?'El MIX de patrón alterna AB, AAB, ABB, ABC y AABB. ':'')+
+    (mixedTask?'La combinación elegida en Propuesta se reparte entre las filas. ':'')+
+    'Puedes combinar cualquier MIX de propuesta con el MIX de patrones.</p></div></details>';
+}
+function printPattern(){const win=window.open('','_blank');if(!win){toast('Permite abrir la ventana de impresión y vuelve a intentarlo.');return;}win.document.open();win.document.write('<!doctype html><html lang="es"><head><base href="'+E(new URL('.',location.href).href)+'"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Series · La Clase Rosa</title><link rel="stylesheet" href="styles.css?rev=11"><link rel="stylesheet" href="refinements.css?rev=23"><style>@page{size:A4 portrait;margin:0}</style></head><body class="pattern-print-document"><div class="pattern-print-tools"><button onclick="window.print()">Imprimir / Guardar PDF</button><button class="secondary" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{history.back()}">← Volver a Matemáticas</button></div>'+patternSheetMarkup()+'</body></html>');win.document.close();}
 document.addEventListener('toggle',event=>{if(event.target.matches?.('.pattern-workshop'))patternWorkshopOpen=event.target.open;},true);
 document.addEventListener('change',event=>{const key=event.target.dataset.workshop;if(key){patternWorkshopOpen=true;if(key==='count'){const count=Number(event.target.value);patternState.count=[4,6,8].includes(count)?count:6;}else patternState[key]=event.target.value;if(key==='ink')try{localStorage.setItem('rosa-ink',JSON.stringify(patternState.ink));}catch{}render();}});
 function persistFavorites(){try{localStorage.setItem('rosa-favorites-v2',JSON.stringify([...state.favorites]));}catch{toast('Guardado durante esta visita. El navegador no permite conservarlo al cerrar.');}}
@@ -72,7 +152,7 @@ function upcomingYearMoments(limit=3){
 }
 function home(){
  const date=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'}).toLocaleUpperCase('es-ES'),assembly=[['asistencia','🙋','¿Quién ha venido?'],['calendario','📅','Calendario'],['estacion','🍂','Estación y tiempo'],['emociones','🙂','Emociones'],['encargado','⭐','Encargados'],['numero','123','Número y letras']],upcoming=upcomingYearMoments();
- return '<section class="home-welcome"><div><span class="eyebrow">'+E(date)+'</span><h1>Tu aula, lista para hoy</h1><p>Elige, prepara y disfruta con tu clase.</p></div><div class="home-welcome-actions"><a class="button secondary" href="#hoy">✧ ¿Qué hago hoy?</a><a class="button secondary" href="#taller">✂ Crea tus fichas</a></div></section><section class="home-assembly panel"><div class="home-assembly-head"><div><span class="round-icon" aria-hidden="true">☀</span><div><span class="eyebrow">EMPEZAMOS EL DÍA</span><h2>Asamblea</h2><p>Las rutinas de cada mañana, en el orden que necesitas.</p></div></div><a class="button" href="#pdi">Ver toda la PDI</a></div><div class="home-assembly-grid">'+assembly.map((item,index)=>'<button type="button" class="assembly-home-step" data-action="routine" data-value="'+item[0]+'"><b>'+(index+1)+'</b><span aria-hidden="true">'+item[1]+'</span><strong>'+item[2]+'</strong></button>').join('')+'</div></section><section class="home-projects-section"><div class="heading-row"><h2>Proyectos del aula</h2><a href="#banco">Ver todos los recursos</a></div><div class="home-project-cards"><a class="home-project-card dino" href="#dinosaurios"><span class="eyebrow">PRIMER TRIMESTRE</span><h2>Entre huellas y dinosaurios</h2><p>Investigación, juego y nuestro museo de aula.</p><img src="assets/dinos-pdi/triceratops.webp" width="418" height="390" alt="Triceratops"></a><a class="home-project-card kusama" href="#kusama"><span class="eyebrow">TODO EL CURSO</span><h2>El mundo de Yayoi Kusama</h2><p>Arte, puntos, color y propuestas para crear.</p><img src="assets/kusama/kusama-sellos.webp" width="512" height="512" alt="Propuesta artística inspirada en Yayoi Kusama"></a></div></section><section class="home-course-section"><div class="heading-row"><h2>Durante el curso</h2><a href="#curso">Ver todo el curso</a></div><div class="home-course-cards">'+upcoming.map(item=>{const m=item.moment,label=item.date.toLocaleDateString('es-ES',{day:'numeric',month:'long'});return '<a class="home-course-card" href="#curso"><span class="home-course-icon" aria-hidden="true">'+m[1]+'</span><span><small>'+E(label)+'</small><strong>'+E(m[2])+'</strong><em>'+E(m[3])+'</em></span><b aria-hidden="true">›</b></a>';}).join('')+'</div></section>';
+ return '<section class="home-welcome"><div><span class="eyebrow">'+E(date)+'</span><h1>Tu aula, lista para hoy</h1><p>Elige, prepara y disfruta con tu clase.</p></div><div class="home-welcome-actions"><a class="button secondary" href="#hoy">✧ ¿Qué hago hoy?</a><a class="button secondary home-create-sheets" href="#taller">✂ Crea tus fichas</a></div></section><section class="home-assembly panel"><div class="home-assembly-head"><div><span class="round-icon" aria-hidden="true">☀</span><div><span class="eyebrow">EMPEZAMOS EL DÍA</span><h2>Asamblea</h2><p>Las rutinas de cada mañana, en el orden que necesitas.</p></div></div><a class="button" href="#pdi">Ver toda la PDI</a></div><div class="home-assembly-grid">'+assembly.map((item,index)=>'<button type="button" class="assembly-home-step" data-action="routine" data-value="'+item[0]+'"><b>'+(index+1)+'</b><span aria-hidden="true">'+item[1]+'</span><strong>'+item[2]+'</strong></button>').join('')+'</div></section><section class="home-projects-section"><div class="heading-row"><h2>Proyectos del aula</h2><a href="#banco">Ver todos los recursos</a></div><div class="home-project-cards"><a class="home-project-card dino" href="#dinosaurios"><span class="eyebrow">PRIMER TRIMESTRE</span><h2>Entre huellas y dinosaurios</h2><p>Investigación, juego y nuestro museo de aula.</p><img src="assets/dinos-pdi/triceratops.webp" width="418" height="390" alt="Triceratops"></a><a class="home-project-card kusama" href="#kusama"><span class="eyebrow">TODO EL CURSO</span><h2>El mundo de Yayoi Kusama</h2><p>Arte, puntos, color y propuestas para crear.</p><img src="assets/kusama/kusama-sellos.webp" width="512" height="512" alt="Propuesta artística inspirada en Yayoi Kusama"></a></div></section><section class="home-course-section"><div class="heading-row"><h2>Durante el curso</h2><a href="#curso">Ver todo el curso</a></div><div class="home-course-cards">'+upcoming.map(item=>{const m=item.moment,label=item.date.toLocaleDateString('es-ES',{day:'numeric',month:'long'});return '<a class="home-course-card" href="#curso"><span class="home-course-icon" aria-hidden="true">'+m[1]+'</span><span><small>'+E(label)+'</small><strong>'+E(m[2])+'</strong><em>'+E(m[3])+'</em></span><b aria-hidden="true">›</b></a>';}).join('')+'</div></section>';
 }
 function filterControl(label,id,options,value){return '<div class="field"><label for="'+id+'">'+label+'</label><select id="'+id+'" data-filter="'+id.replace('filter-','')+'">'+options.map(o=>'<option value="'+E(o[0])+'"'+(o[0]===value?' selected':'')+'>'+E(o[1])+'</option>').join('')+'</select></div>';}
 function resourceTypes(r){return [r.printable?'Imprimible':'Actividad',r.area==='Juegos'?'Juego':'',r.area==='Asamblea'?'Asamblea':'',r.type||''].filter(Boolean);}

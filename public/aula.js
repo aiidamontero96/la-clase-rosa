@@ -179,32 +179,79 @@ window.ROSA_AULA=(()=>{
 
   const printTypes=[['contar','1','Contar','Cuenta los dibujos y escribe cuántos hay.'],['memory','▦','Parejas','Recorta y busca las dos tarjetas iguales.'],['series','◈','Series','Descubre el patrón y completa los huecos.'],['tarjetas','A','Vocabulario','Observa el dibujo y descubre su nombre.']];
   const countTen=()=>ui.print.type==='contar'&&ui.print.max===10;
-  const pageCount=()=>Math.ceil(ui.print.count/(countTen()?3:({grande:4,mediana:6,pequena:12}[ui.print.size])));
+  const pageCount=()=>Math.ceil(ui.print.count/(countTen()?3:({grande:4,mediana:6,pequena:8}[ui.print.size])));
   function printSelect(label,key,values){return '<label class="field" for="print-'+key+'"><span>'+label+'</span><select id="print-'+key+'" data-print-setting="'+key+'">'+values.map(v=>'<option value="'+E(v[0])+'"'+(String(ui.print[key])===String(v[0])?' selected':'')+'>'+E(v[1])+'</option>').join('')+'</select></label>';}
   function printPreview(){
     ui.printPage=Math.max(0,Math.min(ui.printPage,pageCount()-1));
     return '<div class="preview-heading"><h2>Así quedará tu ficha</h2><span class="tag">A4 · '+({color:'Color',bn:'Blanco y negro',coloring:'Solo contorno'}[ui.print.ink]||'Color')+'</span></div><div class="custom-preview">'+PLAY.printSheets(ui.print,ui.printPage)+'</div><nav class="preview-pagination" aria-label="Páginas de tus fichas"><button type="button" class="secondary small" data-action="print-page" data-value="-1" aria-label="Ficha anterior"'+(ui.printPage===0?' disabled':'')+'>←</button><span role="status">Página '+(ui.printPage+1)+' de '+pageCount()+'</span><button type="button" class="secondary small" data-action="print-page" data-value="1" aria-label="Ficha siguiente"'+(ui.printPage===pageCount()-1?' disabled':'')+'>→</button></nav>';
   }
   function workshop(){
-    const tabs='<div class="creator-tabs" aria-label="Tipo de creador">'+btn('Fichas con propósito','workshop-tab','proposito','secondary '+(ui.workshopTab==='proposito'?'active':''))+btn('Tarjetas rápidas','workshop-tab','rapidas','secondary '+(ui.workshopTab==='rapidas'?'active':''))+'</div>';
-    if(ui.workshopTab==='proposito')return head('Crea tus fichas','Elige una propuesta, personalízala y comprueba la hoja antes de imprimir.')+tabs+'<p class="creator-series-link"><a href="#matematicas">Crear series · 4, 6 u 8 filas por A4 →</a></p>'+window.ROSA_SHEETS.panel();
-    return head('Crea tus fichas','Elige una propuesta, personalízala y comprueba la hoja antes de imprimir.')+tabs+
-      '<div class="custom-workshop"><section class="panel custom-controls" aria-label="Personaliza tus fichas">'+
-      '<fieldset class="print-type-field"><legend><span class="workshop-step">1</span> ¿Qué vais a practicar?</legend><div class="print-type-grid">'+printTypes.map(t=>'<button type="button" class="print-type" id="print-type-'+t[0]+'" data-action="print-type" data-value="'+t[0]+'" aria-pressed="'+(ui.print.type===t[0])+'"><span aria-hidden="true">'+t[1]+'</span>'+t[2]+'</button>').join('')+'</div><p class="hint print-type-hint">'+printTypes.find(t=>t[0]===ui.print.type)[3]+'</p></fieldset>'+
-      '<fieldset><legend><span class="workshop-step">2</span> Elige los detalles</legend><div class="print-fields">'+
-      printSelect('Tema de los dibujos','theme',['Números','Formas','Animales','Naturaleza','Emociones','Dinosaurios'].map(v=>[v,v]))+
-      printSelect(ui.print.type==='memory'?'Parejas para encontrar':'Tarjetas en total','count',ui.print.type==='memory'?[[4,'2 parejas · 4 tarjetas'],[6,'3 parejas · 6 tarjetas'],[12,'6 parejas · 12 tarjetas']]:[[4,'4 tarjetas'],[6,'6 tarjetas'],[12,'12 tarjetas']])+
-      (ui.print.type==='contar'?printSelect('Contamos hasta el…','max',[[3,'3 · Primeros pasos'],[6,'6 · Practicamos'],[10,'10 · Un reto más']]):'')+
-      (ui.print.type==='series'?printSelect('Patrón que se repite','pattern',[['AB','AB · Dos dibujos'],['AAB','AAB · Uno se repite'],['ABC','ABC · Tres dibujos']]):'')+
-      '</div>'+btn('↻ Otros dibujos','print-shuffle','','secondary small')+'</fieldset>'+
-      '<fieldset><legend><span class="workshop-step">3</span> Prepara el papel</legend><div class="print-fields">'+
-      (countTen()?'<div class="count-ten-note"><strong>Reto hasta 10</strong><span>3 tarjetas horizontales por hoja, con 10 dibujos en cada una.</span></div>':printSelect('Tamaño de las tarjetas','size',[['grande','Grande · 4 por hoja'],['mediana','Mediano · 6 por hoja'],['pequena','Pequeño · 12 por hoja']]))+
-      printSelect('Impresión','ink',[['color','A todo color'],['bn','Blanco y negro'],['coloring','Solo contorno · para colorear']])+'</div></fieldset>'+
-      '<div class="workshop-print-action">'+btn('Preparar impresión / PDF','custom-print')+'<p class="hint">'+ui.print.count+' tarjetas en '+pageCount()+' '+(pageCount()===1?'hoja':'hojas')+'. Se imprimen todas las páginas.</p></div></section>'+
-      '<section id="print-preview-panel" class="custom-preview-wrap" aria-label="Vista previa de tus fichas">'+printPreview()+'</section></div>';
+    const active=ui.workshopTab==='rapidas'?'rapidas':'proposito';
+    const creatorHub=
+      '<section class="creator-hub" aria-labelledby="creator-hub-title">'+
+        '<div class="creator-hub-heading">'+
+          '<div><span class="eyebrow">ELIGE CÓMO QUIERES CREAR</span><h2 id="creator-hub-title">Dos formas de preparar tus fichas</h2><p>Las dos opciones están siempre visibles. Elige la que mejor encaje con lo que necesitas hoy.</p></div>'+
+          '<span class="creator-hub-badge">A4 · listo para imprimir</span>'+
+        '</div>'+
+        '<div class="creator-entry-grid" role="group" aria-label="Tipos de generador">'+
+          '<button type="button" class="creator-entry-card '+(active==='proposito'?'active':'')+'" data-action="workshop-tab" data-value="proposito" aria-pressed="'+(active==='proposito')+'">'+
+            '<span class="creator-entry-icon" aria-hidden="true">✎</span>'+
+            '<span class="creator-entry-copy">'+
+              '<span class="creator-entry-kicker">GENERADOR GUIADO</span>'+
+              '<strong>Fichas con propósito</strong>'+
+              '<small>Para trabajar un objetivo concreto con una ficha A4 completa y adaptada.</small>'+
+              '<span class="creator-entry-tags"><i>Números</i><i>Formas</i><i>Trazos</i><i>Nombre</i><i>Policubos</i></span>'+
+            '</span>'+
+            '<span class="creator-entry-cta">'+(active==='proposito'?'Abierto ahora':'Abrir generador')+' <b aria-hidden="true">→</b></span>'+
+          '</button>'+
+          '<button type="button" class="creator-entry-card creator-entry-quick '+(active==='rapidas'?'active':'')+'" data-action="workshop-tab" data-value="rapidas" aria-pressed="'+(active==='rapidas')+'">'+
+            '<span class="creator-entry-icon" aria-hidden="true">▦</span>'+
+            '<span class="creator-entry-copy">'+
+              '<span class="creator-entry-kicker">GENERADOR RÁPIDO</span>'+
+              '<strong>Tarjetas rápidas</strong>'+
+              '<small>Para crear varias tarjetas de una vez y ajustar tema, cantidad, tamaño e impresión.</small>'+
+              '<span class="creator-entry-tags"><i>Contar</i><i>Parejas</i><i>Series</i><i>Vocabulario</i></span>'+
+            '</span>'+
+            '<span class="creator-entry-cta">'+(active==='rapidas'?'Abierto ahora':'Abrir generador')+' <b aria-hidden="true">→</b></span>'+
+          '</button>'+
+        '</div>'+
+      '</section>';
+
+    const switcher=
+      '<nav class="creator-switcher" aria-label="Cambiar tipo de generador">'+
+        '<span class="creator-switcher-label">Estás creando:</span>'+
+        btn('Fichas con propósito','workshop-tab','proposito','creator-switch '+(active==='proposito'?'active':''))+
+        btn('Tarjetas rápidas','workshop-tab','rapidas','creator-switch '+(active==='rapidas'?'active':''))+
+      '</nav>';
+
+    const intro=head('Crea tus fichas','Dos generadores distintos, siempre visibles y organizados según lo que quieras preparar.');
+
+    if(active==='proposito')return intro+creatorHub+
+      '<div id="creator-workspace" class="creator-workspace-shell">'+switcher+
+        '<div class="creator-workspace-heading"><div><span class="eyebrow">FICHA A4 COMPLETA</span><h2>Fichas con propósito</h2><p>Elige qué quieres trabajar y configura una ficha completa pensada para Infantil.</p></div><a class="creator-series-shortcut" href="#matematicas">Series 4 · 6 · 8 →</a></div>'+
+        window.ROSA_SHEETS.panel()+
+      '</div>';
+
+    return intro+creatorHub+
+      '<div id="creator-workspace" class="creator-workspace-shell">'+switcher+
+        '<div class="creator-workspace-heading"><div><span class="eyebrow">CREACIÓN RÁPIDA</span><h2>Tarjetas rápidas</h2><p>Configura un lote de tarjetas y comprueba la hoja antes de imprimir.</p></div><span class="tag">Vista previa en directo</span></div>'+
+        '<div class="custom-workshop"><section class="panel custom-controls" aria-label="Personaliza tus fichas">'+
+        '<fieldset class="print-type-field"><legend><span class="workshop-step">1</span> ¿Qué vais a practicar?</legend><div class="print-type-grid">'+printTypes.map(t=>'<button type="button" class="print-type" id="print-type-'+t[0]+'" data-action="print-type" data-value="'+t[0]+'" aria-pressed="'+(ui.print.type===t[0])+'"><span aria-hidden="true">'+t[1]+'</span>'+t[2]+'</button>').join('')+'</div><p class="hint print-type-hint">'+printTypes.find(t=>t[0]===ui.print.type)[3]+'</p></fieldset>'+
+        '<fieldset><legend><span class="workshop-step">2</span> Elige los detalles</legend><div class="print-fields">'+
+        printSelect('Tema de los dibujos','theme',['Números','Formas','Animales','Naturaleza','Emociones','Dinosaurios'].map(v=>[v,v]))+
+        printSelect(ui.print.type==='memory'?'Parejas para encontrar':'Tarjetas en total','count',ui.print.type==='memory'?[[4,'2 parejas · 4 tarjetas'],[6,'3 parejas · 6 tarjetas'],[8,'4 parejas · 8 tarjetas']]:[[4,'4 tarjetas'],[6,'6 tarjetas'],[8,'8 tarjetas']])+
+        (ui.print.type==='contar'?printSelect('Contamos hasta el…','max',[[3,'3 · Primeros pasos'],[6,'6 · Practicamos'],[10,'10 · Un reto más']]):'')+
+        (ui.print.type==='series'?printSelect('Patrón que se repite','pattern',[['AB','AB · Dos dibujos'],['AAB','AAB · Uno se repite'],['ABC','ABC · Tres dibujos']]):'')+
+        '</div>'+btn('↻ Otros dibujos','print-shuffle','','secondary small')+'</fieldset>'+
+        '<fieldset><legend><span class="workshop-step">3</span> Prepara el papel</legend><div class="print-fields">'+
+        (countTen()?'<div class="count-ten-note"><strong>Reto hasta 10</strong><span>3 tarjetas horizontales por hoja, con 10 dibujos en cada una.</span></div>':printSelect('Tamaño de las tarjetas','size',[['grande','Grande · 4 por hoja'],['mediana','Mediano · 6 por hoja'],['pequena','Pequeño · 8 por hoja']]))+
+        printSelect('Impresión','ink',[['color','A todo color'],['bn','Blanco y negro'],['coloring','Solo contorno · para colorear']])+'</div></fieldset>'+
+        '<div class="workshop-print-action">'+btn('Preparar impresión / PDF','custom-print')+'<p class="hint">'+ui.print.count+' tarjetas en '+pageCount()+' '+(pageCount()===1?'hoja':'hojas')+'. Se imprimen todas las páginas.</p></div></section>'+
+        '<section id="print-preview-panel" class="custom-preview-wrap" aria-label="Vista previa de tus fichas">'+printPreview()+'</section></div>'+
+      '</div>';
   }
   function refreshPrint(focusId){render();if(focusId)$('#'+focusId)?.focus?.({preventScroll:true});}
-  function printHTML(){return '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="'+E(new URL('.',location.href).href)+'"><title>Mis fichas · La Clase Rosa</title><link rel="stylesheet" href="custom-print.css?rev=8"><style>@page{size:A4 portrait;margin:0}</style></head><body class="custom-print-document"><div class="print-document-tools"><div class="print-document-actions"><button id="custom-print-button" disabled onclick="window.print()">Imprimir / Guardar PDF</button><button class="print-back-button" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{history.back()}">← Volver a la app</button></div><p>A4 · Escala 100 % · Sin cabeceras ni pies del navegador</p></div><div class="print-pages-screen">'+PLAY.printSheets(ui.print)+'</div><script src="custom-print-ready.js?rev=6"></script></body></html>';}
+  function printHTML(){return '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="'+E(new URL('.',location.href).href)+'"><title>Mis fichas · La Clase Rosa</title><link rel="stylesheet" href="custom-print.css?rev=13"><style>@page{size:A4 portrait;margin:0}</style></head><body class="custom-print-document"><div class="print-document-tools"><div class="print-document-actions"><button id="custom-print-button" disabled onclick="window.print()">Imprimir / Guardar PDF</button><button class="print-back-button" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{history.back()}">← Volver a la app</button></div><p>A4 · Escala 100 % · Sin cabeceras ni pies del navegador</p></div><div class="print-pages-screen">'+PLAY.printSheets(ui.print)+'</div><script src="custom-print-ready.js?rev=6"></script></body></html>';}
   function openPrint(){const win=window.open('','_blank');if(!win){toast('Permite la ventana de impresión y vuelve a intentarlo.');return;}win.document.open();win.document.write(printHTML());win.document.close();}
   function change(t){if(window.ROSA_SHEETS.change(t))return true;if(['aula-level','projection-level'].includes(t.id)){void setLevel(t.value);return true;}if(t.id==='story-picker'){chooseStory(t.value);return true;}if(t.id==='surprise-type'){stopVoice();state.projection.surpriseType=t.value;state.projection.surpriseOpen=false;state.projection.surpriseRevealed=false;projectionRender();return true;}if(t.dataset.printSetting){const key=t.dataset.printSetting;if(key in ui.print){ui.print[key]=['count','max'].includes(key)?Number(t.value):t.value;ui.printPage=0;refreshPrint(t.id);}return true;}return false;}
   function handle(action,value,target){
