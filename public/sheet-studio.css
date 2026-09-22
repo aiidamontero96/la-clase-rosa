@@ -830,3 +830,849 @@ body.studio-print-document{
     page-break-inside:avoid!important;
   }
 }
+
+
+/* === FICHAS CON PROPÓSITO V6 · COLOR + LENGUAJE + VOCABULARIO + DINOS === */
+
+/* Color real en elementos que antes se quedaban negros. */
+.studio-color .worksheet-dots i{background:var(--dot-color)!important;border-color:#3d3a3c!important}
+.studio-bn .worksheet-dots i,
+.studio-outline .worksheet-dots i{background:#fff!important;border-color:#222!important}
+.studio-color .name-model{color:#a62d61}
+.studio-color .initial-letter{color:#f6b4ca;-webkit-text-stroke:1.2px #9a315c}
+.studio-color .letter-hunt span,
+.studio-color .letter-boxes span{background:#fff7fa;border-color:#d58aa8}
+.studio-color .letter-hunt span:nth-child(3n+2),
+.studio-color .letter-boxes span:nth-child(3n+2){background:#eef7ff;border-color:#82add0}
+.studio-color .letter-hunt span:nth-child(3n),
+.studio-color .letter-boxes span:nth-child(3n){background:#f2faef;border-color:#8dbd83}
+.studio-color .letter-hunt .target{background:#ffe7f0;border-color:#a62d61}
+.studio-bn .initial-letter,
+.studio-outline .initial-letter{color:#fff!important;-webkit-text-stroke:1.3px #333!important}
+.studio-bn .letter-hunt span,.studio-bn .letter-boxes span,
+.studio-outline .letter-hunt span,.studio-outline .letter-boxes span{background:#fff!important;border-color:#555!important}
+.studio-color .shape-exercises strong{border-color:#d4a0b5}
+.studio-color .number-exercises>div,
+.studio-color .shape-exercises>div{border-bottom-color:#d9b9c6}
+
+/* Chips de color para vocabulario/atención. */
+.vocab-color-chip{display:inline-block;width:calc(27 * var(--u));height:calc(27 * var(--u));border-radius:50%;border:2px solid #333}
+.vocab-color-chip.is-color{background:var(--chip)}
+.vocab-color-chip.is-outline{background:#fff}
+.studio-bn .vocab-color-chip,.studio-outline .vocab-color-chip{background:#fff!important;border-color:#222!important}
+
+/* LENGUAJE · letras y sílabas */
+.language-main{min-height:0;height:100%;overflow:hidden}
+.language-syllables{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:calc(2 * var(--u));padding:0!important}
+.lang-syllable-row{display:grid;grid-template-columns:calc(28 * var(--u)) minmax(0,1fr);align-items:center;gap:calc(5 * var(--u));border-bottom:1px solid #d7ccd1;padding:calc(2 * var(--u)) 0;min-height:0}
+.lang-source-letter{width:calc(24 * var(--u));height:calc(24 * var(--u));display:grid;place-items:center;border:2px solid #444;border-radius:50%;font:700 calc(15 * var(--u))/1 Arial,sans-serif}
+.studio-color .lang-source-letter{background:#ffe8f1;border-color:#b94f79;color:#8d2858}
+.lang-syllable-options{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:calc(1.5 * var(--u))}
+.lang-syllable-options>div{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:calc(.8 * var(--u));min-width:0}
+.lang-vowel{font:bold calc(7 * var(--u))/1 Arial,sans-serif}
+.lang-arrow{font-size:calc(4 * var(--u));color:#777}
+.lang-trace-syllable{font:bold calc(7.3 * var(--u))/1 Arial,sans-serif;color:#b7b1b4}
+.lang-write-circle{display:block;width:calc(13 * var(--u));height:calc(13 * var(--u));border:1.5px solid #555;border-radius:50%}
+
+/* LENGUAJE · contar sílabas */
+.lang-count-grid{display:grid;gap:calc(2 * var(--u));align-content:stretch;padding:0!important}
+.lang-count-grid.lang-count-4{grid-template-rows:repeat(4,minmax(0,1fr))}
+.lang-count-grid.lang-count-6{grid-template-rows:repeat(6,minmax(0,1fr))}
+.lang-count-grid.lang-count-8{grid-template-rows:repeat(8,minmax(0,1fr));gap:calc(1 * var(--u))}
+.lang-count-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:calc(4 * var(--u));padding:calc(2 * var(--u)) calc(4 * var(--u)) calc(2 * var(--u)) calc(11 * var(--u));border:1px solid #cfc4c9;border-radius:calc(2.2 * var(--u))}
+.lang-word-number{position:absolute;left:calc(2 * var(--u));top:50%;transform:translateY(-50%);width:calc(6 * var(--u));height:calc(6 * var(--u));display:grid;place-items:center;border-radius:50%;background:#f8dce7;font:bold calc(3 * var(--u))/1 Arial,sans-serif}
+.lang-count-card>strong{font:bold calc(6 * var(--u))/1 Arial,sans-serif;letter-spacing:calc(.4 * var(--u))}
+.lang-count-options{display:flex;gap:calc(2 * var(--u))}
+.lang-count-options span{width:calc(12 * var(--u));height:calc(12 * var(--u));display:grid;place-items:center;border:1.5px solid #444;border-radius:50%;font:bold calc(4.2 * var(--u))/1 Arial,sans-serif}
+.studio-color .lang-count-options span:nth-child(1){background:#fff0c9}
+.studio-color .lang-count-options span:nth-child(2){background:#e7f4ff}
+.studio-color .lang-count-options span:nth-child(3){background:#eaf7ec}
+.studio-color .lang-count-options span:nth-child(4){background:#fde8f0}
+.studio-bn .lang-count-options span,.studio-outline .lang-count-options span{background:#fff!important}
+
+/* LENGUAJE · completar palabras */
+.lang-word-grid{display:grid;gap:calc(2 * var(--u));align-content:stretch;padding:0!important}
+.lang-word-grid.lang-count-4{grid-template-rows:repeat(4,minmax(0,1fr))}
+.lang-word-grid.lang-count-6{grid-template-rows:repeat(6,minmax(0,1fr))}
+.lang-word-grid.lang-count-8{grid-template-rows:repeat(8,minmax(0,1fr));gap:calc(1 * var(--u))}
+.lang-word-card{position:relative;display:grid;grid-template-columns:calc(28 * var(--u)) minmax(0,1fr);align-items:center;gap:calc(5 * var(--u));padding:calc(1.5 * var(--u)) calc(3 * var(--u)) calc(1.5 * var(--u)) calc(10 * var(--u));border:1px solid #cec2c8;border-radius:calc(2.2 * var(--u));min-height:0}
+.lang-word-picture{width:calc(25 * var(--u));height:calc(25 * var(--u));object-fit:contain}
+.lang-word-card .lang-word-number{left:calc(1.5 * var(--u))}
+.lang-word-boxes{display:flex;align-items:center;gap:calc(1.3 * var(--u));min-width:0}
+.lang-word-boxes span{width:calc(14 * var(--u));height:calc(15 * var(--u));display:grid;place-items:center;border:1.6px solid #4b4548;border-radius:calc(1 * var(--u));font:bold calc(6 * var(--u))/1 Arial,sans-serif}
+.lang-word-boxes .blank{background:#fff}
+.studio-color .lang-word-boxes .given{background:#eaf8ef;border-color:#3b9b6b}
+.studio-color .lang-word-boxes .blank{border-color:#78b99a}
+.studio-bn .lang-word-boxes span,.studio-outline .lang-word-boxes span{background:#fff!important;border-color:#333!important}
+.lang-count-8 .lang-word-picture{width:calc(19 * var(--u));height:calc(19 * var(--u))}
+.lang-count-8.lang-word-grid .lang-word-card{grid-template-columns:calc(21 * var(--u)) minmax(0,1fr)}
+.lang-count-8 .lang-word-boxes span{width:calc(11 * var(--u));height:calc(12 * var(--u));font-size:calc(4.7 * var(--u))}
+
+/* DINOSAURIOS · une con flechas 4/6/8 */
+.dino-match-main{display:grid!important;grid-template-columns:minmax(0,1fr) calc(30 * var(--u)) minmax(0,1fr);gap:calc(3 * var(--u));height:100%;padding:0!important;align-items:stretch}
+.dino-match-column{display:grid;align-content:stretch;gap:calc(1.5 * var(--u));min-height:0}
+.dino-match-count-4 .dino-match-column{grid-template-rows:repeat(4,minmax(0,1fr))}
+.dino-match-count-6 .dino-match-column{grid-template-rows:repeat(6,minmax(0,1fr))}
+.dino-match-count-8 .dino-match-column{grid-template-rows:repeat(8,minmax(0,1fr));gap:calc(.8 * var(--u))}
+.dino-match-column article{position:relative;display:grid;place-items:center;min-height:0;border:1px solid #d0c4ca;border-radius:calc(2 * var(--u));padding:calc(1 * var(--u));overflow:hidden}
+.dino-match-dinos article{grid-template-columns:calc(8 * var(--u)) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}
+.dino-match-dinos article>span{grid-row:1/3;width:calc(6 * var(--u));height:calc(6 * var(--u));display:grid;place-items:center;border-radius:50%;background:#f8dce7;font:bold calc(3 * var(--u))/1 Arial,sans-serif}
+.dino-match-picture{width:calc(31 * var(--u));height:calc(27 * var(--u));object-fit:contain}
+.dino-match-dinos strong{font:bold calc(2.8 * var(--u))/1 Arial,sans-serif}
+.dino-match-footprint{width:calc(28 * var(--u))!important;height:calc(28 * var(--u))!important}
+.dino-match-channel{display:grid;place-items:center;position:relative;border-left:1px dashed #c8bbc1;border-right:1px dashed #c8bbc1}
+.dino-match-channel strong{writing-mode:vertical-rl;transform:rotate(180deg);font:bold calc(2.6 * var(--u))/1 Arial,sans-serif;color:#9a8f94;letter-spacing:calc(.5 * var(--u))}
+.dino-match-count-8 .dino-match-picture{width:calc(22 * var(--u));height:calc(19 * var(--u))}
+.dino-match-count-8 .dino-match-footprint{width:calc(20 * var(--u))!important;height:calc(20 * var(--u))!important}
+
+/* El modo contorno siempre vuelve a blanco + línea negra. */
+.studio-outline .worksheet-shape *{fill:none!important;stroke:#222!important}
+.studio-bn .worksheet-shape *{fill:none!important;stroke:#222!important}
+.studio-outline .lang-source-letter,
+.studio-bn .lang-source-letter{background:#fff!important;color:#111!important;border-color:#333!important}
+
+
+/* === FICHAS CON PROPÓSITO V9 · ESTRUCTURA ROBUSTA MATCH + FORMAS === */
+
+/* Los dos ejercicios de unir comparten una estructura por FILAS.
+   Esto evita los desbordamientos de las versiones anteriores. */
+.match-sheet{
+  display:grid!important;
+  grid-template-rows:auto minmax(0,1fr)!important;
+  gap:calc(2 * var(--u))!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+}
+.match-heading{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) calc(52 * var(--u)) minmax(0,1fr)!important;
+  align-items:end!important;
+  gap:calc(2 * var(--u))!important;
+  padding:0 calc(3 * var(--u)) calc(1.5 * var(--u))!important;
+  border-bottom:1px solid #ddd2d7!important;
+}
+.match-heading strong{
+  font:bold calc(3.3 * var(--u))/1 Arial,sans-serif!important;
+  color:#70646a!important;
+  text-align:center!important;
+}
+.match-list{
+  display:grid!important;
+  min-height:0!important;
+  height:100%!important;
+  gap:calc(1.5 * var(--u))!important;
+}
+.match-count-4 .match-list{grid-template-rows:repeat(4,minmax(0,1fr))!important}
+.match-count-5 .match-list{grid-template-rows:repeat(5,minmax(0,1fr))!important}
+.match-count-6 .match-list{grid-template-rows:repeat(6,minmax(0,1fr))!important}
+.match-count-8 .match-list{grid-template-rows:repeat(8,minmax(0,1fr))!important;gap:calc(.8 * var(--u))!important}
+.match-row{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) calc(52 * var(--u)) minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:calc(2 * var(--u))!important;
+  min-width:0!important;
+  min-height:0!important;
+}
+.match-draw-space{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  position:relative!important;
+}
+.match-draw-space::before,
+.match-draw-space::after{
+  content:""!important;
+  position:absolute!important;
+  top:50%!important;
+  width:calc(4 * var(--u))!important;
+  height:calc(4 * var(--u))!important;
+  border:1.3px solid #8f858a!important;
+  border-radius:50%!important;
+  transform:translateY(-50%)!important;
+}
+.match-draw-space::before{left:calc(1 * var(--u))!important}
+.match-draw-space::after{right:calc(1 * var(--u))!important}
+
+/* MAYÚSCULA / MINÚSCULA */
+.case-symbol{
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:flex!important;
+  align-items:center!important;
+  background:transparent!important;
+  border:0!important;
+  padding:0 calc(7 * var(--u))!important;
+}
+.case-upper-symbol{justify-content:flex-start!important}
+.case-lower-symbol{justify-content:flex-end!important}
+.case-symbol>span{
+  position:absolute!important;
+  left:calc(1 * var(--u))!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  width:calc(5.5 * var(--u))!important;
+  height:calc(5.5 * var(--u))!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:#f8dce7!important;
+  color:#77364f!important;
+  font:bold calc(2.7 * var(--u))/1 Arial,sans-serif!important;
+}
+.case-upper-symbol strong{
+  font:bold calc(14 * var(--u))/1 Arial,sans-serif!important;
+  color:#111!important;
+}
+.case-lower-symbol strong{
+  font:400 calc(14 * var(--u))/1 "Comic Sans MS","Trebuchet MS",cursive!important;
+  color:#111!important;
+}
+
+/* CUENTA LAS LETRAS: vuelve a ocupar TODO el alto útil. */
+.letter-count-sheet{
+  display:grid!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:0!important;
+  align-content:stretch!important;
+}
+.letter-count-4{grid-template-rows:repeat(4,minmax(0,1fr))!important;gap:calc(4 * var(--u))!important}
+.letter-count-6{grid-template-rows:repeat(6,minmax(0,1fr))!important;gap:calc(2 * var(--u))!important}
+.letter-count-8{grid-template-rows:repeat(8,minmax(0,1fr))!important;gap:calc(1 * var(--u))!important}
+.letter-count-card{
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:calc(5 * var(--u))!important;
+  padding:calc(2 * var(--u)) calc(4 * var(--u)) calc(2 * var(--u)) calc(11 * var(--u))!important;
+  border:1.2px solid #d3c6cc!important;
+  border-radius:calc(2.5 * var(--u))!important;
+}
+.letter-count-card>strong{
+  font:bold calc(6.8 * var(--u))/1 Arial,sans-serif!important;
+  letter-spacing:calc(.3 * var(--u))!important;
+}
+.letter-count-options{
+  display:flex!important;
+  align-items:center!important;
+  gap:calc(2 * var(--u))!important;
+}
+.letter-count-options span{
+  width:calc(13 * var(--u))!important;
+  height:calc(13 * var(--u))!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1.4px solid #555!important;
+  border-radius:50%!important;
+  font:bold calc(4.5 * var(--u))/1 Arial,sans-serif!important;
+}
+.studio-color .letter-count-options span:nth-child(4n+1){background:#fff0c9!important}
+.studio-color .letter-count-options span:nth-child(4n+2){background:#e7f4ff!important}
+.studio-color .letter-count-options span:nth-child(4n+3){background:#eaf7ec!important}
+.studio-color .letter-count-options span:nth-child(4n){background:#fde8f0!important}
+.letter-count-4 .letter-count-card>strong{font-size:calc(8 * var(--u))!important}
+.letter-count-4 .letter-count-options span{width:calc(15 * var(--u))!important;height:calc(15 * var(--u))!important;font-size:calc(5.2 * var(--u))!important}
+.letter-count-8 .letter-count-card>strong{font-size:calc(5.4 * var(--u))!important}
+.letter-count-8 .letter-count-options span{width:calc(10 * var(--u))!important;height:calc(10 * var(--u))!important;font-size:calc(3.8 * var(--u))!important}
+
+/* DINOSAURIO / HUELLA: una fila vertical por pareja, igual que mayúscula/minúscula. */
+.dino-match-cell{
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:calc(.7 * var(--u))!important;
+  border:1.2px dashed #a99ba2!important;
+  border-radius:calc(2.5 * var(--u))!important;
+  background:#fff!important;
+  padding:calc(1 * var(--u)) calc(4 * var(--u))!important;
+  overflow:hidden!important;
+}
+.dino-match-number{
+  position:absolute!important;
+  left:calc(1.2 * var(--u))!important;
+  top:calc(1.2 * var(--u))!important;
+  width:calc(5.3 * var(--u))!important;
+  height:calc(5.3 * var(--u))!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:#f8dce7!important;
+  color:#77364f!important;
+  font:bold calc(2.6 * var(--u))/1 Arial,sans-serif!important;
+}
+.dino-match-picture{
+  width:calc(28 * var(--u))!important;
+  height:calc(21 * var(--u))!important;
+  object-fit:contain!important;
+}
+.dino-match-footprint{
+  width:calc(25 * var(--u))!important;
+  height:calc(25 * var(--u))!important;
+  object-fit:contain!important;
+}
+.dino-match-cell>strong{
+  font:bold calc(2.8 * var(--u))/1 Arial,sans-serif!important;
+  text-align:center!important;
+}
+.match-count-4 .dino-match-picture{width:calc(38 * var(--u))!important;height:calc(29 * var(--u))!important}
+.match-count-4 .dino-match-footprint{width:calc(33 * var(--u))!important;height:calc(33 * var(--u))!important}
+.match-count-8 .dino-match-picture{width:calc(20 * var(--u))!important;height:calc(15 * var(--u))!important}
+.match-count-8 .dino-match-footprint{width:calc(18 * var(--u))!important;height:calc(18 * var(--u))!important}
+.match-count-8 .dino-match-cell>strong{font-size:calc(2.2 * var(--u))!important}
+
+/* FORMAS: sólo reconocer + repasar. Se elimina "Continuar serie". */
+.shape-recognize-list{
+  display:grid!important;
+  grid-template-rows:repeat(4,minmax(0,1fr))!important;
+  gap:0!important;
+  height:calc(100% - 12 * var(--u))!important;
+  min-height:0!important;
+}
+.shape-recognize-row{
+  display:grid!important;
+  grid-template-columns:calc(22 * var(--u)) 1px minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:calc(4 * var(--u))!important;
+  min-width:0!important;
+  border-bottom:1px solid #edc0d1!important;
+  padding:calc(3 * var(--u)) 0!important;
+}
+.shape-model{
+  display:grid!important;
+  place-items:center!important;
+  width:100%!important;
+  height:100%!important;
+  border:0!important;
+  border-right:0!important;
+  padding:0!important;
+}
+.shape-model .worksheet-shape{
+  width:calc(18 * var(--u))!important;
+  height:calc(18 * var(--u))!important;
+}
+.shape-recognize-divider{
+  width:1px!important;
+  height:calc(20 * var(--u))!important;
+  background:#d78aa7!important;
+}
+.shape-candidates{
+  display:grid!important;
+  grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  align-items:center!important;
+  justify-items:center!important;
+  gap:calc(1.5 * var(--u))!important;
+  min-width:0!important;
+}
+.shape-candidates .worksheet-shape{
+  width:calc(17 * var(--u))!important;
+  height:calc(17 * var(--u))!important;
+}
+
+/* === FICHAS CON PROPÓSITO V11 · CALIGRAFÍA ESCOLAR TIPO RUBIO === */
+.case-match-sheet .match-heading{
+  grid-template-columns:minmax(0,1fr) calc(50 * var(--u)) minmax(0,1fr)!important;
+  padding:0 calc(5 * var(--u)) calc(2 * var(--u))!important;
+}
+.case-match-sheet .match-row{
+  grid-template-columns:minmax(0,1fr) calc(50 * var(--u)) minmax(0,1fr)!important;
+  gap:calc(1.8 * var(--u))!important;
+}
+.case-match-sheet .match-list{
+  gap:calc(1.1 * var(--u))!important;
+}
+.case-match-sheet .case-symbol{
+  justify-content:center!important;
+  align-items:center!important;
+  padding:0 calc(2 * var(--u))!important;
+}
+.case-match-sheet .case-upper-symbol,
+.case-match-sheet .case-lower-symbol{
+  justify-content:center!important;
+  align-items:center!important;
+}
+.case-match-sheet .case-symbol > span{
+  left:calc(.7 * var(--u))!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  width:calc(5.4 * var(--u))!important;
+  height:calc(5.4 * var(--u))!important;
+  font-size:calc(2.5 * var(--u))!important;
+}
+.case-match-sheet .case-upper-symbol strong,
+.case-match-sheet .case-lower-symbol strong{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:calc(12.5 * var(--u))!important;
+  text-align:center!important;
+}
+.case-match-sheet .case-upper-symbol strong{
+  font:700 calc(15.5 * var(--u))/1 Arial,sans-serif!important;
+  letter-spacing:calc(.15 * var(--u))!important;
+}
+.case-match-sheet .case-lower-symbol strong{
+  font:400 calc(14.2 * var(--u))/1.05 "Lucida Handwriting","Segoe Print","Bradley Hand","Comic Sans MS","Apple Chancery",cursive!important;
+  font-style:normal!important;
+  letter-spacing:0!important;
+  transform:translateY(calc(.15 * var(--u))) scaleX(.96)!important;
+}
+.case-match-sheet .match-draw-space{
+  min-height:calc(10.5 * var(--u))!important;
+}
+.case-match-sheet .match-draw-space::before,
+.case-match-sheet .match-draw-space::after{
+  width:calc(4.6 * var(--u))!important;
+  height:calc(4.6 * var(--u))!important;
+  border-width:1.6px!important;
+}
+.case-match-sheet.match-count-4 .match-list,
+.case-match-sheet.match-count-5 .match-list,
+.case-match-sheet.match-count-6 .match-list,
+.case-match-sheet.match-count-8 .match-list{
+  gap:calc(1.05 * var(--u))!important;
+}
+
+
+/* === FICHAS CON PROPÓSITO V12 · MOTOR DE LENGUAJE UNIFICADO === */
+.school-glyph{
+  width:calc(16 * var(--u));
+  height:calc(18 * var(--u));
+  overflow:visible;
+}
+.school-glyph path{
+  fill:none;
+  stroke:#171417;
+  stroke-width:3.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.school-glyph-fallback{font:bold calc(13 * var(--u))/1 serif}
+.case-lower-symbol .school-glyph{width:calc(18 * var(--u));height:calc(20 * var(--u))}
+.studio-bn .school-glyph path,.studio-outline .school-glyph path{stroke:#111}
+
+/* Tarjetas de lenguaje reutilizables 4/6/8 */
+.lang-mini-grid{
+  display:grid!important;
+  height:100%!important;
+  min-height:0!important;
+  align-content:stretch!important;
+  gap:calc(2 * var(--u))!important;
+}
+.lang-mini-grid.lang-count-4{grid-template-rows:repeat(4,minmax(0,1fr))}
+.lang-mini-grid.lang-count-6{grid-template-rows:repeat(6,minmax(0,1fr));gap:calc(1.3 * var(--u))!important}
+.lang-mini-grid.lang-count-8{grid-template-rows:repeat(8,minmax(0,1fr));gap:calc(.8 * var(--u))!important}
+.lang-mini-card{
+  display:grid;
+  grid-template-columns:calc(27 * var(--u)) minmax(0,1fr) auto;
+  align-items:center;
+  gap:calc(4 * var(--u));
+  min-height:0;
+  padding:calc(1.5 * var(--u)) calc(3 * var(--u));
+  border:1.2px solid #d3c7cc;
+  border-radius:calc(2.5 * var(--u));
+}
+.lang-mini-picture{width:calc(25 * var(--u));height:calc(25 * var(--u));object-fit:contain}
+.lang-mini-word{font:bold calc(5.6 * var(--u))/1 Arial,sans-serif}
+.lang-count-8 .lang-mini-picture{width:calc(18 * var(--u));height:calc(18 * var(--u))}
+.lang-count-8 .lang-mini-card{grid-template-columns:calc(20 * var(--u)) minmax(0,1fr) auto}
+.lang-count-8 .lang-mini-word{font-size:calc(4.4 * var(--u))}
+
+/* Completa vocal */
+.missing-vowel-word{display:flex;align-items:center;gap:calc(.8 * var(--u));font-size:calc(6 * var(--u))}
+.missing-vowel-word strong{font:bold calc(6 * var(--u))/1 Arial,sans-serif}
+.vowel-gap{width:calc(9 * var(--u));height:calc(10 * var(--u));border:1.6px solid #555;border-radius:calc(1.3 * var(--u));background:#fff}
+.vowel-choices,.letter-choice-row{display:flex;gap:calc(1.4 * var(--u))}
+.vowel-choices span,.letter-choice-row span{
+  width:calc(10 * var(--u));height:calc(10 * var(--u));
+  display:grid;place-items:center;border:1.4px solid #555;border-radius:50%;
+  font:bold calc(3.8 * var(--u))/1 Arial,sans-serif;background:#fff
+}
+.studio-color .vowel-choices span:nth-child(odd),
+.studio-color .letter-choice-row span:nth-child(odd){background:#fff0f5}
+
+/* Imagen ↔ palabra */
+.vocab-match-sheet{height:100%;min-height:0;padding:0!important}
+.vocab-match-list{display:grid;height:100%;gap:calc(1.5 * var(--u));min-height:0}
+.match-count-4 .vocab-match-list{grid-template-rows:repeat(4,minmax(0,1fr))}
+.match-count-6 .vocab-match-list{grid-template-rows:repeat(6,minmax(0,1fr))}
+.match-count-8 .vocab-match-list{grid-template-rows:repeat(8,minmax(0,1fr));gap:calc(.7 * var(--u))}
+.vocab-match-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) calc(52 * var(--u)) minmax(0,1fr);
+  align-items:center;gap:calc(2 * var(--u));min-height:0
+}
+.vocab-match-row>div{display:grid;place-items:center}
+.vocab-match-picture{width:calc(27 * var(--u));height:calc(27 * var(--u));object-fit:contain}
+.vocab-match-row>strong{text-align:center;font:bold calc(5 * var(--u))/1 Arial,sans-serif}
+
+/* Repaso de minúsculas escolares */
+.lowercase-trace-grid{
+  display:grid!important;
+  height:100%!important;
+  grid-template-rows:repeat(6,minmax(0,1fr));
+  gap:calc(1.5 * var(--u))!important;
+  min-height:0!important;
+}
+.lowercase-trace-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:calc(30 * var(--u)) calc(48 * var(--u)) minmax(0,1fr);
+  align-items:center;
+  gap:calc(4 * var(--u));
+  border-bottom:1px solid #e2d5da;
+}
+.lowercase-trace-card>span{
+  position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:calc(5.5 * var(--u));height:calc(5.5 * var(--u));
+  display:grid;place-items:center;border-radius:50%;background:#f8dce7;
+  font:bold calc(2.6 * var(--u))/1 Arial,sans-serif
+}
+.school-trace-model{display:grid;place-items:center}
+.school-trace-model .school-glyph{width:calc(25 * var(--u));height:calc(27 * var(--u))}
+.school-trace-copy{display:flex;align-items:center;justify-content:space-evenly;opacity:.28}
+.school-trace-copy .school-glyph{width:calc(20 * var(--u));height:calc(22 * var(--u))}
+.school-write-line{height:calc(17 * var(--u));border-bottom:1.5px dashed #777}
+
+/* Un mismo banco visual para Atención y Lenguaje */
+.vocab-color-chip{
+  display:inline-block;width:calc(27 * var(--u));height:calc(27 * var(--u));
+  border-radius:50%;border:2px solid #333;background:var(--chip)
+}
+.studio-bn .vocab-color-chip,.studio-outline .vocab-color-chip{background:#fff!important}
+
+
+
+/* === FICHAS CON PROPÓSITO V13 · CALIGRAFÍA ESCOLAR + AJUSTES LENGUAJE === */
+
+/* Referencia visual: Cursive Standard. El primer nombre permite usarla si
+   está instalada localmente; Playwrite ES es el fallback web estable. */
+.school-cursive-letter,
+.school-cursive-trace{
+  font-family:"Cursive Standard","Playwrite ES",cursive!important;
+  font-weight:400!important;
+  font-style:normal!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+  color:#111!important;
+}
+
+/* Mayúscula ↔ minúscula */
+.case-lower-symbol .school-cursive-letter{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:calc(18 * var(--u))!important;
+  font-size:calc(15.5 * var(--u))!important;
+  line-height:1!important;
+}
+.case-match-sheet .case-upper-symbol strong{
+  font-size:calc(15.5 * var(--u))!important;
+}
+.case-match-sheet .case-symbol{
+  align-items:center!important;
+  justify-content:center!important;
+}
+
+/* COMPLETA LA VOCAL · 4 tarjetas: usar de verdad todo el alto disponible */
+.lang-mini-grid.lang-count-4{
+  grid-template-rows:repeat(4,minmax(0,1fr))!important;
+  gap:calc(3.4 * var(--u))!important;
+  height:100%!important;
+  min-height:0!important;
+  align-content:stretch!important;
+}
+.lang-count-4 .lang-mini-card{
+  height:100%!important;
+  min-height:0!important;
+  grid-template-columns:calc(36 * var(--u)) minmax(0,1fr) auto!important;
+  gap:calc(5 * var(--u))!important;
+  padding:calc(3.2 * var(--u)) calc(4 * var(--u))!important;
+}
+.lang-count-4 .lang-mini-picture{
+  width:calc(33 * var(--u))!important;
+  height:calc(33 * var(--u))!important;
+}
+.lang-count-4 .missing-vowel-word strong{
+  font-size:calc(7.2 * var(--u))!important;
+}
+.lang-count-4 .vowel-gap{
+  width:calc(11.5 * var(--u))!important;
+  height:calc(12.5 * var(--u))!important;
+}
+.lang-count-4 .vowel-choices span,
+.lang-count-4 .letter-choice-row span{
+  width:calc(12.5 * var(--u))!important;
+  height:calc(12.5 * var(--u))!important;
+  font-size:calc(4.6 * var(--u))!important;
+}
+.lang-count-4 .vowel-choices,
+.lang-count-4 .letter-choice-row{
+  gap:calc(1.8 * var(--u))!important;
+}
+
+/* LETRA INICIAL / FINAL · la flecha forma parte de la palabra y señala
+   exactamente el extremo que se está trabajando. */
+.edge-letter-card{
+  grid-template-columns:calc(34 * var(--u)) minmax(0,1fr) auto!important;
+}
+.edge-word-cue{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:calc(1.3 * var(--u))!important;
+  min-width:0!important;
+}
+.edge-word-cue strong{
+  display:inline-flex!important;
+  align-items:baseline!important;
+  font:bold calc(6.2 * var(--u))/1 Arial,sans-serif!important;
+  letter-spacing:calc(.2 * var(--u))!important;
+  white-space:nowrap!important;
+}
+.edge-arrow{
+  display:inline-block!important;
+  font:bold calc(6.2 * var(--u))/1 Arial,sans-serif!important;
+  color:#8e365a!important;
+  transform:translateY(calc(-.15 * var(--u)))!important;
+}
+.edge-focus-letter{
+  font:inherit!important;
+  font-style:normal!important;
+  color:#a6295d!important;
+  border-bottom:calc(.7 * var(--u)) solid #f1b5cc!important;
+}
+.lang-count-4 .edge-word-cue strong,
+.lang-count-4 .edge-arrow{
+  font-size:calc(7.2 * var(--u))!important;
+}
+
+/* REPASO DE MINÚSCULAS con el mismo modelo escolar */
+.school-trace-model .school-cursive-trace{
+  display:inline-block!important;
+  font-size:calc(19 * var(--u))!important;
+  line-height:1!important;
+}
+.school-trace-copy .school-cursive-trace{
+  display:inline-block!important;
+  font-size:calc(16 * var(--u))!important;
+  line-height:1!important;
+}
+.school-trace-copy{
+  opacity:.28!important;
+}
+
+/* === V14 · ÚNICO SISTEMA DE MINÚSCULAS ESCOLARES ===
+   No usar font-family para letras pedagógicas en minúscula.
+   Usar siempre ROSA_SCHOOL_SCRIPT / .school-glyph. */
+.case-lower-symbol{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.case-lower-symbol .school-glyph{
+  width:calc(18 * var(--u))!important;
+  height:calc(20 * var(--u))!important;
+  color:#111!important;
+}
+.case-match-sheet .case-upper-symbol strong{
+  font-size:calc(15.5 * var(--u))!important;
+}
+.school-trace-model .school-glyph{
+  width:calc(25 * var(--u))!important;
+  height:calc(27 * var(--u))!important;
+  color:#111!important;
+}
+.school-trace-copy .school-glyph{
+  width:calc(20 * var(--u))!important;
+  height:calc(22 * var(--u))!important;
+  color:#bdbdbd!important;
+}
+.school-trace-copy{opacity:1!important}
+
+/* Neutraliza cualquier regla antigua basada en fuentes cursivas. */
+.school-cursive-letter,
+.school-cursive-trace{
+  font-family:inherit!important;
+}
+
+/* === V15 · Minúsculas escolares homogéneas con Cursive de DaFont === */
+.case-match-sheet .case-upper-symbol strong {
+  font-size: calc(15.2 * var(--u)) !important;
+}
+
+.case-lower-symbol,
+.school-trace-model,
+.school-trace-copy {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.case-lower-symbol .school-glyph,
+.case-lower-symbol .school-script-glyph,
+.case-lower-symbol .school-font-glyph {
+  font-size: calc(15.5 * var(--u)) !important;
+  min-width: calc(11 * var(--u)) !important;
+  min-height: calc(18 * var(--u)) !important;
+}
+
+.school-trace-model .school-glyph,
+.school-trace-model .school-script-glyph,
+.school-trace-model .school-font-glyph {
+  font-size: calc(20 * var(--u)) !important;
+  min-width: calc(15 * var(--u)) !important;
+  min-height: calc(22 * var(--u)) !important;
+}
+
+.school-trace-copy .school-glyph,
+.school-trace-copy .school-script-glyph,
+.school-trace-copy .school-font-glyph {
+  font-size: calc(16.5 * var(--u)) !important;
+  min-width: calc(12 * var(--u)) !important;
+  min-height: calc(18 * var(--u)) !important;
+  color: #bfbfbf !important;
+}
+
+/* === V16 · REPARACIÓN DEFINITIVA LENGUAJE === */
+.case-match-sheet .case-symbol{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;height:100%!important;min-height:0!important;padding:0 calc(3 * var(--u))!important;border:0!important;background:transparent!important}
+.case-match-sheet .case-upper-symbol>span{position:absolute!important;left:calc(.8 * var(--u))!important;top:50%!important;transform:translateY(-50%)!important;width:calc(5.2 * var(--u))!important;height:calc(5.2 * var(--u))!important;display:grid!important;place-items:center!important;border-radius:50%!important;background:#f8dce7!important;color:#77364f!important;font:bold calc(2.5 * var(--u))/1 Arial,sans-serif!important}
+.case-match-sheet .case-lower-symbol>span{position:static!important;transform:none!important;width:auto!important;height:auto!important;border-radius:0!important;background:transparent!important}
+.case-match-sheet .case-upper-symbol strong{font:bold calc(15.5 * var(--u))/1 Arial,sans-serif!important}
+.case-match-sheet .case-lower-symbol .school-glyph{width:calc(19 * var(--u))!important;height:calc(21 * var(--u))!important;color:#111!important}
+.lowercase-trace-grid{display:grid!important;grid-template-rows:repeat(6,minmax(0,1fr))!important;height:100%!important;min-height:0!important;gap:calc(1.5 * var(--u))!important}
+.lowercase-trace-card{position:relative!important;display:grid!important;grid-template-columns:calc(31 * var(--u)) calc(50 * var(--u)) minmax(0,1fr)!important;align-items:center!important;gap:calc(4 * var(--u))!important;min-height:0!important;border-bottom:1px solid #e2d5da!important}
+.lowercase-trace-card>span{position:absolute!important;left:0!important;top:50%!important;transform:translateY(-50%)!important;width:calc(5.5 * var(--u))!important;height:calc(5.5 * var(--u))!important;display:grid!important;place-items:center!important;border-radius:50%!important;background:#f8dce7!important;font:bold calc(2.6 * var(--u))/1 Arial,sans-serif!important}
+.school-trace-model,.school-trace-copy{display:flex!important;align-items:center!important;justify-content:center!important}.school-trace-model .school-glyph{width:calc(25 * var(--u))!important;height:calc(28 * var(--u))!important;color:#111!important}.school-trace-copy{justify-content:space-evenly!important;opacity:1!important}.school-trace-copy .school-glyph{width:calc(20 * var(--u))!important;height:calc(23 * var(--u))!important;color:#bdbdbd!important}
+.lang-word-grid.lang-count-4{display:grid!important;grid-template-rows:repeat(4,minmax(0,1fr))!important;height:100%!important;min-height:0!important;align-content:stretch!important;gap:calc(3 * var(--u))!important;padding:0!important}
+.lang-word-grid.lang-count-4 .lang-word-card{position:relative!important;display:grid!important;grid-template-columns:calc(38 * var(--u)) minmax(0,1fr)!important;align-items:center!important;justify-items:start!important;gap:calc(6 * var(--u))!important;width:100%!important;height:100%!important;min-height:0!important;padding:calc(3 * var(--u)) calc(5 * var(--u)) calc(3 * var(--u)) calc(10 * var(--u))!important;border:1.2px solid #d3c6cc!important;border-radius:calc(2.7 * var(--u))!important}
+.lang-word-grid.lang-count-4 .lang-word-picture{width:calc(35 * var(--u))!important;height:calc(35 * var(--u))!important;object-fit:contain!important}.lang-word-grid.lang-count-4 .lang-word-boxes{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:calc(1.5 * var(--u))!important;min-width:0!important}.lang-word-grid.lang-count-4 .lang-word-boxes span{width:calc(13.5 * var(--u))!important;height:calc(13.5 * var(--u))!important;display:grid!important;place-items:center!important;font:bold calc(5.5 * var(--u))/1 Arial,sans-serif!important}.lang-word-grid.lang-count-4 .lang-word-number{left:calc(2 * var(--u))!important;top:50%!important;transform:translateY(-50%)!important}
+.edge-letter-card{grid-template-columns:calc(34 * var(--u)) minmax(0,1fr) auto!important}.edge-word-cue{display:flex!important;align-items:center!important;justify-content:center!important;gap:calc(1.2 * var(--u))!important}.edge-word-cue strong,.edge-arrow{font:bold calc(6.4 * var(--u))/1 Arial,sans-serif!important}.lang-count-4 .edge-word-cue strong,.lang-count-4 .edge-arrow{font-size:calc(7.4 * var(--u))!important}.edge-arrow{color:#8e365a!important}.edge-focus-letter{font:inherit!important;font-style:normal!important;color:#a6295d!important;border-bottom:calc(.65 * var(--u)) solid #f1b5cc!important}
+
+/* === V17 · FUENTE ESCOLAR REAL ÚNICA === */
+
+/* UNE MAYÚSCULA / MINÚSCULA */
+.case-match-sheet .case-symbol{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  position:relative!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+}
+
+.case-match-sheet .case-upper-symbol>span{
+  position:absolute!important;
+  left:calc(1 * var(--u))!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  width:calc(5.5 * var(--u))!important;
+  height:calc(5.5 * var(--u))!important;
+  display:grid!important;
+  place-items:center!important;
+  background:#f8dce7!important;
+  border-radius:50%!important;
+  color:#77364f!important;
+  font:bold calc(2.5 * var(--u))/1 Arial,sans-serif!important;
+}
+
+.case-match-sheet .case-upper-symbol strong{
+  font:bold calc(15.5 * var(--u))/1 Arial,sans-serif!important;
+}
+
+.case-match-sheet .case-lower-symbol .rosa-school-letter{
+  font-size:calc(17.5 * var(--u))!important;
+  color:#111!important;
+  min-width:calc(18 * var(--u))!important;
+  min-height:calc(19 * var(--u))!important;
+}
+
+/* REPASA MINÚSCULAS: misma fuente que la ficha de unir. */
+.school-trace-model,
+.school-trace-copy{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+
+.school-trace-model .school-model-letter{
+  font-size:calc(20 * var(--u))!important;
+  color:#111!important;
+  min-width:calc(24 * var(--u))!important;
+}
+
+.school-trace-copy{
+  justify-content:space-evenly!important;
+  opacity:1!important;
+}
+
+.school-trace-copy .school-trace-letter{
+  font-size:calc(17 * var(--u))!important;
+  color:#bebebe!important;
+  min-width:calc(18 * var(--u))!important;
+}
+
+/* Neutraliza los SVG antiguos si sobreviven en CSS/HTML. */
+.case-lower-symbol svg.school-glyph,
+.school-trace-model svg.school-glyph,
+.school-trace-copy svg.school-glyph{
+  display:none!important;
+}
+
+/* COMPLETA PALABRAS · 4 TARJETAS: 4 filas iguales usando todo el alto. */
+.lang-word-grid.lang-count-4{
+  display:grid!important;
+  grid-template-rows:repeat(4,minmax(0,1fr))!important;
+  height:100%!important;
+  min-height:0!important;
+  align-content:stretch!important;
+  gap:calc(3 * var(--u))!important;
+  padding:0!important;
+}
+
+.lang-word-grid.lang-count-4 .lang-word-card{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:calc(40 * var(--u)) minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:calc(6 * var(--u))!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:calc(3 * var(--u)) calc(5 * var(--u)) calc(3 * var(--u)) calc(11 * var(--u))!important;
+}
+
+.lang-word-grid.lang-count-4 .lang-word-picture{
+  width:calc(37 * var(--u))!important;
+  height:calc(37 * var(--u))!important;
+  object-fit:contain!important;
+}
+
+.lang-word-grid.lang-count-4 .lang-word-boxes{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:calc(1.6 * var(--u))!important;
+}
+
+.lang-word-grid.lang-count-4 .lang-word-boxes span{
+  width:calc(14.5 * var(--u))!important;
+  height:calc(14.5 * var(--u))!important;
+  font-size:calc(5.5 * var(--u))!important;
+}

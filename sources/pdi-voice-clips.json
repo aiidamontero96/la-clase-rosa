@@ -60,10 +60,10 @@
     "spoken": "Nueve."
   },
   {
-    "key": "10",
-    "text": "10",
-    "file": "4a44dc15364204a8.mp3",
-    "spoken": "Diez."
+    "key": "22",
+    "text": "22",
+    "file": "785f3ec7eb32f30b.mp3",
+    "spoken": "Veintidós."
   },
   {
     "key": "de",
@@ -76,6 +76,12 @@
     "text": "26",
     "file": "5f9c4ab08cac7457.mp3",
     "spoken": "Veintiséis."
+  },
+  {
+    "key": "10",
+    "text": "10",
+    "file": "4a44dc15364204a8.mp3",
+    "spoken": "Diez."
   },
   {
     "key": "11",
@@ -142,12 +148,6 @@
     "text": "21",
     "file": "6f4b6612125fb3a0.mp3",
     "spoken": "Veintiuno."
-  },
-  {
-    "key": "22",
-    "text": "22",
-    "file": "785f3ec7eb32f30b.mp3",
-    "spoken": "Veintidós."
   },
   {
     "key": "23",
@@ -696,6 +696,12 @@
     "spoken": "PAN."
   },
   {
+    "key": "¡sí",
+    "text": "¡SÍ!",
+    "file": "141d6dc3d58d9fdf.mp3",
+    "spoken": "¡SÍ!"
+  },
+  {
     "key": "2026",
     "text": "2026",
     "file": "158a323a7ba44870.mp3",
@@ -804,6 +810,24 @@
     "spoken": "PATO."
   },
   {
+    "key": "gato",
+    "text": "GATO.",
+    "file": "d4e8973e04e657a4.mp3",
+    "spoken": "GATO."
+  },
+  {
+    "key": "rana",
+    "text": "RANA.",
+    "file": "90c5bc16cb06e34c.mp3",
+    "spoken": "RANA."
+  },
+  {
+    "key": "león",
+    "text": "LEÓN.",
+    "file": "3d3fe0a4f21f77d4.mp3",
+    "spoken": "LEÓN."
+  },
+  {
     "key": "lunes",
     "text": "lunes",
     "file": "6020ac9750897a26.mp3",
@@ -840,10 +864,40 @@
     "spoken": "Julio."
   },
   {
-    "key": "jueves",
-    "text": "jueves",
-    "file": "15b84102a789f8bd.mp3",
-    "spoken": "Jueves."
+    "key": "martes",
+    "text": "martes",
+    "file": "bd539dd597c55ad2.mp3",
+    "spoken": "Martes."
+  },
+  {
+    "key": "calma",
+    "text": "calma.",
+    "file": "be34736981449789.mp3",
+    "spoken": "Calma."
+  },
+  {
+    "key": "turno",
+    "text": "turno.",
+    "file": "dc453d0c729dd933.mp3",
+    "spoken": "Turno."
+  },
+  {
+    "key": "suave",
+    "text": "suave.",
+    "file": "fcddc483974db2b1.mp3",
+    "spoken": "Suave."
+  },
+  {
+    "key": "ritmo",
+    "text": "ritmo.",
+    "file": "eb47a6774fd0123a.mp3",
+    "spoken": "Ritmo."
+  },
+  {
+    "key": "serie",
+    "text": "serie.",
+    "file": "ba1a1f4aac477b11.mp3",
+    "spoken": "Serie."
   },
   {
     "key": "fósil",
@@ -870,6 +924,30 @@
     "spoken": "ABEJA."
   },
   {
+    "key": "ratón",
+    "text": "RATÓN.",
+    "file": "f77ada344ef48511.mp3",
+    "spoken": "RATÓN."
+  },
+  {
+    "key": "fresa",
+    "text": "FRESA.",
+    "file": "f3dfdc6944b88bfa.mp3",
+    "spoken": "FRESA."
+  },
+  {
+    "key": "perro",
+    "text": "PERRO.",
+    "file": "8fc9c94f022d84cf.mp3",
+    "spoken": "PERRO."
+  },
+  {
+    "key": "globo",
+    "text": "GLOBO.",
+    "file": "cb440cd852f8904b.mp3",
+    "spoken": "GLOBO."
+  },
+  {
     "key": "el sol",
     "text": "El sol",
     "file": "8e9bc28696760d13.mp3",
@@ -882,10 +960,10 @@
     "spoken": "Ciento."
   },
   {
-    "key": "martes",
-    "text": "martes",
-    "file": "bd539dd597c55ad2.mp3",
-    "spoken": "Martes."
+    "key": "jueves",
+    "text": "jueves",
+    "file": "15b84102a789f8bd.mp3",
+    "spoken": "Jueves."
   },
   {
     "key": "sábado",
@@ -898,6 +976,24 @@
     "text": "agosto",
     "file": "bd9ed22b98e52113.mp3",
     "spoken": "Agosto."
+  },
+  {
+    "key": "ayudar",
+    "text": "ayudar.",
+    "file": "95609bcf098c5dd6.mp3",
+    "spoken": "Ayudar."
+  },
+  {
+    "key": "equipo",
+    "text": "equipo.",
+    "file": "824d95ce2dcb0b88.mp3",
+    "spoken": "Equipo."
+  },
+  {
+    "key": "enorme",
+    "text": "enorme.",
+    "file": "0dd5e313c29a8e82.mp3",
+    "spoken": "Enorme."
   },
   {
     "key": "huella",
@@ -930,6 +1026,12 @@
     "spoken": "ZAPATO."
   },
   {
+    "key": "muñeco",
+    "text": "MUÑECO.",
+    "file": "30dd58da08651d0c.mp3",
+    "spoken": "MUÑECO."
+  },
+  {
     "key": "viernes",
     "text": "viernes",
     "file": "5b456b3ff1dbe99a.mp3",
@@ -952,6 +1054,30 @@
     "text": "octubre",
     "file": "785c07307d516098.mp3",
     "spoken": "Octubre."
+  },
+  {
+    "key": "amistad",
+    "text": "amistad.",
+    "file": "05878d591b296e1b.mp3",
+    "spoken": "Amistad."
+  },
+  {
+    "key": "alegría",
+    "text": "alegría.",
+    "file": "115ad0ee39739276.mp3",
+    "spoken": "Alegría."
+  },
+  {
+    "key": "respeto",
+    "text": "respeto.",
+    "file": "0e5ceb38d0a03d24.mp3",
+    "spoken": "Respeto."
+  },
+  {
+    "key": "redondo",
+    "text": "redondo.",
+    "file": "2ea56bd5b68c0a26.mp3",
+    "spoken": "Redondo."
   },
   {
     "key": "manzana",
@@ -988,6 +1114,42 @@
     "text": "El museo",
     "file": "db97babe899a76de.mp3",
     "spoken": "El museo."
+  },
+  {
+    "key": "escuchar",
+    "text": "escuchar.",
+    "file": "3ba5486a28f4fcf9.mp3",
+    "spoken": "Escuchar."
+  },
+  {
+    "key": "imaginar",
+    "text": "imaginar.",
+    "file": "ee111bfcc2fb98aa.mp3",
+    "spoken": "Imaginar."
+  },
+  {
+    "key": "pregunta",
+    "text": "pregunta.",
+    "file": "f480c3e5d39026e7.mp3",
+    "spoken": "Pregunta."
+  },
+  {
+    "key": "valiente",
+    "text": "valiente.",
+    "file": "dd4d62010a4cfc69.mp3",
+    "spoken": "Valiente."
+  },
+  {
+    "key": "diminuto",
+    "text": "diminuto.",
+    "file": "10210ecf6252cb5e.mp3",
+    "spoken": "Diminuto."
+  },
+  {
+    "key": "cantidad",
+    "text": "cantidad.",
+    "file": "a1106a7f26ddd00b.mp3",
+    "spoken": "Cantidad."
   },
   {
     "key": "elefante",
@@ -1050,6 +1212,30 @@
     "spoken": "Septiembre."
   },
   {
+    "key": "compartir",
+    "text": "compartir.",
+    "file": "24aa517bc52be2d4.mp3",
+    "spoken": "Compartir."
+  },
+  {
+    "key": "respuesta",
+    "text": "respuesta.",
+    "file": "9853528a46d3fc97.mp3",
+    "spoken": "Respuesta."
+  },
+  {
+    "key": "paciencia",
+    "text": "paciencia.",
+    "file": "20bc360e9603edb2.mp3",
+    "spoken": "Paciencia."
+  },
+  {
+    "key": "brillante",
+    "text": "brillante.",
+    "file": "992c812e2b307446.mp3",
+    "spoken": "Brillante."
+  },
+  {
     "key": "esqueleto",
     "text": "esqueleto.",
     "file": "91ca899bc54e6372.mp3",
@@ -1080,16 +1266,52 @@
     "spoken": "BICICLETA."
   },
   {
+    "key": "busca: pez",
+    "text": "BUSCA: PEZ",
+    "file": "4018f23cb3d48dfb.mp3",
+    "spoken": "BUSCA: PEZ."
+  },
+  {
     "key": "¡muy bien",
     "text": "¡Muy bien!",
     "file": "7cf30a296bcfecfe.mp3",
     "spoken": "¡Muy bien!"
   },
   {
+    "key": "¡es fósil",
+    "text": "¡ES FÓSIL!",
+    "file": "d64d6643b4390d2b.mp3",
+    "spoken": "¡ES FÓSIL!"
+  },
+  {
+    "key": "¡es garra",
+    "text": "¡ES GARRA!",
+    "file": "30d2fc8df18abe0d.mp3",
+    "spoken": "¡ES GARRA!"
+  },
+  {
+    "key": "¡es huevo",
+    "text": "¡ES HUEVO!",
+    "file": "33ae0a8092076796.mp3",
+    "spoken": "¡ES HUEVO!"
+  },
+  {
     "key": "diplodocus",
     "text": "Diplodocus.",
     "file": "e8ad52750e831e7f.mp3",
     "spoken": "Diplodocus."
+  },
+  {
+    "key": "curiosidad",
+    "text": "curiosidad.",
+    "file": "1111b79cf47d9a64.mp3",
+    "spoken": "Curiosidad."
+  },
+  {
+    "key": "equilibrio",
+    "text": "equilibrio.",
+    "file": "0e69737604daca38.mp3",
+    "spoken": "Equilibrio."
   },
   {
     "key": "dinosaurio",
@@ -1102,6 +1324,12 @@
     "text": "excavación.",
     "file": "5458f1c2086e945a.mp3",
     "spoken": "Excavación."
+  },
+  {
+    "key": "ictiosaurio",
+    "text": "Ictiosaurio",
+    "file": "7b2ad86ee4e5a216.mp3",
+    "spoken": "Ictiosaurio."
   },
   {
     "key": "las tijeras",
@@ -1122,6 +1350,24 @@
     "spoken": "Espinosaurio."
   },
   {
+    "key": "¡es cresta",
+    "text": "¡ES CRESTA!",
+    "file": "e231a2a51ff802ce.mp3",
+    "spoken": "¡ES CRESTA!"
+  },
+  {
+    "key": "¡es placas",
+    "text": "¡ES PLACAS!",
+    "file": "b5207f00830d044f.mp3",
+    "spoken": "¡ES PLACAS!"
+  },
+  {
+    "key": "¡es cuerno",
+    "text": "¡ES CUERNO!",
+    "file": "880b40fc0da81d22.mp3",
+    "spoken": "¡ES CUERNO!"
+  },
+  {
     "key": "triceratops",
     "text": "Triceratops.",
     "file": "ff2f0b10db1668f2.mp3",
@@ -1132,6 +1378,12 @@
     "text": "¿Qué usamos?",
     "file": "3aaa49ddeedb0512.mp3",
     "spoken": "¿Qué usamos?"
+  },
+  {
+    "key": "busca: pulpo",
+    "text": "BUSCA: PULPO",
+    "file": "4563801afe3873a9.mp3",
+    "spoken": "BUSCA: PULPO."
   },
   {
     "key": "un herbívoro",
@@ -1170,6 +1422,12 @@
     "spoken": "Espinosaurio."
   },
   {
+    "key": "transparente",
+    "text": "transparente.",
+    "file": "edfa361501e02cea.mp3",
+    "spoken": "Transparente."
+  },
+  {
     "key": "¿cuántas das",
     "text": "¿Cuántas das?",
     "file": "38ff9a19b547a943.mp3",
@@ -1182,6 +1440,18 @@
     "spoken": "¿Qué la abre?"
   },
   {
+    "key": "¿cuántos hay",
+    "text": "¿CUÁNTOS HAY?",
+    "file": "823fd138b713ab5a.mp3",
+    "spoken": "¿CUÁNTOS HAY?"
+  },
+  {
+    "key": "busca: delfín",
+    "text": "BUSCA: DELFÍN",
+    "file": "dc11af2db73b13a1.mp3",
+    "spoken": "BUSCA: DELFÍN."
+  },
+  {
     "key": "manos espejo",
     "text": "Manos espejo.",
     "file": "20520dfaef8fd447.mp3",
@@ -1192,6 +1462,12 @@
     "text": "Brachiosaurus",
     "file": "8b4529d73187e603.mp3",
     "spoken": "Braquiosaurio."
+  },
+  {
+    "key": "mira la serie",
+    "text": "MIRA LA SERIE.",
+    "file": "92defc53ba7b6a05.mp3",
+    "spoken": "MIRA LA SERIE."
   },
   {
     "key": "comía plantas",
@@ -1216,6 +1492,18 @@
     "text": "Parasaurolofo.",
     "file": "06c5a3ad870146b7.mp3",
     "spoken": "Parasaurolofo."
+  },
+  {
+    "key": "busca: tortuga",
+    "text": "BUSCA: TORTUGA",
+    "file": "4e6d08f3a11b034b.mp3",
+    "spoken": "BUSCA: TORTUGA."
+  },
+  {
+    "key": "busca: ballena",
+    "text": "BUSCA: BALLENA",
+    "file": "9a42123cf2a0d7eb.mp3",
+    "spoken": "BUSCA: BALLENA."
   },
   {
     "key": "caza del rojo",
@@ -1260,6 +1548,426 @@
     "spoken": "¡Buen trabajo!"
   },
   {
+    "key": "¡es herbívoro",
+    "text": "¡ES HERBÍVORO!",
+    "file": "7bb5e0c83ed4390c.mp3",
+    "spoken": "¡ES HERBÍVORO!"
+  },
+  {
+    "key": "¡es carnívoro",
+    "text": "¡ES CARNÍVORO!",
+    "file": "675d4fa9eddde41b.mp3",
+    "spoken": "¡ES CARNÍVORO!"
+  },
+  {
+    "key": "1 y 2 hacen 3",
+    "text": "1 Y 2 HACEN 3.",
+    "file": "b14cd31faa86f3fa.mp3",
+    "spoken": "Uno Y dos HACEN tres."
+  },
+  {
+    "key": "1 y 3 hacen 4",
+    "text": "1 Y 3 HACEN 4.",
+    "file": "01a3c63d1fabd776.mp3",
+    "spoken": "Uno Y tres HACEN cuatro."
+  },
+  {
+    "key": "2 y 3 hacen 5",
+    "text": "2 Y 3 HACEN 5.",
+    "file": "8ae325ec2c4e3fac.mp3",
+    "spoken": "Dos Y tres HACEN cinco."
+  },
+  {
+    "key": "2 y 1 hacen 3",
+    "text": "2 Y 1 HACEN 3.",
+    "file": "e7b43bbc6f36e3ca.mp3",
+    "spoken": "Dos Y uno HACEN tres."
+  },
+  {
+    "key": "3 y 1 hacen 4",
+    "text": "3 Y 1 HACEN 4.",
+    "file": "0dcee640387f14ba.mp3",
+    "spoken": "Tres Y uno HACEN cuatro."
+  },
+  {
+    "key": "3 y 2 hacen 5",
+    "text": "3 Y 2 HACEN 5.",
+    "file": "b0dd76c35b470486.mp3",
+    "spoken": "Tres Y dos HACEN cinco."
+  },
+  {
+    "key": "1 y 4 hacen 5",
+    "text": "1 Y 4 HACEN 5.",
+    "file": "7dc13aed6e588cc6.mp3",
+    "spoken": "Uno Y cuatro HACEN cinco."
+  },
+  {
+    "key": "4 y 1 hacen 5",
+    "text": "4 Y 1 HACEN 5.",
+    "file": "f8aeab8abe8b45cb.mp3",
+    "spoken": "Cuatro Y uno HACEN cinco."
+  },
+  {
+    "key": "2 y 4 hacen 6",
+    "text": "2 Y 4 HACEN 6.",
+    "file": "6cb529220add95ab.mp3",
+    "spoken": "Dos Y cuatro HACEN seis."
+  },
+  {
+    "key": "3 y 4 hacen 7",
+    "text": "3 Y 4 HACEN 7.",
+    "file": "f3fc411cb9382a2f.mp3",
+    "spoken": "Tres Y cuatro HACEN siete."
+  },
+  {
+    "key": "3 y 5 hacen 8",
+    "text": "3 Y 5 HACEN 8.",
+    "file": "059101ea845941a2.mp3",
+    "spoken": "Tres Y cinco HACEN ocho."
+  },
+  {
+    "key": "5 y 1 hacen 6",
+    "text": "5 Y 1 HACEN 6.",
+    "file": "098f3a367dc99ca5.mp3",
+    "spoken": "Cinco Y uno HACEN seis."
+  },
+  {
+    "key": "6 y 1 hacen 7",
+    "text": "6 Y 1 HACEN 7.",
+    "file": "2d54a5496fb02bc4.mp3",
+    "spoken": "Seis Y uno HACEN siete."
+  },
+  {
+    "key": "6 y 2 hacen 8",
+    "text": "6 Y 2 HACEN 8.",
+    "file": "e8e92c3859a37329.mp3",
+    "spoken": "Seis Y dos HACEN ocho."
+  },
+  {
+    "key": "3 y 3 hacen 6",
+    "text": "3 Y 3 HACEN 6.",
+    "file": "b86e456668c218c5.mp3",
+    "spoken": "Tres Y tres HACEN seis."
+  },
+  {
+    "key": "2 y 6 hacen 8",
+    "text": "2 Y 6 HACEN 8.",
+    "file": "f7101acc3f4c14cd.mp3",
+    "spoken": "Dos Y seis HACEN ocho."
+  },
+  {
+    "key": "1 y 5 hacen 6",
+    "text": "1 Y 5 HACEN 6.",
+    "file": "5ee24ccb9598e303.mp3",
+    "spoken": "Uno Y cinco HACEN seis."
+  },
+  {
+    "key": "5 y 3 hacen 8",
+    "text": "5 Y 3 HACEN 8.",
+    "file": "021061c4aec13377.mp3",
+    "spoken": "Cinco Y tres HACEN ocho."
+  },
+  {
+    "key": "4 y 2 hacen 6",
+    "text": "4 Y 2 HACEN 6.",
+    "file": "33cdfc736558aa1c.mp3",
+    "spoken": "Cuatro Y dos HACEN seis."
+  },
+  {
+    "key": "1 y 7 hacen 8",
+    "text": "1 Y 7 HACEN 8.",
+    "file": "3e516d75ec7bd76d.mp3",
+    "spoken": "Uno Y siete HACEN ocho."
+  },
+  {
+    "key": "4 y 4 hacen 8",
+    "text": "4 Y 4 HACEN 8.",
+    "file": "671c08915aec28c7.mp3",
+    "spoken": "Cuatro Y cuatro HACEN ocho."
+  },
+  {
+    "key": "7 y 1 hacen 8",
+    "text": "7 Y 1 HACEN 8.",
+    "file": "4bf70835531bc836.mp3",
+    "spoken": "Siete Y uno HACEN ocho."
+  },
+  {
+    "key": "4 y 5 hacen 9",
+    "text": "4 Y 5 HACEN 9.",
+    "file": "e9380d28d177b4bc.mp3",
+    "spoken": "Cuatro Y cinco HACEN nueve."
+  },
+  {
+    "key": "2 y 2 hacen 4",
+    "text": "2 Y 2 HACEN 4.",
+    "file": "855841b98dfbd0da.mp3",
+    "spoken": "Dos Y dos HACEN cuatro."
+  },
+  {
+    "key": "1 y 6 hacen 7",
+    "text": "1 Y 6 HACEN 7.",
+    "file": "14be55063ee9b6d5.mp3",
+    "spoken": "Uno Y seis HACEN siete."
+  },
+  {
+    "key": "8 y 1 hacen 9",
+    "text": "8 Y 1 HACEN 9.",
+    "file": "cd5963978e180c7c.mp3",
+    "spoken": "Ocho Y uno HACEN nueve."
+  },
+  {
+    "key": "5 y 2 hacen 7",
+    "text": "5 Y 2 HACEN 7.",
+    "file": "a81623201ca2a3b3.mp3",
+    "spoken": "Cinco Y dos HACEN siete."
+  },
+  {
+    "key": "2 y 7 hacen 9",
+    "text": "2 Y 7 HACEN 9.",
+    "file": "6fa1feb51a51522c.mp3",
+    "spoken": "Dos Y siete HACEN nueve."
+  },
+  {
+    "key": "4 y 3 hacen 7",
+    "text": "4 Y 3 HACEN 7.",
+    "file": "5d860a4ca74fd03c.mp3",
+    "spoken": "Cuatro Y tres HACEN siete."
+  },
+  {
+    "key": "1 y 8 hacen 9",
+    "text": "1 Y 8 HACEN 9.",
+    "file": "f33fe2f8923ed213.mp3",
+    "spoken": "Uno Y ocho HACEN nueve."
+  },
+  {
+    "key": "7 y 2 hacen 9",
+    "text": "7 Y 2 HACEN 9.",
+    "file": "60c0d48fe86e6125.mp3",
+    "spoken": "Siete Y dos HACEN nueve."
+  },
+  {
+    "key": "6 y 3 hacen 9",
+    "text": "6 Y 3 HACEN 9.",
+    "file": "c2614329c86f4c87.mp3",
+    "spoken": "Seis Y tres HACEN nueve."
+  },
+  {
+    "key": "3 y 6 hacen 9",
+    "text": "3 Y 6 HACEN 9.",
+    "file": "4fed50be5c17c1ba.mp3",
+    "spoken": "Tres Y seis HACEN nueve."
+  },
+  {
+    "key": "2 y 5 hacen 7",
+    "text": "2 Y 5 HACEN 7.",
+    "file": "e1e1c2d86fc4921a.mp3",
+    "spoken": "Dos Y cinco HACEN siete."
+  },
+  {
+    "key": "5 y 4 hacen 9",
+    "text": "5 Y 4 HACEN 9.",
+    "file": "4d56d44e9d78547b.mp3",
+    "spoken": "Cinco Y cuatro HACEN nueve."
+  },
+  {
+    "key": "ahora viene ⭐",
+    "text": "AHORA VIENE ⭐.",
+    "file": "05728c9b6c63378c.mp3",
+    "spoken": "AHORA VIENE ⭐."
+  },
+  {
+    "key": "1 más 1 son 2",
+    "text": "1 MÁS 1 SON 2.",
+    "file": "830a6f242da0c88e.mp3",
+    "spoken": "Uno MÁS uno SON dos."
+  },
+  {
+    "key": "1 más 2 son 3",
+    "text": "1 MÁS 2 SON 3.",
+    "file": "4d04ee9f1d1b01b6.mp3",
+    "spoken": "Uno MÁS dos SON tres."
+  },
+  {
+    "key": "1 más 3 son 4",
+    "text": "1 MÁS 3 SON 4.",
+    "file": "955231cee53803a5.mp3",
+    "spoken": "Uno MÁS tres SON cuatro."
+  },
+  {
+    "key": "1 más 4 son 5",
+    "text": "1 MÁS 4 SON 5.",
+    "file": "860119ad616741b8.mp3",
+    "spoken": "Uno MÁS cuatro SON cinco."
+  },
+  {
+    "key": "3 más 2 son 5",
+    "text": "3 MÁS 2 SON 5.",
+    "file": "fa7bbafa1410fea2.mp3",
+    "spoken": "Tres MÁS dos SON cinco."
+  },
+  {
+    "key": "5 más 3 son 8",
+    "text": "5 MÁS 3 SON 8.",
+    "file": "165db3d0b34b7086.mp3",
+    "spoken": "Cinco MÁS tres SON ocho."
+  },
+  {
+    "key": "2 más 4 son 6",
+    "text": "2 MÁS 4 SON 6.",
+    "file": "c011fe5a119c1347.mp3",
+    "spoken": "Dos MÁS cuatro SON seis."
+  },
+  {
+    "key": "4 más 1 son 5",
+    "text": "4 MÁS 1 SON 5.",
+    "file": "2eead8493107391d.mp3",
+    "spoken": "Cuatro MÁS uno SON cinco."
+  },
+  {
+    "key": "1 más 6 son 7",
+    "text": "1 MÁS 6 SON 7.",
+    "file": "21431e10f293ce07.mp3",
+    "spoken": "Uno MÁS seis SON siete."
+  },
+  {
+    "key": "5 más 2 son 7",
+    "text": "5 MÁS 2 SON 7.",
+    "file": "cdc68b81856a0d34.mp3",
+    "spoken": "Cinco MÁS dos SON siete."
+  },
+  {
+    "key": "2 más 3 son 5",
+    "text": "2 MÁS 3 SON 5.",
+    "file": "9e4446926c63139c.mp3",
+    "spoken": "Dos MÁS tres SON cinco."
+  },
+  {
+    "key": "4 más 2 son 6",
+    "text": "4 MÁS 2 SON 6.",
+    "file": "4ff483f97b8489ec.mp3",
+    "spoken": "Cuatro MÁS dos SON seis."
+  },
+  {
+    "key": "5 más 1 son 6",
+    "text": "5 MÁS 1 SON 6.",
+    "file": "62d24b700e366d97.mp3",
+    "spoken": "Cinco MÁS uno SON seis."
+  },
+  {
+    "key": "2 más 2 son 4",
+    "text": "2 MÁS 2 SON 4.",
+    "file": "a0c7b1884e7dcf88.mp3",
+    "spoken": "Dos MÁS dos SON cuatro."
+  },
+  {
+    "key": "4 más 3 son 7",
+    "text": "4 MÁS 3 SON 7.",
+    "file": "31fd6fc2a3a86ce6.mp3",
+    "spoken": "Cuatro MÁS tres SON siete."
+  },
+  {
+    "key": "2 más 1 son 3",
+    "text": "2 MÁS 1 SON 3.",
+    "file": "1b134148e86fd8d1.mp3",
+    "spoken": "Dos MÁS uno SON tres."
+  },
+  {
+    "key": "4 más 4 son 8",
+    "text": "4 MÁS 4 SON 8.",
+    "file": "9ec44ddfbd7079be.mp3",
+    "spoken": "Cuatro MÁS cuatro SON ocho."
+  },
+  {
+    "key": "1 más 7 son 8",
+    "text": "1 MÁS 7 SON 8.",
+    "file": "6e5df646d6972ac2.mp3",
+    "spoken": "Uno MÁS siete SON ocho."
+  },
+  {
+    "key": "2 más 6 son 8",
+    "text": "2 MÁS 6 SON 8.",
+    "file": "c7a46bb470dc1817.mp3",
+    "spoken": "Dos MÁS seis SON ocho."
+  },
+  {
+    "key": "1 más 5 son 6",
+    "text": "1 MÁS 5 SON 6.",
+    "file": "7ac9d570fc0e6943.mp3",
+    "spoken": "Uno MÁS cinco SON seis."
+  },
+  {
+    "key": "2 más 5 son 7",
+    "text": "2 MÁS 5 SON 7.",
+    "file": "0927100cc2b17047.mp3",
+    "spoken": "Dos MÁS cinco SON siete."
+  },
+  {
+    "key": "7 más 1 son 8",
+    "text": "7 MÁS 1 SON 8.",
+    "file": "6207f2ac6c7580e0.mp3",
+    "spoken": "Siete MÁS uno SON ocho."
+  },
+  {
+    "key": "6 más 3 son 9",
+    "text": "6 MÁS 3 SON 9.",
+    "file": "595521bb6f3dd958.mp3",
+    "spoken": "Seis MÁS tres SON nueve."
+  },
+  {
+    "key": "1 más 8 son 9",
+    "text": "1 MÁS 8 SON 9.",
+    "file": "b151d2bd534adfcf.mp3",
+    "spoken": "Uno MÁS ocho SON nueve."
+  },
+  {
+    "key": "7 más 2 son 9",
+    "text": "7 MÁS 2 SON 9.",
+    "file": "05646f9d4f697848.mp3",
+    "spoken": "Siete MÁS dos SON nueve."
+  },
+  {
+    "key": "6 más 2 son 8",
+    "text": "6 MÁS 2 SON 8.",
+    "file": "92fa8cb19ae6efa2.mp3",
+    "spoken": "Seis MÁS dos SON ocho."
+  },
+  {
+    "key": "6 más 1 son 7",
+    "text": "6 MÁS 1 SON 7.",
+    "file": "08ee502e286df241.mp3",
+    "spoken": "Seis MÁS uno SON siete."
+  },
+  {
+    "key": "5 más 4 son 9",
+    "text": "5 MÁS 4 SON 9.",
+    "file": "004f521e3645989c.mp3",
+    "spoken": "Cinco MÁS cuatro SON nueve."
+  },
+  {
+    "key": "4 más 5 son 9",
+    "text": "4 MÁS 5 SON 9.",
+    "file": "b61abfd1c528706d.mp3",
+    "spoken": "Cuatro MÁS cinco SON nueve."
+  },
+  {
+    "key": "2 más 7 son 9",
+    "text": "2 MÁS 7 SON 9.",
+    "file": "461e7d751cc2d72d.mp3",
+    "spoken": "Dos MÁS siete SON nueve."
+  },
+  {
+    "key": "8 más 1 son 9",
+    "text": "8 MÁS 1 SON 9.",
+    "file": "dc99b5f55fcf386d.mp3",
+    "spoken": "Ocho MÁS uno SON nueve."
+  },
+  {
+    "key": "toca la vocal a",
+    "text": "TOCA LA VOCAL A",
+    "file": "ae69b6867d415319.mp3",
+    "spoken": "TOCA LA VOCAL A."
+  },
+  {
     "key": "¿dónde hay más",
     "text": "¿Dónde hay más?",
     "file": "85b44694c9645193.mp3",
@@ -1276,6 +1984,12 @@
     "text": "Junto al árbol.",
     "file": "dadfae2a351bae63.mp3",
     "spoken": "Junto al árbol."
+  },
+  {
+    "key": "busca: cangrejo",
+    "text": "BUSCA: CANGREJO",
+    "file": "e2d042ab534252a4.mp3",
+    "spoken": "BUSCA: CANGREJO."
   },
   {
     "key": "el grupo copia",
@@ -1566,6 +2280,366 @@
     "spoken": "PAN: uno palmada."
   },
   {
+    "key": "4 y 6 hacen 10",
+    "text": "4 Y 6 HACEN 10.",
+    "file": "07f89e6fe0bdab01.mp3",
+    "spoken": "Cuatro Y seis HACEN diez."
+  },
+  {
+    "key": "8 y 2 hacen 10",
+    "text": "8 Y 2 HACEN 10.",
+    "file": "7b70482fa49adf78.mp3",
+    "spoken": "Ocho Y dos HACEN diez."
+  },
+  {
+    "key": "3 y 7 hacen 10",
+    "text": "3 Y 7 HACEN 10.",
+    "file": "a8cd7115026c4934.mp3",
+    "spoken": "Tres Y siete HACEN diez."
+  },
+  {
+    "key": "7 y 3 hacen 10",
+    "text": "7 Y 3 HACEN 10.",
+    "file": "37603f7ef4240779.mp3",
+    "spoken": "Siete Y tres HACEN diez."
+  },
+  {
+    "key": "2 y 8 hacen 10",
+    "text": "2 Y 8 HACEN 10.",
+    "file": "6556ae445830a304.mp3",
+    "spoken": "Dos Y ocho HACEN diez."
+  },
+  {
+    "key": "6 y 4 hacen 10",
+    "text": "6 Y 4 HACEN 10.",
+    "file": "eb81fe99407a78b2.mp3",
+    "spoken": "Seis Y cuatro HACEN diez."
+  },
+  {
+    "key": "1 y 9 hacen 10",
+    "text": "1 Y 9 HACEN 10.",
+    "file": "595b170bdca7cd42.mp3",
+    "spoken": "Uno Y nueve HACEN diez."
+  },
+  {
+    "key": "5 y 5 hacen 10",
+    "text": "5 Y 5 HACEN 10.",
+    "file": "210b9a0c3cb98362.mp3",
+    "spoken": "Cinco Y cinco HACEN diez."
+  },
+  {
+    "key": "9 y 1 hacen 10",
+    "text": "9 Y 1 HACEN 10.",
+    "file": "ab6a3a5fbe96b506.mp3",
+    "spoken": "Nueve Y uno HACEN diez."
+  },
+  {
+    "key": "5 y 6 hacen 11",
+    "text": "5 Y 6 HACEN 11.",
+    "file": "450ea935cc1f58d8.mp3",
+    "spoken": "Cinco Y seis HACEN once."
+  },
+  {
+    "key": "5 y 7 hacen 12",
+    "text": "5 Y 7 HACEN 12.",
+    "file": "8c33d1f1e53afa9e.mp3",
+    "spoken": "Cinco Y siete HACEN doce."
+  },
+  {
+    "key": "6 y 7 hacen 13",
+    "text": "6 Y 7 HACEN 13.",
+    "file": "e0c05a7ff731e6c8.mp3",
+    "spoken": "Seis Y siete HACEN trece."
+  },
+  {
+    "key": "6 y 8 hacen 14",
+    "text": "6 Y 8 HACEN 14.",
+    "file": "aa9ea3723ad8eb03.mp3",
+    "spoken": "Seis Y ocho HACEN catorce."
+  },
+  {
+    "key": "7 y 8 hacen 15",
+    "text": "7 Y 8 HACEN 15.",
+    "file": "c9746c9a1a26897a.mp3",
+    "spoken": "Siete Y ocho HACEN quince."
+  },
+  {
+    "key": "8 y 3 hacen 11",
+    "text": "8 Y 3 HACEN 11.",
+    "file": "928bdbe171b52630.mp3",
+    "spoken": "Ocho Y tres HACEN once."
+  },
+  {
+    "key": "7 y 5 hacen 12",
+    "text": "7 Y 5 HACEN 12.",
+    "file": "a87745203d0ddb06.mp3",
+    "spoken": "Siete Y cinco HACEN doce."
+  },
+  {
+    "key": "7 y 6 hacen 13",
+    "text": "7 Y 6 HACEN 13.",
+    "file": "af3d4e08e20e36d7.mp3",
+    "spoken": "Siete Y seis HACEN trece."
+  },
+  {
+    "key": "6 y 9 hacen 15",
+    "text": "6 Y 9 HACEN 15.",
+    "file": "cc490045312e4158.mp3",
+    "spoken": "Seis Y nueve HACEN quince."
+  },
+  {
+    "key": "4 y 7 hacen 11",
+    "text": "4 Y 7 HACEN 11.",
+    "file": "9d981d6ee90fab83.mp3",
+    "spoken": "Cuatro Y siete HACEN once."
+  },
+  {
+    "key": "3 y 9 hacen 12",
+    "text": "3 Y 9 HACEN 12.",
+    "file": "c52155df3e5fe53c.mp3",
+    "spoken": "Tres Y nueve HACEN doce."
+  },
+  {
+    "key": "9 y 3 hacen 12",
+    "text": "9 Y 3 HACEN 12.",
+    "file": "59c3e265aa3de6a6.mp3",
+    "spoken": "Nueve Y tres HACEN doce."
+  },
+  {
+    "key": "8 y 5 hacen 13",
+    "text": "8 Y 5 HACEN 13.",
+    "file": "3476d693d1beba76.mp3",
+    "spoken": "Ocho Y cinco HACEN trece."
+  },
+  {
+    "key": "7 y 4 hacen 11",
+    "text": "7 Y 4 HACEN 11.",
+    "file": "fc35ab9b63f8a195.mp3",
+    "spoken": "Siete Y cuatro HACEN once."
+  },
+  {
+    "key": "9 y 4 hacen 13",
+    "text": "9 Y 4 HACEN 13.",
+    "file": "748943b6004b2e7a.mp3",
+    "spoken": "Nueve Y cuatro HACEN trece."
+  },
+  {
+    "key": "3 y 8 hacen 11",
+    "text": "3 Y 8 HACEN 11.",
+    "file": "91ac0cdedca5148f.mp3",
+    "spoken": "Tres Y ocho HACEN once."
+  },
+  {
+    "key": "4 y 9 hacen 13",
+    "text": "4 Y 9 HACEN 13.",
+    "file": "30833aabb10436b3.mp3",
+    "spoken": "Cuatro Y nueve HACEN trece."
+  },
+  {
+    "key": "9 y 6 hacen 15",
+    "text": "9 Y 6 HACEN 15.",
+    "file": "7682fdae3b18385b.mp3",
+    "spoken": "Nueve Y seis HACEN quince."
+  },
+  {
+    "key": "4 y 8 hacen 12",
+    "text": "4 Y 8 HACEN 12.",
+    "file": "568d2b57eade0610.mp3",
+    "spoken": "Cuatro Y ocho HACEN doce."
+  },
+  {
+    "key": "6 y 5 hacen 11",
+    "text": "6 Y 5 HACEN 11.",
+    "file": "19b7f9180e372bd9.mp3",
+    "spoken": "Seis Y cinco HACEN once."
+  },
+  {
+    "key": "5 y 8 hacen 13",
+    "text": "5 Y 8 HACEN 13.",
+    "file": "827ce0e082f29e54.mp3",
+    "spoken": "Cinco Y ocho HACEN trece."
+  },
+  {
+    "key": "8 y 7 hacen 15",
+    "text": "8 Y 7 HACEN 15.",
+    "file": "8d85d6ce436533bb.mp3",
+    "spoken": "Ocho Y siete HACEN quince."
+  },
+  {
+    "key": "6 y 6 hacen 12",
+    "text": "6 Y 6 HACEN 12.",
+    "file": "cb42ff3b7f7d0b45.mp3",
+    "spoken": "Seis Y seis HACEN doce."
+  },
+  {
+    "key": "9 y 2 hacen 11",
+    "text": "9 Y 2 HACEN 11.",
+    "file": "822c1aa7d476bd13.mp3",
+    "spoken": "Nueve Y dos HACEN once."
+  },
+  {
+    "key": "8 y 4 hacen 12",
+    "text": "8 Y 4 HACEN 12.",
+    "file": "74726a374f20edaf.mp3",
+    "spoken": "Ocho Y cuatro HACEN doce."
+  },
+  {
+    "key": "2 y 9 hacen 11",
+    "text": "2 Y 9 HACEN 11.",
+    "file": "ddf507e0a5e63ab9.mp3",
+    "spoken": "Dos Y nueve HACEN once."
+  },
+  {
+    "key": "ahora viene 🟡",
+    "text": "AHORA VIENE 🟡.",
+    "file": "0b69d61843b969f8.mp3",
+    "spoken": "AHORA VIENE 🟡."
+  },
+  {
+    "key": "ahora viene 🟨",
+    "text": "AHORA VIENE 🟨.",
+    "file": "36a3114ccde98ad5.mp3",
+    "spoken": "AHORA VIENE 🟨."
+  },
+  {
+    "key": "ahora viene 🟢",
+    "text": "AHORA VIENE 🟢.",
+    "file": "2fb743288308137c.mp3",
+    "spoken": "AHORA VIENE 🟢."
+  },
+  {
+    "key": "ahora viene 🍌",
+    "text": "AHORA VIENE 🍌.",
+    "file": "826d058230c25dec.mp3",
+    "spoken": "AHORA VIENE 🍌."
+  },
+  {
+    "key": "ahora viene 🌸",
+    "text": "AHORA VIENE 🌸.",
+    "file": "70f2dfba8d50ad75.mp3",
+    "spoken": "AHORA VIENE 🌸."
+  },
+  {
+    "key": "4 más 6 son 10",
+    "text": "4 MÁS 6 SON 10.",
+    "file": "c9f1b9e56abdda6e.mp3",
+    "spoken": "Cuatro MÁS seis SON diez."
+  },
+  {
+    "key": "5 más 5 son 10",
+    "text": "5 MÁS 5 SON 10.",
+    "file": "987b0d3dffb769be.mp3",
+    "spoken": "Cinco MÁS cinco SON diez."
+  },
+  {
+    "key": "7 más 3 son 10",
+    "text": "7 MÁS 3 SON 10.",
+    "file": "f8e8e40bb12f452c.mp3",
+    "spoken": "Siete MÁS tres SON diez."
+  },
+  {
+    "key": "6 más 4 son 10",
+    "text": "6 MÁS 4 SON 10.",
+    "file": "c51246816c205c47.mp3",
+    "spoken": "Seis MÁS cuatro SON diez."
+  },
+  {
+    "key": "1 más 9 son 10",
+    "text": "1 MÁS 9 SON 10.",
+    "file": "d2247aad670d311b.mp3",
+    "spoken": "Uno MÁS nueve SON diez."
+  },
+  {
+    "key": "2 más 8 son 10",
+    "text": "2 MÁS 8 SON 10.",
+    "file": "c7ec7da4e51fb70a.mp3",
+    "spoken": "Dos MÁS ocho SON diez."
+  },
+  {
+    "key": "7 más 4 son 11",
+    "text": "7 MÁS 4 SON 11.",
+    "file": "32ec593bc055d555.mp3",
+    "spoken": "Siete MÁS cuatro SON once."
+  },
+  {
+    "key": "9 más 2 son 11",
+    "text": "9 MÁS 2 SON 11.",
+    "file": "d080a6be248ce7f6.mp3",
+    "spoken": "Nueve MÁS dos SON once."
+  },
+  {
+    "key": "4 más 7 son 11",
+    "text": "4 MÁS 7 SON 11.",
+    "file": "209af6d83916c6f8.mp3",
+    "spoken": "Cuatro MÁS siete SON once."
+  },
+  {
+    "key": "4 más 8 son 12",
+    "text": "4 MÁS 8 SON 12.",
+    "file": "be3095f0e0f52a11.mp3",
+    "spoken": "Cuatro MÁS ocho SON doce."
+  },
+  {
+    "key": "6 más 5 son 11",
+    "text": "6 MÁS 5 SON 11.",
+    "file": "693105be3370a5e8.mp3",
+    "spoken": "Seis MÁS cinco SON once."
+  },
+  {
+    "key": "8 más 2 son 10",
+    "text": "8 MÁS 2 SON 10.",
+    "file": "a858165db9e9e080.mp3",
+    "spoken": "Ocho MÁS dos SON diez."
+  },
+  {
+    "key": "5 más 7 son 12",
+    "text": "5 MÁS 7 SON 12.",
+    "file": "639d950294fbe65c.mp3",
+    "spoken": "Cinco MÁS siete SON doce."
+  },
+  {
+    "key": "8 más 3 son 11",
+    "text": "8 MÁS 3 SON 11.",
+    "file": "73fe6b3a7ff351bb.mp3",
+    "spoken": "Ocho MÁS tres SON once."
+  },
+  {
+    "key": "8 más 4 son 12",
+    "text": "8 MÁS 4 SON 12.",
+    "file": "ab5016de624f2601.mp3",
+    "spoken": "Ocho MÁS cuatro SON doce."
+  },
+  {
+    "key": "7 más 5 son 12",
+    "text": "7 MÁS 5 SON 12.",
+    "file": "9b2503e5345a0447.mp3",
+    "spoken": "Siete MÁS cinco SON doce."
+  },
+  {
+    "key": "5 más 6 son 11",
+    "text": "5 MÁS 6 SON 11.",
+    "file": "75ecaf6fcc290194.mp3",
+    "spoken": "Cinco MÁS seis SON once."
+  },
+  {
+    "key": "2 más 9 son 11",
+    "text": "2 MÁS 9 SON 11.",
+    "file": "2ae67cc6896195e2.mp3",
+    "spoken": "Dos MÁS nueve SON once."
+  },
+  {
+    "key": "¿qué palabra es",
+    "text": "¿QUÉ PALABRA ES?",
+    "file": "76e4bec272feb03f.mp3",
+    "spoken": "¿QUÉ PALABRA ES?"
+  },
+  {
+    "key": "¿cuántos quedan",
+    "text": "¿CUÁNTOS QUEDAN?",
+    "file": "84fb5785da108cdc.mp3",
+    "spoken": "¿CUÁNTOS QUEDAN?"
+  },
+  {
     "key": "repite despacio",
     "text": "Repite despacio.",
     "file": "833141dc85b50656.mp3",
@@ -1680,6 +2754,402 @@
     "spoken": "Diez es más que uno."
   },
   {
+    "key": "11 es más que 9",
+    "text": "11 es más que 9.",
+    "file": "87ac0799e7c7411b.mp3",
+    "spoken": "Once es más que nueve."
+  },
+  {
+    "key": "11 es más que 8",
+    "text": "11 es más que 8.",
+    "file": "6ddba846dc84aded.mp3",
+    "spoken": "Once es más que ocho."
+  },
+  {
+    "key": "12 es más que 9",
+    "text": "12 es más que 9.",
+    "file": "8065d2988ea27ad4.mp3",
+    "spoken": "Doce es más que nueve."
+  },
+  {
+    "key": "11 es más que 7",
+    "text": "11 es más que 7.",
+    "file": "681e6b6ff9751643.mp3",
+    "spoken": "Once es más que siete."
+  },
+  {
+    "key": "12 es más que 8",
+    "text": "12 es más que 8.",
+    "file": "ca69d6f017434118.mp3",
+    "spoken": "Doce es más que ocho."
+  },
+  {
+    "key": "11 es más que 6",
+    "text": "11 es más que 6.",
+    "file": "a3aa567b3a3824cb.mp3",
+    "spoken": "Once es más que seis."
+  },
+  {
+    "key": "12 es más que 7",
+    "text": "12 es más que 7.",
+    "file": "7ad8ab684211e2d5.mp3",
+    "spoken": "Doce es más que siete."
+  },
+  {
+    "key": "11 es más que 5",
+    "text": "11 es más que 5.",
+    "file": "72f7618bda988644.mp3",
+    "spoken": "Once es más que cinco."
+  },
+  {
+    "key": "12 es más que 6",
+    "text": "12 es más que 6.",
+    "file": "67409b4b49154502.mp3",
+    "spoken": "Doce es más que seis."
+  },
+  {
+    "key": "11 es más que 4",
+    "text": "11 es más que 4.",
+    "file": "5b43a1a786c4200c.mp3",
+    "spoken": "Once es más que cuatro."
+  },
+  {
+    "key": "12 es más que 5",
+    "text": "12 es más que 5.",
+    "file": "24c0452f072f9c70.mp3",
+    "spoken": "Doce es más que cinco."
+  },
+  {
+    "key": "11 es más que 3",
+    "text": "11 es más que 3.",
+    "file": "f1c2b357e4d5aded.mp3",
+    "spoken": "Once es más que tres."
+  },
+  {
+    "key": "12 es más que 4",
+    "text": "12 es más que 4.",
+    "file": "0dd1aec8504b9d31.mp3",
+    "spoken": "Doce es más que cuatro."
+  },
+  {
+    "key": "11 es más que 2",
+    "text": "11 es más que 2.",
+    "file": "59153d3d1ec1eb68.mp3",
+    "spoken": "Once es más que dos."
+  },
+  {
+    "key": "12 es más que 3",
+    "text": "12 es más que 3.",
+    "file": "e072cb1b98368f28.mp3",
+    "spoken": "Doce es más que tres."
+  },
+  {
+    "key": "11 es más que 1",
+    "text": "11 es más que 1.",
+    "file": "6dcf7bd9afd16775.mp3",
+    "spoken": "Once es más que uno."
+  },
+  {
+    "key": "12 es más que 2",
+    "text": "12 es más que 2.",
+    "file": "ed69c9710ec79660.mp3",
+    "spoken": "Doce es más que dos."
+  },
+  {
+    "key": "12 es más que 1",
+    "text": "12 es más que 1.",
+    "file": "e8dc90bf213e09ff.mp3",
+    "spoken": "Doce es más que uno."
+  },
+  {
+    "key": "1 y 10 hacen 11",
+    "text": "1 Y 10 HACEN 11.",
+    "file": "007b8b801258fadb.mp3",
+    "spoken": "Uno Y diez HACEN once."
+  },
+  {
+    "key": "1 y 11 hacen 12",
+    "text": "1 Y 11 HACEN 12.",
+    "file": "e138d0f96c98ccba.mp3",
+    "spoken": "Uno Y once HACEN doce."
+  },
+  {
+    "key": "12 y 1 hacen 13",
+    "text": "12 Y 1 HACEN 13.",
+    "file": "004d34913c2f7ccb.mp3",
+    "spoken": "Doce Y uno HACEN trece."
+  },
+  {
+    "key": "13 y 1 hacen 14",
+    "text": "13 Y 1 HACEN 14.",
+    "file": "79659e13059b9095.mp3",
+    "spoken": "Trece Y uno HACEN catorce."
+  },
+  {
+    "key": "13 y 2 hacen 15",
+    "text": "13 Y 2 HACEN 15.",
+    "file": "08ff9099e9ef488f.mp3",
+    "spoken": "Trece Y dos HACEN quince."
+  },
+  {
+    "key": "1 y 12 hacen 13",
+    "text": "1 Y 12 HACEN 13.",
+    "file": "a4147f1a1ba9ee48.mp3",
+    "spoken": "Uno Y doce HACEN trece."
+  },
+  {
+    "key": "12 y 3 hacen 15",
+    "text": "12 Y 3 HACEN 15.",
+    "file": "bf7fc0416a8fc7d3.mp3",
+    "spoken": "Doce Y tres HACEN quince."
+  },
+  {
+    "key": "5 y 10 hacen 15",
+    "text": "5 Y 10 HACEN 15.",
+    "file": "212e5cadfb810cd0.mp3",
+    "spoken": "Cinco Y diez HACEN quince."
+  },
+  {
+    "key": "2 y 11 hacen 13",
+    "text": "2 Y 11 HACEN 13.",
+    "file": "d4320166974af4dc.mp3",
+    "spoken": "Dos Y once HACEN trece."
+  },
+  {
+    "key": "11 y 4 hacen 15",
+    "text": "11 Y 4 HACEN 15.",
+    "file": "e3572b6c1a311c02.mp3",
+    "spoken": "Once Y cuatro HACEN quince."
+  },
+  {
+    "key": "11 y 1 hacen 12",
+    "text": "11 Y 1 HACEN 12.",
+    "file": "5b79df3db1a34166.mp3",
+    "spoken": "Once Y uno HACEN doce."
+  },
+  {
+    "key": "4 y 11 hacen 15",
+    "text": "4 Y 11 HACEN 15.",
+    "file": "9ed09bcaf3f37360.mp3",
+    "spoken": "Cuatro Y once HACEN quince."
+  },
+  {
+    "key": "10 y 1 hacen 11",
+    "text": "10 Y 1 HACEN 11.",
+    "file": "ec164e69964562ac.mp3",
+    "spoken": "Diez Y uno HACEN once."
+  },
+  {
+    "key": "3 y 10 hacen 13",
+    "text": "3 Y 10 HACEN 13.",
+    "file": "910f626ad12b86f9.mp3",
+    "spoken": "Tres Y diez HACEN trece."
+  },
+  {
+    "key": "10 y 5 hacen 15",
+    "text": "10 Y 5 HACEN 15.",
+    "file": "ae02ad00486abbea.mp3",
+    "spoken": "Diez Y cinco HACEN quince."
+  },
+  {
+    "key": "2 y 10 hacen 12",
+    "text": "2 Y 10 HACEN 12.",
+    "file": "b118da56e7d892df.mp3",
+    "spoken": "Dos Y diez HACEN doce."
+  },
+  {
+    "key": "10 y 3 hacen 13",
+    "text": "10 Y 3 HACEN 13.",
+    "file": "cf9f7bf31f7a18dd.mp3",
+    "spoken": "Diez Y tres HACEN trece."
+  },
+  {
+    "key": "3 y 12 hacen 15",
+    "text": "3 Y 12 HACEN 15.",
+    "file": "655e6c4c57599f23.mp3",
+    "spoken": "Tres Y doce HACEN quince."
+  },
+  {
+    "key": "11 y 2 hacen 13",
+    "text": "11 Y 2 HACEN 13.",
+    "file": "09955b91ce9a496e.mp3",
+    "spoken": "Once Y dos HACEN trece."
+  },
+  {
+    "key": "2 y 13 hacen 15",
+    "text": "2 Y 13 HACEN 15.",
+    "file": "9771402feefc47d0.mp3",
+    "spoken": "Dos Y trece HACEN quince."
+  },
+  {
+    "key": "1 y 14 hacen 15",
+    "text": "1 Y 14 HACEN 15.",
+    "file": "b5dd6f92df1ace2c.mp3",
+    "spoken": "Uno Y catorce HACEN quince."
+  },
+  {
+    "key": "14 y 1 hacen 15",
+    "text": "14 Y 1 HACEN 15.",
+    "file": "9b1bcc5b8b57fb37.mp3",
+    "spoken": "Catorce Y uno HACEN quince."
+  },
+  {
+    "key": "10 y 2 hacen 12",
+    "text": "10 Y 2 HACEN 12.",
+    "file": "63500f2de225d89b.mp3",
+    "spoken": "Diez Y dos HACEN doce."
+  },
+  {
+    "key": "4 menos 1 son 3",
+    "text": "4 MENOS 1 SON 3.",
+    "file": "d5e009a477e6948c.mp3",
+    "spoken": "Cuatro MENOS uno SON tres."
+  },
+  {
+    "key": "3 menos 2 son 1",
+    "text": "3 MENOS 2 SON 1.",
+    "file": "51250254a3e60980.mp3",
+    "spoken": "Tres MENOS dos SON uno."
+  },
+  {
+    "key": "5 menos 3 son 2",
+    "text": "5 MENOS 3 SON 2.",
+    "file": "0972a3c95ababeb8.mp3",
+    "spoken": "Cinco MENOS tres SON dos."
+  },
+  {
+    "key": "3 menos 1 son 2",
+    "text": "3 MENOS 1 SON 2.",
+    "file": "01eece4f8833c8c4.mp3",
+    "spoken": "Tres MENOS uno SON dos."
+  },
+  {
+    "key": "5 menos 2 son 3",
+    "text": "5 MENOS 2 SON 3.",
+    "file": "a6d30050734b7709.mp3",
+    "spoken": "Cinco MENOS dos SON tres."
+  },
+  {
+    "key": "5 menos 1 son 4",
+    "text": "5 MENOS 1 SON 4.",
+    "file": "5c016f0b16fbf36d.mp3",
+    "spoken": "Cinco MENOS uno SON cuatro."
+  },
+  {
+    "key": "5 menos 4 son 1",
+    "text": "5 MENOS 4 SON 1.",
+    "file": "75fa1f40a1bd3fcb.mp3",
+    "spoken": "Cinco MENOS cuatro SON uno."
+  },
+  {
+    "key": "6 menos 2 son 4",
+    "text": "6 MENOS 2 SON 4.",
+    "file": "e4db055ac6655c4d.mp3",
+    "spoken": "Seis MENOS dos SON cuatro."
+  },
+  {
+    "key": "8 menos 3 son 5",
+    "text": "8 MENOS 3 SON 5.",
+    "file": "85840c7262f49a7f.mp3",
+    "spoken": "Ocho MENOS tres SON cinco."
+  },
+  {
+    "key": "6 menos 5 son 1",
+    "text": "6 MENOS 5 SON 1.",
+    "file": "4c3513ce2a549c1f.mp3",
+    "spoken": "Seis MENOS cinco SON uno."
+  },
+  {
+    "key": "8 menos 6 son 2",
+    "text": "8 MENOS 6 SON 2.",
+    "file": "e43a282a4eab5739.mp3",
+    "spoken": "Ocho MENOS seis SON dos."
+  },
+  {
+    "key": "6 menos 3 son 3",
+    "text": "6 MENOS 3 SON 3.",
+    "file": "febd249c8d4ffb19.mp3",
+    "spoken": "Seis MENOS tres SON tres."
+  },
+  {
+    "key": "8 menos 2 son 6",
+    "text": "8 MENOS 2 SON 6.",
+    "file": "2b1beef4a9de8c90.mp3",
+    "spoken": "Ocho MENOS dos SON seis."
+  },
+  {
+    "key": "6 menos 1 son 5",
+    "text": "6 MENOS 1 SON 5.",
+    "file": "46b0be5eb69cd408.mp3",
+    "spoken": "Seis MENOS uno SON cinco."
+  },
+  {
+    "key": "8 menos 5 son 3",
+    "text": "8 MENOS 5 SON 3.",
+    "file": "ec078641be92e106.mp3",
+    "spoken": "Ocho MENOS cinco SON tres."
+  },
+  {
+    "key": "6 menos 4 son 2",
+    "text": "6 MENOS 4 SON 2.",
+    "file": "8282942dde07e703.mp3",
+    "spoken": "Seis MENOS cuatro SON dos."
+  },
+  {
+    "key": "8 menos 1 son 7",
+    "text": "8 MENOS 1 SON 7.",
+    "file": "9ba11b436ffb2dd4.mp3",
+    "spoken": "Ocho MENOS uno SON siete."
+  },
+  {
+    "key": "8 menos 4 son 4",
+    "text": "8 MENOS 4 SON 4.",
+    "file": "a3acf380a767770f.mp3",
+    "spoken": "Ocho MENOS cuatro SON cuatro."
+  },
+  {
+    "key": "8 menos 7 son 1",
+    "text": "8 MENOS 7 SON 1.",
+    "file": "04cd3d5a2cad3db4.mp3",
+    "spoken": "Ocho MENOS siete SON uno."
+  },
+  {
+    "key": "4 menos 2 son 2",
+    "text": "4 MENOS 2 SON 2.",
+    "file": "d58b8d6bfefdb6b2.mp3",
+    "spoken": "Cuatro MENOS dos SON dos."
+  },
+  {
+    "key": "4 menos 3 son 1",
+    "text": "4 MENOS 3 SON 1.",
+    "file": "f9650c8fd4deb658.mp3",
+    "spoken": "Cuatro MENOS tres SON uno."
+  },
+  {
+    "key": "1 más 10 son 11",
+    "text": "1 MÁS 10 SON 11.",
+    "file": "39855e60d03f639e.mp3",
+    "spoken": "Uno MÁS diez SON once."
+  },
+  {
+    "key": "1 más 11 son 12",
+    "text": "1 MÁS 11 SON 12.",
+    "file": "a3ba51d5617020cf.mp3",
+    "spoken": "Uno MÁS once SON doce."
+  },
+  {
+    "key": "2 más 10 son 12",
+    "text": "2 MÁS 10 SON 12.",
+    "file": "15c9f43e66f1b357.mp3",
+    "spoken": "Dos MÁS diez SON doce."
+  },
+  {
+    "key": "¿qué viene ahora",
+    "text": "¿QUÉ VIENE AHORA?",
+    "file": "538d8da60de27956.mp3",
+    "spoken": "¿QUÉ VIENE AHORA?"
+  },
+  {
     "key": "¿cómo te sientes",
     "text": "¿Cómo te sientes?",
     "file": "c6b0f5857b50c94e.mp3",
@@ -1720,6 +3190,12 @@
     "text": "¿Qué escuchamos?.",
     "file": "f619fc15fdfb4797.mp3",
     "spoken": "¿Qué escuchamos?."
+  },
+  {
+    "key": "encargados de hoy",
+    "text": "Encargados de hoy",
+    "file": "f03eec0984e1dad1.mp3",
+    "spoken": "Encargados de hoy."
   },
   {
     "key": "¿cómo lo hacemos",
@@ -1944,6 +3420,150 @@
     "spoken": "Uno es menos que nueve."
   },
   {
+    "key": "11 es más que 10",
+    "text": "11 es más que 10.",
+    "file": "8cd0c2ef52c6f30b.mp3",
+    "spoken": "Once es más que diez."
+  },
+  {
+    "key": "12 es más que 11",
+    "text": "12 es más que 11.",
+    "file": "e8b58dae25f90f2b.mp3",
+    "spoken": "Doce es más que once."
+  },
+  {
+    "key": "12 es más que 10",
+    "text": "12 es más que 10.",
+    "file": "4372145d4e244e4a.mp3",
+    "spoken": "Doce es más que diez."
+  },
+  {
+    "key": "¡es paleontólogo",
+    "text": "¡ES PALEONTÓLOGO!",
+    "file": "74ed6e3cbd4517a2.mp3",
+    "spoken": "¡ES PALEONTÓLOGO!"
+  },
+  {
+    "key": "10 menos 4 son 6",
+    "text": "10 MENOS 4 SON 6.",
+    "file": "a11f5e9486f05585.mp3",
+    "spoken": "Diez MENOS cuatro SON seis."
+  },
+  {
+    "key": "10 menos 8 son 2",
+    "text": "10 MENOS 8 SON 2.",
+    "file": "52d24a063caacc56.mp3",
+    "spoken": "Diez MENOS ocho SON dos."
+  },
+  {
+    "key": "10 menos 3 son 7",
+    "text": "10 MENOS 3 SON 7.",
+    "file": "7ee1c9dcae023b3a.mp3",
+    "spoken": "Diez MENOS tres SON siete."
+  },
+  {
+    "key": "10 menos 7 son 3",
+    "text": "10 MENOS 7 SON 3.",
+    "file": "2ebf979330f4e6bc.mp3",
+    "spoken": "Diez MENOS siete SON tres."
+  },
+  {
+    "key": "10 menos 2 son 8",
+    "text": "10 MENOS 2 SON 8.",
+    "file": "cdc8b7ea87dd073c.mp3",
+    "spoken": "Diez MENOS dos SON ocho."
+  },
+  {
+    "key": "10 menos 6 son 4",
+    "text": "10 MENOS 6 SON 4.",
+    "file": "a226dfe2542350cc.mp3",
+    "spoken": "Diez MENOS seis SON cuatro."
+  },
+  {
+    "key": "10 menos 1 son 9",
+    "text": "10 MENOS 1 SON 9.",
+    "file": "2e830a7ad4be0406.mp3",
+    "spoken": "Diez MENOS uno SON nueve."
+  },
+  {
+    "key": "10 menos 5 son 5",
+    "text": "10 MENOS 5 SON 5.",
+    "file": "3fe7069051cc2292.mp3",
+    "spoken": "Diez MENOS cinco SON cinco."
+  },
+  {
+    "key": "10 menos 9 son 1",
+    "text": "10 MENOS 9 SON 1.",
+    "file": "d4a78f77c232eb4d.mp3",
+    "spoken": "Diez MENOS nueve SON uno."
+  },
+  {
+    "key": "12 menos 5 son 7",
+    "text": "12 MENOS 5 SON 7.",
+    "file": "e750a73a90d84089.mp3",
+    "spoken": "Doce MENOS cinco SON siete."
+  },
+  {
+    "key": "12 menos 4 son 8",
+    "text": "12 MENOS 4 SON 8.",
+    "file": "a6e65219f301656f.mp3",
+    "spoken": "Doce MENOS cuatro SON ocho."
+  },
+  {
+    "key": "12 menos 9 son 3",
+    "text": "12 MENOS 9 SON 3.",
+    "file": "9d76d77ddb3162e2.mp3",
+    "spoken": "Doce MENOS nueve SON tres."
+  },
+  {
+    "key": "12 menos 3 son 9",
+    "text": "12 MENOS 3 SON 9.",
+    "file": "6656f7dcff7f72dd.mp3",
+    "spoken": "Doce MENOS tres SON nueve."
+  },
+  {
+    "key": "12 menos 8 son 4",
+    "text": "12 MENOS 8 SON 4.",
+    "file": "4dcc758fa81d3423.mp3",
+    "spoken": "Doce MENOS ocho SON cuatro."
+  },
+  {
+    "key": "12 menos 7 son 5",
+    "text": "12 MENOS 7 SON 5.",
+    "file": "874ab6948ff6c6cd.mp3",
+    "spoken": "Doce MENOS siete SON cinco."
+  },
+  {
+    "key": "12 menos 6 son 6",
+    "text": "12 MENOS 6 SON 6.",
+    "file": "c799fb7d8042dfde.mp3",
+    "spoken": "Doce MENOS seis SON seis."
+  },
+  {
+    "key": "mira estos dibujos",
+    "text": "Mira estos dibujos",
+    "file": "baa9fde786930aef.mp3",
+    "spoken": "Mira estos dibujos."
+  },
+  {
+    "key": "¿qué dibujo falta",
+    "text": "¿Qué dibujo falta?",
+    "file": "42af8c39734e07e4.mp3",
+    "spoken": "¿Qué dibujo falta?"
+  },
+  {
+    "key": "escribe tu nombre",
+    "text": "Escribe tu nombre.",
+    "file": "f7d884db396fa353.mp3",
+    "spoken": "Escribe tu nombre."
+  },
+  {
+    "key": "observa el patrón",
+    "text": "OBSERVA EL PATRÓN.",
+    "file": "816565c1baf6a99e.mp3",
+    "spoken": "OBSERVA EL PATRÓN."
+  },
+  {
     "key": "eco de dos palmas",
     "text": "Eco de dos palmas.",
     "file": "51eea408a1ceaed7.mp3",
@@ -2082,6 +3702,114 @@
     "spoken": "Uno es menos que diez."
   },
   {
+    "key": "9 es menos que 11",
+    "text": "9 es menos que 11.",
+    "file": "5325e40621daa929.mp3",
+    "spoken": "Nueve es menos que once."
+  },
+  {
+    "key": "8 es menos que 11",
+    "text": "8 es menos que 11.",
+    "file": "4859333da54ad7df.mp3",
+    "spoken": "Ocho es menos que once."
+  },
+  {
+    "key": "9 es menos que 12",
+    "text": "9 es menos que 12.",
+    "file": "2cfaae085b9eeb28.mp3",
+    "spoken": "Nueve es menos que doce."
+  },
+  {
+    "key": "7 es menos que 11",
+    "text": "7 es menos que 11.",
+    "file": "cfabb2fa933cd0c2.mp3",
+    "spoken": "Siete es menos que once."
+  },
+  {
+    "key": "8 es menos que 12",
+    "text": "8 es menos que 12.",
+    "file": "e4a2c48098cf7fb7.mp3",
+    "spoken": "Ocho es menos que doce."
+  },
+  {
+    "key": "6 es menos que 11",
+    "text": "6 es menos que 11.",
+    "file": "ce834667cb44e77c.mp3",
+    "spoken": "Seis es menos que once."
+  },
+  {
+    "key": "7 es menos que 12",
+    "text": "7 es menos que 12.",
+    "file": "6a41d2174c9b5081.mp3",
+    "spoken": "Siete es menos que doce."
+  },
+  {
+    "key": "5 es menos que 11",
+    "text": "5 es menos que 11.",
+    "file": "15b2d03471251f76.mp3",
+    "spoken": "Cinco es menos que once."
+  },
+  {
+    "key": "6 es menos que 12",
+    "text": "6 es menos que 12.",
+    "file": "50cf62ece7ee04f7.mp3",
+    "spoken": "Seis es menos que doce."
+  },
+  {
+    "key": "4 es menos que 11",
+    "text": "4 es menos que 11.",
+    "file": "2849e7abba858ff0.mp3",
+    "spoken": "Cuatro es menos que once."
+  },
+  {
+    "key": "5 es menos que 12",
+    "text": "5 es menos que 12.",
+    "file": "16d734e3dfa9a52d.mp3",
+    "spoken": "Cinco es menos que doce."
+  },
+  {
+    "key": "3 es menos que 11",
+    "text": "3 es menos que 11.",
+    "file": "03bbd5a6b0698502.mp3",
+    "spoken": "Tres es menos que once."
+  },
+  {
+    "key": "4 es menos que 12",
+    "text": "4 es menos que 12.",
+    "file": "7dcfbba91f9e910f.mp3",
+    "spoken": "Cuatro es menos que doce."
+  },
+  {
+    "key": "2 es menos que 11",
+    "text": "2 es menos que 11.",
+    "file": "976de788e1217eba.mp3",
+    "spoken": "Dos es menos que once."
+  },
+  {
+    "key": "3 es menos que 12",
+    "text": "3 es menos que 12.",
+    "file": "043fb131a0c1ae9f.mp3",
+    "spoken": "Tres es menos que doce."
+  },
+  {
+    "key": "1 es menos que 11",
+    "text": "1 es menos que 11.",
+    "file": "c3ccbc09089f3030.mp3",
+    "spoken": "Uno es menos que once."
+  },
+  {
+    "key": "2 es menos que 12",
+    "text": "2 es menos que 12.",
+    "file": "7854077c4e9469ce.mp3",
+    "spoken": "Dos es menos que doce."
+  },
+  {
+    "key": "1 es menos que 12",
+    "text": "1 es menos que 12.",
+    "file": "81b17122c2ca18ca.mp3",
+    "spoken": "Uno es menos que doce."
+  },
+  {
     "key": "contamos: 1, 2, 3",
     "text": "Contamos: 1, 2, 3.",
     "file": "88f59e41e6cae7fe.mp3",
@@ -2136,6 +3864,42 @@
     "spoken": "OJO empieza por O."
   },
   {
+    "key": "¡es el diplodocus",
+    "text": "¡ES EL DIPLODOCUS!",
+    "file": "d63e2b8c8e5796eb.mp3",
+    "spoken": "¡ES EL DIPLODOCUS!"
+  },
+  {
+    "key": "sol empieza por s",
+    "text": "SOL EMPIEZA POR S.",
+    "file": "3bcd53d4f9766ed9.mp3",
+    "spoken": "SOL EMPIEZA POR S."
+  },
+  {
+    "key": "12 menos 10 son 2",
+    "text": "12 MENOS 10 SON 2.",
+    "file": "cbd4e6a841a7cfcf.mp3",
+    "spoken": "Doce MENOS diez SON dos."
+  },
+  {
+    "key": "12 menos 2 son 10",
+    "text": "12 MENOS 2 SON 10.",
+    "file": "f10cbac8c360c198.mp3",
+    "spoken": "Doce MENOS dos SON diez."
+  },
+  {
+    "key": "12 menos 1 son 11",
+    "text": "12 MENOS 1 SON 11.",
+    "file": "0f151ca525a1ffa3.mp3",
+    "spoken": "Doce MENOS uno SON once."
+  },
+  {
+    "key": "12 menos 11 son 1",
+    "text": "12 MENOS 11 SON 1.",
+    "file": "d265963aa5eea25b.mp3",
+    "spoken": "Doce MENOS once SON uno."
+  },
+  {
     "key": "¿qué viene después",
     "text": "¿Qué viene después?",
     "file": "eda2557071eac545.mp3",
@@ -2146,6 +3910,24 @@
     "text": "Escucha la palabra.",
     "file": "f3d263a0bbc23e67.mp3",
     "spoken": "Escucha la palabra."
+  },
+  {
+    "key": "busca al diplodocus",
+    "text": "BUSCA AL DIPLODOCUS",
+    "file": "89cf1a4de1b59fd1.mp3",
+    "spoken": "BUSCA AL DIPLODOCUS."
+  },
+  {
+    "key": "¿cuántos hay ahora",
+    "text": "¿CUÁNTOS HAY AHORA?",
+    "file": "9857ff5e04066e94.mp3",
+    "spoken": "¿CUÁNTOS HAY AHORA?"
+  },
+  {
+    "key": "pensamos y elegimos",
+    "text": "PENSAMOS Y ELEGIMOS",
+    "file": "61cc6f18519d8979.mp3",
+    "spoken": "PENSAMOS Y ELEGIMOS."
   },
   {
     "key": "el círculo viajero",
@@ -2298,6 +4080,24 @@
     "spoken": "En ese grupo hay nueve."
   },
   {
+    "key": "10 es menos que 11",
+    "text": "10 es menos que 11.",
+    "file": "ad71ab12e45b835e.mp3",
+    "spoken": "Diez es menos que once."
+  },
+  {
+    "key": "11 es menos que 12",
+    "text": "11 es menos que 12.",
+    "file": "f4b1b5422a40b179.mp3",
+    "spoken": "Once es menos que doce."
+  },
+  {
+    "key": "10 es menos que 12",
+    "text": "10 es menos que 12.",
+    "file": "07c27876da5e607e.mp3",
+    "spoken": "Diez es menos que doce."
+  },
+  {
     "key": "contamos: 8, 9, 10",
     "text": "Contamos: 8, 9, 10.",
     "file": "87eb0eacbcefa507.mp3",
@@ -2322,6 +4122,54 @@
     "spoken": "IMÁN empieza por I."
   },
   {
+    "key": "alma empieza por a",
+    "text": "Alma empieza por A.",
+    "file": "f2e02c87a9e2ff97.mp3",
+    "spoken": "Alma empieza por A."
+  },
+  {
+    "key": "emma empieza por e",
+    "text": "Emma empieza por E.",
+    "file": "525edacc5c0ba4c1.mp3",
+    "spoken": "Emma empieza por E."
+  },
+  {
+    "key": "¡es el triceratops",
+    "text": "¡ES EL TRICERATOPS!",
+    "file": "2d2d77e35d1d069e.mp3",
+    "spoken": "¡ES EL TRICERATOPS!"
+  },
+  {
+    "key": "gato empieza por g",
+    "text": "GATO EMPIEZA POR G.",
+    "file": "ef95417248a6d949.mp3",
+    "spoken": "GATO EMPIEZA POR G."
+  },
+  {
+    "key": "casa empieza por c",
+    "text": "CASA EMPIEZA POR C.",
+    "file": "22dcff176454b93e.mp3",
+    "spoken": "CASA EMPIEZA POR C."
+  },
+  {
+    "key": "luna empieza por l",
+    "text": "LUNA EMPIEZA POR L.",
+    "file": "70073018da61aa52.mp3",
+    "spoken": "LUNA EMPIEZA POR L."
+  },
+  {
+    "key": "rana empieza por r",
+    "text": "RANA EMPIEZA POR R.",
+    "file": "510c8983653d0aef.mp3",
+    "spoken": "RANA EMPIEZA POR R."
+  },
+  {
+    "key": "pato empieza por p",
+    "text": "PATO EMPIEZA POR P.",
+    "file": "3ab4401e891f9bfb.mp3",
+    "spoken": "PATO EMPIEZA POR P."
+  },
+  {
     "key": "tiempo prehistórico",
     "text": "tiempo prehistórico.",
     "file": "edbfe10400527d3d.mp3",
@@ -2338,6 +4186,30 @@
     "text": "¿Con qué la comemos?",
     "file": "56b08e70cfb46720.mp3",
     "spoken": "¿Con qué la comemos?"
+  },
+  {
+    "key": "busca al triceratops",
+    "text": "BUSCA AL TRICERATOPS",
+    "file": "26ef35e6fd124636.mp3",
+    "spoken": "BUSCA AL TRICERATOPS."
+  },
+  {
+    "key": "arrastra una flecha",
+    "text": "ARRASTRA UNA FLECHA.",
+    "file": "e865bc5cad393e99.mp3",
+    "spoken": "ARRASTRA UNA FLECHA."
+  },
+  {
+    "key": "escuchamos un relato",
+    "text": "ESCUCHAMOS UN RELATO",
+    "file": "1833a03a603d73ec.mp3",
+    "spoken": "ESCUCHAMOS UN RELATO."
+  },
+  {
+    "key": "miramos con atención",
+    "text": "MIRAMOS CON ATENCIÓN",
+    "file": "0c387330e25a6090.mp3",
+    "spoken": "MIRAMOS CON ATENCIÓN."
   },
   {
     "key": "la bolsa misteriosa",
@@ -2442,6 +4314,24 @@
     "spoken": "En ese grupo hay diez."
   },
   {
+    "key": "en ese grupo hay 11",
+    "text": "En ese grupo hay 11.",
+    "file": "01c83b18ed792def.mp3",
+    "spoken": "En ese grupo hay once."
+  },
+  {
+    "key": "en ese grupo hay 12",
+    "text": "En ese grupo hay 12.",
+    "file": "d41a5285fbcfe96a.mp3",
+    "spoken": "En ese grupo hay doce."
+  },
+  {
+    "key": "contamos: 9, 10, 11",
+    "text": "Contamos: 9, 10, 11.",
+    "file": "db39456b67d5b54e.mp3",
+    "spoken": "Contamos: nueve, diez, once."
+  },
+  {
     "key": "abeja empieza por a",
     "text": "ABEJA empieza por A.",
     "file": "207e4814c306564d.mp3",
@@ -2464,6 +4354,78 @@
     "text": "PA · TO: 2 palmadas.",
     "file": "758942640664b6f4.mp3",
     "spoken": "PA · TO: dos palmadas."
+  },
+  {
+    "key": "abril empieza por a",
+    "text": "Abril empieza por A.",
+    "file": "ea48dff872d407c3.mp3",
+    "spoken": "Abril empieza por A."
+  },
+  {
+    "key": "alma tiene 4 letras",
+    "text": "Alma tiene 4 letras.",
+    "file": "af0eb0dee36d789a.mp3",
+    "spoken": "Alma tiene cuatro letras."
+  },
+  {
+    "key": "emma tiene 4 letras",
+    "text": "Emma tiene 4 letras.",
+    "file": "fc081028d39aa70b.mp3",
+    "spoken": "Emma tiene cuatro letras."
+  },
+  {
+    "key": "uña larga y curvada",
+    "text": "UÑA LARGA Y CURVADA.",
+    "file": "dfa4996c1ff5fa7c.mp3",
+    "spoken": "UÑA LARGA Y CURVADA."
+  },
+  {
+    "key": "¡es el estegosaurio",
+    "text": "¡ES EL ESTEGOSAURIO!",
+    "file": "9931bb6b78ba7a22.mp3",
+    "spoken": "¡ES EL ESTEGOSAURIO!"
+  },
+  {
+    "key": "¡es el velociraptor",
+    "text": "¡ES EL VELOCIRAPTOR!",
+    "file": "cd8123a93588f493.mp3",
+    "spoken": "¡ES EL VELOCIRAPTOR!"
+  },
+  {
+    "key": "¡es el espinosaurio",
+    "text": "¡ES EL ESPINOSAURIO!",
+    "file": "2cd85f4ee1bb7d8f.mp3",
+    "spoken": "¡ES EL ESPINOSAURIO!"
+  },
+  {
+    "key": "perro empieza por p",
+    "text": "PERRO EMPIEZA POR P.",
+    "file": "810a8f1f6b46fb2e.mp3",
+    "spoken": "PERRO EMPIEZA POR P."
+  },
+  {
+    "key": "fresa empieza por f",
+    "text": "FRESA EMPIEZA POR F.",
+    "file": "052ed71bd0e2010e.mp3",
+    "spoken": "FRESA EMPIEZA POR F."
+  },
+  {
+    "key": "globo empieza por g",
+    "text": "GLOBO EMPIEZA POR G.",
+    "file": "bc183960fd4b9177.mp3",
+    "spoken": "GLOBO EMPIEZA POR G."
+  },
+  {
+    "key": "el patrón se repite",
+    "text": "EL PATRÓN SE REPITE.",
+    "file": "5bf2961193681769.mp3",
+    "spoken": "EL PATRÓN SE REPITE."
+  },
+  {
+    "key": "¿cuántos dibujos hay",
+    "text": "¿Cuántos dibujos hay?",
+    "file": "1b6e556f7a8cc584.mp3",
+    "spoken": "¿Cuántos dibujos hay?"
   },
   {
     "key": "busca una letra igual",
@@ -2490,10 +4452,328 @@
     "spoken": "Hay sopa en el plato."
   },
   {
+    "key": "busca al estegosaurio",
+    "text": "BUSCA AL ESTEGOSAURIO",
+    "file": "b541611529fe8b3c.mp3",
+    "spoken": "BUSCA AL ESTEGOSAURIO."
+  },
+  {
+    "key": "busca al velociraptor",
+    "text": "BUSCA AL VELOCIRAPTOR",
+    "file": "b42a4c9f26f9ac8e.mp3",
+    "spoken": "BUSCA AL VELOCIRAPTOR."
+  },
+  {
+    "key": "busca al espinosaurio",
+    "text": "BUSCA AL ESPINOSAURIO",
+    "file": "a177876a2f732f59.mp3",
+    "spoken": "BUSCA AL ESPINOSAURIO."
+  },
+  {
+    "key": "había 1 y llegaron 1",
+    "text": "HABÍA 1 Y LLEGARON 1.",
+    "file": "e2a8273697a5fbbc.mp3",
+    "spoken": "HABÍA uno Y LLEGARON uno."
+  },
+  {
+    "key": "había 1 y llegaron 2",
+    "text": "HABÍA 1 Y LLEGARON 2.",
+    "file": "d74c42ad61b05dc5.mp3",
+    "spoken": "HABÍA uno Y LLEGARON dos."
+  },
+  {
+    "key": "había 1 y llegaron 3",
+    "text": "HABÍA 1 Y LLEGARON 3.",
+    "file": "9df8ae3fcaf9f5a9.mp3",
+    "spoken": "HABÍA uno Y LLEGARON tres."
+  },
+  {
+    "key": "había 1 y llegaron 4",
+    "text": "HABÍA 1 Y LLEGARON 4.",
+    "file": "0e0b5a8eed8bf630.mp3",
+    "spoken": "HABÍA uno Y LLEGARON cuatro."
+  },
+  {
+    "key": "había 3 y llegaron 2",
+    "text": "HABÍA 3 Y LLEGARON 2.",
+    "file": "9559c59666b47034.mp3",
+    "spoken": "HABÍA tres Y LLEGARON dos."
+  },
+  {
+    "key": "había 5 y llegaron 3",
+    "text": "HABÍA 5 Y LLEGARON 3.",
+    "file": "a229554409ceff31.mp3",
+    "spoken": "HABÍA cinco Y LLEGARON tres."
+  },
+  {
+    "key": "había 2 y llegaron 4",
+    "text": "HABÍA 2 Y LLEGARON 4.",
+    "file": "fc7b854540a561b5.mp3",
+    "spoken": "HABÍA dos Y LLEGARON cuatro."
+  },
+  {
+    "key": "había 4 y llegaron 1",
+    "text": "HABÍA 4 Y LLEGARON 1.",
+    "file": "b8915f7d3f8149cd.mp3",
+    "spoken": "HABÍA cuatro Y LLEGARON uno."
+  },
+  {
+    "key": "había 1 y llegaron 6",
+    "text": "HABÍA 1 Y LLEGARON 6.",
+    "file": "2ec0911dda30a8de.mp3",
+    "spoken": "HABÍA uno Y LLEGARON seis."
+  },
+  {
+    "key": "había 5 y llegaron 2",
+    "text": "HABÍA 5 Y LLEGARON 2.",
+    "file": "0d85420242e652eb.mp3",
+    "spoken": "HABÍA cinco Y LLEGARON dos."
+  },
+  {
+    "key": "había 2 y llegaron 3",
+    "text": "HABÍA 2 Y LLEGARON 3.",
+    "file": "918c392b3bb728ce.mp3",
+    "spoken": "HABÍA dos Y LLEGARON tres."
+  },
+  {
+    "key": "había 4 y llegaron 2",
+    "text": "HABÍA 4 Y LLEGARON 2.",
+    "file": "55a6d1667a7fe9de.mp3",
+    "spoken": "HABÍA cuatro Y LLEGARON dos."
+  },
+  {
+    "key": "había 5 y llegaron 1",
+    "text": "HABÍA 5 Y LLEGARON 1.",
+    "file": "9cd91b8ea0f38360.mp3",
+    "spoken": "HABÍA cinco Y LLEGARON uno."
+  },
+  {
+    "key": "había 2 y llegaron 2",
+    "text": "HABÍA 2 Y LLEGARON 2.",
+    "file": "fd5458ea46ae5a69.mp3",
+    "spoken": "HABÍA dos Y LLEGARON dos."
+  },
+  {
+    "key": "había 4 y llegaron 3",
+    "text": "HABÍA 4 Y LLEGARON 3.",
+    "file": "da35e26b6f1a6ebe.mp3",
+    "spoken": "HABÍA cuatro Y LLEGARON tres."
+  },
+  {
+    "key": "había 2 y llegaron 1",
+    "text": "HABÍA 2 Y LLEGARON 1.",
+    "file": "ce91d9f435c991d1.mp3",
+    "spoken": "HABÍA dos Y LLEGARON uno."
+  },
+  {
+    "key": "había 4 y llegaron 4",
+    "text": "HABÍA 4 Y LLEGARON 4.",
+    "file": "e43071cefa5bc5e0.mp3",
+    "spoken": "HABÍA cuatro Y LLEGARON cuatro."
+  },
+  {
+    "key": "había 1 y llegaron 7",
+    "text": "HABÍA 1 Y LLEGARON 7.",
+    "file": "c9ae652e6ea7c399.mp3",
+    "spoken": "HABÍA uno Y LLEGARON siete."
+  },
+  {
+    "key": "había 2 y llegaron 6",
+    "text": "HABÍA 2 Y LLEGARON 6.",
+    "file": "cf8f01341c1124c5.mp3",
+    "spoken": "HABÍA dos Y LLEGARON seis."
+  },
+  {
+    "key": "había 1 y llegaron 5",
+    "text": "HABÍA 1 Y LLEGARON 5.",
+    "file": "cebedf79c2c50daa.mp3",
+    "spoken": "HABÍA uno Y LLEGARON cinco."
+  },
+  {
+    "key": "había 2 y llegaron 5",
+    "text": "HABÍA 2 Y LLEGARON 5.",
+    "file": "a833925ecf2ed4aa.mp3",
+    "spoken": "HABÍA dos Y LLEGARON cinco."
+  },
+  {
+    "key": "había 7 y llegaron 1",
+    "text": "HABÍA 7 Y LLEGARON 1.",
+    "file": "19fe523efad92c32.mp3",
+    "spoken": "HABÍA siete Y LLEGARON uno."
+  },
+  {
+    "key": "había 4 y llegaron 6",
+    "text": "HABÍA 4 Y LLEGARON 6.",
+    "file": "9c3790484d60387d.mp3",
+    "spoken": "HABÍA cuatro Y LLEGARON seis."
+  },
+  {
+    "key": "había 6 y llegaron 3",
+    "text": "HABÍA 6 Y LLEGARON 3.",
+    "file": "5ac70e02d9f6634d.mp3",
+    "spoken": "HABÍA seis Y LLEGARON tres."
+  },
+  {
+    "key": "había 1 y llegaron 8",
+    "text": "HABÍA 1 Y LLEGARON 8.",
+    "file": "b5a71bde37791b4d.mp3",
+    "spoken": "HABÍA uno Y LLEGARON ocho."
+  },
+  {
+    "key": "había 5 y llegaron 5",
+    "text": "HABÍA 5 Y LLEGARON 5.",
+    "file": "50b3788173687358.mp3",
+    "spoken": "HABÍA cinco Y LLEGARON cinco."
+  },
+  {
+    "key": "había 7 y llegaron 2",
+    "text": "HABÍA 7 Y LLEGARON 2.",
+    "file": "10fee7d4a8764f9b.mp3",
+    "spoken": "HABÍA siete Y LLEGARON dos."
+  },
+  {
+    "key": "había 6 y llegaron 2",
+    "text": "HABÍA 6 Y LLEGARON 2.",
+    "file": "0e1be9d6655fcafd.mp3",
+    "spoken": "HABÍA seis Y LLEGARON dos."
+  },
+  {
+    "key": "había 7 y llegaron 3",
+    "text": "HABÍA 7 Y LLEGARON 3.",
+    "file": "08bead2b67f34613.mp3",
+    "spoken": "HABÍA siete Y LLEGARON tres."
+  },
+  {
+    "key": "había 6 y llegaron 1",
+    "text": "HABÍA 6 Y LLEGARON 1.",
+    "file": "029ea4852793a76f.mp3",
+    "spoken": "HABÍA seis Y LLEGARON uno."
+  },
+  {
+    "key": "había 5 y llegaron 4",
+    "text": "HABÍA 5 Y LLEGARON 4.",
+    "file": "d0c06dd435bcfff2.mp3",
+    "spoken": "HABÍA cinco Y LLEGARON cuatro."
+  },
+  {
+    "key": "había 6 y llegaron 4",
+    "text": "HABÍA 6 Y LLEGARON 4.",
+    "file": "16e7a1aded1a71e9.mp3",
+    "spoken": "HABÍA seis Y LLEGARON cuatro."
+  },
+  {
+    "key": "había 1 y llegaron 9",
+    "text": "HABÍA 1 Y LLEGARON 9.",
+    "file": "44ae747bf9013968.mp3",
+    "spoken": "HABÍA uno Y LLEGARON nueve."
+  },
+  {
+    "key": "había 2 y llegaron 8",
+    "text": "HABÍA 2 Y LLEGARON 8.",
+    "file": "a30f3cba0d72fec8.mp3",
+    "spoken": "HABÍA dos Y LLEGARON ocho."
+  },
+  {
+    "key": "había 4 y llegaron 5",
+    "text": "HABÍA 4 Y LLEGARON 5.",
+    "file": "144352b7a615f8aa.mp3",
+    "spoken": "HABÍA cuatro Y LLEGARON cinco."
+  },
+  {
+    "key": "había 2 y llegaron 7",
+    "text": "HABÍA 2 Y LLEGARON 7.",
+    "file": "1b209f565d987381.mp3",
+    "spoken": "HABÍA dos Y LLEGARON siete."
+  },
+  {
+    "key": "había 7 y llegaron 4",
+    "text": "HABÍA 7 Y LLEGARON 4.",
+    "file": "eaa54b03e579a496.mp3",
+    "spoken": "HABÍA siete Y LLEGARON cuatro."
+  },
+  {
+    "key": "había 9 y llegaron 2",
+    "text": "HABÍA 9 Y LLEGARON 2.",
+    "file": "0b7b8e4a1f7a6081.mp3",
+    "spoken": "HABÍA nueve Y LLEGARON dos."
+  },
+  {
+    "key": "había 4 y llegaron 7",
+    "text": "HABÍA 4 Y LLEGARON 7.",
+    "file": "c2af9b69bb41f46d.mp3",
+    "spoken": "HABÍA cuatro Y LLEGARON siete."
+  },
+  {
+    "key": "había 8 y llegaron 1",
+    "text": "HABÍA 8 Y LLEGARON 1.",
+    "file": "a30267ed2f980176.mp3",
+    "spoken": "HABÍA ocho Y LLEGARON uno."
+  },
+  {
+    "key": "había 4 y llegaron 8",
+    "text": "HABÍA 4 Y LLEGARON 8.",
+    "file": "574f7516cef39e34.mp3",
+    "spoken": "HABÍA cuatro Y LLEGARON ocho."
+  },
+  {
+    "key": "había 6 y llegaron 5",
+    "text": "HABÍA 6 Y LLEGARON 5.",
+    "file": "685944a239d52fa1.mp3",
+    "spoken": "HABÍA seis Y LLEGARON cinco."
+  },
+  {
+    "key": "había 8 y llegaron 2",
+    "text": "HABÍA 8 Y LLEGARON 2.",
+    "file": "d2b138f3799d8b1b.mp3",
+    "spoken": "HABÍA ocho Y LLEGARON dos."
+  },
+  {
+    "key": "había 5 y llegaron 7",
+    "text": "HABÍA 5 Y LLEGARON 7.",
+    "file": "4651c30cb862b069.mp3",
+    "spoken": "HABÍA cinco Y LLEGARON siete."
+  },
+  {
+    "key": "había 8 y llegaron 3",
+    "text": "HABÍA 8 Y LLEGARON 3.",
+    "file": "d12ce1db749de594.mp3",
+    "spoken": "HABÍA ocho Y LLEGARON tres."
+  },
+  {
+    "key": "había 8 y llegaron 4",
+    "text": "HABÍA 8 Y LLEGARON 4.",
+    "file": "f5f71e2b2e88a2e8.mp3",
+    "spoken": "HABÍA ocho Y LLEGARON cuatro."
+  },
+  {
+    "key": "había 7 y llegaron 5",
+    "text": "HABÍA 7 Y LLEGARON 5.",
+    "file": "86f552cfedc9c727.mp3",
+    "spoken": "HABÍA siete Y LLEGARON cinco."
+  },
+  {
+    "key": "había 5 y llegaron 6",
+    "text": "HABÍA 5 Y LLEGARON 6.",
+    "file": "11ca9809767836ca.mp3",
+    "spoken": "HABÍA cinco Y LLEGARON seis."
+  },
+  {
+    "key": "había 2 y llegaron 9",
+    "text": "HABÍA 2 Y LLEGARON 9.",
+    "file": "50361aa0f40ce251.mp3",
+    "spoken": "HABÍA dos Y LLEGARON nueve."
+  },
+  {
     "key": "siguiendo las huellas",
     "text": "Siguiendo las huellas",
     "file": "8d7c5546469e1009.mp3",
     "spoken": "Siguiendo las huellas."
+  },
+  {
+    "key": "descubrimos una pista",
+    "text": "DESCUBRIMOS UNA PISTA",
+    "file": "2f8247a4a770e8bc.mp3",
+    "spoken": "DESCUBRIMOS UNA PISTA."
   },
   {
     "key": "una pieza desaparece",
@@ -2578,6 +4858,12 @@
     "text": "Cerramos la asamblea.",
     "file": "a794c64817cbf968.mp3",
     "spoken": "Cerramos la asamblea."
+  },
+  {
+    "key": "¿quién ha venido hoy",
+    "text": "¿Quién ha venido hoy?",
+    "file": "dc671a4298231b6b.mp3",
+    "spoken": "¿Quién ha venido hoy?"
   },
   {
     "key": "la letra protagonista",
@@ -2796,6 +5082,12 @@
     "spoken": "Uno y ocho juntos hacen nueve."
   },
   {
+    "key": "contamos: 10, 11, 12",
+    "text": "Contamos: 10, 11, 12.",
+    "file": "9fee9e7874310092.mp3",
+    "spoken": "Contamos: diez, once, doce."
+  },
+  {
     "key": "la decimos despacito",
     "text": "La decimos despacito.",
     "file": "56faa000eb24f277.mp3",
@@ -2808,22 +5100,226 @@
     "spoken": "ANILLO empieza por A."
   },
   {
-    "key": "mira estos dinosaurios",
-    "text": "Mira estos dinosaurios",
-    "file": "b8cf037e7803504a.mp3",
-    "spoken": "Mira estos dinosaurios."
+    "key": "sergio empieza por s",
+    "text": "Sergio empieza por S.",
+    "file": "27d75f68b8493e19.mp3",
+    "spoken": "Sergio empieza por S."
   },
   {
-    "key": "¿qué dinosaurio falta",
-    "text": "¿Qué dinosaurio falta?",
-    "file": "105b38f2ea21d3e7.mp3",
-    "spoken": "¿Qué dinosaurio falta?"
+    "key": "martín empieza por m",
+    "text": "Martín empieza por M.",
+    "file": "4eb6a58259638492.mp3",
+    "spoken": "Martín empieza por M."
+  },
+  {
+    "key": "álvaro empieza por á",
+    "text": "Álvaro empieza por Á.",
+    "file": "550e2d98c93851c8.mp3",
+    "spoken": "Álvaro empieza por Á."
+  },
+  {
+    "key": "abril tiene 5 letras",
+    "text": "Abril tiene 5 letras.",
+    "file": "b7a9fed1629ab2bd.mp3",
+    "spoken": "Abril tiene cinco letras."
+  },
+  {
+    "key": "¡es el braquiosaurio",
+    "text": "¡ES EL BRAQUIOSAURIO!",
+    "file": "2c1b481191dc37a9.mp3",
+    "spoken": "¡ES EL BRAQUIOSAURIO!"
+  },
+  {
+    "key": "¡es el anquilosaurio",
+    "text": "¡ES EL ANQUILOSAURIO!",
+    "file": "b992884c672ad10e.mp3",
+    "spoken": "¡ES EL ANQUILOSAURIO!"
+  },
+  {
+    "key": "¡es el parasaurolofo",
+    "text": "¡ES EL PARASAUROLOFO!",
+    "file": "a4aa5f3c72c87dbd.mp3",
+    "spoken": "¡ES EL PARASAUROLOFO!"
+  },
+  {
+    "key": "muñeco empieza por m",
+    "text": "MUÑECO EMPIEZA POR M.",
+    "file": "1ff922d8702de473.mp3",
+    "spoken": "MUÑECO EMPIEZA POR M."
   },
   {
     "key": "¿qué comía diplodocus",
     "text": "¿Qué comía Diplodocus?",
     "file": "19b0becb85982403.mp3",
     "spoken": "¿Qué comía Diplodocus?"
+  },
+  {
+    "key": "¿de qué va disfrazado",
+    "text": "¿DE QUÉ VA DISFRAZADO?",
+    "file": "a2e6f2e7b1c66b9d.mp3",
+    "spoken": "¿DE QUÉ VA DISFRAZADO?"
+  },
+  {
+    "key": "busca al braquiosaurio",
+    "text": "BUSCA AL BRAQUIOSAURIO",
+    "file": "6effe614f1ebb576.mp3",
+    "spoken": "BUSCA AL BRAQUIOSAURIO."
+  },
+  {
+    "key": "busca al anquilosaurio",
+    "text": "BUSCA AL ANQUILOSAURIO",
+    "file": "4dfd4a63016bb917.mp3",
+    "spoken": "BUSCA AL ANQUILOSAURIO."
+  },
+  {
+    "key": "busca al parasaurolofo",
+    "text": "BUSCA AL PARASAUROLOFO",
+    "file": "6db116684f09d1f4.mp3",
+    "spoken": "BUSCA AL PARASAUROLOFO."
+  },
+  {
+    "key": "había 4 y se fueron 1",
+    "text": "HABÍA 4 Y SE FUERON 1.",
+    "file": "c082f28c383873f9.mp3",
+    "spoken": "HABÍA cuatro Y SE FUERON uno."
+  },
+  {
+    "key": "había 3 y se fueron 2",
+    "text": "HABÍA 3 Y SE FUERON 2.",
+    "file": "6a059ff4bb5ce688.mp3",
+    "spoken": "HABÍA tres Y SE FUERON dos."
+  },
+  {
+    "key": "había 5 y se fueron 3",
+    "text": "HABÍA 5 Y SE FUERON 3.",
+    "file": "4897e345ab21b4cb.mp3",
+    "spoken": "HABÍA cinco Y SE FUERON tres."
+  },
+  {
+    "key": "había 3 y se fueron 1",
+    "text": "HABÍA 3 Y SE FUERON 1.",
+    "file": "d50c75ce8d14064c.mp3",
+    "spoken": "HABÍA tres Y SE FUERON uno."
+  },
+  {
+    "key": "había 5 y se fueron 2",
+    "text": "HABÍA 5 Y SE FUERON 2.",
+    "file": "7deada19d35ed2c4.mp3",
+    "spoken": "HABÍA cinco Y SE FUERON dos."
+  },
+  {
+    "key": "había 5 y se fueron 1",
+    "text": "HABÍA 5 Y SE FUERON 1.",
+    "file": "dbebb9f43da1ac48.mp3",
+    "spoken": "HABÍA cinco Y SE FUERON uno."
+  },
+  {
+    "key": "había 5 y se fueron 4",
+    "text": "HABÍA 5 Y SE FUERON 4.",
+    "file": "c07ca6c5a2a2c2ec.mp3",
+    "spoken": "HABÍA cinco Y SE FUERON cuatro."
+  },
+  {
+    "key": "había 6 y se fueron 2",
+    "text": "HABÍA 6 Y SE FUERON 2.",
+    "file": "c7217f29be399ff9.mp3",
+    "spoken": "HABÍA seis Y SE FUERON dos."
+  },
+  {
+    "key": "había 8 y se fueron 3",
+    "text": "HABÍA 8 Y SE FUERON 3.",
+    "file": "ca98f7d7ca9823e1.mp3",
+    "spoken": "HABÍA ocho Y SE FUERON tres."
+  },
+  {
+    "key": "había 6 y se fueron 5",
+    "text": "HABÍA 6 Y SE FUERON 5.",
+    "file": "22656406a367e82d.mp3",
+    "spoken": "HABÍA seis Y SE FUERON cinco."
+  },
+  {
+    "key": "había 8 y se fueron 6",
+    "text": "HABÍA 8 Y SE FUERON 6.",
+    "file": "107b30dd6dacc9b2.mp3",
+    "spoken": "HABÍA ocho Y SE FUERON seis."
+  },
+  {
+    "key": "había 6 y se fueron 3",
+    "text": "HABÍA 6 Y SE FUERON 3.",
+    "file": "3b75efcdbaa4cb40.mp3",
+    "spoken": "HABÍA seis Y SE FUERON tres."
+  },
+  {
+    "key": "había 8 y se fueron 2",
+    "text": "HABÍA 8 Y SE FUERON 2.",
+    "file": "f20ba83a74c07d50.mp3",
+    "spoken": "HABÍA ocho Y SE FUERON dos."
+  },
+  {
+    "key": "había 6 y se fueron 1",
+    "text": "HABÍA 6 Y SE FUERON 1.",
+    "file": "7865f6689fae0201.mp3",
+    "spoken": "HABÍA seis Y SE FUERON uno."
+  },
+  {
+    "key": "había 8 y se fueron 5",
+    "text": "HABÍA 8 Y SE FUERON 5.",
+    "file": "0de5ca42a2bc363a.mp3",
+    "spoken": "HABÍA ocho Y SE FUERON cinco."
+  },
+  {
+    "key": "había 6 y se fueron 4",
+    "text": "HABÍA 6 Y SE FUERON 4.",
+    "file": "af2d180f5df4a28a.mp3",
+    "spoken": "HABÍA seis Y SE FUERON cuatro."
+  },
+  {
+    "key": "había 8 y se fueron 1",
+    "text": "HABÍA 8 Y SE FUERON 1.",
+    "file": "ff406a3236926980.mp3",
+    "spoken": "HABÍA ocho Y SE FUERON uno."
+  },
+  {
+    "key": "había 8 y se fueron 4",
+    "text": "HABÍA 8 Y SE FUERON 4.",
+    "file": "ea1d5ed1aa7ce540.mp3",
+    "spoken": "HABÍA ocho Y SE FUERON cuatro."
+  },
+  {
+    "key": "había 8 y se fueron 7",
+    "text": "HABÍA 8 Y SE FUERON 7.",
+    "file": "0783d695ba3e67af.mp3",
+    "spoken": "HABÍA ocho Y SE FUERON siete."
+  },
+  {
+    "key": "había 4 y se fueron 2",
+    "text": "HABÍA 4 Y SE FUERON 2.",
+    "file": "9cf42514be656c44.mp3",
+    "spoken": "HABÍA cuatro Y SE FUERON dos."
+  },
+  {
+    "key": "había 4 y se fueron 3",
+    "text": "HABÍA 4 Y SE FUERON 3.",
+    "file": "ba14748bfb9a0d57.mp3",
+    "spoken": "HABÍA cuatro Y SE FUERON tres."
+  },
+  {
+    "key": "había 1 y llegaron 10",
+    "text": "HABÍA 1 Y LLEGARON 10.",
+    "file": "aaa8511241b7b153.mp3",
+    "spoken": "HABÍA uno Y LLEGARON diez."
+  },
+  {
+    "key": "había 1 y llegaron 11",
+    "text": "HABÍA 1 Y LLEGARON 11.",
+    "file": "ebea6e18d6749f81.mp3",
+    "spoken": "HABÍA uno Y LLEGARON once."
+  },
+  {
+    "key": "había 2 y llegaron 10",
+    "text": "HABÍA 2 Y LLEGARON 10.",
+    "file": "0c9a5d5d95d91652.mp3",
+    "spoken": "HABÍA dos Y LLEGARON diez."
   },
   {
     "key": "del pequeño al grande",
@@ -2848,12 +5344,6 @@
     "text": "Cada cosa a su lugar..",
     "file": "839a91fa1c3516c2.mp3",
     "spoken": "Cada cosa a su lugar.."
-  },
-  {
-    "key": "¿cuántos hemos venido",
-    "text": "¿Cuántos hemos venido?",
-    "file": "bb5009140e95352c.mp3",
-    "spoken": "¿Cuántos hemos venido?"
   },
   {
     "key": "lila espera a su lado",
@@ -2916,6 +5406,138 @@
     "spoken": "Uno y nueve juntos hacen diez."
   },
   {
+    "key": "5 y 6 juntos hacen 11",
+    "text": "5 y 6 juntos hacen 11.",
+    "file": "a6dfd8cfdfa9a0d5.mp3",
+    "spoken": "Cinco y seis juntos hacen once."
+  },
+  {
+    "key": "4 y 7 juntos hacen 11",
+    "text": "4 y 7 juntos hacen 11.",
+    "file": "7d65aec8bb7ef396.mp3",
+    "spoken": "Cuatro y siete juntos hacen once."
+  },
+  {
+    "key": "5 y 7 juntos hacen 12",
+    "text": "5 y 7 juntos hacen 12.",
+    "file": "efa003e068fed543.mp3",
+    "spoken": "Cinco y siete juntos hacen doce."
+  },
+  {
+    "key": "3 y 8 juntos hacen 11",
+    "text": "3 y 8 juntos hacen 11.",
+    "file": "3673c6a1f6e0de9d.mp3",
+    "spoken": "Tres y ocho juntos hacen once."
+  },
+  {
+    "key": "4 y 8 juntos hacen 12",
+    "text": "4 y 8 juntos hacen 12.",
+    "file": "3fe7dfb2ef0bcba3.mp3",
+    "spoken": "Cuatro y ocho juntos hacen doce."
+  },
+  {
+    "key": "2 y 9 juntos hacen 11",
+    "text": "2 y 9 juntos hacen 11.",
+    "file": "fb514f3c39fc50e0.mp3",
+    "spoken": "Dos y nueve juntos hacen once."
+  },
+  {
+    "key": "3 y 9 juntos hacen 12",
+    "text": "3 y 9 juntos hacen 12.",
+    "file": "d94096fcf840e96c.mp3",
+    "spoken": "Tres y nueve juntos hacen doce."
+  },
+  {
+    "key": "tristán empieza por t",
+    "text": "Tristán empieza por T.",
+    "file": "79011b40a555c196.mp3",
+    "spoken": "Tristán empieza por T."
+  },
+  {
+    "key": "marcelo empieza por m",
+    "text": "Marcelo empieza por M.",
+    "file": "935b86310593c82a.mp3",
+    "spoken": "Marcelo empieza por M."
+  },
+  {
+    "key": "sergio tiene 6 letras",
+    "text": "Sergio tiene 6 letras.",
+    "file": "6ac0ffd66c813bb0.mp3",
+    "spoken": "Sergio tiene seis letras."
+  },
+  {
+    "key": "martín tiene 6 letras",
+    "text": "Martín tiene 6 letras.",
+    "file": "9c3bbb936226d39c.mp3",
+    "spoken": "Martín tiene seis letras."
+  },
+  {
+    "key": "álvaro tiene 6 letras",
+    "text": "Álvaro tiene 6 letras.",
+    "file": "32dab3ae5c645e6a.mp3",
+    "spoken": "Álvaro tiene seis letras."
+  },
+  {
+    "key": "es un disfraz de rana",
+    "text": "ES UN DISFRAZ DE RANA.",
+    "file": "24b0d19dcfc985e8.mp3",
+    "spoken": "ES UN DISFRAZ DE RANA."
+  },
+  {
+    "key": "el número vecino es 2",
+    "text": "EL NÚMERO VECINO ES 2.",
+    "file": "17fd7608ab45e04e.mp3",
+    "spoken": "EL NÚMERO VECINO ES dos."
+  },
+  {
+    "key": "el número vecino es 4",
+    "text": "EL NÚMERO VECINO ES 4.",
+    "file": "9c9485a8a6169a89.mp3",
+    "spoken": "EL NÚMERO VECINO ES cuatro."
+  },
+  {
+    "key": "el número vecino es 6",
+    "text": "EL NÚMERO VECINO ES 6.",
+    "file": "13b35ab1dce6bf1f.mp3",
+    "spoken": "EL NÚMERO VECINO ES seis."
+  },
+  {
+    "key": "el número vecino es 8",
+    "text": "EL NÚMERO VECINO ES 8.",
+    "file": "bf3673be125d49fd.mp3",
+    "spoken": "EL NÚMERO VECINO ES ocho."
+  },
+  {
+    "key": "el número vecino es 1",
+    "text": "EL NÚMERO VECINO ES 1.",
+    "file": "30ed1c67a22442cd.mp3",
+    "spoken": "EL NÚMERO VECINO ES uno."
+  },
+  {
+    "key": "el número vecino es 3",
+    "text": "EL NÚMERO VECINO ES 3.",
+    "file": "8c25c51e77cbdc7f.mp3",
+    "spoken": "EL NÚMERO VECINO ES tres."
+  },
+  {
+    "key": "el número vecino es 5",
+    "text": "EL NÚMERO VECINO ES 5.",
+    "file": "d57346bea0bf677c.mp3",
+    "spoken": "EL NÚMERO VECINO ES cinco."
+  },
+  {
+    "key": "el número vecino es 7",
+    "text": "EL NÚMERO VECINO ES 7.",
+    "file": "89868ec07de74160.mp3",
+    "spoken": "EL NÚMERO VECINO ES siete."
+  },
+  {
+    "key": "el número vecino es 9",
+    "text": "EL NÚMERO VECINO ES 9.",
+    "file": "2bc7f789255f67b2.mp3",
+    "spoken": "EL NÚMERO VECINO ES nueve."
+  },
+  {
     "key": "¿cuál tiene otra forma",
     "text": "¿Cuál tiene otra forma?",
     "file": "f08a17586036de33.mp3",
@@ -2950,6 +5572,114 @@
     "text": "¿Qué dibujo está abajo?",
     "file": "1e7f023d682a792c.mp3",
     "spoken": "¿Qué dibujo está abajo?"
+  },
+  {
+    "key": "había 10 y se fueron 4",
+    "text": "HABÍA 10 Y SE FUERON 4.",
+    "file": "40d9b43b0443ac35.mp3",
+    "spoken": "HABÍA diez Y SE FUERON cuatro."
+  },
+  {
+    "key": "había 10 y se fueron 8",
+    "text": "HABÍA 10 Y SE FUERON 8.",
+    "file": "ad973f669f2a5d2d.mp3",
+    "spoken": "HABÍA diez Y SE FUERON ocho."
+  },
+  {
+    "key": "había 10 y se fueron 3",
+    "text": "HABÍA 10 Y SE FUERON 3.",
+    "file": "f28e5f03e15ed476.mp3",
+    "spoken": "HABÍA diez Y SE FUERON tres."
+  },
+  {
+    "key": "había 10 y se fueron 7",
+    "text": "HABÍA 10 Y SE FUERON 7.",
+    "file": "5f19e03490317ec1.mp3",
+    "spoken": "HABÍA diez Y SE FUERON siete."
+  },
+  {
+    "key": "había 10 y se fueron 2",
+    "text": "HABÍA 10 Y SE FUERON 2.",
+    "file": "84d993f7a4c1780e.mp3",
+    "spoken": "HABÍA diez Y SE FUERON dos."
+  },
+  {
+    "key": "había 10 y se fueron 6",
+    "text": "HABÍA 10 Y SE FUERON 6.",
+    "file": "57b1c39455103a6e.mp3",
+    "spoken": "HABÍA diez Y SE FUERON seis."
+  },
+  {
+    "key": "había 10 y se fueron 1",
+    "text": "HABÍA 10 Y SE FUERON 1.",
+    "file": "b47a5e178b1106bd.mp3",
+    "spoken": "HABÍA diez Y SE FUERON uno."
+  },
+  {
+    "key": "había 10 y se fueron 5",
+    "text": "HABÍA 10 Y SE FUERON 5.",
+    "file": "09cacccac352dd04.mp3",
+    "spoken": "HABÍA diez Y SE FUERON cinco."
+  },
+  {
+    "key": "había 10 y se fueron 9",
+    "text": "HABÍA 10 Y SE FUERON 9.",
+    "file": "84b1985280835cc1.mp3",
+    "spoken": "HABÍA diez Y SE FUERON nueve."
+  },
+  {
+    "key": "había 12 y se fueron 5",
+    "text": "HABÍA 12 Y SE FUERON 5.",
+    "file": "a4436eeb94ce86a7.mp3",
+    "spoken": "HABÍA doce Y SE FUERON cinco."
+  },
+  {
+    "key": "había 12 y se fueron 4",
+    "text": "HABÍA 12 Y SE FUERON 4.",
+    "file": "3e71e76fd6ddc042.mp3",
+    "spoken": "HABÍA doce Y SE FUERON cuatro."
+  },
+  {
+    "key": "había 12 y se fueron 9",
+    "text": "HABÍA 12 Y SE FUERON 9.",
+    "file": "88330fae8cd82f2f.mp3",
+    "spoken": "HABÍA doce Y SE FUERON nueve."
+  },
+  {
+    "key": "había 12 y se fueron 3",
+    "text": "HABÍA 12 Y SE FUERON 3.",
+    "file": "1d6c4e516071ae9a.mp3",
+    "spoken": "HABÍA doce Y SE FUERON tres."
+  },
+  {
+    "key": "había 12 y se fueron 8",
+    "text": "HABÍA 12 Y SE FUERON 8.",
+    "file": "c2252dcd36bd462b.mp3",
+    "spoken": "HABÍA doce Y SE FUERON ocho."
+  },
+  {
+    "key": "había 12 y se fueron 2",
+    "text": "HABÍA 12 Y SE FUERON 2.",
+    "file": "a81a5b112bb6ebe8.mp3",
+    "spoken": "HABÍA doce Y SE FUERON dos."
+  },
+  {
+    "key": "había 12 y se fueron 7",
+    "text": "HABÍA 12 Y SE FUERON 7.",
+    "file": "b382b1a48c763862.mp3",
+    "spoken": "HABÍA doce Y SE FUERON siete."
+  },
+  {
+    "key": "había 12 y se fueron 1",
+    "text": "HABÍA 12 Y SE FUERON 1.",
+    "file": "3655f737dc07f205.mp3",
+    "spoken": "HABÍA doce Y SE FUERON uno."
+  },
+  {
+    "key": "había 12 y se fueron 6",
+    "text": "HABÍA 12 Y SE FUERON 6.",
+    "file": "8c127cc5e9e8309c.mp3",
+    "spoken": "HABÍA doce Y SE FUERON seis."
   },
   {
     "key": "memoria de dos sonidos",
@@ -3012,6 +5742,24 @@
     "spoken": "Primero toca una pieza."
   },
   {
+    "key": "1 y 10 juntos hacen 11",
+    "text": "1 y 10 juntos hacen 11.",
+    "file": "3f91a7d3c085cb44.mp3",
+    "spoken": "Uno y diez juntos hacen once."
+  },
+  {
+    "key": "2 y 10 juntos hacen 12",
+    "text": "2 y 10 juntos hacen 12.",
+    "file": "3c11487f9d8131e8.mp3",
+    "spoken": "Dos y diez juntos hacen doce."
+  },
+  {
+    "key": "1 y 11 juntos hacen 12",
+    "text": "1 y 11 juntos hacen 12.",
+    "file": "b0a504b979940d49.mp3",
+    "spoken": "Uno y once juntos hacen doce."
+  },
+  {
     "key": "elefante empieza por e",
     "text": "ELEFANTE empieza por E.",
     "file": "9c147cc2104c6dd0.mp3",
@@ -3022,6 +5770,174 @@
     "text": "ESTRELLA empieza por E.",
     "file": "4b6127106a911af1.mp3",
     "spoken": "ESTRELLA empieza por E."
+  },
+  {
+    "key": "mohammed empieza por m",
+    "text": "Mohammed empieza por M.",
+    "file": "cfc6af1e10c23646.mp3",
+    "spoken": "Mohammed empieza por M."
+  },
+  {
+    "key": "tristán tiene 7 letras",
+    "text": "Tristán tiene 7 letras.",
+    "file": "1b4ffef9c96e736d.mp3",
+    "spoken": "Tristán tiene siete letras."
+  },
+  {
+    "key": "marcelo tiene 7 letras",
+    "text": "Marcelo tiene 7 letras.",
+    "file": "9af7773520d85836.mp3",
+    "spoken": "Marcelo tiene siete letras."
+  },
+  {
+    "key": "es un disfraz de abeja",
+    "text": "ES UN DISFRAZ DE ABEJA.",
+    "file": "bbb37c43a6fcc3fd.mp3",
+    "spoken": "ES UN DISFRAZ DE ABEJA."
+  },
+  {
+    "key": "es un disfraz de árbol",
+    "text": "ES UN DISFRAZ DE ÁRBOL.",
+    "file": "805325e0b6027c6c.mp3",
+    "spoken": "ES UN DISFRAZ DE ÁRBOL."
+  },
+  {
+    "key": "es un disfraz de burro",
+    "text": "ES UN DISFRAZ DE BURRO.",
+    "file": "053388864326ac61.mp3",
+    "spoken": "ES UN DISFRAZ DE BURRO."
+  },
+  {
+    "key": "el número vecino es 10",
+    "text": "EL NÚMERO VECINO ES 10.",
+    "file": "02cfb7d0f7b64f9c.mp3",
+    "spoken": "EL NÚMERO VECINO ES diez."
+  },
+  {
+    "key": "el número vecino es 12",
+    "text": "EL NÚMERO VECINO ES 12.",
+    "file": "52305af24eb8aecd.mp3",
+    "spoken": "EL NÚMERO VECINO ES doce."
+  },
+  {
+    "key": "el número vecino es 14",
+    "text": "EL NÚMERO VECINO ES 14.",
+    "file": "5c27f60d6aec1e1e.mp3",
+    "spoken": "EL NÚMERO VECINO ES catorce."
+  },
+  {
+    "key": "el número vecino es 16",
+    "text": "EL NÚMERO VECINO ES 16.",
+    "file": "9198b08ff498a7b7.mp3",
+    "spoken": "EL NÚMERO VECINO ES dieciséis."
+  },
+  {
+    "key": "el número vecino es 18",
+    "text": "EL NÚMERO VECINO ES 18.",
+    "file": "45ea65c94097bd87.mp3",
+    "spoken": "EL NÚMERO VECINO ES dieciocho."
+  },
+  {
+    "key": "el número vecino es 20",
+    "text": "EL NÚMERO VECINO ES 20.",
+    "file": "de40348fd1d15172.mp3",
+    "spoken": "EL NÚMERO VECINO ES veinte."
+  },
+  {
+    "key": "el número vecino es 11",
+    "text": "EL NÚMERO VECINO ES 11.",
+    "file": "dd5aedf3952b7e8b.mp3",
+    "spoken": "EL NÚMERO VECINO ES once."
+  },
+  {
+    "key": "el número vecino es 13",
+    "text": "EL NÚMERO VECINO ES 13.",
+    "file": "98a79da74ba3e406.mp3",
+    "spoken": "EL NÚMERO VECINO ES trece."
+  },
+  {
+    "key": "el número vecino es 15",
+    "text": "EL NÚMERO VECINO ES 15.",
+    "file": "02a8a18fb24795cd.mp3",
+    "spoken": "EL NÚMERO VECINO ES quince."
+  },
+  {
+    "key": "el número vecino es 17",
+    "text": "EL NÚMERO VECINO ES 17.",
+    "file": "94315f451194a5d3.mp3",
+    "spoken": "EL NÚMERO VECINO ES diecisiete."
+  },
+  {
+    "key": "el número vecino es 19",
+    "text": "EL NÚMERO VECINO ES 19.",
+    "file": "8f3e63966db33733.mp3",
+    "spoken": "EL NÚMERO VECINO ES diecinueve."
+  },
+  {
+    "key": "el número vecino es 22",
+    "text": "EL NÚMERO VECINO ES 22.",
+    "file": "0b993751ce00e423.mp3",
+    "spoken": "EL NÚMERO VECINO ES veintidós."
+  },
+  {
+    "key": "el número vecino es 24",
+    "text": "EL NÚMERO VECINO ES 24.",
+    "file": "2410149f154e10db.mp3",
+    "spoken": "EL NÚMERO VECINO ES veinticuatro."
+  },
+  {
+    "key": "el número vecino es 26",
+    "text": "EL NÚMERO VECINO ES 26.",
+    "file": "c9e162f5f07b2e63.mp3",
+    "spoken": "EL NÚMERO VECINO ES veintiséis."
+  },
+  {
+    "key": "el número vecino es 28",
+    "text": "EL NÚMERO VECINO ES 28.",
+    "file": "1ccaf57a333207bf.mp3",
+    "spoken": "EL NÚMERO VECINO ES veintiocho."
+  },
+  {
+    "key": "el número vecino es 30",
+    "text": "EL NÚMERO VECINO ES 30.",
+    "file": "65697b0f61097a59.mp3",
+    "spoken": "EL NÚMERO VECINO ES treinta."
+  },
+  {
+    "key": "el número vecino es 21",
+    "text": "EL NÚMERO VECINO ES 21.",
+    "file": "87d481aefa54ac5b.mp3",
+    "spoken": "EL NÚMERO VECINO ES veintiuno."
+  },
+  {
+    "key": "el número vecino es 23",
+    "text": "EL NÚMERO VECINO ES 23.",
+    "file": "cd3e48fc2aeeadff.mp3",
+    "spoken": "EL NÚMERO VECINO ES veintitrés."
+  },
+  {
+    "key": "el número vecino es 25",
+    "text": "EL NÚMERO VECINO ES 25.",
+    "file": "c8ae6b2843233d2b.mp3",
+    "spoken": "EL NÚMERO VECINO ES veinticinco."
+  },
+  {
+    "key": "el número vecino es 27",
+    "text": "EL NÚMERO VECINO ES 27.",
+    "file": "02a28622779db59b.mp3",
+    "spoken": "EL NÚMERO VECINO ES veintisiete."
+  },
+  {
+    "key": "el número vecino es 29",
+    "text": "EL NÚMERO VECINO ES 29.",
+    "file": "a922a787800305c5.mp3",
+    "spoken": "EL NÚMERO VECINO ES veintinueve."
+  },
+  {
+    "key": "mariposa empieza por m",
+    "text": "MARIPOSA EMPIEZA POR M.",
+    "file": "539639bd4ad487fd.mp3",
+    "spoken": "MARIPOSA EMPIEZA POR M."
   },
   {
     "key": "¿qué comía estegosaurio",
@@ -3066,6 +5982,24 @@
     "spoken": "La planta necesita agua."
   },
   {
+    "key": "¿de quién es la inicial",
+    "text": "¿De quién es la inicial?",
+    "file": "cb298248b0563b40.mp3",
+    "spoken": "¿De quién es la inicial?"
+  },
+  {
+    "key": "había 12 y se fueron 10",
+    "text": "HABÍA 12 Y SE FUERON 10.",
+    "file": "3610cccb51c4b63e.mp3",
+    "spoken": "HABÍA doce Y SE FUERON diez."
+  },
+  {
+    "key": "había 12 y se fueron 11",
+    "text": "HABÍA 12 Y SE FUERON 11.",
+    "file": "c2269c15b832e22b.mp3",
+    "spoken": "HABÍA doce Y SE FUERON once."
+  },
+  {
     "key": "pon 1 fruta en la cesta",
     "text": "Pon 1 fruta en la cesta.",
     "file": "8f4f13c9375e6243.mp3",
@@ -3076,6 +6010,12 @@
     "text": "Lila y el huevo viajero.",
     "file": "c87b585c63eb82dc.mp3",
     "spoken": "Lila y el huevo viajero."
+  },
+  {
+    "key": "compartimos lo aprendido",
+    "text": "COMPARTIMOS LO APRENDIDO",
+    "file": "09c88f312c48990c.mp3",
+    "spoken": "COMPARTIMOS LO APRENDIDO."
   },
   {
     "key": "nombra mesa, mano y sol",
@@ -3126,12 +6066,6 @@
     "spoken": "Otro juego va a empezar."
   },
   {
-    "key": "hoy cuidamos de la clase",
-    "text": "Hoy cuidamos de la clase",
-    "file": "51e26bc37a3cf53a.mp3",
-    "spoken": "Hoy cuidamos de la clase."
-  },
-  {
     "key": "dice «miau» y se estira",
     "text": "Dice «miau» y se estira.",
     "file": "997914a41f9170a2.mp3",
@@ -3144,10 +6078,52 @@
     "spoken": "UNICORNIO empieza por U."
   },
   {
-    "key": "¿cuántos dinosaurios hay",
-    "text": "¿Cuántos dinosaurios hay?",
-    "file": "a5239bd7641c54a4.mp3",
-    "spoken": "¿Cuántos dinosaurios hay?"
+    "key": "alejandro empieza por a",
+    "text": "Alejandro empieza por A.",
+    "file": "23919aed2b9abcc2.mp3",
+    "spoken": "Alejandro empieza por A."
+  },
+  {
+    "key": "francisco empieza por f",
+    "text": "Francisco empieza por F.",
+    "file": "570e6acf73641cd1.mp3",
+    "spoken": "Francisco empieza por F."
+  },
+  {
+    "key": "mohammed tiene 8 letras",
+    "text": "Mohammed tiene 8 letras.",
+    "file": "7260bad18517e0ca.mp3",
+    "spoken": "Mohammed tiene ocho letras."
+  },
+  {
+    "key": "es un disfraz de diablo",
+    "text": "ES UN DISFRAZ DE DIABLO.",
+    "file": "e7c50f09edb1f4f4.mp3",
+    "spoken": "ES UN DISFRAZ DE DIABLO."
+  },
+  {
+    "key": "es un disfraz de payaso",
+    "text": "ES UN DISFRAZ DE PAYASO.",
+    "file": "3454b8dc4b4e87ae.mp3",
+    "spoken": "ES UN DISFRAZ DE PAYASO."
+  },
+  {
+    "key": "parte alta de la cabeza",
+    "text": "PARTE ALTA DE LA CABEZA.",
+    "file": "15f0453917916072.mp3",
+    "spoken": "PARTE ALTA DE LA CABEZA."
+  },
+  {
+    "key": "¡es el tiranosaurio rex",
+    "text": "¡ES EL Tiranosaurio rex!",
+    "file": "7c8428bd9a6019e9.mp3",
+    "spoken": "¡ES EL Tiranosaurio rex!"
+  },
+  {
+    "key": "bicicleta empieza por b",
+    "text": "BICICLETA EMPIEZA POR B.",
+    "file": "0367c980b88059cc.mp3",
+    "spoken": "BICICLETA EMPIEZA POR B."
   },
   {
     "key": "¿qué comía braquiosaurio",
@@ -3196,6 +6172,12 @@
     "text": "Di la palabra con palmas.",
     "file": "31b32072a6fce502.mp3",
     "spoken": "Di la palabra con palmas."
+  },
+  {
+    "key": "busca al tiranosaurio rex",
+    "text": "BUSCA AL Tiranosaurio rex",
+    "file": "ca8676a48858956a.mp3",
+    "spoken": "BUSCA AL Tiranosaurio rex."
   },
   {
     "key": "pon 2 frutas en la cesta",
@@ -3336,6 +6318,24 @@
     "spoken": "El número protagonista seis."
   },
   {
+    "key": "el número protagonista 7",
+    "text": "El número protagonista 7.",
+    "file": "def95c7b6f84a14f.mp3",
+    "spoken": "El número protagonista siete."
+  },
+  {
+    "key": "el número protagonista 8",
+    "text": "El número protagonista 8.",
+    "file": "47f47770083e7579.mp3",
+    "spoken": "El número protagonista ocho."
+  },
+  {
+    "key": "el número protagonista 9",
+    "text": "El número protagonista 9.",
+    "file": "4eed7f63db7847f7.mp3",
+    "spoken": "El número protagonista nueve."
+  },
+  {
     "key": "la tierra está preparada",
     "text": "La tierra está preparada.",
     "file": "0fd65d9cbe7b0d82.mp3",
@@ -3378,6 +6378,66 @@
     "spoken": "ZA · PA · TO: tres palmadas."
   },
   {
+    "key": "alejandro tiene 9 letras",
+    "text": "Alejandro tiene 9 letras.",
+    "file": "0e4e11cf7793559d.mp3",
+    "spoken": "Alejandro tiene nueve letras."
+  },
+  {
+    "key": "francisco tiene 9 letras",
+    "text": "Francisco tiene 9 letras.",
+    "file": "45787f34e50335bf.mp3",
+    "spoken": "Francisco tiene nueve letras."
+  },
+  {
+    "key": "es un disfraz de vampiro",
+    "text": "ES UN DISFRAZ DE VAMPIRO.",
+    "file": "b03c057fcd0f9517.mp3",
+    "spoken": "ES UN DISFRAZ DE VAMPIRO."
+  },
+  {
+    "key": "es un disfraz de bombero",
+    "text": "ES UN DISFRAZ DE BOMBERO.",
+    "file": "4a7014af518aa0e9.mp3",
+    "spoken": "ES UN DISFRAZ DE BOMBERO."
+  },
+  {
+    "key": "es un disfraz de pinocho",
+    "text": "ES UN DISFRAZ DE PINOCHO.",
+    "file": "dc0d5f20d7b53381.mp3",
+    "spoken": "ES UN DISFRAZ DE PINOCHO."
+  },
+  {
+    "key": "es un disfraz de policía",
+    "text": "ES UN DISFRAZ DE POLICÍA.",
+    "file": "e3b0822814efe489.mp3",
+    "spoken": "ES UN DISFRAZ DE POLICÍA."
+  },
+  {
+    "key": "es un disfraz de plátano",
+    "text": "ES UN DISFRAZ DE PLÁTANO.",
+    "file": "7e0e2eed3723c4b3.mp3",
+    "spoken": "ES UN DISFRAZ DE PLÁTANO."
+  },
+  {
+    "key": "de aquí nacían las crías",
+    "text": "DE AQUÍ NACÍAN LAS CRÍAS.",
+    "file": "db6482ed5bf88063.mp3",
+    "spoken": "DE AQUÍ NACÍAN LAS CRÍAS."
+  },
+  {
+    "key": "¿qué vocal está repasando",
+    "text": "¿QUÉ VOCAL ESTÁ REPASANDO?",
+    "file": "67882fb03468ea09.mp3",
+    "spoken": "¿QUÉ VOCAL ESTÁ REPASANDO?"
+  },
+  {
+    "key": "busca las letras en orden",
+    "text": "Busca las letras en orden.",
+    "file": "0b4cbb237cd4e460.mp3",
+    "spoken": "Busca las letras en orden."
+  },
+  {
     "key": "¿qué número viene después",
     "text": "¿Qué número viene después?",
     "file": "a5d782d553a62d77.mp3",
@@ -3390,10 +6450,82 @@
     "spoken": "Toca el dibujo más pequeño."
   },
   {
+    "key": "¿qué nombre empieza por t",
+    "text": "¿Qué nombre empieza por T?",
+    "file": "c9d6f2701e998dc4.mp3",
+    "spoken": "¿Qué nombre empieza por T?"
+  },
+  {
+    "key": "¿qué nombre empieza por s",
+    "text": "¿Qué nombre empieza por S?",
+    "file": "13dadf8b804e9cb0.mp3",
+    "spoken": "¿Qué nombre empieza por S?"
+  },
+  {
+    "key": "¿qué nombre empieza por a",
+    "text": "¿Qué nombre empieza por A?",
+    "file": "f5e0d14edd4e5e90.mp3",
+    "spoken": "¿Qué nombre empieza por A?"
+  },
+  {
+    "key": "¿qué nombre empieza por m",
+    "text": "¿Qué nombre empieza por M?",
+    "file": "f7c8d88a2a677115.mp3",
+    "spoken": "¿Qué nombre empieza por M?"
+  },
+  {
+    "key": "¿qué nombre empieza por f",
+    "text": "¿Qué nombre empieza por F?",
+    "file": "722de805932205e1.mp3",
+    "spoken": "¿Qué nombre empieza por F?"
+  },
+  {
+    "key": "¿qué nombre empieza por e",
+    "text": "¿Qué nombre empieza por E?",
+    "file": "2e3c1cfbb0861f76.mp3",
+    "spoken": "¿Qué nombre empieza por E?"
+  },
+  {
+    "key": "¿qué nombre empieza por á",
+    "text": "¿Qué nombre empieza por Á?",
+    "file": "42f079bcd620c5de.mp3",
+    "spoken": "¿Qué nombre empieza por Á?"
+  },
+  {
+    "key": "¿qué nombre empieza por j",
+    "text": "¿Qué nombre empieza por J?",
+    "file": "d903b051b89a6f89.mp3",
+    "spoken": "¿Qué nombre empieza por J?"
+  },
+  {
+    "key": "¿qué palabra rima con pez",
+    "text": "¿QUÉ PALABRA RIMA CON PEZ?",
+    "file": "7bc4ad6aaf8ef668.mp3",
+    "spoken": "¿QUÉ PALABRA RIMA CON PEZ?"
+  },
+  {
     "key": "pon 10 frutas en la cesta",
     "text": "Pon 10 frutas en la cesta.",
     "file": "4d2f63664560c543.mp3",
     "spoken": "Pon diez frutas en la cesta."
+  },
+  {
+    "key": "pon 11 frutas en la cesta",
+    "text": "Pon 11 frutas en la cesta.",
+    "file": "975dba8e97ba4c87.mp3",
+    "spoken": "Pon once frutas en la cesta."
+  },
+  {
+    "key": "pon 12 frutas en la cesta",
+    "text": "Pon 12 frutas en la cesta.",
+    "file": "c27f9245234cd1fd.mp3",
+    "spoken": "Pon doce frutas en la cesta."
+  },
+  {
+    "key": "verde: volvemos a caminar",
+    "text": "VERDE: VOLVEMOS A CAMINAR.",
+    "file": "cc90861358301302.mp3",
+    "spoken": "VERDE: VOLVEMOS A CAMINAR."
   },
   {
     "key": "primero repasa cada pista",
@@ -3424,6 +6556,12 @@
     "text": "con las manos puedo andar.",
     "file": "e44cda4eca95c8fe.mp3",
     "spoken": "Con las manos puedo andar."
+  },
+  {
+    "key": "el número protagonista 10",
+    "text": "El número protagonista 10.",
+    "file": "9a089ee95e658844.mp3",
+    "spoken": "El número protagonista diez."
   },
   {
     "key": "la mochila de los sonidos",
@@ -3468,6 +6606,24 @@
     "spoken": "Los dos son de color azul."
   },
   {
+    "key": "es un disfraz de cangrejo",
+    "text": "ES UN DISFRAZ DE CANGREJO.",
+    "file": "ad488062f911f37e.mp3",
+    "spoken": "ES UN DISFRAZ DE CANGREJO."
+  },
+  {
+    "key": "es un disfraz de elefante",
+    "text": "ES UN DISFRAZ DE ELEFANTE.",
+    "file": "16c7b02a23498ee4.mp3",
+    "spoken": "ES UN DISFRAZ DE ELEFANTE."
+  },
+  {
+    "key": "es un disfraz de flamenca",
+    "text": "ES UN DISFRAZ DE FLAMENCA.",
+    "file": "41b5757e18358539.mp3",
+    "spoken": "ES UN DISFRAZ DE FLAMENCA."
+  },
+  {
     "key": "paleontólogo, paleontóloga",
     "text": "paleontólogo, paleontóloga.",
     "file": "78a19cd3d4090b86.mp3",
@@ -3478,6 +6634,30 @@
     "text": "Vamos a lavarnos las manos.",
     "file": "528d098e7e5c4afa.mp3",
     "spoken": "Vamos a lavarnos las manos."
+  },
+  {
+    "key": "¿qué número va justo antes",
+    "text": "¿QUÉ NÚMERO VA JUSTO ANTES?",
+    "file": "3ae45b228503a7e4.mp3",
+    "spoken": "¿QUÉ NÚMERO VA JUSTO ANTES?"
+  },
+  {
+    "key": "¿qué palabra rima con gato",
+    "text": "¿QUÉ PALABRA RIMA CON GATO?",
+    "file": "f8e1f6dfd67aa702.mp3",
+    "spoken": "¿QUÉ PALABRA RIMA CON GATO?"
+  },
+  {
+    "key": "¿qué palabra rima con rana",
+    "text": "¿QUÉ PALABRA RIMA CON RANA?",
+    "file": "699fbef47a403ca9.mp3",
+    "spoken": "¿QUÉ PALABRA RIMA CON RANA?"
+  },
+  {
+    "key": "¿qué palabra rima con león",
+    "text": "¿QUÉ PALABRA RIMA CON LEÓN?",
+    "file": "09706adee2f2f4be.mp3",
+    "spoken": "¿QUÉ PALABRA RIMA CON LEÓN?"
   },
   {
     "key": "muestra dos letras grandes",
@@ -3522,6 +6702,36 @@
     "spoken": "Los dos son de color verde."
   },
   {
+    "key": "josé antonio empieza por j",
+    "text": "José Antonio empieza por J.",
+    "file": "6106f66e21912808.mp3",
+    "spoken": "José Antonio empieza por J."
+  },
+  {
+    "key": "es un disfraz de esqueleto",
+    "text": "ES UN DISFRAZ DE ESQUELETO.",
+    "file": "178e3a8d58778274.mp3",
+    "spoken": "ES UN DISFRAZ DE ESQUELETO."
+  },
+  {
+    "key": "piezas duras sobre el lomo",
+    "text": "PIEZAS DURAS SOBRE EL LOMO.",
+    "file": "faf2fdeb0e4aa697.mp3",
+    "spoken": "PIEZAS DURAS SOBRE EL LOMO."
+  },
+  {
+    "key": "¿qué debería ir en el hueco",
+    "text": "¿QUÉ DEBERÍA IR EN EL HUECO?",
+    "file": "b3eb6ee22ba38080.mp3",
+    "spoken": "¿QUÉ DEBERÍA IR EN EL HUECO?"
+  },
+  {
+    "key": "dos triángulos y un círculo",
+    "text": "DOS TRIÁNGULOS Y UN CÍRCULO.",
+    "file": "ff41d46b99dd8e42.mp3",
+    "spoken": "DOS TRIÁNGULOS Y UN CÍRCULO."
+  },
+  {
     "key": "¿qué comía tiranosaurio rex",
     "text": "¿Qué comía Tiranosaurio rex?",
     "file": "29fe7afd9a872128.mp3",
@@ -3532,6 +6742,12 @@
     "text": "El Diplodocus comía plantas.",
     "file": "e5a40ef9d5c8c715.mp3",
     "spoken": "El Diplodocus comía plantas."
+  },
+  {
+    "key": "miramos y decimos el nombre",
+    "text": "Miramos y decimos el nombre.",
+    "file": "7eab8f7f20ed0849.mp3",
+    "spoken": "Miramos y decimos el nombre."
   },
   {
     "key": "¿qué abrimos para cubrirnos",
@@ -3556,6 +6772,24 @@
     "text": "Además de agua, ¿qué usamos?",
     "file": "d2989cc9f52bfa14.mp3",
     "spoken": "Además de agua, ¿qué usamos?"
+  },
+  {
+    "key": "¿qué palabra rima con ratón",
+    "text": "¿QUÉ PALABRA RIMA CON RATÓN?",
+    "file": "ec32857ed6584b70.mp3",
+    "spoken": "¿QUÉ PALABRA RIMA CON RATÓN?"
+  },
+  {
+    "key": "¿qué palabra rima con fresa",
+    "text": "¿QUÉ PALABRA RIMA CON FRESA?",
+    "file": "1eb3e89b2db171d2.mp3",
+    "spoken": "¿QUÉ PALABRA RIMA CON FRESA?"
+  },
+  {
+    "key": "rojo: paramos como estatuas",
+    "text": "ROJO: PARAMOS COMO ESTATUAS.",
+    "file": "efe843858118775d.mp3",
+    "spoken": "ROJO: PARAMOS COMO ESTATUAS."
   },
   {
     "key": "explica qué hacemos primero",
@@ -3636,10 +6870,40 @@
     "spoken": "El dibujo de pez está abajo."
   },
   {
+    "key": "es un disfraz de astronauta",
+    "text": "ES UN DISFRAZ DE ASTRONAUTA.",
+    "file": "9d9dcc16b955c7f5.mp3",
+    "spoken": "ES UN DISFRAZ DE ASTRONAUTA."
+  },
+  {
+    "key": "es un disfraz de dinosaurio",
+    "text": "ES UN DISFRAZ DE DINOSAURIO.",
+    "file": "ad68758768b57dd4.mp3",
+    "spoken": "ES UN DISFRAZ DE DINOSAURIO."
+  },
+  {
+    "key": "el diplodocus era herbívoro",
+    "text": "EL DIPLODOCUS ERA HERBÍVORO.",
+    "file": "619bc855d944df6b.mp3",
+    "spoken": "EL DIPLODOCUS ERA HERBÍVORO."
+  },
+  {
+    "key": "¿qué vocal ves en la pizarra",
+    "text": "¿QUÉ VOCAL VES EN LA PIZARRA?",
+    "file": "ebc3b755ab7ee793.mp3",
+    "spoken": "¿QUÉ VOCAL VES EN LA PIZARRA?"
+  },
+  {
     "key": "el velociraptor tenía plumas",
     "text": "El Velociraptor tenía plumas.",
     "file": "7ba837c8b80066a9.mp3",
     "spoken": "El Velociraptor tenía plumas."
+  },
+  {
+    "key": "empieza por la primera letra",
+    "text": "Empieza por la primera letra.",
+    "file": "7711d1bf12ce7e59.mp3",
+    "spoken": "Empieza por la primera letra."
   },
   {
     "key": "¿qué dibujo estaba el último",
@@ -3660,10 +6924,34 @@
     "spoken": "¿Qué nos ponemos en los pies?"
   },
   {
+    "key": "¿qué nombre tiene más letras",
+    "text": "¿Qué nombre tiene más letras?",
+    "file": "68835426e9d8c7db.mp3",
+    "spoken": "¿Qué nombre tiene más letras?"
+  },
+  {
+    "key": "¿qué podemos recordar juntos",
+    "text": "¿Qué podemos recordar juntos?",
+    "file": "5e395fe48afc237a.mp3",
+    "spoken": "¿Qué podemos recordar juntos?"
+  },
+  {
+    "key": "¿qué número va justo después",
+    "text": "¿QUÉ NÚMERO VA JUSTO DESPUÉS?",
+    "file": "cd2cb8d2a97eaa67.mp3",
+    "spoken": "¿QUÉ NÚMERO VA JUSTO DESPUÉS?"
+  },
+  {
     "key": "¿dónde buscamos a su familia",
     "text": "¿Dónde buscamos a su familia?",
     "file": "2605c5e67638dc8e.mp3",
     "spoken": "¿Dónde buscamos a su familia?"
+  },
+  {
+    "key": "amarillo: pasos muy pequeños",
+    "text": "AMARILLO: PASOS MUY PEQUEÑOS.",
+    "file": "fd0c514feaf5fad2.mp3",
+    "spoken": "AMARILLO: PASOS MUY PEQUEÑOS."
   },
   {
     "key": "haz dos palmadas y una pausa",
@@ -3736,6 +7024,30 @@
     "text": "El dibujo de rana está abajo.",
     "file": "9719ddfb13c71873.mp3",
     "spoken": "El dibujo de rana está abajo."
+  },
+  {
+    "key": "josé antonio tiene 11 letras",
+    "text": "José Antonio tiene 11 letras.",
+    "file": "8b68eb524ed1b43b.mp3",
+    "spoken": "José Antonio tiene once letras."
+  },
+  {
+    "key": "dinosaurio que comía plantas",
+    "text": "DINOSAURIO QUE COMÍA PLANTAS.",
+    "file": "3d64637893e12c89.mp3",
+    "spoken": "DINOSAURIO QUE COMÍA PLANTAS."
+  },
+  {
+    "key": "el triceratops era herbívoro",
+    "text": "EL TRICERATOPS ERA HERBÍVORO.",
+    "file": "743550dd82331b40.mp3",
+    "spoken": "EL TRICERATOPS ERA HERBÍVORO."
+  },
+  {
+    "key": "pez y pies terminan parecido",
+    "text": "PEZ Y PIES TERMINAN PARECIDO.",
+    "file": "39c97bfed76e4bd0.mp3",
+    "spoken": "PEZ Y PIES TERMINAN PARECIDO."
   },
   {
     "key": "su cola terminaba en una maza",
@@ -3864,16 +7176,64 @@
     "spoken": "El dibujo de coche está abajo."
   },
   {
+    "key": "el estegosaurio era herbívoro",
+    "text": "EL ESTEGOSAURIO ERA HERBÍVORO.",
+    "file": "18f96001892d24cf.mp3",
+    "spoken": "EL ESTEGOSAURIO ERA HERBÍVORO."
+  },
+  {
+    "key": "el velociraptor era carnívoro",
+    "text": "EL VELOCIRAPTOR ERA CARNÍVORO.",
+    "file": "b0c5404ace06f2c0.mp3",
+    "spoken": "EL VELOCIRAPTOR ERA CARNÍVORO."
+  },
+  {
+    "key": "el espinosaurio era carnívoro",
+    "text": "EL ESPINOSAURIO ERA CARNÍVORO.",
+    "file": "2690b1f92bde42fd.mp3",
+    "spoken": "EL ESPINOSAURIO ERA CARNÍVORO."
+  },
+  {
+    "key": "gato y pato terminan parecido",
+    "text": "GATO Y PATO TERMINAN PARECIDO.",
+    "file": "4fb57ae135ac8af2.mp3",
+    "spoken": "GATO Y PATO TERMINAN PARECIDO."
+  },
+  {
+    "key": "rana y cama terminan parecido",
+    "text": "RANA Y CAMA TERMINAN PARECIDO.",
+    "file": "ef91302fa6d52b20.mp3",
+    "spoken": "RANA Y CAMA TERMINAN PARECIDO."
+  },
+  {
+    "key": "algo de tamaño muy, muy grande",
+    "text": "Algo de tamaño muy, muy grande.",
+    "file": "92ad34dd00499367.mp3",
+    "spoken": "Algo de tamaño muy, muy grande."
+  },
+  {
     "key": "animal que come otros animales",
     "text": "Animal que come otros animales.",
     "file": "45dc79873ea03560.mp3",
     "spoken": "Animal que come otros animales."
   },
   {
+    "key": "une cada imagen con su palabra",
+    "text": "UNE CADA IMAGEN CON SU PALABRA.",
+    "file": "5cc74afc48e8d845.mp3",
+    "spoken": "UNE CADA IMAGEN CON SU PALABRA."
+  },
+  {
     "key": "¿qué dibujo estaba en el medio",
     "text": "¿Qué dibujo estaba en el medio?",
     "file": "ef1bcd84afb1fbff.mp3",
     "spoken": "¿Qué dibujo estaba en el medio?"
+  },
+  {
+    "key": "¿qué nombre tiene menos letras",
+    "text": "¿Qué nombre tiene menos letras?",
+    "file": "1d331ab1108ff4c6.mp3",
+    "spoken": "¿Qué nombre tiene menos letras?"
   },
   {
     "key": "coloca dos bloques y añade uno",
@@ -3954,6 +7314,30 @@
     "spoken": "El dibujo de fresa está arriba."
   },
   {
+    "key": "el braquiosaurio era herbívoro",
+    "text": "EL BRAQUIOSAURIO ERA HERBÍVORO.",
+    "file": "9079ec46b1df4c47.mp3",
+    "spoken": "EL BRAQUIOSAURIO ERA HERBÍVORO."
+  },
+  {
+    "key": "el anquilosaurio era herbívoro",
+    "text": "EL ANQUILOSAURIO ERA HERBÍVORO.",
+    "file": "aa63f8968bc1c159.mp3",
+    "spoken": "EL ANQUILOSAURIO ERA HERBÍVORO."
+  },
+  {
+    "key": "el parasaurolofo era herbívoro",
+    "text": "EL PARASAUROLOFO ERA HERBÍVORO.",
+    "file": "329f03e6b9341f57.mp3",
+    "spoken": "EL PARASAUROLOFO ERA HERBÍVORO."
+  },
+  {
+    "key": "fresa y mesa terminan parecido",
+    "text": "FRESA Y MESA TERMINAN PARECIDO.",
+    "file": "154231541c8d2ecf.mp3",
+    "spoken": "FRESA Y MESA TERMINAN PARECIDO."
+  },
+  {
     "key": "muchos animales nacen de huevos",
     "text": "Muchos animales nacen de huevos.",
     "file": "8a75d5da370af7ba.mp3",
@@ -3964,6 +7348,12 @@
     "text": "Busca el grupo con esta cantidad",
     "file": "2248a029cb3dbeaf.mp3",
     "spoken": "Busca el grupo con esta cantidad."
+  },
+  {
+    "key": "¿por qué consonante empieza sol",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA SOL?",
+    "file": "7891c15aeafa634c.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA SOL?"
   },
   {
     "key": "señala algo rojo desde tu sitio",
@@ -4014,10 +7404,52 @@
     "spoken": "¿Ves algo de ese color en clase?"
   },
   {
+    "key": "león y camión terminan parecido",
+    "text": "LEÓN Y CAMIÓN TERMINAN PARECIDO.",
+    "file": "34aef7069cc5012e.mp3",
+    "spoken": "LEÓN Y CAMIÓN TERMINAN PARECIDO."
+  },
+  {
+    "key": "ratón y balón terminan parecido",
+    "text": "RATÓN Y BALÓN TERMINAN PARECIDO.",
+    "file": "854fdc3b6ae4d7b0.mp3",
+    "spoken": "RATÓN Y BALÓN TERMINAN PARECIDO."
+  },
+  {
     "key": "la puerta está cerrada con llave",
     "text": "La puerta está cerrada con llave.",
     "file": "83e1c3425fda5537.mp3",
     "spoken": "La puerta está cerrada con llave."
+  },
+  {
+    "key": "¿por qué consonante empieza gato",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA GATO?",
+    "file": "d38382b76f6e044c.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA GATO?"
+  },
+  {
+    "key": "¿por qué consonante empieza casa",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA CASA?",
+    "file": "eafb6b6a3d3067b8.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA CASA?"
+  },
+  {
+    "key": "¿por qué consonante empieza luna",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA LUNA?",
+    "file": "ca1354fdba9778c5.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA LUNA?"
+  },
+  {
+    "key": "¿por qué consonante empieza rana",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA RANA?",
+    "file": "321f9fe81aa6a979.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA RANA?"
+  },
+  {
+    "key": "¿por qué consonante empieza pato",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA PATO?",
+    "file": "9ca1e84ed3e81ee3.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA PATO?"
   },
   {
     "key": "permite señalar en vez de hablar",
@@ -4038,6 +7470,12 @@
     "spoken": "La paleontóloga o el paleontólogo."
   },
   {
+    "key": "tocamos una marca por cada letra",
+    "text": "Tocamos una marca por cada letra.",
+    "file": "8b38f5d029c3e652.mp3",
+    "spoken": "Tocamos una marca por cada letra."
+  },
+  {
     "key": "tenía plumas, pero no podía volar",
     "text": "Tenía plumas, pero no podía volar.",
     "file": "1f66492aa7f549c4.mp3",
@@ -4054,6 +7492,42 @@
     "text": "Las aves son dinosaurios actuales.",
     "file": "af82784806191463.mp3",
     "spoken": "Las aves son dinosaurios actuales."
+  },
+  {
+    "key": "cuántos elementos hay en un grupo",
+    "text": "Cuántos elementos hay en un grupo.",
+    "file": "f1462a0248be735e.mp3",
+    "spoken": "Cuántos elementos hay en un grupo."
+  },
+  {
+    "key": "¿cuántas letras tiene este nombre",
+    "text": "¿Cuántas letras tiene este nombre?",
+    "file": "8c311af633d1b896.mp3",
+    "spoken": "¿Cuántas letras tiene este nombre?"
+  },
+  {
+    "key": "¿por qué consonante empieza perro",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA PERRO?",
+    "file": "9cae29acb6292b4f.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA PERRO?"
+  },
+  {
+    "key": "¿por qué consonante empieza fresa",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA FRESA?",
+    "file": "4e808ed5861d54de.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA FRESA?"
+  },
+  {
+    "key": "¿por qué consonante empieza globo",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA GLOBO?",
+    "file": "6c22e694146804d3.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA GLOBO?"
+  },
+  {
+    "key": "une cada dinosaurio con su sombra",
+    "text": "Une cada dinosaurio con su sombra.",
+    "file": "309823bf6b038a5e.mp3",
+    "spoken": "Une cada dinosaurio con su sombra."
   },
   {
     "key": "alterna palma y rodilla dos veces",
@@ -4108,6 +7582,36 @@
     "text": "¿Repetimos dos palmas y una pausa?",
     "file": "9c57acf98b60d6d5.mp3",
     "spoken": "¿Repetimos dos palmas y una pausa?"
+  },
+  {
+    "key": "una huella o un hueso muy antiguo",
+    "text": "UNA HUELLA O UN HUESO MUY ANTIGUO.",
+    "file": "6468315d6c2f6019.mp3",
+    "spoken": "UNA HUELLA O UN HUESO MUY ANTIGUO."
+  },
+  {
+    "key": "el tiranosaurio rex era carnívoro",
+    "text": "EL Tiranosaurio rex ERA CARNÍVORO.",
+    "file": "a4c563efe805aa62.mp3",
+    "spoken": "EL Tiranosaurio rex ERA CARNÍVORO."
+  },
+  {
+    "key": "¿caminaba sobre dos o cuatro patas",
+    "text": "¿CAMINABA SOBRE DOS O CUATRO PATAS?",
+    "file": "22f8d6b208459760.mp3",
+    "spoken": "¿CAMINABA SOBRE DOS O CUATRO PATAS?"
+  },
+  {
+    "key": "¿por qué consonante empieza muñeco",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA MUÑECO?",
+    "file": "0a59372e05ebe9bc.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA MUÑECO?"
+  },
+  {
+    "key": "ahora una compañera da las señales",
+    "text": "AHORA UNA COMPAÑERA DA LAS SEÑALES.",
+    "file": "c4baa55f8f9f9da1.mp3",
+    "spoken": "AHORA UNA COMPAÑERA DA LAS SEÑALES."
   },
   {
     "key": "reparte seis piezas de dos colores",
@@ -4174,6 +7678,18 @@
     "text": "El paraguas nos cubre de la lluvia.",
     "file": "2160596e72e18d19.mp3",
     "spoken": "El paraguas nos cubre de la lluvia."
+  },
+  {
+    "key": "¿cuál no pertenece al grupo de ropa",
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE ROPA?",
+    "file": "7254bae67f72cca5.mp3",
+    "spoken": "¿CUÁL NO PERTENECE AL GRUPO DE ROPA?"
+  },
+  {
+    "key": "ordena los números de menor a mayor",
+    "text": "ORDENA LOS NÚMEROS DE MENOR A MAYOR.",
+    "file": "15df9055e01487af.mp3",
+    "spoken": "ORDENA LOS NÚMEROS DE MENOR A MAYOR."
   },
   {
     "key": "muestra tres círculos y un cuadrado",
@@ -4248,6 +7764,18 @@
     "spoken": "El dibujo de pez estaba en el medio."
   },
   {
+    "key": "dinosaurio que comía otros animales",
+    "text": "DINOSAURIO QUE COMÍA OTROS ANIMALES.",
+    "file": "ed6bc6da42955f02.mp3",
+    "spoken": "DINOSAURIO QUE COMÍA OTROS ANIMALES."
+  },
+  {
+    "key": "¿qué vocal ha construido con bloques",
+    "text": "¿QUÉ VOCAL HA CONSTRUIDO CON BLOQUES?",
+    "file": "1bc0e71b0b20e5c2.mp3",
+    "spoken": "¿QUÉ VOCAL HA CONSTRUIDO CON BLOQUES?"
+  },
+  {
     "key": "todos los dinosaurios comían plantas",
     "text": "Todos los dinosaurios comían plantas.",
     "file": "4af5c652cf937794.mp3",
@@ -4258,6 +7786,18 @@
     "text": "Un dinosaurio de juguete es un fósil.",
     "file": "54a41e914875c7fb.mp3",
     "spoken": "Un dinosaurio de juguete es un fósil."
+  },
+  {
+    "key": "completa la frase sobre el diplodocus",
+    "text": "Completa la frase sobre el Diplodocus",
+    "file": "99a9dceec8324358.mp3",
+    "spoken": "Completa la frase sobre el Diplodocus."
+  },
+  {
+    "key": "¿por qué consonante empieza mariposa",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA MARIPOSA?",
+    "file": "7ff8440569328d28.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA MARIPOSA?"
   },
   {
     "key": "recréalo con un cordón sobre la mesa",
@@ -4344,6 +7884,24 @@
     "spoken": "La cuchara nos ayuda a comer la sopa."
   },
   {
+    "key": "martín tiene 6 letras y emma tiene 4",
+    "text": "Martín tiene 6 letras y Emma tiene 4.",
+    "file": "452d5f4978474aea.mp3",
+    "spoken": "Martín tiene seis letras y Emma tiene cuatro."
+  },
+  {
+    "key": "emma tiene 4 letras y álvaro tiene 6",
+    "text": "Emma tiene 4 letras y Álvaro tiene 6.",
+    "file": "7d2c49bcee7ea136.mp3",
+    "spoken": "Emma tiene cuatro letras y Álvaro tiene seis."
+  },
+  {
+    "key": "pez no pertenece al grupo de muebles",
+    "text": "PEZ NO PERTENECE AL GRUPO DE MUEBLES.",
+    "file": "fa6f9ada11f62c76.mp3",
+    "spoken": "PEZ NO PERTENECE AL GRUPO DE MUEBLES."
+  },
+  {
     "key": "llevo grandes placas sobre la espalda",
     "text": "Llevo grandes placas sobre la espalda.",
     "file": "8c377c57305bc16a.mp3",
@@ -4360,6 +7918,30 @@
     "text": "Los dinosaurios también ponían huevos.",
     "file": "5cd079054d881eb6.mp3",
     "spoken": "Los dinosaurios también ponían huevos."
+  },
+  {
+    "key": "completa la frase sobre el triceratops",
+    "text": "Completa la frase sobre el Triceratops",
+    "file": "19886fe14aa8bf30.mp3",
+    "spoken": "Completa la frase sobre el Triceratops."
+  },
+  {
+    "key": "¿por qué consonante empieza bicicleta",
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA BICICLETA?",
+    "file": "e8465ca7ff12631e.mp3",
+    "spoken": "¿POR QUÉ CONSONANTE EMPIEZA BICICLETA?"
+  },
+  {
+    "key": "¿cuál no pertenece al grupo de frutas",
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE FRUTAS?",
+    "file": "8b6d191ae3ec3d94.mp3",
+    "spoken": "¿CUÁL NO PERTENECE AL GRUPO DE FRUTAS?"
+  },
+  {
+    "key": "¿cuál no pertenece al grupo de comida",
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE COMIDA?",
+    "file": "b83d4421702a79b1.mp3",
+    "spoken": "¿CUÁL NO PERTENECE AL GRUPO DE COMIDA?"
   },
   {
     "key": "antes de tocarlo, mira a su alrededor",
@@ -4440,10 +8022,88 @@
     "spoken": "Las zapatillas protegen nuestros pies."
   },
   {
+    "key": "marcelo tiene 7 letras y alma tiene 4",
+    "text": "Marcelo tiene 7 letras y Alma tiene 4.",
+    "file": "364b3e51ea985828.mp3",
+    "spoken": "Marcelo tiene siete letras y Alma tiene cuatro."
+  },
+  {
+    "key": "abril tiene 5 letras y martín tiene 6",
+    "text": "Abril tiene 5 letras y Martín tiene 6.",
+    "file": "ab446b60f925a503.mp3",
+    "spoken": "Abril tiene cinco letras y Martín tiene seis."
+  },
+  {
+    "key": "silla no pertenece al grupo de frutas",
+    "text": "SILLA NO PERTENECE AL GRUPO DE FRUTAS.",
+    "file": "b89008d0c4cd2615.mp3",
+    "spoken": "SILLA NO PERTENECE AL GRUPO DE FRUTAS."
+  },
+  {
+    "key": "cuchara no pertenece al grupo de ropa",
+    "text": "CUCHARA NO PERTENECE AL GRUPO DE ROPA.",
+    "file": "90c8b9ac62178dae.mp3",
+    "spoken": "CUCHARA NO PERTENECE AL GRUPO DE ROPA."
+  },
+  {
+    "key": "lápiz no pertenece al grupo de comida",
+    "text": "LÁPIZ NO PERTENECE AL GRUPO DE COMIDA.",
+    "file": "8040b77ff57d11b8.mp3",
+    "spoken": "LÁPIZ NO PERTENECE AL GRUPO DE COMIDA."
+  },
+  {
+    "key": "¿qué hacemos antes de pasar una página",
+    "text": "¿Qué hacemos antes de pasar una página?",
+    "file": "2a788cd6048b14f5.mp3",
+    "spoken": "¿Qué hacemos antes de pasar una página?"
+  },
+  {
+    "key": "¿cómo nos movemos como este dinosaurio",
+    "text": "¿CÓMO NOS MOVEMOS COMO ESTE DINOSAURIO?",
+    "file": "733d4eac3dde7409.mp3",
+    "spoken": "¿CÓMO NOS MOVEMOS COMO ESTE DINOSAURIO?"
+  },
+  {
+    "key": "completa la frase sobre el estegosaurio",
+    "text": "Completa la frase sobre el Estegosaurio",
+    "file": "a7f88f5d99a4b246.mp3",
+    "spoken": "Completa la frase sobre el Estegosaurio."
+  },
+  {
+    "key": "completa la frase sobre el velociraptor",
+    "text": "Completa la frase sobre el Velociraptor",
+    "file": "1366c5d55a2140c0.mp3",
+    "spoken": "Completa la frase sobre el Velociraptor."
+  },
+  {
+    "key": "completa la frase sobre el espinosaurio",
+    "text": "Completa la frase sobre el Espinosaurio",
+    "file": "65c4bb01b2ecc15b.mp3",
+    "spoken": "Completa la frase sobre el Espinosaurio."
+  },
+  {
+    "key": "une cada grupo de puntos con su número",
+    "text": "UNE CADA GRUPO DE PUNTOS CON SU NÚMERO.",
+    "file": "49e82b855c4ff813.mp3",
+    "spoken": "UNE CADA GRUPO DE PUNTOS CON SU NÚMERO."
+  },
+  {
+    "key": "¿cuál no pertenece al grupo de muebles",
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE MUEBLES?",
+    "file": "e911a0487ed40c20.mp3",
+    "spoken": "¿CUÁL NO PERTENECE AL GRUPO DE MUEBLES?"
+  },
+  {
     "key": "ordena los dibujos de pequeño a grande",
     "text": "Ordena los dibujos de pequeño a grande.",
     "file": "521fa08021417c25.mp3",
     "spoken": "Ordena los dibujos de pequeño a grande."
+  },
+  {
+    "key": "caminamos despacio por nuestro espacio",
+    "text": "CAMINAMOS DESPACIO POR NUESTRO ESPACIO.",
+    "file": "7199af920081afa7.mp3",
+    "spoken": "CAMINAMOS DESPACIO POR NUESTRO ESPACIO."
   },
   {
     "key": "ensaya: ¿me la prestas cuando termines",
@@ -4506,10 +8166,46 @@
     "spoken": "Nos lavamos las manos con agua y jabón."
   },
   {
+    "key": "investiga fósiles y la vida del pasado",
+    "text": "INVESTIGA FÓSILES Y LA VIDA DEL PASADO.",
+    "file": "c4cf02916577e5ba.mp3",
+    "spoken": "INVESTIGA FÓSILES Y LA VIDA DEL PASADO."
+  },
+  {
+    "key": "punta dura que le ayudaba a defenderse",
+    "text": "PUNTA DURA QUE LE AYUDABA A DEFENDERSE.",
+    "file": "4038842b27d0aff7.mp3",
+    "spoken": "PUNTA DURA QUE LE AYUDABA A DEFENDERSE."
+  },
+  {
     "key": "mira los dibujos, de izquierda a derecha",
     "text": "Mira los dibujos, de izquierda a derecha",
     "file": "63aa2067b0b204bd.mp3",
     "spoken": "Mira los dibujos, de izquierda a derecha."
+  },
+  {
+    "key": "completa la frase sobre el braquiosaurio",
+    "text": "Completa la frase sobre el Braquiosaurio",
+    "file": "fb42d604dd5c97aa.mp3",
+    "spoken": "Completa la frase sobre el Braquiosaurio."
+  },
+  {
+    "key": "completa la frase sobre el anquilosaurio",
+    "text": "Completa la frase sobre el Anquilosaurio",
+    "file": "de0f14d46a285a69.mp3",
+    "spoken": "Completa la frase sobre el Anquilosaurio."
+  },
+  {
+    "key": "completa la frase sobre el parasaurolofo",
+    "text": "Completa la frase sobre el Parasaurolofo",
+    "file": "1bb34ac475e26f39.mp3",
+    "spoken": "Completa la frase sobre el Parasaurolofo."
+  },
+  {
+    "key": "¿cuál no pertenece al grupo de animales",
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE ANIMALES?",
+    "file": "1582e9429ed972a1.mp3",
+    "spoken": "¿CUÁL NO PERTENECE AL GRUPO DE ANIMALES?"
   },
   {
     "key": "lila encuentra un huevo junto al camino",
@@ -4588,6 +8284,30 @@
     "text": "Usamos la llave para abrir la cerradura.",
     "file": "c3b6541c4450056f.mp3",
     "spoken": "Usamos la llave para abrir la cerradura."
+  },
+  {
+    "key": "tristán tiene 7 letras y sergio tiene 6",
+    "text": "Tristán tiene 7 letras y Sergio tiene 6.",
+    "file": "c215fa87459b2f24.mp3",
+    "spoken": "Tristán tiene siete letras y Sergio tiene seis."
+  },
+  {
+    "key": "alma tiene 4 letras y francisco tiene 9",
+    "text": "Alma tiene 4 letras y Francisco tiene 9.",
+    "file": "554121f5f5d3744c.mp3",
+    "spoken": "Alma tiene cuatro letras y Francisco tiene nueve."
+  },
+  {
+    "key": "coche no pertenece al grupo de animales",
+    "text": "COCHE NO PERTENECE AL GRUPO DE ANIMALES.",
+    "file": "bb308014332e933b.mp3",
+    "spoken": "COCHE NO PERTENECE AL GRUPO DE ANIMALES."
+  },
+  {
+    "key": "¿qué cambio podemos observar en el patio",
+    "text": "¿Qué cambio podemos observar en el patio?",
+    "file": "ff7b5b1a4eed9096.mp3",
+    "spoken": "¿Qué cambio podemos observar en el patio?"
   },
   {
     "key": "toca la caja para descubrir una sorpresa",
@@ -4704,6 +8424,30 @@
     "spoken": "El pincel nos ayuda a pintar con témpera."
   },
   {
+    "key": "francisco tiene 9 letras y abril tiene 5",
+    "text": "Francisco tiene 9 letras y Abril tiene 5.",
+    "file": "81f53bf1a663e7ce.mp3",
+    "spoken": "Francisco tiene nueve letras y Abril tiene cinco."
+  },
+  {
+    "key": "rojo, azul, rojo, azul… ¿qué cuenta sigue",
+    "text": "ROJO, AZUL, ROJO, AZUL… ¿QUÉ CUENTA SIGUE?",
+    "file": "4eaccfca81003615.mp3",
+    "spoken": "ROJO, AZUL, ROJO, AZUL… ¿QUÉ CUENTA SIGUE?"
+  },
+  {
+    "key": "tocamos cada letra de izquierda a derecha",
+    "text": "Tocamos cada letra de izquierda a derecha.",
+    "file": "56c01e445eac9ce9.mp3",
+    "spoken": "Tocamos cada letra de izquierda a derecha."
+  },
+  {
+    "key": "¿qué gesto ayuda a cuidar la paz en clase",
+    "text": "¿Qué gesto ayuda a cuidar la paz en clase?",
+    "file": "d6236d6e39c61304.mp3",
+    "spoken": "¿Qué gesto ayuda a cuidar la paz en clase?"
+  },
+  {
     "key": "tápalos, retira uno y pregunta cuál falta",
     "text": "Tápalos, retira uno y pregunta cuál falta.",
     "file": "e75e5b60dcff88a3.mp3",
@@ -4800,10 +8544,46 @@
     "spoken": "Nos cepillamos los dientes con un cepillo."
   },
   {
+    "key": "sergio tiene 6 letras y alejandro tiene 9",
+    "text": "Sergio tiene 6 letras y Alejandro tiene 9.",
+    "file": "4ca0ddf60448acae.mp3",
+    "spoken": "Sergio tiene seis letras y Alejandro tiene nueve."
+  },
+  {
+    "key": "mohammed tiene 8 letras y tristán tiene 7",
+    "text": "Mohammed tiene 8 letras y Tristán tiene 7.",
+    "file": "6373a1d1da77c6ad.mp3",
+    "spoken": "Mohammed tiene ocho letras y Tristán tiene siete."
+  },
+  {
+    "key": "flor no pertenece al grupo de transportes",
+    "text": "FLOR NO PERTENECE AL GRUPO DE TRANSPORTES.",
+    "file": "7b2ad6f97464596a.mp3",
+    "spoken": "FLOR NO PERTENECE AL GRUPO DE TRANSPORTES."
+  },
+  {
     "key": "tengo punta y dejo un camino cuando dibujo",
     "text": "Tengo punta y dejo un camino cuando dibujo.",
     "file": "7c08dcaa6cf0f358.mp3",
     "spoken": "Tengo punta y dejo un camino cuando dibujo."
+  },
+  {
+    "key": "completa la frase sobre el tiranosaurio rex",
+    "text": "Completa la frase sobre el Tiranosaurio rex",
+    "file": "79cd9aa1d6a5c813.mp3",
+    "spoken": "Completa la frase sobre el Tiranosaurio rex."
+  },
+  {
+    "key": "¿qué cantidad falta para completar la suma",
+    "text": "¿QUÉ CANTIDAD FALTA PARA COMPLETAR LA SUMA?",
+    "file": "c4b5d8477856a9af.mp3",
+    "spoken": "¿QUÉ CANTIDAD FALTA PARA COMPLETAR LA SUMA?"
+  },
+  {
+    "key": "¿cuál no pertenece al grupo de transportes",
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE TRANSPORTES?",
+    "file": "6e1a12d0680475bf.mp3",
+    "spoken": "¿CUÁL NO PERTENECE AL GRUPO DE TRANSPORTES?"
   },
   {
     "key": "«alguien debe de estar buscándolo», piensa",
@@ -4854,6 +8634,12 @@
     "spoken": "Movemos las manos como si fueran mariposas."
   },
   {
+    "key": "alejandro tiene 9 letras y marcelo tiene 7",
+    "text": "Alejandro tiene 9 letras y Marcelo tiene 7.",
+    "file": "e3dc5fa5b3dd2e50.mp3",
+    "spoken": "Alejandro tiene nueve letras y Marcelo tiene siete."
+  },
+  {
     "key": "su cuerpo estaba protegido por placas óseas",
     "text": "Su cuerpo estaba protegido por placas óseas.",
     "file": "5e36e84624a97e6e.mp3",
@@ -4876,6 +8662,12 @@
     "text": "Mis tres cuernos y mi gola te dan una pista.",
     "file": "3c771da3c7111152.mp3",
     "spoken": "Mis tres cuernos y mi gola te dan una pista."
+  },
+  {
+    "key": "refleja mucha luz o parece tener luz propia",
+    "text": "Refleja mucha luz o parece tener luz propia.",
+    "file": "05d02d7034f8e841.mp3",
+    "spoken": "Refleja mucha luz o parece tener luz propia."
   },
   {
     "key": "levanta ambas manos; abre una y cierra otra",
@@ -5040,6 +8832,18 @@
     "spoken": "Una cresta larga se curva detrás de mi cabeza."
   },
   {
+    "key": "¿qué colores vemos en la bandera de andalucía",
+    "text": "¿Qué colores vemos en la bandera de Andalucía?",
+    "file": "564ea2075a1fcb69.mp3",
+    "spoken": "¿Qué colores vemos en la bandera de Andalucía?"
+  },
+  {
+    "key": "¿qué podemos usar para transformarnos jugando",
+    "text": "¿Qué podemos usar para transformarnos jugando?",
+    "file": "2b06b75977e60040.mp3",
+    "spoken": "¿Qué podemos usar para transformarnos jugando?"
+  },
+  {
     "key": "¿qué dos palabras terminan de manera parecida",
     "text": "¿Qué dos palabras terminan de manera parecida?",
     "file": "bb28414d145292db.mp3",
@@ -5106,6 +8910,12 @@
     "spoken": "El dibujo de oso de peluche estaba el primero."
   },
   {
+    "key": "álvaro tiene 6 letras y josé antonio tiene 11",
+    "text": "Álvaro tiene 6 letras y José Antonio tiene 11.",
+    "file": "6130b794998490cf.mp3",
+    "spoken": "Álvaro tiene seis letras y José Antonio tiene once."
+  },
+  {
     "key": "todos los dinosaurios vivieron al mismo tiempo",
     "text": "Todos los dinosaurios vivieron al mismo tiempo.",
     "file": "c868f0ead4f68ceb.mp3",
@@ -5116,6 +8926,12 @@
     "text": "Aunque no es la pata, te dice que alguien pasó.",
     "file": "c2a6cb078001ca04.mp3",
     "spoken": "Aunque no es la pata, te dice que alguien pasó."
+  },
+  {
+    "key": "¿qué forma se repite en una guirnalda de bolas",
+    "text": "¿Qué forma se repite en una guirnalda de bolas?",
+    "file": "51f0884663d637af.mp3",
+    "spoken": "¿Qué forma se repite en una guirnalda de bolas?"
   },
   {
     "key": "cuenta tocando cada bloque: ¿cuántos hay ahora",
@@ -5200,6 +9016,18 @@
     "text": "Es el mismo dibujo, pero este es el más grande.",
     "file": "2bccad26712d2c50.mp3",
     "spoken": "Es el mismo dibujo, pero este es el más grande."
+  },
+  {
+    "key": "la bandera de andalucía combina verde y blanco",
+    "text": "La bandera de Andalucía combina verde y blanco.",
+    "file": "25c7fc603dce5d39.mp3",
+    "spoken": "La bandera de Andalucía combina verde y blanco."
+  },
+  {
+    "key": "sentados, abrimos y cerramos las manos despacio",
+    "text": "SENTADOS, ABRIMOS Y CERRAMOS LAS MANOS DESPACIO.",
+    "file": "7efbd3a22f715d3c.mp3",
+    "spoken": "SENTADOS, ABRIMOS Y CERRAMOS LAS MANOS DESPACIO."
   },
   {
     "key": "deja que el grupo añada el siguiente movimiento",
@@ -5290,6 +9118,12 @@
     "text": "Es el mismo dibujo, pero este es el más pequeño.",
     "file": "00dc5995dd9c5ef8.mp3",
     "spoken": "Es el mismo dibujo, pero este es el más pequeño."
+  },
+  {
+    "key": "josé antonio tiene 11 letras y mohammed tiene 8",
+    "text": "José Antonio tiene 11 letras y Mohammed tiene 8.",
+    "file": "59572c17ee6833f7.mp3",
+    "spoken": "José Antonio tiene once letras y Mohammed tiene ocho."
   },
   {
     "key": "tenía una cabeza grande y unos brazos muy cortos",
@@ -5400,6 +9234,24 @@
     "spoken": "Tengo armadura en el cuerpo y una maza en la cola."
   },
   {
+    "key": "personas que colaboran para conseguir algo juntas",
+    "text": "Personas que colaboran para conseguir algo juntas.",
+    "file": "6435f38b2e477212.mp3",
+    "spoken": "Personas que colaboran para conseguir algo juntas."
+  },
+  {
+    "key": "deja pasar la luz y permite ver lo que hay detrás",
+    "text": "Deja pasar la luz y permite ver lo que hay detrás.",
+    "file": "97510fd7aedb4a55.mp3",
+    "spoken": "Deja pasar la luz y permite ver lo que hay detrás."
+  },
+  {
+    "key": "¿qué podemos decorar con puntos como yayoi kusama",
+    "text": "¿Qué podemos decorar con puntos como Yayoi Kusama?",
+    "file": "51a8e4a042099bd1.mp3",
+    "spoken": "¿Qué podemos decorar con puntos como Yayoi Kusama?"
+  },
+  {
     "key": "compara dos objetos: ¿qué cambia además del color",
     "text": "Compara dos objetos: ¿qué cambia además del color?",
     "file": "08368794b53536cf.mp3",
@@ -5502,10 +9354,28 @@
     "spoken": "Los colores de estas ilustraciones son imaginados."
   },
   {
+    "key": "triángulo, círculo, triángulo, círculo… ¿qué sigue",
+    "text": "TRIÁNGULO, CÍRCULO, TRIÁNGULO, CÍRCULO… ¿QUÉ SIGUE?",
+    "file": "324053dbf6fc8b63.mp3",
+    "spoken": "TRIÁNGULO, CÍRCULO, TRIÁNGULO, CÍRCULO… ¿QUÉ SIGUE?"
+  },
+  {
     "key": "caigo de una nube, mojo el suelo y lleno el charco",
     "text": "Caigo de una nube, mojo el suelo y lleno el charco.",
     "file": "56e0eeecdc0c1df8.mp3",
     "spoken": "Caigo de una nube, mojo el suelo y lleno el charco."
+  },
+  {
+    "key": "ganas de mirar, preguntar y descubrir cosas nuevas",
+    "text": "Ganas de mirar, preguntar y descubrir cosas nuevas.",
+    "file": "67995a3b22cdc6b9.mp3",
+    "spoken": "Ganas de mirar, preguntar y descubrir cosas nuevas."
+  },
+  {
+    "key": "ordena la historia: ¿qué ocurre primero y después",
+    "text": "ORDENA LA HISTORIA: ¿QUÉ OCURRE PRIMERO Y DESPUÉS?.",
+    "file": "fee6fa36628066e2.mp3",
+    "spoken": "ORDENA LA HISTORIA: ¿QUÉ OCURRE PRIMERO Y DESPUÉS?."
   },
   {
     "key": "cada persona elige, sin obligar al contacto físico",
@@ -5554,6 +9424,30 @@
     "text": "Era bastante más pequeño que el de muchas películas.",
     "file": "4bea565a253dcfa5.mp3",
     "spoken": "Era bastante más pequeño que el de muchas películas."
+  },
+  {
+    "key": "el momento en que le toca participar a cada persona",
+    "text": "El momento en que le toca participar a cada persona.",
+    "file": "11f05832f30038d3.mp3",
+    "spoken": "El momento en que le toca participar a cada persona."
+  },
+  {
+    "key": "algo tan pequeño que tenemos que mirar con atención",
+    "text": "Algo tan pequeño que tenemos que mirar con atención.",
+    "file": "f2d85758e2d09a4a.mp3",
+    "spoken": "Algo tan pequeño que tenemos que mirar con atención."
+  },
+  {
+    "key": "mantenerse estable sin caer o repartir bien el peso",
+    "text": "Mantenerse estable sin caer o repartir bien el peso.",
+    "file": "d1083aa082888598.mp3",
+    "spoken": "Mantenerse estable sin caer o repartir bien el peso."
+  },
+  {
+    "key": "arrastra una flecha desde la imagen hasta su nombre",
+    "text": "ARRASTRA UNA FLECHA DESDE LA IMAGEN HASTA SU NOMBRE.",
+    "file": "dbb19bebc7f6b5a6.mp3",
+    "spoken": "ARRASTRA UNA FLECHA DESDE LA IMAGEN HASTA SU NOMBRE."
   },
   {
     "key": "ordena tres bloques de tamaños claramente distintos",
@@ -5616,6 +9510,24 @@
     "spoken": "Un fósil es un resto o una señal antigua conservada."
   },
   {
+    "key": "velociraptor caminaba habitualmente sobre dos patas",
+    "text": "VELOCIRAPTOR CAMINABA HABITUALMENTE SOBRE DOS PATAS.",
+    "file": "8a9e83bf4aa7e0e0.mp3",
+    "spoken": "VELOCIRAPTOR CAMINABA HABITUALMENTE SOBRE DOS PATAS."
+  },
+  {
+    "key": "espinosaurio caminaba habitualmente sobre dos patas",
+    "text": "ESPINOSAURIO CAMINABA HABITUALMENTE SOBRE DOS PATAS.",
+    "file": "3bd86a717c0f3bbf.mp3",
+    "spoken": "ESPINOSAURIO CAMINABA HABITUALMENTE SOBRE DOS PATAS."
+  },
+  {
+    "key": "saber esperar y seguir intentándolo con tranquilidad",
+    "text": "Saber esperar y seguir intentándolo con tranquilidad.",
+    "file": "60a1c9783aacd13d.mp3",
+    "spoken": "Saber esperar y seguir intentándolo con tranquilidad."
+  },
+  {
     "key": "compara el número de golpes, no el tamaño del animal",
     "text": "Compara el número de golpes, no el tamaño del animal.",
     "file": "047b29ce302d345f.mp3",
@@ -5664,10 +9576,22 @@
     "spoken": "Piensa en algo que sea pequeño y algo que sea grande."
   },
   {
+    "key": "diplodocus caminaba habitualmente sobre cuatro patas",
+    "text": "DIPLODOCUS CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "file": "a46114e2569bfa75.mp3",
+    "spoken": "DIPLODOCUS CAMINABA HABITUALMENTE SOBRE CUATRO PATAS."
+  },
+  {
     "key": "con paciencia observo rocas y busco pistas del pasado",
     "text": "Con paciencia observo rocas y busco pistas del pasado.",
     "file": "9cdfe4c809e74b8a.mp3",
     "spoken": "Con paciencia observo rocas y busco pistas del pasado."
+  },
+  {
+    "key": "un grupo de elementos que sigue una regla y se repite",
+    "text": "Un grupo de elementos que sigue una regla y se repite.",
+    "file": "66e56ea6e20c7707.mp3",
+    "spoken": "Un grupo de elementos que sigue una regla y se repite."
   },
   {
     "key": "¿cómo ayudarías a alguien que acaba de llegar a clase",
@@ -5680,6 +9604,18 @@
     "text": "Lo dibujamos y compartimos la alegría de verlo crecer.",
     "file": "15797fe2de45ddd3.mp3",
     "spoken": "Lo dibujamos y compartimos la alegría de verlo crecer."
+  },
+  {
+    "key": "miramos, escuchamos y pasamos las páginas con cuidado",
+    "text": "Miramos, escuchamos y pasamos las páginas con cuidado.",
+    "file": "dd3d846221f4420b.mp3",
+    "spoken": "Miramos, escuchamos y pasamos las páginas con cuidado."
+  },
+  {
+    "key": "triceratops caminaba habitualmente sobre cuatro patas",
+    "text": "TRICERATOPS CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "file": "b7328c9b5309b770.mp3",
+    "spoken": "TRICERATOPS CAMINABA HABITUALMENTE SOBRE CUATRO PATAS."
   },
   {
     "key": "tenía tres cuernos y una gran gola detrás de la cabeza",
@@ -5742,6 +9678,18 @@
     "spoken": "Entre todos preparan un lugar tranquilo para descansar."
   },
   {
+    "key": "escuchar, pedir turno y reparar también construyen paz",
+    "text": "Escuchar, pedir turno y reparar también construyen paz.",
+    "file": "a4f28ef3de58880e.mp3",
+    "spoken": "Escuchar, pedir turno y reparar también construyen paz."
+  },
+  {
+    "key": "estegosaurio caminaba habitualmente sobre cuatro patas",
+    "text": "ESTEGOSAURIO CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "file": "9283ba7d769dc2fc.mp3",
+    "spoken": "ESTEGOSAURIO CAMINABA HABITUALMENTE SOBRE CUATRO PATAS."
+  },
+  {
     "key": "las huellas pueden dar pistas sobre animales del pasado",
     "text": "Las huellas pueden dar pistas sobre animales del pasado.",
     "file": "257fc8aeeb6d87ec.mp3",
@@ -5778,6 +9726,30 @@
     "spoken": "Nora dibuja un pato y dos círculos: uno por cada «cuac»."
   },
   {
+    "key": "tiranosaurio rex caminaba habitualmente sobre dos patas",
+    "text": "Tiranosaurio rex CAMINABA HABITUALMENTE SOBRE DOS PATAS.",
+    "file": "524bd5d93c8f6cf3.mp3",
+    "spoken": "Tiranosaurio rex CAMINABA HABITUALMENTE SOBRE DOS PATAS."
+  },
+  {
+    "key": "braquiosaurio caminaba habitualmente sobre cuatro patas",
+    "text": "BRAQUIOSAURIO CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "file": "979ad2457ada23e4.mp3",
+    "spoken": "BRAQUIOSAURIO CAMINABA HABITUALMENTE SOBRE CUATRO PATAS."
+  },
+  {
+    "key": "anquilosaurio caminaba habitualmente sobre cuatro patas",
+    "text": "ANQUILOSAURIO CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "file": "d155623e95a9a043.mp3",
+    "spoken": "ANQUILOSAURIO CAMINABA HABITUALMENTE SOBRE CUATRO PATAS."
+  },
+  {
+    "key": "algo que tiene forma de círculo o se parece a una pelota",
+    "text": "Algo que tiene forma de círculo o se parece a una pelota.",
+    "file": "527bdfb5e499d630.mp3",
+    "spoken": "Algo que tiene forma de círculo o se parece a una pelota."
+  },
+  {
     "key": "¿podemos jugar juntos aunque nos gusten cosas diferentes",
     "text": "¿Podemos jugar juntos aunque nos gusten cosas diferentes?",
     "file": "b7128623b7e3fdee.mp3",
@@ -5794,6 +9766,18 @@
     "text": "En clase señala los círculos y todos repiten los sonidos.",
     "file": "cb2ec9163c48ec8c.mp3",
     "spoken": "En clase señala los círculos y todos repiten los sonidos."
+  },
+  {
+    "key": "las bolas nos permiten crear series de colores y tamaños",
+    "text": "Las bolas nos permiten crear series de colores y tamaños.",
+    "file": "e0ce589a60d0b437.mp3",
+    "spoken": "Las bolas nos permiten crear series de colores y tamaños."
+  },
+  {
+    "key": "crear ideas, historias o imágenes dentro de nuestra mente",
+    "text": "Crear ideas, historias o imágenes dentro de nuestra mente.",
+    "file": "9d7f56cb1167a00c.mp3",
+    "spoken": "Crear ideas, historias o imágenes dentro de nuestra mente."
   },
   {
     "key": "trabajo cuidadoso para descubrir lo que hay bajo el suelo",
@@ -5844,6 +9828,18 @@
     "spoken": "Guardo una cría dentro; mi cáscara es su casa al principio."
   },
   {
+    "key": "un momento en el que el cuerpo y la mente están tranquilos",
+    "text": "Un momento en el que el cuerpo y la mente están tranquilos.",
+    "file": "a89330788ab0d2ff.mp3",
+    "spoken": "Un momento en el que el cuerpo y la mente están tranquilos."
+  },
+  {
+    "key": "una repetición de sonidos o movimientos que podemos seguir",
+    "text": "Una repetición de sonidos o movimientos que podemos seguir.",
+    "file": "b4771ebec7060d5c.mp3",
+    "spoken": "Una repetición de sonidos o movimientos que podemos seguir."
+  },
+  {
     "key": "busca otro grupo con la misma cantidad, contando uno a uno",
     "text": "Busca otro grupo con la misma cantidad, contando uno a uno.",
     "file": "c453d638cffe8fba.mp3",
@@ -5892,6 +9888,18 @@
     "spoken": "Estiramos los brazos hacia el cielo y los bajamos despacio."
   },
   {
+    "key": "ahora lo hacemos todos: camina con pasos grandes y pesados",
+    "text": "AHORA LO HACEMOS TODOS: CAMINA CON PASOS GRANDES Y PESADOS.",
+    "file": "b8dd06741325b3a3.mp3",
+    "spoken": "AHORA LO HACEMOS TODOS: CAMINA CON PASOS GRANDES Y PESADOS."
+  },
+  {
+    "key": "ahora lo hacemos todos: abre los brazos como una gran vela",
+    "text": "AHORA LO HACEMOS TODOS: ABRE LOS BRAZOS COMO UNA GRAN VELA.",
+    "file": "510762efcc3a320e.mp3",
+    "spoken": "AHORA LO HACEMOS TODOS: ABRE LOS BRAZOS COMO UNA GRAN VELA."
+  },
+  {
     "key": "entre piezas grandes y pequeñas, pide una grande y circular",
     "text": "Entre piezas grandes y pequeñas, pide una grande y circular.",
     "file": "4723b06018afa300.mp3",
@@ -5914,6 +9922,12 @@
     "text": "Tengo hojas y no soy árbol; me abres para escuchar un relato.",
     "file": "421399e6328db0c0.mp3",
     "spoken": "Tengo hojas y no soy árbol; me abres para escuchar un relato."
+  },
+  {
+    "key": "una frase que usamos cuando queremos saber o comprender algo",
+    "text": "Una frase que usamos cuando queremos saber o comprender algo.",
+    "file": "fabfca4bf21664bd.mp3",
+    "spoken": "Una frase que usamos cuando queremos saber o comprender algo."
   },
   {
     "key": "persona que investiga la vida del pasado a través de fósiles",
@@ -5952,6 +9966,12 @@
     "spoken": "Las aves pertenecen a un grupo de dinosaurios que sobrevivió."
   },
   {
+    "key": "usar algo con otras personas o dejar que también lo disfruten",
+    "text": "Usar algo con otras personas o dejar que también lo disfruten.",
+    "file": "e58b6596945ae30d.mp3",
+    "spoken": "Usar algo con otras personas o dejar que también lo disfruten."
+  },
+  {
     "key": "puedes arrastrar una pieza o tocarla y después tocar su lugar",
     "text": "Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
     "file": "6c0d347ae62d151c.mp3",
@@ -5982,6 +10002,18 @@
     "spoken": "No hablo, pero enseño: guardo objetos para aprender del pasado."
   },
   {
+    "key": "una emoción agradable que puede aparecer cuando algo nos gusta",
+    "text": "Una emoción agradable que puede aparecer cuando algo nos gusta.",
+    "file": "aa2537962ccaf25a.mp3",
+    "spoken": "Una emoción agradable que puede aparecer cuando algo nos gusta."
+  },
+  {
+    "key": "algo que se nota delicado al tocarlo, o que se hace sin fuerza",
+    "text": "Algo que se nota delicado al tocarlo, o que se hace sin fuerza.",
+    "file": "9808f4d4426abee7.mp3",
+    "spoken": "Algo que se nota delicado al tocarlo, o que se hace sin fuerza."
+  },
+  {
     "key": "el dinosaurio llama a la familia y los acompaña hasta el huevo",
     "text": "El dinosaurio llama a la familia y los acompaña hasta el huevo.",
     "file": "7251c63e08c97c64.mp3",
@@ -5992,6 +10024,18 @@
     "text": "Imaginamos que somos árboles y movemos las ramas con el viento.",
     "file": "807c090489ead8ac.mp3",
     "spoken": "Imaginamos que somos árboles y movemos las ramas con el viento."
+  },
+  {
+    "key": "lo que decimos, mostramos o hacemos para contestar una pregunta",
+    "text": "Lo que decimos, mostramos o hacemos para contestar una pregunta.",
+    "file": "e53f81fa689dd031.mp3",
+    "spoken": "Lo que decimos, mostramos o hacemos para contestar una pregunta."
+  },
+  {
+    "key": "quien intenta algo aunque sienta un poco de miedo o inseguridad",
+    "text": "Quien intenta algo aunque sienta un poco de miedo o inseguridad.",
+    "file": "5fbb490732528894.mp3",
+    "spoken": "Quien intenta algo aunque sienta un poco de miedo o inseguridad."
   },
   {
     "key": "escucha durante diez segundos y cuenta un sonido que has notado",
@@ -6010,6 +10054,12 @@
     "text": "Dos hojas no soy, dos ruedas tampoco: corto papel poquito a poco.",
     "file": "9cab9691f66443db.mp3",
     "spoken": "Dos hojas no soy, dos ruedas tampoco: corto papel poquito a poco."
+  },
+  {
+    "key": "prestar atención a sonidos o a lo que otra persona quiere contar",
+    "text": "Prestar atención a sonidos o a lo que otra persona quiere contar.",
+    "file": "0fb0a41a40634e7e.mp3",
+    "spoken": "Prestar atención a sonidos o a lo que otra persona quiere contar."
   },
   {
     "key": "completa oralmente: quiero saber por qué… acepta dictado o gesto",
@@ -6072,16 +10122,40 @@
     "spoken": "Enseña con los dedos una cantidad y deja que la clase la descubra."
   },
   {
+    "key": "cariño y confianza entre personas que se cuidan y disfrutan juntas",
+    "text": "Cariño y confianza entre personas que se cuidan y disfrutan juntas.",
+    "file": "311cd05382f6a039.mp3",
+    "spoken": "Cariño y confianza entre personas que se cuidan y disfrutan juntas."
+  },
+  {
     "key": "¿dónde crees que se esconde el agua de un charco cuando desaparece",
     "text": "¿Dónde crees que se esconde el agua de un charco cuando desaparece?",
     "file": "5727af50639cf0d2.mp3",
     "spoken": "¿Dónde crees que se esconde el agua de un charco cuando desaparece?"
   },
   {
+    "key": "el disfraz permite imaginar personajes y expresarnos con el cuerpo",
+    "text": "El disfraz permite imaginar personajes y expresarnos con el cuerpo.",
+    "file": "61c505c67ad64d14.mp3",
+    "spoken": "El disfraz permite imaginar personajes y expresarnos con el cuerpo."
+  },
+  {
     "key": "nora mueve suavemente las manos y hace «shhh» para recordar el agua",
     "text": "Nora mueve suavemente las manos y hace «shhh» para recordar el agua.",
     "file": "63a9d2a4863ea123.mp3",
     "spoken": "Nora mueve suavemente las manos y hace «shhh» para recordar el agua."
+  },
+  {
+    "key": "ahora lo hacemos todos: mueve una cola imaginaria de un lado a otro",
+    "text": "AHORA LO HACEMOS TODOS: MUEVE UNA COLA IMAGINARIA DE UN LADO A OTRO.",
+    "file": "5d5fa21304949f53.mp3",
+    "spoken": "AHORA LO HACEMOS TODOS: MUEVE UNA COLA IMAGINARIA DE UN LADO A OTRO."
+  },
+  {
+    "key": "podemos observar la forma de una calabaza y transformarla con puntos",
+    "text": "Podemos observar la forma de una calabaza y transformarla con puntos.",
+    "file": "71d2ca9ad34c7ed7.mp3",
+    "spoken": "Podemos observar la forma de una calabaza y transformarla con puntos."
   },
   {
     "key": "al volver, la clase inventa gestos para el viento, la lluvia y el mar",
@@ -6096,6 +10170,18 @@
     "spoken": "Nos hacemos pequeños como una semilla y nos estiramos como una planta."
   },
   {
+    "key": "ahora lo hacemos todos: estira el cuello muy alto para alcanzar hojas",
+    "text": "AHORA LO HACEMOS TODOS: ESTIRA EL CUELLO MUY ALTO PARA ALCANZAR HOJAS.",
+    "file": "3443eb7d0d9c90e8.mp3",
+    "spoken": "AHORA LO HACEMOS TODOS: ESTIRA EL CUELLO MUY ALTO PARA ALCANZAR HOJAS."
+  },
+  {
+    "key": "ahora lo hacemos todos: pon tres dedos como cuernos y avanza despacio",
+    "text": "AHORA LO HACEMOS TODOS: PON TRES DEDOS COMO CUERNOS Y AVANZA DESPACIO.",
+    "file": "53cb53ebf88976e0.mp3",
+    "spoken": "AHORA LO HACEMOS TODOS: PON TRES DEDOS COMO CUERNOS Y AVANZA DESPACIO."
+  },
+  {
     "key": "lugar donde observamos, cuidamos y aprendemos de objetos y colecciones",
     "text": "Lugar donde observamos, cuidamos y aprendemos de objetos y colecciones.",
     "file": "79282023fbdc380e.mp3",
@@ -6106,6 +10192,18 @@
     "text": "La clase prepara turnos para mirar la tierra y regar cuando hace falta.",
     "file": "4d23b49a475db244.mp3",
     "spoken": "La clase prepara turnos para mirar la tierra y regar cuando hace falta."
+  },
+  {
+    "key": "ahora lo hacemos todos: corre en tu sitio con pasos pequeños y rápidos",
+    "text": "AHORA LO HACEMOS TODOS: CORRE EN TU SITIO CON PASOS PEQUEÑOS Y RÁPIDOS.",
+    "file": "92ed50fb74049206.mp3",
+    "spoken": "AHORA LO HACEMOS TODOS: CORRE EN TU SITIO CON PASOS PEQUEÑOS Y RÁPIDOS."
+  },
+  {
+    "key": "hacer algo para que otra persona pueda continuar o se sienta acompañada",
+    "text": "Hacer algo para que otra persona pueda continuar o se sienta acompañada.",
+    "file": "447c052e6c25efaf.mp3",
+    "spoken": "Hacer algo para que otra persona pueda continuar o se sienta acompañada."
   },
   {
     "key": "muchos vivieron hace muchísimo tiempo; las aves son dinosaurios actuales",
@@ -6120,6 +10218,12 @@
     "spoken": "El Tiranosaurio rex vivió muchísimo antes de que existieran las personas."
   },
   {
+    "key": "en primavera podemos observar brotes, flores, insectos y días más largos",
+    "text": "En primavera podemos observar brotes, flores, insectos y días más largos.",
+    "file": "5beaa947b40a0939.mp3",
+    "spoken": "En primavera podemos observar brotes, flores, insectos y días más largos."
+  },
+  {
     "key": "una abertura por la que pueden salir materiales del interior de la tierra",
     "text": "Una abertura por la que pueden salir materiales del interior de la Tierra.",
     "file": "7c1085f4f33b13b3.mp3",
@@ -6130,6 +10234,12 @@
     "text": "Imaginamos que sostenemos una nube: abrimos y cerramos las manos despacio.",
     "file": "b852272cc9be69b3.mp3",
     "spoken": "Imaginamos que sostenemos una nube: abrimos y cerramos las manos despacio."
+  },
+  {
+    "key": "tratar con cuidado a las personas, los animales, los objetos y los lugares",
+    "text": "Tratar con cuidado a las personas, los animales, los objetos y los lugares.",
+    "file": "ebff05de1959262e.mp3",
+    "spoken": "Tratar con cuidado a las personas, los animales, los objetos y los lugares."
   },
   {
     "key": "su cuello era largo y sus patas delanteras eran más largas que las traseras",
@@ -6144,10 +10254,28 @@
     "spoken": "Encuentran el huevo y dan las gracias con un abrazo de dinosaurio imaginario."
   },
   {
+    "key": "al final del curso recordamos descubrimientos, juegos y momentos compartidos",
+    "text": "Al final del curso recordamos descubrimientos, juegos y momentos compartidos.",
+    "file": "591ef4eebf60e12d.mp3",
+    "spoken": "Al final del curso recordamos descubrimientos, juegos y momentos compartidos."
+  },
+  {
     "key": "después dibujan juntos una señal en el camino para poder volver a encontrarse",
     "text": "Después dibujan juntos una señal en el camino para poder volver a encontrarse.",
     "file": "a2c92bfaff9df975.mp3",
     "spoken": "Después dibujan juntos una señal en el camino para poder volver a encontrarse."
+  },
+  {
+    "key": "ahora lo hacemos todos: haz una fila de placas con tus manos sobre la espalda",
+    "text": "AHORA LO HACEMOS TODOS: HAZ UNA FILA DE PLACAS CON TUS MANOS SOBRE LA ESPALDA.",
+    "file": "8c1fa60b99251406.mp3",
+    "spoken": "AHORA LO HACEMOS TODOS: HAZ UNA FILA DE PLACAS CON TUS MANOS SOBRE LA ESPALDA."
+  },
+  {
+    "key": "ahora lo hacemos todos: alarga los brazos como un cuello y una cola muy largos",
+    "text": "AHORA LO HACEMOS TODOS: ALARGA LOS BRAZOS COMO UN CUELLO Y UNA COLA MUY LARGOS.",
+    "file": "574d7beda36eb5d1.mp3",
+    "spoken": "AHORA LO HACEMOS TODOS: ALARGA LOS BRAZOS COMO UN CUELLO Y UNA COLA MUY LARGOS."
   },
   {
     "key": "entre tres tarjetas de huellas, encuentra la que es igual al modelo y explica qué has mirado",

@@ -15,3 +15,17 @@
 @media screen and (max-width:480px){.story-card,.story-waiting{grid-template-columns:1fr}.story-card>img,.story-waiting>img{height:210px;min-height:0}.story-intro>span{display:none}.story-footer span{font-size:.75rem}}
 .story-card>img.story-cover-contain{object-fit:contain;background:#fff8f3;padding:16px}#projector{text-transform:uppercase}.story-image-only{grid-template-columns:1fr}.story-image-only figure{padding:12px}.story-image-only figure img{width:auto;max-width:100%;max-height:calc(100dvh - 170px)}.story-reader-frame{flex:1;min-height:0;background:#f7f0ec;padding:12px;display:flex}.story-reader-frame iframe{display:block;width:100%;height:100%;min-height:calc(100dvh - 150px);border:0;border-radius:14px;background:white}.story-reader-frame+.story-reader-credits{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;padding:8px 18px}.story-reader-frame+.story-reader-credits .story-credits{max-width:900px}
 @media screen and (max-width:780px){.story-card>img.story-cover-contain{padding:8px}.story-reader-frame{padding:6px}.story-reader-frame iframe{min-height:calc(100dvh - 170px)}}
+
+/* Calendario escolar: fines de semana y festivos con un estilo de playa/parque relajado, no colores planos. */
+.calendar-mini span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:40px}
+.calendar-mini span small{font-size:.7rem;line-height:1}
+.calendar-mini span.weekend,.calendar-mini span.holiday{background:#f9dfe0;color:#a94a55;font-weight:800;box-shadow:inset 0 0 0 2px #edb7ba}
+.calendar-mini span.past{position:relative;color:#8f8790}
+.calendar-mini span.past .calendar-past-mark{position:absolute;inset:50% 8% auto;font:900 1.8rem/0.5 Nunito,sans-serif;color:#9b6f76;transform:rotate(-12deg);font-style:normal}
+.calendar-mini span.past:before,.calendar-mini span.past:after{content:'';position:absolute;left:4%;top:50%;width:92%;height:5px;border-radius:3px;background:#c33749;transform-origin:center;pointer-events:none}
+.calendar-mini span.past:before{transform:translateY(-50%) rotate(30deg)}
+.calendar-mini span.past:after{transform:translateY(-50%) rotate(-30deg)}
+.calendar-mini span.today{background:#c9e8d2;color:#216942;font-weight:900;box-shadow:inset 0 0 0 3px #68aa7d}
+.calendar-mini span.today.holiday{background:#c9e8d2;color:#216942;box-shadow:inset 0 0 0 3px #68aa7d}
+.calendar-mini.calendar-external span.today,.calendar-mini.calendar-external span.today.holiday{background:#c8def8;color:#164b8d;box-shadow:inset 0 0 0 3px #4f87c7}
+.external-calendar-heading{display:flex;align-items:center;justify-content:center;gap:28px;margin:12px 0 20px}.external-calendar-heading h2{min-width:260px;margin:0;text-align:center}.calendar-month-arrow{width:52px;height:52px;padding:0;border:2px solid #0b2865;border-radius:50%;background:white;color:#0b2865;font-size:1.8rem}.calendar-month-arrow:hover{background:#e8f1fc}

@@ -76,9 +76,11 @@
   let ticker = 0;
   let recordedAlert = null;
   let audioContext = null;
+  let calendarOpened = false;
 
   const clampMinutes = value => Math.max(1, Math.min(60, Number(value) || 1));
   const timerRoute = () => location.hash.slice(1).split('?')[0] === 'pdi-cronometro';
+  const calendarRoute = () => location.hash.slice(1).split('?')[0] === 'pdi-calendario';
 
   function navWithTimer() {
     const html = window.ROSA_AULA?.pdiNav?.('') || '';
@@ -161,6 +163,22 @@
     });
   }
 
+  function addCalendarNavLink() {
+    document.querySelectorAll('.pdi-section-nav').forEach(nav => {
+      let link = nav.querySelector('a[href="#pdi-calendario"]');
+      if (!link) {
+        link = document.createElement('a');
+        link.href = '#pdi-calendario';
+        link.innerHTML = '📅 Calendario';
+        const timer = nav.querySelector('a[href="#pdi-cronometro"]');
+        if (timer) timer.insertAdjacentElement('afterend', link); else nav.appendChild(link);
+      }
+      const active = calendarRoute();
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
+    });
+  }
+
   function activateGlobalPdiNav() {
     if (!timerRoute()) return;
     for (const selector of ['#navigation a[href="#pdi"]', '#top-navigation a[href="#pdi"]']) {
@@ -172,12 +190,18 @@
   function routeSync() {
     const content = document.querySelector('#contenido');
     if (!content) return;
+    addCalendarNavLink();
     if (timerRoute()) {
       if (!content.querySelector('#pdi-timer-page')) content.innerHTML = timerPage();
       activateGlobalPdiNav();
       addTimerNavLink();
       updateTimerDom();
-    } else addTimerNavLink();
+    } else if (calendarRoute()) {
+      if (!window.ROSA_AULA?.launch) return;
+      if (!calendarOpened) { calendarOpened = true; window.ROSA_AULA.launch('calendario',{payload:{externalCalendar:true}}); }
+      activateGlobalPdiNav();
+      addTimerNavLink();
+    } else { calendarOpened = false; addTimerNavLink(); }
   }
 
   function setMinutes(value) {

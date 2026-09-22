@@ -1,0 +1,40 @@
+/* CALIGRAFÍA ESCOLAR ÚNICA · LA CLASE ROSA
+   Fuente "Escolar" enlazada por PlayFunLearning. */
+@font-face{
+  font-family:"RosaEscolar";
+  src:url("./fonts/RosaEscolar-Regular.ttf") format("truetype");
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+}
+
+.rosa-school-letter{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-family:"RosaEscolar", cursive !important;
+  font-style:normal !important;
+  font-weight:400 !important;
+  line-height:1 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+  color:currentColor;
+}
+
+.rosa-school-word{
+  display:inline-flex;
+  align-items:baseline;
+  gap:.03em;
+}
+
+.rosa-school-space{width:.35em}
+
+/* Cualquier resto antiguo de clases cursivas se homogeneiza aquí. */
+.school-cursive-letter,
+.school-cursive-trace{
+  font-family:"RosaEscolar", cursive !important;
+  font-style:normal !important;
+  font-weight:400 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+}

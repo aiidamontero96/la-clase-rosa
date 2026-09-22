@@ -492,3 +492,241 @@
   #projector .weather-routine h2{font-size:clamp(1.7rem,2.7vw,2.35rem)}
   #projector .weather-routine .choice span{font-size:clamp(1.7rem,3vw,2.35rem)}
 }
+
+/* === PDI FIT 2 · CALENDARIO + UNE + PUZLE · 2026-09-22 === */
+/* Esta hoja se carga después de refinements.css: los ajustes de encaje deben vivir aquí. */
+
+/* CALENDARIO: fecha más pequeña y calendario que usa exactamente el alto disponible. */
+#projector .projection-main[data-game="calendario"]:has(.assembly-date-display){
+  display:grid!important;
+  grid-template-rows:auto auto minmax(0,1fr);
+  align-content:stretch;
+  justify-items:center;
+  row-gap:4px;
+  padding:4px 0 6px!important;
+  overflow:hidden!important;
+}
+#projector .projection-main[data-game="calendario"] .assembly-date-display{
+  font-size:clamp(2.1rem,4vw,4rem)!important;
+  line-height:1!important;
+  margin:0 0 4px!important;
+  letter-spacing:.015em;
+}
+#projector .projection-main[data-game="calendario"] .calendar-controls{
+  margin:0 0 4px!important;
+  gap:8px;
+}
+#projector .projection-main[data-game="calendario"] .calendar-controls label,
+#projector .projection-main[data-game="calendario"] .calendar-controls input,
+#projector .projection-main[data-game="calendario"] .calendar-controls button{
+  min-height:38px;
+}
+#projector .projection-main[data-game="calendario"] .calendar-mini{
+  align-self:stretch;
+  width:min(700px,88vw);
+  height:100%;
+  min-height:0;
+  margin:0;
+  gap:5px;
+  grid-auto-rows:minmax(0,1fr);
+  font-size:clamp(1rem,1.65vw,1.2rem);
+}
+#projector .projection-main[data-game="calendario"] .calendar-mini span{
+  min-height:0!important;
+  padding:2px!important;
+}
+#projector .projection-main[data-game="calendario"] .calendar-mini b{
+  font-size:clamp(.9rem,1.35vw,1.05rem);
+  align-self:center;
+}
+
+/* UNE CON FLECHAS: título + tablero + feedback. El tablero absorbe el espacio restante. */
+#projector .projection-main[data-game="relaciona-vocabulario"],
+#projector .projection-main[data-game="relaciona-cantidades"],
+#projector .projection-main[data-game="relaciona-dino"]{
+  display:grid!important;
+  grid-template-rows:auto minmax(0,1fr) auto;
+  align-content:stretch;
+  justify-items:center;
+  row-gap:4px;
+  width:min(1280px,96vw)!important;
+  padding:4px 0 5px!important;
+  overflow:hidden!important;
+}
+#projector .projection-main[data-game="relaciona-vocabulario"]>h2,
+#projector .projection-main[data-game="relaciona-cantidades"]>h2,
+#projector .projection-main[data-game="relaciona-dino"]>h2{
+  margin:0 0 3px!important;
+  font-size:clamp(1.55rem,2.7vw,2.45rem)!important;
+  line-height:1.05!important;
+}
+#projector .projection-main[data-game="relaciona-vocabulario"] .relate-board,
+#projector .projection-main[data-game="relaciona-cantidades"] .relate-board,
+#projector .projection-main[data-game="relaciona-dino"] .relate-board{
+  align-self:stretch;
+  width:min(1120px,94vw)!important;
+  height:100%;
+  min-height:0;
+  margin:0 auto!important;
+}
+#projector .relate-board .relate-columns{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  width:100%!important;
+  height:100%;
+  min-height:0;
+  margin:0!important;
+  gap:clamp(54px,7vw,100px)!important;
+}
+#projector .relate-board .relate-col{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  min-width:0;
+  height:100%;
+  min-height:0;
+  gap:7px!important;
+}
+#projector .relate-board .relate-card{
+  flex:1 1 0;
+  width:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:4px 10px!important;
+  line-height:1.05;
+}
+#projector .relate-board .relate-card img{
+  width:clamp(52px,7dvh,78px)!important;
+  height:clamp(48px,6.5dvh,70px)!important;
+}
+#projector .projection-main[data-game="relaciona-vocabulario"]>.feedback,
+#projector .projection-main[data-game="relaciona-cantidades"]>.feedback,
+#projector .projection-main[data-game="relaciona-dino"]>.feedback{
+  min-height:22px;
+  margin:1px 0 0!important;
+}
+
+/* PUZLE: 4/6/9/12 piezas encajan dentro de dos tableros iguales y nunca empujan el pie. */
+#projector .projection-main[data-game="puzzle"]{
+  display:grid!important;
+  grid-template-rows:auto auto minmax(0,1fr) auto;
+  align-content:stretch;
+  justify-items:center;
+  row-gap:4px;
+  width:min(1180px,96vw)!important;
+  padding:4px 0 5px!important;
+  overflow:hidden!important;
+}
+#projector .projection-main[data-game="puzzle"]>h2{
+  margin:0!important;
+  font-size:clamp(1.55rem,2.7vw,2.45rem)!important;
+  line-height:1.05!important;
+}
+#projector .projection-main[data-game="puzzle"] .piece-instruction{
+  display:none!important;
+}
+#projector .projection-main[data-game="puzzle"] .puzzle-model{
+  width:min(900px,90vw);
+  margin:0!important;
+  font-size:.9rem;
+}
+#projector .projection-main[data-game="puzzle"] .puzzle-model summary{
+  padding:3px 6px!important;
+}
+#projector .projection-main[data-game="puzzle"] .puzzle-model img{
+  width:86px;
+  height:86px;
+}
+#projector .projection-main[data-game="puzzle"] .piece-workspace{
+  align-self:stretch;
+  width:min(900px,92vw);
+  height:100%;
+  min-height:0;
+  margin:0!important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+}
+#projector .projection-main[data-game="puzzle"] .puzzle-grid{
+  display:grid;
+  grid-template-columns:repeat(var(--cols),minmax(0,1fr));
+  grid-template-rows:repeat(var(--rows),minmax(0,1fr));
+  width:100%;
+  height:100%;
+  min-height:0;
+  gap:6px;
+}
+#projector .projection-main[data-game="puzzle"] .puzzle-grid .pdi-slot,
+#projector .projection-main[data-game="puzzle"] .puzzle-grid .pdi-piece{
+  width:100%;
+  height:100%;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+}
+#projector .projection-main[data-game="puzzle"] .puzzle-fragment{
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+  background-repeat:no-repeat;
+  background-color:#fff;
+}
+#projector .projection-main[data-game="puzzle"]>#piece-feedback{
+  min-height:22px;
+  margin:1px 0 0!important;
+}
+
+@media (min-width:760px) and (max-height:820px){
+  #projector .projection-main[data-game="calendario"] .assembly-date-display{
+    font-size:clamp(1.9rem,3.5vw,3.15rem)!important;
+  }
+  #projector .projection-main[data-game="relaciona-vocabulario"]>h2,
+  #projector .projection-main[data-game="relaciona-cantidades"]>h2,
+  #projector .projection-main[data-game="relaciona-dino"]>h2,
+  #projector .projection-main[data-game="puzzle"]>h2{
+    font-size:clamp(1.4rem,2.35vw,2.1rem)!important;
+  }
+  #projector .relate-board .relate-col{gap:5px!important}
+  #projector .projection-main[data-game="puzzle"] .piece-workspace{width:min(840px,90vw);gap:14px}
+}
+
+
+
+/* === PUZLE DINOSAURIOS · IMG REAL · 2026-09-22 === */
+/*
+ * Render definitivo del puzle:
+ * - no usa background-image;
+ * - cada fragmento contiene el IMG real que ya usa el resto de la web;
+ * - el contenedor se fija al botón con inset:0, evitando alturas calculadas a 0;
+ * - el IMG completo se desplaza dentro de cada fragmento según fila/columna.
+ */
+#projector .projection-main[data-game="puzzle"] .pdi-piece,
+#projector .projection-main[data-game="puzzle"] .pdi-slot{
+  position:relative;
+}
+
+#projector .projection-main[data-game="puzzle"] .puzzle-fragment{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  min-width:0!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  background:none!important;
+  pointer-events:none!important;
+}
+
+#projector .projection-main[data-game="puzzle"] .puzzle-fragment-image{
+  position:absolute!important;
+  display:block!important;
+  max-width:none!important;
+  max-height:none!important;
+  min-width:0!important;
+  min-height:0!important;
+  object-fit:fill!important;
+  pointer-events:none!important;
+  user-select:none!important;
+  -webkit-user-drag:none!important;
+}

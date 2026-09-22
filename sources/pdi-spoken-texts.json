@@ -1,6 +1,6 @@
 [
   {
-    "text": "¿Cuántos dinosaurios hay?",
+    "text": "¿Cuántos dibujos hay?",
     "kinds": [
       "contar"
     ]
@@ -12,13 +12,37 @@
     ]
   },
   {
-    "text": "Mira estos dinosaurios",
+    "text": "MIRA LA SERIE. ¿QUÉ DEBERÍA IR EN EL HUECO?",
+    "kinds": [
+      "series-ilustradas"
+    ]
+  },
+  {
+    "text": "DOS TRIÁNGULOS Y UN CÍRCULO. ¿QUÉ VIENE AHORA?",
+    "kinds": [
+      "series-ilustradas"
+    ]
+  },
+  {
+    "text": "ROJO, AZUL, ROJO, AZUL… ¿QUÉ CUENTA SIGUE?",
+    "kinds": [
+      "series-ilustradas"
+    ]
+  },
+  {
+    "text": "TRIÁNGULO, CÍRCULO, TRIÁNGULO, CÍRCULO… ¿QUÉ SIGUE?",
+    "kinds": [
+      "series-ilustradas"
+    ]
+  },
+  {
+    "text": "Mira estos dibujos",
     "kinds": [
       "falta"
     ]
   },
   {
-    "text": "¿Qué dinosaurio falta?",
+    "text": "¿Qué dibujo falta?",
     "kinds": [
       "falta"
     ]
@@ -96,13 +120,37 @@
     ]
   },
   {
+    "text": "TOCA LA VOCAL A",
+    "kinds": [
+      "vocales-ilustradas"
+    ]
+  },
+  {
+    "text": "¿QUÉ VOCAL ESTÁ REPASANDO?",
+    "kinds": [
+      "vocales-ilustradas"
+    ]
+  },
+  {
+    "text": "¿QUÉ VOCAL VES EN LA PIZARRA?",
+    "kinds": [
+      "vocales-ilustradas"
+    ]
+  },
+  {
+    "text": "¿QUÉ VOCAL HA CONSTRUIDO CON BLOQUES?",
+    "kinds": [
+      "vocales-ilustradas"
+    ]
+  },
+  {
     "text": "¿Cómo te sientes?",
     "kinds": [
       "emociones"
     ]
   },
   {
-    "text": "jueves, 10 de septiembre de 2026",
+    "text": "martes, 22 de septiembre de 2026",
     "kinds": [
       "calendario"
     ]
@@ -372,6 +420,156 @@
     ]
   },
   {
+    "text": "amistad. Cariño y confianza entre personas que se cuidan y disfrutan juntas.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "alegría. Una emoción agradable que puede aparecer cuando algo nos gusta.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "calma. Un momento en el que el cuerpo y la mente están tranquilos.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "curiosidad. Ganas de mirar, preguntar y descubrir cosas nuevas.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "ayudar. Hacer algo para que otra persona pueda continuar o se sienta acompañada.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "compartir. Usar algo con otras personas o dejar que también lo disfruten.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "escuchar. Prestar atención a sonidos o a lo que otra persona quiere contar.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "imaginar. Crear ideas, historias o imágenes dentro de nuestra mente.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "pregunta. Una frase que usamos cuando queremos saber o comprender algo.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "respuesta. Lo que decimos, mostramos o hacemos para contestar una pregunta.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "equipo. Personas que colaboran para conseguir algo juntas.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "turno. El momento en que le toca participar a cada persona.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "respeto. Tratar con cuidado a las personas, los animales, los objetos y los lugares.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "paciencia. Saber esperar y seguir intentándolo con tranquilidad.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "valiente. Quien intenta algo aunque sienta un poco de miedo o inseguridad.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "suave. Algo que se nota delicado al tocarlo, o que se hace sin fuerza.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "enorme. Algo de tamaño muy, muy grande.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "diminuto. Algo tan pequeño que tenemos que mirar con atención.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "redondo. Algo que tiene forma de círculo o se parece a una pelota.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "transparente. Deja pasar la luz y permite ver lo que hay detrás.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "brillante. Refleja mucha luz o parece tener luz propia.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "equilibrio. Mantenerse estable sin caer o repartir bien el peso.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "ritmo. Una repetición de sonidos o movimientos que podemos seguir.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "serie. Un grupo de elementos que sigue una regla y se repite.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
+    "text": "cantidad. Cuántos elementos hay en un grupo.",
+    "kinds": [
+      "vocabulario"
+    ]
+  },
+  {
     "text": "dinosaurio. Un grupo de animales. Muchos vivieron hace muchísimo tiempo; las aves son dinosaurios actuales.",
     "kinds": [
       "vocabulario"
@@ -441,6 +639,24 @@
     "text": "tiempo prehistórico. Un pasado muy lejano. Los dinosaurios no avianos vivieron antes de que hubiera personas.",
     "kinds": [
       "vocabulario"
+    ]
+  },
+  {
+    "text": "Escribe tu nombre. Miramos y decimos el nombre. Tocamos cada letra de izquierda a derecha.",
+    "kinds": [
+      "nombre-escribe"
+    ]
+  },
+  {
+    "text": "Escribe tu nombre. Busca las letras en orden. Empieza por la primera letra.",
+    "kinds": [
+      "nombre-escribe"
+    ]
+  },
+  {
+    "text": "UNE CADA IMAGEN CON SU PALABRA. ARRASTRA UNA FLECHA DESDE LA IMAGEN HASTA SU NOMBRE.",
+    "kinds": [
+      "relaciona-vocabulario"
     ]
   },
   {
@@ -552,6 +768,12 @@
     ]
   },
   {
+    "text": "Escucha la palabra. ¿Por qué vocal empieza?",
+    "kinds": [
+      "vocales"
+    ]
+  },
+  {
     "text": "Di la palabra con palmas. ¿Cuántas das? SOL.",
     "kinds": [
       "silabas"
@@ -619,6 +841,12 @@
   },
   {
     "text": "Di la palabra con palmas. ¿Cuántas das? BICICLETA.",
+    "kinds": [
+      "silabas"
+    ]
+  },
+  {
+    "text": "Di la palabra con palmas. ¿Cuántas das?",
     "kinds": [
       "silabas"
     ]
@@ -714,6 +942,1098 @@
     ]
   },
   {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por T?",
+    "kinds": [
+      "nombre-inicial"
+    ]
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por S?",
+    "kinds": [
+      "nombre-inicial"
+    ]
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por A?",
+    "kinds": [
+      "nombre-inicial"
+    ]
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por M?",
+    "kinds": [
+      "nombre-inicial"
+    ]
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por F?",
+    "kinds": [
+      "nombre-inicial"
+    ]
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por E?",
+    "kinds": [
+      "nombre-inicial"
+    ]
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por Á?",
+    "kinds": [
+      "nombre-inicial"
+    ]
+  },
+  {
+    "text": "¿De quién es la inicial? ¿Qué nombre empieza por J?",
+    "kinds": [
+      "nombre-inicial"
+    ]
+  },
+  {
+    "text": "¿Cuántas letras tiene este nombre?",
+    "kinds": [
+      "nombre-letras"
+    ]
+  },
+  {
+    "text": "¿Qué nombre tiene más letras?",
+    "kinds": [
+      "nombre-compara"
+    ]
+  },
+  {
+    "text": "¿Qué nombre tiene menos letras?",
+    "kinds": [
+      "nombre-compara"
+    ]
+  },
+  {
+    "text": "¿Qué podemos decorar con puntos como Yayoi Kusama?",
+    "kinds": [
+      "fechas-especiales"
+    ]
+  },
+  {
+    "text": "¿Qué forma se repite en una guirnalda de bolas?",
+    "kinds": [
+      "fechas-especiales"
+    ]
+  },
+  {
+    "text": "¿Qué gesto ayuda a cuidar la paz en clase?",
+    "kinds": [
+      "fechas-especiales"
+    ]
+  },
+  {
+    "text": "¿Qué colores vemos en la bandera de Andalucía?",
+    "kinds": [
+      "fechas-especiales"
+    ]
+  },
+  {
+    "text": "¿Qué podemos usar para transformarnos jugando?",
+    "kinds": [
+      "fechas-especiales"
+    ]
+  },
+  {
+    "text": "¿Qué cambio podemos observar en el patio?",
+    "kinds": [
+      "fechas-especiales"
+    ]
+  },
+  {
+    "text": "¿Qué hacemos antes de pasar una página?",
+    "kinds": [
+      "fechas-especiales"
+    ]
+  },
+  {
+    "text": "¿Qué podemos recordar juntos?",
+    "kinds": [
+      "fechas-especiales"
+    ]
+  },
+  {
+    "text": "¿DE QUÉ VA DISFRAZADO?",
+    "kinds": [
+      "disfraces"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA ES?",
+    "kinds": [
+      "dino-vocabulario"
+    ]
+  },
+  {
+    "text": "BUSCA AL Tiranosaurio rex",
+    "kinds": [
+      "dino-buscar"
+    ]
+  },
+  {
+    "text": "BUSCA AL TRICERATOPS",
+    "kinds": [
+      "dino-buscar"
+    ]
+  },
+  {
+    "text": "BUSCA AL ESTEGOSAURIO",
+    "kinds": [
+      "dino-buscar"
+    ]
+  },
+  {
+    "text": "BUSCA AL BRAQUIOSAURIO",
+    "kinds": [
+      "dino-buscar"
+    ]
+  },
+  {
+    "text": "BUSCA AL VELOCIRAPTOR",
+    "kinds": [
+      "dino-buscar"
+    ]
+  },
+  {
+    "text": "BUSCA AL ANQUILOSAURIO",
+    "kinds": [
+      "dino-buscar"
+    ]
+  },
+  {
+    "text": "BUSCA AL DIPLODOCUS",
+    "kinds": [
+      "dino-buscar"
+    ]
+  },
+  {
+    "text": "BUSCA AL PARASAUROLOFO",
+    "kinds": [
+      "dino-buscar"
+    ]
+  },
+  {
+    "text": "BUSCA AL ESPINOSAURIO",
+    "kinds": [
+      "dino-buscar"
+    ]
+  },
+  {
+    "text": "¿CAMINABA SOBRE DOS O CUATRO PATAS?",
+    "kinds": [
+      "dino-patas"
+    ]
+  },
+  {
+    "text": "¿CÓMO NOS MOVEMOS COMO ESTE DINOSAURIO?",
+    "kinds": [
+      "dino-movimiento"
+    ]
+  },
+  {
+    "text": "Completa la frase sobre el Tiranosaurio rex",
+    "kinds": [
+      "completa-dino"
+    ]
+  },
+  {
+    "text": "Completa la frase sobre el Triceratops",
+    "kinds": [
+      "completa-dino"
+    ]
+  },
+  {
+    "text": "Completa la frase sobre el Estegosaurio",
+    "kinds": [
+      "completa-dino"
+    ]
+  },
+  {
+    "text": "Completa la frase sobre el Braquiosaurio",
+    "kinds": [
+      "completa-dino"
+    ]
+  },
+  {
+    "text": "Completa la frase sobre el Velociraptor",
+    "kinds": [
+      "completa-dino"
+    ]
+  },
+  {
+    "text": "Completa la frase sobre el Anquilosaurio",
+    "kinds": [
+      "completa-dino"
+    ]
+  },
+  {
+    "text": "Completa la frase sobre el Diplodocus",
+    "kinds": [
+      "completa-dino"
+    ]
+  },
+  {
+    "text": "Completa la frase sobre el Parasaurolofo",
+    "kinds": [
+      "completa-dino"
+    ]
+  },
+  {
+    "text": "Completa la frase sobre el Espinosaurio",
+    "kinds": [
+      "completa-dino"
+    ]
+  },
+  {
+    "text": "UNE CADA GRUPO DE PUNTOS CON SU NÚMERO. ARRASTRA UNA FLECHA.",
+    "kinds": [
+      "relaciona-cantidades"
+    ]
+  },
+  {
+    "text": "¿QUÉ NÚMERO VA JUSTO DESPUÉS?",
+    "kinds": [
+      "numero-vecino"
+    ]
+  },
+  {
+    "text": "¿QUÉ NÚMERO VA JUSTO ANTES?",
+    "kinds": [
+      "numero-vecino"
+    ]
+  },
+  {
+    "text": "¿QUÉ CANTIDAD FALTA PARA COMPLETAR LA SUMA?",
+    "kinds": [
+      "sumando-falta"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON GATO? GATO.",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON RANA? RANA.",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON LEÓN? LEÓN.",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON RATÓN? RATÓN.",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON PEZ? PEZ.",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON FRESA? FRESA.",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON GATO?",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON RANA?",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON LEÓN?",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON RATÓN?",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON PEZ?",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿QUÉ PALABRA RIMA CON FRESA?",
+    "kinds": [
+      "rimas"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA GATO? GATO.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA PERRO? PERRO.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA CASA? CASA.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA SOL? SOL.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA LUNA? LUNA.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA MARIPOSA? MARIPOSA.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA FRESA? FRESA.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA BICICLETA? BICICLETA.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA RANA? RANA.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA GLOBO? GLOBO.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA PATO? PATO.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA MUÑECO? MUÑECO.",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA GATO?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA PERRO?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA CASA?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA SOL?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA LUNA?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA MARIPOSA?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA FRESA?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA BICICLETA?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA RANA?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA GLOBO?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA PATO?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿POR QUÉ CONSONANTE EMPIEZA MUÑECO?",
+    "kinds": [
+      "consonante-inicial"
+    ]
+  },
+  {
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE ANIMALES?",
+    "kinds": [
+      "intruso-categorias"
+    ]
+  },
+  {
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE FRUTAS?",
+    "kinds": [
+      "intruso-categorias"
+    ]
+  },
+  {
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE TRANSPORTES?",
+    "kinds": [
+      "intruso-categorias"
+    ]
+  },
+  {
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE ROPA?",
+    "kinds": [
+      "intruso-categorias"
+    ]
+  },
+  {
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE MUEBLES?",
+    "kinds": [
+      "intruso-categorias"
+    ]
+  },
+  {
+    "text": "¿CUÁL NO PERTENECE AL GRUPO DE COMIDA?",
+    "kinds": [
+      "intruso-categorias"
+    ]
+  },
+  {
+    "text": "¿CUÁL NO PERTENECE AL MISMO GRUPO?",
+    "kinds": [
+      "intruso-categorias"
+    ]
+  },
+  {
+    "text": "OBSERVA EL PATRÓN. ¿QUÉ VIENE DESPUÉS?",
+    "kinds": [
+      "patrones-avanzados"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 1. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y SE FUERON 1. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 2. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 3 Y SE FUERON 2. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 3. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y SE FUERON 3. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 4. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 3 Y SE FUERON 1. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y SE FUERON 2. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y SE FUERON 1. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y SE FUERON 4. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 3 Y LLEGARON 2. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y SE FUERON 2. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y LLEGARON 3. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y SE FUERON 3. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 4. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y LLEGARON 1. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y SE FUERON 5. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 6. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y SE FUERON 6. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y LLEGARON 2. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y SE FUERON 3. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 3. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y SE FUERON 2. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y LLEGARON 2. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y SE FUERON 1. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y SE FUERON 5. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y LLEGARON 1. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 2. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y SE FUERON 4. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y LLEGARON 3. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y SE FUERON 1. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y SE FUERON 4. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 1. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y LLEGARON 4. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 7. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y SE FUERON 7. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 6. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 5. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 5. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 7 Y LLEGARON 1. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 10 Y SE FUERON 4. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y SE FUERON 2. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y LLEGARON 6. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y LLEGARON 3. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 8. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 10 Y SE FUERON 8. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y SE FUERON 3. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y LLEGARON 5. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 7 Y LLEGARON 2. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 10 Y SE FUERON 3. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y LLEGARON 2. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 10 Y SE FUERON 7. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 7 Y LLEGARON 3. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 10 Y SE FUERON 2. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y LLEGARON 1. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y LLEGARON 4. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 10 Y SE FUERON 6. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y LLEGARON 4. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 10 Y SE FUERON 1. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 10 Y SE FUERON 5. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 9. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 10 Y SE FUERON 9. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 8. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y LLEGARON 5. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 7. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 7 Y LLEGARON 4. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 9 Y LLEGARON 2. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 5. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y LLEGARON 7. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y LLEGARON 1. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 10. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 10. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 4. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 4 Y LLEGARON 8. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 6 Y LLEGARON 5. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y LLEGARON 2. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 9. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y LLEGARON 7. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 3. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y LLEGARON 3. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 8. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 2. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 8 Y LLEGARON 4. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 7 Y LLEGARON 5. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 7. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 1. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 5 Y LLEGARON 6. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 6. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 1 Y LLEGARON 11. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 12 Y SE FUERON 11. ¿CUÁNTOS QUEDAN?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 10. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
+    "text": "HABÍA 2 Y LLEGARON 9. ¿CUÁNTOS HAY AHORA?",
+    "kinds": [
+      "problemas-visuales"
+    ]
+  },
+  {
     "text": "Coloca cada pieza en su lugar. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
     "kinds": [
       "puzzle"
@@ -723,6 +2043,12 @@
     "text": "Ordena los dibujos de pequeño a grande. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
     "kinds": [
       "ordenar-piezas"
+    ]
+  },
+  {
+    "text": "Une cada dinosaurio con su sombra. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "sombras"
     ]
   },
   {
@@ -786,6 +2112,30 @@
     ]
   },
   {
+    "text": "Pon 11 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "Pon 12 frutas en la cesta. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "cestas"
+    ]
+  },
+  {
+    "text": "ORDENA LOS NÚMEROS DE MENOR A MAYOR. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "ordena-numeros"
+    ]
+  },
+  {
+    "text": "ORDENA LA HISTORIA: ¿QUÉ OCURRE PRIMERO Y DESPUÉS?. Puedes arrastrar una pieza o tocarla y después tocar su lugar.",
+    "kinds": [
+      "ordena-historia"
+    ]
+  },
+  {
     "text": "Lila y el huevo viajero. Lila encuentra un huevo junto al camino. «Alguien debe de estar buscándolo», piensa. Antes de tocarlo, mira a su alrededor. ¿Dónde buscamos a su familia? Junto al árbol. Siguiendo las huellas",
     "kinds": [
       "cuento"
@@ -795,6 +2145,184 @@
     "text": "Toca la caja para descubrir una sorpresa.",
     "kinds": [
       "sorpresa"
+    ]
+  },
+  {
+    "text": "¿CUÁNTOS HAY?",
+    "kinds": [
+      "tema-contar"
+    ]
+  },
+  {
+    "text": "¿QUÉ VIENE DESPUÉS?",
+    "kinds": [
+      "tema-series"
+    ]
+  },
+  {
+    "text": "BUSCA: PULPO",
+    "kinds": [
+      "tema-vocabulario"
+    ]
+  },
+  {
+    "text": "BUSCA: PEZ",
+    "kinds": [
+      "tema-vocabulario"
+    ]
+  },
+  {
+    "text": "BUSCA: CANGREJO",
+    "kinds": [
+      "tema-vocabulario"
+    ]
+  },
+  {
+    "text": "BUSCA: DELFÍN",
+    "kinds": [
+      "tema-vocabulario"
+    ]
+  },
+  {
+    "text": "BUSCA: TORTUGA",
+    "kinds": [
+      "tema-vocabulario"
+    ]
+  },
+  {
+    "text": "BUSCA: BALLENA",
+    "kinds": [
+      "tema-vocabulario"
+    ]
+  },
+  {
+    "text": "CAMINAMOS DESPACIO POR NUESTRO ESPACIO.",
+    "kinds": [
+      "movimiento-guiado"
+    ]
+  },
+  {
+    "text": "AMARILLO: PASOS MUY PEQUEÑOS.",
+    "kinds": [
+      "movimiento-guiado"
+    ]
+  },
+  {
+    "text": "ROJO: PARAMOS COMO ESTATUAS.",
+    "kinds": [
+      "movimiento-guiado"
+    ]
+  },
+  {
+    "text": "VERDE: VOLVEMOS A CAMINAR.",
+    "kinds": [
+      "movimiento-guiado"
+    ]
+  },
+  {
+    "text": "AHORA UNA COMPAÑERA DA LAS SEÑALES.",
+    "kinds": [
+      "movimiento-guiado"
+    ]
+  },
+  {
+    "text": "SENTADOS, ABRIMOS Y CERRAMOS LAS MANOS DESPACIO.",
+    "kinds": [
+      "movimiento-guiado"
+    ]
+  },
+  {
+    "text": "Tiranosaurio rex",
+    "kinds": [
+      "dino-ficha",
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Triceratops",
+    "kinds": [
+      "dino-ficha",
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Estegosaurio",
+    "kinds": [
+      "dino-ficha"
+    ]
+  },
+  {
+    "text": "Braquiosaurio",
+    "kinds": [
+      "dino-ficha"
+    ]
+  },
+  {
+    "text": "Velociraptor",
+    "kinds": [
+      "dino-ficha",
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Anquilosaurio",
+    "kinds": [
+      "dino-ficha"
+    ]
+  },
+  {
+    "text": "Diplodocus",
+    "kinds": [
+      "dino-ficha",
+      "respuesta"
+    ]
+  },
+  {
+    "text": "Parasaurolofo",
+    "kinds": [
+      "dino-ficha"
+    ]
+  },
+  {
+    "text": "Espinosaurio",
+    "kinds": [
+      "dino-ficha"
+    ]
+  },
+  {
+    "text": "Ictiosaurio",
+    "kinds": [
+      "dino-ficha"
+    ]
+  },
+  {
+    "text": "ESCUCHAMOS UN RELATO",
+    "kinds": [
+      "expedicion"
+    ]
+  },
+  {
+    "text": "MIRAMOS CON ATENCIÓN",
+    "kinds": [
+      "expedicion"
+    ]
+  },
+  {
+    "text": "DESCUBRIMOS UNA PISTA",
+    "kinds": [
+      "expedicion"
+    ]
+  },
+  {
+    "text": "PENSAMOS Y ELEGIMOS",
+    "kinds": [
+      "expedicion"
+    ]
+  },
+  {
+    "text": "COMPARTIMOS LO APRENDIDO",
+    "kinds": [
+      "expedicion"
     ]
   },
   {
@@ -1140,7 +2668,7 @@
     ]
   },
   {
-    "text": "¿Cuántos hemos venido?",
+    "text": "¿Quién ha venido hoy?",
     "kinds": [
       "asistencia"
     ]
@@ -1152,7 +2680,7 @@
     ]
   },
   {
-    "text": "Hoy cuidamos de la clase",
+    "text": "Encargados de hoy",
     "kinds": [
       "encargado"
     ]
@@ -1189,6 +2717,30 @@
   },
   {
     "text": "El número protagonista 6. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "El número protagonista 7. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "El número protagonista 8. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "El número protagonista 9. Enséñalo con los dedos.",
+    "kinds": [
+      "numero"
+    ]
+  },
+  {
+    "text": "El número protagonista 10. Enséñalo con los dedos.",
     "kinds": [
       "numero"
     ]
@@ -3192,18 +4744,6 @@
     ]
   },
   {
-    "text": "Tiranosaurio rex",
-    "kinds": [
-      "respuesta"
-    ]
-  },
-  {
-    "text": "Triceratops",
-    "kinds": [
-      "respuesta"
-    ]
-  },
-  {
     "text": "Stegosaurus",
     "kinds": [
       "respuesta"
@@ -3216,19 +4756,7 @@
     ]
   },
   {
-    "text": "Velociraptor",
-    "kinds": [
-      "respuesta"
-    ]
-  },
-  {
     "text": "Ankylosaurus",
-    "kinds": [
-      "respuesta"
-    ]
-  },
-  {
-    "text": "Diplodocus",
     "kinds": [
       "respuesta"
     ]
@@ -3307,6 +4835,18 @@
   },
   {
     "text": "En ese grupo hay 10. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 11. Podemos contarlos señalando uno a uno.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En ese grupo hay 12. Podemos contarlos señalando uno a uno.",
     "kinds": [
       "feedback"
     ]
@@ -3582,6 +5122,132 @@
     ]
   },
   {
+    "text": "11 es más que 10. 10 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 11. 11 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 es más que 9. 9 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 10. 10 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 es más que 8. 8 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 9. 9 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 es más que 7. 7 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 8. 8 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 es más que 6. 6 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 7. 7 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 es más que 5. 5 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 6. 6 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 es más que 4. 4 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 5. 5 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 es más que 3. 3 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 4. 4 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 es más que 2. 2 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 3. 3 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 es más que 1. 1 es menos que 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 2. 2 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 es más que 1. 1 es menos que 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
     "text": "1 y 1 juntos hacen 2.",
     "kinds": [
       "feedback"
@@ -3792,6 +5458,66 @@
     ]
   },
   {
+    "text": "5 y 6 juntos hacen 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 y 7 juntos hacen 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 y 7 juntos hacen 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 y 8 juntos hacen 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 y 8 juntos hacen 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 9 juntos hacen 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 y 9 juntos hacen 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 10 juntos hacen 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 y 10 juntos hacen 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 y 11 juntos hacen 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
     "text": "Contamos: 1, 2, 3.",
     "kinds": [
       "feedback"
@@ -3835,6 +5561,18 @@
   },
   {
     "text": "Contamos: 8, 9, 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 9, 10, 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Contamos: 10, 11, 12.",
     "kinds": [
       "feedback"
     ]
@@ -4255,6 +5993,2208 @@
   },
   {
     "text": "Nos lavamos las manos con agua y jabón.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Tristán empieza por T.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Sergio empieza por S.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Alejandro empieza por A.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Marcelo empieza por M.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Alma empieza por A.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Francisco empieza por F.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Abril empieza por A.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Martín empieza por M.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Emma empieza por E.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Álvaro empieza por Á.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "José Antonio empieza por J.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Mohammed empieza por M.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Sergio tiene 6 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Alma tiene 4 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Abril tiene 5 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Martín tiene 6 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Emma tiene 4 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Álvaro tiene 6 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Tristán tiene 7 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Alejandro tiene 9 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Marcelo tiene 7 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Francisco tiene 9 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "José Antonio tiene 11 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Mohammed tiene 8 letras. Tocamos una marca por cada letra.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Tristán tiene 7 letras y Sergio tiene 6 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Sergio tiene 6 letras y Alejandro tiene 9 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Alejandro tiene 9 letras y Marcelo tiene 7 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Marcelo tiene 7 letras y Alma tiene 4 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Alma tiene 4 letras y Francisco tiene 9 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Francisco tiene 9 letras y Abril tiene 5 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Abril tiene 5 letras y Martín tiene 6 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Martín tiene 6 letras y Emma tiene 4 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Emma tiene 4 letras y Álvaro tiene 6 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Álvaro tiene 6 letras y José Antonio tiene 11 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "José Antonio tiene 11 letras y Mohammed tiene 8 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Mohammed tiene 8 letras y Tristán tiene 7 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Tristán tiene 7 letras y Sergio tiene 6 letras y Francisco tiene 9 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Sergio tiene 6 letras y Alejandro tiene 9 letras y Abril tiene 5 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Alejandro tiene 9 letras y Marcelo tiene 7 letras y Martín tiene 6 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Marcelo tiene 7 letras y Alma tiene 4 letras y Emma tiene 4 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Alma tiene 4 letras y Francisco tiene 9 letras y Álvaro tiene 6 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Francisco tiene 9 letras y Abril tiene 5 letras y José Antonio tiene 11 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Abril tiene 5 letras y Martín tiene 6 letras y Mohammed tiene 8 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Martín tiene 6 letras y Emma tiene 4 letras y Tristán tiene 7 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Emma tiene 4 letras y Álvaro tiene 6 letras y Sergio tiene 6 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Álvaro tiene 6 letras y José Antonio tiene 11 letras y Alejandro tiene 9 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "José Antonio tiene 11 letras y Mohammed tiene 8 letras y Marcelo tiene 7 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Mohammed tiene 8 letras y Tristán tiene 7 letras y Alma tiene 4 letras.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Podemos observar la forma de una calabaza y transformarla con puntos.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Las bolas nos permiten crear series de colores y tamaños.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Escuchar, pedir turno y reparar también construyen paz.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "La bandera de Andalucía combina verde y blanco.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "El disfraz permite imaginar personajes y expresarnos con el cuerpo.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "En primavera podemos observar brotes, flores, insectos y días más largos.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Miramos, escuchamos y pasamos las páginas con cuidado.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Al final del curso recordamos descubrimientos, juegos y momentos compartidos.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE VAMPIRO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE DIABLO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE ESQUELETO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE ASTRONAUTA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE BOMBERO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE ABEJA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE DINOSAURIO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE PAYASO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE PINOCHO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE POLICÍA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE RANA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE ÁRBOL.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE PLÁTANO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE BURRO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE CANGREJO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE ELEFANTE.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ES UN DISFRAZ DE FLAMENCA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES FÓSIL! UNA HUELLA O UN HUESO MUY ANTIGUO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES PALEONTÓLOGO! INVESTIGA FÓSILES Y LA VIDA DEL PASADO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES HERBÍVORO! DINOSAURIO QUE COMÍA PLANTAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES CARNÍVORO! DINOSAURIO QUE COMÍA OTROS ANIMALES.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES CRESTA! PARTE ALTA DE LA CABEZA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES PLACAS! PIEZAS DURAS SOBRE EL LOMO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES CUERNO! PUNTA DURA QUE LE AYUDABA A DEFENDERSE.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES GARRA! UÑA LARGA Y CURVADA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES HUEVO! DE AQUÍ NACÍAN LAS CRÍAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES EL Tiranosaurio rex! TENÍA UNA CABEZA GRANDE Y UNOS BRAZOS MUY CORTOS. CAMINABA SOBRE DOS PATAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES EL TRICERATOPS! TENÍA TRES CUERNOS Y UNA GRAN GOLA DETRÁS DE LA CABEZA. COMÍA PLANTAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES EL ESTEGOSAURIO! TENÍA PLACAS SOBRE EL LOMO Y PÚAS EN LA COLA. NO SABEMOS CON SEGURIDAD PARA QUÉ SERVÍAN TODAS SUS PLACAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES EL BRAQUIOSAURIO! SU CUELLO ERA LARGO Y SUS PATAS DELANTERAS ERAN MÁS LARGAS QUE LAS TRASERAS. COMÍA PLANTAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES EL VELOCIRAPTOR! ERA BASTANTE MÁS PEQUEÑO QUE EL DE MUCHAS PELÍCULAS. TENÍA PLUMAS, PERO NO PODÍA VOLAR.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES EL ANQUILOSAURIO! SU CUERPO ESTABA PROTEGIDO POR PLACAS ÓSEAS. SU COLA TERMINABA EN UNA MAZA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES EL DIPLODOCUS! TENÍA UN CUELLO LARGO Y UNA COLA MUY LARGA, PARECIDA A UN LÁTIGO. SE ALIMENTABA DE PLANTAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES EL PARASAUROLOFO! TENÍA UNA CRESTA LARGA QUE SE CURVABA HACIA ATRÁS. COMÍA PLANTAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡ES EL ESPINOSAURIO! TENÍA UNA GRAN VELA EN LA ESPALDA Y UN HOCICO ALARGADO. ENTRE SU ALIMENTO HABÍA PECES.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "Tiranosaurio rex CAMINABA HABITUALMENTE SOBRE DOS PATAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "TRICERATOPS CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ESTEGOSAURIO CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "BRAQUIOSAURIO CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "VELOCIRAPTOR CAMINABA HABITUALMENTE SOBRE DOS PATAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ANQUILOSAURIO CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "DIPLODOCUS CAMINABA HABITUALMENTE SOBRE CUATRO PATAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "ESPINOSAURIO CAMINABA HABITUALMENTE SOBRE DOS PATAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡SÍ! AHORA LO HACEMOS TODOS: CAMINA CON PASOS GRANDES Y PESADOS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡SÍ! AHORA LO HACEMOS TODOS: ESTIRA EL CUELLO MUY ALTO PARA ALCANZAR HOJAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡SÍ! AHORA LO HACEMOS TODOS: CORRE EN TU SITIO CON PASOS PEQUEÑOS Y RÁPIDOS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡SÍ! AHORA LO HACEMOS TODOS: PON TRES DEDOS COMO CUERNOS Y AVANZA DESPACIO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡SÍ! AHORA LO HACEMOS TODOS: HAZ UNA FILA DE PLACAS CON TUS MANOS SOBRE LA ESPALDA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡SÍ! AHORA LO HACEMOS TODOS: MUEVE UNA COLA IMAGINARIA DE UN LADO A OTRO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡SÍ! AHORA LO HACEMOS TODOS: ALARGA LOS BRAZOS COMO UN CUELLO Y UNA COLA MUY LARGOS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "¡SÍ! AHORA LO HACEMOS TODOS: ABRE LOS BRAZOS COMO UNA GRAN VELA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL Tiranosaurio rex ERA CARNÍVORO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL TRICERATOPS ERA HERBÍVORO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL ESTEGOSAURIO ERA HERBÍVORO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL BRAQUIOSAURIO ERA HERBÍVORO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL VELOCIRAPTOR ERA CARNÍVORO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL ANQUILOSAURIO ERA HERBÍVORO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL DIPLODOCUS ERA HERBÍVORO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PARASAUROLOFO ERA HERBÍVORO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL ESPINOSAURIO ERA CARNÍVORO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 1.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 14.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 16.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 18.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 20.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 17.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 19.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 22.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 24.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 26.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 28.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 30.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 21.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 23.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 25.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 27.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL NÚMERO VECINO ES 29.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 2 HACEN 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 3 HACEN 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 3 HACEN 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 1 HACEN 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 1 HACEN 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 2 HACEN 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 4 HACEN 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 1 HACEN 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 4 HACEN 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 4 HACEN 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 5 HACEN 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 Y 1 HACEN 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 Y 1 HACEN 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 Y 2 HACEN 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 3 HACEN 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 6 HACEN 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 5 HACEN 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 Y 3 HACEN 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 2 HACEN 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 7 HACEN 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 4 HACEN 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 Y 1 HACEN 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 5 HACEN 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 6 HACEN 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 2 HACEN 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 6 HACEN 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 Y 1 HACEN 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 Y 2 HACEN 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 Y 2 HACEN 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 7 HACEN 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 Y 3 HACEN 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 8 HACEN 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 Y 4 HACEN 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 9 HACEN 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 Y 5 HACEN 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 Y 1 HACEN 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 Y 6 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 Y 7 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 Y 7 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 Y 8 HACEN 14.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 Y 8 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 7 HACEN 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 10 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 11 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 Y 1 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "13 Y 1 HACEN 14.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "13 Y 2 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 3 HACEN 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 8 HACEN 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 Y 3 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 Y 5 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 Y 6 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 Y 9 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 Y 2 HACEN 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 7 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 9 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 12 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 Y 3 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 Y 3 HACEN 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 Y 3 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 Y 5 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 Y 10 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 Y 4 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 11 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 Y 4 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 6 HACEN 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 Y 1 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 Y 4 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 11 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 Y 1 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 10 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 Y 5 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 10 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 Y 3 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 12 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 Y 8 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 9 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 Y 6 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 5 HACEN 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 Y 4 HACEN 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 Y 8 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "11 Y 2 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 13 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 Y 5 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 Y 8 HACEN 13.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 Y 7 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 Y 6 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 Y 14 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 Y 2 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 Y 4 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "14 Y 1 HACEN 15.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 Y 9 HACEN 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 Y 2 HACEN 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "GATO Y PATO TERMINAN PARECIDO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "RANA Y CAMA TERMINAN PARECIDO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "LEÓN Y CAMIÓN TERMINAN PARECIDO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "RATÓN Y BALÓN TERMINAN PARECIDO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "PEZ Y PIES TERMINAN PARECIDO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "FRESA Y MESA TERMINAN PARECIDO.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "GATO EMPIEZA POR G.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "PERRO EMPIEZA POR P.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "CASA EMPIEZA POR C.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "SOL EMPIEZA POR S.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "LUNA EMPIEZA POR L.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "MARIPOSA EMPIEZA POR M.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "FRESA EMPIEZA POR F.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "BICICLETA EMPIEZA POR B.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "RANA EMPIEZA POR R.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "GLOBO EMPIEZA POR G.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "PATO EMPIEZA POR P.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "MUÑECO EMPIEZA POR M.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "COCHE NO PERTENECE AL GRUPO DE ANIMALES.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "SILLA NO PERTENECE AL GRUPO DE FRUTAS.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "FLOR NO PERTENECE AL GRUPO DE TRANSPORTES.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "CUCHARA NO PERTENECE AL GRUPO DE ROPA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "PEZ NO PERTENECE AL GRUPO DE MUEBLES.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "LÁPIZ NO PERTENECE AL GRUPO DE COMIDA.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🟡.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🟨.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE ⭐.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🟢.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🍌.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🌸.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🔵.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🟩.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🌙.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🔺.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "EL PATRÓN SE REPITE. AHORA VIENE 🍃.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 1 SON 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MENOS 1 SON 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 2 SON 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 MENOS 2 SON 1.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 3 SON 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MENOS 3 SON 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 4 SON 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 MENOS 1 SON 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MENOS 2 SON 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MENOS 1 SON 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MENOS 4 SON 1.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "3 MÁS 2 SON 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MENOS 2 SON 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MÁS 3 SON 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MENOS 3 SON 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 4 SON 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MÁS 1 SON 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MENOS 5 SON 1.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 6 SON 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MENOS 6 SON 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MÁS 2 SON 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MENOS 3 SON 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 3 SON 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MENOS 2 SON 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MÁS 2 SON 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MENOS 1 SON 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MENOS 5 SON 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MÁS 1 SON 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 2 SON 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MENOS 4 SON 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MÁS 3 SON 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MENOS 1 SON 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MENOS 4 SON 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 1 SON 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MÁS 4 SON 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 7 SON 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MENOS 7 SON 1.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 6 SON 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 5 SON 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 5 SON 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 MÁS 1 SON 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 MENOS 4 SON 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MENOS 2 SON 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MÁS 6 SON 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MÁS 3 SON 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 8 SON 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 MENOS 8 SON 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MENOS 3 SON 1.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MÁS 5 SON 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 MÁS 2 SON 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 MENOS 3 SON 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MÁS 2 SON 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 MENOS 7 SON 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 MÁS 3 SON 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 MENOS 2 SON 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MÁS 1 SON 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MÁS 4 SON 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 MENOS 6 SON 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MÁS 4 SON 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 MENOS 1 SON 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 MENOS 5 SON 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 9 SON 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "10 MENOS 9 SON 1.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 8 SON 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MÁS 5 SON 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 7 SON 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 MÁS 4 SON 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "9 MÁS 2 SON 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 5 SON 7.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MÁS 7 SON 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MÁS 1 SON 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 10 SON 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 10 SON 2.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 4 SON 8.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "4 MÁS 8 SON 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "6 MÁS 5 SON 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MÁS 2 SON 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 9 SON 3.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MÁS 7 SON 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 3 SON 9.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MÁS 3 SON 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 8 SON 4.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 2 SON 10.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "8 MÁS 4 SON 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "7 MÁS 5 SON 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 7 SON 5.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 1 SON 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "5 MÁS 6 SON 11.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 6 SON 6.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "1 MÁS 11 SON 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "12 MENOS 11 SON 1.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 10 SON 12.",
+    "kinds": [
+      "feedback"
+    ]
+  },
+  {
+    "text": "2 MÁS 9 SON 11.",
     "kinds": [
       "feedback"
     ]

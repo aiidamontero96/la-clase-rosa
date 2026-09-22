@@ -43,34 +43,66 @@ window.ROSA_PLAY=(()=>{
     }}
   ];
   const gameCatalog=[
-    ['puzzle','Puzles de dinosaurios','🧩','Coloca cada pieza en su lugar: 4, 6 o 9 piezas.','Lógica'],
-    ['ordenar-piezas','Ordena de pequeño a grande','📏','Coloca los dibujos en orden de tamaño.','Matemáticas'],
+    ['puzzle','Puzles','🧩','Elige un dibujo y coloca sus piezas: 4, 6, 9 o 12 piezas.','Lógica'],
+    ['ordenar-piezas','Ordena de pequeño a grande','📏','Ordena distintos dinosaurios por su tamaño.','Matemáticas'],
+    ['sombras','Cada dinosaurio con su sombra','🦴','Arrastra cada dinosaurio hasta su silueta.','Lógica'],
     ['cestas','Llenamos la cesta','🧺','Lleva a la cesta justo la cantidad de frutas que pide.','Matemáticas'],
+    ['ordena-numeros','ORDENA LOS NÚMEROS','1 2 3','ARRASTRA LOS NÚMEROS DE MENOR A MAYOR.','Matemáticas'],
+    ['ordena-historia','ORDENA LA HISTORIA','🌱 → 🌻','ARRASTRA LAS ESCENAS PARA CONTAR QUÉ OCURRE PRIMERO Y DESPUÉS.','Lógica'],
     ['cuento','Elige nuestro cuento','📖','Tres historias originales con caminos y finales diferentes.','Lenguaje'],
     ['sorpresa','La caja sorpresa','🎁','Una pregunta, una adivinanza, un movimiento o un reto breve.','Asamblea']
   ];
-  function pieces(kind,n=0,level=2){
-    const count=[3,6,10][level-1],placed={},art=themes.Dinosaurios[n%dinos.length];
+  // Orden de tamaño usado por "Ordena de pequeño a grande": del más pequeño al más grande.
+  const dinoSizeOrder=['velociraptor','triceratops','stegosaurus','ankylosaurus','parasaurolophus','spinosaurus','trex','diplodocus','brachiosaurus'].map(id=>dinos.find(d=>d.id===id)).filter(Boolean);
+  const visualStories=[
+    [['🌰','SEMILLA'],['🌱','BROTE'],['🌿','PLANTA'],['🌻','FLOR']],
+    [['🥚','HUEVO'],['🐣','NACE'],['🐥','POLLITO'],['🐔','GALLINA']],
+    [['☁️','NUBE'],['🌧️','LLUVIA'],['🌱','CRECE'],['🌈','ARCOÍRIS']],
+    [['🧼','JABÓN'],['🫧','LAVAMOS'],['💧','ACLARAMOS'],['🙌','MANOS LIMPIAS']]
+  ];
+  function pieces(kind,n=0,level=2,theme='Dinosaurios'){
+    const count=[3,6,10,12][level-1],placed={},vocab=window.ROSA_CLASSROOM?.vocabThemes?.[theme],art=(vocab||themes.Dinosaurios)[n%(vocab||themes.Dinosaurios).length];
     if(kind==='puzzle'){
-      const cols=level===3?3:2,rows=level===1?2:3,total=cols*rows;
+      const cols=level>=3?3:2,rows=level===1?2:level===4?4:3,total=cols*rows;
       return {kind,prompt:'Coloca cada pieza en su lugar',cols,rows,art,goal:total,placed,pieces:Array.from({length:total},(_,i)=>({id:String(i),slot:String(i),label:'Pieza '+(i+1)}))};
     }
     if(kind==='ordenar-piezas'){
-      const total=[2,3,5][level-1];
-      return {kind,prompt:'Ordena los dibujos de pequeño a grande',art,goal:total,placed,pieces:Array.from({length:total},(_,i)=>({id:String(i),slot:String(i),label:'Tamaño '+(i+1)+' de '+total,size:36+i*(76/(total-1))}))};
+      const total=[2,3,5,7][level-1],start=n%dinoSizeOrder.length,chosen=Array.from({length:total},(_,i)=>dinoSizeOrder[(start+i)%dinoSizeOrder.length]);
+      return {kind,prompt:'Ordena los dibujos de pequeño a grande',goal:total,placed,pieces:chosen.map((d,i)=>({id:String(i),slot:String(i),label:d.short,src:'assets/dinos-pdi/'+d.id+'.webp',size:36+i*(76/(total-1))}))};
+    }
+    if(kind==='sombras'){
+      const total=[2,3,4,5][level-1],start=n%dinos.length,chosen=Array.from({length:total},(_,i)=>dinos[(start+i)%dinos.length]);
+      return {kind,prompt:'Une cada dinosaurio con su sombra',goal:total,placed,pieces:chosen.map((d,i)=>({id:String(i),slot:String(i),label:d.short,src:'assets/dinos-pdi/'+d.id+'.webp',shadowSrc:'assets/dinos-pdi/'+d.id+'-outline.webp'}))};
     }
     if(kind==='cestas'){
-      const goal=n%count+1,item=themes.Frutas[n%3];
+      const minimum=[1,2,4,7][level-1],range=count-minimum+1,goal=minimum+(n%range),item=themes.Frutas[n%themes.Frutas.length];
       return {kind,prompt:'Pon '+goal+(goal===1?' fruta':' frutas')+' en la cesta',art:item,goal,placed,pieces:Array.from({length:goal+2},(_,i)=>({id:String(i),slot:'0',label:item.label+' '+(i+1)}))};
+    }
+    if(kind==='ordena-numeros'){
+      const total=[3,4,5,7][level-1],start=level<3?1:1+n%(level===3?4:8),values=Array.from({length:total},(_,i)=>start+i);
+      return {kind,prompt:'ORDENA LOS NÚMEROS DE MENOR A MAYOR',goal:total,placed,pieces:values.map((value,index)=>({id:String(value),slot:String(index),label:'NÚMERO '+value,text:String(value)}))};
+    }
+    if(kind==='ordena-historia'){
+      const story=visualStories[n%visualStories.length],total=[2,3,4,4][level-1],chosen=story.slice(0,total);
+      return {kind,prompt:'ORDENA LA HISTORIA: ¿QUÉ OCURRE PRIMERO Y DESPUÉS?',goal:total,placed,pieces:chosen.map((step,index)=>({id:String(index),slot:String(index),label:step[1],emoji:step[0]}))};
     }
     return null;
   }
   function pieceArt(game,piece){
     if(game.kind==='puzzle'){
-      const i=Number(piece.id),x=(i%game.cols)/(game.cols-1)*100,y=Math.floor(i/game.cols)/(game.rows-1)*100;
-      return '<span class="puzzle-fragment" role="img" aria-label="'+esc(piece.label)+'" style="background-image:url('+game.art.src+');background-size:'+game.cols*100+'% '+game.rows*100+'%;background-position:'+x+'% '+y+'%"></span>';
+      const i=Number(piece.id),cols=Math.max(1,Number(game.cols)||1),rows=Math.max(1,Number(game.rows)||1),col=i%cols,row=Math.floor(i/cols),src=game.art?.src||'assets/dinos-pdi/trex.webp';
+      return '<span class="puzzle-fragment" role="img" aria-label="'+esc(piece.label)+'"><img class="puzzle-fragment-image" src="'+esc(src)+'" alt="" draggable="false" loading="eager" decoding="sync" style="width:'+(cols*100)+'%;height:'+(rows*100)+'%;left:-'+(col*100)+'%;top:-'+(row*100)+'%;"></span>';
     }
-    return picture(game.art.src,piece.label,game.kind==='cestas'?'fruit-piece':'size-piece')+(game.kind==='ordenar-piezas'?'<span class="sr-only">'+esc(piece.label)+'</span>':'');
+    if(game.kind==='ordena-numeros')return '<span class="number-piece">'+esc(piece.text)+'</span>';
+    if(game.kind==='ordena-historia')return '<span class="story-order-piece"><b aria-hidden="true">'+piece.emoji+'</b><small>'+esc(piece.label)+'</small></span>';
+    const src=piece.src||game.art?.src||'assets/dinos-pdi/trex.webp',cls=game.kind==='cestas'?'fruit-piece':game.kind==='sombras'?'shadow-piece':'size-piece';
+    return picture(src,piece.label,cls)+(game.kind==='ordenar-piezas'||game.kind==='sombras'?'<span class="sr-only">'+esc(piece.label)+'</span>':'');
+  }
+  /* ORDENA NÚMEROS · HUECOS CON FLECHA · 2026-09-22 */
+  function pieceSlotHint(game,piece){
+    if(game.kind==='sombras')return picture(piece.shadowSrc||outlineSrc(piece.src||game.art?.src||'assets/dinos-pdi/trex.webp'),'','shadow-target');
+    if(game.kind==='ordena-numeros')return '<span aria-hidden="true">→</span><span class="sr-only">Coloca aquí el siguiente número</span>';
+    return '<span>'+(Number(piece.slot)+1)+'</span>';
   }
   const movements=['Estiramos los brazos hacia el cielo y los bajamos despacio. Podemos hacerlo sentados.','Hacemos tres palmas suaves y después una pausa.','Movemos las manos como si fueran mariposas.','Nos hacemos pequeños como una semilla y nos estiramos como una planta.','Dibujamos un círculo en el aire con un dedo.','Movemos los hombros arriba y abajo tres veces.','Imaginamos que somos árboles y movemos las ramas con el viento.','Saludamos con una mano, con la otra y con las dos.','Tocamos nuestra cabeza y después nuestros hombros.','Hacemos una cara de sorpresa y después una cara tranquila.','Imaginamos que sostenemos una nube: abrimos y cerramos las manos despacio.','Damos dos pasos en el sitio o dos toques suaves sobre las piernas.'];
   const quick=['Busca algo que tenga forma de círculo y señálalo.','Nombra algo que podamos encontrar en el patio.','Enseña con los dedos una cantidad y deja que la clase la descubra.','Piensa en una palabra que empiece como ABEJA.','Nombra dos cosas que sirven para pintar.','Haz un gesto para que adivinemos una acción.','Escoge dos objetos y cuenta en qué se parecen.','Di una palabra y acompáñala con palmadas.','Busca con la mirada algo azul.','Inventamos un saludo para toda la clase.','Piensa en algo que sea pequeño y algo que sea grande.','Di una manera de ayudar a un compañero.'];
@@ -124,5 +156,5 @@ window.ROSA_PLAY=(()=>{
         '</section>');
     }
     return pages.join('');
-  }  return {gameCatalog,stories,themes,pieces,pieceArt,surprise,printCards,printSheets,picture};
+  }  return {gameCatalog,stories,themes,pieces,pieceArt,pieceSlotHint,surprise,printCards,printSheets,picture};
 })();

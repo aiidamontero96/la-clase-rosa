@@ -24,7 +24,17 @@ window.ROSA_PDI = (() => {
     ['dino-vocabulario', 'Vocabulario dinosaurio', '🦕 A', 'Descubre palabras del mundo de los dinosaurios con imágenes grandes.', 'Proyecto'],
     ['dino-buscar', 'Busca el dinosaurio', '🔎🦕', 'Escucha el nombre y localiza el dinosaurio correcto.', 'Proyecto'],
     ['dino-patas', 'Dos o cuatro patas', '2 · 4', 'Observa cómo caminaba cada dinosaurio y elige dos o cuatro patas.', 'Proyecto'],
-    ['dino-movimiento', 'Muévete como un dinosaurio', '↟🦖', 'Retos corporales breves para caminar, estirar y rugir jugando.', 'Proyecto']
+    ['dino-movimiento', 'Muévete como un dinosaurio', '↟🦖', 'Retos corporales breves para caminar, estirar y rugir jugando.', 'Proyecto'],
+    ['completa-dino', 'Completa la frase', '___', 'Descubre la palabra que falta en una frase sobre cada dinosaurio.', 'Proyecto'],
+    ['relaciona-vocabulario', 'Une vocabulario', '🔗', 'Relaciona imágenes y palabras del vocabulario elegido.', 'Lenguaje'],
+    ['relaciona-cantidades', 'UNE CANTIDADES', '🔗 123', 'UNE CADA GRUPO DE PUNTOS CON SU NÚMERO.', 'Matemáticas'],
+    ['numero-vecino', 'EL NÚMERO VECINO', '4 ? 6', 'DESCUBRE EL NÚMERO ANTERIOR O POSTERIOR.', 'Matemáticas'],
+    ['sumando-falta', 'EL SUMANDO QUE FALTA', '3 + ? = 7', 'COMPLETA SUMAS VISUALES CON UNA CANTIDAD ESCONDIDA.', 'Matemáticas'],
+    ['rimas', 'PALABRAS QUE RIMAN', '🎵', 'ESCUCHA Y ENCUENTRA DOS PALABRAS QUE TERMINAN PARECIDO.', 'Lenguaje'],
+    ['consonante-inicial', 'PRIMERA CONSONANTE', 'M P S', 'ESCUCHA UNA PALABRA Y ELIGE SU LETRA INICIAL.', 'Lenguaje'],
+    ['intruso-categorias', 'EL INTRUSO DE LA CATEGORÍA', '◈', 'DESCUBRE QUÉ ELEMENTO NO PERTENECE AL GRUPO.', 'Lógica'],
+    ['patrones-avanzados', 'PATRONES AVANZADOS', '● ■ ▲', 'CONTINÚA PATRONES DE TRES ELEMENTOS Y DOBLES REPETICIONES.', 'Lógica'],
+    ['problemas-visuales', 'PEQUEÑOS PROBLEMAS', '🧠 123', 'RESUELVE SITUACIONES DE AÑADIR Y QUITAR CON DIBUJOS.', 'Matemáticas']
   ];
   const objects = [
     ['🐱', 'gato'], ['🍎', 'manzana'], ['🚗', 'coche'], ['🧸', 'oso de peluche'],
@@ -92,6 +102,31 @@ window.ROSA_PDI = (() => {
     ['stegosaurus','HAZ UNA FILA DE PLACAS CON TUS MANOS SOBRE LA ESPALDA.'],['ankylosaurus','MUEVE UNA COLA IMAGINARIA DE UN LADO A OTRO.'],
     ['diplodocus','ALARGA LOS BRAZOS COMO UN CUELLO Y UNA COLA MUY LARGOS.'],['spinosaurus','ABRE LOS BRAZOS COMO UNA GRAN VELA.']
   ];
+  const rhymeGroups=[
+    [['🐱','GATO'],['🦆','PATO'],['🍎','MANZANA'],['☀️','SOL']],
+    [['🐸','RANA'],['🛏️','CAMA'],['🌙','LUNA'],['🐟','PEZ']],
+    [['🦁','LEÓN'],['🚚','CAMIÓN'],['🏠','CASA'],['🌸','FLOR']],
+    [['🐭','RATÓN'],['⚽','BALÓN'],['🍞','PAN'],['👞','ZAPATO']],
+    [['🐟','PEZ'],['👣','PIES'],['🦋','MARIPOSA'],['🚗','COCHE']],
+    [['🍓','FRESA'],['🪑','MESA'],['🐰','CONEJO'],['⭐','ESTRELLA']]
+  ];
+  const consonantWords=[['🐱','GATO','G'],['🐶','PERRO','P'],['🏠','CASA','C'],['☀️','SOL','S'],['🌙','LUNA','L'],['🦋','MARIPOSA','M'],['🍓','FRESA','F'],['🚲','BICICLETA','B'],['🐸','RANA','R'],['🎈','GLOBO','G'],['🦆','PATO','P'],['🧸','MUÑECO','M']];
+  const categoryGroups=[
+    {name:'ANIMALES',items:[['🐱','GATO'],['🐶','PERRO'],['🐰','CONEJO']],odd:['🚗','COCHE']},
+    {name:'FRUTAS',items:[['🍎','MANZANA'],['🍌','PLÁTANO'],['🍓','FRESA']],odd:['🪑','SILLA']},
+    {name:'TRANSPORTES',items:[['🚗','COCHE'],['🚲','BICICLETA'],['🚌','AUTOBÚS']],odd:['🌸','FLOR']},
+    {name:'ROPA',items:[['👕','CAMISETA'],['🧦','CALCETÍN'],['🧢','GORRA']],odd:['🥄','CUCHARA']},
+    {name:'MUEBLES',items:[['🪑','SILLA'],['🛏️','CAMA'],['🛋️','SOFÁ']],odd:['🐟','PEZ']},
+    {name:'COMIDA',items:[['🍞','PAN'],['🧀','QUESO'],['🥕','ZANAHORIA']],odd:['✏️','LÁPIZ']}
+  ];
+  const advancedPatterns=[
+    {unit:['🔴','🔵','🟡'],shown:5},
+    {unit:['🟩','🟩','🟨'],shown:5},
+    {unit:['⭐','🌙','🌙'],shown:6},
+    {unit:['🔺','🔵','🔺','🟢'],shown:7},
+    {unit:['🍎','🍎','🍌','🍌'],shown:7},
+    {unit:['🌸','🍃','🌸','☀️'],shown:6}
+  ];
 
   const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const at = (items, n) => items[n % items.length];
@@ -103,21 +138,27 @@ window.ROSA_PDI = (() => {
   const pictureWord = word => '<div class="pdi-word">'+icon(word)+'<strong>'+esc(word[1])+'</strong></div>';
   const dinoPicture = dino => '<img class="pdi-dino-image" src="assets/dinos-pdi/'+esc(dino.id||dino)+'.webp" width="544" height="544" alt="'+esc(dino.short||dino)+'">';
 
-  function round(kind, number = 0, hidden = false, level = 2) {
+  function round(kind, number = 0, hidden = false, level = 2, payload = null) {
     const n = Math.max(0, Math.floor(Number(number) || 0));
-    level = [1, 2, 3].includes(Number(level)) ? Number(level) : 2;
-    const max = [3, 6, 10][level - 1];
+    level = [1, 2, 3, 4].includes(Number(level)) ? Number(level) : 2;
+    const max = [3, 6, 10, 12][level - 1];
     const item = at(objects, n);
+    const vocabPool=payload?.theme?window.ROSA_CLASSROOM?.vocabThemes?.[payload.theme]:null;
+    const vocabAt=index=>vocabPool?.[((index%vocabPool.length)+vocabPool.length)%vocabPool.length];
+    const vocabImage=item=>'<img class="pdi-vocab-image" src="'+item.src+'" width="150" height="150" alt="'+esc(item.label)+'">';
     let prompt, visual = '', options, answer, explanation, needsReveal = false;
 
     if (kind === 'parejas') {
       prompt = '¿Cuál es igual al modelo?';
-      visual = '<div class="pdi-model">'+icon(item)+'</div>';
-      options = [0, 3, 7].map(offset => {const other = at(objects, n + offset); return option(other[1], icon(other));});
-      answer = item[1];
+      const model=vocabAt(n), pool=vocabPool||objects;
+      visual = '<div class="pdi-model">'+(model?vocabImage(model):icon(item))+'</div>';
+      const offsets=(vocabPool?[0,1,2,3,4]:[0,3,7,9,11]).slice(0,[2,3,4,5][level-1]);
+      options = offsets.map(offset => {const other = vocabAt(n+offset)||at(pool,n+offset); return option(other.id||other[1], model?vocabImage(other):icon(other));});
+      answer = model?.id||item[1];
       explanation = 'Has encontrado dos dibujos iguales.';
     } else if (kind === 'cantidades') {
-      const amount = n % max + 1;
+      const minimum = [1, 2, 4, 7][level - 1];
+      const amount = minimum + n % (max - minimum + 1);
       prompt = 'Busca el grupo con esta cantidad';
       visual = '<div class="pdi-number">'+amount+'</div>';
       options = numbers(amount,max).map(value => option(value.value, collection(item, Number(value.value))));
@@ -131,7 +172,7 @@ window.ROSA_PDI = (() => {
       answer = more ? high : low;
       explanation = high+' es más que '+low+'. '+low+' es menos que '+high+'.';
     } else if (kind === 'juntar') {
-      const left = level===1?1:n % (level===3?5:3) + 1, right = level===1?n%2+1:level===3?Math.floor(n/5)%(max-left)+1:Math.floor(n/3)%3+1;
+      const left = level===1?1:n % (level>=3?5:3) + 1, right = level===1?n%2+1:level>=3?Math.floor(n/5)%(max-left)+1:Math.floor(n/3)%3+1;
       prompt = 'Si los juntamos, ¿cuántos hay?';
       visual = '<div class="pdi-sum"><div>'+collection(item, left)+'</div><span aria-label="y">+</span><div>'+collection(item, right)+'</div></div>';
       answer = left + right;
@@ -153,33 +194,33 @@ window.ROSA_PDI = (() => {
     } else if (kind === 'vocales') {
       const word = at(vowelWords, n), vowels = ['A', 'E', 'I', 'O', 'U'];
       prompt = 'Escucha la palabra. ¿Por qué vocal empieza?';
-      visual = pictureWord(word);
+      visual = level===4?'<div class="pdi-word">'+icon(word)+'</div>':pictureWord(word);
       answer = word[2];
       options = [0, 1, 3].map(offset => {const vowel = at(vowels, vowels.indexOf(answer) + offset);return option(vowel, vowel);});
       explanation = word[1]+' empieza por '+answer+'. La decimos despacito.';
     } else if (kind === 'silabas') {
       const word = at(level===1?syllableWords.filter(w=>w[2].length<=2):syllableWords, n);
       prompt = 'Di la palabra con palmas. ¿Cuántas das?';
-      visual = pictureWord(word);
+      visual = level===4?'<div class="pdi-word"><span class="prompt-symbol" aria-hidden="true">🔊</span></div>':level===3?'<div class="pdi-word">'+icon(word)+'</div>':pictureWord(word);
       answer = word[2].length;
-      options = [1, 2, 3, 4].map(value => option(value, '<span class="pdi-claps"><span>'+value+'</span><span aria-hidden="true">'+Array(value).fill('👏').join('')+'</span></span>'));
+      options = [answer,...[1,2,3,4].filter(value=>value!==answer)].slice(0,[2,3,4,4][level-1]).map(value => option(value, '<span class="pdi-claps"><span>'+value+'</span><span aria-hidden="true">'+Array(value).fill('👏').join('')+'</span></span>'));
       explanation = word[2].join(' · ').toUpperCase()+': '+answer+(answer === 1 ? ' palmada.' : ' palmadas.');
     } else if (kind === 'colores') {
       const color = at(colors, n);
       prompt = 'Busca el mismo color';
       visual = '<div class="pdi-model">'+colorDisc(color)+'</div>';
-      options = [0, 2, 4].map(offset => {const other = at(colors, n + offset);return option(other[0], colorDisc(other));});
+      options = [0,2,4,1,3].slice(0,[2,3,4,5][level-1]).map(offset => {const other = at(colors, n + offset);return option(other[0], colorDisc(other));});
       answer = color[0];
       explanation = 'Los dos son de color '+answer+'. ¿Ves algo de ese color en clase?';
     } else if (kind === 'orden') {
-      const trio = [at(objects, n), at(objects, n + 4), at(objects, n + 8)].slice(0,level===1?2:3);
-      const places=trio.length===2?['el primero','el último']:['el primero','en el medio','el último'];
-      const place = n % trio.length;
+      const pool=vocabPool||objects,offsets=vocabPool?[0,1,2,3]:[0,4,8,10],trio=offsets.map(offset=>at(pool,n+offset)).slice(0,[2,3,3,4][level-1]),isVocab=Boolean(vocabPool),image=obj=>isVocab?vocabImage(obj):icon(obj);
+      const places=trio.length===2?['el primero','el último']:trio.length===3?['el primero','en el medio','el último']:['el primero','el segundo','el tercero','el último'];
+      const place = trio.length===4?(n%2===0?0:3):n%trio.length;
       needsReveal = !hidden;
       prompt = hidden ? '¿Qué dibujo estaba '+places[place]+'?' : 'Mira los dibujos, de izquierda a derecha';
-      visual = '<div class="pdi-order">'+trio.map((obj, index) => '<span class="pdi-order-card"><small>'+(index + 1)+'</small>'+(hidden ? '<span class="pdi-mystery" aria-label="Dibujo tapado">?</span>' : icon(obj))+'</span>').join('')+'</div>';
-      options = trio.map(obj => option(obj[1], icon(obj)));
-      answer = trio[place][1];
+      visual = '<div class="pdi-order">'+trio.map((obj, index) => '<span class="pdi-order-card">'+(level<=2?'<small>'+(index + 1)+'</small>':'')+(hidden ? '<span class="pdi-mystery" aria-label="Dibujo tapado">?</span>' : image(obj))+'</span>').join('')+'</div>';
+      options = trio.map(obj => option(obj.id||obj[1], image(obj)));
+      answer = trio[place].id||trio[place][1];
       explanation = 'El dibujo de '+answer+' estaba '+places[place]+'.';
     } else if (kind === 'posiciones') {
       const upper = item, lower = at(objects, n + 5), above = n % 2 === 0;
@@ -192,7 +233,8 @@ window.ROSA_PDI = (() => {
       const situation = at(situations, n);
       prompt = situation[1];
       visual = '<div class="pdi-model">'+icon([situation[0], 'Pista de la situación'])+'</div>';
-      options = [situation[2], ...situation[3]].map(obj => option(obj[1], icon(obj)));
+      const associationPool=[situation[2],...situation[3],at(situations,n+1)[3][0],at(situations,n+2)[3][1]];
+      options = associationPool.slice(0,[2,3,4,5][level-1]).map(obj => option(obj[1], icon(obj)));
       answer = situation[2][1];
       explanation = situation[4];
     } else if(kind==='nombre-inicial'){
@@ -200,57 +242,88 @@ window.ROSA_PDI = (() => {
       prompt='¿De quién es la inicial? ¿Qué nombre empieza por '+initial+'?';
       visual='<div class="pdi-name-initial">'+initial+'</div>';
       const others=students.filter(name=>name!==student&&name[0].toLocaleUpperCase('es-ES')!==initial);
-      options=[student,...Array.from({length:level===1?1:level===2?2:3},(_,i)=>at(others,n+i*3+1))].map(name=>option(name,name));
+      const rotatedOthers=[...others.slice(n%others.length),...others.slice(0,n%others.length)];
+      options=[student,...rotatedOthers.slice(0,[1,2,3,4][level-1])].map(name=>option(name,name));
       answer=student;explanation=student+' empieza por '+initial+'.';
     } else if(kind==='nombre-letras'){
       const pool=level===1?students.filter(name=>[...name.replace(/\s/g,'')].length<=6):students,student=at(pool,n),amount=[...student.replace(/\s/g,'')].length;
       prompt='¿Cuántas letras tiene '+student.toLocaleUpperCase('es-ES')+'?';
-      visual='<div class="pdi-name-model">'+esc(student.toLocaleUpperCase('es-ES'))+'</div>'+(level===3?'':'<div class="pdi-name-dots">'+Array.from({length:amount},()=>'<span></span>').join('')+'</div>');
-      options=numbers(amount,12);answer=amount;explanation=student+' tiene '+amount+' letras. Tocamos una marca por cada letra.';
+      visual='<div class="pdi-name-model">'+esc(student.toLocaleUpperCase('es-ES'))+'</div>'+(level>=3?'':'<div class="pdi-name-dots">'+Array.from({length:amount},()=>'<span></span>').join('')+'</div>');
+      options=[...new Set([amount,Math.max(1,amount-1),amount+1,Math.max(1,amount-2),amount+2])].slice(0,[2,3,4,5][level-1]).map(value=>option(value,String(value)));answer=amount;explanation=student+' tiene '+amount+' letras. Tocamos una marca por cada letra.';
     } else if(kind==='nombre-compara'){
       const first=at(students,n);let second=at(students,n+1);let guard=0;
       while([...first.replace(/\s/g,'')].length===[...second.replace(/\s/g,'')].length&&guard++<students.length)second=at(students,n+guard+1);
-      const firstLength=[...first.replace(/\s/g,'')].length,secondLength=[...second.replace(/\s/g,'')].length,longer=n%2===0;
+      const third=at(students,n+5),names=level===4?[first,second,third]:[first,second],length=name=>[...name.replace(/\s/g,'')].length,firstLength=length(first),secondLength=length(second),longer=n%2===0;
       prompt='¿Qué nombre tiene '+(longer?'más':'menos')+' letras?';
-      visual='<div class="pdi-name-compare"><span>'+esc(first.toLocaleUpperCase('es-ES'))+(level===1?'<small>'+Array.from({length:firstLength},()=>'<i></i>').join('')+'</small>':'')+'</span><span>'+esc(second.toLocaleUpperCase('es-ES'))+(level===1?'<small>'+Array.from({length:secondLength},()=>'<i></i>').join('')+'</small>':'')+'</span></div>';
-      options=[first,second].map(name=>option(name,name));answer=longer?(firstLength>secondLength?first:second):(firstLength<secondLength?first:second);explanation=first+' tiene '+firstLength+' letras y '+second+' tiene '+secondLength+'.';
+      visual='<div class="pdi-name-compare">'+names.map(name=>'<span>'+esc(name.toLocaleUpperCase('es-ES'))+(level===1?'<small><b>'+length(name)+'</b>'+Array.from({length:length(name)},()=>'<i></i>').join('')+'</small>':level===2?'<small>'+Array.from({length:length(name)},()=>'<i></i>').join('')+'</small>':'')+'</span>').join('')+'</div>';
+      options=names.map(name=>option(name,name));answer=names.reduce((best,name)=>longer?(length(name)>length(best)?name:best):(length(name)<length(best)?name:best));explanation=names.map(name=>name+' tiene '+length(name)+' letras').join(' y ')+'.';
     } else if(kind==='nombre-falta'){
-      const total=[2,3,4][level-1],group=Array.from({length:total},(_,i)=>at(students,n+i)),missing=n%total;
+      const total=[2,3,4,5][level-1],group=Array.from({length:total},(_,i)=>at(students,n+i)),missing=n%total;
       needsReveal=!hidden;prompt=hidden?'¿Qué nombre falta?':'Mira y nombra de izquierda a derecha';
       visual='<div class="pdi-name-memory">'+group.map((name,i)=>'<span>'+(hidden&&i===missing?'?':esc(name.toLocaleUpperCase('es-ES')))+'</span>').join('')+'</div>';
       options=group.map(name=>option(name,name));answer=group[missing];explanation='Faltaba '+answer+'.';
+    } else if(kind==='numero-vecino'){
+      const limit=[5,10,20,30][level-1],before=n%2===1,current=before?2+n%(limit-1):1+n%(limit-1);
+      prompt=before?'¿QUÉ NÚMERO VA JUSTO ANTES?':'¿QUÉ NÚMERO VA JUSTO DESPUÉS?';
+      visual='<div class="pdi-neighbor"><span>?</span><span>'+current+'</span></div>';if(!before)visual='<div class="pdi-neighbor"><span>'+current+'</span><span>?</span></div>';
+      answer=before?current-1:current+1;const candidates=[answer,Math.max(0,answer-1),Math.min(limit,answer+1),before?current+1:Math.max(0,current-1)];options=[...new Set(candidates)].slice(0,[2,3,4,4][level-1]).map(value=>option(value,String(value)));explanation='EL NÚMERO VECINO ES '+answer+'.';
+    } else if(kind==='sumando-falta'){
+      const limit=[5,8,10,15][level-1],total=3+n%(limit-2),known=1+(Math.floor(n/2)%(total-1)),missing=total-known;
+      prompt='¿QUÉ CANTIDAD FALTA PARA COMPLETAR LA SUMA?';visual='<div class="pdi-missing-sum"><span>'+collection(item,known)+'</span><b>+</b><strong>?</strong><b>=</b><em>'+total+'</em></div>';
+      answer=missing;const candidates=[missing,Math.max(0,missing-1),missing+1,Math.min(limit,missing+2)];options=[...new Set(candidates)].slice(0,[2,3,4,4][level-1]).map(value=>option(value,String(value)));explanation=known+' Y '+missing+' HACEN '+total+'.';
+    } else if(kind==='rimas'){
+      const group=at(rhymeGroups,n),model=group[0],correct=group[1],available=[correct,...group.slice(2),at(rhymeGroups,n+1)[2]];
+      prompt='¿QUÉ PALABRA RIMA CON '+model[1]+'?';visual=level===4?'<div class="pdi-word">'+icon(model)+'</div>':pictureWord(model);answer=correct[1];options=available.slice(0,[2,3,4,4][level-1]).map(word=>option(word[1],icon(word)+(level===4?'':'<strong>'+word[1]+'</strong>')));explanation=model[1]+' Y '+correct[1]+' TERMINAN PARECIDO.';
+    } else if(kind==='consonante-inicial'){
+      const word=at(consonantWords,n),letters=[word[2],at(consonantWords,n+3)[2],at(consonantWords,n+5)[2],at(consonantWords,n+7)[2]];
+      prompt='¿POR QUÉ CONSONANTE EMPIEZA '+word[1]+'?';visual=level===4?'<div class="pdi-word">'+icon(word)+'</div>':pictureWord(word);answer=word[2];options=[...new Set(letters)].slice(0,[2,3,4,4][level-1]).map(letter=>option(letter,letter));explanation=word[1]+' EMPIEZA POR '+word[2]+'.';
+    } else if(kind==='intruso-categorias'){
+      const group=at(categoryGroups,n),count=[2,3,4,4][level-1],shown=[...group.items.slice(0,count-1),group.odd];
+      prompt=level===4?'¿CUÁL NO PERTENECE AL MISMO GRUPO?':'¿CUÁL NO PERTENECE AL GRUPO DE '+group.name+'?';visual=level===4?'':'<div class="pdi-category-label">'+group.name+'</div>';answer=group.odd[1];options=shown.map(entry=>option(entry[1],icon(entry)+(level===4?'':'<strong>'+entry[1]+'</strong>')));explanation=group.odd[1]+' NO PERTENECE AL GRUPO DE '+group.name+'.';
+    } else if(kind==='patrones-avanzados'){
+      const pattern=at(advancedPatterns,n),shown=pattern.shown-(level===4?1:0),sequence=Array.from({length:shown},(_,i)=>pattern.unit[i%pattern.unit.length]),nextToken=pattern.unit[shown%pattern.unit.length],distractors=[nextToken,...pattern.unit.filter(token=>token!==nextToken),'⬛','🔷'];
+      prompt='OBSERVA EL PATRÓN. ¿QUÉ VIENE DESPUÉS?';visual='<div class="pdi-advanced-pattern">'+sequence.map(token=>'<span>'+token+'</span>').join('')+'<strong>?</strong></div>';answer=nextToken;options=[...new Set(distractors)].slice(0,[2,3,4,4][level-1]).map(token=>option(token,'<span class="pdi-pattern-option">'+token+'</span>'));explanation='EL PATRÓN SE REPITE. AHORA VIENE '+nextToken+'.';
+    } else if(kind==='problemas-visuales'){
+      const limit=[5,8,10,12][level-1],remove=n%2===1,start=remove?3+n%(limit-2):1+n%Math.max(1,limit-3),change=1+Math.floor(n/2)%Math.max(1,remove?start-1:limit-start),result=remove?start-change:start+change;
+      prompt=remove?'HABÍA '+start+' Y SE FUERON '+change+'. ¿CUÁNTOS QUEDAN?':'HABÍA '+start+' Y LLEGARON '+change+'. ¿CUÁNTOS HAY AHORA?';visual='<div class="pdi-story-problem"><span>'+collection(item,start)+'</span><b>'+(remove?'−':'+')+'</b><span>'+collection(item,change)+'</span></div>';answer=result;const candidates=[result,Math.max(0,result-1),result+1,Math.min(limit,result+2)];options=[...new Set(candidates)].slice(0,[2,3,4,4][level-1]).map(value=>option(value,String(value)));explanation=remove?start+' MENOS '+change+' SON '+result+'.':start+' MÁS '+change+' SON '+result+'.';
     } else if(kind==='dino-vocabulario'){
-      const word=at(dinoVocabulary,n),alternatives=[word,at(dinoVocabulary,n+3),at(dinoVocabulary,n+6)];prompt='¿QUÉ PALABRA ES?';visual='<div class="pdi-dino-word">'+dinoPicture(word[2])+'<div><p>'+word[1]+'</p></div></div>';
-      options=alternatives.map(item=>option(item[0],item[0]));answer=word[0];explanation='¡ES '+word[0]+'! '+word[1];
+      const word=at(dinoVocabulary,n),alternatives=[word,at(dinoVocabulary,n+3),at(dinoVocabulary,n+6),at(dinoVocabulary,n+1),at(dinoVocabulary,n+4)];prompt='¿QUÉ PALABRA ES?';visual='<div class="pdi-dino-word">'+dinoPicture(word[2])+'<div>'+(level<=2?'<p>'+word[1]+'</p>':'')+'</div></div>';
+      options=alternatives.slice(0,[2,3,4,5][level-1]).map(item=>option(item[0],item[0]));answer=word[0];explanation='¡ES '+word[0]+'! '+word[1];
     } else if(kind==='dino-buscar'){
-      const dinos=window.ROSA.dinosaurs,target=at(dinos,n),offsets=[0,3,6].map(v=>at(dinos,n+v));prompt='BUSCA AL '+target.short.toLocaleUpperCase('es-ES');
+      const dinos=window.ROSA.dinosaurs,target=at(dinos,n),offsets=[0,3,6,1,4].slice(0,[2,3,4,5][level-1]).map(v=>at(dinos,n+v));prompt='BUSCA AL '+target.short.toLocaleUpperCase('es-ES');
       visual='<p class="pdi-dino-clue">'+esc(target.clue.toLocaleUpperCase('es-ES'))+'</p>';options=offsets.map(d=>option(d.id,dinoPicture(d)+'<span>'+esc(d.short.toLocaleUpperCase('es-ES'))+'</span>'));answer=target.id;explanation='¡ES EL '+target.short.toLocaleUpperCase('es-ES')+'! '+target.fact.toLocaleUpperCase('es-ES');
     } else if(kind==='dino-patas'){
       const dinos=window.ROSA.dinosaurs.filter(d=>d.id!=='parasaurolophus'),dino=at(dinos,n),two=['trex','velociraptor','spinosaurus'].includes(dino.id);prompt='¿CAMINABA SOBRE DOS O CUATRO PATAS?';visual='<div class="pdi-dino-single">'+dinoPicture(dino)+'<strong>'+esc(dino.short.toLocaleUpperCase('es-ES'))+'</strong></div>';
       options=[option('DOS','DOS PATAS'),option('CUATRO','CUATRO PATAS')];answer=two?'DOS':'CUATRO';explanation=dino.short.toLocaleUpperCase('es-ES')+' CAMINABA HABITUALMENTE SOBRE '+(two?'DOS':'CUATRO')+' PATAS.';
     } else if(kind==='dino-movimiento'){
-      const movement=at(dinoMovements,n),other=at(dinoMovements,n+3);prompt='¿CÓMO NOS MOVEMOS COMO ESTE DINOSAURIO?';visual='<div class="pdi-movement">'+dinoPicture(movement[0])+'</div>';
-      options=[option(movement[1],movement[1]),option(other[1],other[1])];answer=movement[1];explanation='¡SÍ! AHORA LO HACEMOS TODOS: '+movement[1];
+      const movement=at(dinoMovements,n),movements=[movement,at(dinoMovements,n+3),at(dinoMovements,n+5),at(dinoMovements,n+7)];prompt='¿CÓMO NOS MOVEMOS COMO ESTE DINOSAURIO?';visual='<div class="pdi-movement">'+dinoPicture(movement[0])+(level===1?'<p>'+movement[1]+'</p>':'')+'</div>';
+      options=movements.slice(0,[2,2,3,4][level-1]).map(item=>option(item[1],item[1]));answer=movement[1];explanation='¡SÍ! AHORA LO HACEMOS TODOS: '+movement[1];
     } else if(kind==='fechas-especiales'){
       const day=at(specialDays,n);prompt=day[2];visual='<div class="pdi-special-day"><span>'+day[0]+'</span><strong>'+day[1]+'</strong></div>';
-      options=day[3].map(value=>option(value,value));answer=day[4];explanation=day[5];
+      const dayChoices=[...day[3],at(specialDays,n+1)[3][1],at(specialDays,n+2)[3][2]].filter((value,index,list)=>list.indexOf(value)===index);
+      options=dayChoices.slice(0,[2,3,4,5][level-1]).map(value=>option(value,value));answer=day[4];explanation=day[5];
     } else if(kind==='disfraces'){
-      const costume=at(costumes,n),wrongOne=at(costumes,n+5),wrongTwo=at(costumes,n+11);
+      const costume=at(costumes,n),costumeChoices=[costume,at(costumes,n+5),at(costumes,n+11),at(costumes,n+3),at(costumes,n+8)];
       prompt='¿DE QUÉ VA DISFRAZADO?';
       visual='<figure class="pdi-costume"><img src="assets/costumes/'+costume[0]+'.webp" width="620" height="660" alt="Persona disfrazada de '+costume[1].toLocaleLowerCase('es-ES')+'"><figcaption>IMÁGENES APORTADAS POR LA MAESTRA · INFANITY Y TESOROS BRILLANTES</figcaption></figure>';
-      options=[costume,wrongOne,wrongTwo].map(item=>option(item[1],item[1]));
+      options=costumeChoices.slice(0,[2,3,4,5][level-1]).map(item=>option(item[1],item[1]));
       answer=costume[1];explanation='ES UN DISFRAZ DE '+costume[1]+'.';
+    } else if(kind==='completa-dino'){
+      const dinosArr=window.ROSA.dinosaurs,dino=at(dinosArr,n),diets=['Herbívoro','Carnívoro'];
+      prompt='Completa la frase sobre el '+dino.short;
+      visual='<div class="pdi-dino-single">'+dinoPicture(dino)+'<p class="pdi-complete-sentence">El '+esc(dino.short)+' era <span class="pdi-blank">____</span>.</p></div>';
+      options=diets.map(d=>option(d,d));
+      answer=dino.diet;
+      explanation='EL '+dino.short.toLocaleUpperCase('es-ES')+' ERA '+dino.diet.toLocaleUpperCase('es-ES')+'.';
     } else {
       return null;
     }
     if(level===1 && kind!=='disfraces' && options.length>2){const wrong=options.find(o=>o.value!==String(answer));options=options.filter(o=>o.value===String(answer)||o===wrong);}
-    if(level===3 && ['cantidades','juntar','siguiente'].includes(kind)){
+    if(level>=3 && ['cantidades','juntar','siguiente'].includes(kind)){
       const extra=Array.from({length:max},(_,i)=>i+1).find(value=>!options.some(o=>o.value===String(value)));
       options.push(option(extra,kind==='cantidades'?collection(item,extra):String(extra)));
     }
-    if(level===3 && kind==='vocales')options=['A','E','I','O','U'].map(v=>option(v,v));
-    if(level===3 && kind==='parejas'){const other=at(objects,n+9);options.push(option(other[1],icon(other)));}
-    if(level===3 && kind==='colores'){const other=at(colors,n+1);options.push(option(other[0],colorDisc(other)));}
+    if(level>=3 && kind==='vocales')options=['A','E','I','O','U'].map(v=>option(v,v));
     // Change the correct button's location between turns, without moving it on a retry.
     const offset = (n + Math.floor(n / 3)) % options.length;
     options = [...options.slice(offset), ...options.slice(0, offset)];

@@ -28,7 +28,7 @@ const AREA_ROUTES={matematicas:'Matemáticas',lenguaje:'Lenguaje',logica:'Lógic
 const HIDDEN_MATH_PROPOSALS=new Set(['merienda-contar','tienda','torres','repartir']);
 const HIDDEN_LANGUAGE_RESOURCES=new Set(['carteleria-abecedario','bandeja-nombre','nombre-largo','sonidos-aula','cuento-tela']);
 const GAMES=[
- ['contar','Cuenta conmigo','123','Cuenta hasta seis elementos y elige la cantidad.'],['series','Continúa la serie','● ■ ●','Completa patrones con formas; elige el nivel.'],['series-ilustradas','Series ilustradas','🖼️','Cuatro escenas grandes para observar el patrón y elegir qué viene después.','Matemáticas'],['falta','¿Qué falta?','?','Mira tres dinosaurios, tapa uno y recuérdalo.'],['intruso','Encuentra el diferente','◈','Observa las formas y elige la que cambia.'],['clasificar','¿Qué comía?','🌿','Lleva cada dinosaurio a su grupo de alimentación.'],['letras','Busca la misma letra','Aa','Compara una letra modelo con tres opciones.'],['vocales-ilustradas','Vocales ilustradas','🖼️','Cuatro escenas grandes para reconocer A, E e I.','Lenguaje'],['emociones','Así me siento','🙂','Elige una emoción, un gesto o pasar turno.'],['calendario','Nuestro calendario','📅','Sitúa el día, el mes y el año de la asamblea.'],['tiempo','Miramos el cielo','🌤️','Elige el tiempo que observamos hoy.'],['dino','Dinosaurio del día','🦕','Nueve dinosaurios para descubrir uno a uno.'],['verdadero','¿Sí o no?','✓ ?','Doce afirmaciones con explicación al responder.'],['adivinanza','Escucha las pistas','💬','Adivinanzas con respuesta que se puede descubrir.'],['memory','Memory cooperativo','▦','Encuentra cuatro parejas sin reloj ni penalizaciones.'],['vocabulario','Palabras del proyecto','🔎','Tarjetas grandes para conversar y señalar.'],['nombre-escribe','Escribe tu nombre','A B C','Mira tu nombre, tápalo y busca sus letras en orden.']
+ ['contar','Cuenta conmigo','123','Cuenta dibujos del vocabulario elegido y elige la cantidad.'],['series','Continúa la serie','● ■ ●','Completa patrones con formas; elige el nivel.'],['series-ilustradas','Series ilustradas','🖼️','Cuatro escenas grandes para observar el patrón y elegir qué viene después.','Matemáticas'],['falta','¿Qué falta?','?','Mira dibujos, tapa uno y recuérdalo.'],['intruso','Encuentra el diferente','◈','Observa las formas y elige la que cambia.'],['clasificar','¿Qué comía?','🌿','Lleva cada dinosaurio a su grupo de alimentación.'],['letras','Busca la misma letra','Aa','Compara una letra modelo con tres opciones.'],['vocales-ilustradas','Vocales ilustradas','🖼️','Cuatro escenas grandes para reconocer A, E e I.','Lenguaje'],['emociones','Así me siento','🙂','Elige una emoción, un gesto o pasar turno.'],['calendario','Nuestro calendario','📅','Sitúa el día, el mes y el año de la asamblea.'],['tiempo','Miramos el cielo','🌤️','Elige el tiempo que observamos hoy.'],['dino','Dinosaurio del día','🦕','Nueve dinosaurios para descubrir uno a uno.'],['verdadero','¿Sí o no?','✓ ?','Doce afirmaciones con explicación al responder.'],['adivinanza','Escucha las pistas','💬','Adivinanzas con respuesta que se puede descubrir.'],['memory','Memory cooperativo','▦','Encuentra parejas con el vocabulario elegido.'],['vocabulario','Palabras del proyecto','🔎','Tarjetas grandes para conversar y señalar.'],['nombre-escribe','Escribe tu nombre','A B C','Mira tu nombre, tápalo y busca sus letras en orden.'],['relaciona-vocabulario','Une cada imagen con su palabra','🔗','Traza líneas visibles entre imágenes y palabras.','Lenguaje']
 ];
 GAMES.push(...window.ROSA_PDI.games,...window.ROSA_PLAY.gameCatalog,...(window.ROSA_CLASSROOM?.games||[]));
 LINKS.splice(10,0,['taller','✂','Crea tus fichas']);
@@ -156,16 +156,27 @@ function home(){
 }
 function filterControl(label,id,options,value){return '<div class="field"><label for="'+id+'">'+label+'</label><select id="'+id+'" data-filter="'+id.replace('filter-','')+'">'+options.map(o=>'<option value="'+E(o[0])+'"'+(o[0]===value?' selected':'')+'>'+E(o[1])+'</option>').join('')+'</select></div>';}
 function resourceTypes(r){return [r.printable?'Imprimible':'Actividad',r.area==='Juegos'?'Juego':'',r.area==='Asamblea'?'Asamblea':'',r.type||''].filter(Boolean);}
-function matches(r,which){const f=state.filter;return !(f.area==='Matemáticas'&&HIDDEN_MATH_PROPOSALS.has(r.id))&&!(f.area==='Lenguaje'&&HIDDEN_LANGUAGE_RESOURCES.has(r.id))&&(!f.area||r.area===f.area||(f.area==='Motricidad fina'&&r.area==='Grafomotricidad'))&&(!f.project||r.project===f.project)&&(!f.type||resourceTypes(r).includes(f.type))&&(!f.q||textMatchesQuery([r.title,r.objective,r.instructions,r.area,r.project,r.kind].join(' '),f.q))&&(which!=='imprimibles'||window.ROSA_CLASSROOM.isSheet(r))&&(which!=='propuestas'||window.ROSA_CLASSROOM.isProposal(r))&&(which!=='favoritos'||state.favorites.has(r.id));}
+// Imprimibles que ya no hace falta duplicar en la página porque el Taller de series los genera a medida.
+const GENERATABLE_PRINTABLE_IDS=new Set([
+  'series-ab',
+  'series-aab',
+  'series-abb',
+  'series-abc',
+  'series-aabb',
+  'crea-series'
+]);
+const isVisiblePrintable=r=>window.ROSA_CLASSROOM.isSheet(r)&&!GENERATABLE_PRINTABLE_IDS.has(r.id);
+
+function matches(r,which){const f=state.filter;return !(f.area==='Matemáticas'&&HIDDEN_MATH_PROPOSALS.has(r.id))&&!(f.area==='Lenguaje'&&HIDDEN_LANGUAGE_RESOURCES.has(r.id))&&(!f.area||r.area===f.area||(f.area==='Motricidad fina'&&r.area==='Grafomotricidad'))&&(!f.project||r.project===f.project)&&(!f.type||resourceTypes(r).includes(f.type))&&(!f.q||textMatchesQuery([r.title,r.objective,r.instructions,r.area,r.project,r.kind].join(' '),f.q))&&(which!=='imprimibles'||isVisiblePrintable(r))&&(which!=='propuestas'||window.ROSA_CLASSROOM.isProposal(r))&&(which!=='favoritos'||state.favorites.has(r.id));}
 function bank(which){
  const title=which==='imprimibles'?'Fichas imprimibles':which==='favoritos'?'Mis favoritos':which==='propuestas'?'Propuestas para el aula':state.filter.area||'Explora tu banco de aula';
- const scope=R.filter(r=>(which!=='imprimibles'||window.ROSA_CLASSROOM.isSheet(r))&&(which!=='propuestas'||window.ROSA_CLASSROOM.isProposal(r))&&(which!=='favoritos'||state.favorites.has(r.id)));
+ const scope=R.filter(r=>(which!=='imprimibles'||isVisiblePrintable(r))&&(which!=='propuestas'||window.ROSA_CLASSROOM.isProposal(r))&&(which!=='favoritos'||state.favorites.has(r.id)));
  const areaOptions=AREAS.filter(area=>scope.some(r=>r.area===area||(area==='Motricidad fina'&&r.area==='Grafomotricidad')));
  const projectOptions=['Dinosaurios','Yayoi Kusama','General'].filter(project=>scope.some(r=>r.project===project));
  const typeOptions=['Imprimible','Juego','Asamblea','Actividad','Experimento','PDI'].filter(type=>type==='PDI'?which!=='imprimibles':scope.some(r=>resourceTypes(r).includes(type)));
  const rs=R.filter(r=>matches(r,which));
  const gameAreas={contar:'Matemáticas',series:'Matemáticas','series-ilustradas':'Matemáticas','vocales-ilustradas':'Lenguaje',falta:'Lógica',intruso:'Lógica',clasificar:'Proyecto',letras:'Lenguaje',emociones:'Asamblea',calendario:'Asamblea',tiempo:'Asamblea',dino:'Proyecto',verdadero:'Proyecto',adivinanza:'Lenguaje',memory:'Juegos',vocabulario:'Lenguaje','nombre-escribe':'Lenguaje',...Object.fromEntries([...window.ROSA_PDI.games,...window.ROSA_PLAY.gameCatalog].map(g=>[g[0],g[4]]))};
- const dinoGames=['contar','falta','clasificar','dino','verdadero','memory','vocabulario','adivinanza','puzzle','ordenar-piezas'];
+ const dinoGames=['contar','falta','clasificar','dino','verdadero','memory','vocabulario','adivinanza','puzzle','ordenar-piezas','sombras','completa-dino'];
  const games=which==='imprimibles'?[]:GAMES.filter(g=>(which!=='favoritos'||A.ui.book.favorites.includes(g[0]))&&(!state.filter.area||gameAreas[g[0]]===state.filter.area)&&(!state.filter.project||(state.filter.project==='Dinosaurios'?dinoGames.includes(g[0]):state.filter.project==='General'?!dinoGames.includes(g[0]):false))&&(!state.filter.q||textMatchesQuery(g.join(' '),state.filter.q)));
  const mixedSearch=Boolean(state.filter.q&&!state.filter.type);
  const resultCount=state.filter.type==='PDI'?games.length:mixedSearch?rs.length+games.length:rs.length;
@@ -178,8 +189,8 @@ function bank(which){
    if(rs.length)results+=which==='imprimibles'?window.ROSA_CLASSROOM.printGroups(rs):which==='propuestas'?cards(rs):window.ROSA_SCENES.resourceGroups(rs);
    else if(!(mixedSearch&&games.length))results+=which==='favoritos'&&games.length?'<p class="hint">Los materiales que guardes aparecerán aquí.</p>':'<div class="empty"><h2>'+((which==='favoritos'&&!state.favorites.size)?'Guarda lo que quieras volver a usar':'No hay recursos con estos filtros')+'</h2><p>'+((which==='favoritos'&&!state.favorites.size)?'Toca el corazón de cualquier recurso. Lo encontrarás aquí en este navegador.':'Prueba otra palabra o limpia los filtros para ver más propuestas.')+'</p><a class="button" href="#banco">Explorar recursos</a></div>';
  }
- return head(title,which==='favoritos'?'Tu selección se guarda en este navegador.':which==='imprimibles'?'Imprime y usa: dibujar, contar, unir o colorear. Sin recortes ni montaje.':'Materiales y propuestas breves, con preparación y variantes.')+
- '<div class="filters filters-useful">'+filterControl('Área','filter-area',[['','Todas las áreas'],...areaOptions.map(x=>[x,x==='Lenguaje'?'Lectoescritura / Lenguaje':x])],state.filter.area)+filterControl('Proyecto','filter-project',[['','Todos los proyectos'],...projectOptions.map(x=>[x,x==='General'?'Banco general':x])],state.filter.project)+(typeOptions.length>1?filterControl('Tipo','filter-type',[['','Todos los tipos'],...typeOptions.map(x=>[x,x])],state.filter.type):'')+'</div>'+ 
+ return head(title,which==='favoritos'?'Tu selección se guarda en este navegador.':which==='imprimibles'?'Aquí quedan las fichas que no puedes generar a medida. Las series se crean desde Matemáticas → Taller de series.':'Materiales y propuestas breves, con preparación y variantes.')+
+ '<div class="filters filters-useful">'+filterControl('Área','filter-area',[['','Todas las áreas'],...areaOptions.map(x=>[x,x==='Lenguaje'?'Lectoescritura / Lenguaje':x])],state.filter.area)+filterControl('Proyecto','filter-project',[['','Todos los proyectos'],...projectOptions.map(x=>[x,x==='General'?'Banco general':x])],state.filter.project)+(typeOptions.length>1?filterControl('Tipo','filter-type',[['','Todos los tipos'],...typeOptions.map(x=>[x,x])],state.filter.type):'')+'</div>'+
  '<div class="result-line"><span role="status">'+resultCount+' recursos'+(state.filter.q?' para «'+E(state.filter.q)+'»':'')+'</span>'+btn('Limpiar filtros','clear-filters','','quiet small')+'</div>'+results+
  (which==='imprimibles'?'<p class="hint" style="margin-top:24px">Elige en cada material: color, blanco y negro o solo contorno para colorear.</p>':'');
 }
@@ -229,13 +240,14 @@ function openStory(id){const book=window.ROSA_STORIES.ready.find(item=>item.id==
 function renderStory(){const s=state.story;if(!s)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===s.id);if(!book)return;const toolbar='<div class="projection-toolbar story-toolbar"><strong>BIBLIOTECA ROSA · '+E(book.title)+'</strong><div>'+btn('PANTALLA COMPLETA','fullscreen','','secondary small')+btn('× SALIR','story-close','','quiet')+'</div></div>';if(book.readerUrl){$('#projection-content').innerHTML=toolbar+'<main class="story-reader-frame"><iframe src="'+book.readerUrl+'" title="CUENTO '+E(book.title)+'" allowfullscreen></iframe></main><footer class="story-reader-credits">'+storyCredits(book)+'<div>'+btn('CERRAR CUENTO','story-close','','secondary small')+'</div></footer>';return;}const page=book.pages[s.page],first=s.page===0,last=s.page===book.pages.length-1,isYayoiCover=book.id==='yayoi-desde-aqui-hasta-el-infinito'&&first;const text=book.imageOnly?'':page[1]?'<div class="story-page-text">'+E(page[1]).replaceAll('\n','<br>')+'</div>':'<div class="story-cover-title"><h2>'+E(book.title)+'</h2><p>DE '+E(book.author)+'</p></div>';const visual=isYayoiCover?'<div class="yayoi-landscape-cover"><img src="'+page[0]+'" width="1093" height="1439" alt="PORTADA DEL LIBRO '+E(book.title)+'"><section><span>YAYOI KUSAMA</span><h2>DESDE AQUÍ HASTA EL INFINITO</h2><p>UN LIBRO PARA MIRAR JUNTOS</p></section></div>':'<img src="'+page[0]+'" width="1024" height="768" alt="ILUSTRACIÓN DE LA PÁGINA '+(s.page+1)+' DE '+E(book.title)+'">';$('#projection-content').innerHTML=toolbar+'<main class="story-reader '+(book.imageOnly?'story-image-only':'')+(isYayoiCover?' story-yayoi-cover':'')+'"><figure>'+visual+'</figure>'+text+'</main><footer class="story-footer">'+btn('← ANTERIOR','story-prev','',first?'secondary story-disabled':'secondary')+'<span aria-live="polite">PÁGINA '+(s.page+1)+' DE '+book.pages.length+'</span>'+btn(last?'TERMINAR':'SIGUIENTE →',last?'story-close':'story-next')+'</footer>'+(last?'<div class="story-reader-credits">'+storyCredits(book)+'</div>':'');}
 function materialList(ids){const mats=[...new Set(ids.flatMap(id=>getResource(id).materials))];return '<section class="material-check"><h2>Deja preparado</h2><ul>'+mats.map(m=>'<li>'+E(m)+'</li>').join('')+'</ul></section>';}
 function today(){const labels=['Asamblea','Matemáticas','Lenguaje','Manipulación','Juego','Dinosaurios'];return head('¿Qué hago hoy?','Una selección para escoger y combinar. No es un horario ni hace falta hacer las seis.',btn('↻ Dame otras actividades','today-new')+btn('Imprimir selección','print-view','','secondary'))+'<div class="selection-list">'+state.today.map((id,i)=>{const r=getResource(id);return '<article class="selection-item"><span class="round-icon">'+(i+1)+'</span><div><span class="eyebrow">'+labels[i]+' · '+r.duration+' MIN</span><h3 style="margin-top:8px">'+E(r.title)+'</h3><p>'+E(r.preparation)+'</p><div class="resource-actions">'+actions(r)+btn(state.favorites.has(id)?'♥ Guardado':'♡ Guardar','favorite',id,'secondary small')+'</div></div></article>';}).join('')+'</div><div style="margin-top:24px">'+materialList(state.today)+'</div>';}
-function render(){nav();let view=route();let body;if(view==='inicio')body=home();else if(view==='asamblea')body=assembly();else if(view==='dinosaurios')body=dinosaurs();else if(view==='kusama')body=kusama();else if(view==='curso')body=course();else if(view==='pdi')body=pdi();else if(view==='pdi-proyectos')body=A.pdiProjectsPage();else if(view==='pdi-dias')body=A.pdiSpecialDaysPage();else if(view==='pdi-juegos')body=A.pdiGamesPage();else if(view==='canciones')body=window.ROSA_CLASSROOM.songs(A.pdiNav('canciones'));else if(view==='cuentos')body=stories();else if(view==='taller')body=A.workshop();else if(view==='hoy')body=today();else if(view==='recurso'){body=home();const id=location.hash.split('?')[1];if(getResource(id))setTimeout(()=>openResource(id),0);}else {body=bank(view);if(view==='lenguaje')body=body.replace('<div class="filters filters-useful">',window.ROSA_CLASSROOM.alphabet()+nameBuilder()+'<div class="filters filters-useful">');if(view==='matematicas')body=body.replace('<div class="filters filters-useful">',patternWorkshop()+'<div class="filters filters-useful">');}if(view==='movimiento')body=window.ROSA_CLASSROOM.movementHub()+body;$('#contenido').innerHTML=body;}
+function render(){nav();let view=route();let body;if(view==='inicio')body=home();else if(view==='asamblea')body=assembly();else if(view==='dinosaurios')body=dinosaurs();else if(view==='kusama')body=kusama();else if(view==='curso')body=course();else if(view==='pdi'||view==='pdi-calendario')body=pdi();else if(view==='pdi-proyectos')body=A.pdiProjectsPage();else if(view==='pdi-dias')body=A.pdiSpecialDaysPage();else if(view==='pdi-juegos')body=A.pdiGamesPage();else if(view==='canciones')body=window.ROSA_CLASSROOM.songs(A.pdiNav('canciones'));else if(view==='cuentos')body=stories();else if(view==='taller')body=A.workshop();else if(view==='hoy')body=today();else if(view==='recurso'){body=home();const id=location.hash.split('?')[1];if(getResource(id))setTimeout(()=>openResource(id),0);}else {body=bank(view);if(view==='lenguaje')body=body.replace('<div class="filters filters-useful">',window.ROSA_CLASSROOM.alphabet()+nameBuilder()+'<div class="filters filters-useful">');if(view==='matematicas')body=body.replace('<div class="filters filters-useful">',patternWorkshop()+'<div class="filters filters-useful">');}if(view==='movimiento')body=window.ROSA_CLASSROOM.movementHub()+body;$('#contenido').innerHTML=body;}
 function resetForRoute(){const view=route();if(AREA_ROUTES[view])state.filter={area:AREA_ROUTES[view],type:'',project:'',q:''};else if(['banco','imprimibles','propuestas','favoritos'].includes(view)){state.filter.area='';state.filter.type='';state.filter.project='';}else state.filter.q='';$('#search').value=state.filter.q;render();$('#sidebar').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');$('#global-search').classList.remove('expanded');$('#search-toggle').setAttribute('aria-expanded','false');window.scrollTo({top:0});}
 function openResource(id){const r=getResource(id);if(!r)return;state.dialogId=id;resourceDialog();if(!$('#resource-dialog').open)$('#resource-dialog').showModal();}
 function resourceDialog(){const r=getResource(state.dialogId),printSupport=relatedPrintables(r),activitySupport=relatedActivities(r);if(state.ink==='coloring'&&!r.coloring)state.ink='color';const printableDetail=r.printable?'':printSupport.length?'<section class="printable-detail has-printable"><strong>Material imprimible opcional</strong><p>'+printSupport.map(item=>'<a href="#recurso?'+item.id+'" data-action="open" data-value="'+item.id+'">'+E(item.title)+'</a>').join('</p><p>')+'</p></section>':'<section class="printable-detail no-printable"><strong>No necesita material imprimible.</strong><p>Prepara únicamente lo indicado en «Materiales».</p></section>';const example=r.example?'<div class="example-caption"><strong>Ejemplo de montaje</strong><p>'+E(r.example)+'</p></div>':'';$('#dialog-content').innerHTML='<div class="dialog-header"><h2 id="dialog-title">'+E(r.title)+'</h2>'+btn('×','close-resource','','quiet close-button')+'</div><div class="dialog-body"><div class="dialog-preview">'+resourceArt(r)+example+'</div><div class="dialog-details"><div class="resource-meta"><span class="tag">'+E(r.area)+'</span><span>4 años · '+r.duration+' minutos</span></div>'+(r.sourceNote?'<p class="source-note">'+E(r.sourceNote)+'</p>':'')+'<h3>Para qué</h3><p>'+E(r.objective)+'</p><h3>Materiales exactos</h3><ul>'+r.materials.map(t=>'<li>'+E(t)+'</li>').join('')+'</ul>'+printableDetail+'<h3>Antes de empezar</h3><p>'+E(r.preparation)+'</p><h3>Así jugamos</h3><ol>'+r.steps.map(t=>'<li>'+E(t)+'</li>').join('')+'</ol><div class="adaptations"><p><strong>Más sencillo:</strong> '+E(r.easy)+'</p><p><strong>Para ampliar:</strong> '+E(r.extend)+'</p></div>'+(r.safety?'<p class="safety" style="margin-top:18px">'+E(r.safety)+'</p>':'')+
  (r.printable?'<div class="print-options"><label for="ink-mode">Versión del imprimible</label><select id="ink-mode"><option value="color"'+(state.ink==='color'?' selected':'')+'>Color</option><option value="bn"'+(state.ink==='bn'?' selected':'')+'>Blanco y negro</option><option value="coloring"'+(state.ink==='coloring'?' selected':'')+'>Solo contorno · para colorear</option></select><small>Solo contorno elimina los rellenos y conserva líneas negras claras.</small></div><div class="dialog-actions print-dialog-actions">'+printableActions(r,'')+'</div>':'')+'<div class="dialog-actions">'+btn(state.favorites.has(r.id)?'♥ Guardado':'♡ Guardar','favorite',r.id,'secondary')+(r.kind==='memory'?btn('Jugar en la pizarra','game','memory','secondary'):'')+'</div>'+(activitySupport.length?'<h3>Propuestas relacionadas</h3>'+activitySupport.map(item=>'<p><a href="#recurso?'+item.id+'" data-action="open" data-value="'+item.id+'">'+E(item.title)+'</a></p>').join(''):'')+'</div></div>';}
 async function printableAction(id,target,kind='share'){const r=getResource(id);if(!r?.printable||!window.ROSA_PRINT){toast('No se ha podido preparar este imprimible.');return;}const ink=state.ink==='coloring'&&!r.coloring?'color':state.ink;target.disabled=true;try{const result=await window.ROSA_PRINT[kind]({id:r.id,title:r.title,ink});if(result==='downloaded')toast('Tu navegador no permite compartir archivos: se ha descargado el PDF.');}catch(error){toast(error?.message==='popup-blocked'?'Permite abrir ventanas para mostrar la impresión.':'No se ha podido preparar el imprimible.');}finally{target.disabled=false;}}
 function imageDino(i,cls=''){const d=pick(D.dinosaurs,i);return '<img class="'+cls+'" src="assets/dinos-pdi/'+d.id+'.webp" width="544" height="544" alt="'+E(d.name)+'">';}
+function vocabImage(p,i,cls=''){const pool=window.ROSA_CLASSROOM?.vocabThemes?.[p.payload?.theme]||window.ROSA_CLASSROOM?.vocabThemes?.Dinosaurios;const item=pool[((i%pool.length)+pool.length)%pool.length];return '<img class="'+cls+'" src="'+item.src+'" width="180" height="180" alt="'+E(item.label)+'">';}
 function shape(i){const kind=['circle','square','triangle'][i%3],geometry={circle:'<circle class="shape-fill" cx="32" cy="32" r="24"/>',square:'<rect class="shape-fill" x="8" y="8" width="48" height="48"/>',triangle:'<polygon class="shape-fill" points="32,7 56,55 8,55"/>'}[kind];return '<svg viewBox="0 0 64 64" width="64" height="64" preserveAspectRatio="xMidYMid meet" class="shape vector-shape vector-'+kind+' '+['','blue','yellow','green'][i%4]+'" role="img" aria-label="'+['círculo','cuadrado','triángulo'][i%3]+' '+['rosa','azul','amarillo','verde'][i%4]+'">'+geometry+'</svg>';}
 const ILLUSTRATED_SERIES=[
  {image:'assets/pdi-series/01-circulo-cuadrado.webp',alt:'Niño observando una serie de círculo rojo y cuadrado azul',prompt:'MIRA LA SERIE. ¿QUÉ DEBERÍA IR EN EL HUECO?',answer:'circulo-rojo',explanation:'SE REPITEN CÍRCULO ROJO Y CUADRADO AZUL. AHORA TOCA CÍRCULO ROJO.',options:[['circulo-rojo','circle','red','CÍRCULO ROJO'],['cuadrado-azul','square','blue','CUADRADO AZUL'],['triangulo-amarillo','triangle','yellow','TRIÁNGULO AMARILLO']]},
@@ -251,14 +263,25 @@ const ILLUSTRATED_VOWELS=[
  {image:'assets/pdi-language/04-vocal-a-bloques.webp',alt:'Niño mostrando una vocal A construida con bloques',prompt:'¿QUÉ VOCAL HA CONSTRUIDO CON BLOQUES?',answer:'A',explanation:'HA CONSTRUIDO LA VOCAL A.',options:['A','E','I']}
 ];
 function nextRandomWord(){if(!state.wordBag.length){state.wordBag=shuffle(Array.from({length:D.vocab.length},(_,i)=>i).filter(i=>D.vocab.length<2||i!==state.lastWord));}const index=state.wordBag.pop();state.lastWord=index;startProjection('vocabulario',index);}
-function startProjection(kind,round=0,payload=null){state.projection={kind,round:Number(round)||0,payload,answered:false,answer:null,explanation:'',hidden:false,pattern:'AB',date:new Date(),weather:null,counts:{present:0,absent:0,girls:0,boys:0},attendance:Object.fromEntries(D.students.map(name=>[name,true])),attendanceStep:'names',duties:{saludos:'',luces:'',material:''},memory:[],flipped:[],matched:[],locked:false,pairCelebration:false,nameBuild:[],nameUsed:[],nameMessage:'',nameWrongIndex:null,nameRound:null};A.setup(state.projection);if($('#resource-dialog').open)$('#resource-dialog').close();if(!$('#projector').open)$('#projector').showModal();projectionRender();$('#projector').scrollTop=0;}
+function startProjection(kind,round=0,payload=null){state.projection={kind,round:Number(round)||0,payload,answered:false,answer:null,explanation:'',hidden:false,pattern:'AB',date:new Date(),weather:null,counts:{present:0,absent:0,girls:0,boys:0},attendance:Object.fromEntries(D.students.map(name=>[name,true])),attendanceStep:'names',duties:{saludos:'',luces:'',material:''},memory:[],flipped:[],matched:[],locked:false,pairCelebration:false,nameBuild:[],nameUsed:[],nameMessage:'',nameWrongIndex:null,nameRound:null,relateRound:null,relateItems:[],relateLeftOrder:[],relateRightOrder:[],relateSelected:null,relateMatched:[]};A.setup(state.projection);if($('#resource-dialog').open)$('#resource-dialog').close();if(!$('#projector').open)$('#projector').showModal();projectionRender();$('#projector').scrollTop=0;}
 function choices(values,answer){state.projection.answer=answer;if(state.projection.level===1&&values.length>2&&state.projection.kind!=='intruso'){const valueOf=v=>String(typeof v==='object'?v.value:v);const wrong=values.find(v=>valueOf(v)!==String(answer));values=values.filter(v=>valueOf(v)===String(answer)||v===wrong);}return '<div class="choice-grid">'+values.map(v=>btn(typeof v==='object'?v.label:E(v),'answer',typeof v==='object'?v.value:v,'choice')).join('')+'</div><div id="game-feedback" class="feedback" role="status" aria-live="polite"></div>';}
-function calendarHTML(date){const y=date.getFullYear(),m=date.getMonth(),count=new Date(y,m+1,0).getDate(),offset=(new Date(y,m,1).getDay()+6)%7;return '<div class="calendar-mini">'+['L','M','X','J','V','S','D'].map(x=>'<b>'+x+'</b>').join('')+'<i style="grid-column:span '+(offset||1)+';'+(!offset?'display:none':'')+'"></i>'+Array.from({length:count},(_,i)=>'<span class="'+(i+1===date.getDate()?'today':'')+'">'+(i+1)+'</span>').join('')+'</div>';}
+function easterSunday(year){const a=year%19,b=Math.floor(year/100),c=year%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,mm=Math.floor((a+11*h+22*l)/451),month=Math.floor((h+l-7*mm+114)/31)-1,day=((h+l-7*mm+114)%31)+1;return new Date(year,month,day);}
+function isSchoolHoliday(date){
+ const y=date.getFullYear(),m=date.getMonth(),d=date.getDate();
+ const fixed=[[0,1],[0,6],[1,28],[4,1],[9,12],[10,1],[11,6],[11,8]];
+ if(fixed.some(([fm,fd])=>fm===m&&fd===d))return true;
+ if((m===11&&d>=23)||(m===0&&d<=7))return true;
+ if((m===5&&d>=23)||m===6||m===7||(m===8&&d===1))return true;
+ const easter=easterSunday(y),start=new Date(easter);start.setDate(easter.getDate()-3);const end=new Date(easter);end.setDate(easter.getDate()+1);
+ if(date>=start&&date<=end)return true;
+ return false;
+}
+function calendarHTML(date,external=false){const y=date.getFullYear(),m=date.getMonth(),count=new Date(y,m+1,0).getDate(),offset=(new Date(y,m,1).getDay()+6)%7,now=new Date();now.setHours(0,0,0,0);const reference=external?now:new Date(y,m,date.getDate());return '<div class="calendar-mini '+(external?'calendar-external':'')+'">'+['L','M','X','J','V','S','D'].map(x=>'<b>'+x+'</b>').join('')+'<i style="grid-column:span '+(offset||1)+';'+(!offset?'display:none':'')+'"></i>'+Array.from({length:count},(_,i)=>{const day=new Date(y,m,i+1),weekend=day.getDay()===0||day.getDay()===6,holiday=isSchoolHoliday(day),today=external?day.getTime()===now.getTime():i+1===date.getDate(),past=day<reference,cls=[today?'today':'',past?'past':'',weekend?'weekend':'',holiday?'holiday':''].filter(Boolean).join(' ');return '<span class="'+cls+'"'+(holiday?' aria-label="Día festivo o sin cole"':weekend?' aria-label="Fin de semana"':'')+'><strong class="calendar-day-number">'+(i+1)+'</strong>'+(!external&&(weekend||holiday)?'<small aria-hidden="true">'+(holiday?'🏖️':'☀️')+'</small>':'')+'</span>';}).join('')+'</div>';}
 function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech='';const n=p.round;let title=GAMES.find(g=>g[0]===p.kind)?.[1]||ROUTINES.find(r=>r[0]===p.kind)?.[2]||'Nuestra asamblea',body='',foot='';
  if(p.payload?.missionWeek)title='Misión de la semana '+p.payload.missionWeek;
  const next=btn('Otra propuesta →','projection-next');
  p.answer=null;p.explanation='';
- const custom=window.ROSA_CLASSROOM?.projection(p)||A.custom(p);const extra=window.ROSA_PDI.round(p.kind,n,p.hidden,p.level);
+ const custom=window.ROSA_CLASSROOM?.projection(p)||A.custom(p);const extra=window.ROSA_PDI.round(p.kind,n,p.hidden,p.level,p.payload);
  if(custom){body=custom.body;foot=custom.foot;}
  else if(extra){p.customSpeech=p.kind==='nombre-letras'?'¿Cuántas letras tiene este nombre?':extra.prompt;p.explanation=extra.explanation;body='<h2>'+E(extra.prompt)+'</h2>'+extra.visual+(extra.needsReveal?btn(p.kind==='nombre-falta'?'Ya miramos. Tapar un nombre':'Ya miramos. Tapar los dibujos','hide-piece','','secondary'):choices(extra.options,extra.answer));foot=next;}
  else if(p.kind==='nombre-escribe'){
@@ -270,22 +293,42 @@ function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech
    else{p.customSpeech='Escribe tu nombre. Busca las letras en orden. Empieza por la primera letra.';let cursor=0;const slots=upper.split(' ').map(word=>'<span class="pdi-name-word">'+[...word].map(()=>'<i>'+(p.nameBuild[cursor++]||'')+'</i>').join('')+'</span>').join('<b aria-label="espacio"></b>');body=select+'<h2>Escribe tu nombre</h2><p class="hint">Busca las letras en orden.</p><div class="pdi-name-slots">'+slots+'</div><div class="pdi-letter-bank">'+bank.map(item=>btn(E(item.letter),'name-letter',item.index+'|'+encodeURIComponent(item.letter),'name-letter '+(p.nameUsed.includes(item.index)?'used':p.nameWrongIndex===item.index?'incorrect':''))).join('')+'</div><div class="feedback" id="name-feedback" role="status" aria-live="polite">'+E(p.nameMessage||'Empieza por la primera letra.')+'</div>';}
    foot=next;
  }
- else if(p.kind==='contar'){const max=[3,6,10][p.level-1],amount=n%max+1;const options=shuffle([amount,...shuffle(Array.from({length:max},(_,i)=>i+1).filter(v=>v!==amount)).slice(0,p.level+0)]);body='<h2>¿Cuántos dinosaurios hay?</h2><div class="game-stage">'+Array.from({length:amount},()=>imageDino(n%9)).join('')+'</div>'+choices(options,String(amount));foot=next;}
+ else if(['relaciona-dino','relaciona-vocabulario','relaciona-cantidades'].includes(p.kind)){
+   if(p.relateRound!==n){
+   const quantities=Array.from({length:10},(_,index)=>({label:String(index+1),visual:'<span class="relate-quantity" aria-label="'+(index+1)+' puntos">'+Array.from({length:index+1},()=>'<i></i>').join('')+'</span>'})),pool=p.kind==='relaciona-cantidades'?quantities:(window.ROSA_CLASSROOM?.vocabThemes?.[p.payload?.theme]||window.ROSA_CLASSROOM?.vocabThemes?.Dinosaurios),total=Math.min(pool.length,[3,3,4,4][p.level-1]),start=n%Math.max(1,pool.length-total+1),chosen=Array.from({length:total},(_,i)=>{const index=(start+i)%pool.length,item=pool[index];return {id:String(index),item};});
+     const relateIds=chosen.map(d=>d.id),leftOrder=shuffle(relateIds);
+     let rightOrder=[...leftOrder];
+     if(p.level===2)rightOrder=[...leftOrder.slice(1),...leftOrder.slice(0,1)];
+     else if(p.level===3){const shift=1+(n%Math.max(1,total-1));rightOrder=[...leftOrder.slice(shift),...leftOrder.slice(0,shift)];}
+     else if(p.level>=4)rightOrder=[...leftOrder].reverse();
+     p.relateRound=n;p.relateItems=chosen;p.relateLeftOrder=leftOrder;p.relateRightOrder=rightOrder;p.relateSelected=null;p.relateMatched=[];p.answered=false;
+   }
+   const complete=p.relateMatched.length===p.relateItems.length;p.answered=complete;
+  p.customSpeech=p.kind==='relaciona-cantidades'?'UNE CADA GRUPO DE PUNTOS CON SU NÚMERO. ARRASTRA UNA FLECHA.':'UNE CADA IMAGEN CON SU PALABRA. ARRASTRA UNA FLECHA DESDE LA IMAGEN HASTA SU NOMBRE.';
+  const card=(side,id,label)=>{const done=p.relateMatched.includes(id),selected=p.relateSelected?.side===side&&p.relateSelected?.id===id;return '<button type="button" class="relate-card '+(done?'done':'')+' '+(selected?'selected':'')+'" data-action="relate-pick" data-value="'+side+'|'+id+'" data-relate-side="'+side+'" data-relate-id="'+id+'"'+(done?' disabled':'')+' aria-pressed="'+selected+'">'+label+'<i class="relate-anchor" aria-hidden="true"></i></button>';};
+  const itemFor=id=>p.relateItems.find(entry=>entry.id===id)?.item;
+  const leftCol=p.relateLeftOrder.map(id=>card('img',id,itemFor(id).visual||'<img src="'+itemFor(id).src+'" alt="" width="110" height="110">')).join('');
+  const rightCol=p.relateRightOrder.map(id=>card('name',id,E(String(itemFor(id).label).toLocaleUpperCase('es-ES')))).join('');
+  const lines=p.relateMatched.map(id=>'<line data-relate-line="'+id+'" class="relate-line" marker-end="url(#relate-arrow)"></line>').join('');
+  body='<h2>'+(p.kind==='relaciona-cantidades'?'UNE CADA CANTIDAD CON SU NÚMERO':'UNE CADA IMAGEN CON SU PALABRA')+'</h2><div class="relate-board"><svg class="relate-lines" aria-hidden="true"><defs><marker id="relate-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z"></path></marker></defs>'+lines+'<line class="relate-line relate-line-live" marker-end="url(#relate-arrow)"></line></svg><div class="relate-columns"><div class="relate-col">'+leftCol+'</div><div class="relate-col">'+rightCol+'</div></div></div><div id="game-feedback" class="feedback" role="status" aria-live="polite">'+(complete?celebration(n,'',window.ROSA_PDI_REWARD?.praise(n)||'¡Muy bien!'):'')+'</div>';
+   foot=next;
+ }
+ else if(p.kind==='contar'){const max=[3,6,10,12][p.level-1],minimum=[1,2,4,7][p.level-1],amount=minimum+n%(max-minimum+1);const options=shuffle([amount,...shuffle(Array.from({length:max},(_,i)=>i+1).filter(v=>v!==amount&&v>=minimum)).slice(0,p.level+0)]);body='<h2>¿Cuántos dibujos hay?</h2><div class="game-stage">'+Array.from({length:amount},()=>vocabImage(p,n)).join('')+'</div>'+choices(options,String(amount));foot=next;}
  else if(p.kind==='series'){const pattern=p.pattern;const length=pattern.length*2+n%pattern.length;const arr=pattern.repeat(4).slice(0,length).split('');const expected=(pattern[length%pattern.length].charCodeAt(0)-65+n)%3;body='<div class="calendar-controls"><label for="pattern-mode">Patrón <select id="pattern-mode">'+['AB','AAB','ABB','ABC','AABB'].map(x=>'<option'+(x===pattern?' selected':'')+'>'+x+'</option>').join('')+'</select></label></div><h2>¿Qué viene después?</h2><div class="game-stage">'+arr.map(t=>shape((t.charCodeAt(0)-65+n)%3)).join('')+'<span class="token">?</span></div>'+choices(shuffle([0,1,2]).map(i=>({label:shape(i),value:String(i)})),String(expected));foot=next;}
  else if(p.kind==='series-ilustradas'){const i=n%ILLUSTRATED_SERIES.length,r=ILLUSTRATED_SERIES[i];p.explanation=r.explanation;body='<span class="tag illustrated-series-progress">SERIES ILUSTRADAS · '+(i+1)+' / '+ILLUSTRATED_SERIES.length+'</span><h2>'+r.prompt+'</h2><figure class="illustrated-series-scene"><img src="'+r.image+'" width="1200" height="900" alt="'+E(r.alt)+'"></figure><p class="illustrated-series-hint">FÍJATE EN EL PATRÓN. LA PIEZA QUE TIENE EL NIÑO PUEDE DESPISTAR.</p>'+choices(r.options.map(option=>({value:option[0],label:illustratedSeriesOption(option)})),r.answer);foot=btn(i===ILLUSTRATED_SERIES.length-1?'VOLVER A EMPEZAR ↻':'SIGUIENTE IMAGEN →','projection-next');}
  else if(p.kind==='vocales-ilustradas'){const i=n%ILLUSTRATED_VOWELS.length,r=ILLUSTRATED_VOWELS[i];p.explanation=r.explanation;p.customSpeech=r.prompt;body='<span class="tag illustrated-language-progress">VOCALES ILUSTRADAS · '+(i+1)+' / '+ILLUSTRATED_VOWELS.length+'</span><h2>'+r.prompt+'</h2><figure class="illustrated-language-scene"><img src="'+r.image+'" width="1200" height="900" alt="'+E(r.alt)+'"></figure>'+choices(r.options,r.answer);foot=btn(i===ILLUSTRATED_VOWELS.length-1?'VOLVER A EMPEZAR ↻':'SIGUIENTE IMAGEN →','projection-next');}
- else if(p.kind==='intruso'){const normal=n%3,different=(normal+1)%3,total=[3,4,6][p.level-1],pos=n%total;body='<h2>¿Cuál tiene otra forma?</h2>'+choices(Array.from({length:total},(_,i)=>({label:shape(i===pos?different:normal),value:String(i)})),String(pos));foot=next;}
- else if(p.kind==='falta'){const trio=Array.from({length:[2,3,4][p.level-1]},(_,i)=>(n+i)%9),missing=trio[n%trio.length];body='<h2>'+(p.hidden?'¿Qué dinosaurio falta?':'Mira estos dinosaurios')+'</h2><div class="game-stage">'+trio.map(i=>p.hidden&&i===missing?'<span class="token">?</span>':imageDino(i)).join('')+'</div>'+(p.hidden?choices(shuffle(trio).map(i=>({label:imageDino(i),value:String(i)})),String(missing)):btn('Ya miramos. Ocultar uno','hide-piece','','secondary'));foot=next;}
+ else if(p.kind==='intruso'){const normal=n%3,different=(normal+1)%3,total=[3,4,6,8][p.level-1],pos=n%total;body='<h2>¿Cuál tiene otra forma?</h2>'+choices(Array.from({length:total},(_,i)=>({label:shape(i===pos?different:normal),value:String(i)})),String(pos));foot=next;}
+ else if(p.kind==='falta'){const total=[2,3,4,5][p.level-1],trio=Array.from({length:total},(_,i)=>(n+i)%((window.ROSA_CLASSROOM?.vocabThemes?.[p.payload?.theme]||D.dinosaurs).length)),missing=trio[n%trio.length];body='<h2>'+(p.hidden?'¿Qué dibujo falta?':'Mira estos dibujos')+'</h2><div class="game-stage">'+trio.map(i=>p.hidden&&i===missing?'<span class="token">?</span>':vocabImage(p,i)).join('')+'</div>'+(p.hidden?choices(shuffle(trio).map(i=>({label:vocabImage(p,i),value:String(i)})),String(missing)):btn('Ya miramos. Ocultar uno','hide-piece','','secondary'));foot=next;}
  else if(p.kind==='clasificar'){const d=pick(D.dinosaurs,n);body='<h2>¿Qué comía '+E(d.short)+'?</h2><div class="game-stage">'+imageDino(n)+'</div>'+(p.level===1?'<p class="hint">Pista: '+E(d.fact)+'</p>':'')+choices([{label:'🌿<br><span style="font-size:1.4rem">Plantas</span>',value:'Herbívoro'},{label:'🐟<br><span style="font-size:1.4rem">Otros animales</span>',value:'Carnívoro'}],d.diet);foot=next;}
  else if(p.kind==='letras'){const alphabet='ABCDEFGHIJKLMNÑOPQRSTUVWXYZ',l=alphabet[n%alphabet.length],answer=p.level===3?l.toLowerCase():l;const others=Array.from({length:p.level+1},(_,i)=>{const letter=alphabet[(n+i*2)%alphabet.length];return p.level===3?letter.toLowerCase():letter;});body='<h2>'+(p.level===3?'Busca su letra minúscula':'Busca una letra igual')+'</h2><span class="prompt-symbol" style="font-family:Nunito;font-weight:900;color:var(--rose)">'+l+'</span>'+choices(shuffle(others),answer);foot=next;}
  else if(p.kind==='emociones'){body='<h2>¿Cómo te sientes?</h2><div class="choice-grid emotion-choices">'+[['🙂','Alegría'],['😢','Tristeza'],['😠','Enfado'],['😟','Miedo'],['😮','Sorpresa'],['😌','Calma'],['❓','No lo sé'],['✋','Paso turno']].map(a=>btn('<span>'+a[0]+'</span>'+a[1],'emotion',a[1],'choice')).join('')+'</div><div id="game-feedback" class="feedback" role="status"></div>';foot=btn('Encargados →','routine','encargado');}
  else if(p.kind==='tiempo'){body='<h2>¿Qué vemos en el cielo?</h2><div class="choice-grid emotion-choices">'+[['☀️','Sol'],['☁️','Nubes'],['🌧️','Lluvia'],['💨','Viento'],['❄️','Nieve'],['🌤️','Sol y nubes']].map(a=>btn('<span>'+a[0]+'</span>'+a[1],'weather',a[1],'choice'+(p.weather===a[1]?' correct':''))).join('')+'</div><div class="feedback" role="status">'+(p.weather?'Hoy observamos: '+E(p.weather):'Miremos por la ventana.')+'</div>';foot=btn('Emociones →','routine','emociones');}
- else if(p.kind==='calendario'){const local=p.date.getFullYear()+'-'+String(p.date.getMonth()+1).padStart(2,'0')+'-'+String(p.date.getDate()).padStart(2,'0'),display=p.date.toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'}).replaceAll(' de ',' ').toLocaleUpperCase('es-ES');body='<h2 class="assembly-date-display">'+E(display)+'</h2><div class="calendar-controls"><label>Elegir fecha <input type="date" id="assembly-date" value="'+local+'"></label>'+btn('Hoy','calendar-today','','secondary')+'</div>'+calendarHTML(p.date);foot=btn('Estación y tiempo →','routine','estacion');}
+ else if(p.kind==='calendario'){const external=Boolean(p.payload?.externalCalendar),local=p.date.getFullYear()+'-'+String(p.date.getMonth()+1).padStart(2,'0')+'-'+String(p.date.getDate()).padStart(2,'0'),display=p.date.toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'}).replaceAll(' de ',' ').toLocaleUpperCase('es-ES'),month=p.date.toLocaleDateString('es-ES',{month:'long',year:'numeric'}).toLocaleUpperCase('es-ES');body=external?'<div class="external-calendar-heading"><button type="button" class="calendar-month-arrow" data-action="calendar-month" data-value="-1" aria-label="Mes anterior">←</button><h2>'+E(month)+'</h2><button type="button" class="calendar-month-arrow" data-action="calendar-month" data-value="1" aria-label="Mes siguiente">→</button></div>':'<h2 class="assembly-date-display">'+E(display)+'</h2><div class="calendar-controls"><label>Elegir fecha <input type="date" id="assembly-date" value="'+local+'"></label>'+btn('Hoy','calendar-today','','secondary')+'</div>';body+=calendarHTML(p.date,external);foot=external?'':btn('Estación y tiempo →','routine','estacion');}
  else if(p.kind==='dino'){const d=pick(D.dinosaurs,n);body='<h2>'+E(d.short)+'</h2><figure class="pdi-dino-presentation"><img src="assets/dinos-pdi/'+d.id+'.webp" width="544" height="544" alt="'+E(d.short)+'. '+E(d.clue)+'"><figcaption>'+E(d.fact)+'</figcaption></figure><span class="tag">'+E(d.name)+' · '+d.diet+' · '+d.period+'</span><p class="hint dino-art-note">Colores imaginados. Los dibujos no están a escala.</p>';foot=next;}
  else if(p.kind==='vocabulario'){const v=pick(D.vocab,n);body='<span class="prompt-symbol" aria-hidden="true">'+v.icon+'</span><h2>'+E(v.word)+'</h2><p>'+E(v.definition)+'</p>';foot=btn('Otra palabra al azar ↻','random-word');}
  else if(p.kind==='verdadero'){const v=pick(D.truth,n);body='<h2>'+E(v[0])+'</h2>'+(p.level===1?'<p class="hint">Lo recordamos: '+E(v[2])+'</p>':'')+choices([{label:'Sí ✓',value:'true'},{label:'No ✕',value:'false'}],String(v[1]));foot=next;}
  else if(p.kind==='adivinanza'){const r=pick(D.riddles,n);const art=r[2].startsWith('dino:')?'<img style="height:240px;object-fit:contain" src="assets/dinos-pdi/'+r[2].slice(5)+'.webp" alt="'+E(r[1])+'">':'<span class="prompt-symbol">'+r[2]+'</span>';body='<span class="prompt-symbol">?</span><h2>'+E(r[0])+'</h2><div id="riddle-answer" class="hidden">'+art+'<p>'+E(r[1])+'</p></div>'+btn('Descubrir respuesta','reveal-riddle','','secondary');foot=next;}
- else if(p.kind==='memory'){const complete=p.matched.length===p.memory.length;body='<h2>Buscamos parejas juntos</h2><div class="memory-grid">'+p.memory.map((i,j)=>{const visible=p.flipped.includes(j)||p.matched.includes(j);return btn(visible?(p.payload?.theme?window.ROSA_CLASSROOM.memoryImage(p.payload.theme,i):imageDino(i)):'<span aria-label="Destapar tarjeta '+(j+1)+'">?</span>','memory-flip',j,'memory-card '+(p.matched.includes(j)?'matched':''));}).join('')+'</div><div id="memory-feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true">'+(p.pairCelebration?celebration(p.matched.length/2,complete?'Habéis encontrado todas las parejas. ¡Un aplauso para toda la clase!':p.matched.length/2+' de '+p.memory.length/2+' parejas. Seguimos buscando juntos.',p.pairHeadline||(complete?'¡Lo habéis conseguido!':'¡Una pareja!')) : p.matched.length/2+' de '+p.memory.length/2+' parejas')+'</div>';foot=btn('Volver a mezclar','projection-next');}
+ else if(p.kind==='memory'){const complete=p.matched.length===p.memory.length;body='<h2>Buscamos parejas juntos</h2><div class="memory-grid">'+p.memory.map((i,j)=>{const visible=p.flipped.includes(j)||p.matched.includes(j);return btn(visible?(p.payload?.theme?window.ROSA_CLASSROOM.memoryImage(p.payload.theme,i):imageDino(i)):'<span aria-label="Destapar tarjeta '+(j+1)+'">?</span>','memory-flip',j,'memory-card '+(p.matched.includes(j)?'matched':''));}).join('')+'</div><div id="memory-feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true">'+(p.pairCelebration?celebration(p.matched.length/2,'',p.pairHeadline||pdiPraise(p.matched.length/2)) : p.matched.length/2+' de '+p.memory.length/2+' parejas')+'</div>';foot=btn('Volver a mezclar','projection-next');}
  else if(p.kind==='question'){const cat=p.payload;body='<span class="eyebrow">'+E(cat)+'</span><h2>'+E(pick(D.questionGroups[cat],n))+'</h2><p>Podemos hablar, hacer un gesto o pasar turno.</p>';foot=next;}
  else if(p.kind==='challenge'){const ch=pick(D.challenges,n);body='<span class="eyebrow">UN RETO DE '+ch.duration+' MINUTOS</span><h2>'+E(ch.title)+'</h2><p>'+E(ch.text)+'</p>';foot=next;}
  else if(p.kind==='cancion'){const s=pick(D.songs,n);body='<span class="prompt-symbol">♪</span><h2>'+E(s[0])+'</h2><p style="font-size:1.8rem">'+E(s[1]).replaceAll(' / ','<br>')+'</p><p class="hint" style="font-size:1rem">'+E(s[2])+'</p>';foot=next;}
@@ -296,11 +339,185 @@ function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech
  else if(p.kind==='numero'){const v=Math.min(10,Math.max(1,n+1));body='<label class="calendar-controls">Elegir número <select id="assembly-number">'+Array.from({length:10},(_,i)=>'<option value="'+i+'"'+(i===v-1?' selected':'')+'>'+(i+1)+'</option>').join('')+'</select></label><h2>El número protagonista</h2><span class="prompt-symbol" style="font-weight:900">'+v+'</span><div class="game-stage">'+Array.from({length:v},()=>shape(0)).join('')+'</div><p>Enséñalo con los dedos. Busca la misma cantidad de piezas.</p>';foot=btn('Letra protagonista →','routine','letra');}
  else if(p.kind==='letra'){const alphabet='ABCDEFGHIJKLMNÑOPQRSTUVWXYZ',l=alphabet[n%alphabet.length];body='<label class="calendar-controls">Elegir letra <select id="assembly-letter">'+[...alphabet].map((a,i)=>'<option value="'+i+'"'+(a===l?' selected':'')+'>'+a+'</option>').join('')+'</select></label><h2>La letra protagonista</h2><span class="prompt-symbol" style="font-weight:900">'+l+'</span><p>¿Está en alguno de nuestros nombres? Construyámosla con las manos o con plastilina.</p>';foot=btn('Palabra del día aleatoria →','random-word');}
  else if(p.kind==='nombre'){body='<h2>Así es mi nombre</h2><div class="name-letters">'+[...p.payload].map(l=>'<span>'+E(l)+'</span>').join('')+'</div><p>Busco las mismas letras y las coloco en orden.</p>';}
- $('#projection-content').innerHTML='<div class="projection-toolbar"><strong>La Clase Rosa · '+E(title)+'</strong><div>'+btn('Pantalla completa','fullscreen','','secondary small')+btn('× Salir','close-projection','','quiet')+'</div></div>'+A.toolbar(p)+'<div class="projection-main" data-theme="'+E(p.payload?.theme||(p.kind.startsWith('dino')||['expedicion','clasificar','contar','falta','memory'].includes(p.kind)?'Dinosaurios':'General'))+'" data-game="'+E(p.kind)+'" data-level="'+p.level+'">'+body+'</div><div class="projection-footer">'+A.footer(foot)+'</div>';window.ROSA_SCENES?.decorate(p);A.afterRender(body);
+ $('#projection-content').innerHTML='<div class="projection-toolbar"><strong>La Clase Rosa · '+E(title)+'</strong><div>'+btn('Pantalla completa','fullscreen','','secondary small')+btn('× Salir','close-projection','','quiet')+'</div></div>'+A.toolbar(p)+'<div class="projection-main" data-theme="'+E(p.payload?.theme||(p.kind.startsWith('dino')||['expedicion','clasificar','contar','falta','memory'].includes(p.kind)?'Dinosaurios':'General'))+'" data-game="'+E(p.kind)+'" data-level="'+p.level+'">'+body+'</div><div class="projection-footer">'+A.footer(foot)+'</div>';window.ROSA_SCENES?.decorate(p);setupRelateBoard();A.afterRender(body);
 }
-function celebration(index,explanation='',headline=''){const faces=['🥳','🤩','😄','😊','🦕','👏'];const messages=['¡Lo has encontrado!','¡Muy bien!','¡Buen trabajo!','¡Lo has conseguido!','¡Qué bien lo has pensado!','¡Un aplauso para ti!'];return '<div class="pdi-celebration">'+(window.ROSA_CLASSROOM?.confetti()||'')+'<div class="pdi-celebration-art" aria-hidden="true"><span class="pdi-star star-left">⭐</span><span class="pdi-happy-face">'+pick(faces,index)+'</span><span class="pdi-star star-right">✨</span><span class="pdi-spark spark-one">✦</span><span class="pdi-spark spark-two">✦</span></div><div class="pdi-celebration-copy"><strong>'+E(headline||pick(messages,index))+'</strong>'+(explanation?'<p>'+E(explanation)+'</p>':'')+'</div></div>';}
-function answer(target){const p=state.projection;if(!p||p.answered||p.answer===null)return;const correct=target.dataset.value===p.answer;target.classList.remove('incorrect');target.classList.add(correct?'correct':'incorrect');const fb=$('#game-feedback');if(correct){p.answered=true;const explanation=p.kind==='verdadero'?pick(D.truth,p.round)[2]:p.kind==='clasificar'?pick(D.dinosaurs,p.round).fact:p.explanation||'¿Cómo lo has pensado? Podemos contarlo a la clase.';const headline=A.won(p);fb.innerHTML=celebration(p.round,explanation,headline);const genericVoice=['nombre-inicial','nombre-letras','nombre-compara','nombre-falta','fechas-especiales','disfraces'].includes(p.kind);A.feedbackVoice(genericVoice?'¡Muy bien!':(headline||pick(['¡Lo has encontrado!','¡Muy bien!','¡Buen trabajo!','¡Lo has conseguido!','¡Qué bien lo has pensado!','¡Un aplauso para ti!'],p.round))+' '+explanation);fb.scrollIntoView?.({block:'nearest',behavior:'auto'});}else{fb.textContent='Mira con calma. Puedes probar otra opción.';A.feedbackVoice(fb.textContent);} }
-function memoryFlip(index){const p=state.projection;if(!p||p.kind!=='memory'||p.locked||!Number.isInteger(index)||index<0||index>=p.memory.length||p.matched.includes(index)||p.flipped.includes(index))return;p.pairCelebration=false;p.flipped.push(index);if(p.flipped.length===2){const [a,b]=p.flipped;if(p.memory[a]===p.memory[b]){p.matched.push(a,b);p.flipped=[];p.pairCelebration=true;p.pairHeadline=A.won(p);}else{p.locked=true;const current=p;setTimeout(()=>{if(state.projection===current){p.flipped=[];p.locked=false;projectionRender();}},1400);}}projectionRender();if(p.pairCelebration)$('#memory-feedback').scrollIntoView?.({block:'nearest',behavior:'auto'});}
+const PDI_PRAISE=[
+  {headline:'¡Muy bien!',voice:'¡Muy bien! ¡Un aplauso para ti!'},
+  {headline:'¡Buen trabajo!',voice:'¡Buen trabajo! ¡Lo has conseguido!'},
+  {headline:'¡Lo has encontrado!',voice:'¡Lo has encontrado! ¡Muy bien!'},
+  {headline:'¡Lo has conseguido!',voice:'¡Lo has conseguido! ¡Buen trabajo!'},
+  {headline:'¡Qué bien lo has pensado!',voice:'¡Qué bien lo has pensado! ¡Muy bien!'},
+  {headline:'¡Un aplauso para ti!',voice:'¡Un aplauso para ti!'}
+];
+const pdiPraise=index=>PDI_PRAISE[Math.abs(Number(index)||0)%PDI_PRAISE.length].headline;
+const pdiPraiseVoice=index=>PDI_PRAISE[Math.abs(Number(index)||0)%PDI_PRAISE.length].voice;
+
+let pdiRewardAudioContext=null;
+function setupRelateBoard(){
+ const p=state.projection,board=$('.relate-board');if(!board?.querySelector||!p||!['relaciona-dino','relaciona-vocabulario','relaciona-cantidades'].includes(p.kind))return;
+ const svg=board.querySelector('.relate-lines'),live=svg.querySelector('.relate-line-live');let origin=null,pointerId=null,startClient=null,moved=false;
+ const pointFor=(card,side)=>{const boardRect=board.getBoundingClientRect(),rect=card.getBoundingClientRect();return {x:(side==='img'?rect.right:rect.left)-boardRect.left,y:rect.top+rect.height/2-boardRect.top};};
+ const resize=()=>{const rect=board.getBoundingClientRect();svg.setAttribute('viewBox','0 0 '+rect.width+' '+rect.height);svg.querySelectorAll('[data-relate-line]').forEach(line=>{const id=line.dataset.relateLine,left=board.querySelector('[data-relate-side="img"][data-relate-id="'+CSS.escape(id)+'"]'),right=board.querySelector('[data-relate-side="name"][data-relate-id="'+CSS.escape(id)+'"]');if(!left||!right)return;const a=pointFor(left,'img'),b=pointFor(right,'name');line.setAttribute('x1',a.x);line.setAttribute('y1',a.y);line.setAttribute('x2',b.x);line.setAttribute('y2',b.y);});};
+ const clearVisual=()=>{origin?.classList.remove('selected');origin=null;pointerId=null;startClient=null;moved=false;live.classList.remove('active');};
+ const cancel=()=>{p.relateSelected=null;clearVisual();};
+ const finish=(target)=>{if(!origin||!target||target.disabled||target.dataset.relateSide===origin.dataset.relateSide){cancel();return;}if(target.dataset.relateId!==origin.dataset.relateId){const failedOrigin=origin;failedOrigin.classList.add('incorrect');target.classList.add('incorrect');live.classList.add('incorrect','active');A.feedbackVoice('No es esa pareja. Inténtalo otra vez.');setTimeout(()=>{failedOrigin.classList.remove('incorrect');target.classList.remove('incorrect');cancel();live.classList.remove('incorrect');},650);return;}p.relateMatched.push(origin.dataset.relateId);p.relatePointerHandledUntil=Date.now()+500;p.relateSelected=null;clearVisual();const complete=p.relateMatched.length===p.relateItems.length;if(complete){p.answered=true;playPdiApplause();window.ROSA_CLASSROOM?.burstConfetti?.();A.feedbackVoice(pdiPraise(p.relateItems.length));}projectionRender();};
+ board.addEventListener('pointerdown',event=>{const card=event.target.closest('.relate-card');if(!card||card.disabled)return;origin=card;pointerId=event.pointerId;startClient={x:event.clientX,y:event.clientY};moved=false;card.classList.add('selected');board.setPointerCapture?.(pointerId);const start=pointFor(card,card.dataset.relateSide);live.setAttribute('x1',start.x);live.setAttribute('y1',start.y);live.setAttribute('x2',start.x);live.setAttribute('y2',start.y);live.classList.add('active');});
+ board.addEventListener('pointermove',event=>{if(event.pointerId!==pointerId||!origin)return;if(Math.hypot(event.clientX-startClient.x,event.clientY-startClient.y)>8)moved=true;const rect=board.getBoundingClientRect();live.setAttribute('x2',event.clientX-rect.left);live.setAttribute('y2',event.clientY-rect.top);});
+ board.addEventListener('pointerup',event=>{if(event.pointerId!==pointerId)return;const dragged=moved||startClient&&Math.hypot(event.clientX-startClient.x,event.clientY-startClient.y)>8;if(!dragged){clearVisual();return;}const target=document.elementFromPoint(event.clientX,event.clientY)?.closest('.relate-card');finish(target);});
+ board.addEventListener('pointercancel',cancel);window.addEventListener('resize',resize,{once:true});requestAnimationFrame(resize);
+}
+function playPdiScreenConfetti(){
+  if(typeof document.createElement!=='function')return;
+  const old=document.querySelector('.pdi-screen-confetti');
+  old?.remove();
+
+  const layer=document.createElement('div');
+  layer.className='pdi-screen-confetti';
+  layer.setAttribute('aria-hidden','true');
+
+  const total=72;
+  layer.innerHTML=Array.from({length:total},(_,i)=>{
+    const left=(i*37)%100;
+    const drift=((i*53)%41)-20;
+    const delay=((i%12)*0.055).toFixed(3);
+    const duration=(2.7+((i*17)%15)/10).toFixed(2);
+    const spin=240+((i*71)%620);
+    const size=7+((i*11)%8);
+    return '<i style="--x:'+left+'vw;--drift:'+drift+'vw;--delay:'+delay+'s;--dur:'+duration+'s;--spin:'+spin+'deg;--size:'+size+'px"></i>';
+  }).join('');
+
+  document.body.appendChild(layer);
+  window.setTimeout(()=>layer.remove(),4700);
+}
+
+function playPdiApplause(){
+  playPdiScreenConfetti();
+  try{
+    const AudioCtx=window.AudioContext||window.webkitAudioContext;
+    if(!AudioCtx)return;
+    const ctx=pdiRewardAudioContext||(pdiRewardAudioContext=new AudioCtx());
+    if(ctx.state==='suspended')ctx.resume?.();
+
+    const start=ctx.currentTime+.01;
+    [0,.10,.21,.33].forEach((offset,clapIndex)=>{
+      const duration=.075;
+      const buffer=ctx.createBuffer(1,Math.ceil(ctx.sampleRate*duration),ctx.sampleRate);
+      const data=buffer.getChannelData(0);
+      for(let i=0;i<data.length;i++){
+        const t=i/data.length;
+        data[i]=(Math.random()*2-1)*Math.pow(1-t,3.2);
+      }
+      const source=ctx.createBufferSource();
+      source.buffer=buffer;
+
+      const filter=ctx.createBiquadFilter();
+      filter.type='bandpass';
+      filter.frequency.value=1400+(clapIndex%2)*350;
+      filter.Q.value=.75;
+
+      const gain=ctx.createGain();
+      gain.gain.setValueAtTime(.0001,start+offset);
+      gain.gain.exponentialRampToValueAtTime(.16,start+offset+.008);
+      gain.gain.exponentialRampToValueAtTime(.0001,start+offset+duration);
+
+      source.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+      source.start(start+offset);
+      source.stop(start+offset+duration+.01);
+    });
+  }catch{}
+}
+
+
+function launchPdiConfetti(){
+  const stage=document.querySelector('#projector .projection-main')||document.querySelector('.projection-main');
+  if(!stage)return;
+
+  stage.querySelector('.pdi-screen-confetti')?.remove();
+
+  const layer=document.createElement('span');
+  layer.className='pdi-screen-confetti';
+  layer.setAttribute('aria-hidden','true');
+  layer.innerHTML=Array.from({length:54},(_,i)=>
+    '<i style="--i:'+i+';--x:'+((i*37)%101)+';--d:'+(i%9)+';--r:'+((i*71)%360)+'deg"></i>'
+  ).join('');
+
+  stage.appendChild(layer);
+  window.setTimeout(()=>layer.remove(),3200);
+}
+
+window.ROSA_PDI_REWARD=Object.freeze({praise:pdiPraise,voice:pdiPraiseVoice,applause:playPdiApplause});
+function celebration(index,explanation='',headline=''){
+  const faces=['🥳','🤩','😄','😊','🦕','👏'];
+  return '<div class="pdi-celebration">'+(window.ROSA_CLASSROOM?.confetti()||'')+
+    '<div class="pdi-celebration-art" aria-hidden="true"><span class="pdi-star star-left">⭐</span><span class="pdi-happy-face">'+pick(faces,index)+'</span><span class="pdi-star star-right">✨</span><span class="pdi-spark spark-one">✦</span><span class="pdi-spark spark-two">✦</span></div>'+
+    '<div class="pdi-celebration-copy"><strong>'+E(headline||pdiPraise(index))+'</strong>'+(explanation?'<p>'+E(explanation)+'</p>':'')+'</div>'+
+  '</div>';
+}
+function answer(target){
+  const p=state.projection;
+  if(!p||p.answered||p.answer===null)return;
+
+  const correct=target.dataset.value===p.answer;
+  target.classList.remove('incorrect');
+  target.classList.add(correct?'correct':'incorrect');
+  const fb=$('#game-feedback');
+
+  if(correct){
+    p.answered=true;
+
+    const explanation=
+      p.kind==='verdadero' ? pick(D.truth,p.round)[2] :
+      p.kind==='clasificar' ? pick(D.dinosaurs,p.round).fact :
+      '';
+
+    const praise=pdiPraise(p.round);
+    const headline=A.won(p,praise)||praise;
+
+    fb.innerHTML=celebration(p.round,explanation,headline);
+    playPdiApplause();window.ROSA_CLASSROOM?.burstConfetti?.();
+    A.feedbackVoice(praise);
+    fb.scrollIntoView?.({block:'nearest',behavior:'auto'});
+  }else{
+    fb.textContent='Mira con calma. Puedes probar otra opción.';
+    A.feedbackVoice(fb.textContent);
+  }
+}
+function memoryFlip(index){
+  const p=state.projection;
+  if(!p||p.kind!=='memory'||p.locked||!Number.isInteger(index)||index<0||index>=p.memory.length||p.matched.includes(index)||p.flipped.includes(index))return;
+
+  p.pairCelebration=false;
+  p.flipped.push(index);
+
+  if(p.flipped.length===2){
+    const [a,b]=p.flipped;
+    if(p.memory[a]===p.memory[b]){
+      p.matched.push(a,b);
+      p.flipped=[];
+      p.pairCelebration=true;
+
+      const praise=pdiPraise(p.matched.length/2);
+      p.pairHeadline=A.won(p,praise)||praise;
+      playPdiApplause();window.ROSA_CLASSROOM?.burstConfetti?.();
+      A.feedbackVoice(praise);
+    }else{
+      p.locked=true;
+      const current=p;
+      setTimeout(()=>{
+        if(state.projection===current){
+          p.flipped=[];
+          p.locked=false;
+          projectionRender();
+        }
+      },1400);
+    }
+  }
+
+  projectionRender();
+  if(p.pairCelebration)$('#memory-feedback').scrollIntoView?.({block:'nearest',behavior:'auto'});
+}
 function printName(){const raw=$('#child-name')?.value.trim();if(!raw){toast('Escribe primero un nombre.');return;}const name=raw.toLocaleUpperCase('es-ES').slice(0,24);const win=window.open('','_blank');if(!win){toast('El navegador ha bloqueado la ventana de impresión. Permite abrirla e inténtalo de nuevo.');return;}win.document.open();win.document.write('<!doctype html><html lang="es"><meta charset="utf-8"><title>Mi nombre · La Clase Rosa</title><style>body{font-family:Arial;margin:35px;color:#302c35}h1{font-size:24px}h2{font-size:38px;letter-spacing:5px;padding:25px;border:2px solid #555}.letters{display:flex;flex-wrap:wrap;gap:15px}.letters span{font-size:54px;font-weight:bold;border:2px dashed #777;width:85px;height:100px;display:grid;place-items:center}button{padding:12px;font-size:18px;margin-bottom:30px}@media print{button{display:none}@page{size:A4;margin:15mm}}</style><button onclick="window.print()">Imprimir / Guardar PDF</button><h1>La Clase Rosa · Mi nombre, pieza a pieza</h1><p>La maestra lee el nombre. Busca letras iguales y ordénalas con el modelo.</p><h2>'+E(name)+'</h2><div class="letters">'+[...name.replace(/\s/g,'')].map(l=>'<span>'+E(l)+'</span>').join('')+'</div></html>');win.document.close();win.opener=null;}
 document.addEventListener('click',event=>{const target=event.target.closest('[data-action]');if(!target)return;event.preventDefault();const action=target.dataset.action,value=target.dataset.value;
  if(window.ROSA_MISSIONS?.handle(action,value,target))return;
@@ -336,9 +553,21 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='projection-next')A.next();
  else if(action==='hide-piece'){state.projection.hidden=true;projectionRender();}
  else if(action==='hide-name-model'){state.projection.hidden=true;state.projection.nameBuild=[];state.projection.nameUsed=[];state.projection.nameMessage='';projectionRender();}
- else if(action==='name-letter'){const p=state.projection;if(!p||p.kind!=='nombre-escribe'||p.answered)return;const split=value.indexOf('|'),index=Number(value.slice(0,split)),letter=decodeURIComponent(value.slice(split+1)),target=[...D.students[p.round%D.students.length].toLocaleUpperCase('es-ES').replace(/\s/g,'')];if(p.nameUsed.includes(index))return;let voice='';if(letter===target[p.nameBuild.length]){p.nameWrongIndex=null;p.nameBuild.push(letter);p.nameUsed.push(index);p.nameMessage='¡Sí! Busca la siguiente letra.';voice='¡Muy bien! Busca la siguiente letra.';if(p.nameBuild.length===target.length){p.answered=true;p.nameMessage='¡Nombre completo!';voice='¡Muy bien! Has completado tu nombre.';}}else{p.nameWrongIndex=index;p.nameMessage='Esa no es la letra que sigue. Busca otra.';voice='Esa no es la letra que sigue. Busca otra.';}projectionRender();A.feedbackVoice(voice);}
+ else if(action==='name-letter'){const p=state.projection;if(!p||p.kind!=='nombre-escribe'||p.answered)return;const split=value.indexOf('|'),index=Number(value.slice(0,split)),letter=decodeURIComponent(value.slice(split+1)),target=[...D.students[p.round%D.students.length].toLocaleUpperCase('es-ES').replace(/\s/g,'')];if(p.nameUsed.includes(index))return;let voice='';if(letter===target[p.nameBuild.length]){p.nameWrongIndex=null;p.nameBuild.push(letter);p.nameUsed.push(index);p.nameMessage='¡Sí! Busca la siguiente letra.';voice='¡Muy bien! Busca la siguiente letra.';if(p.nameBuild.length===target.length){p.answered=true;p.nameMessage='¡Nombre completo!';voice=pdiPraiseVoice(p.round);window.ROSA_PDI_REWARD?.applause();window.ROSA_CLASSROOM?.burstConfetti?.();window.ROSA_PDI_REWARD?.confetti();}}else{p.nameWrongIndex=index;p.nameMessage='Esa no es la letra que sigue. Busca otra.';voice='Esa no es la letra que sigue. Busca otra.';}projectionRender();A.feedbackVoice(voice);}
  else if(action==='answer')answer(target);
- else if(action==='emotion'){$('#game-feedback').textContent=value==='Paso turno'?'Está bien. Puedes escuchar.':'Gracias por compartirlo. ¿Qué necesitas ahora?';target.classList.add('correct');A.feedbackVoice($('#game-feedback').textContent);}
+ else if(action==='relate-pick'){
+  const p=state.projection;if(!p||!['relaciona-dino','relaciona-vocabulario','relaciona-cantidades'].includes(p.kind)||p.answered)return;
+   if(p.relatePointerHandledUntil>Date.now())return;
+   const [side,id]=value.split('|');if(p.relateMatched.includes(id))return;
+   if(!p.relateSelected||p.relateSelected.side===side){p.relateSelected={side,id};projectionRender();return;}
+   if(p.relateSelected.id===id){
+     p.relateMatched.push(id);p.relateSelected=null;
+     const complete=p.relateMatched.length===p.relateItems.length;
+     if(complete){p.answered=true;const praise=pdiPraise(p.relateItems.length);const headline=A.won(p,praise)||praise;playPdiApplause();window.ROSA_CLASSROOM?.burstConfetti?.();A.feedbackVoice(praise);projectionRender();$('#game-feedback').innerHTML=celebration(p.round,'',headline);$('#game-feedback').scrollIntoView?.({block:'nearest'});}
+     else projectionRender();
+   }else{p.relateSelected=null;projectionRender();}
+ }
+ else if(action==='emotion'){if(state.projection?.answered)return;state.projection.answered=true;$('#game-feedback').textContent=value==='Paso turno'?'Está bien. Puedes escuchar.':'Gracias por compartirlo. ¿Qué necesitas ahora?';target.classList.add('correct');A.feedbackVoice($('#game-feedback').textContent);}
  else if(action==='weather'){state.projection.weather=value;projectionRender();}
  else if(action==='season'){$('#game-feedback').textContent='Observamos los cambios de '+value.toLowerCase()+'.';target.classList.add('correct');A.feedbackVoice($('#game-feedback').textContent);}
  else if(action==='duty-random'){const names=D.students,role=value,current=state.projection.duties[role],pool=names.filter(name=>name!==current),chosen=pool[Math.floor(Math.random()*pool.length)]||names[0];state.projection.duties[role]=chosen;projectionRender();A.feedbackVoice(window.ROSA_SCENES.dutySpeech(role,chosen));}
@@ -347,6 +576,7 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='song-link-remove'){const index=Number(value);if(Number.isInteger(index)&&index>=0&&index<state.songLinks.length){state.songLinks.splice(index,1);try{localStorage.setItem('rosa-song-links-v1',JSON.stringify(state.songLinks));}catch{}render();}}
  else if(action==='song-manager'){A.stopVoice();if($('#projector').open)$('#projector').close();location.hash='canciones';render();}
  else if(action==='calendar-today'){state.projection.date=new Date();projectionRender();}
+ else if(action==='calendar-month'){const p=state.projection;if(p?.kind==='calendario'&&p.payload?.externalCalendar){const next=new Date(p.date);next.setDate(1);next.setMonth(next.getMonth()+Number(value));p.date=next;projectionRender();}}
  else if(action==='count'){const [key,delta]=value.split('|');state.projection.countDetails=['girls','boys'].includes(key);state.projection.counts[key]=Math.max(0,Math.min(40,state.projection.counts[key]+Number(delta)));projectionRender();}
  else if(action==='reveal-riddle'){$('#riddle-answer').classList.remove('hidden');target.disabled=true;A.feedbackVoice(pick(D.riddles,state.projection.round)[1]);}
  else if(action==='memory-flip')memoryFlip(Number(value));

@@ -338,3 +338,120 @@
 .pattern-count-6 .pattern-print-row{gap:calc(1.8 * var(--u))!important}
 .pattern-count-8 .pattern-print-row{gap:calc(1.1 * var(--u))!important}
 .pattern-count-8 .pattern-exercise h2{font-size:calc(2.6 * var(--u))!important}
+
+/* Juego "Une": tarjetas amplias y flechas trazadas entre sus puntos de unión. */
+.relate-columns{display:grid;grid-template-columns:minmax(260px,1fr) minmax(260px,1fr);gap:clamp(80px,10vw,150px);width:100%;margin:16px auto}
+.relate-col{display:flex;flex-direction:column;gap:12px}
+.relate-card{position:relative;display:flex;width:100%;align-items:center;justify-content:center;gap:8px;min-height:92px;border:3px solid #cba8b9;border-radius:14px;background:white;color:var(--rose);font-size:1.2rem;font-weight:800;touch-action:none}
+.relate-card img{width:64px;height:64px;object-fit:contain;pointer-events:none}
+.relate-anchor{position:absolute;top:50%;width:18px;height:18px;border:4px solid #9c365c;border-radius:50%;background:#fff;transform:translateY(-50%);pointer-events:none}.relate-col:first-child .relate-anchor{right:-11px}.relate-col:last-child .relate-anchor{left:-11px}
+.relate-card.selected{outline:4px solid #ecc44c;outline-offset:2px;border-color:#9c365c}
+.relate-card.incorrect{border-color:#d52f45;background:#ffe8eb;outline:4px solid #d52f45;outline-offset:2px}.relate-line-live.incorrect{stroke:#d52f45;stroke-dasharray:none}.relate-line-live.incorrect+*{color:#d52f45}
+.relate-card.done{border-color:#7caa86;background:#eef6ee;color:#2d7045;opacity:.85}
+.relate-board{position:relative;width:min(1120px,100%);margin:16px auto}.relate-lines{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;overflow:visible}.relate-line{stroke:#d43c5b;stroke-width:5;stroke-linecap:round;opacity:1}.relate-lines marker path{fill:#d43c5b}.relate-line-live{display:none;stroke-dasharray:10 7}.relate-line-live.active{display:block}.relate-board .relate-columns{position:relative;z-index:1;width:100%}.relate-board .relate-card{background:#fff}
+.relate-board .relate-card img{width:92px;height:72px;object-fit:contain}
+.relate-quantity{display:grid;grid-template-columns:repeat(5,18px);place-content:center;gap:7px;min-height:68px}.relate-quantity i{width:18px;height:18px;border-radius:50%;background:#d43c5b;box-shadow:inset 0 0 0 2px #a62643}.projection-main[data-game="relaciona-cantidades"] .relate-col:last-child .relate-card{font-size:2.4rem;color:#0b2865}
+@media (max-width:720px){.relate-columns{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px}.relate-card{min-height:68px;font-size:.9rem;padding:8px}.relate-card img{width:52px;height:52px}.relate-anchor{width:14px;height:14px;border-width:3px}.relate-col:first-child .relate-anchor{right:-9px}.relate-col:last-child .relate-anchor{left:-9px}}
+
+/* PDI: tarjetas uniformes y clasificación fotográfica. */
+.game-grid{align-items:stretch}
+.game-grid .game-tile{height:100%;display:flex;flex-direction:column}
+.game-grid .game-tile p{min-height:3.2em}
+.game-grid .game-tile .pdi-card-tools{margin-top:auto}
+
+/* === PDI FIT + UNE 3-3-4-4 · 2026-09-22 === */
+/* La zona central ocupa solo el espacio disponible entre cabecera/controles/pie.
+   Si el contenido crece, se desplaza dentro de la zona central y nunca se pierde
+   el título por el centrado vertical. */
+#projector #projection-content{
+  height:100%;
+  min-height:0;
+  overflow:hidden;
+}
+#projector .projection-toolbar,
+#projector .aula-projection-controls,
+#projector #adventure-progress,
+#projector .projection-footer{
+  flex:0 0 auto;
+}
+#projector .projection-toolbar{
+  flex-wrap:wrap;
+  row-gap:8px;
+}
+#projector .projection-toolbar>strong{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+#projector .projection-main{
+  min-height:0;
+  overflow-x:hidden;
+  overflow-y:auto;
+  box-sizing:border-box;
+  justify-content:flex-start;
+  justify-content:safe center;
+  scroll-padding-block:18px;
+}
+#projector .projection-main>h2{
+  width:100%;
+  max-width:min(1050px,100%);
+  flex:0 0 auto;
+  overflow-wrap:anywhere;
+  text-wrap:balance;
+}
+
+/* Puzle: cada pieza reutiliza la misma imagen como fondo y muestra exactamente
+   su fragmento. Evita piezas vacías por posicionamiento absoluto del IMG. */
+#projector .puzzle-fragment{
+  background-repeat:no-repeat;
+  background-color:#fff;
+  background-origin:border-box;
+  background-clip:border-box;
+}
+
+/* Todos los juegos de unir con flechas comparten un máximo de cuatro parejas.
+   Compactamos título, consigna y tarjetas para una PDI 16:9 sin cortar contenido. */
+#projector .projection-main[data-game="relaciona-vocabulario"],
+#projector .projection-main[data-game="relaciona-cantidades"],
+#projector .projection-main[data-game="relaciona-dino"]{
+  padding-top:12px;
+  padding-bottom:12px;
+}
+#projector .projection-main[data-game="relaciona-vocabulario"]>h2,
+#projector .projection-main[data-game="relaciona-cantidades"]>h2,
+#projector .projection-main[data-game="relaciona-dino"]>h2{
+  font-size:clamp(1.55rem,3vw,2.75rem);
+  line-height:1.12;
+  margin:4px 0 8px;
+}
+#projector .projection-main[data-game="relaciona-vocabulario"]>.hint,
+#projector .projection-main[data-game="relaciona-cantidades"]>.hint,
+#projector .projection-main[data-game="relaciona-dino"]>.hint{
+  margin:0 0 8px;
+  font-size:clamp(.95rem,1.45vw,1.15rem);
+}
+#projector .relate-board{
+  width:min(1120px,100%);
+  margin:6px auto;
+}
+#projector .relate-board .relate-columns{
+  margin:0 auto;
+  gap:clamp(58px,8vw,118px);
+}
+#projector .relate-board .relate-col{
+  gap:clamp(8px,1.2dvh,12px);
+}
+#projector .relate-board .relate-card{
+  min-height:clamp(76px,11.5dvh,104px);
+  padding:8px 14px;
+  font-size:clamp(1.05rem,1.8vw,1.45rem);
+  line-height:1.12;
+  text-transform:uppercase;
+  overflow-wrap:anywhere;
+}
+#projector .relate-board .relate-card img{
+  width:clamp(62px,8dvh,90px);
+  height:clamp(56px,7.5dvh,78px);
+}
+#projector .projection-main[data-game="relaciona-cantidades"] .relate-col:last-child .relate-card{
+  font-size:clamp(1.9rem,3.6vw,2.5rem);
+}

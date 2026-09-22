@@ -9,7 +9,7 @@ class Audio{constructor(){player=this;}play(){played.push(this.src);return rejec
 const window={Audio,ROSA_VOICE_FILES:{files:expected},addEventListener(){},scrollTo(){}};
 const context=vm.createContext({window,document:{querySelector:el,addEventListener(){}},console,URL,URLSearchParams,location:{hash:'',href:'https://rosa.example/'},localStorage:{getItem(){return null},setItem(){}},setTimeout(){},clearTimeout(){},fetch:async url=>({ok:url!=='/api/aula',json:async()=>JSON.parse(fs.readFileSync(path.join(publicDir,'materials.json'),'utf8'))})});
 const run=s=>vm.runInContext(s,context);
-for(const f of ['data.js','pdi.js','play-content.js','sheet-studio.js','pdi-voice.js','aula.js','app.js'])run(fs.readFileSync(path.join(publicDir,f),'utf8'));
+for(const f of ['data.js','pdi.js','play-content.js','sheet-content.js','sheet-studio.js','pdi-voice.js','aula.js','classroom.js','app.js'])run(fs.readFileSync(path.join(publicDir,f),'utf8'));
 const V=window.ROSA_VOICE;
 const inventory=JSON.parse(fs.readFileSync(path.join(root,'sources/pdi-spoken-texts.json'),'utf8'));
 for(const row of inventory){const parts=V.resolve(row.text);assert(parts.length);assert(parts.every(p=>p.url),'Missing voice: '+row.text);}

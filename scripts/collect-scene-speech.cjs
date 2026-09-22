@@ -7,7 +7,7 @@ function element(id){if(!elements.has(id))elements.set(id,{insertAdjacentHTML(){
 const document={querySelector:element,addEventListener(type,fn){(listeners[type]??=[]).push(fn);}};
 const window={addEventListener(){},scrollTo(){},scrollY:0};
 const context=vm.createContext({document,window,location:{hash:'',href:'https://example.test/'},URL,URLSearchParams,localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},fetch:async()=>({ok:true,json:async()=>manifest}),setTimeout:()=>0,clearTimeout(){},console});
-for(const file of ['data.js','pdi.js','play-content.js','sheet-studio.js','audio/pdi/manifest.js','audio/pdi/scenes-manifest.js','pdi-voice.js','aula.js','rosi-config.js','rosi-media.js','rosi-episode.js','rosi-missions.js','classroom.js','pdi-scenes.js','app.js'])vm.runInContext(fs.readFileSync(path.join(dist,file),'utf8'),context,{filename:file});
+for(const file of ['data.js','pdi.js','play-content.js','sheet-content.js','sheet-studio.js','audio/pdi/manifest.js','audio/pdi/scenes-manifest.js','pdi-voice.js','aula.js','rosi-config.js','rosi-media.js','rosi-episode.js','rosi-missions.js','classroom.js','pdi-scenes.js','app.js'])vm.runInContext(fs.readFileSync(path.join(dist,file),'utf8'),context,{filename:file});
 const run=code=>vm.runInContext(code,context);
 
 
