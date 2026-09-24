@@ -2,6 +2,7 @@
 (() => {
   const ROLE = { id: 'jabon', icon: '🧼', label: 'Jabón' };
   const selected = { assembly: '', projection: '' };
+  const absent = new Set();
 
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -9,6 +10,10 @@
 
   function students() {
     return Array.isArray(window.ROSA?.students) ? window.ROSA.students : [];
+  }
+
+  function presentStudents() {
+    return students().filter(name => !absent.has(name));
   }
 
   function dutySpeech() {
@@ -27,7 +32,7 @@
     const value = selected[mode] || '';
     const selectAttr = mode === 'assembly' ? 'data-assembly-duty-role' : 'data-duty-role';
     const action = mode === 'assembly' ? 'assembly-duty-random' : 'duty-random';
-    const options = students().map(name =>
+    const options = presentStudents().map(name =>
       `<option value="${esc(name)}"${value === name ? ' selected' : ''}>${esc(name)}</option>`
     ).join('');
 
@@ -53,10 +58,28 @@
     grid.appendChild(roleCard(mode));
   }
 
-  function mount() {
-    patchDutySpeech();
-    document.querySelectorAll('.assembly-duties .duty-grid').forEach(grid => ensureGrid(grid, 'assembly'));
-    document.querySelectorAll('#projector .projection-main[data-game="encargado"] .duty-grid').forEach(grid => ensureGrid(grid, 'projection'));
+  function reorderAssemblyRoutines() {
+    document.querySelectorAll('.routine-grid').forEach(grid => {
+      const attendance = grid.querySelector('[data-action="routine"][data-value="asistencia"]');
+      const duties = grid.querySelector('[data-action="routine"][data-value="encargado"]');
+      if (!attendance || !duties) return;
+      grid.prepend(attendance);
+      attendance.insertAdjacentElement('afterend', duties);
+    });
+
+    document.querySelectorAll('#contenido [data-action="routine"][data-value="saludo"]').forEach(button => {
+      if (/abrir asamblea/i.test(button.textContent || '')) button.dataset.value = 'asistencia';
+    });
+  }
+
+  function makeDutiesSecondStep() {
+    const main = document.querySelector('#projector .projection-main[data-game="asistencia"]');
+    if (!main || !/cuántos hemos venido/i.test(main.textContent || '')) return;
+    const footer = document.querySelector('#projector .projection-footer');
+    const next = footer?.querySelector('[data-action="routine"][data-value="calendario"]');
+    if (!next) return;
+    next.dataset.value = 'encargado';
+    next.textContent = 'Encargados →';
   }
 
   function updateCard(mode, value) {
@@ -88,38 +111,96 @@
     else aula?.feedbackVoice?.(text);
   }
 
-  function randomName(mode) {
-    const names = students();
+  function clearAbsentAssignments(name) {
+    for (const mode of ['assembly', 'projection']) {
+      if (selected[mode] === name) updateCard(mode, '');
+    }
+  }
+
+  function filterDutySelect(select) {
+    const role = select.dataset.assemblyDutyRole || select.dataset.dutyRole;
+    if (!role) return;
+    const current = select.value;
+
+    [...select.options].forEach(option => {
+      if (option.value && absent.has(option.value)) option.remove();
+    });
+
+    if (current && absent.has(current)) {
+      select.value = '';
+      if (role === ROLE.id) {
+        const mode = select.dataset.assemblyDutyRole ? 'assembly' : 'projection';
+        updateCard(mode, '');
+      } else {
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+  }
+
+  function filterAllDutySelects() {
+    document.querySelectorAll('[data-assembly-duty-role], [data-duty-role]').forEach(filterDutySelect);
+  }
+
+  function mount() {
+    patchDutySpeech();
+    reorderAssemblyRoutines();
+    makeDutiesSecondStep();
+    document.querySelectorAll('.assembly-duties .duty-grid').forEach(grid => ensureGrid(grid, 'assembly'));
+    document.querySelectorAll('#projector .projection-main[data-game="encargado"] .duty-grid').forEach(grid => ensureGrid(grid, 'projection'));
+    filterAllDutySelects();
+  }
+
+  function choosePresent(select) {
+    const names = presentStudents();
     if (!names.length) return '';
-    const current = selected[mode];
+    const current = select?.value || '';
     const pool = names.filter(name => name !== current);
     return pool[Math.floor(Math.random() * pool.length)] || names[0];
   }
 
   document.addEventListener('click', event => {
-    const button = event.target.closest('[data-action][data-value="jabon"]');
+    const attendanceStart = event.target.closest('[data-action="routine"][data-value="asistencia"]');
+    if (attendanceStart) absent.clear();
+
+    const attendance = event.target.closest('[data-action="attendance-toggle"]');
+    if (attendance) {
+      const name = attendance.dataset.value;
+      if (name) {
+        if (attendance.classList.contains('absent')) absent.delete(name);
+        else {
+          absent.add(name);
+          clearAbsentAssignments(name);
+        }
+      }
+      return;
+    }
+
+    const button = event.target.closest('[data-action="assembly-duty-random"], [data-action="duty-random"]');
     if (!button) return;
-    const action = button.dataset.action;
-    if (action !== 'assembly-duty-random' && action !== 'duty-random') return;
     event.preventDefault();
     event.stopImmediatePropagation();
-    const mode = action === 'assembly-duty-random' ? 'assembly' : 'projection';
-    const name = randomName(mode);
+
+    const card = button.closest('.duty-card');
+    const select = card?.querySelector('select');
+    if (!select) return;
+    const name = choosePresent(select);
     if (!name) return;
-    updateCard(mode, name);
-    announce(mode);
+    select.value = name;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
   }, true);
 
   document.addEventListener('change', event => {
     const target = event.target;
     if (!(target instanceof HTMLSelectElement)) return;
-    const isAssembly = target.dataset.assemblyDutyRole === ROLE.id;
-    const isProjection = target.dataset.dutyRole === ROLE.id;
-    if (!isAssembly && !isProjection) return;
+    const isAssemblyJabon = target.dataset.assemblyDutyRole === ROLE.id;
+    const isProjectionJabon = target.dataset.dutyRole === ROLE.id;
+    if (!isAssemblyJabon && !isProjectionJabon) return;
+
     event.stopImmediatePropagation();
-    const mode = isAssembly ? 'assembly' : 'projection';
-    updateCard(mode, target.value);
-    if (target.value) announce(mode);
+    const mode = isAssemblyJabon ? 'assembly' : 'projection';
+    const value = absent.has(target.value) ? '' : target.value;
+    updateCard(mode, value);
+    if (value) announce(mode);
   }, true);
 
   const observer = new MutationObserver(mount);
