@@ -28,14 +28,16 @@
     scenes.__rosaJabonPatched = true;
   }
 
+  function optionsMarkup(value = '') {
+    return '<option value="">Elegir nombre</option>' + presentStudents().map(name =>
+      `<option value="${esc(name)}"${value === name ? ' selected' : ''}>${esc(name)}</option>`
+    ).join('');
+  }
+
   function roleCard(mode) {
     const value = selected[mode] || '';
     const selectAttr = mode === 'assembly' ? 'data-assembly-duty-role' : 'data-duty-role';
     const action = mode === 'assembly' ? 'assembly-duty-random' : 'duty-random';
-    const options = presentStudents().map(name =>
-      `<option value="${esc(name)}"${value === name ? ' selected' : ''}>${esc(name)}</option>`
-    ).join('');
-
     const card = document.createElement('section');
     card.className = 'duty-card duty-card-jabon';
     card.dataset.jabonMode = mode;
@@ -44,9 +46,7 @@
       <h3>${ROLE.label}</h3>
       <label>
         <span class="sr-only">Encargado de ${ROLE.label}</span>
-        <select ${selectAttr}="${ROLE.id}">
-          <option value="">Elegir nombre</option>${options}
-        </select>
+        <select ${selectAttr}="${ROLE.id}">${optionsMarkup(value)}</select>
       </label>
       <button type="button" class="secondary" data-action="${action}" data-value="${ROLE.id}">Elegir al azar</button>
       ${value ? `<strong class="duty-result">${esc(value)}</strong>` : ''}`;
@@ -58,30 +58,6 @@
     grid.appendChild(roleCard(mode));
   }
 
-  function reorderAssemblyRoutines() {
-    document.querySelectorAll('.routine-grid').forEach(grid => {
-      const attendance = grid.querySelector('[data-action="routine"][data-value="asistencia"]');
-      const duties = grid.querySelector('[data-action="routine"][data-value="encargado"]');
-      if (!attendance || !duties) return;
-      grid.prepend(attendance);
-      attendance.insertAdjacentElement('afterend', duties);
-    });
-
-    document.querySelectorAll('#contenido [data-action="routine"][data-value="saludo"]').forEach(button => {
-      if (/abrir asamblea/i.test(button.textContent || '')) button.dataset.value = 'asistencia';
-    });
-  }
-
-  function makeDutiesSecondStep() {
-    const main = document.querySelector('#projector .projection-main[data-game="asistencia"]');
-    if (!main || !/cuántos hemos venido/i.test(main.textContent || '')) return;
-    const footer = document.querySelector('#projector .projection-footer');
-    const next = footer?.querySelector('[data-action="routine"][data-value="calendario"]');
-    if (!next) return;
-    next.dataset.value = 'encargado';
-    next.textContent = 'Encargados →';
-  }
-
   function updateCard(mode, value) {
     selected[mode] = value || '';
     const selector = mode === 'assembly'
@@ -90,7 +66,7 @@
     const card = document.querySelector(selector);
     if (!card) return;
     const select = card.querySelector('select');
-    if (select) select.value = selected[mode];
+    if (select) select.innerHTML = optionsMarkup(selected[mode]);
     let result = card.querySelector('.duty-result');
     if (selected[mode]) {
       if (!result) {
@@ -117,37 +93,29 @@
     }
   }
 
-  function filterDutySelect(select) {
+  function refreshDutySelect(select) {
     const role = select.dataset.assemblyDutyRole || select.dataset.dutyRole;
     if (!role) return;
-    const current = select.value;
+    const current = absent.has(select.value) ? '' : select.value;
 
-    [...select.options].forEach(option => {
-      if (option.value && absent.has(option.value)) option.remove();
-    });
-
-    if (current && absent.has(current)) {
-      select.value = '';
-      if (role === ROLE.id) {
-        const mode = select.dataset.assemblyDutyRole ? 'assembly' : 'projection';
-        updateCard(mode, '');
-      } else {
-        select.dispatchEvent(new Event('change', { bubbles: true }));
-      }
+    if (role === ROLE.id) {
+      select.innerHTML = optionsMarkup(current);
+      return;
     }
+
+    select.innerHTML = optionsMarkup(current);
+    if (!current) select.value = '';
   }
 
-  function filterAllDutySelects() {
-    document.querySelectorAll('[data-assembly-duty-role], [data-duty-role]').forEach(filterDutySelect);
+  function refreshAllDutySelects() {
+    document.querySelectorAll('[data-assembly-duty-role], [data-duty-role]').forEach(refreshDutySelect);
   }
 
   function mount() {
     patchDutySpeech();
-    reorderAssemblyRoutines();
-    makeDutiesSecondStep();
     document.querySelectorAll('.assembly-duties .duty-grid').forEach(grid => ensureGrid(grid, 'assembly'));
     document.querySelectorAll('#projector .projection-main[data-game="encargado"] .duty-grid').forEach(grid => ensureGrid(grid, 'projection'));
-    filterAllDutySelects();
+    refreshAllDutySelects();
   }
 
   function choosePresent(select) {
