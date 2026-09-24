@@ -4,7 +4,7 @@ window.ROSA_SCENES=(()=>{
  const image=(name,alt,cls='')=>'<img class="'+cls+'" src="assets/scenes/'+name+'.webp" alt="'+E(alt)+'" width="1536" height="864">';
  const monster=(i,label)=>'<span class="emotion-monster monster-'+i+'" role="img" aria-label="Monstruo de '+label+'"></span>';
  const emotions=['Alegría','Tristeza','Enfado','Miedo','Calma','Cariño'];
- const dutySpeech=(role,name)=>({saludos:'De los saludos se encargará',luces:'De las luces se encargará',material:'Del material se encargará'}[role])+'.';
+ const dutySpeech=(role,name)=>({saludos:'De los saludos se encargará',luces:'De las luces se encargará',material:'Del material se encargará',jabon:'Del jabón se encargará'}[role])+'.';
  const storyIntros=[
   ['Al llegar a clase, la seño Rosa ve unas huellas junto a una caja. La clase se acerca despacio. ¿Quién la habrá dejado?','Dentro hay una lupa y una figura de esqueleto. Cerca vemos dinosaurios de juguete. La seño Rosa los coloca sobre la alfombra. ¡Tenemos pistas para investigar!','El juguete representa un animal. Los fósiles de verdad son restos o señales de seres vivos del pasado. Guardamos nuestras preguntas: vamos a aprender a mirar como un equipo de investigación.'],
   ['La seño Rosa abre un libro del pasado. Entre las plantas asoma una cabeza enorme. La clase busca una pista para descubrir su nombre.','Uno, dos y tres: tiene tres cuernos. Detrás de la cabeza lleva una gran gola, como un escudo. ¡Hemos encontrado al Triceratops!','El Triceratops baja la cabeza para comer plantas. No vivía con personas: el libro nos ayuda a imaginar cómo era su mundo hace muchísimo tiempo.'],
