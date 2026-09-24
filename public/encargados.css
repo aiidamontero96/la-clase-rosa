@@ -1,0 +1,98 @@
+/* Encargados: cuatro responsabilidades visibles y equilibradas en la PDI. */
+#projector .projection-main[data-game="encargado"]{
+  justify-content:flex-start;
+  gap:clamp(5px,1dvh,10px);
+  padding-top:clamp(6px,1.2dvh,12px)!important;
+}
+#projector .projection-main[data-game="encargado"]>h2{
+  margin:2px 0 4px!important;
+}
+#projector .projection-main[data-game="encargado"]>p{
+  margin:0 0 6px!important;
+}
+#projector .projection-main[data-game="encargado"] .duty-grid{
+  width:min(1500px,96vw);
+  max-width:1500px;
+  margin:8px auto 2px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(10px,1.2vw,18px);
+  align-items:stretch;
+}
+#projector .projection-main[data-game="encargado"] .duty-card{
+  min-width:0;
+  min-height:0;
+  padding:clamp(10px,1.5dvh,16px) clamp(10px,1.2vw,18px);
+  gap:clamp(5px,.9dvh,9px);
+  justify-content:flex-start;
+}
+#projector .projection-main[data-game="encargado"] .duty-card>span{
+  font-size:clamp(2rem,3vw,2.65rem);
+  line-height:1;
+}
+#projector .projection-main[data-game="encargado"] .duty-card h3{
+  font-size:clamp(1.15rem,1.7vw,1.45rem);
+  line-height:1.05;
+}
+#projector .projection-main[data-game="encargado"] .duty-card label{
+  width:100%;
+}
+#projector .projection-main[data-game="encargado"] .duty-card select{
+  width:100%;
+  min-width:0;
+  min-height:48px;
+  padding:8px 10px;
+  font-size:clamp(.95rem,1.25vw,1.1rem);
+}
+#projector .projection-main[data-game="encargado"] .duty-card button{
+  min-height:44px;
+  padding:8px 12px;
+  font-size:clamp(.9rem,1.1vw,1rem);
+}
+#projector .projection-main[data-game="encargado"] .duty-result{
+  min-height:44px;
+  padding:7px 9px;
+  font-size:clamp(1.05rem,1.55vw,1.35rem);
+}
+
+/* El bloque de encargados fuera del proyector también reparte las cuatro tarjetas. */
+.assembly-duties .duty-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+@media (max-width:1180px){
+  #projector .projection-main[data-game="encargado"] .duty-grid,
+  .assembly-duties .duty-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width:760px){
+  #projector .projection-main[data-game="encargado"] .duty-grid,
+  .assembly-duties .duty-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (min-width:1181px) and (max-height:900px){
+  #projector .projection-main[data-game="encargado"] .duty-grid{
+    margin-top:4px;
+    gap:10px;
+  }
+  #projector .projection-main[data-game="encargado"] .duty-card{
+    padding:9px 12px;
+    gap:5px;
+  }
+  #projector .projection-main[data-game="encargado"] .duty-card>span{
+    font-size:2rem;
+  }
+  #projector .projection-main[data-game="encargado"] .duty-card h3{
+    font-size:1.15rem;
+  }
+  #projector .projection-main[data-game="encargado"] .duty-card select{
+    min-height:44px;
+  }
+  #projector .projection-main[data-game="encargado"] .duty-card button{
+    min-height:40px;
+  }
+}
