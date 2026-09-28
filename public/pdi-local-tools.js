@@ -2,13 +2,20 @@
 
 (() => {
   const BOARD_HASH = 'pdi-pizarra';
+  const AUTUMN_HASH = 'pdi-otono-vocabulario';
   const FALLBACK_CLASS = 'pdi-mode-fallback';
   let boardMounted = false;
   let syncQueued = false;
   let canvasState = null;
+  const autumnState = {
+    screen: 'intro',
+    slide: 0,
+    revealed: {}
+  };
 
   const route = () => location.hash.slice(1).split('?')[0];
   const isBoardRoute = () => route() === BOARD_HASH;
+  const isAutumnRoute = () => route() === AUTUMN_HASH;
   const content = () => document.querySelector('#contenido');
 
   function pdiNav() {
@@ -88,6 +95,210 @@
         link.classList.add('active');
         link.setAttribute('aria-current', 'page');
       }
+    }
+  }
+
+
+  function autumnSlides() {
+    return [
+      {
+        id: 'ropa-basica',
+        title: 'ROPA Y ACCESORIOS DE OTOÑO',
+        subtitle: 'TOCA CADA FOTO PARA DESCUBRIR LA PRENDA.',
+        layout: 'eight',
+        items: [
+          { id: 'abrigo', label: 'ABRIGO', query: 'child,autumn,coat', lock: 41 },
+          { id: 'chubasquero', label: 'CHUBASQUERO', query: 'child,yellow,raincoat', lock: 42 },
+          { id: 'jersey', label: 'JERSEY', query: 'child,autumn,sweater', lock: 43 },
+          { id: 'bufanda', label: 'BUFANDA', query: 'child,scarf,autumn', lock: 44 },
+          { id: 'gorro', label: 'GORRO', query: 'child,wool,hat', lock: 45 },
+          { id: 'botas', label: 'BOTAS', query: 'boots,autumn,child', lock: 46 },
+          { id: 'calcetines', label: 'CALCETINES', query: 'wool,socks', lock: 47 },
+          { id: 'pantalon-largo', label: 'PANTALÓN LARGO', query: 'child,pants,autumn', lock: 48 }
+        ]
+      },
+      {
+        id: 'mas-prendas',
+        title: 'MÁS VESTIMENTA DE OTOÑO',
+        subtitle: 'SEGUIMOS JUGANDO: PULSA Y LEE EN MAYÚSCULAS.',
+        layout: 'five',
+        items: [
+          { id: 'chaqueta', label: 'CHAQUETA', query: 'child,jacket,autumn', lock: 49 },
+          { id: 'paraguas', label: 'PARAGUAS', query: 'child,umbrella,rain', lock: 50 },
+          { id: 'botas-agua', label: 'BOTAS DE AGUA', query: 'rain,boots,yellow', lock: 51 },
+          { id: 'camiseta-manga-larga', label: 'CAMISETA DE MANGA LARGA', query: 'child,long,sleeve,shirt', lock: 52 },
+          { id: 'zapatos', label: 'ZAPATOS', query: 'child,shoes,autumn', lock: 53 }
+        ]
+      }
+    ].map(slide => ({
+      ...slide,
+      items: slide.items.map(item => ({
+        ...item,
+        image: `https://loremflickr.com/720/900/${item.query}?lock=${item.lock}`
+      }))
+    }));
+  }
+
+  function autumnCardKey(slideIndex, itemId) {
+    return `${slideIndex}:${itemId}`;
+  }
+
+  function autumnCardMarkup(item, slideIndex) {
+    const key = autumnCardKey(slideIndex, item.id);
+    const revealed = !!autumnState.revealed[key];
+    return `
+      <button type="button"
+        class="autumn-card${revealed ? ' is-revealed' : ''}"
+        data-autumn-card="${key}"
+        aria-pressed="${revealed ? 'true' : 'false'}"
+        aria-label="${revealed ? item.label : `Mostrar ${item.label}`}">
+        <span class="autumn-card-photo">
+          <img src="${item.image}" alt="${item.label}" loading="eager" referrerpolicy="no-referrer">
+        </span>
+        <span class="autumn-card-label">${revealed ? item.label : 'PULSA'}</span>
+      </button>`;
+  }
+
+  function autumnPage() {
+    const slides = autumnSlides();
+
+    if (autumnState.screen === 'intro') {
+      return `
+        <div id="pdi-autumn-page" class="autumn-page">
+          <div class="page-head autumn-page-head">
+            <div>
+              <span class="eyebrow">PIZARRA DIGITAL</span>
+              <h1>Conocemos el otoño</h1>
+              <p>Un recorrido con fotografías reales para descubrir la ropa y los accesorios típicos de esta estación.</p>
+            </div>
+          </div>
+
+          ${pdiNav()}
+
+          <section class="panel autumn-shell autumn-shell--intro" aria-label="Presentación de otoño">
+            <div class="autumn-hero">
+              <span class="autumn-hero-kicker">🍂 VOCABULARIO DE OTOÑO</span>
+              <h2>OBSERVAMOS · NOMBRAMOS · DESCUBRIMOS</h2>
+              <p>Cada foto oculta su palabra. Primero miramos la prenda, hablamos entre todos y después pulsamos para descubrirla en MAYÚSCULAS.</p>
+              <ul class="autumn-hero-list">
+                <li>4 imágenes arriba y 4 abajo en la primera lámina.</li>
+                <li>Segunda lámina con más ropa y accesorios de otoño.</li>
+                <li>Sin sonido, lista para usar directamente en la PDI.</li>
+              </ul>
+              <div class="autumn-actions">
+                <button type="button" data-autumn-action="start">EMPEZAR RECORRIDO</button>
+              </div>
+            </div>
+            <div class="autumn-preview">
+              <div class="autumn-preview-badge">ROPA DE OTOÑO</div>
+              <div class="autumn-preview-grid">
+                <span>ABRIGO</span>
+                <span>CHUBASQUERO</span>
+                <span>JERSEY</span>
+                <span>BUFANDA</span>
+                <span>GORRO</span>
+                <span>BOTAS</span>
+                <span>CALCETINES</span>
+                <span>PANTALÓN LARGO</span>
+              </div>
+            </div>
+          </section>
+        </div>`;
+    }
+
+    const slide = slides[autumnState.slide];
+    return `
+      <div id="pdi-autumn-page" class="autumn-page">
+        <div class="page-head autumn-page-head">
+          <div>
+            <span class="eyebrow">PIZARRA DIGITAL</span>
+            <h1>Conocemos el otoño</h1>
+            <p>Fotografías reales para trabajar el vocabulario de otoño.</p>
+          </div>
+        </div>
+
+        ${pdiNav()}
+
+        <section class="panel autumn-shell" aria-label="Vocabulario de otoño">
+          <div class="autumn-shell-head">
+            <div>
+              <span class="eyebrow">🍁 LÁMINA ${autumnState.slide + 1} DE ${slides.length}</span>
+              <h2>${slide.title}</h2>
+              <p>${slide.subtitle}</p>
+            </div>
+            <div class="autumn-actions autumn-actions--top">
+              <button type="button" class="secondary" data-autumn-action="cover">PORTADA</button>
+              <button type="button" class="secondary" data-autumn-action="hide-slide">OCULTAR OTRA VEZ</button>
+            </div>
+          </div>
+
+          <div class="autumn-grid autumn-grid--${slide.layout}">
+            ${slide.items.map(item => autumnCardMarkup(item, autumnState.slide)).join('')}
+          </div>
+
+          <div class="autumn-actions autumn-actions--footer">
+            <button type="button" class="secondary" data-autumn-action="prev"${autumnState.slide === 0 ? ' disabled' : ''}>← ANTERIOR</button>
+            <button type="button" data-autumn-action="${autumnState.slide === slides.length - 1 ? 'restart' : 'next'}">${autumnState.slide === slides.length - 1 ? 'TERMINAR RECORRIDO' : 'SIGUIENTE →'}</button>
+          </div>
+        </section>
+      </div>`;
+  }
+
+  function addAutumnNavLink() {
+    document.querySelectorAll('.pdi-section-nav').forEach(nav => {
+      let link = nav.querySelector('a[href="#pdi-otono-vocabulario"]');
+      if (!link) {
+        link = document.createElement('a');
+        link.href = '#pdi-otono-vocabulario';
+        link.innerHTML = '🍂 Otoño';
+
+        const board = nav.querySelector('a[href="#pdi-pizarra"]');
+        const calendar = nav.querySelector('a[href="#pdi-calendario"]');
+        const timer = nav.querySelector('a[href="#pdi-cronometro"]');
+        const songs = nav.querySelector('a[href="#canciones"]');
+        const anchor = board || calendar || timer;
+
+        if (anchor) anchor.insertAdjacentElement('afterend', link);
+        else nav.insertBefore(link, songs || null);
+      }
+
+      const active = isAutumnRoute();
+      link.classList.toggle('active', active);
+      if (active) {
+        link.setAttribute('aria-current', 'page');
+        nav.querySelectorAll('a').forEach(other => {
+          if (other !== link) {
+            other.classList.remove('active');
+            other.removeAttribute('aria-current');
+          }
+        });
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function handleAutumnAction(action) {
+    const slides = autumnSlides();
+
+    if (action === 'start') {
+      autumnState.screen = 'slides';
+      autumnState.slide = 0;
+    } else if (action === 'cover') {
+      autumnState.screen = 'intro';
+    } else if (action === 'prev') {
+      autumnState.screen = 'slides';
+      autumnState.slide = Math.max(0, autumnState.slide - 1);
+    } else if (action === 'next') {
+      autumnState.screen = 'slides';
+      autumnState.slide = Math.min(slides.length - 1, autumnState.slide + 1);
+    } else if (action === 'restart') {
+      autumnState.screen = 'intro';
+      autumnState.slide = 0;
+      autumnState.revealed = {};
+    } else if (action === 'hide-slide') {
+      const slide = slides[autumnState.slide];
+      slide.items.forEach(item => { delete autumnState.revealed[autumnCardKey(autumnState.slide, item.id)]; });
     }
   }
 
@@ -501,9 +712,18 @@
       }
       activateGlobalPdiNav();
       addBoardNavLink();
+      addAutumnNavLink();
       mountBoard();
+    } else if (isAutumnRoute()) {
+      if (!main.querySelector('#pdi-autumn-page')) {
+        main.innerHTML = autumnPage();
+      }
+      activateGlobalPdiNav();
+      addBoardNavLink();
+      addAutumnNavLink();
     } else {
       addBoardNavLink();
+      addAutumnNavLink();
     }
 
     mountPagePdiButton();
@@ -561,6 +781,35 @@
 
     if (event.target.closest('[data-board-clear]')) {
       clearBoard();
+      return;
+    }
+
+    const autumnAction = event.target.closest('[data-autumn-action]');
+    if (autumnAction) {
+      handleAutumnAction(autumnAction.dataset.autumnAction);
+      if (isAutumnRoute()) {
+        const main = content();
+        if (main) main.innerHTML = autumnPage();
+        activateGlobalPdiNav();
+        addBoardNavLink();
+        addAutumnNavLink();
+        mountPagePdiButton();
+        syncPdiModeState();
+      }
+      return;
+    }
+
+    const autumnCard = event.target.closest('[data-autumn-card]');
+    if (autumnCard && isAutumnRoute()) {
+      const key = autumnCard.dataset.autumnCard;
+      autumnState.revealed[key] = !autumnState.revealed[key];
+      const main = content();
+      if (main) main.innerHTML = autumnPage();
+      activateGlobalPdiNav();
+      addBoardNavLink();
+      addAutumnNavLink();
+      mountPagePdiButton();
+      syncPdiModeState();
       return;
     }
 

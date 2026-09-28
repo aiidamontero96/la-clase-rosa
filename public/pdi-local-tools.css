@@ -351,3 +351,253 @@ html.pdi-mode-active:has(#projector[open]) .pdi-mode-floating,
 body.pdi-mode-active:has(#projector[open]) .pdi-mode-floating {
   visibility: hidden !important;
 }
+
+
+/* Recorrido · vocabulario de otoño con fotos reales */
+.autumn-page {
+  min-width: 0;
+}
+
+.autumn-shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  min-height: min(860px, calc(100dvh - 220px));
+  padding: clamp(14px, 1.6vw, 22px);
+}
+
+.autumn-shell--intro {
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, .95fr);
+  grid-template-rows: 1fr;
+  align-items: stretch;
+}
+
+.autumn-hero,
+.autumn-preview {
+  border-radius: 26px;
+  background: linear-gradient(180deg, #fffefb 0%, #fff7ed 100%);
+  border: 2px solid #f2dfc5;
+  padding: clamp(18px, 2vw, 28px);
+}
+
+.autumn-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.autumn-hero-kicker {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff0d8;
+  color: #9a4a18;
+  font-weight: 900;
+  letter-spacing: .05em;
+}
+
+.autumn-hero h2 {
+  margin: 0;
+  color: #7b2d06;
+  font-size: clamp(2rem, 3vw, 3.25rem);
+  line-height: 1.02;
+}
+
+.autumn-hero p {
+  margin: 0;
+  font-size: clamp(1rem, 1.35vw, 1.3rem);
+  line-height: 1.45;
+}
+
+.autumn-hero-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 8px;
+  font-size: clamp(.98rem, 1.2vw, 1.1rem);
+}
+
+.autumn-preview {
+  display: grid;
+  gap: 14px;
+  align-content: center;
+}
+
+.autumn-preview-badge {
+  justify-self: start;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff0d8;
+  color: #9a4a18;
+  font-weight: 900;
+  letter-spacing: .05em;
+}
+
+.autumn-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.autumn-preview-grid span {
+  display: grid;
+  place-items: center;
+  min-height: 60px;
+  padding: 10px 12px;
+  border-radius: 18px;
+  background: #f5e5cc;
+  color: #5b2a0e;
+  font-weight: 900;
+  text-align: center;
+}
+
+.autumn-shell-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+}
+
+.autumn-shell-head h2 {
+  margin: 4px 0 0;
+  color: #7b2d06;
+  font-size: clamp(1.9rem, 2.7vw, 2.85rem);
+  line-height: 1.04;
+}
+
+.autumn-shell-head p {
+  margin: 6px 0 0;
+  font-size: clamp(.98rem, 1.2vw, 1.12rem);
+}
+
+.autumn-grid {
+  display: grid;
+  gap: clamp(12px, 1vw, 16px);
+  align-content: start;
+}
+
+.autumn-grid--eight {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.autumn-grid--five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.autumn-card {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.autumn-card-photo {
+  display: block;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 2px solid #ead5be;
+  background: #f7efe2;
+  box-shadow: 0 8px 24px rgba(108, 54, 14, .08);
+}
+
+.autumn-card-photo img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 28vh, 300px);
+  object-fit: cover;
+}
+
+.autumn-card-label {
+  display: grid;
+  place-items: center;
+  min-height: 72px;
+  padding: 12px 14px;
+  border-radius: 22px;
+  background: #f5e5cc;
+  color: #5b2a0e;
+  font-weight: 900;
+  font-size: clamp(1rem, 1.55vw, 1.7rem);
+  line-height: 1.05;
+  text-align: center;
+  box-shadow: inset 0 0 0 2px rgba(157, 90, 40, .08);
+}
+
+.autumn-card.is-revealed .autumn-card-photo {
+  border-color: #d57d38;
+}
+
+.autumn-card.is-revealed .autumn-card-label {
+  background: #fff0d8;
+  color: #7b2d06;
+}
+
+.autumn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.autumn-actions--top {
+  justify-content: flex-end;
+}
+
+.autumn-actions--footer {
+  justify-content: space-between;
+}
+
+#contenido:fullscreen .autumn-shell,
+#contenido:-webkit-full-screen .autumn-shell,
+.pdi-mode-fallback #contenido.pdi-mode-target .autumn-shell {
+  min-height: calc(100dvh - 28px);
+}
+
+#contenido:fullscreen .autumn-shell--intro,
+#contenido:-webkit-full-screen .autumn-shell--intro,
+.pdi-mode-fallback #contenido.pdi-mode-target .autumn-shell--intro {
+  min-height: calc(100dvh - 28px);
+}
+
+@media (max-width: 1180px) {
+  .autumn-grid--five {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .autumn-shell--intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .autumn-grid--eight {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .autumn-shell-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .autumn-actions--top,
+  .autumn-actions--footer {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 620px) {
+  .autumn-grid--eight,
+  .autumn-grid--five,
+  .autumn-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .autumn-card-photo img {
+    height: 220px;
+  }
+}
