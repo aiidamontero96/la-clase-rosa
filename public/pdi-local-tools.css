@@ -1,0 +1,353 @@
+/* Pizarra libre + Modo PDI · parche local 11/16 */
+.pdi-board-page {
+  min-width: 0;
+}
+
+.pdi-board-shell {
+  display: grid;
+  grid-template-rows: auto auto minmax(420px, 1fr);
+  gap: 10px;
+  min-height: min(760px, calc(100dvh - 230px));
+  padding: clamp(10px, 1.4vw, 18px);
+}
+
+.pdi-board-toolbar,
+.pdi-board-stamps {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pdi-board-toolbar {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(75, 45, 60, .12);
+}
+
+.pdi-board-toolgroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pdi-board-tool.is-active,
+.pdi-board-stamps button.is-active {
+  box-shadow: 0 0 0 3px rgba(166, 41, 93, .18);
+  border-color: #a6295d;
+}
+
+.pdi-board-colors {
+  padding-inline: 4px;
+}
+
+.pdi-board-color {
+  width: 42px;
+  min-width: 42px;
+  height: 42px;
+  min-height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  background: var(--swatch);
+  box-shadow: 0 0 0 1px rgba(35, 27, 31, .22);
+}
+
+.pdi-board-color.is-active {
+  box-shadow: 0 0 0 4px rgba(166, 41, 93, .25);
+}
+
+.pdi-board-size {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  background: #fff8fb;
+  font-weight: 800;
+}
+
+.pdi-board-size input {
+  width: 120px;
+}
+
+.pdi-board-clear {
+  margin-left: auto;
+}
+
+.pdi-board-stamps {
+  min-height: 46px;
+}
+
+.pdi-board-stamps-label {
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  color: #6e5360;
+}
+
+.pdi-board-stamps button {
+  min-width: 42px;
+  min-height: 40px;
+  padding: 6px 10px;
+  font-size: 1.08rem;
+}
+
+.pdi-board-stage {
+  position: relative;
+  min-width: 0;
+  min-height: 420px;
+  height: clamp(420px, 58dvh, 720px);
+  overflow: hidden;
+  border: 3px solid #ead6df;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(60, 35, 47, .05);
+}
+
+.pdi-board-stage[data-board-background="grid"] {
+  background-color: #fff;
+  background-image:
+    linear-gradient(rgba(64, 112, 177, .14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64, 112, 177, .14) 1px, transparent 1px),
+    linear-gradient(rgba(64, 112, 177, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64, 112, 177, .07) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 10px 10px, 10px 10px;
+}
+
+#pdi-board-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.pdi-board-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  translate: -50% 0;
+  max-width: calc(100% - 24px);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .88);
+  color: #725663;
+  font-size: .74rem;
+  font-weight: 900;
+  letter-spacing: .045em;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+
+.pdi-mode-floating {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 3500;
+  min-height: 48px;
+  padding: 10px 16px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #7f1847;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(70, 24, 45, .26);
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+
+.pdi-mode-floating:hover,
+.pdi-mode-floating:focus-visible {
+  background: #641137;
+}
+
+.pdi-mode-floating.is-active {
+  background: #2d5543;
+}
+
+.pdi-projector-mode {
+  margin-left: auto;
+}
+
+/* Modo PDI real para páginas de la sección */
+#contenido:fullscreen,
+#contenido:-webkit-full-screen,
+.pdi-mode-fallback #contenido.pdi-mode-target {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9998 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  overflow: auto !important;
+  margin: 0 !important;
+  padding: clamp(10px, 1.5vw, 22px) !important;
+  background: #fff8fb !important;
+}
+
+#contenido:fullscreen .pdi-section-nav,
+#contenido:-webkit-full-screen .pdi-section-nav,
+.pdi-mode-fallback #contenido.pdi-mode-target .pdi-section-nav {
+  display: none !important;
+}
+
+#contenido:fullscreen .page-head,
+#contenido:-webkit-full-screen .page-head,
+.pdi-mode-fallback #contenido.pdi-mode-target .page-head {
+  margin-bottom: 8px !important;
+}
+
+#contenido:fullscreen .pdi-board-head,
+#contenido:-webkit-full-screen .pdi-board-head,
+.pdi-mode-fallback #contenido.pdi-mode-target .pdi-board-head {
+  display: none !important;
+}
+
+#contenido:fullscreen .pdi-board-shell,
+#contenido:-webkit-full-screen .pdi-board-shell,
+.pdi-mode-fallback #contenido.pdi-mode-target .pdi-board-shell {
+  width: 100%;
+  height: calc(100dvh - 20px);
+  min-height: 0;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  margin: 0;
+}
+
+#contenido:fullscreen .pdi-board-stage,
+#contenido:-webkit-full-screen .pdi-board-stage,
+.pdi-mode-fallback #contenido.pdi-mode-target .pdi-board-stage {
+  height: auto;
+  min-height: 0;
+}
+
+/* Fallback para navegadores/PDI que no concedan Fullscreen API */
+.pdi-mode-fallback {
+  overflow: hidden !important;
+}
+
+.pdi-mode-fallback #projector.pdi-mode-target {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  display: block !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 760px) {
+  .pdi-board-shell {
+    grid-template-rows: auto auto minmax(360px, 1fr);
+    padding: 8px;
+  }
+
+  .pdi-board-stage {
+    min-height: 360px;
+    height: 54dvh;
+  }
+
+  .pdi-board-size {
+    width: 100%;
+  }
+
+  .pdi-board-size input {
+    flex: 1;
+  }
+
+  .pdi-board-clear {
+    margin-left: 0;
+  }
+
+  .pdi-mode-floating {
+    right: 10px;
+    bottom: 10px;
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+}
+
+/* Dentro del Modo PDI ya estamos a pantalla completa:
+   ocultamos controles internos redundantes y dejamos una única salida clara. */
+.pdi-mode-active .pdi-internal-fullscreen {
+  display: none !important;
+}
+
+/* Si el control vive dentro de un iframe propio de La Clase Rosa,
+   pdi-local-tools.js replica esta clase en el documento del iframe. */
+html.pdi-mode-active .pdi-internal-fullscreen,
+body.pdi-mode-active .pdi-internal-fullscreen {
+  display: none !important;
+}
+
+.pdi-mode-active .pdi-mode-floating.is-active {
+  min-width: 210px;
+  background: #2d5543;
+  color: #fff;
+}
+
+/* Modo PDI v3 · las actividades abiertas heredan el viewport completo.
+   Evita que calendario, encargados, tiempo, juegos, etc. queden como modal centrado. */
+html.pdi-mode-active #projector[open],
+body.pdi-mode-active #projector[open] {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10000 !important;
+  display: block !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  background: #fffaf6 !important;
+}
+
+html.pdi-mode-active #projector[open]::backdrop,
+body.pdi-mode-active #projector[open]::backdrop {
+  background: #fffaf6 !important;
+}
+
+html.pdi-mode-active #projector[open] #projection-content,
+body.pdi-mode-active #projector[open] #projection-content {
+  box-sizing: border-box !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  min-height: 100dvh !important;
+  max-width: none !important;
+  max-height: 100dvh !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+html.pdi-mode-active #projector[open] .projection-toolbar,
+body.pdi-mode-active #projector[open] .projection-toolbar {
+  width: 100% !important;
+  max-width: none !important;
+  border-radius: 0 !important;
+}
+
+html.pdi-mode-active #projector[open] .projection-main,
+body.pdi-mode-active #projector[open] .projection-main {
+  box-sizing: border-box !important;
+  width: min(1500px, 96vw) !important;
+  max-width: 1500px !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  margin-inline: auto !important;
+}
+
+html.pdi-mode-active:has(#projector[open]) .pdi-mode-floating,
+body.pdi-mode-active:has(#projector[open]) .pdi-mode-floating {
+  visibility: hidden !important;
+}
