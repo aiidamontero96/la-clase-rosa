@@ -71,12 +71,36 @@
   width: 120px;
 }
 
+.pdi-board-guides-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 42px;
+  font-weight: 800;
+}
+
+.pdi-board-guides-control[hidden] {
+  display: none;
+}
+
+.pdi-board-guides-control select {
+  min-height: 42px;
+  padding: 5px 10px;
+  border: 2px solid #ddbccb;
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  color: #613149;
+}
+
 .pdi-board-clear {
   margin-left: auto;
 }
 
 .pdi-board-stamps {
+  position: relative;
   min-height: 46px;
+  z-index: 2;
 }
 
 .pdi-board-stamps-label {
@@ -91,6 +115,107 @@
   min-height: 40px;
   padding: 6px 10px;
   font-size: 1.08rem;
+}
+
+.pdi-board-text-size {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .85rem;
+  font-weight: 800;
+  color: #613149;
+}
+
+.pdi-board-text-size select {
+  min-height: 42px;
+  padding: 5px 8px;
+  border: 2px solid #ddbccb;
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  color: inherit;
+}
+
+.pdi-board-back-to-pencil[hidden] {
+  display: none !important;
+}
+
+.pdi-board-palette summary {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 7px 14px;
+  border: 2px solid #ddbccb;
+  border-radius: 12px;
+  background: #fff;
+  color: #613149;
+  font-weight: 900;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pdi-board-palette[open] summary,
+.pdi-board-palette summary:focus-visible {
+  border-color: #97345d;
+  background: #fff2f7;
+}
+
+.pdi-board-palette-items {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(9, minmax(44px, 1fr));
+  gap: 7px;
+  width: min(100%, 590px);
+  max-height: min(60dvh, 380px);
+  overflow: auto;
+  padding: 12px;
+  border: 2px solid #ddbccb;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(54, 25, 38, .22);
+}
+
+.pdi-board-palette-numbers {
+  grid-template-columns: repeat(5, minmax(48px, 1fr));
+  width: min(100%, 380px);
+}
+
+.pdi-board-palette-shapes {
+  grid-template-columns: repeat(4, minmax(90px, 1fr));
+  width: min(100%, 510px);
+}
+
+.pdi-board-palette-shapes button {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  font-size: .75rem;
+}
+
+.pdi-board-palette-shapes svg {
+  width: 40px;
+  height: 40px;
+  fill: #f5ca22;
+  stroke: #664619;
+  stroke-width: 2;
+}
+
+.pdi-board-palette-shapes button:nth-last-child(-n+3) svg {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.pdi-board-stamp-status {
+  font-weight: 800;
+  color: #613149;
+}
+
+.pdi-board-undo:disabled {
+  opacity: .5;
+  cursor: not-allowed;
 }
 
 .pdi-board-stage {
@@ -115,6 +240,25 @@
   background-size: 40px 40px, 40px 40px, 10px 10px, 10px 10px;
 }
 
+.pdi-board-stage[data-board-background="guides"] {
+  --guide-row: 74px;
+  background-color: #fff;
+  background-image:
+    linear-gradient(to bottom, #93cdd9 0 2px, transparent 2px),
+    linear-gradient(to right, transparent 0 7%, #e7a7b5 7% calc(7% + 2px), transparent calc(7% + 2px));
+  background-position: 0 0, 0 0;
+  background-size: 100% var(--guide-row), 100% 100%;
+  background-repeat: repeat, no-repeat;
+}
+
+.pdi-board-stage[data-board-background="guides"][data-board-guide-width="narrow"] {
+  --guide-row: 54px;
+}
+
+.pdi-board-stage[data-board-background="guides"][data-board-guide-width="wide"] {
+  --guide-row: 92px;
+}
+
 #pdi-board-canvas {
   position: absolute;
   inset: 0;
@@ -127,8 +271,18 @@
   -webkit-user-select: none;
 }
 
+#pdi-board-preview {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 .pdi-board-hint {
   position: absolute;
+  z-index: 2;
   left: 50%;
   bottom: 10px;
   translate: -50% 0;
@@ -244,6 +398,18 @@
 }
 
 @media (max-width: 760px) {
+  .pdi-board-palette-items {
+    grid-template-columns: repeat(6, minmax(42px, 1fr));
+  }
+
+  .pdi-board-palette-numbers {
+    grid-template-columns: repeat(5, minmax(42px, 1fr));
+  }
+
+  .pdi-board-palette-shapes {
+    grid-template-columns: repeat(2, minmax(90px, 1fr));
+  }
+
   .pdi-board-shell {
     grid-template-rows: auto auto minmax(360px, 1fr);
     padding: 8px;

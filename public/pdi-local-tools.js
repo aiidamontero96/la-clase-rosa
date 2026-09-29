@@ -4,6 +4,17 @@
   const BOARD_HASH = 'pdi-pizarra';
   const AUTUMN_HASH = 'pdi-otono-vocabulario';
   const FALLBACK_CLASS = 'pdi-mode-fallback';
+  const BOARD_LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+  const BOARD_SHAPES = [
+    ['circle', 'CÍRCULO', '<circle cx="24" cy="24" r="16"/>'],
+    ['square', 'CUADRADO', '<rect x="8" y="8" width="32" height="32" rx="1"/>'],
+    ['triangle', 'TRIÁNGULO', '<path d="M24 7 L42 40 H6 Z"/>'],
+    ['star', 'ESTRELLA', '<path d="M24 5 L29 18 L43 18 L32 27 L36 41 L24 33 L12 41 L16 27 L5 18 L19 18 Z"/>'],
+    ['line', 'LÍNEA', '<path d="M5 24 H43" fill="none"/>'],
+    ['plus', 'SUMAR (+)', '<path d="M24 6 V42 M6 24 H42" fill="none"/>'],
+    ['equals', 'IGUAL (=)', '<path d="M7 17 H41 M7 31 H41" fill="none"/>']
+  ];
+  const stampLabel = value => BOARD_SHAPES.find(shape => shape[0] === value)?.[1] || value;
   let boardMounted = false;
   let syncQueued = false;
   let canvasState = null;
@@ -46,6 +57,8 @@
               ${[
                 ['#242424', 'Negro'],
                 ['#c83269', 'Rosa'],
+                ['#d42c2c', 'Rojo'],
+                ['#f5ca22', 'Amarillo'],
                 ['#2368c4', 'Azul'],
                 ['#21865b', 'Verde'],
                 ['#e27719', 'Naranja'],
@@ -67,21 +80,63 @@
             <div class="pdi-board-toolgroup">
               <button type="button" class="secondary" data-board-bg="white" aria-pressed="true">▢ Blanco</button>
               <button type="button" class="secondary" data-board-bg="grid" aria-pressed="false"># Cuadrícula</button>
+              <button type="button" class="secondary" data-board-bg="guides" aria-pressed="false">☷ Dos líneas</button>
             </div>
 
+            <label class="pdi-board-guides-control" data-board-guides-control hidden>
+              Separación
+              <select data-board-guide-width aria-label="Separación de las líneas">
+                <option value="narrow">Estrecha</option>
+                <option value="medium" selected>Media</option>
+                <option value="wide">Ancha</option>
+              </select>
+            </label>
+
+            <button type="button" class="secondary pdi-board-undo" data-board-undo disabled>↶ Deshacer</button>
             <button type="button" class="quiet pdi-board-clear" data-board-clear>🗑 Borrar todo</button>
           </div>
 
           <div class="pdi-board-stamps" aria-label="Elementos rápidos">
             <span class="pdi-board-stamps-label">PONER:</span>
-            ${['1','2','3','4','5','A','E','I','O','U','◯','□','△','★'].map(value =>
-              `<button type="button" class="secondary small" data-board-stamp="${value}" aria-pressed="false">${value}</button>`
-            ).join('')}
-            <button type="button" class="quiet small" data-board-stamp-cancel hidden>Volver a dibujar</button>
+            <details class="pdi-board-palette">
+              <summary>Números 1–10</summary>
+              <div class="pdi-board-palette-items pdi-board-palette-numbers" aria-label="Elige un número">
+                ${Array.from({length: 10}, (_, i) => String(i + 1)).map(value =>
+                  `<button type="button" class="secondary" data-board-stamp="${value}" aria-pressed="false">${value}</button>`
+                ).join('')}
+              </div>
+            </details>
+            <details class="pdi-board-palette">
+              <summary>Letras A–Z · Ñ</summary>
+              <div class="pdi-board-palette-items pdi-board-palette-letters" aria-label="Elige una letra mayúscula">
+                ${[...BOARD_LETTERS].map(value =>
+                  `<button type="button" class="secondary" data-board-stamp="${value}" aria-pressed="false">${value}</button>`
+                ).join('')}
+              </div>
+            </details>
+            <details class="pdi-board-palette">
+              <summary>Formas</summary>
+              <div class="pdi-board-palette-items pdi-board-palette-shapes" aria-label="Elige una forma">
+                ${BOARD_SHAPES.map(([value, label, svg]) =>
+                  `<button type="button" class="secondary" data-board-stamp="${value}" aria-label="${label}" aria-pressed="false"><svg viewBox="0 0 48 48" aria-hidden="true">${svg}</svg><span>${label}</span></button>`
+                ).join('')}
+              </div>
+            </details>
+            <label class="pdi-board-text-size">
+              Tamaño de letras y números
+              <select data-board-text-size aria-label="Tamaño de letras y números">
+                <option value="small">Pequeño</option>
+                <option value="medium" selected>Mediano</option>
+                <option value="large">Grande</option>
+              </select>
+            </label>
+            <span class="pdi-board-stamp-status" data-board-stamp-status aria-live="polite"></span>
+            <button type="button" class="secondary pdi-board-back-to-pencil" data-board-stamp-cancel hidden>✏️ Volver al lápiz</button>
           </div>
 
-          <div class="pdi-board-stage" data-board-background="white">
+          <div class="pdi-board-stage" data-board-background="white" data-board-guide-width="medium">
             <canvas id="pdi-board-canvas" aria-label="Zona de dibujo de la pizarra"></canvas>
+            <canvas id="pdi-board-preview" aria-hidden="true"></canvas>
             <div class="pdi-board-hint" aria-live="polite">DIBUJA CON EL DEDO, EL LÁPIZ DE LA PDI O EL RATÓN</div>
           </div>
         </section>
@@ -369,6 +424,8 @@
     canvas.dataset.ready = '1';
 
     const ctx = canvas.getContext('2d', { alpha: true });
+    const preview = document.querySelector('#pdi-board-preview');
+    const previewCtx = preview.getContext('2d');
     const state = {
       tool: 'draw',
       color: '#242424',
@@ -378,6 +435,9 @@
       lastX: 0,
       lastY: 0,
       stamp: '',
+      stampPointerId: null,
+      textSize: 'medium',
+      undo: null,
       ctx,
       canvas
     };
@@ -402,15 +462,93 @@
       ctx.globalCompositeOperation = state.tool === 'eraser' ? 'destination-out' : 'source-over';
     };
 
+    const rememberBoard = () => {
+      const snapshot = document.createElement('canvas');
+      snapshot.width = canvas.width;
+      snapshot.height = canvas.height;
+      snapshot.getContext('2d').drawImage(canvas, 0, 0);
+      state.undo = snapshot;
+      const button = document.querySelector('[data-board-undo]');
+      if (button) button.disabled = false;
+    };
+    state.rememberBoard = rememberBoard;
+
+    const drawStamp = (target, x, y) => {
+      target.save();
+      target.globalCompositeOperation = 'source-over';
+      target.fillStyle = state.color;
+      const shape = state.stamp;
+      if (BOARD_SHAPES.some(item => item[0] === shape)) {
+        target.beginPath();
+        if (shape === 'circle') target.arc(x, y, 36, 0, Math.PI * 2);
+        if (shape === 'square') target.rect(x - 36, y - 36, 72, 72);
+        if (shape === 'triangle') {
+          target.moveTo(x, y - 39);
+          target.lineTo(x + 41, y + 34);
+          target.lineTo(x - 41, y + 34);
+          target.closePath();
+        }
+        if (shape === 'star') {
+          for (let i = 0; i < 10; i++) {
+            const angle = -Math.PI / 2 + i * Math.PI / 5;
+            const radius = i % 2 ? 18 : 42;
+            const px = x + Math.cos(angle) * radius;
+            const py = y + Math.sin(angle) * radius;
+            if (i === 0) target.moveTo(px, py);
+            else target.lineTo(px, py);
+          }
+          target.closePath();
+        }
+        if (shape === 'line') {
+          target.moveTo(x - 45, y);
+          target.lineTo(x + 45, y);
+        }
+        if (shape === 'plus') {
+          target.moveTo(x - 34, y);
+          target.lineTo(x + 34, y);
+          target.moveTo(x, y - 34);
+          target.lineTo(x, y + 34);
+        }
+        if (shape === 'equals') {
+          target.moveTo(x - 34, y - 13);
+          target.lineTo(x + 34, y - 13);
+          target.moveTo(x - 34, y + 13);
+          target.lineTo(x + 34, y + 13);
+        }
+        target.lineWidth = 5;
+        target.strokeStyle = state.color === '#f5ca22' ? '#9a6a00' : state.color;
+        if (!['line', 'plus', 'equals'].includes(shape)) target.fill();
+        target.stroke();
+      } else {
+        target.textAlign = 'center';
+        target.textBaseline = 'middle';
+        target.font = `900 ${{ small: 46, medium: 64, large: 82 }[state.textSize]}px Nunito, Arial, sans-serif`;
+        target.fillText(shape, x, y);
+      }
+      target.restore();
+    };
+
+    const hidePreview = () => {
+      previewCtx.save();
+      previewCtx.setTransform(1, 0, 0, 1, 0, 0);
+      previewCtx.clearRect(0, 0, preview.width, preview.height);
+      previewCtx.restore();
+    };
+    state.hidePreview = hidePreview;
+
+    const showPreview = (x, y) => {
+      hidePreview();
+      if (!state.stamp) return;
+      previewCtx.save();
+      previewCtx.globalAlpha = .5;
+      drawStamp(previewCtx, x, y);
+      previewCtx.restore();
+    };
+
     const placeStamp = (x, y) => {
-      configureBrush();
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.fillStyle = state.color;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.font = '900 76px Nunito, Arial, sans-serif';
-      ctx.fillText(state.stamp, x, y);
-      if (hint) hint.textContent = `COLOCADO ${state.stamp} · TOCA OTRA ZONA O VUELVE A DIBUJAR`;
+      drawStamp(ctx, x, y);
+      hidePreview();
+      if (hint) hint.textContent = `COLOCADO ${stampLabel(state.stamp)} · TOCA OTRA ZONA O VUELVE A DIBUJAR`;
     };
 
     canvas.addEventListener('pointerdown', event => {
@@ -420,10 +558,17 @@
 
       const p = point(event);
       if (state.stamp) {
-        placeStamp(p.x, p.y);
+        if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+          state.stampPointerId = event.pointerId;
+          showPreview(p.x, p.y);
+        } else {
+          rememberBoard();
+          placeStamp(p.x, p.y);
+        }
         return;
       }
 
+      rememberBoard();
       state.drawing = true;
       state.pointerId = event.pointerId;
       state.lastX = p.x;
@@ -437,6 +582,12 @@
     });
 
     canvas.addEventListener('pointermove', event => {
+      if (state.stamp) {
+        if (state.stampPointerId === null && event.pointerType !== 'mouse') return;
+        if (state.stampPointerId !== null && event.pointerId !== state.stampPointerId) return;
+        showPreview(point(event).x, point(event).y);
+        return;
+      }
       if (!state.drawing || event.pointerId !== state.pointerId) return;
       event.preventDefault();
 
@@ -451,6 +602,16 @@
     });
 
     const stop = event => {
+      if (state.stampPointerId === event.pointerId) {
+        if (event.type === 'pointerup' && state.stamp) {
+          const p = point(event);
+          rememberBoard();
+          placeStamp(p.x, p.y);
+        }
+        state.stampPointerId = null;
+        hidePreview();
+        return;
+      }
       if (state.pointerId !== null && event.pointerId !== state.pointerId) return;
       state.drawing = false;
       state.pointerId = null;
@@ -458,9 +619,21 @@
     canvas.addEventListener('pointerup', stop);
     canvas.addEventListener('pointercancel', stop);
 
-    const observer = new ResizeObserver(() => resizeCanvas(canvas, ctx));
+    canvas.addEventListener('pointerleave', () => {
+      if (state.stampPointerId === null) hidePreview();
+    });
+
+    const resizeBoard = () => {
+      resizeCanvas(canvas, ctx);
+      preview.width = canvas.width;
+      preview.height = canvas.height;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      previewCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    state.resizeBoard = resizeBoard;
+    const observer = new ResizeObserver(resizeBoard);
     observer.observe(canvas.closest('.pdi-board-stage'));
-    requestAnimationFrame(() => resizeCanvas(canvas, ctx));
+    requestAnimationFrame(resizeBoard);
     boardMounted = true;
   }
 
@@ -468,6 +641,8 @@
     if (!canvasState) return;
     canvasState.tool = tool;
     canvasState.stamp = '';
+    canvasState.stampPointerId = null;
+    canvasState.hidePreview();
 
     document.querySelectorAll('[data-board-tool]').forEach(button => {
       const active = button.dataset.boardTool === tool;
@@ -481,6 +656,10 @@
 
     const cancel = document.querySelector('[data-board-stamp-cancel]');
     if (cancel) cancel.hidden = true;
+    const status = document.querySelector('[data-board-stamp-status]');
+    if (status) status.textContent = tool === 'eraser'
+      ? 'Goma activa · borra en la pizarra'
+      : 'Lápiz activo · dibuja en la pizarra';
 
     const hint = document.querySelector('.pdi-board-hint');
     if (hint) hint.textContent = tool === 'eraser'
@@ -492,6 +671,8 @@
     if (!canvasState) return;
     canvasState.stamp = value;
     canvasState.tool = 'draw';
+    canvasState.stampPointerId = null;
+    canvasState.hidePreview();
 
     document.querySelectorAll('[data-board-tool]').forEach(button => {
       button.classList.remove('is-active');
@@ -505,14 +686,18 @@
 
     const cancel = document.querySelector('[data-board-stamp-cancel]');
     if (cancel) cancel.hidden = false;
+    document.querySelectorAll('.pdi-board-palette[open]').forEach(palette => { palette.open = false; });
+    const status = document.querySelector('[data-board-stamp-status]');
+    if (status) status.textContent = `Elegido: ${stampLabel(value)}`;
 
     const hint = document.querySelector('.pdi-board-hint');
-    if (hint) hint.textContent = `TOCA LA PIZARRA PARA COLOCAR ${value}`;
+    if (hint) hint.textContent = `TOCA LA PIZARRA PARA COLOCAR ${stampLabel(value)}`;
   }
 
   function clearBoard() {
     if (!canvasState) return;
     const { canvas, ctx } = canvasState;
+    canvasState.rememberBoard();
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -520,6 +705,22 @@
 
     const hint = document.querySelector('.pdi-board-hint');
     if (hint) hint.textContent = 'PIZARRA LIMPIA · LISTA PARA EMPEZAR';
+  }
+
+  function undoBoard() {
+    if (!canvasState?.undo) return;
+    const { canvas, ctx, undo } = canvasState;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(undo, 0, 0, canvas.width, canvas.height);
+    ctx.restore();
+    canvasState.undo = null;
+    const button = document.querySelector('[data-board-undo]');
+    if (button) button.disabled = true;
+    const hint = document.querySelector('.pdi-board-hint');
+    if (hint) hint.textContent = 'ÚLTIMA ACCIÓN DESHECHA';
   }
 
   function pdiContextAvailable() {
@@ -738,6 +939,14 @@
   }
 
   document.addEventListener('click', event => {
+    const summary = event.target.closest('.pdi-board-palette > summary');
+    if (summary) {
+      document.querySelectorAll('.pdi-board-palette[open]').forEach(palette => {
+        if (palette !== summary.parentElement) palette.open = false;
+      });
+      return;
+    }
+
     const tool = event.target.closest('[data-board-tool]');
     if (tool) {
       setBoardTool(tool.dataset.boardTool);
@@ -747,14 +956,12 @@
     const color = event.target.closest('[data-board-color]');
     if (color && canvasState) {
       canvasState.color = color.dataset.boardColor;
-      canvasState.tool = 'draw';
-      canvasState.stamp = '';
       document.querySelectorAll('[data-board-color]').forEach(button => {
         const active = button === color;
         button.classList.toggle('is-active', active);
         button.setAttribute('aria-pressed', String(active));
       });
-      setBoardTool('draw');
+      if (!canvasState.stamp) setBoardTool('draw');
       return;
     }
 
@@ -762,6 +969,15 @@
     if (bg) {
       const stage = document.querySelector('.pdi-board-stage');
       if (stage) stage.dataset.boardBackground = bg.dataset.boardBg;
+      const guidesControl = document.querySelector('[data-board-guides-control]');
+      if (guidesControl) guidesControl.hidden = bg.dataset.boardBg !== 'guides';
+      if (bg.dataset.boardBg === 'guides' && canvasState) {
+        const guide = document.querySelector('[data-board-guide-width]');
+        const textSize = document.querySelector('[data-board-text-size]');
+        const choice = { narrow: 'small', medium: 'medium', wide: 'large' }[guide?.value] || 'medium';
+        canvasState.textSize = choice;
+        if (textSize) textSize.value = choice;
+      }
       document.querySelectorAll('[data-board-bg]').forEach(button => {
         button.setAttribute('aria-pressed', String(button === bg));
       });
@@ -781,6 +997,11 @@
 
     if (event.target.closest('[data-board-clear]')) {
       clearBoard();
+      return;
+    }
+
+    if (event.target.closest('[data-board-undo]')) {
+      undoBoard();
       return;
     }
 
@@ -824,13 +1045,24 @@
     if (event.target.matches('[data-board-size]') && canvasState) {
       canvasState.size = Number(event.target.value) || 8;
     }
+    if (event.target.matches('[data-board-guide-width]')) {
+      const stage = document.querySelector('.pdi-board-stage');
+      if (stage) stage.dataset.boardGuideWidth = event.target.value;
+      const choice = { narrow: 'small', medium: 'medium', wide: 'large' }[event.target.value] || 'medium';
+      if (canvasState) canvasState.textSize = choice;
+      const textSize = document.querySelector('[data-board-text-size]');
+      if (textSize) textSize.value = choice;
+    }
+    if (event.target.matches('[data-board-text-size]') && canvasState) {
+      canvasState.textSize = event.target.value;
+    }
   });
 
   document.addEventListener('fullscreenchange', syncFullscreenButtons);
   document.addEventListener('webkitfullscreenchange', syncFullscreenButtons);
   window.addEventListener('hashchange', () => setTimeout(queueSync, 0));
   window.addEventListener('resize', () => {
-    if (canvasState) resizeCanvas(canvasState.canvas, canvasState.ctx);
+    canvasState?.resizeBoard();
   });
 
   const start = () => {
