@@ -1,0 +1,14 @@
+/* Cuatro escenas de cuento. Exclusivo de la elección de estación en Asamblea. */
+#projector .projection-main[data-game="estacion"] {width: 100%;max-width: none;min-height: 0;padding: 8px clamp(18px,3vw,55px);justify-content: center;}
+.season-story {width: 100%;min-height: 0;flex: 1;display: grid;grid-template-rows: auto minmax(0,1fr) 48px;gap: 14px;max-height: 800px;}
+#projector .season-story h2 {margin: 0;font-size: clamp(28px,3vw,52px);line-height: 1.15;color: #794657;}
+.season-story-choices {display: grid;grid-template-columns: repeat(4,minmax(0,1fr));gap: clamp(12px,1.7vw,30px);min-height: 0;width: 100%;}
+#projector button.season-story-card {display: flex;flex-direction: column;align-items: center;justify-content: center;gap: 4px;min-width: 0;min-height: 0;width: 100%;height: 100%;padding: 8px 10px 14px;background: #fffaf4;border: 3px solid #e4d2bd;border-radius: 30px;box-shadow: 0 5px 0 #d7bda533;color: #794657;transform: none;overflow: hidden;transition: box-shadow .2s,border-color .2s;}
+#projector .season-story-card img {display: block;width: 100%;height: calc(100% - 48px);min-height: 0;object-fit: contain;flex: 1 1 0;}
+#projector .season-story-card strong {flex: 0 0 auto;font: 900 clamp(21px,2.2vw,38px)/1.2 Nunito,sans-serif;}
+#projector .season-story-card:hover,#projector .season-story-card:focus-visible {transform: none;border-color: #be7c95;box-shadow: 0 0 0 4px #be7c9530;}
+#projector .season-story-card.correct {transform: none;background: #fffaf4;border-color: #87aa6e;box-shadow: 0 0 0 5px #a5c78c66;}
+#projector .season-story-feedback {align-self: center;min-height: 0;margin: 0;font-size: clamp(20px,1.7vw,29px);line-height: 1.2;}
+@media(max-height:800px) {.season-story {gap: 9px;grid-template-rows: auto minmax(0,1fr) 38px;}#projector .season-story h2 {font-size: 34px;}#projector button.season-story-card {padding: 6px 8px 10px;border-radius: 24px;}}
+@media(max-width:700px) {.season-story-choices {grid-template-columns: repeat(2,minmax(0,1fr));gap: 9px;}#projector .season-story h2 {font-size: 25px;}#projector .season-story-card strong {font-size: 20px;}#projector .season-story-feedback {font-size: 17px;}}
+@media(prefers-reduced-motion:reduce) {#projector .season-story-card {transition: none;}}

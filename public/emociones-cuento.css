@@ -1,0 +1,19 @@
+/* Personajes familiares y escenas grandes. Solo la rutina Emociones. */
+#projector:not(:fullscreen):has(.projection-main[data-game="emociones"]) {width:96vw;max-width:96vw;}
+#projector .projection-main[data-game="emociones"] {width:100%;max-width:none;min-height:0;padding:8px 22px;gap:8px;}
+.emotion-book {display:grid;grid-template-rows:auto minmax(0,1fr) auto 30px;gap:10px;width:100%;height:100%;min-height:0;}
+#projector .emotion-book h2,#projector .emotion-gallery h2 {margin:0;width:100%;max-width:none;text-align:center;justify-self:stretch;color:#794657;font-size:clamp(29px,2.7vw,46px);line-height:1.15;}
+.emotion-book-cards {display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:12px;min-height:0;width:100%;}
+#projector .emotion-book-card {grid-column:span 2;display:grid;grid-template-rows:minmax(0,1fr) auto;justify-items:center;align-items:center;min-width:0;min-height:0;padding:5px 10px 8px;background:#fffdf6;border:2px solid #e5cfc4;border-radius:24px;color:#794657;box-shadow:0 4px 0 #b9988530;transform:none;}
+#projector .emotion-book-card:nth-child(5) {grid-column:2/span 2;}
+#projector .emotion-book-card strong {width:100%;text-align:center;font:900 clamp(20px,1.8vw,29px)/1.2 Nunito,sans-serif;}
+#projector .emotion-book-card:hover,#projector .emotion-book-card:focus-visible {background:#fff1db;border-color:#bb7c92;transform:none;}
+.emotion-book-character {display:block;height:100%;max-width:100%;aspect-ratio:1;background:url('assets/emociones-cuento/personajes.webp?rev=1') 0 0/400% 200% no-repeat;}
+.emotion-character-1 {background-position:33.333333% 0;}.emotion-character-2 {background-position:66.666667% 0;}.emotion-character-3 {background-position:100% 0;}.emotion-character-4 {background-position:0 100%;}.emotion-character-5 {background-position:33.333333% 100%;}.emotion-character-6 {background-position:66.666667% 100%;}
+.emotion-book-skip {display:flex;gap:16px;justify-content:center;}
+#projector .emotion-book .feedback,#projector .emotion-gallery .feedback {margin:0;text-align:center;min-height:0;font-size:clamp(17px,1.4vw,24px);line-height:1.15;}
+.emotion-gallery {display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:9px;height:100%;width:100%;min-height:0;}
+.emotion-gallery figure {margin:0;min-height:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:#fff;border-radius:24px;overflow:hidden;}
+.emotion-gallery img {display:block;width:100%;height:100%;object-fit:contain;}
+@media(max-height:800px) {#projector .emotion-book h2,#projector .emotion-gallery h2 {font-size:30px;}.emotion-book {gap:7px;}.emotion-book-cards {gap:8px;}#projector .emotion-book-card strong {font-size:21px;}#projector .emotion-book-card {border-radius:18px;}}
+@media(max-width:700px) {#projector .projection-main[data-game="emociones"] {padding:6px;}.emotion-book-cards {gap:5px;}#projector .emotion-book-card {padding:3px;}#projector .emotion-book-card strong {font-size:13px;}.emotion-book-skip {gap:7px;}#projector .emotion-book h2 {font-size:24px;}}

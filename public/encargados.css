@@ -1,143 +1,171 @@
-/* Encargados · 4 tarjetas compactas y contenidas dentro de la PDI */
-#projector .projection-main[data-game="encargado"]{
-  box-sizing:border-box;
-  width:100%;
-  max-width:100%;
-  padding-inline:clamp(14px,2vw,30px)!important;
-  padding-top:clamp(4px,.8dvh,9px)!important;
-  justify-content:flex-start;
-  gap:clamp(4px,.7dvh,8px);
-  overflow-x:hidden;
+/* Encargados de la PDI · ilustraciones y cuatro tarjetas con altura estable. */
+#projector .projection-main[data-game="encargado"] {
+  width: min(1500px, 96vw);
+  padding: 12px 16px;
 }
 
-#projector .projection-main[data-game="encargado"]>.prompt-symbol{
-  font-size:clamp(1.7rem,2.2vw,2.2rem)!important;
-  line-height:1;
-  margin:0!important;
+.duties-activity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  max-height: 700px;
+  gap: clamp(8px, 1.2dvh, 14px);
 }
 
-#projector .projection-main[data-game="encargado"]>h2{
-  margin:0!important;
-  font-size:clamp(2rem,2.7vw,2.55rem)!important;
-  line-height:1.05;
+.duties-kicker {
+  color: var(--rose);
+  font-weight: 900;
+  letter-spacing: .08em;
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  line-height: 1.15;
 }
 
-#projector .projection-main[data-game="encargado"]>p{
-  margin:0 0 4px!important;
-  font-size:clamp(.95rem,1.2vw,1.2rem)!important;
+#projector .duties-activity h2 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(2rem, 3.1vw, 3.3rem);
+  line-height: 1.1;
+  text-transform: uppercase;
 }
 
-#projector .projection-main[data-game="encargado"] .duty-grid{
-  box-sizing:border-box;
-  width:min(1320px,96%)!important;
-  max-width:1320px!important;
-  min-width:0!important;
-  margin:clamp(14px,2.2dvh,24px) auto 0!important;
-  padding:0!important;
-  display:grid!important;
-  grid-template-columns:repeat(4,minmax(0,1fr))!important;
-  gap:clamp(8px,.9vw,12px)!important;
-  align-items:stretch;
+#projector .duties-activity > p {
+  margin: 0;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.25;
 }
 
-#projector .projection-main[data-game="encargado"] .duty-card{
-  box-sizing:border-box;
-  width:100%!important;
-  min-width:0!important;
-  max-width:none!important;
-  min-height:152px!important;
-  padding:12px 11px!important;
-  gap:7px!important;
-  border-radius:20px;
-  justify-content:flex-start;
-  overflow:hidden;
+#projector .duties-activity .duty-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  gap: clamp(12px, 1.3vw, 22px);
+  margin: 6px 0 0;
 }
 
-#projector .projection-main[data-game="encargado"] .duty-card>span{
-  font-size:clamp(1.65rem,2vw,2rem)!important;
-  line-height:1!important;
-  margin:0!important;
+#projector .duties-activity .duty-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto auto 48px;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  gap: 10px;
+  padding: 16px;
+  border: 3px solid var(--duty-edge);
+  border-radius: 28px;
+  background: var(--duty-paper);
+  box-shadow: 0 6px 0 var(--duty-edge);
 }
 
-#projector .projection-main[data-game="encargado"] .duty-card h3{
-  margin:0!important;
-  font-size:clamp(1rem,1.25vw,1.18rem)!important;
-  line-height:1.05;
+.duty-card-saludos { --duty-paper: #ffe5e9; --duty-edge: #f7aab8; }
+.duty-card-luces { --duty-paper: #fff2c9; --duty-edge: #ead18a; }
+.duty-card-material { --duty-paper: #e2f4ed; --duty-edge: #a4d5bd; }
+.duty-card-jabon { --duty-paper: #efe8fb; --duty-edge: #cbb5e8; }
+
+#projector .duties-activity .duty-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 94%;
+  height: 100%;
+  min-height: 0;
 }
 
-#projector .projection-main[data-game="encargado"] .duty-card label{
-  display:block;
-  width:100%;
-  min-width:0;
+.duty-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
 }
 
-#projector .projection-main[data-game="encargado"] .duty-card select{
-  box-sizing:border-box;
-  display:block;
-  width:100%!important;
-  min-width:0!important;
-  max-width:100%!important;
-  height:40px!important;
-  min-height:40px!important;
-  padding:5px 26px 5px 7px!important;
-  font-size:clamp(.8rem,.95vw,.94rem)!important;
-  text-align:center;
-  text-overflow:ellipsis;
+#projector .duties-activity .duty-card h3 {
+  margin: 0;
+  font-size: clamp(1.3rem, 1.9vw, 1.8rem);
+  line-height: 1.1;
 }
 
-#projector .projection-main[data-game="encargado"] .duty-card button{
-  box-sizing:border-box;
-  width:100%!important;
-  min-width:0!important;
-  min-height:38px!important;
-  padding:5px 7px!important;
-  font-size:clamp(.8rem,.95vw,.94rem)!important;
-  white-space:normal;
+#projector .duties-activity .duty-card label {
+  display: block;
+  width: 100%;
+  min-width: 0;
 }
 
-#projector .projection-main[data-game="encargado"] .duty-result{
-  box-sizing:border-box;
-  width:100%;
-  min-height:36px!important;
-  padding:5px 7px!important;
-  font-size:clamp(.9rem,1.1vw,1.05rem)!important;
+#projector .duties-activity .duty-card select {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 26px 8px 10px;
+  border: 2px solid var(--duty-edge);
+  border-radius: 14px;
+  background: #fffdfa;
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  text-align: center;
 }
 
-.assembly-duties .duty-grid{
-  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+#projector .duties-activity .duty-card button {
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--rose);
+  color: white;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 900;
+  transition: box-shadow .15s ease;
 }
 
-@media (max-width:1050px){
-  #projector .projection-main[data-game="encargado"] .duty-grid,
-  .assembly-duties .duty-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+#projector .duties-activity .duty-card button:hover,
+#projector .duties-activity .duty-card button:active {
+  transform: none;
+  background: var(--rose);
+  color: white;
+  box-shadow: 0 0 0 4px #ffffffb3;
+}
+
+#projector .duties-activity .duty-result {
+  min-height: 0;
+  height: 48px;
+  padding: 8px;
+  background: #ffffffb8;
+  border-radius: 14px;
+  color: var(--ink);
+  font-size: clamp(1.1rem, 1.65vw, 1.5rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.duties-activity .duty-result.is-empty { visibility: hidden; }
+.duties-activity .feedback:empty { display: none; }
+
+#projector:has(.duties-activity) .projection-footer { padding: 14px 16px 16px; }
+
+@media (max-width: 820px) {
+  #projector .projection-main[data-game="encargado"] {
+    overflow-y: auto;
+    justify-content: flex-start;
   }
+  .duties-activity { flex: none; max-height: none; }
+  #projector .duties-activity .duty-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #projector .duties-activity .duty-card { height: 400px; padding: 12px; }
 }
 
-@media (max-width:620px){
-  #projector .projection-main[data-game="encargado"] .duty-grid,
-  .assembly-duties .duty-grid{
-    grid-template-columns:1fr!important;
-  }
+@media (max-width: 480px) {
+  #projector .duties-activity .duty-grid { grid-template-columns: 1fr; }
 }
 
-@media (min-width:1051px) and (max-height:900px){
-  #projector .projection-main[data-game="encargado"] .duty-grid{
-    width:min(1280px,96%)!important;
-    max-width:1280px!important;
-    gap:10px!important;
-    margin-top:14px!important;
-  }
-  #projector .projection-main[data-game="encargado"] .duty-card{
-    min-height:145px!important;
-    padding:10px!important;
-    gap:6px!important;
-  }
-  #projector .projection-main[data-game="encargado"] .duty-card select{
-    height:36px!important;
-    min-height:36px!important;
-  }
-  #projector .projection-main[data-game="encargado"] .duty-card button{
-    min-height:34px!important;
-  }
+/* Se conserva la distribución de la página de Asamblea fuera del proyector. */
+.assembly-duties .duty-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+@media (max-width: 1050px) {
+  .assembly-duties .duty-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 620px) {
+  .assembly-duties .duty-grid { grid-template-columns: 1fr !important; }
 }

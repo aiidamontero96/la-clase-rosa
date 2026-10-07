@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>Comprobar conexión · La Clase Rosa</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff7f0;color:#542d40;font:17px/1.5 system-ui,sans-serif}main{max-width:980px;margin:32px auto;padding:24px;background:white;border:2px solid #ead1dd;border-radius:24px}h1{font-size:30px;margin:0 0 12px}button,a.button{display:inline-block;min-height:48px;margin:5px 6px 5px 0;padding:12px 17px;background:#a6295d;color:white;border:0;border-radius:13px;font:700 16px/1.3 system-ui,sans-serif;text-decoration:none;cursor:pointer}button:disabled{opacity:.5;cursor:default}.secondary{background:#f4e8ef;color:#702040}.note{background:#fff2ce;padding:15px;border-radius:14px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px;border-bottom:1px solid #eee;overflow-wrap:anywhere}.ok{color:#286958}.bad{color:#b62742}#status{font-weight:700}details{margin-top:20px}li{margin:8px 0}:focus-visible{outline:3px solid #1b7095;outline-offset:3px}@media(max-width:650px){main{margin:12px;padding:18px}}
+</style></head><body><main>
+<h1>Comprobar conexión</h1><p>Esta pantalla comprueba si llegan los archivos de La Clase Rosa. Funciona sin Google Fonts, imágenes ni scripts externos. No cambia tus datos ni la configuración de la PDI.</p>
+<p class="note"><strong>Si ves ERR_CERT_AUTHORITY_INVALID antes de abrir esta pantalla:</strong> la conexión se bloquea antes de descargar la web. Anota el error y el emisor del certificado que muestra el navegador; el informe de esta página no puede comprobar ese certificado.</p>
+<div><button id="run">COMPROBAR CONEXIÓN</button><button id="stop" class="secondary" disabled>PARAR</button><button id="download" class="secondary" disabled>DESCARGAR INFORME</button><a class="button secondary" href="./#pdi">VOLVER A LA PDI</a></div>
+<p id="status" role="status" aria-live="polite">Pulsa comprobar desde la red donde aparece el problema.</p>
+<div class="table-wrap"><table><thead><tr><th>Archivo</th><th>Resultado</th><th>Tiempo</th></tr></thead><tbody id="results"></tbody></table></div>
+<details><summary>Qué hacer con el resultado</summary><ul>
+<li>Repite la misma prueba en la PDI con Andared y, si puedes, con la conexión móvil. Usa el mismo navegador y el mismo enlace.</li>
+<li>Un archivo que responde con una página HTML en lugar de JavaScript o CSS puede indicar una redirección o una página de filtrado; no identifica por sí solo el responsable.</li>
+<li>«Sin respuesta» puede deberse a red, certificado, DNS, filtrado o servidor. El navegador no permite distinguirlos todos desde JavaScript.</li>
+<li>Para CAUCE, adjunta el informe y la captura del error. Solicita revisar el acceso HTTPS a <strong>www.laclaserosa.es</strong> y <strong>laclaserosa.es</strong>, la clasificación del dominio y, si existe inspección HTTPS, su cadena de confianza.</li>
+<li>No instales certificados descargados de fuentes desconocidas ni desactives la comprobación de certificados. La coordinación TDE o CAUCE debe facilitar cualquier configuración oficial necesaria.</li>
+</ul></details>
+<noscript><p>Esta comprobación necesita JavaScript. El aviso de certificado se puede comunicar directamente a la coordinación TDE.</p></noscript>
+</main><script>
+(() => {
+ 'use strict';
+ const $=id=>document.getElementById(id),base=new URL('./',location.href),controllers=new Set();
+ let running=false,stopped=false,results=[],lastIndex='',elapsed=0;
+ const label=url=>{try{return new URL(url,base).pathname;}catch{return 'Recurso';}};
+ async function inspect(path,kind){
+  const controller=new AbortController();controllers.add(controller);const started=performance.now(),timer=setTimeout(()=>controller.abort(),8000);
+  let result;
+  try{
+   const url=new URL(path,base);if(url.origin!==location.origin)throw new Error('external');
+   const response=await fetch(url.href,{cache:'no-store',credentials:'omit',signal:controller.signal});
+   if(!response.ok)throw new Error('HTTP '+response.status);
+   if(new URL(response.url).origin!==location.origin)throw new Error('Redirección externa');
+   let text='';
+   if(kind==='index'){
+    text=await response.text();if(text.length>262144)throw new Error('HTML inesperadamente grande');
+    if(!text.includes('id="contenido"')||!text.includes('app.js?'))throw new Error('HTML distinto de La Clase Rosa');lastIndex=text;
+   }else if(kind==='json'){
+    const data=await response.json();if(data.site!=='la-clase-rosa'||data.networkPatch!==1)throw new Error('Respuesta JSON inesperada');
+   }else{
+    if(response.body?.getReader){const reader=response.body.getReader(),chunk=await reader.read();text=new TextDecoder().decode(chunk.value?.slice(0,4096)||new Uint8Array());void reader.cancel().catch(()=>{});}else text=(await response.text()).slice(0,4096);
+    if(kind!=='font'&&(/^\s*</.test(text)||/text\/html/i.test(response.headers.get('content-type')||'')))throw new Error('Llegó HTML en lugar de '+kind.toUpperCase());
+    if(kind==='font'&&!text.startsWith('wOFF'))throw new Error('No llegó una fuente WOFF');
+   }
+   result={file:label(path),ok:true,detail:kind==='font'?'Fuente accesible':'Accesible',ms:Math.round(performance.now()-started)};
+  }catch(error){result={file:label(path),ok:false,detail:error.name==='AbortError'?(stopped?'Prueba detenida':'Sin respuesta en 8 s'):error.message==='Failed to fetch'?'No llega la respuesta (red / TLS / filtrado)':error.message,ms:Math.round(performance.now()-started)};}
+  finally{clearTimeout(timer);controllers.delete(controller);}
+  results.push(result);const row=document.createElement('tr');for(const value of [result.file,result.detail,result.ms+' ms']){const cell=document.createElement('td');cell.textContent=value;row.appendChild(cell);}row.className=result.ok?'ok':'bad';$('results').appendChild(row);return result;
+ }
+ async function run(){
+  if(running)return;running=true;stopped=false;results=[];lastIndex='';$('results').replaceChildren();$('run').disabled=true;$('stop').disabled=false;$('download').disabled=true;$('status').textContent='Comprobando el documento principal…';
+  const started=performance.now(),globalTimer=setTimeout(()=>{stopped=true;controllers.forEach(c=>c.abort());},60000);
+  try{
+   await inspect('./','index');
+   const jobs=[['red-salud.json?rev=1','json']],seen=new Set();
+   const tags=lastIndex.match(/<(?:script|link)\b[^>]*>/gi)||[];
+   for(const tag of tags){const match=tag.match(/(?:src|href)=["']([^"']+)["']/i);if(!match||!/(?:\.js|\.css)\?/i.test(match[1]))continue;const url=new URL(match[1].replaceAll('&amp;','&'),base);if(url.origin!==location.origin||seen.has(url.href))continue;seen.add(url.href);jobs.push([url.href,/\.css\?/.test(url.href)?'css':'js']);}
+   if(!lastIndex)jobs.push(['styles.css','css'],['data.js','js'],['app.js','js'],['pdi-extras.js','js']);
+   jobs.push(['fonts/local/nunito.woff','font'],['fonts/local/dmsans.woff','font']);
+   let next=0;await Promise.all(Array.from({length:3},async()=>{while(next<jobs.length&&!stopped){const job=jobs[next++];$('status').textContent='Comprobando recursos: '+next+' / '+jobs.length;await inspect(...job);}}));
+  }finally{clearTimeout(globalTimer);elapsed=Math.round(performance.now()-started);running=false;$('run').disabled=false;$('stop').disabled=true;$('download').disabled=false;const failures=results.filter(r=>!r.ok).length;$('status').textContent=(stopped?'Prueba detenida. ':failures?'Hay recursos que no llegan. ':'Los recursos comprobados llegan. ')+results.length+' comprobados; '+failures+' con incidencias. Esta prueba no verifica la cadena del certificado ni la red Andared desde fuera del centro.';}
+ }
+ $('run').addEventListener('click',()=>void run());$('stop').addEventListener('click',()=>{stopped=true;controllers.forEach(c=>c.abort());});
+ $('download').addEventListener('click',()=>{const text=['LA CLASE ROSA — INFORME DE CONEXIÓN','Fecha: '+new Date().toISOString(),'Origen: '+location.origin,'Navegador: '+navigator.userAgent,'Online (orientativo): '+navigator.onLine,'Duración: '+elapsed+' ms','No incluye alumnado, contraseñas, cookies ni almacenamiento local.','La prueba solo verifica respuesta/prefijo de recursos; no verifica el certificado ni todos los audios/vídeos.','',...results.map(r=>(r.ok?'OK':'FALLO')+' | '+r.file+' | '+r.detail+' | '+r.ms+' ms')].join('\n');const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='la-clase-rosa-conexion.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+})();
+</script></body></html>

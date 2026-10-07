@@ -1,0 +1,26 @@
+/* Libro de número y letra y acceso directo a Asamblea. */
+.home-assembly-head > .home-assembly-actions {display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap;}
+.home-assembly-actions .button {text-align:center;white-space:nowrap;}
+@media(max-width:700px) {.home-assembly-head > .home-assembly-actions {width:100%;justify-content:flex-start;}.home-assembly-actions .button {flex:1;}}
+#projector:not(:fullscreen):has(.routine-book) {width:96vw;max-width:96vw;}
+#projector .projection-main[data-game="numero"],#projector .projection-main[data-game="letra"] {width:100%;max-width:none;padding:8px 18px;min-height:0;}
+.routine-book {display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px;width:100%;height:100%;min-height:0;}
+.routine-book header {display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;padding:0 14px;}
+#projector .routine-book h2 {margin:0;max-width:none;font-size:clamp(28px,2.8vw,45px);line-height:1.1;color:#794657;text-align:center;grid-column:2;}
+.routine-book header label {grid-column:3;justify-self:end;display:flex;align-items:center;gap:12px;font-size:clamp(16px,1.3vw,23px);font-weight:900;color:#794657;white-space:nowrap;}
+.routine-book select {min-width:95px;min-height:48px;background:#fffdf7;border:2px solid #d4aa86;border-radius:16px;padding:4px 12px;font:900 26px/1.2 Nunito,sans-serif;color:#794657;}
+.routine-book-spread {min-height:0;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5%;padding:5.5% 9% 6.5%;background:#fff7e4 url('assets/rutinas-libro/libro.webp?rev=1') center/100% 100% no-repeat;border-radius:28px;}
+.routine-book-page {min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;}
+.routine-page-kicker {font:900 clamp(17px,1.6vw,27px)/1.15 Nunito,sans-serif;color:#8c6847;}
+#projector .routine-glyph {display:flex;align-items:center;justify-content:center;width:100%;min-height:0;flex:1 1 0;font:900 clamp(120px,27vh,315px)/1 Nunito,sans-serif;color:#c56577;text-shadow:0 5px #f2d4b1;}
+#projector .routine-book-page h3 {margin:0;font:900 clamp(18px,1.8vw,30px)/1.15 Nunito,sans-serif;color:#794657;}
+#projector .routine-book-page p {margin:0;font:900 clamp(16px,1.4vw,23px)/1.15 Nunito,sans-serif;color:#7d644f;}
+.routine-ten-frame {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:8px;width:100%;flex:1 1 0;min-height:0;max-height:320px;}
+.routine-count-slot {display:flex;align-items:center;justify-content:center;min-height:0;background:#fffdf5;border:2px dashed #cfba98;border-radius:18px;}
+.routine-count-slot.is-filled {border:2px solid #e6ad9b;background:#fff2de;}
+.routine-count-slot img {width:100%;height:100%;object-fit:contain;max-width:110px;max-height:170px;}
+.routine-name-chips {display:flex;flex-wrap:wrap;gap:10px;align-content:center;justify-content:center;width:100%;min-height:0;flex:1 1 0;}
+.routine-name-chips > span {padding:8px 13px;background:#fff5dc;border:2px solid #dfc09b;border-radius:16px;font:900 clamp(18px,1.7vw,29px)/1.25 Nunito,sans-serif;color:#73504e;}
+.routine-name-chips mark {display:inline-block;color:#b23757;background:#f7d89c;border-radius:6px;padding:0 2px;box-shadow:0 2px #c49d60;}
+@media(max-height:800px) {.routine-book-spread {padding:6.5% 8% 8%;}.routine-book-page {gap:9px;}#projector .routine-glyph {font-size:clamp(115px,25vh,230px);}#projector .routine-book h2 {font-size:29px;}#projector .routine-book-page h3 {font-size:22px;}.routine-name-chips {gap:7px;}.routine-name-chips > span {font-size:20px;padding:6px 9px;}.routine-ten-frame {gap:6px;}}
+@media(max-width:700px) {.routine-book header {display:flex;flex-direction:column;gap:6px;}#projector .routine-book h2 {font-size:24px;text-align:center;}.routine-book header label {font-size:15px;}.routine-book-spread {padding:5% 5%;gap:4%;}.routine-name-chips > span {font-size:14px;padding:3px 5px;}#projector .routine-book-page h3 {font-size:15px;}#projector .routine-book-page p {font-size:13px;}#projector .routine-glyph {font-size:100px;}.routine-ten-frame {gap:3px;}.routine-count-slot {border-radius:9px;}}

@@ -1,0 +1,58 @@
+/* Calendario como escena ilustrada completa. Solo Asamblea, sin alterar la lógica. */
+#projector .projection-main[data-game="calendario"]:has(.calendar-story) {width: min(1500px,96vw);max-width: 100%;padding: 4px 10px;justify-content: center;}
+.calendar-story {--day-ink: #84504e;position: relative;width: 100%;height: auto;max-height: 850px;min-height: 0;flex: 1 1 0;display: grid;grid-template-rows: 15% minmax(0,1fr) 6%;padding: 0 9% 0;background: #fff8e9 url('assets/calendario-cuento/otono.webp?rev=1') center/100% 100% no-repeat;border-radius: 27px;overflow: hidden;isolation: isolate;animation: calendarUnfold .45s ease-out;}
+.calendar-story[data-season="invierno"] {--day-ink: #477789;background-image: url('assets/calendario-cuento/invierno.webp?rev=1');}
+.calendar-story[data-season="primavera"] {--day-ink: #9b587b;background-image: url('assets/calendario-cuento/primavera.webp?rev=1');}
+.calendar-story[data-season="verano"] {--day-ink: #926b34;background-image: url('assets/calendario-cuento/verano.webp?rev=1');}
+.story-calendar-heading {display: flex;flex-direction: column;align-items: center;justify-content: center;gap: 3px;padding: 0;position: relative;z-index: 1;}
+.story-calendar-kicker {display: none;font-size: clamp(.75rem,1vw,1rem);letter-spacing: .12em;font-weight: 900;color: #985b68;line-height: 1.1;}
+#projector .projection-main[data-game="calendario"] .calendar-story h2 {font: 900 clamp(1.8rem,3vw,3rem)/1 Nunito,sans-serif;letter-spacing: -.02em;color: #794657;margin: 1px 0 4px;max-width: none;text-shadow: 0 2px #fff7e7;}
+.story-calendar-heading > strong {font: 900 clamp(1rem,1.7vw,1.65rem)/1.1 Nunito,sans-serif;color: #85554f;padding: 5px 22px;background: #fff8e7d9;border-radius: 50% 45% 46% 48% / 25% 30% 23% 25%;}
+.story-calendar-paper {min-height: 0;display: flex;align-items: stretch;padding: 9px 7px 12px;background: #fff5db;border: 3px solid #f0d5a3;border-radius: 28px 22px 25px 20px;box-shadow: 0 4px 0 #a87b4120;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini {display: grid;grid-template-columns: repeat(7,minmax(0,1fr));grid-template-rows: auto;grid-auto-rows: minmax(0,1fr);width: 100%;height: 100%;max-width: 100%;margin: 0;gap: clamp(4px,.6vw,9px);padding: 0;align-self: stretch;border: 0;box-shadow: none;background: none;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > b {--tab: #e7b5ae;display: grid;place-items: center;min-height: 27px;max-height: 34px;padding: 5px 3px;background: var(--tab);border: 2px solid #fff9e7;border-radius: 12px 13px 8px 10px;font: 900 clamp(.75rem,1.05vw,1rem)/1 Nunito,sans-serif;color: #684b48;box-shadow: 0 2px 0 #795e3a20;transform: rotate(-1deg);}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > b:nth-child(2) {--tab: #ecd497;transform: rotate(1deg);}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > b:nth-child(3) {--tab: #b8d6bd;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > b:nth-child(4) {--tab: #b6d5df;transform: rotate(1deg);}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > b:nth-child(5) {--tab: #cfbce1;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > b:nth-child(6) {--tab: #e5c3d2;transform: rotate(1deg);}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > b:nth-child(7) {--tab: #e8c9a2;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span {--paper: #fff6df;position: relative;display: flex;flex-direction: row;align-items: center;justify-content: center;gap: 6px;height: auto;min-height: 0;padding: 3px;border: 3px solid #e6c28b;border-radius: 22px 18px 20px 17px;background: linear-gradient(145deg,#fffdf7,var(--paper));color: var(--day-ink);opacity: 1;box-shadow: 0 3px 0 #90725218;overflow: visible;transform: none;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-day-number {position: relative;font: 900 clamp(1.55rem,2.35vw,2.5rem)/1 Nunito,sans-serif;z-index: 1;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.weekend {--paper: #f5e7f0;border-color: #e2bfd4;color: #8c6483;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.holiday {--paper: #f2e4ed;border-color: #d7bbd0;color: #8c6483;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.past {color: #88745b;background: #f6ebd6;border-color: #ddd0ba;box-shadow: none;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.past::before,
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.past::after {content: '';position: absolute;inset: 5px 7px;width: auto;height: auto;display: block;background: linear-gradient(to bottom right,transparent calc(50% - 2px),#874859bf calc(50% - 2px),#874859bf calc(50% + 2px),transparent calc(50% + 2px));border: 0;border-radius: 0;box-shadow: none;transform: none;z-index: 4;pointer-events: none;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.past::after {background: linear-gradient(to top right,transparent calc(50% - 2px),#874859bf calc(50% - 2px),#874859bf calc(50% + 2px),transparent calc(50% + 2px));}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.today {background: #ffe9a4;border: 3px solid #ce8e4d;color: #a44660;box-shadow: 0 3px 0 #b98b4b30,0 0 0 2px #fff5d4;animation: calendarToday .7s ease-out;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.today::before {content: '';position: absolute;left: 50%;top: 50%;width: 48px;height: 37px;background: none;border: 3px solid #c75b79;border-radius: 47% 44% 48% 41%;transform: translate(-50%,-50%) rotate(-9deg);pointer-events: none;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.today::after {content: 'HOY';position: absolute;top: -9px;right: 6px;padding: 3px 9px;background: #b35b6c;color: #fff7e9;border-radius: 7px 5px 8px 6px;transform: rotate(5deg);font: 900 .65rem/1 Nunito,sans-serif;z-index: 2;}
+/* Casita dibujada: fin de semana o día sin cole. El número permanece visible. */
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini small {font-size: 0;width: clamp(36px,3.5vw,58px);height: clamp(36px,3.5vw,58px);flex: 0 0 auto;margin: 0;background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2080%2080%22%3E%3Cpath%20d%3D%22M9%2043Q4%2039%2010%2033L36%2012Q40%208%2045%2012L72%2034Q78%2039%2071%2043Z%22%20fill%3D%22%23ef947d%22%20stroke%3D%22%23b26754%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M15%2040V66Q15%2071%2022%2071H59Q65%2071%2065%2065V40%22%20fill%3D%22%23ffe5a6%22%20stroke%3D%22%23b88856%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M34%2071V52Q34%2046%2040%2046Q47%2046%2047%2052V71%22%20fill%3D%22%2391c5be%22%20stroke%3D%22%235b9695%22%20stroke-width%3D%223%22%2F%3E%3Crect%20x%3D%2221%22%20y%3D%2245%22%20width%3D%229%22%20height%3D%2212%22%20rx%3D%223%22%20fill%3D%22%23fff9e2%22%20stroke%3D%22%23b88856%22%20stroke-width%3D%222%22%2F%3E%3Crect%20x%3D%2251%22%20y%3D%2245%22%20width%3D%229%22%20height%3D%2212%22%20rx%3D%223%22%20fill%3D%22%23fff9e2%22%20stroke%3D%22%23b88856%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M38%2026Q34%2020%2030%2025Q28%2031%2040%2036Q52%2031%2050%2025Q45%2020%2040%2026Z%22%20fill%3D%22%23fff5da%22%2F%3E%3Cpath%20d%3D%22M9%2073H72%22%20stroke%3D%22%239ebc7e%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;border-radius: 0;box-shadow: none;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.weekend:not(.today),#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.holiday:not(.today) {background: #f4e9f4;border-color: #d5acd1;}
+#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.today small {display: none;}
+.story-calendar-controls {display: flex;align-items: center;justify-content: center;gap: 10px;position: relative;z-index: 1;}
+.story-calendar-controls label {display: flex;gap: 8px;align-items: center;font-size: .75rem;font-weight: 900;color: #795a4b;background: #fff8e7e6;border-radius: 10px;padding: 3px 8px;}
+#projector .story-calendar-controls input {width: 140px;min-height: 31px;padding: 3px 6px;border: 2px solid #d7bd94;border-radius: 9px;background: #fffaf0;color: #725342;font-size: .85rem;}
+#projector .story-calendar-controls button {min-height: 32px;padding: 4px 12px;background: #f1d3a3;color: #75533b;border: 2px solid #fff4d9;border-radius: 10px;font-size: .8rem;}
+@keyframes calendarUnfold {from {opacity: .65;transform: translateY(5px);}to {opacity: 1;transform: none;}}
+@keyframes calendarToday {0% {box-shadow: 0 0 0 0 #e6b27290;}100% {box-shadow: 0 0 0 8px #e6b27200;}}
+@media (max-height:800px) and (min-width:901px) {
+  .calendar-story {grid-template-rows: 14% minmax(0,1fr) 7%;padding-top: 0;}
+  #projector .projection-main[data-game="calendario"] .calendar-story h2 {font-size: clamp(1.8rem,2.6vw,2.3rem);}
+  .story-calendar-kicker {display: none;}
+  .story-calendar-heading > strong {font-size: 1.15rem;padding: 3px 16px;}
+  #projector .projection-main[data-game="calendario"] .calendar-story .calendar-day-number {font-size: 1.85rem;}
+}
+@media (max-width:700px) {
+  .calendar-story {padding-inline: 4%;min-height: 490px;}
+  #projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > b {font-size: .5rem;}
+  #projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini {gap: 3px;}
+  #projector .projection-main[data-game="calendario"] .calendar-story .calendar-day-number {font-size: 1.35rem;}
+  #projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini small {width: 22px;height: 22px;}
+  #projector .projection-main[data-game="calendario"] .calendar-story h2 {font-size: 1.6rem;}
+}
+@media (prefers-reduced-motion: reduce) {
+  .calendar-story,#projector .projection-main[data-game="calendario"] .calendar-story .calendar-mini > span.today {animation: none;}
+}

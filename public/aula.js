@@ -24,6 +24,13 @@ window.ROSA_AULA=(()=>{
   const writeLocalBook=()=>{try{localStorage.setItem(localBookKey,JSON.stringify(ui.book));return true;}catch{return false;}};
 
 
+  // El cuaderno no debe bloquear el lanzamiento de un juego si la red retiene la API.
+  async function requestBook(options={}){
+    const controller=typeof AbortController==='function'?new AbortController():null;let timer;
+    const deadline=new Promise((resolve,reject)=>{timer=setTimeout(()=>{controller?.abort();reject(new Error('aula-timeout'));},8000);});
+    const request=(async()=>{const response=await fetch('/api/aula',{...options,signal:controller?.signal});if(!response.ok)throw new Error('aula');return options.method==='PUT'?true:await response.json();})();
+    try{return await Promise.race([request,deadline]);}finally{clearTimeout(timer);}
+  }
   async function load(){
     if(ui.loaded)return true;
     if(ui.loading)return ui.loading;
@@ -36,8 +43,7 @@ window.ROSA_AULA=(()=>{
         ui.loaded=true;ui.saveError=false;refreshPage();return true;
       }
       try{
-        const r=await fetch('/api/aula',{credentials:'same-origin',cache:'no-store'});
-        if(!r.ok)throw new Error('load');const data=await r.json();
+        const data=await requestBook({credentials:'same-origin',cache:'no-store'});
         if(!data.book||data.book.version!==1)throw new Error('format');
         const pending=safeCopy(ui.book);ui.book={...emptyBook(),...data.book};
         for(const key of ui.pendingFields){if(key==='cursors')ui.book.cursors={...ui.book.cursors,...pending.cursors};else if(key==='favorites'){for(const [id,add] of ui.favoriteOps)ui.book.favorites=add?[...new Set([...ui.book.favorites,id])]:ui.book.favorites.filter(x=>x!==id);}else ui.book[key]=pending[key];}
@@ -64,7 +70,7 @@ window.ROSA_AULA=(()=>{
     }
     ui.saving=true;refreshStatus();
     try{
-      while(ui.dirty){ui.dirty=false;const r=await fetch('/api/aula',{method:'PUT',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(ui.book),keepalive:true});if(!r.ok)throw new Error('save');}
+      while(ui.dirty){ui.dirty=false;await requestBook({method:'PUT',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(ui.book),keepalive:true});}
       ui.saveError=false;ui.pendingFields.clear();ui.favoriteOps.clear();
     }catch{ui.dirty=true;ui.saveError=true;}
     finally{ui.saving=false;refreshStatus();}

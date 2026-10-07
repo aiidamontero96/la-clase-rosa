@@ -1,0 +1,88 @@
+/* Pase de lista: escena aislada; los vagones conservan su lugar al marcar ausencias. */
+#projector .projection-main:has(.attendance-train) {
+  width: min(1440px, 96vw);
+  padding: 10px 20px;
+  justify-content: center;
+}
+.attendance-train {
+  width: 100%;
+  max-width: 1380px;
+  padding: 14px 22px 25px;
+  border: 2px solid #f0ded3;
+  border-radius: 32px;
+  background: radial-gradient(ellipse at 10% 95%, #dbe9d5 0 12%, transparent 12.2%), radial-gradient(ellipse at 95% 95%, #e7edcc 0 14%, transparent 14.2%), linear-gradient(#f4faf9, #fff9ed 72%);
+  box-shadow: 0 8px 24px #793b5010;
+  color: #633c4a;
+}
+.train-kicker {font-weight: 900;letter-spacing: .12em;font-size: clamp(.85rem, 1.1vw, 1.1rem);color: #9e345b;}
+#projector .train-heading h2 {margin: 5px 0 6px;max-width: none;font-size: clamp(1.8rem, 2.8vw, 2.9rem);line-height: 1.1;}
+#projector .train-heading p {font-size: clamp(.85rem, 1.1vw, 1.05rem);margin: 0;max-width: none;font-weight: 800;color: #765464;}
+.train-station {height: clamp(66px, 8dvh, 86px);position: relative;display: flex;align-items: center;justify-content: center;gap: 14px;}
+.train-station img {width: 150px;height: 100%;object-fit: contain;position: relative;z-index: 1;}
+.train-station > span {position: relative;z-index: 1;font: 900 clamp(.85rem, 1.2vw, 1.1rem)/1.2 Nunito, sans-serif;background: #fff2c9;border: 3px solid #d7ad78;border-radius: 14px;padding: 10px 18px;box-shadow: 0 5px 0 #d7ad78;transform: rotate(-2deg);}
+.train-cloud {position: absolute;left: 10%;top: 25%;width: 80px;height: 25px;border-radius: 50px;background: #fff;box-shadow: 16px -12px 0 -1px #fff, 40px -6px 0 -2px #fff;opacity: .8;}
+.train-cloud.cloud-two {left: auto;right: 10%;transform: scale(.75);}
+.train-carriages {display: grid;grid-template-columns: repeat(6, minmax(0, 1fr));column-gap: 15px;row-gap: 36px;padding: 9px 2px 14px;}
+#projector .train-wagon {
+  --wagon: #f6a4a1;--roof: #ce6875;
+  position: relative;isolation: isolate;display: flex;flex-direction: column;align-items: center;justify-content: flex-start;gap: 5px;
+  min-width: 0;width: 100%;height: clamp(153px, 16dvh, 172px);min-height: 0;padding: 14px 10px 9px;
+  border: 2px solid #ffffffa8;border-radius: 18px 18px 12px 12px;background: var(--wagon);color: #513540;
+  box-shadow: 0 5px 0 #815c5230;transform: none;text-decoration: none;opacity: 1;transition: box-shadow .2s;
+}
+#projector .train-wagon:nth-child(1) {--wagon: #f6a4a1;--roof: #ce6875;}
+#projector .train-wagon:nth-child(2) {--wagon: #f9d58a;--roof: #ca9950;}
+#projector .train-wagon:nth-child(3) {--wagon: #a9d6c9;--roof: #609b8c;}
+#projector .train-wagon:nth-child(4) {--wagon: #c8b8e7;--roof: #9180b7;}
+#projector .train-wagon:nth-child(5) {--wagon: #a9cde4;--roof: #6d9dbc;}
+#projector .train-wagon:nth-child(6) {--wagon: #eeb5cb;--roof: #bc7f9b;}
+#projector .train-wagon:nth-child(7) {--wagon: #f6bc92;--roof: #bd8057;}
+#projector .train-wagon:nth-child(8) {--wagon: #cbd994;--roof: #89975b;}
+#projector .train-wagon:nth-child(9) {--wagon: #b0dce4;--roof: #6d9fa9;}
+#projector .train-wagon:nth-child(10) {--wagon: #dfb6db;--roof: #a27e9e;}
+#projector .train-wagon:nth-child(11) {--wagon: #e6c9a6;--roof: #aa8c66;}
+#projector .train-wagon:nth-child(12) {--wagon: #bdd0ed;--roof: #7f95ba;}
+#projector .train-wagon:hover {background: var(--wagon);box-shadow: 0 0 0 4px #a6295d30, 0 5px 0 #815c5230;}
+#projector .train-wagon:active {transform: none;}
+#projector .train-wagon:focus-visible {outline: 4px solid #1b7095;outline-offset: 5px;}
+.wagon-roof {position: absolute;left: -5px;right: -5px;top: -8px;height: 16px;border-radius: 10px;background: var(--roof);box-shadow: inset 0 3px 0 #ffffff40;}
+.wagon-window {position: relative;flex: 1;min-height: 42px;width: 78%;max-height: 105px;overflow: hidden;border: 5px solid #fff7e7;border-radius: 14px;background: #d9edf1;box-shadow: 0 2px 0 #73434b25;}
+.window-view {position: absolute;inset: 0;background: radial-gradient(circle at 78% 22%, #ffe39b 0 10%, transparent 11%),linear-gradient(160deg, transparent 60%,#b6d6a0 61% 77%,#95bc87 78%);}
+.window-children {position: absolute;inset: 0;width: 100%;height: 100%;object-fit: contain;object-position: center bottom;transition: opacity .3s;}
+.wagon-curtain {position: absolute;top: 0;bottom: 0;width: 51%;z-index: 1;background: repeating-linear-gradient(90deg,#bb5576 0 8px,#d87c98 8px 16px);transition: transform .45s ease;border-bottom: 4px solid #a84563;}
+.curtain-left {left: 0;transform: translateX(-82%);border-radius: 0 0 10px 0;}
+.curtain-right {right: 0;transform: translateX(82%);border-radius: 0 0 0 10px;}
+.is-absent .wagon-curtain {transform: translateX(0);}
+.is-absent .window-children {opacity: 0;}
+#projector .wagon-name {display: flex;align-items: center;justify-content: center;width: 100%;min-height: 35px;padding: 4px 3px;border-radius: 9px;background: #fff9ef;font: 900 clamp(.95rem, 1.3vw, 1.4rem)/1.1 Nunito, sans-serif;white-space: nowrap;}
+.wagon-status {font-size: clamp(.63rem, .78vw, .8rem);font-weight: 900;line-height: 1.1;min-height: 16px;letter-spacing: .02em;}
+.wagon-wheels {position: absolute;left: 18%;right: 18%;bottom: -17px;height: 26px;pointer-events: none;}
+.wagon-wheels::before,.wagon-wheels::after {content: '';position: absolute;top: 0;width: 26px;height: 26px;border: 6px solid #71524e;background: #f4d4aa;border-radius: 50%;box-shadow: inset 0 0 0 2px #b38c70;}
+.wagon-wheels::before {left: 0;}.wagon-wheels::after {right: 0;}
+.train-wagon::before {content: '';position: absolute;left: -17px;top: 70%;width: 16px;height: 7px;background: #967a69;z-index: -1;}
+#projector .train-wagon:nth-child(6n+1)::before {display: none;}
+.train-wagon::after {content: '';position: absolute;left: -9px;right: -9px;bottom: -25px;height: 9px;border-top: 2px solid #977c65;border-bottom: 2px solid #977c65;background: repeating-linear-gradient(90deg,transparent 0 11px,#c5a484 11px 17px);z-index: -1;}
+@media (max-height: 800px) and (min-width: 901px) {
+  .attendance-train {padding: 9px 20px 21px;}
+  .train-station {height: 66px;}
+  .train-station img {width: 110px;}
+  .train-carriages {row-gap: 30px;}
+  #projector .train-wagon {height: 153px;padding: 11px 8px 7px;gap: 4px;}
+  #projector .wagon-name {min-height: 33px;}
+}
+@media (max-width: 900px) {
+  .train-carriages {grid-template-columns: repeat(3,minmax(0,1fr));}
+  #projector .train-wagon:nth-child(6n+1)::before {display: block;}
+  .train-wagon:nth-child(3n+1)::before {display: none;}
+  .attendance-train {padding-inline: 12px;}
+}
+@media (max-width: 480px) {
+  .train-carriages {grid-template-columns: repeat(2,minmax(0,1fr));}
+  .train-wagon:nth-child(3n+1)::before {display: block;}
+  .train-wagon:nth-child(2n+1)::before {display: none;}
+  .train-cloud {display: none;}
+  #projector .projection-main:has(.attendance-train) {padding-inline: 4px;}
+}
+@media (prefers-reduced-motion: reduce) {
+  .wagon-curtain,.window-children,#projector .train-wagon {transition: none;}
+}

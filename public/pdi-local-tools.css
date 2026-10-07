@@ -768,96 +768,149 @@ body.pdi-mode-active:has(#projector[open]) .pdi-mode-floating {
   }
 }
 
-/* Asamblea · día de la semana */
+/* Asamblea · día de la semana. Un único diseño, sin los hotfix anteriores. */
+#projector .projection-main[data-game="dia-semana"] {
+  width: min(1500px, 96vw);
+  padding: 12px 16px;
+}
+
 .weekday-activity {
-  width: min(1180px, 100%);
+  width: 100%;
+  min-height: 0;
+  max-height: 680px;
+  flex: 1;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: clamp(10px, 1.5dvh, 16px);
   margin: 0 auto;
   text-align: center;
 }
 
 .weekday-kicker {
-  display: inline-block;
-  margin-bottom: 8px;
   font-weight: 900;
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
   letter-spacing: .08em;
+  line-height: 1.2;
   color: var(--rose);
 }
 
+#projector .weekday-activity h2 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(2rem, 3.3vw, 3.5rem);
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
 .weekday-cards {
+  min-height: 0;
   display: grid;
-  grid-template-columns: repeat(7, minmax(110px, 1fr));
-  gap: 12px;
-  margin: 24px 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(12px, 1.2vw, 22px);
 }
 
 .weekday-card {
-  min-height: 148px;
+  min-width: 0;
+  min-height: 0;
   display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 8px;
-  border-radius: 24px;
-  position: relative;
-  overflow: hidden;
-  transform: translateY(0);
-  transition: transform .18s ease, box-shadow .18s ease;
+  grid-template-rows: minmax(0, 1fr) auto;
+  justify-items: center;
+  gap: 10px;
+  padding: 14px 10px 18px;
+  border-radius: 26px;
+  background: var(--rose);
+  color: #fff;
+  overflow: visible;
+  transition: box-shadow .18s ease;
 }
 
 .weekday-card:hover,
-.weekday-card:focus-visible {
-  transform: translateY(-4px);
+.weekday-card:focus-visible,
+.weekday-card:active {
+  transform: none;
+  background: var(--rose);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(166, 41, 93, .2);
+}
+
+.weekday-card.is-selected,
+.weekday-card.is-today {
+  box-shadow: 0 0 0 4px rgba(166, 41, 93, .28), 0 8px 18px rgba(64, 41, 55, .1);
 }
 
 .weekday-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88%;
+  height: 100%;
+  min-height: 0;
+}
+
+.weekday-letter-animal {
   display: block;
-  font-size: 2.35rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .weekday-card strong {
-  font-size: clamp(.95rem, 1.7vw, 1.35rem);
-}
-
-.weekday-card small {
-  display: inline-flex;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: var(--rose);
-  color: #fff;
-  font-weight: 900;
-  letter-spacing: .08em;
-  animation: rosaTodayPulse 1.8s ease-in-out infinite;
-}
-
-.weekday-card.is-today {
-  box-shadow: 0 0 0 4px rgba(166, 41, 93, .24), 0 12px 28px rgba(64, 41, 55, .14);
-}
-
-.weekday-card.is-selected {
-  transform: translateY(-4px) rotate(-1deg);
+  font-size: clamp(1.2rem, 1.7vw, 1.8rem);
+  line-height: 1.15;
 }
 
 .weekday-answer {
-  display: inline-flex;
+  justify-self: center;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 14px;
-  padding: 14px 22px;
-  border-radius: 999px;
+  justify-content: center;
+  gap: 8px 16px;
+  max-width: 100%;
+  padding: 10px 22px;
+  border: 2px dashed rgba(166, 41, 93, .4);
+  border-radius: 28px;
   background: #fff4f8;
-  border: 2px dashed rgba(166, 41, 93, .45);
+  line-height: 1.15;
 }
 
 .weekday-answer span {
-  font-weight: 800;
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  font-weight: 900;
 }
 
 .weekday-answer strong {
   color: var(--rose);
-  font-size: clamp(1.35rem, 3vw, 2.25rem);
+  font-size: clamp(1.4rem, 2.3vw, 2.3rem);
 }
 
-@keyframes rosaTodayPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+#projector:has(.weekday-activity) .projection-footer {
+  padding: 10px 16px 16px;
+}
+
+@media (max-width: 820px) {
+  #projector .projection-main[data-game="dia-semana"] {
+    overflow-y: auto;
+    justify-content: flex-start;
+  }
+  .weekday-activity {
+    flex: none;
+    max-height: none;
+    gap: 14px;
+    grid-template-rows: auto auto auto auto;
+  }
+  .weekday-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .weekday-card { height: 210px; }
+  .weekday-card strong { font-size: 1rem; }
+}
+
+@media (max-width: 560px) {
+  .weekday-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Asamblea · letra protagonista fija */
@@ -905,16 +958,7 @@ body.pdi-mode-active:has(#projector[open]) .pdi-mode-floating {
   50% { opacity: 1; transform: scale(1.2) rotate(18deg); }
 }
 
-@media (max-width: 900px) {
-  .weekday-cards { grid-template-columns: repeat(4, minmax(100px, 1fr)); }
-}
-
-@media (max-width: 620px) {
-  .weekday-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .weekday-card small,
   .letter-protagonist-a,
   .letter-protagonist-star { animation: none; }
 }

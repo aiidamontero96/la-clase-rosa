@@ -21,7 +21,7 @@
   }
 
   function mountLogin() {
-    if (loginIsOpen()) { unlock(); return; }
+    if (loginIsOpen()) { unlock(); window.ROSA_STARTUP?.loginReady(); return; }
     if (document.querySelector('.rosa-login-overlay')) return;
     const layer = document.createElement('section');
     layer.className = 'rosa-login-overlay';
@@ -41,6 +41,7 @@
         </form>
       </div>`;
     document.body.prepend(layer);
+    window.ROSA_STARTUP?.loginReady();
     const form = layer.querySelector('form');
     const user = layer.querySelector('#rosa-login-user');
     const password = layer.querySelector('#rosa-login-password');
@@ -379,14 +380,7 @@
     const main = document.querySelector('#projector .projection-main');
     if (!main) return;
     if (main.dataset.game === 'encargado') main.querySelector('.routine-scene-banner')?.remove();
-    if (main.dataset.game === 'tiempo') {
-      const scene = main.querySelector('.weather-scene');
-      if (!scene) return;
-      const label = scene.querySelector('strong')?.textContent?.trim().toLocaleUpperCase('es-ES') || '';
-      const partly = label === 'SOL Y NUBES';
-      scene.classList.toggle('weather-partly-cloudy', partly);
-      if (partly && !scene.querySelector('.weather-sun-overlay')) scene.insertAdjacentHTML('beforeend', '<span class="weather-sun-overlay" aria-hidden="true">☀️</span>');
-    }
+
   }
 
   function install() {
