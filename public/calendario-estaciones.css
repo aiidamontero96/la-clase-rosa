@@ -1,9 +1,9 @@
 /* Calendario como escena ilustrada completa. Solo Asamblea, sin alterar la lógica. */
 #projector .projection-main[data-game="calendario"]:has(.calendar-story) {width: min(1500px,96vw);max-width: 100%;padding: 4px 10px;justify-content: center;}
-.calendar-story {--day-ink: #84504e;position: relative;width: 100%;height: auto;max-height: 850px;min-height: 0;flex: 1 1 0;display: grid;grid-template-rows: 15% minmax(0,1fr) 6%;padding: 0 9% 0;background: #fff8e9 url('assets/calendario-cuento/otono.webp?rev=1') center/100% 100% no-repeat;border-radius: 27px;overflow: hidden;isolation: isolate;animation: calendarUnfold .45s ease-out;}
-.calendar-story[data-season="invierno"] {--day-ink: #477789;background-image: url('assets/calendario-cuento/invierno.webp?rev=1');}
-.calendar-story[data-season="primavera"] {--day-ink: #9b587b;background-image: url('assets/calendario-cuento/primavera.webp?rev=1');}
-.calendar-story[data-season="verano"] {--day-ink: #926b34;background-image: url('assets/calendario-cuento/verano.webp?rev=1');}
+.calendar-story {--day-ink: #84504e;position: relative;width: 100%;height: auto;max-height: 850px;min-height: 0;flex: 1 1 0;display: grid;grid-template-rows: 15% minmax(0,1fr) 6%;padding: 0 9% 0;background: #fff8e9 url('assets/asamblea-ligera/calendario-cuento/otono.webp?rev=1') center/100% 100% no-repeat;border-radius: 27px;overflow: hidden;isolation: isolate;animation: calendarUnfold .45s ease-out;}
+.calendar-story[data-season="invierno"] {--day-ink: #477789;background-image: url('assets/asamblea-ligera/calendario-cuento/invierno.webp?rev=1');}
+.calendar-story[data-season="primavera"] {--day-ink: #9b587b;background-image: url('assets/asamblea-ligera/calendario-cuento/primavera.webp?rev=1');}
+.calendar-story[data-season="verano"] {--day-ink: #926b34;background-image: url('assets/asamblea-ligera/calendario-cuento/verano.webp?rev=1');}
 .story-calendar-heading {display: flex;flex-direction: column;align-items: center;justify-content: center;gap: 3px;padding: 0;position: relative;z-index: 1;}
 .story-calendar-kicker {display: none;font-size: clamp(.75rem,1vw,1rem);letter-spacing: .12em;font-weight: 900;color: #985b68;line-height: 1.1;}
 #projector .projection-main[data-game="calendario"] .calendar-story h2 {font: 900 clamp(1.8rem,3vw,3rem)/1 Nunito,sans-serif;letter-spacing: -.02em;color: #794657;margin: 1px 0 4px;max-width: none;text-shadow: 0 2px #fff7e7;}

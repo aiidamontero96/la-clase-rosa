@@ -9,7 +9,7 @@
 #projector .routine-book h2 {margin:0;max-width:none;font-size:clamp(28px,2.8vw,45px);line-height:1.1;color:#794657;text-align:center;grid-column:2;}
 .routine-book header label {grid-column:3;justify-self:end;display:flex;align-items:center;gap:12px;font-size:clamp(16px,1.3vw,23px);font-weight:900;color:#794657;white-space:nowrap;}
 .routine-book select {min-width:95px;min-height:48px;background:#fffdf7;border:2px solid #d4aa86;border-radius:16px;padding:4px 12px;font:900 26px/1.2 Nunito,sans-serif;color:#794657;}
-.routine-book-spread {min-height:0;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5%;padding:5.5% 9% 6.5%;background:#fff7e4 url('assets/rutinas-libro/libro.webp?rev=1') center/100% 100% no-repeat;border-radius:28px;}
+.routine-book-spread {min-height:0;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5%;padding:5.5% 9% 6.5%;background:#fff7e4 url('assets/asamblea-ligera/rutinas-libro/libro.webp?rev=1') center/100% 100% no-repeat;border-radius:28px;}
 .routine-book-page {min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;}
 .routine-page-kicker {font:900 clamp(17px,1.6vw,27px)/1.15 Nunito,sans-serif;color:#8c6847;}
 #projector .routine-glyph {display:flex;align-items:center;justify-content:center;width:100%;min-height:0;flex:1 1 0;font:900 clamp(120px,27vh,315px)/1 Nunito,sans-serif;color:#c56577;text-shadow:0 5px #f2d4b1;}

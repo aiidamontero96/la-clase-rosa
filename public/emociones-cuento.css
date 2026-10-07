@@ -8,7 +8,7 @@
 #projector .emotion-book-card:nth-child(5) {grid-column:2/span 2;}
 #projector .emotion-book-card strong {width:100%;text-align:center;font:900 clamp(20px,1.8vw,29px)/1.2 Nunito,sans-serif;}
 #projector .emotion-book-card:hover,#projector .emotion-book-card:focus-visible {background:#fff1db;border-color:#bb7c92;transform:none;}
-.emotion-book-character {display:block;height:100%;max-width:100%;aspect-ratio:1;background:url('assets/emociones-cuento/personajes.webp?rev=1') 0 0/400% 200% no-repeat;}
+.emotion-book-character {display:block;height:100%;max-width:100%;aspect-ratio:1;background:url('assets/asamblea-ligera/emociones-cuento/personajes.webp?rev=1') 0 0/400% 200% no-repeat;}
 .emotion-character-1 {background-position:33.333333% 0;}.emotion-character-2 {background-position:66.666667% 0;}.emotion-character-3 {background-position:100% 0;}.emotion-character-4 {background-position:0 100%;}.emotion-character-5 {background-position:33.333333% 100%;}.emotion-character-6 {background-position:66.666667% 100%;}
 .emotion-book-skip {display:flex;gap:16px;justify-content:center;}
 #projector .emotion-book .feedback,#projector .emotion-gallery .feedback {margin:0;text-align:center;min-height:0;font-size:clamp(17px,1.4vw,24px);line-height:1.15;}
