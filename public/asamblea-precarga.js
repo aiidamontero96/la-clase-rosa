@@ -51,5 +51,14 @@
   const dialog=document.getElementById('projector');if(dialog)observer.observe(dialog,{attributes:true,attributeFilter:['open']});
   document.addEventListener('visibilitychange',()=>refresh(true));
   window.ROSA_ASSEMBLY_PRELOAD={report:()=>({step:key,ready:[...ready.keys()],pending:[...pending]})};
+  // Caché persistente exclusivamente para las ilustraciones ligeras.
+  if('serviceWorker' in navigator&&window.isSecureContext){
+    const url=new URL('asamblea-imagenes-sw.js',document.baseURI),scope=new URL('./',url).href;
+    navigator.serviceWorker.getRegistration(scope).then(existing=>{
+      const worker=existing?.active||existing?.waiting||existing?.installing;
+      if(worker&&new URL(worker.scriptURL).pathname!==url.pathname)return;
+      return navigator.serviceWorker.register(url.href,{scope,updateViaCache:'none'});
+    }).catch(()=>{});
+  }
   refresh();
 })();
