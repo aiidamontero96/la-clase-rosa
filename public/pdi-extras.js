@@ -190,17 +190,12 @@
   function routeSync() {
     const content = document.querySelector('#contenido');
     if (!content) return;
-    addCalendarNavLink();
+    if (calendarRoute()) { location.hash = 'pdi'; return; }
     if (timerRoute()) {
       if (!content.querySelector('#pdi-timer-page')) content.innerHTML = timerPage();
       activateGlobalPdiNav();
       addTimerNavLink();
       updateTimerDom();
-    } else if (calendarRoute()) {
-      if (!window.ROSA_AULA?.launch) return;
-      if (!calendarOpened) { calendarOpened = true; window.ROSA_AULA.launch('calendario',{payload:{externalCalendar:true}}); }
-      activateGlobalPdiNav();
-      addTimerNavLink();
     } else { calendarOpened = false; addTimerNavLink(); }
   }
 

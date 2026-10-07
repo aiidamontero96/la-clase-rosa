@@ -767,3 +767,154 @@ body.pdi-mode-active:has(#projector[open]) .pdi-mode-floating {
     height: 220px;
   }
 }
+
+/* Asamblea · día de la semana */
+.weekday-activity {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.weekday-kicker {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  color: var(--rose);
+}
+
+.weekday-cards {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(110px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.weekday-card {
+  min-height: 148px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.weekday-card:hover,
+.weekday-card:focus-visible {
+  transform: translateY(-4px);
+}
+
+.weekday-icon {
+  display: block;
+  font-size: 2.35rem;
+}
+
+.weekday-card strong {
+  font-size: clamp(.95rem, 1.7vw, 1.35rem);
+}
+
+.weekday-card small {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--rose);
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: .08em;
+  animation: rosaTodayPulse 1.8s ease-in-out infinite;
+}
+
+.weekday-card.is-today {
+  box-shadow: 0 0 0 4px rgba(166, 41, 93, .24), 0 12px 28px rgba(64, 41, 55, .14);
+}
+
+.weekday-card.is-selected {
+  transform: translateY(-4px) rotate(-1deg);
+}
+
+.weekday-answer {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: #fff4f8;
+  border: 2px dashed rgba(166, 41, 93, .45);
+}
+
+.weekday-answer span {
+  font-weight: 800;
+}
+
+.weekday-answer strong {
+  color: var(--rose);
+  font-size: clamp(1.35rem, 3vw, 2.25rem);
+}
+
+@keyframes rosaTodayPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Asamblea · letra protagonista fija */
+.letter-protagonist-card {
+  position: relative;
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 26px;
+  text-align: center;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #fff8fb, #fff);
+  overflow: hidden;
+}
+
+.letter-protagonist-a {
+  display: block;
+  width: fit-content;
+  margin: 12px auto 20px;
+  font-size: clamp(8rem, 22vw, 15rem);
+  line-height: .82;
+  font-weight: 1000;
+  color: var(--rose);
+  text-shadow: 0 9px 0 rgba(166, 41, 93, .09);
+  animation: rosaLetterFloat 2.4s ease-in-out infinite;
+}
+
+.letter-protagonist-star {
+  position: absolute;
+  color: #f3b32f;
+  font-size: 2rem;
+  animation: rosaStarTwinkle 1.8s ease-in-out infinite;
+}
+
+.letter-protagonist-star.star-one { left: 9%; top: 16%; }
+.letter-protagonist-star.star-two { right: 10%; top: 25%; animation-delay: .45s; }
+.letter-protagonist-star.star-three { right: 22%; bottom: 12%; animation-delay: .9s; }
+
+@keyframes rosaLetterFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes rosaStarTwinkle {
+  0%, 100% { opacity: .45; transform: scale(.8) rotate(0); }
+  50% { opacity: 1; transform: scale(1.2) rotate(18deg); }
+}
+
+@media (max-width: 900px) {
+  .weekday-cards { grid-template-columns: repeat(4, minmax(100px, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .weekday-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weekday-card small,
+  .letter-protagonist-a,
+  .letter-protagonist-star { animation: none; }
+}

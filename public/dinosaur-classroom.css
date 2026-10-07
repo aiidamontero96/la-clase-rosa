@@ -1,0 +1,58 @@
+/* A short footprint trail welcomes children; the edited video plays unchanged. */
+.dinosaur-entry{white-space:normal}
+#dinosaur-classroom{position:fixed;inset:0;width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;border:0;border-radius:0!important;background:#182034;color:white;overflow:hidden;font-family:inherit}
+#dinosaur-classroom::backdrop{background:#182034}
+#dinosaur-classroom [hidden]{display:none!important}
+#dinosaur-classroom button{min-height:52px;font:inherit;font-weight:800;border-radius:18px;padding:12px 20px;border:2px solid transparent;cursor:pointer}
+#dinosaur-classroom button:focus-visible,#dinosaur-classroom input:focus-visible{outline:5px solid #c54674;outline-offset:5px}
+.dinosaur-intro{position:relative;height:100%;min-height:0;display:grid;place-items:center;padding:72px 7vw 20px;overflow:auto;isolation:isolate;background:radial-gradient(ellipse at 82% 10%,#ffe2ef 0,transparent 43%),radial-gradient(ellipse at 10% 20%,#e5f5e8 0,transparent 46%),#fff9ed}
+.dinosaur-intro-copy{position:relative;z-index:2;text-align:center;width:min(100%,1000px);display:flex;flex-direction:column;align-items:center;gap:12px}
+.dinosaur-intro h1{color:#285e51;font-size:clamp(28px,4.2vw,58px);font-weight:900;letter-spacing:.01em;line-height:1.17;margin:0;max-width:960px;text-wrap:balance;text-shadow:0 3px 0 #fff;animation:dinosaur-welcome .4s ease-out both}
+.dinosaur-intro h1>span{display:block;color:#b33f70;font-size:1.13em;margin-bottom:8px}
+#dinosaur-classroom .dinosaur-start{position:relative;flex:none;width:clamp(240px,27vw,330px);height:clamp(270px,30vw,350px);padding:0;border:0;background:none;border-radius:45%;color:#234f48;filter:drop-shadow(0 9px 0 #347166);transition:transform .15s,filter .15s;touch-action:manipulation}
+#dinosaur-classroom .dinosaur-start:not(:disabled):hover{transform:translateY(-3px) rotate(-2deg);filter:drop-shadow(0 12px 0 #347166)}
+#dinosaur-classroom .dinosaur-start:not(:disabled):active{transform:translateY(6px);filter:drop-shadow(0 3px 0 #347166)}
+#dinosaur-classroom .dinosaur-start:disabled{cursor:wait;opacity:.65}
+.dinosaur-button-print{position:absolute;inset:0;pointer-events:none}
+.dinosaur-button-print svg{display:block;width:100%;height:100%;overflow:visible;fill:#a8dfce;stroke:#4b8a78;stroke-width:2;stroke-linejoin:round}
+.dinosaur-start-label{position:absolute;top:67%;left:50%;transform:translate(-50%,-50%);width:75%;font-size:clamp(22px,2.1vw,28px);line-height:1.22;font-weight:900;text-wrap:balance;pointer-events:none}
+.dinosaur-intro .dinosaur-loading{color:#9b3153;background:#fff3f7;border-radius:18px;padding:12px 18px;font-size:19px;margin:8px 0}
+.dinosaur-cloud{position:absolute;z-index:-1;background:#ffffffb3;width:180px;height:56px;border-radius:80px;pointer-events:none}
+.dinosaur-cloud:before,.dinosaur-cloud:after{content:'';position:absolute;background:inherit;border-radius:50%;width:82px;height:82px;bottom:12px;left:25px}
+.dinosaur-cloud:after{width:100px;height:100px;left:75px;bottom:0}
+.dinosaur-cloud-one{left:5%;top:19%;transform:rotate(-8deg)}
+.dinosaur-cloud-two{right:4%;top:55%;transform:rotate(6deg) scale(1.2)}
+.dinosaur-hills{position:absolute;z-index:-1;bottom:-100px;left:-15%;width:85%;height:230px;border-radius:50%;background:#cfeac9;transform:rotate(6deg);pointer-events:none}
+.dinosaur-hills:after{content:'';position:absolute;bottom:10px;left:70%;width:100%;height:240px;border-radius:50%;background:#ddf0d4;transform:rotate(-12deg)}
+.dinosaur-trail{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.dinosaur-track{position:absolute;width:clamp(38px,5.5vw,72px);height:90px;color:#88bca6;opacity:0;transform:rotate(var(--angle));animation:dinosaur-footstep .45s ease-out calc(var(--step)*.16s) both}
+.dinosaur-track svg{width:100%;height:100%;fill:currentColor}
+.dinosaur-track-0{left:1%;bottom:1%;--angle:30deg}
+.dinosaur-track-1{left:10%;bottom:12%;--angle:8deg}
+.dinosaur-track-2{left:4%;bottom:27%;--angle:28deg}
+.dinosaur-track-3{left:14%;bottom:39%;--angle:5deg}
+.dinosaur-track-4{right:3%;top:8%;--angle:205deg;color:#d4a0b9}
+.dinosaur-track-5{right:10%;top:25%;--angle:185deg;color:#d4a0b9}
+.dinosaur-track-6{right:4%;top:42%;--angle:210deg;color:#d4a0b9}
+@keyframes dinosaur-footstep{from{opacity:0;transform:rotate(var(--angle)) scale(.55) translateY(-8px)}to{opacity:.5;transform:rotate(var(--angle)) scale(1) translateY(0)}}
+@keyframes dinosaur-welcome{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.dinosaur-stage{position:absolute;inset:0 0 80px;overflow:hidden;background:#182034;isolation:isolate}
+.dinosaur-background{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;filter:blur(22px) brightness(.55);z-index:-1}
+.dinosaur-picture{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);overflow:hidden;box-shadow:0 0 70px #10101b66}
+.dinosaur-picture video{display:block;width:100%;height:100%;object-fit:contain}
+.dinosaur-controls{position:absolute;bottom:0;left:0;right:0;min-height:80px;display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 18px max(10px,env(safe-area-inset-bottom));background:#282137}
+#dinosaur-classroom .dinosaur-controls button{background:#fff4e8;color:#4c2541}
+#dinosaur-classroom .dinosaur-exit{position:absolute;top:max(12px,env(safe-area-inset-top));left:14px;z-index:4;background:#39283ee6;color:white;border-color:#ffffff60}
+#dinosaur-classroom .dinosaur-immersive{position:absolute;top:max(12px,env(safe-area-inset-top));right:14px;z-index:4;background:#39283ee6;color:white;min-height:48px}
+.dinosaur-status{position:absolute;top:78px;left:16px;right:16px;text-align:center;color:white;pointer-events:none;font-size:17px;text-shadow:0 2px 4px #000}
+.dinosaur-progress{accent-color:#f6bed5;width:clamp(80px,16vw,240px);height:42px;cursor:pointer}
+#dinosaur-classroom.is-immersive .dinosaur-stage{bottom:0}
+#dinosaur-classroom.is-immersive .dinosaur-controls{display:none}
+#dinosaur-classroom.is-immersive .dinosaur-exit,#dinosaur-classroom.is-immersive .dinosaur-immersive{opacity:.55}
+#dinosaur-classroom.is-immersive .dinosaur-exit:focus,#dinosaur-classroom.is-immersive .dinosaur-exit:hover{opacity:1}
+@media(max-width:700px){.dinosaur-intro{padding:78px 24px 20px}.dinosaur-intro h1{font-size:clamp(24px,6vw,36px)}.dinosaur-intro-copy{gap:16px}.dinosaur-track{width:38px;height:55px}.dinosaur-track-3{left:2%;bottom:43%}.dinosaur-track-5{right:1%;top:32%}.dinosaur-cloud{transform:scale(.65)}.dinosaur-stage{bottom:145px}.dinosaur-controls{flex-wrap:wrap;min-height:145px;padding:8px}.dinosaur-controls button{padding:8px 12px!important}.dinosaur-progress{width:100%;height:32px;order:5}.dinosaur-immersive{max-width:160px;font-size:14px!important}}
+@media(max-height:600px) and (min-width:701px){.dinosaur-intro{padding:60px 6vw 14px}.dinosaur-intro-copy{gap:8px}.dinosaur-intro h1{font-size:clamp(25px,3.3vw,40px);max-width:850px}.dinosaur-intro h1>span{margin-bottom:4px}#dinosaur-classroom .dinosaur-start{width:210px;height:240px}.dinosaur-start-label{font-size:19px}.dinosaur-track{width:44px;height:60px}}
+@media(prefers-reduced-motion:reduce){.dinosaur-track{animation:none;opacity:.5}.dinosaur-intro h1{animation:none}#dinosaur-classroom .dinosaur-start{transition:none}}
+@media print{#dinosaur-classroom{display:none!important}}
+/* Keep the activity's fullscreen exit available inside the existing PDI mode. */
+#dinosaur-classroom .dinosaur-controls .dinosaur-fullscreen{display:block!important}

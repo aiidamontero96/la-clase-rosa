@@ -18,12 +18,23 @@ window.ROSA_AULA=(()=>{
   const cleanLevel=value=>[1,2,3,4].includes(Number(value))?Number(value):2;
   const safeCopy=value=>JSON.parse(JSON.stringify(value));
   let voiceAudio=null,voiceVersion=0,autoVoiceTimer=null;
+  const localBookKey='rosa-aula-book-v1';
+  const staticHost=()=>{const host=String(location.hostname||'').toLowerCase();return host==='laclaserosa.es'||host==='www.laclaserosa.es'||host.endsWith('.github.io');};
+  const readLocalBook=()=>{try{const book=JSON.parse(localStorage.getItem(localBookKey)||'null');return book?.version===1?book:null;}catch{return null;}};
+  const writeLocalBook=()=>{try{localStorage.setItem(localBookKey,JSON.stringify(ui.book));return true;}catch{return false;}};
 
 
   async function load(){
     if(ui.loaded)return true;
     if(ui.loading)return ui.loading;
     ui.loading=(async()=>{
+      if(staticHost()){
+        const saved=readLocalBook(),pending=safeCopy(ui.book);ui.book={...emptyBook(),...(saved||{})};
+        for(const key of ui.pendingFields){if(key==='cursors')ui.book.cursors={...ui.book.cursors,...pending.cursors};else if(key==='favorites'){for(const [id,add] of ui.favoriteOps)ui.book.favorites=add?[...new Set([...ui.book.favorites,id])]:ui.book.favorites.filter(x=>x!==id);}else ui.book[key]=pending[key];}
+        ui.book.level=cleanLevel(ui.book.level);
+        ui.book.favorites=ui.book.favorites.filter(known);ui.book.queue=ui.book.queue.filter(known).slice(0,8);
+        ui.loaded=true;ui.saveError=false;refreshPage();return true;
+      }
       try{
         const r=await fetch('/api/aula',{credentials:'same-origin',cache:'no-store'});
         if(!r.ok)throw new Error('load');const data=await r.json();
@@ -44,6 +55,13 @@ window.ROSA_AULA=(()=>{
   async function save(){
     if(ui.saving||!ui.dirty)return;
     if(!ui.loaded){ui.saveError=true;refreshStatus();return;}
+    if(staticHost()){
+      ui.saving=true;refreshStatus();
+      try{ui.dirty=false;if(!writeLocalBook())throw new Error('save');ui.saveError=false;ui.pendingFields.clear();ui.favoriteOps.clear();}
+      catch{ui.dirty=true;ui.saveError=true;}
+      finally{ui.saving=false;refreshStatus();}
+      return;
+    }
     ui.saving=true;refreshStatus();
     try{
       while(ui.dirty){ui.dirty=false;const r=await fetch('/api/aula',{method:'PUT',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(ui.book),keepalive:true});if(!r.ok)throw new Error('save');}
@@ -91,13 +109,13 @@ window.ROSA_AULA=(()=>{
   async function startAdventure(theme){if(theme!=='puntos')return;await load();ui.book.adventure={theme:'puntos',steps:0};saveSoon(['adventure']);await launch(ui.book.queue[0]||'contar');}
   function adventureHTML(){const a=ui.book.adventure;if(a.theme==='none')return '';const complete=a.steps>=6;return '<div class="adventure-track puntos" aria-label="'+a.steps+' de 6 puntos verdes"><strong>'+(complete?'¡Seis puntos verdes conseguidos!':'Nuestros puntos verdes')+'</strong><div class="adventure-steps" aria-hidden="true">'+Array.from({length:6},(_,i)=>'<span class="adventure-step '+(i<a.steps?'done':'')+'">'+(i<a.steps?'●':'○')+'</span>').join('')+'</div><small>'+a.steps+' de 6 puntos</small></div>';}
   function won(p,headline){if(p.payload?.missionWeek){window.ROSA_MISSIONS.update(p);return headline;}const a=ui.book.adventure;if(a.theme!=='none'&&a.steps<6){a.steps++;saveSoon(['adventure']);const el=$('#adventure-progress');if(el)el.innerHTML=adventureHTML();if(a.steps===6)headline='¡Seis puntos verdes conseguidos!';}remember();return headline;}
-  function assemblyHub(){const steps=[['1','⭐','Encargados','encargado'],['2','🙋','¿Quién ha venido?','asistencia'],['3','📅','Calendario','calendario'],['4','🌦️','Estación y tiempo','estacion'],['5','🙂','Emociones','emociones'],['6','1·A','Número y letra protagonistas','numero']];return '<section class="panel pdi-assembly-hub"><div class="pdi-assembly-heading"><div><span class="eyebrow">EL CENTRO DE NUESTRA PDI</span><h2>Asamblea</h2><p>Sigue el orden completo o abre directamente el momento que necesites.</p></div>'+btn('Empezar la asamblea','routine','encargado')+'</div><ol class="pdi-assembly-steps">'+steps.map(step=>'<li><button type="button" data-action="routine" data-value="'+step[3]+'"><b>'+step[0]+'</b><span aria-hidden="true">'+step[1]+'</span><strong>'+step[2]+'</strong></button></li>').join('')+'</ol><div class="pdi-assembly-extras"><strong>Para añadir cuando quieras</strong>'+btn('💬 Palabra del día aleatoria','random-word','','secondary')+btn('👋 Saludo','routine','saludo','secondary')+btn('♪ Canciones','song-manager','','secondary')+btn('? Adivinanza','routine','adivinanza','secondary')+'<a class="button secondary" href="#asamblea">Preguntas, retos y canciones</a></div></section>';}
+  function assemblyHub(){const steps=[['1','⭐','Encargados','encargado'],['2','🙋','¿Quién ha venido?','asistencia'],['3','🗓️','¿Qué día es hoy?','dia-semana'],['4','📅','Calendario','calendario'],['5','🌦️','Estación y tiempo','estacion'],['6','🙂','Emociones','emociones'],['7','🔤','Número y letra protagonistas','numero']];return '<section class="panel pdi-assembly-hub"><div class="pdi-assembly-heading"><div><span class="eyebrow">EL CENTRO DE NUESTRA PDI</span><h2>Asamblea</h2><p>Sigue el orden completo o abre directamente el momento que necesites.</p></div>'+btn('Empezar la asamblea','routine','encargado')+'</div><ol class="pdi-assembly-steps">'+steps.map(step=>'<li><button type="button" data-action="routine" data-value="'+step[3]+'"><b>'+step[0]+'</b><span aria-hidden="true">'+step[1]+'</span><strong>'+step[2]+'</strong></button></li>').join('')+'</ol><div class="pdi-assembly-extras"><strong>Para añadir cuando quieras</strong>'+btn('💬 Palabra del día aleatoria','random-word','','secondary')+btn('👋 Saludo','routine','saludo','secondary')+btn('♪ Canciones','song-manager','','secondary')+btn('? Adivinanza','routine','adivinanza','secondary')+'<a class="button secondary" href="#asamblea">Preguntas, retos y canciones</a></div></section>';}
   const external=(label,url,cls='secondary')=>'<a class="button '+cls+'" href="'+E(url)+'" target="_blank" rel="noopener">'+label+' <span aria-hidden="true">↗</span></a>';
   function expandProjectCards(html){return html.replaceAll('<details class="world-card ','<article class="world-card world-card-expanded ').replaceAll('<summary>','<div class="world-card-heading">').replaceAll('</summary>','</div>').replaceAll('</details>','</article>');}
   function expandSpecialCards(html){return html.replaceAll('<details class="special-choice">','<article class="special-choice special-choice-expanded">').replaceAll('<summary>','<div class="special-choice-heading">').replaceAll('</summary>','</div>').replaceAll('</details>','</article>');}
   function projectHubs(){return expandProjectCards(window.ROSA_CLASSROOM.projectHubs());}
   function specialDaysHub(){return expandSpecialCards(window.ROSA_CLASSROOM.specialDays());}
-  function pdiNav(active='asamblea'){const links=[['asamblea','#pdi','☀','Asamblea'],['cumpleanos','#pdi-cumpleanos','🎂','Cumpleaños'],['proyectos','#pdi-proyectos','🦕','Proyectos'],['dias','#pdi-dias','🎉','Días especiales'],['juegos','#pdi-juegos','◈','Todos los juegos'],['calendario','#pdi-calendario','📅','Calendario'],['canciones','#canciones','♪','Canciones']];return '<nav class="pdi-quick-nav pdi-section-nav" aria-label="Secciones de PDI">'+links.map(([id,href,icon,label])=>'<a class="'+(active===id?'active':'')+'" href="'+href+'"'+(active===id?' aria-current="page"':'')+'>'+icon+' '+label+'</a>').join('')+'</nav>';}
+  function pdiNav(active='asamblea'){const links=[['asamblea','#pdi','☀','Asamblea'],['cumpleanos','#pdi-cumpleanos','🎂','Cumpleaños'],['proyectos','#pdi-proyectos','🦕','Proyectos'],['dias','#pdi-dias','🎉','Días especiales'],['juegos','#pdi-juegos','◈','Todos los juegos'],['canciones','#canciones','♪','Canciones']];return '<nav class="pdi-quick-nav pdi-section-nav" aria-label="Secciones de PDI">'+links.map(([id,href,icon,label])=>'<a class="'+(active===id?'active':'')+'" href="'+href+'"'+(active===id?' aria-current="page"':'')+'>'+icon+' '+label+'</a>').join('')+'</nav>';}
   function pdiGameList(selected){if(!selected.length)return '<div class="empty"><h3>No hay juegos en este filtro</h3><p>Prueba otra categoría para seguir preparando tu sesión.</p>'+btn('Ver todos los juegos','pdi-filter','Todas')+'</div>';if(ui.filter!=='Todas')return gameTiles(selected);const order=['Asamblea','Matemáticas','Lenguaje','Lógica','Psicomotricidad','Proyecto','Juegos'];return order.map(name=>{const games=selected.filter(g=>area(g)===name);return games.length?'<section class="pdi-category"><div class="heading-row"><h2>'+E(name)+'</h2><span class="tag">'+games.length+' propuestas</span></div>'+gameTiles(games)+'</section>':'';}).join('');}
   function pdiPage(){return head('Pizarra digital','',ui.book.last?btn('↩ Continuar','pdi-resume','','secondary'):'','','')+'<div id="aula-save-status">'+statusHTML()+'</div>'+pdiNav('asamblea')+'<div id="pdi-asamblea">'+assemblyHub()+'</div><div id="pdi-sesion">'+sessionHTML()+'</div>';}
   function pdiProjectsPage(){return head('Proyectos','Cada proyecto en su propio espacio de PDI.','','PIZARRA DIGITAL')+pdiNav('proyectos')+projectHubs();}

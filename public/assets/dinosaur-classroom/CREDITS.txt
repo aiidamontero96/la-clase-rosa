@@ -1,0 +1,22 @@
+UN DINOSAURIO EN NUESTRA CLASE — recursos locales
+
+Modelo: PBR Velociraptor (Animated), Ferocious Industries.
+https://sketchfab.com/3d-models/pbr-velociraptor-animated-8f1744af7b0847a2aabe3df90be802f0
+Autor: https://sketchfab.com/ferociousindustries.matthias
+Licencia: CC BY 4.0 https://creativecommons.org/licenses/by/4.0/
+Bytes de origen y licencia: archivo público redistribuido en
+https://huggingface.co/datasets/fernandotonon/QtMeshEditor-motion-corpus/tree/main/raw/sketchfab/PBR_Velociraptor_Animated__8f1744af
+Cambios: se conservan Walk, Idle_01 y Sniff; se eliminan las demás
+animaciones, se redimensionan texturas a 1024 px, se convierten a JPEG,
+se sustituye el material specular/gloss por PBR mate no metálico y se
+empaqueta en GLB sin compresión que requiera decodificadores adicionales.
+En ejecución se utiliza Walk. No se usan rugidos ni animaciones agresivas.
+Representación cinematográfica sin plumas; no es una reconstrucción científica.
+
+Three.js 0.170.0, licencia MIT (THREE-LICENSE.txt).
+https://github.com/mrdoob/three.js/tree/r170
+three-runtime.js es un bundle ESM con las clases utilizadas y GLTFLoader;
+se carga exclusivamente al abrir la actividad. No necesita CDN ni pagos.
+
+Aula-preview.webp: fotograma de la grabación original de La Clase Rosa.
+El MP4 original se mantiene intacto y no forma parte de este ZIP.

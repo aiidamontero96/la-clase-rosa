@@ -189,7 +189,7 @@
       ...slide,
       items: slide.items.map(item => ({
         ...item,
-        image: `https://loremflickr.com/720/900/${item.query}?lock=${item.lock}`
+        image: `assets/autumn-vocab/${({ 'botas-agua': 'botas-de-agua', 'camiseta-manga-larga': 'camiseta-de-manga-larga' })[item.id] || item.id}.webp`
       }))
     }));
   }
