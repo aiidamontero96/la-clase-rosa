@@ -62,8 +62,14 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
     const html=run('window.ROSA_PLAY.printSheets('+JSON.stringify(settings)+')');
     const sheets=(html.match(/class=\"print-sheet /g)||[]).length;
     const renderedCards=(html.match(/class=\"custom-print-card\"/g)||[]).length;
-    assert(sheets>=1,theme+' / '+type+' must create at least one sheet');
-    assert.equal(renderedCards,cards.length,theme+' / '+type+' must render every card');
+    if(type==='series'){
+      assert.equal((html.match(/class="pattern-sheet /g)||[]).length,2,theme+' worksheet and cutouts');
+      assert.equal((html.match(/class="pattern-exercise"/g)||[]).length,12,theme+' six rows on each page');
+      assert.equal((html.match(/pattern-cut-piece/g)||[]).length,12,theme+' one piece for each gap');
+    }else{
+      assert(sheets>=1,theme+' / '+type+' must create at least one sheet');
+      assert.equal(renderedCards,cards.length,theme+' / '+type+' must render every card');
+    }
     for(const match of html.matchAll(/src=\"([^\"]+)\"/g))assert(fs.existsSync(path.join(publicDir,match[1])),match[1]);
     if(type==='memory'){
       const counts=new Map();for(const card of cards)counts.set(card,(counts.get(card)||0)+1);
@@ -71,9 +77,9 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
       assert([...counts.values()].every(v=>v===2),theme+' every memory picture must appear twice');
     }
     if(type==='contar'){assert(html.includes('count-ten'),theme+' counting sheet must use count-ten layout');for(const card of cards)assert.equal((card.match(/<img /g)||[]).length,10);}
-    if(type==='series')assert(!html.includes('print-cutouts'),theme+' series must not include cutouts');
+    if(type==='series')assert(html.includes('pattern-pieces'),theme+' series must include matching cutouts');
   }
-  await action('custom-print');assert(/custom-print\.css\?rev=\d+/.test(printed));assert(printed.includes('Imprimir / Guardar PDF'));assert(printed.includes('Volver a la app'));assert(printed.includes('<base href="https://rosa.example/">'));
+  await action('custom-print');assert(/custom-print\.css\?rev=\d+/.test(printed));assert(printed.includes('Imprimir / Guardar PDF'));assert(printed.includes('Volver a la app'));assert(printed.includes('<base href="https://rosa.example/">'));assert(printed.includes('@page{size:A4 portrait;margin:8mm}'));assert(printed.includes('Margen seguro de 8 mm'));
   failSave=true;await action('pdi-favorite','cestas');await run('A.save()');assert.equal(run('A.ui.saveError'),true);assert.equal(run('A.ui.dirty'),true);failSave=false;await run('A.retry()');assert.equal(run('A.ui.saveError'),false);assert(persisted.favorites.includes('cestas'));
   persisted=blank();persisted.favorites=['memory'];failLoad=true;run("A.ui.loaded=false;A.ui.book={version:1,favorites:[],queue:[],level:2,cursors:{},last:null,adventure:{theme:'none',steps:0}};A.ui.dirty=false;A.ui.pendingFields.clear();A.ui.favoriteOps.clear()");await action('pdi-favorite','cestas');failLoad=false;await run('A.retry()');assert.deepEqual([...persisted.favorites].sort(),['cestas','memory'],'Recovery must preserve unseen saved favorites');
   console.log(JSON.stringify({levels:4,sessions:'8 games passed',resume:'passed',adventures:'passed',pieceGames:5,storyEndings:12,printLayouts:48,saveRetry:'passed'}));

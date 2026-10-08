@@ -325,7 +325,7 @@
   align-content:stretch!important;gap:calc(1 * var(--u))!important;padding:0!important;
 }
 .pattern-sheet .pattern-exercise{min-width:0!important;min-height:0!important}
-.pattern-sheet .pattern-print-row{width:100%!important;min-width:0!important;height:100%!important;grid-template-columns:repeat(var(--pattern-items),minmax(0,1fr))!important}
+.pattern-sheet .pattern-print-row{width:100%!important;min-width:0!important;height:100%!important;grid-template-columns:repeat(var(--pattern-items),calc(var(--pattern-cell) * var(--u)))!important;justify-content:center}
 .pattern-date-full{
   grid-row:4!important;width:100%!important;border:1.5px solid #51454f!important;border-radius:calc(3 * var(--u))!important;
   display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;align-items:center!important;
@@ -454,4 +454,26 @@
 }
 #projector .projection-main[data-game="relaciona-cantidades"] .relate-col:last-child .relate-card{
   font-size:clamp(1.9rem,3.6vw,2.5rem);
+}
+
+/* Series y recortables: la misma medida física para cada hueco y cada pieza. */
+.pattern-sheet .workshop-cell{width:calc(var(--pattern-cell) * var(--u));height:calc(var(--pattern-cell) * var(--u));flex:none}
+.pattern-sheet .pattern-cut-piece{border-style:dashed}
+.pattern-a4-preview .pattern-pieces{margin-top:calc(24px + 8 * var(--u))}
+@media print{
+  .pattern-print-document .pattern-sheet{break-after:page;page-break-after:always}
+  .pattern-print-document .pattern-sheet:last-child{break-after:auto;page-break-after:auto}
+}
+
+.pattern-a4-preview .pattern-sheet,
+.custom-preview .pattern-sheet,
+.print-pages-screen .pattern-sheet{
+  --u:calc(100cqw / 210);
+  width:calc(194 * var(--u));
+  height:calc(281 * var(--u));
+  margin:calc(8 * var(--u)) auto;
+  box-shadow:0 0 0 calc(8 * var(--u)) #fff,0 5px 24px #3b1b2920;
+}
+@media print{
+  .pattern-print-document .pattern-sheet{--u:1mm;width:194mm;height:281mm;margin:0 auto;box-shadow:none}
 }

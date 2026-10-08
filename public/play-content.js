@@ -140,6 +140,7 @@ window.ROSA_PLAY=(()=>{
     return '<div class="sheet-date-field sheet-date-full"><strong>FECHA</strong><span aria-hidden="true"></span></div>';
   }
   function printSheets(settings,onlyPage=null){
+    if(settings.type==='series'&&window.ROSA_PATTERN_PRINT)return window.ROSA_PATTERN_PRINT.sheets(settings,onlyPage);
     const cards=printCards(settings),countTen=settings.type==='contar'&&settings.max===10;
     const total=[4,6,8].includes(Number(settings.count))?Number(settings.count):6;
     const perPage=countTen?3:total;

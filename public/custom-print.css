@@ -24,15 +24,15 @@
 .print-outline img{filter:none}.print-outline .custom-print-card,.print-outline .print-hole{background:white}.print-outline *{color:#111!important}
 .custom-print-document{margin:0;background:#ede8eb}.print-document-tools{padding:20px;text-align:center;font:16px/1.5 Arial,sans-serif}.print-document-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.print-document-tools button{padding:14px 24px;border:1px solid transparent;border-radius:10px;background:#a6295d;color:white;font-size:17px;cursor:pointer}.print-document-tools .print-back-button{background:white;color:#8a214d;border-color:#d8afc0}.print-document-tools button:disabled{opacity:.5}.print-document-tools p{font-size:14px}
 @media screen{
- .custom-print-document .print-sheet{margin:20px auto;box-shadow:0 5px 28px #29121b1a}
- .custom-preview .print-sheet{--u:calc(100cqw / 210);width:100%;box-shadow:0 3px 16px #4d1c3912;border-radius:2px}
+ .custom-print-document .print-sheet{width:194mm;height:281mm;margin:28px auto;box-shadow:0 0 0 8mm #fff,0 5px 28px #29121b1a}
+ .custom-preview .print-sheet{--u:calc(100cqw / 210);width:calc(194 * var(--u));height:calc(281 * var(--u));margin:calc(8 * var(--u)) auto;box-shadow:0 0 0 calc(8 * var(--u)) #fff,0 3px 16px #4d1c3912;border-radius:2px}
  .custom-print-document .print-pages-screen{container-type:inline-size;width:min(794px,calc(100% - 24px));margin:0 auto}
- .print-pages-screen .print-sheet{--u:calc(100cqw / 210);width:100%}
+ .print-pages-screen .print-sheet{--u:calc(100cqw / 210);width:calc(194 * var(--u));height:calc(281 * var(--u));margin:calc(8 * var(--u)) auto;box-shadow:0 0 0 calc(8 * var(--u)) #fff,0 3px 16px #4d1c3912}
 }
 @media print{
- html,body.custom-print-document{width:210mm;margin:0!important;padding:0!important;min-height:0!important;background:white}
+ html,body.custom-print-document{width:194mm;margin:0!important;padding:0!important;min-height:0!important;background:white}
  .print-document-tools{display:none!important}
- .custom-print-document .print-sheet{--u:1mm;margin:0;box-shadow:none}
+ .custom-print-document .print-sheet{--u:1mm;width:194mm;height:281mm;margin:0 auto;box-shadow:none}
  .print-sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
  .print-pages-screen{display:block;width:auto;margin:0;padding:0;container-type:normal}
 }
