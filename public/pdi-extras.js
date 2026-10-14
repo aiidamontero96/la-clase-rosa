@@ -68,6 +68,7 @@
     totalMs: 10 * 60 * 1000,
     remainingMs: 10 * 60 * 1000,
     running: false,
+    started: false,
     endAt: 0,
     halfWarned: false,
     lastCountdown: null,
@@ -75,11 +76,13 @@
     message: 'ELIGE EL TIEMPO Y PULSA EMPEZAR'
   };
   let ticker = 0;
+  let finishResetTimer = 0;
   let recordedAlert = null;
   let audioContext = null;
   let calendarOpened = false;
 
-  const clampMinutes = value => Math.max(1, Math.min(60, Number(value) || 1));
+  const clampMinutes = value => Math.max(.5, Math.min(60, Number(value) || .5));
+  const durationLabel = value => value === .5 ? '30 SEG' : value + ' MIN';
   const timerRoute = () => location.hash.slice(1).split('?')[0] === 'pdi-cronometro';
   const calendarRoute = () => location.hash.slice(1).split('?')[0] === 'pdi-calendario';
 
@@ -89,8 +92,8 @@
   }
 
   function timerPage() {
-    const petals = Array.from({ length: 12 }, (_, i) => `<i style="--i:${i}"></i>`).join('');
-    const confetti = Array.from({ length: 18 }, (_, i) => `<i style="--i:${i}"></i>`).join('');
+    const popcorn = Array.from({ length: 42 }, (_, i) => `<i style="--i:${i};--col:${i % 7};--row:${Math.floor(i / 7)};--d:${(i % 7) * -.11}s"></i>`).join('');
+    const confetti = Array.from({ length: 240 }, (_, i) => `<i style="--i:${i};--col:${i % 20};--row:${Math.floor(i / 20)};--r:${(i % 9) * 17}deg;--d:${(i % 24) * .075 + Math.floor(i / 24) * .06}s"></i>`).join('');
     return `
       <div id="pdi-timer-page">
         <div class="page-head pdi-timer-page-head">
@@ -104,15 +107,16 @@
           </div>
           <div class="pdi-timer-layout">
             <div class="pdi-timer-visual">
-              <div class="pdi-timer-petals" aria-hidden="true">${petals}</div>
-              <div class="pdi-timer-clock" id="pdi-timer-clock" style="--timer-angle:360deg">
-                <div class="pdi-timer-face">
+              <div class="pdi-timer-clock" id="pdi-timer-clock" style="--timer-angle:360deg;--pop-progress:0">
+                <div class="pdi-pop-time-panel">
                   <span class="pdi-timer-mini">NOS QUEDA</span>
                   <output id="pdi-timer-time" aria-live="off">10:00</output>
-                  <strong id="pdi-timer-status">¡PREPARADOS!</strong>
                 </div>
+                <div class="pdi-pop-machine" aria-hidden="true"><img class="pdi-pop-machine-body" src="assets/pdi-timer/palomitero.png" width="1024" height="1024" alt=""><img class="pdi-pop-machine-lid" src="assets/pdi-timer/palomitero.png" width="1024" height="1024" alt=""><div class="pdi-pop-window">${popcorn}</div><div class="pdi-pop-steam"><i></i><i></i><i></i></div><div class="pdi-pop-mouth-burst">${Array.from({length:18},(_,i)=>`<i style="--i:${i};--a:${-82 + i * 9.6}deg;--d:${(i%6)*.07}s"></i>`).join('')}</div></div>
+                <strong id="pdi-timer-status">¡PREPARADOS!</strong>
                 <div id="pdi-timer-countdown" class="pdi-timer-countdown" aria-live="assertive" hidden></div>
               </div>
+              <div class="pdi-timer-teacher-controls" aria-label="Controles del cronómetro"><button type="button" data-timer-action="start">▶ CONTINUAR</button><button type="button" class="secondary" data-timer-action="pause">Ⅱ PAUSAR</button><button type="button" class="quiet" data-timer-action="reset">⚙ CAMBIAR TIEMPO</button></div>
               <div id="pdi-timer-message" class="pdi-timer-message" role="status" aria-live="polite">ELIGE EL TIEMPO Y PULSA EMPEZAR</div>
               <div class="pdi-timer-confetti" aria-hidden="true">${confetti}</div>
             </div>
@@ -124,9 +128,9 @@
                   <output id="pdi-timer-minutes">10 MIN</output>
                   <button type="button" class="secondary" data-timer-action="plus" aria-label="Añadir un minuto">+</button>
                 </div>
-                <input id="pdi-timer-range" class="pdi-timer-range" type="range" min="1" max="60" step="1" value="10" aria-label="Duración en minutos">
+                <input id="pdi-timer-range" class="pdi-timer-range" type="range" min="0.5" max="60" step="0.5" value="10" aria-label="Duración del cronómetro">
                 <div class="pdi-timer-presets" aria-label="Tiempos rápidos">
-                  ${[1, 5, 10, 15, 20, 30, 45, 60].map(m => `<button type="button" class="secondary small" data-timer-minutes="${m}">${m} min</button>`).join('')}
+                  ${[.5, 1, 5, 10, 15, 20, 30, 45, 60].map(m => `<button type="button" class="secondary small" data-timer-minutes="${m}">${durationLabel(m)}</button>`).join('')}
                 </div>
               </section>
               <section class="pdi-timer-actions">
@@ -202,12 +206,14 @@
 
   function setMinutes(value) {
     if (timer.running) return;
+    if (finishResetTimer) { clearTimeout(finishResetTimer); finishResetTimer = 0; }
     timer.minutes = clampMinutes(value);
     timer.totalMs = timer.minutes * 60 * 1000;
     timer.remainingMs = timer.totalMs;
     timer.halfWarned = false;
     timer.lastCountdown = null;
     timer.finished = false;
+    timer.started = false;
     timer.message = 'ELIGE EL TIEMPO Y PULSA EMPEZAR';
     updateTimerDom();
   }
@@ -274,6 +280,7 @@
     if (timer.running) return;
     if (timer.remainingMs <= 0 || timer.finished) setMinutes(timer.minutes);
     timer.running = true;
+    timer.started = true;
     timer.finished = false;
     timer.endAt = Date.now() + timer.remainingMs;
     timer.message = '¡A TRABAJAR! EL RELOJ YA ESTÁ EN MARCHA';
@@ -290,8 +297,10 @@
   }
 
   function resetTimer() {
+    if (finishResetTimer) { clearTimeout(finishResetTimer); finishResetTimer = 0; }
     timer.running = false;
     timer.finished = false;
+    timer.started = false;
     timer.remainingMs = timer.totalMs;
     timer.halfWarned = false;
     timer.lastCountdown = null;
@@ -308,6 +317,11 @@
     updateTimerDom();
     chime('finish');
     setTimeout(() => announce('¡Se acabó!'), 720);
+    if (finishResetTimer) clearTimeout(finishResetTimer);
+    finishResetTimer = window.setTimeout(() => {
+      finishResetTimer = 0;
+      if (timer.finished) resetTimer();
+    }, 8400);
   }
 
   function tick() {
@@ -344,22 +358,26 @@
     const finalCount = timer.running && seconds > 0 && seconds <= 5 ? seconds : '';
     const clock = stage.querySelector('#pdi-timer-clock');
     clock?.style.setProperty('--timer-angle', (ratio * 360) + 'deg');
+    clock?.style.setProperty('--pop-progress', String(1 - ratio));
     clock?.classList.toggle('is-half', timer.halfWarned && ratio > 0 && ratio <= .5);
     clock?.classList.toggle('is-final', timer.running && seconds <= 5);
     clock?.classList.toggle('is-done', timer.finished);
+    const visibleKernels = Math.round((1 - ratio) * 42);
+    stage.querySelectorAll('.pdi-pop-window>i').forEach((kernel, index) => kernel.classList.toggle('is-popped', index < visibleKernels || timer.finished));
     const time = stage.querySelector('#pdi-timer-time'); if (time) time.textContent = formatTime(timer.remainingMs);
     const status = stage.querySelector('#pdi-timer-status');
     if (status) status.textContent = timer.finished ? '¡TIEMPO!' : timer.running ? (seconds <= 5 ? '¡CUENTA ATRÁS!' : '¡EN MARCHA!') : timer.remainingMs < timer.totalMs ? 'EN PAUSA' : '¡PREPARADOS!';
     const message = stage.querySelector('#pdi-timer-message'); if (message) message.textContent = timer.message;
     const countdown = stage.querySelector('#pdi-timer-countdown');
     if (countdown) { countdown.hidden = !finalCount; countdown.textContent = finalCount; }
-    const mins = stage.querySelector('#pdi-timer-minutes'); if (mins) mins.textContent = timer.minutes + ' MIN';
+    const mins = stage.querySelector('#pdi-timer-minutes'); if (mins) mins.textContent = durationLabel(timer.minutes);
     const range = stage.querySelector('#pdi-timer-range'); if (range) { range.value = String(timer.minutes); range.disabled = timer.running; }
     stage.querySelectorAll('[data-timer-minutes]').forEach(button => { button.classList.toggle('is-selected', Number(button.dataset.timerMinutes) === timer.minutes); button.disabled = timer.running; });
     stage.querySelectorAll('[data-timer-action="minus"],[data-timer-action="plus"]').forEach(button => button.disabled = timer.running);
     const start = stage.querySelector('[data-timer-action="start"]'); if (start) { start.disabled = timer.running; start.innerHTML = timer.remainingMs < timer.totalMs && !timer.finished ? '▶ Continuar' : '▶ Empezar'; }
     const pause = stage.querySelector('[data-timer-action="pause"]'); if (pause) pause.disabled = !timer.running;
     stage.classList.toggle('timer-running', timer.running);
+    stage.classList.toggle('timer-started', timer.started);
     stage.classList.toggle('timer-finished', timer.finished);
     const full = document.fullscreenElement === stage;
     const fullButton = stage.querySelector('[data-timer-action="fullscreen"]'); if (fullButton) fullButton.textContent = full ? '⛶ Salir de pantalla completa' : '⛶ Pantalla completa';
@@ -395,8 +413,8 @@
       const button = event.target.closest('[data-timer-action]');
       if (!button) { setTimeout(fixProjectionExtras, 0); return; }
       const action = button.dataset.timerAction;
-      if (action === 'minus') setMinutes(timer.minutes - 1);
-      else if (action === 'plus') setMinutes(timer.minutes + 1);
+      if (action === 'minus') setMinutes(timer.minutes <= 1 ? .5 : timer.minutes - 1);
+      else if (action === 'plus') setMinutes(timer.minutes < 1 ? 1 : timer.minutes + 1);
       else if (action === 'start') startTimer();
       else if (action === 'pause') pauseTimer();
       else if (action === 'reset') resetTimer();

@@ -2,6 +2,7 @@
 
 (() => {
   const BOARD_HASH = 'pdi-pizarra';
+  const GUIDED_HASH = 'pdi-pizarra-guiada';
   const AUTUMN_HASH = 'pdi-otono-vocabulario';
   const FALLBACK_CLASS = 'pdi-mode-fallback';
   const BOARD_LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
@@ -18,6 +19,8 @@
   let boardMounted = false;
   let syncQueued = false;
   let canvasState = null;
+  let guidedCanvasState = null;
+  const guidedState = { value: 'A', color: '#c83269' };
   const autumnState = {
     screen: 'intro',
     slide: 0,
@@ -26,6 +29,7 @@
 
   const route = () => location.hash.slice(1).split('?')[0];
   const isBoardRoute = () => route() === BOARD_HASH;
+  const isGuidedRoute = () => route() === GUIDED_HASH;
   const isAutumnRoute = () => route() === AUTUMN_HASH;
   const content = () => document.querySelector('#contenido');
 
@@ -138,6 +142,43 @@
             <canvas id="pdi-board-canvas" aria-label="Zona de dibujo de la pizarra"></canvas>
             <canvas id="pdi-board-preview" aria-hidden="true"></canvas>
             <div class="pdi-board-hint" aria-live="polite">DIBUJA CON EL DEDO, EL LÁPIZ DE LA PDI O EL RATÓN</div>
+          </div>
+        </section>
+      </div>`;
+  }
+
+  function guidedPage() {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    const numbers = Array.from({length:10},(_,i)=>String(i+1));
+    const students = Array.isArray(window.ROSA?.students) ? window.ROSA.students : [];
+    const safe = value => String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    return `
+      <div id="pdi-guided-page" class="pdi-guided-page">
+        <div class="page-head pdi-board-head">
+          <div><span class="eyebrow">PIZARRA DIGITAL · GRAFOMOTRICIDAD</span><h1>Pizarra guiada</h1><p>Repasa dos letras o números grandes. El lápiz solo pinta dentro del camino.</p></div>
+        </div>
+        ${pdiNav()}
+        <section class="panel guided-board-shell" aria-label="Pizarra guiada de letras y números">
+          <div class="guided-board-toolbar">
+            <div class="guided-board-selector">
+              <span>PLANTILLA</span>
+              <details class="guided-board-palette"><summary data-guided-current>${guidedState.value}</summary><div class="guided-board-options">
+                <div><strong>LETRAS</strong>${letters.map(value=>`<button type="button" data-guided-value="${value}" class="${guidedState.value===value?'is-active':''}">${value}</button>`).join('')}</div>
+                <div><strong>NÚMEROS</strong>${numbers.map(value=>`<button type="button" data-guided-value="${value}" class="${guidedState.value===value?'is-active':''}">${value}</button>`).join('')}</div>
+              </div></details>
+            </div>
+            <div class="guided-board-nav" aria-label="Cambiar plantilla"><button type="button" class="secondary" data-guided-action="prev">← ANTERIOR</button><button type="button" class="secondary" data-guided-action="next">SIGUIENTE →</button></div>
+            <details class="guided-student-picker"><summary>👧 NOMBRES</summary><div>${students.map(name=>`<button type="button" data-guided-name="${safe(name)}">${safe(name.toLocaleUpperCase('es-ES'))}</button>`).join('')}</div></details>
+            <label class="guided-word-input"><span>PALABRA</span><input type="text" maxlength="24" data-guided-word placeholder="OTOÑO" autocomplete="off"><button type="button" data-guided-action="word">MOSTRAR</button></label>
+            <div class="guided-board-colors" aria-label="Color del lápiz">${[['#c83269','ROSA'],['#2368c4','AZUL'],['#21865b','VERDE'],['#e27719','NARANJA'],['#7a4bb7','MORADO']].map(([value,label])=>`<button type="button" data-guided-color="${value}" class="${guidedState.color===value?'is-active':''}" style="--swatch:${value}" aria-label="${label}"></button>`).join('')}</div>
+            <button type="button" class="secondary" data-guided-action="undo" disabled>↶ DESHACER</button>
+            <button type="button" class="quiet" data-guided-action="clear">🧽 BORRAR</button>
+          </div>
+          <div class="guided-board-instruction"><span aria-hidden="true">✏️</span><strong>${guidedState.value.length===1||/^10$/.test(guidedState.value)?'RELLENA LOS DOS MODELOS':'REPASA EL NOMBRE O LA PALABRA'} SIN SALIRTE DEL CAMINO</strong><small>USA EL DEDO, EL LÁPIZ DE LA PDI O EL RATÓN</small></div>
+          <div class="guided-board-stage" data-guided-stage>
+            <canvas class="guided-template-canvas" data-guided-template aria-hidden="true"></canvas>
+            <canvas class="guided-ink-canvas" data-guided-ink aria-label="Zona para repasar ${guidedState.value}"></canvas>
+            <div class="guided-board-badge"><span>HOY REPASAMOS</span><strong>${guidedState.value}</strong></div>
           </div>
         </section>
       </div>`;
@@ -387,6 +428,25 @@
       } else {
         link.removeAttribute('aria-current');
       }
+    });
+  }
+
+  function addGuidedNavLink() {
+    document.querySelectorAll('.pdi-section-nav').forEach(nav => {
+      let link = nav.querySelector('a[href="#pdi-pizarra-guiada"]');
+      if (!link) {
+        link = document.createElement('a');
+        link.href = '#pdi-pizarra-guiada';
+        link.innerHTML = '✍️ Pizarra guiada';
+        const board = nav.querySelector('a[href="#pdi-pizarra"]');
+        if (board) board.insertAdjacentElement('afterend', link); else nav.appendChild(link);
+      }
+      const active = isGuidedRoute();
+      link.classList.toggle('active', active);
+      if (active) {
+        link.setAttribute('aria-current','page');
+        nav.querySelectorAll('a').forEach(other=>{if(other!==link){other.classList.remove('active');other.removeAttribute('aria-current');}});
+      } else link.removeAttribute('aria-current');
     });
   }
 
@@ -723,8 +783,66 @@
     if (hint) hint.textContent = 'ÚLTIMA ACCIÓN DESHECHA';
   }
 
+  function mountGuidedBoard() {
+    const canvas = document.querySelector('[data-guided-ink]');
+    const template = document.querySelector('[data-guided-template]');
+    const stage = document.querySelector('[data-guided-stage]');
+    if (!canvas || !template || !stage || canvas.dataset.ready === '1') return;
+    canvas.dataset.ready = '1';
+    const ctx = canvas.getContext('2d');
+    const templateCtx = template.getContext('2d');
+    const mask = document.createElement('canvas');
+    const maskCtx = mask.getContext('2d');
+    const state = {canvas,ctx,template,templateCtx,mask,maskCtx,dpr:1,drawing:false,pointerId:null,last:null,undo:null,fontSize:100,centers:[]};
+    guidedCanvasState = state;
+
+    const fontFor = (size) => `900 ${size}px Nunito, Arial, sans-serif`;
+    const point = event => { const rect=canvas.getBoundingClientRect(); return {x:event.clientX-rect.left,y:event.clientY-rect.top}; };
+    const drawGuides = () => {
+      const w=stage.clientWidth,h=stage.clientHeight,value=guidedState.value.trim().toLocaleUpperCase('es-ES'),single=value.length===1||/^10$/.test(value),half=w/2;
+      for(const target of [templateCtx,maskCtx]){target.save();target.setTransform(1,0,0,1,0,0);target.clearRect(0,0,target.canvas.width,target.canvas.height);target.restore();}
+      let lines=[];
+      if(single)lines=[{text:value,x:half*.5,y:h*.53,maxWidth:half-54},{text:value,x:half*1.5,y:h*.53,maxWidth:half-54}];
+      else {const words=value.split(/\s+/).filter(Boolean);if(words.length>1){let best=1,bestDiff=Infinity;for(let i=1;i<words.length;i++){const diff=Math.abs(words.slice(0,i).join(' ').length-words.slice(i).join(' ').length);if(diff<bestDiff){best=i;bestDiff=diff;}}lines=[{text:words.slice(0,best).join(' '),x:w/2,y:h*.34,maxWidth:w-90},{text:words.slice(best).join(' '),x:w/2,y:h*.72,maxWidth:w-90}];}else lines=[{text:value,x:w/2,y:h*.52,maxWidth:w-90}];}
+      let size=single?Math.min(h*.7,half*.72):Math.min(lines.length===2?h*.27:h*.43,180);templateCtx.font=fontFor(size);const widest=Math.max(...lines.map(line=>templateCtx.measureText(line.text).width/line.maxWidth));if(widest>1)size/=widest;
+      state.fontSize=size;state.centers=lines.map(line=>line.x);for(const target of [templateCtx,maskCtx]){target.textAlign='center';target.textBaseline='middle';target.font=fontFor(size);}
+      maskCtx.fillStyle='#000';lines.forEach(line=>maskCtx.fillText(line.text,line.x,line.y));
+      const rasterLayer=(color,spread=0)=>{const layer=document.createElement('canvas'),layerCtx=layer.getContext('2d');layer.width=mask.width;layer.height=mask.height;if(spread){for(let x=-spread;x<=spread;x+=Math.max(1,Math.floor(spread/2)))for(let y=-spread;y<=spread;y+=Math.max(1,Math.floor(spread/2)))if(x*x+y*y<=spread*spread*1.25)layerCtx.drawImage(mask,x,y);}else layerCtx.drawImage(mask,0,0);layerCtx.globalCompositeOperation='source-in';layerCtx.fillStyle=color;layerCtx.fillRect(0,0,layer.width,layer.height);return layer;};
+      const outline=rasterLayer('#73334f',Math.max(4,Math.round(size*.018*state.dpr))),fill=rasterLayer('#fff0f5');templateCtx.save();templateCtx.setTransform(1,0,0,1,0,0);templateCtx.drawImage(outline,0,0);templateCtx.drawImage(fill,0,0);templateCtx.restore();
+      lines.forEach((line,index)=>{templateCtx.save();templateCtx.font=fontFor(size);const metrics=templateCtx.measureText(line.text),dotX=Math.max(28,line.x-metrics.width/2-20),dotY=Math.max(30,line.y-size*.48);templateCtx.fillStyle='#a6295d';templateCtx.beginPath();templateCtx.arc(dotX,dotY,18,0,Math.PI*2);templateCtx.fill();templateCtx.fillStyle='#fff';templateCtx.font='900 18px Nunito, sans-serif';templateCtx.fillText(String(index+1),dotX,dotY+1);templateCtx.restore();});
+    };
+    const applyMask = () => {ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.globalCompositeOperation='destination-in';ctx.drawImage(mask,0,0);ctx.restore();ctx.globalCompositeOperation='source-over';};
+    const remember = () => {const snap=document.createElement('canvas');snap.width=canvas.width;snap.height=canvas.height;snap.getContext('2d').drawImage(canvas,0,0);state.undo=snap;const b=document.querySelector('[data-guided-action="undo"]');if(b)b.disabled=false;};
+    state.remember=remember;state.applyMask=applyMask;
+    const resize = () => {
+      const rect=stage.getBoundingClientRect();if(!rect.width||!rect.height)return;
+      const dpr=Math.min(devicePixelRatio||1,2),nextW=Math.round(rect.width*dpr),nextH=Math.round(rect.height*dpr);if(canvas.width===nextW&&canvas.height===nextH)return;
+      const old=document.createElement('canvas');old.width=canvas.width;old.height=canvas.height;if(old.width)old.getContext('2d').drawImage(canvas,0,0);
+      state.dpr=dpr;for(const item of [canvas,template,mask]){item.width=nextW;item.height=nextH;}
+      for(const target of [ctx,templateCtx,maskCtx])target.setTransform(dpr,0,0,dpr,0,0);
+      drawGuides();if(old.width)ctx.drawImage(old,0,0,old.width,old.height,0,0,rect.width,rect.height);applyMask();
+    };
+    state.resize=resize;
+    canvas.addEventListener('pointerdown',event=>{if(event.button!==undefined&&event.button!==0)return;event.preventDefault();remember();canvas.setPointerCapture?.(event.pointerId);state.drawing=true;state.pointerId=event.pointerId;state.last=point(event);ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=guidedState.color;ctx.lineWidth=Math.max(14,state.fontSize*.115);ctx.globalCompositeOperation='source-over';ctx.beginPath();ctx.moveTo(state.last.x,state.last.y);ctx.lineTo(state.last.x+.01,state.last.y+.01);ctx.stroke();applyMask();});
+    canvas.addEventListener('pointermove',event=>{if(!state.drawing||event.pointerId!==state.pointerId)return;event.preventDefault();const p=point(event);ctx.strokeStyle=guidedState.color;ctx.lineWidth=Math.max(14,state.fontSize*.115);ctx.globalCompositeOperation='source-over';ctx.beginPath();ctx.moveTo(state.last.x,state.last.y);ctx.lineTo(p.x,p.y);ctx.stroke();state.last=p;applyMask();});
+    const stop=event=>{if(event.pointerId!==state.pointerId)return;state.drawing=false;state.pointerId=null;state.last=null;};
+    canvas.addEventListener('pointerup',stop);canvas.addEventListener('pointercancel',stop);
+    const observer=new ResizeObserver(resize);observer.observe(stage);requestAnimationFrame(resize);
+  }
+
+  function clearGuidedBoard(remember=true) {
+    if(!guidedCanvasState)return;const {canvas,ctx}=guidedCanvasState;if(remember)guidedCanvasState.remember();ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.restore();
+  }
+
+  function undoGuidedBoard(){
+    const state=guidedCanvasState;if(!state?.undo)return;const {canvas,ctx,undo}=state;ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(undo,0,0,canvas.width,canvas.height);ctx.restore();state.undo=null;const b=document.querySelector('[data-guided-action="undo"]');if(b)b.disabled=true;
+  }
+
+  function guidedValues(){return [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ',...Array.from({length:10},(_,i)=>String(i+1))];}
+  function setGuidedValue(value){value=String(value||'').trim().replace(/\s+/g,' ').toLocaleUpperCase('es-ES').slice(0,24);if(!value||!/^[A-ZÁÉÍÓÚÜÑ0-9 ]+$/u.test(value))return;guidedState.value=value;const main=content();if(main)main.innerHTML=guidedPage();activateGlobalPdiNav();addBoardNavLink();addGuidedNavLink();addAutumnNavLink();mountGuidedBoard();mountPagePdiButton();syncPdiModeState();}
+
   function pdiContextAvailable() {
-    return isBoardRoute() || !!document.querySelector('#contenido .pdi-section-nav');
+    return isBoardRoute() || isGuidedRoute() || !!document.querySelector('#contenido .pdi-section-nav');
   }
 
   function fallbackTarget() {
@@ -913,17 +1031,30 @@
       }
       activateGlobalPdiNav();
       addBoardNavLink();
+      addGuidedNavLink();
       addAutumnNavLink();
       mountBoard();
+    } else if (isGuidedRoute()) {
+      if (!main.querySelector('#pdi-guided-page')) {
+        main.innerHTML = guidedPage();
+        guidedCanvasState = null;
+      }
+      activateGlobalPdiNav();
+      addBoardNavLink();
+      addGuidedNavLink();
+      addAutumnNavLink();
+      mountGuidedBoard();
     } else if (isAutumnRoute()) {
       if (!main.querySelector('#pdi-autumn-page')) {
         main.innerHTML = autumnPage();
       }
       activateGlobalPdiNav();
       addBoardNavLink();
+      addGuidedNavLink();
       addAutumnNavLink();
     } else {
       addBoardNavLink();
+      addGuidedNavLink();
       addAutumnNavLink();
     }
 
@@ -1005,6 +1136,15 @@
       return;
     }
 
+    const guidedValue=event.target.closest('[data-guided-value]');
+    if(guidedValue){setGuidedValue(guidedValue.dataset.guidedValue);return;}
+    const guidedName=event.target.closest('[data-guided-name]');
+    if(guidedName){setGuidedValue(guidedName.dataset.guidedName);return;}
+    const guidedColor=event.target.closest('[data-guided-color]');
+    if(guidedColor){guidedState.color=guidedColor.dataset.guidedColor;document.querySelectorAll('[data-guided-color]').forEach(button=>button.classList.toggle('is-active',button===guidedColor));return;}
+    const guidedAction=event.target.closest('[data-guided-action]');
+    if(guidedAction){const action=guidedAction.dataset.guidedAction;if(action==='clear')clearGuidedBoard();else if(action==='undo')undoGuidedBoard();else if(action==='word'){const input=document.querySelector('[data-guided-word]');if(input?.value.trim())setGuidedValue(input.value);}else {const values=guidedValues(),found=values.indexOf(guidedState.value),index=found<0?0:found,next=action==='next'?(index+1)%values.length:(index-1+values.length)%values.length;setGuidedValue(values[next]);}return;}
+
     const autumnAction = event.target.closest('[data-autumn-action]');
     if (autumnAction) {
       handleAutumnAction(autumnAction.dataset.autumnAction);
@@ -1057,12 +1197,14 @@
       canvasState.textSize = event.target.value;
     }
   });
+  document.addEventListener('keydown',event=>{if(event.key==='Enter'&&event.target.matches('[data-guided-word]')){event.preventDefault();setGuidedValue(event.target.value);}});
 
   document.addEventListener('fullscreenchange', syncFullscreenButtons);
   document.addEventListener('webkitfullscreenchange', syncFullscreenButtons);
   window.addEventListener('hashchange', () => setTimeout(queueSync, 0));
   window.addEventListener('resize', () => {
     canvasState?.resizeBoard();
+    guidedCanvasState?.resize();
   });
 
   const start = () => {

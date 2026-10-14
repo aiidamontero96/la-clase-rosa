@@ -1,4 +1,64 @@
 /* Asamblea ilustrada. Solo conteo de asistencia y calendario interno. */
+#projector .projection-main:has(.vero-attendance) {width:min(1320px,98vw);padding:8px 18px;background:linear-gradient(180deg,#e8f7f1 0 48%,#f9d8c7 48%);}
+.vero-attendance {width:100%;color:#673a52;}
+.vero-attendance-heading {text-align:center;margin-bottom:10px;}
+.vero-attendance-heading > span {display:inline-block;padding:5px 18px;border-radius:999px;background:#f6bed3;font-weight:900;letter-spacing:.12em;font-size:clamp(.72rem,1vw,.95rem);}
+#projector .vero-attendance-heading h2 {max-width:none;margin:5px 0 1px;font-size:clamp(1.65rem,2.6vw,2.65rem);line-height:1;}
+#projector .vero-attendance-heading p {margin:0;font-size:clamp(.75rem,1.1vw,1rem);font-weight:900;}
+.vero-school {position:relative;width:100%;max-width:100%;min-width:0;overflow:hidden;padding:35px clamp(10px,1.5vw,22px) 12px;border:5px solid #fff;border-radius:34px 34px 20px 20px;background:linear-gradient(90deg,#f2b4bc 0 4%,#f8d4c3 4% 96%,#f2b4bc 96%);box-shadow:0 8px 0 #b87b91,0 14px 28px #65445d28;isolation:isolate;}
+.vero-school::before,.vero-school::after {content:'';position:absolute;bottom:-13px;width:70px;height:58px;background:radial-gradient(circle at 30% 30%,#b9df9d 0 24%,transparent 25%),radial-gradient(circle at 70% 34%,#8fc47c 0 28%,transparent 29%),radial-gradient(circle at 48% 70%,#6fa968 0 32%,transparent 33%);z-index:4;}
+.vero-school::before {left:-18px}.vero-school::after {right:-18px;transform:scaleX(-1)}
+.vero-school-roof {position:absolute;z-index:3;left:7%;right:7%;top:-22px;height:53px;display:flex;align-items:center;justify-content:center;gap:12px;border:4px solid #fff;border-radius:50% 50% 14px 14px;background:repeating-linear-gradient(135deg,#d8597e 0 24px,#f49ab1 24px 48px);color:#fff;text-shadow:0 2px #853b5a;box-shadow:0 4px 0 #9c4966;font-size:clamp(.7rem,1.15vw,1.05rem);letter-spacing:.08em;}
+.vero-school-roof i {position:absolute;left:8%;bottom:4px;width:28px;height:46px;border:4px solid #fff;border-radius:6px 6px 0 0;background:#f0c77d;}
+.vero-school-roof span,.vero-sun {display:none;}
+.vero-school-sky {position:absolute;z-index:-1;inset:-36px 0 55%;overflow:hidden;border-radius:34px;background:linear-gradient(#cdeef2,#e9f8f3);}
+.vero-sun {position:absolute;right:4%;top:10px;font-size:42px;color:#f1bd3d;font-style:normal;filter:drop-shadow(0 3px #fff);}
+.vero-cloud {position:absolute;top:20px;width:62px;height:18px;border-radius:20px;background:#fff;box-shadow:18px -9px 0 2px #fff,37px 1px 0 -1px #fff;opacity:.85;}.vero-cloud.cloud-a{left:4%}.vero-cloud.cloud-b{left:67%;top:44px;transform:scale(.7)}
+.vero-window-grid {display:grid;width:100%;max-width:100%;min-width:0;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:clamp(7px,1vw,14px);height:min(52dvh,475px);}
+#projector .vero-window {position:relative;display:grid;grid-template-rows:1fr;place-items:center;min-width:0;width:100%;min-height:0;padding:24px 7px 8px;overflow:hidden;border:4px solid #fff;border-radius:24px 24px 16px 16px;background:linear-gradient(150deg,#bfe9ef 0 58%,#e4f5ed 58%);color:#673a52;box-shadow:0 5px 0 #bf8ca0,0 9px 18px #75506620;transition:transform .18s ease,filter .18s ease;}
+#projector .vero-window:nth-child(3n+2) {background:linear-gradient(150deg,#ffe3a8 0 58%,#fff3d4 58%);}
+#projector .vero-window:nth-child(3n) {background:linear-gradient(150deg,#dfd0f3 0 58%,#f2eafb 58%);}
+#projector .vero-window:hover {transform:translateY(-3px);}
+.vero-window-awning {position:absolute;inset:0 0 auto;height:14px;background:repeating-linear-gradient(90deg,#e8688e 0 20px,#fff7ed 20px 40px);border-bottom:3px solid #fff;}
+.vero-curtain {position:absolute;z-index:1;top:17px;width:25%;height:54%;background:repeating-linear-gradient(90deg,#fff0f4 0 7px,#ed91ab 7px 14px);border:2px solid #fff;transition:width .2s ease;}.vero-curtain-left{left:0;border-radius:0 0 80% 0}.vero-curtain-right{right:0;border-radius:0 0 0 80%}
+.vero-child {position:relative;z-index:2;width:clamp(48px,5.3vw,76px);height:clamp(48px,5.3vw,76px);margin-top:7px;display:grid;place-items:center;border-radius:50%;background:#f2b78d;border:4px solid #fff;box-shadow:0 3px 0 #a9767e;}
+.vero-child i {position:absolute;right:-12px;top:-12px;font-style:normal;font-size:clamp(18px,2vw,28px);filter:drop-shadow(0 2px #fff);}
+.vero-hair {position:absolute;left:-3px;right:-3px;top:-4px;height:48%;border-radius:55% 55% 35% 35%;background:#5d382e;box-shadow:inset 0 -5px #43271f;}.child-style-1 .vero-hair,.child-style-4 .vero-hair{background:#d29a48;box-shadow:inset 0 -5px #b67c31}.child-style-2 .vero-hair{height:63%;border-radius:50% 50% 45% 45%;background:#352b29}.child-style-3 .vero-hair{background:#8a5736}.child-style-5 .vero-hair{height:40%;background:#b66f42;}
+.vero-eyes {position:absolute;left:25%;right:25%;top:48%;height:5px;border-radius:50%;background:#583942;box-shadow:28px 0 #583942;}.vero-smile {position:absolute;left:38%;bottom:17%;width:24%;height:12%;border-bottom:3px solid #a4485a;border-radius:0 0 50% 50%;}
+.vero-flower-box {position:absolute;z-index:3;left:12%;right:12%;bottom:35px;height:16px;border-radius:4px 4px 9px 9px;background:#87b477;color:#e65c83;font-size:11px;line-height:12px;letter-spacing:2px;border:2px solid #fff;}
+.vero-child,.vero-flower-box {display:none;}
+#projector .vero-window > strong {position:relative;z-index:2;width:100%;height:auto;overflow:visible;display:block;white-space:normal;overflow-wrap:anywhere;font-size:clamp(.82rem,1.25vw,1.18rem);line-height:1.12;text-align:center;color:#63314a;text-shadow:0 1px #fff;}
+#projector .vero-window > small {display:none;}
+#projector .vero-window.is-absent {background:#e7e2e2;filter:saturate(.25);box-shadow:0 5px 0 #a9a1a4;}
+#projector .vero-window.is-absent .vero-child {transform:translateY(120%);opacity:.15;}
+#projector .vero-window.is-absent .vero-curtain {width:50%;height:72%;border-radius:0;}
+#projector .vero-window.is-absent::after {content:'CERRADA';position:absolute;inset:15px 8px 38px;display:grid;place-items:center;border:4px solid #fff;border-radius:12px;background:repeating-linear-gradient(45deg,#b9a8ad 0 10px,#d5cbce 10px 20px);color:#694c56;font-weight:1000;letter-spacing:.08em;}
+#projector .vero-window.is-absent > small {color:#8b5365;}
+
+/* ASAMBLEA VERO: TRES TRENES DE SEIS VAGONES, TODOS VISIBLES. */
+#projector .projection-main:has(.vero-attendance) {background:linear-gradient(#e7f7f1 0 56%,#f6d5c4 56% 100%);}
+.vero-attendance-heading > span {background:#ffe5a8;color:#713b55;}
+.vero-attendance-heading > span {font-size:0;}
+.vero-attendance-heading > span::after {content:'EL TREN DE LA CLASE DE VERO';font-size:clamp(.72rem,1vw,.95rem);}
+#projector .vero-attendance-heading p {font-size:0;}
+#projector .vero-attendance-heading p::after {content:'TOCA UN NOMBRE SI HOY NO HA VENIDO.';font-size:clamp(.75rem,1.1vw,1rem);}
+.vero-school {overflow:visible;padding:32px 12px 18px;border:0;border-radius:24px;background:transparent;box-shadow:none;}
+.vero-school::before,.vero-school::after,.vero-school-sky {display:none;}
+.vero-school-roof {left:3%;right:auto;top:-34px;width:clamp(170px,18vw,260px);height:70px;border:0;background:transparent;box-shadow:none;text-shadow:none;}
+.vero-school-roof strong,.vero-school-roof span {display:none;}
+.vero-school-roof i {display:block;left:0;bottom:0;width:100%;height:100%;border:0;border-radius:0;background:transparent url('assets/asamblea-ligera/asistencia-tren/locomotora.webp?rev=1') left center/contain no-repeat;}
+.vero-window-grid {position:relative;gap:clamp(12px,1.15vw,18px) clamp(5px,.65vw,10px);height:min(55dvh,500px);padding:0 4px;}
+.vero-window-grid::before {content:'';position:absolute;z-index:-1;inset:calc(33.333% - 5px) 0 auto;height:5px;background:#755166;box-shadow:0 8px 0 #d0a87f,0 calc(33.333% + 5px) 0 #755166,0 calc(33.333% + 13px) 0 #d0a87f,0 calc(66.666% + 15px) 0 #755166,0 calc(66.666% + 23px) 0 #d0a87f;}
+#projector .vero-window {grid-template-rows:1fr;padding:28px 7px 24px;border:3px solid #fff;border-radius:18px 18px 12px 12px;background:radial-gradient(circle at 21% calc(100% - 4px),#554552 0 8px,#f2c36d 9px 12px,transparent 13px),radial-gradient(circle at 79% calc(100% - 4px),#554552 0 8px,#f2c36d 9px 12px,transparent 13px),linear-gradient(145deg,#bdeaf0 0 54%,#e3f2df 55%);box-shadow:0 5px 0 #9f6a7b,0 8px 12px #67445622;overflow:visible;}
+#projector .vero-window:nth-child(3n+2) {background:radial-gradient(circle at 21% calc(100% - 4px),#554552 0 8px,#f2c36d 9px 12px,transparent 13px),radial-gradient(circle at 79% calc(100% - 4px),#554552 0 8px,#f2c36d 9px 12px,transparent 13px),linear-gradient(145deg,#ffe1a2 0 54%,#fff0c9 55%);}
+#projector .vero-window:nth-child(3n) {background:radial-gradient(circle at 21% calc(100% - 4px),#554552 0 8px,#f2c36d 9px 12px,transparent 13px),radial-gradient(circle at 79% calc(100% - 4px),#554552 0 8px,#f2c36d 9px 12px,transparent 13px),linear-gradient(145deg,#d8c5ed 0 54%,#eee4f7 55%);}
+.vero-window-awning {inset:0 -3px auto;height:20px;border:3px solid #fff;border-radius:16px 16px 3px 3px;background:repeating-linear-gradient(90deg,#d7557d 0 24px,#f39ab2 24px 48px);}
+.vero-curtain {display:none;}
+#projector .vero-window > strong {padding:12px 5px;border:3px solid #fff;border-radius:12px;background:#fffdf8e8;font-size:clamp(.7rem,1.08vw,1.02rem);line-height:1.08;text-shadow:none;box-shadow:inset 0 0 0 2px #d7afbd55;}
+#projector .vero-window::before {content:'';position:absolute;z-index:3;right:-9px;top:46%;width:13px;height:7px;border-radius:5px;background:#8d5970;border:2px solid #fff;}
+#projector .vero-window:nth-child(6n)::before {display:none;}
+#projector .vero-window.is-absent {background:radial-gradient(circle at 21% calc(100% - 4px),#615a5d 0 8px,#aaa1a4 9px 12px,transparent 13px),radial-gradient(circle at 79% calc(100% - 4px),#615a5d 0 8px,#aaa1a4 9px 12px,transparent 13px),linear-gradient(#d8d1d3,#ebe7e8);filter:none;}
+#projector .vero-window.is-absent::after {content:'HOY NO HA VENIDO';inset:23px 7px 21px;border:3px solid #fff;border-radius:10px;background:repeating-linear-gradient(45deg,#b9a8ad 0 9px,#d8cfd2 9px 18px);font-size:clamp(.55rem,.72vw,.7rem);}
 #projector .projection-main:has(.count-story),
 #projector .projection-main:has(.calendar-craft) {width: min(1240px,96vw);padding: 8px 18px;}
 .count-story {width: 100%;max-width: 1100px;color: #633c4a;}
@@ -56,6 +116,10 @@
 [data-season="invierno"] .craft-sticker i {width: 45px;height: 7px;background: #a5cfdb;border-radius: 5px;box-shadow: none;top: 26px;left: 10px;transform: rotate(0);}
 [data-season="invierno"] .craft-sticker i:nth-child(2) {transform: rotate(60deg);}[data-season="invierno"] .craft-sticker i:nth-child(3) {transform: rotate(-60deg);}
 @media (max-height:800px) and (min-width:901px) {
+  .vero-school {padding-top:28px;}
+  .vero-window-grid {height:min(51dvh,395px);gap:11px 6px;}
+  #projector .vero-window {padding:6px 5px 5px;border-width:3px;border-radius:18px 18px 12px 12px;}
+  .vero-child {width:45px;height:45px;border-width:3px;}
   .count-illustration {height: 145px;}
   #projector .count-story > h2 {margin-bottom: 8px;}
   .count-scene {padding: 9px 18px 13px;}
@@ -71,6 +135,8 @@
   #projector .projection-main[data-game="calendario"] .calendar-craft .calendar-mini > span {height: 40px;}
 }
 @media (max-width:700px) {
+  .vero-window-grid {grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));height:65dvh;gap:5px;}
+  .vero-child {width:35px;height:35px;}
   .count-story .attendance-count-grid {gap: 10px;}
   .count-scene {padding: 10px 8px;border-radius: 20px;}
   .count-illustration {height: 110px;}

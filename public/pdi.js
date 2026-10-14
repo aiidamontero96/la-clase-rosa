@@ -36,6 +36,23 @@ window.ROSA_PDI = (() => {
     ['patrones-avanzados', 'PATRONES AVANZADOS', '● ■ ▲', 'CONTINÚA PATRONES DE TRES ELEMENTOS Y DOBLES REPETICIONES.', 'Lógica'],
     ['problemas-visuales', 'PEQUEÑOS PROBLEMAS', '🧠 123', 'RESUELVE SITUACIONES DE AÑADIR Y QUITAR CON DIBUJOS.', 'Matemáticas']
   ];
+  const whatIfPrompts = [
+    '¿La hierba se pudiese comer?', '¿Todos fuéramos niños?', '¿Un árbol nos diera caramelos?', '¿Viviésemos en un desierto?',
+    '¿Las vacas nos diesen zumo de naranja?', '¿No tuvieras día de cumpleaños?', '¿Tuvieras que entrar al cole por el tejado?', '¿No existiera la Luna?',
+    '¿Solo hablaras chino?', '¿Pudieras volar?', '¿El fuego no quemase?', '¿No tuvieras luz en casa?', '¿Nadie lavase la ropa?', '¿La caca oliese bien?',
+    '¿No pudieras comer tu comida favorita?', '¿Nuestros huesos fuesen blandos?', '¿A los conejos no les gustaran las zanahorias?', '¿El suelo fuese de algodón?',
+    '¿Tu papá fuese un payaso?', '¿No existieran los relojes?', '¿Los peces comieran salchichas?', '¿Tu mamá fuese un hada?', '¿Los barcos navegasen por la calle?',
+    '¿No tuviéramos papeleras?', '¿Desapareciesen todos los juguetes?', '¿Un día cayesen mil plumas del cielo?', '¿Tuviéramos que dormir todos en la misma cama?',
+    '¿Los dinosaurios siguiesen viviendo?', '¿Solo pudiéramos beber leche?', '¿La Luna saliese de día y el Sol de noche?', '¿Fueses inventora o inventor?',
+    '¿Los cerdos fuesen amarillos?', '¿No existiera el Sol?', '¿Los pájaros pudieran nadar?', '¿Nadie tuviese nombre?', '¿Siempre estuviéramos dormidos?',
+    '¿Fuésemos la reina o el rey del mundo?', '¿Los rayos del Sol fuesen espaguetis?', '¿A las nubes les salieran hojas?', '¿Te llamases como tu perro?',
+    '¿Todos fuéramos calvos?', '¿No tuviésemos cubiertos para comer?', '¿Los polos se quedasen sin hielo?', '¿Desapareciera el cielo?',
+    '¿El mar se quedase sin agua?', '¿Tuviésemos tres ojos?', '¿Las arañas fuesen gigantes?', '¿Vivieses en otro planeta?', '¿Los paraguas dejasen pasar la lluvia?',
+    '¿Nevase en verano?', '¿Naciéramos con alas?', '¿Los buses se transformaran en trenes?', '¿Las gallinas pusieran albóndigas?', '¿Hiciese mucho calor en invierno?',
+    '¿Las bicis tuvieran las ruedas cuadradas?', '¿Tuviéramos pico de pato?', '¿Un día nevase monedas de oro?', '¿Fuéramos un elefante?',
+    '¿En el cole no hubiese maestras ni maestros?', '¿El cielo fuese de color rojo?', '¿Un día cayeran las estrellas del cielo?', '¿Tu mejor amigo fuese un dragón?',
+    '¿Nunca pudieras ir a la escuela?', '¿En vez de hablar ladrásemos?'
+  ];
   const objects = [
     ['🐱', 'gato'], ['🍎', 'manzana'], ['🚗', 'coche'], ['🧸', 'oso de peluche'],
     ['🐸', 'rana'], ['🌸', 'flor'], ['⚽', 'balón'], ['🦋', 'mariposa'],
@@ -329,5 +346,5 @@ window.ROSA_PDI = (() => {
     options = [...options.slice(offset), ...options.slice(0, offset)];
     return {prompt, visual, options, answer:String(answer), explanation, needsReveal};
   }
-  return {games, round};
+  return {games, round, whatIfPrompts};
 })();
