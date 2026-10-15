@@ -38,3 +38,67 @@ html.rosa-login-pending body>.rosa-login-overlay,html.rosa-login-pending body>no
 @keyframes rosa-pot-build-up{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-7px) rotate(-1.5deg)}75%{transform:translateX(7px) rotate(1.5deg)}}@keyframes rosa-pot-hop{45%{transform:translateY(-18px) scale(1.035)}100%{transform:translateY(0) scale(1)}}@keyframes rosa-lid-open{0%{transform:translate(0,0) rotate(0)}35%{transform:translate(-8px,-25px) rotate(-7deg)}70%{transform:translate(42px,-105px) rotate(24deg)}100%{transform:translate(75px,-82px) rotate(34deg)}}@keyframes rosa-mouth-pop{0%{opacity:0;transform:translate(-50%,20px) scale(.25)}18%{opacity:1}75%{opacity:1;transform:rotate(var(--a)) translateY(-230px) scale(1.15)}100%{opacity:0;transform:rotate(var(--a)) translateY(-300px) scale(.8)}}@keyframes rosa-popcorn-fill{0%{opacity:0;transform:translate(calc(49vw - var(--col)*5vw),calc(58dvh - var(--row)*8.34dvh)) scale(.12) rotate(0)}22%{opacity:1}68%{opacity:1;transform:translate(0,-18px) scale(1.15) rotate(240deg)}100%{opacity:1;transform:translate(0,0) scale(1.1) rotate(var(--r))}}
 @keyframes rosa-popcorn-curtain{0%,94%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
 @media(prefers-reduced-motion:reduce){.timer-finished .pdi-pop-machine-lid{transform:translate(75px,-82px) rotate(34deg)}.timer-finished .pdi-timer-confetti i{opacity:1;animation:none!important}}
+
+/* Palomitera vectorial v2: no depende de imágenes externas y escala con nitidez en PDI. */
+.pdi-timer-stage{background:radial-gradient(circle at 15% 18%,#ffffffb8 0 5%,transparent 18%),radial-gradient(circle at 84% 17%,#ffd8e8 0 6%,transparent 16%),radial-gradient(circle at 10% 82%,#aee1bd 0 5%,transparent 13%),linear-gradient(180deg,#e9f8f3 0 67%,#f6b7bc 67% 100%)}
+.pdi-pop-machine{width:min(470px,78vw);filter:drop-shadow(0 20px 18px #54254926)}
+.pdi-pop-machine-body,.pdi-pop-machine-lid{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;clip-path:none!important}
+.pdi-pop-machine-body{z-index:3!important}.pdi-pop-machine-lid{z-index:7!important;transform-origin:82% 29%;will-change:transform}
+.pdi-pop-window{z-index:4;left:24.4%;right:24.4%;top:32.8%;height:37%;overflow:hidden;border-radius:15% 15% 24% 24%;filter:drop-shadow(0 0 9px #fff8c588)}
+.pdi-kernel{position:absolute;display:none;width:44px;height:38px;filter:drop-shadow(0 3px 2px #5c32472c);transform-origin:center}
+.pdi-kernel svg{display:block;width:100%;height:100%;overflow:visible}
+.pdi-kernel.kernel-0 svg{transform:rotate(-7deg) scale(.96)}.pdi-kernel.kernel-1 svg{transform:rotate(8deg) scale(1.04)}.pdi-kernel.kernel-2 svg{transform:rotate(2deg)}
+.pdi-pop-window>.pdi-kernel{left:calc(5% + var(--col)*12.8%);bottom:calc(2% + var(--row)*16.2%)}
+.pdi-pop-window>.pdi-kernel.is-popped{display:block;animation:rosa-real-kernel-pop .52s cubic-bezier(.16,.82,.28,1.22) var(--d) both}
+.timer-running .pdi-pop-window>.pdi-kernel.is-popped:nth-child(4n){translate:0 -2px}.timer-running .pdi-pop-window>.pdi-kernel.is-popped:nth-child(4n + 1){translate:1px 1px}
+.pdi-pop-mouth-burst{z-index:9;top:29%;left:50%}.pdi-pop-mouth-burst .pdi-kernel{width:45px;height:39px;left:-22px;top:-18px}
+.timer-finished .pdi-pop-mouth-burst .pdi-kernel{display:block;animation:rosa-real-mouth-pop 1.4s cubic-bezier(.12,.75,.25,1) calc(1.24s + var(--d)) both}
+.pdi-timer-confetti>.pdi-kernel{display:none}
+.timer-finished .pdi-timer-confetti>.pdi-kernel{position:absolute;display:block;left:calc(var(--col)*5vw + .5vw);top:calc(var(--row)*8.34dvh + .5dvh);width:max(58px,5.8vw);height:max(50px,5.1vw);opacity:0;animation:rosa-real-popcorn-fill 1.7s cubic-bezier(.12,.72,.2,1) calc(1.55s + var(--d)) both}
+.timer-finished .pdi-timer-confetti{animation:rosa-popcorn-curtain 8.15s ease forwards}
+.timer-finished .pdi-timer-confetti:after{animation-delay:4s}
+.timer-started .pdi-pop-machine{width:min(500px,61vh,80vw)}
+.timer-started .pdi-timer-clock{width:min(640px,76vh,88vw)}
+.timer-started .pdi-timer-visual{min-height:min(720px,79vh)}
+@keyframes rosa-real-kernel-pop{0%{opacity:0;transform:translateY(55px) scale(.18) rotate(-25deg)}62%{opacity:1;transform:translateY(-13px) scale(1.12) rotate(10deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes rosa-real-mouth-pop{0%{opacity:0;transform:translateY(18px) scale(.18) rotate(0)}16%{opacity:1}72%{opacity:1;transform:rotate(var(--a)) translateY(-245px) scale(1.18)}100%{opacity:0;transform:rotate(var(--a)) translateY(-320px) scale(.76)}}
+@keyframes rosa-real-popcorn-fill{0%{opacity:0;transform:translate(calc(49vw - var(--col)*5vw),calc(55dvh - var(--row)*8.34dvh)) scale(.08) rotate(0)}20%{opacity:1}68%{opacity:1;transform:translate(0,-20px) scale(1.13) rotate(230deg)}100%{opacity:1;transform:translate(0,0) scale(1.04) rotate(var(--r))}}
+@media(max-width:900px){.pdi-pop-machine{width:min(440px,72vw)}.timer-started .pdi-pop-machine{width:min(470px,58vh,76vw)}.timer-started .pdi-timer-clock{width:min(590px,72vh,88vw)}}
+@media(max-width:620px){.pdi-pop-machine{width:min(380px,88vw)}.pdi-kernel{width:36px;height:32px}.timer-started .pdi-pop-machine{width:min(410px,58vh,88vw)}}
+@media(prefers-reduced-motion:reduce){.pdi-pop-window>.pdi-kernel.is-popped{opacity:1;animation:none}.timer-finished .pdi-pop-mouth-burst .pdi-kernel{display:none}.timer-finished .pdi-timer-confetti>.pdi-kernel{opacity:1;animation:none!important}}
+
+/* Palomitera panorámica v3: ilustración amplia y palomitas sin centro circular. */
+.pdi-pop-machine{width:min(570px,82vw);aspect-ratio:3/2;margin-top:-8px;filter:drop-shadow(0 20px 18px #54254928)}
+.pdi-pop-machine>.pdi-pop-machine-body,.pdi-pop-machine>.pdi-pop-machine-lid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;overflow:visible;pointer-events:none}
+.pdi-pop-machine>.pdi-pop-machine-body{z-index:3!important;clip-path:inset(25% 0 0 0)!important}
+.pdi-pop-machine>.pdi-pop-machine-lid{z-index:7!important;clip-path:inset(0 0 72% 0)!important;transform-origin:84% 27%;will-change:transform}
+.pdi-pop-window{z-index:4;left:13%;right:13%;top:31%;height:42%;overflow:hidden;border-radius:12% 12% 20% 20%;filter:drop-shadow(0 0 10px #fff4c9a8)}
+.pdi-kernel{width:50px;height:42px;filter:drop-shadow(0 3px 2px #5c32472b)}
+.pdi-pop-window>.pdi-kernel{left:calc(1% + var(--col)*11%);bottom:calc(1% + var(--row)*16.6%)}
+.pdi-pop-mouth-burst{top:27%}.pdi-pop-mouth-burst .pdi-kernel{width:54px;height:46px;left:-27px;top:-22px}
+.pdi-pop-time-panel{min-width:min(470px,80vw)}
+.timer-started .pdi-pop-machine{width:min(720px,86vw,93vh)}
+.timer-started .pdi-timer-clock{width:min(790px,92vw,105vh)}
+.timer-started .pdi-timer-visual{min-height:min(720px,82vh)}
+.timer-finished .pdi-pop-machine-lid{animation:rosa-lid-open-v3 1.05s cubic-bezier(.16,.9,.3,1.15) 1.05s both}
+@keyframes rosa-lid-open-v3{0%{transform:translate(0,0) rotate(0)}35%{transform:translate(-10px,-22px) rotate(-5deg)}70%{transform:translate(72px,-100px) rotate(20deg)}100%{transform:translate(112px,-82px) rotate(29deg)}}
+@media(max-width:900px){.pdi-pop-machine{width:min(540px,80vw)}.timer-started .pdi-pop-machine{width:min(620px,82vw,86vh)}.timer-started .pdi-timer-clock{width:min(690px,89vw,96vh)}}
+@media(max-width:620px){.pdi-pop-machine{width:min(500px,92vw)}.pdi-kernel{width:40px;height:35px}.timer-started .pdi-pop-machine{width:min(580px,91vw,88vh)}.pdi-pop-time-panel{min-width:min(400px,82vw)}}
+@media(prefers-reduced-motion:reduce){.timer-finished .pdi-pop-machine-lid{transform:translate(112px,-82px) rotate(29deg)}}
+
+/* Modo alumnado: escena limpia, reloj debajo y una única salida docente. */
+.pdi-timer-stage.timer-started{position:fixed;inset:0;z-index:99999;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:clamp(14px,2.2dvh,24px);border:0;border-radius:0;overflow:hidden}
+.timer-started .pdi-timer-title,.timer-started .pdi-timer-controls,.timer-started .pdi-timer-message,.timer-started .pdi-timer-clock>strong{display:none!important}
+.timer-started .pdi-timer-layout{display:grid!important;place-items:center;width:100%;height:100%;margin:0;grid-template-columns:1fr!important}
+.timer-started .pdi-timer-visual{width:100%;height:100%;min-height:0!important;display:grid;place-items:center;align-content:center}
+.timer-started .pdi-timer-clock{width:min(720px,78vw,96vh);display:grid;grid-template-columns:1fr;justify-items:center;align-content:center;gap:0}
+.timer-started .pdi-pop-machine{order:1;width:min(680px,75vw,82vh);aspect-ratio:1.28/1;margin:0}
+.timer-started .pdi-pop-machine>.pdi-pop-machine-body,.timer-started .pdi-pop-machine>.pdi-pop-machine-lid{object-fit:fill}
+.timer-started .pdi-pop-time-panel{order:2;min-width:0;width:min(350px,68vw);margin-top:24px;padding:7px 24px 6px;border-width:3px;border-radius:18px;box-shadow:0 5px 0 #d37b9d}
+.timer-started .pdi-pop-time-panel .pdi-timer-mini{font-size:.7rem}
+.timer-started .pdi-pop-time-panel #pdi-timer-time{font:900 clamp(1.75rem,4.2vw,2.45rem)/1 Nunito,sans-serif;color:#39213e;font-variant-numeric:tabular-nums}
+.timer-started .pdi-timer-teacher-controls{position:fixed;z-index:100002;display:block;right:14px;top:12px;bottom:auto;margin:0}
+.timer-started .pdi-timer-exit{min-height:34px;padding:6px 11px;border:1px solid #6d52625c;border-radius:999px;background:#fff9;color:#4f3d49;font-size:.68rem;letter-spacing:.04em;opacity:.42;box-shadow:none}
+.timer-started .pdi-timer-exit:hover,.timer-started .pdi-timer-exit:focus-visible{opacity:1;background:#fff}
+.timer-started .pdi-timer-countdown{z-index:12;top:36%;left:50%;translate:-50% -50%}
+@media(max-width:700px){.timer-started .pdi-timer-clock{width:min(640px,92vw,91vh)}.timer-started .pdi-pop-machine{width:min(600px,88vw,80vh)}.timer-started .pdi-pop-time-panel{width:min(320px,72vw);margin-top:18px}}

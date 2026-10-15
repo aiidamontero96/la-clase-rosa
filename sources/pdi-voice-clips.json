@@ -60,6 +60,168 @@
     "spoken": "Nueve."
   },
   {
+    "key": "a",
+    "text": "A",
+    "file": "ca978112ca1bbdca.mp3",
+    "spoken": "A."
+  },
+  {
+    "key": "b",
+    "text": "B",
+    "file": "3e23e8160039594a.mp3",
+    "spoken": "B."
+  },
+  {
+    "key": "c",
+    "text": "C",
+    "file": "2e7d2c03a9507ae2.mp3",
+    "spoken": "C."
+  },
+  {
+    "key": "d",
+    "text": "D",
+    "file": "18ac3e7343f01689.mp3",
+    "spoken": "D."
+  },
+  {
+    "key": "e",
+    "text": "E",
+    "file": "3f79bb7b435b0532.mp3",
+    "spoken": "E."
+  },
+  {
+    "key": "f",
+    "text": "F",
+    "file": "252f10c83610ebca.mp3",
+    "spoken": "F."
+  },
+  {
+    "key": "g",
+    "text": "G",
+    "file": "cd0aa9856147b6c5.mp3",
+    "spoken": "G."
+  },
+  {
+    "key": "h",
+    "text": "H",
+    "file": "aaa9402664f1a41f.mp3",
+    "spoken": "H."
+  },
+  {
+    "key": "i",
+    "text": "I",
+    "file": "de7d1b721a1e0632.mp3",
+    "spoken": "I."
+  },
+  {
+    "key": "j",
+    "text": "J",
+    "file": "189f40034be7a199.mp3",
+    "spoken": "J."
+  },
+  {
+    "key": "k",
+    "text": "K",
+    "file": "8254c329a92850f6.mp3",
+    "spoken": "K."
+  },
+  {
+    "key": "l",
+    "text": "L",
+    "file": "acac86c0e609ca90.mp3",
+    "spoken": "L."
+  },
+  {
+    "key": "m",
+    "text": "M",
+    "file": "62c66a7a5dd70c31.mp3",
+    "spoken": "M."
+  },
+  {
+    "key": "n",
+    "text": "N",
+    "file": "1b16b1df538ba12d.mp3",
+    "spoken": "N."
+  },
+  {
+    "key": "ñ",
+    "text": "Ñ",
+    "file": "024bb90888ca89a1.mp3",
+    "spoken": "Ñ."
+  },
+  {
+    "key": "o",
+    "text": "O",
+    "file": "65c74c15a686187b.mp3",
+    "spoken": "O."
+  },
+  {
+    "key": "p",
+    "text": "P",
+    "file": "148de9c5a7a44d19.mp3",
+    "spoken": "P."
+  },
+  {
+    "key": "q",
+    "text": "Q",
+    "file": "8e35c2cd3bf6641b.mp3",
+    "spoken": "Q."
+  },
+  {
+    "key": "r",
+    "text": "R",
+    "file": "454349e422f05297.mp3",
+    "spoken": "R."
+  },
+  {
+    "key": "s",
+    "text": "S",
+    "file": "043a718774c572bd.mp3",
+    "spoken": "S."
+  },
+  {
+    "key": "t",
+    "text": "T",
+    "file": "e3b98a4da31a127d.mp3",
+    "spoken": "T."
+  },
+  {
+    "key": "u",
+    "text": "U",
+    "file": "0bfe935e70c321c7.mp3",
+    "spoken": "U."
+  },
+  {
+    "key": "v",
+    "text": "V",
+    "file": "4c94485e0c21ae6c.mp3",
+    "spoken": "V."
+  },
+  {
+    "key": "w",
+    "text": "W",
+    "file": "50e721e49c013f00.mp3",
+    "spoken": "W."
+  },
+  {
+    "key": "x",
+    "text": "X",
+    "file": "2d711642b726b044.mp3",
+    "spoken": "X."
+  },
+  {
+    "key": "y",
+    "text": "Y",
+    "file": "a1fce4363854ff88.mp3",
+    "spoken": "Y."
+  },
+  {
+    "key": "z",
+    "text": "Z",
+    "file": "594e519ae499312b.mp3",
+    "spoken": "Z."
+  },
+  {
     "key": "22",
     "text": "22",
     "file": "785f3ec7eb32f30b.mp3",
@@ -978,6 +1140,18 @@
     "spoken": "Agosto."
   },
   {
+    "key": "luces",
+    "text": "Luces.",
+    "file": "59eaa6a7512965eb.mp3",
+    "spoken": "Luces."
+  },
+  {
+    "key": "jabón",
+    "text": "Jabón.",
+    "file": "31942b62c1a1b94e.mp3",
+    "spoken": "Jabón."
+  },
+  {
     "key": "ayudar",
     "text": "ayudar.",
     "file": "95609bcf098c5dd6.mp3",
@@ -1116,6 +1290,12 @@
     "spoken": "El museo."
   },
   {
+    "key": "saludos",
+    "text": "Saludos.",
+    "file": "b2ac0b5d6fcc382a.mp3",
+    "spoken": "Saludos."
+  },
+  {
     "key": "escuchar",
     "text": "escuchar.",
     "file": "3ba5486a28f4fcf9.mp3",
@@ -1204,6 +1384,12 @@
     "text": "diciembre",
     "file": "a2ee6272e96a318d.mp3",
     "spoken": "Diciembre."
+  },
+  {
+    "key": "material",
+    "text": "Material.",
+    "file": "40b30b4e8f0d1370.mp3",
+    "spoken": "Material."
   },
   {
     "key": "septiembre",
@@ -5940,6 +6126,12 @@
     "spoken": "MARIPOSA EMPIEZA POR M."
   },
   {
+    "key": "el número protagonista",
+    "text": "El número protagonista.",
+    "file": "020990553d31190c.mp3",
+    "spoken": "El número protagonista."
+  },
+  {
     "key": "¿qué comía estegosaurio",
     "text": "¿Qué comía Estegosaurio?",
     "file": "dbd4a3aefa075253.mp3",
@@ -6124,6 +6316,12 @@
     "text": "BICICLETA EMPIEZA POR B.",
     "file": "0367c980b88059cc.mp3",
     "spoken": "BICICLETA EMPIEZA POR B."
+  },
+  {
+    "key": "¡muy bien! hoy es lunes",
+    "text": "¡Muy bien! Hoy es lunes.",
+    "file": "6905e1c9b3474a8e.mp3",
+    "spoken": "¡Muy bien! Hoy es lunes."
   },
   {
     "key": "¿qué comía braquiosaurio",
@@ -6426,6 +6624,18 @@
     "spoken": "DE AQUÍ NACÍAN LAS CRÍAS."
   },
   {
+    "key": "¡muy bien! hoy es martes",
+    "text": "¡Muy bien! Hoy es martes.",
+    "file": "30884f6f1f6c1b0f.mp3",
+    "spoken": "¡Muy bien! Hoy es martes."
+  },
+  {
+    "key": "¡muy bien! hoy es jueves",
+    "text": "¡Muy bien! Hoy es jueves.",
+    "file": "11590bae1d404862.mp3",
+    "spoken": "¡Muy bien! Hoy es jueves."
+  },
+  {
     "key": "¿qué vocal está repasando",
     "text": "¿QUÉ VOCAL ESTÁ REPASANDO?",
     "file": "67882fb03468ea09.mp3",
@@ -6624,6 +6834,12 @@
     "spoken": "ES UN DISFRAZ DE FLAMENCA."
   },
   {
+    "key": "¡muy bien! hoy es viernes",
+    "text": "¡Muy bien! Hoy es viernes.",
+    "file": "395b430118d5d2d6.mp3",
+    "spoken": "¡Muy bien! Hoy es viernes."
+  },
+  {
     "key": "paleontólogo, paleontóloga",
     "text": "paleontólogo, paleontóloga.",
     "file": "78a19cd3d4090b86.mp3",
@@ -6718,6 +6934,12 @@
     "text": "PIEZAS DURAS SOBRE EL LOMO.",
     "file": "faf2fdeb0e4aa697.mp3",
     "spoken": "PIEZAS DURAS SOBRE EL LOMO."
+  },
+  {
+    "key": "vamos a pensar quién falta",
+    "text": "Vamos a pensar quién falta.",
+    "file": "b67a9e9dc08ece6e.mp3",
+    "spoken": "Vamos a pensar quién falta."
   },
   {
     "key": "¿qué debería ir en el hueco",
@@ -6886,6 +7108,12 @@
     "text": "EL DIPLODOCUS ERA HERBÍVORO.",
     "file": "619bc855d944df6b.mp3",
     "spoken": "EL DIPLODOCUS ERA HERBÍVORO."
+  },
+  {
+    "key": "¡muy bien! hoy es miércoles",
+    "text": "¡Muy bien! Hoy es miércoles.",
+    "file": "fc53774c5a5820f6.mp3",
+    "spoken": "¡Muy bien! Hoy es miércoles."
   },
   {
     "key": "¿qué vocal ves en la pizarra",
@@ -7416,6 +7644,12 @@
     "spoken": "RATÓN Y BALÓN TERMINAN PARECIDO."
   },
   {
+    "key": "¿quién no ha venido hoy al cole",
+    "text": "¿Quién no ha venido hoy al cole?",
+    "file": "6782514b4a3de9e9-v2.mp3",
+    "spoken": "¿Quién no ha venido hoy al cole?"
+  },
+  {
     "key": "la puerta está cerrada con llave",
     "text": "La puerta está cerrada con llave.",
     "file": "83e1c3425fda5537.mp3",
@@ -7594,6 +7828,12 @@
     "text": "EL Tiranosaurio rex ERA CARNÍVORO.",
     "file": "a4c563efe805aa62.mp3",
     "spoken": "EL Tiranosaurio rex ERA CARNÍVORO."
+  },
+  {
+    "key": "¿cuántos hemos venido hoy al cole",
+    "text": "¿Cuántos hemos venido hoy al cole?",
+    "file": "ed66ce24a9bb2457.mp3",
+    "spoken": "¿Cuántos hemos venido hoy al cole?"
   },
   {
     "key": "¿caminaba sobre dos o cuatro patas",
@@ -8052,6 +8292,12 @@
     "spoken": "LÁPIZ NO PERTENECE AL GRUPO DE COMIDA."
   },
   {
+    "key": "vamos a decidir los encargados de hoy",
+    "text": "Vamos a decidir los encargados de hoy.",
+    "file": "12e0a643d49a7651.mp3",
+    "spoken": "Vamos a decidir los encargados de hoy."
+  },
+  {
     "key": "¿qué hacemos antes de pasar una página",
     "text": "¿Qué hacemos antes de pasar una página?",
     "file": "2a788cd6048b14f5.mp3",
@@ -8430,6 +8676,12 @@
     "spoken": "Francisco tiene nueve letras y Abril tiene cinco."
   },
   {
+    "key": "prueba otra vez. ese no es el día de hoy",
+    "text": "Prueba otra vez. Ese no es el día de hoy.",
+    "file": "8d93b91a65a6bb5f.mp3",
+    "spoken": "Prueba otra vez. Ese no es el día de hoy."
+  },
+  {
     "key": "rojo, azul, rojo, azul… ¿qué cuenta sigue",
     "text": "ROJO, AZUL, ROJO, AZUL… ¿QUÉ CUENTA SIGUE?",
     "file": "4eaccfca81003615.mp3",
@@ -8640,6 +8892,12 @@
     "spoken": "Alejandro tiene nueve letras y Marcelo tiene siete."
   },
   {
+    "key": "¿qué día de la semana es hoy? elige un día",
+    "text": "¿Qué día de la semana es hoy? Elige un día.",
+    "file": "b1377f6f65ace322.mp3",
+    "spoken": "¿Qué día de la semana es hoy? Elige un día."
+  },
+  {
     "key": "su cuerpo estaba protegido por placas óseas",
     "text": "Su cuerpo estaba protegido por placas óseas.",
     "file": "5e36e84624a97e6e.mp3",
@@ -8728,6 +8986,12 @@
     "text": "Algunas huellas se conservaron como fósiles.",
     "file": "7e0d3e368b3f964f.mp3",
     "spoken": "Algunas huellas se conservaron como fósiles."
+  },
+  {
+    "key": "¿quién no ha venido hoy al cole esta mañana",
+    "text": "¿Quién no ha venido hoy al cole esta mañana?",
+    "file": "153e09f94c1d5c85.mp3",
+    "spoken": "¿Quién no ha venido hoy al cole esta mañana?"
   },
   {
     "key": "tenía placas sobre el lomo y púas en la cola",
@@ -10044,6 +10308,12 @@
     "spoken": "Escucha durante diez segundos y cuenta un sonido que has notado."
   },
   {
+    "key": "vamos a pensar quién falta hoy. ¿quién no ha venido hoy al cole",
+    "text": "Vamos a pensar quién falta hoy. ¿Quién no ha venido hoy al cole?",
+    "file": "6941dea9b7b7e81c.mp3",
+    "spoken": "Vamos a pensar quién falta hoy. ¿Quién no ha venido hoy al cole?"
+  },
+  {
     "key": "tenía un cuello largo y una cola muy larga, parecida a un látigo",
     "text": "Tenía un cuello largo y una cola muy larga, parecida a un látigo.",
     "file": "27b67cbf9cb59162.mp3",
@@ -10206,6 +10476,12 @@
     "spoken": "Hacer algo para que otra persona pueda continuar o se sienta acompañada."
   },
   {
+    "key": "vamos a decidir los encargados de hoy. saludos, luces, material y jabón",
+    "text": "Vamos a decidir los encargados de hoy. Saludos, luces, material y jabón.",
+    "file": "8122e4626af4e99f.mp3",
+    "spoken": "Vamos a decidir los encargados de hoy. Saludos, luces, material y jabón."
+  },
+  {
     "key": "muchos vivieron hace muchísimo tiempo; las aves son dinosaurios actuales",
     "text": "Muchos vivieron hace muchísimo tiempo; las aves son dinosaurios actuales.",
     "file": "21335bc34e68388f.mp3",
@@ -10276,6 +10552,18 @@
     "text": "AHORA LO HACEMOS TODOS: ALARGA LOS BRAZOS COMO UN CUELLO Y UNA COLA MUY LARGOS.",
     "file": "574d7beda36eb5d1.mp3",
     "spoken": "AHORA LO HACEMOS TODOS: ALARGA LOS BRAZOS COMO UN CUELLO Y UNA COLA MUY LARGOS."
+  },
+  {
+    "key": "vamos a elegir quién se encarga de los saludos, de las luces, del material y del jabón",
+    "text": "Vamos a elegir quién se encarga de los saludos, de las luces, del material y del jabón.",
+    "file": "25029ae10c7a64e2-v2.mp3",
+    "spoken": "Vamos a elegir quién se encarga de los saludos, de las luces, del material y del jabón."
+  },
+  {
+    "key": "vamos a decidir quién se encarga de los saludos, de las luces, del material y del jabón",
+    "text": "Vamos a decidir quién se encarga de los saludos, de las luces, del material y del jabón.",
+    "file": "786152473a4049b1.mp3",
+    "spoken": "Vamos a decidir quién se encarga de los saludos, de las luces, del material y del jabón."
   },
   {
     "key": "entre tres tarjetas de huellas, encuentra la que es igual al modelo y explica qué has mirado",

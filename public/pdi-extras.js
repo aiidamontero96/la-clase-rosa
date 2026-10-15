@@ -91,9 +91,27 @@
     return html;
   }
 
+  function popcornKernel(index, style = '') {
+    const shapes = [
+      '<path d="M28 48C20 53 9 48 9 38C1 33 3 21 13 18C11 8 22 1 31 7C38-1 51 3 52 14C63 15 67 27 59 34C64 44 53 53 44 48C40 56 31 55 28 48Z" fill="#fffaf0" stroke="#6b3a47" stroke-width="2.5"/><path d="M19 32Q25 24 33 30Q39 20 47 26M31 11Q35 19 33 29M18 17Q25 15 30 20" fill="none" stroke="#d6b66f" stroke-width="2.4" stroke-linecap="round"/><path d="M14 25Q16 15 25 12" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" opacity=".9"/>',
+      '<path d="M31 49C21 54 11 48 12 38C2 35 1 22 11 17C9 7 21 1 29 7C36-1 49 2 51 12C62 12 67 24 60 32C67 41 57 52 47 48C43 57 34 56 31 49Z" fill="#fff7df" stroke="#6b3a47" stroke-width="2.5"/><path d="M17 31Q24 23 32 29Q37 20 46 24M29 9Q34 17 32 28M47 25Q50 32 45 39" fill="none" stroke="#d8b973" stroke-width="2.4" stroke-linecap="round"/><path d="M15 22Q19 13 27 11" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" opacity=".9"/>',
+      '<path d="M27 49C17 53 7 46 10 36C1 30 5 17 15 16C15 5 28 0 35 8C44 1 57 7 56 18C66 22 66 35 57 40C55 51 42 55 34 48C32 53 29 52 27 49Z" fill="#fffbed" stroke="#6b3a47" stroke-width="2.5"/><path d="M18 33Q25 24 33 30Q40 21 49 28M34 10Q38 18 34 29M17 17Q24 15 29 21" fill="none" stroke="#d2ae64" stroke-width="2.4" stroke-linecap="round"/><path d="M14 27Q15 17 24 12" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" opacity=".9"/>'
+    ];
+    return `<span class="pdi-kernel kernel-${index % 3}" style="--i:${index};${style}"><svg viewBox="0 0 68 56" aria-hidden="true">${shapes[index % 3]}</svg></span>`;
+  }
+
+  function popcornMachine() {
+    return `<div class="pdi-pop-machine" aria-hidden="true">
+      <img class="pdi-pop-machine-body" src="assets/pdi-timer/palomitera-ancha-v3.webp?rev=1" width="1536" height="1024" alt="">
+      <img class="pdi-pop-machine-lid" src="assets/pdi-timer/palomitera-ancha-v3.webp?rev=1" width="1536" height="1024" alt="">
+      <div class="pdi-pop-window">${Array.from({ length: 54 }, (_, i) => popcornKernel(i, `--col:${i % 9};--row:${Math.floor(i / 9)};--d:${(i % 9) * -.08}s`)).join('')}</div>
+      <div class="pdi-pop-steam"><i></i><i></i><i></i></div>
+      <div class="pdi-pop-mouth-burst">${Array.from({length:22},(_,i)=>popcornKernel(i,`--a:${-86 + i * 8.2}deg;--d:${(i%7)*.06}s`)).join('')}</div>
+    </div>`;
+  }
+
   function timerPage() {
-    const popcorn = Array.from({ length: 42 }, (_, i) => `<i style="--i:${i};--col:${i % 7};--row:${Math.floor(i / 7)};--d:${(i % 7) * -.11}s"></i>`).join('');
-    const confetti = Array.from({ length: 240 }, (_, i) => `<i style="--i:${i};--col:${i % 20};--row:${Math.floor(i / 20)};--r:${(i % 9) * 17}deg;--d:${(i % 24) * .075 + Math.floor(i / 24) * .06}s"></i>`).join('');
+    const confetti = Array.from({ length: 240 }, (_, i) => popcornKernel(i, `--col:${i % 20};--row:${Math.floor(i / 20)};--r:${(i % 9) * 17}deg;--d:${(i % 24) * .075 + Math.floor(i / 24) * .06}s`)).join('');
     return `
       <div id="pdi-timer-page">
         <div class="page-head pdi-timer-page-head">
@@ -112,11 +130,11 @@
                   <span class="pdi-timer-mini">NOS QUEDA</span>
                   <output id="pdi-timer-time" aria-live="off">10:00</output>
                 </div>
-                <div class="pdi-pop-machine" aria-hidden="true"><img class="pdi-pop-machine-body" src="assets/pdi-timer/palomitero.png" width="1024" height="1024" alt=""><img class="pdi-pop-machine-lid" src="assets/pdi-timer/palomitero.png" width="1024" height="1024" alt=""><div class="pdi-pop-window">${popcorn}</div><div class="pdi-pop-steam"><i></i><i></i><i></i></div><div class="pdi-pop-mouth-burst">${Array.from({length:18},(_,i)=>`<i style="--i:${i};--a:${-82 + i * 9.6}deg;--d:${(i%6)*.07}s"></i>`).join('')}</div></div>
+                ${popcornMachine()}
                 <strong id="pdi-timer-status">¡PREPARADOS!</strong>
                 <div id="pdi-timer-countdown" class="pdi-timer-countdown" aria-live="assertive" hidden></div>
               </div>
-              <div class="pdi-timer-teacher-controls" aria-label="Controles del cronómetro"><button type="button" data-timer-action="start">▶ CONTINUAR</button><button type="button" class="secondary" data-timer-action="pause">Ⅱ PAUSAR</button><button type="button" class="quiet" data-timer-action="reset">⚙ CAMBIAR TIEMPO</button></div>
+              <div class="pdi-timer-teacher-controls" aria-label="Control de la docente"><button type="button" class="quiet pdi-timer-exit" data-timer-action="exit" aria-label="Salir del cronómetro">✕ SALIR</button></div>
               <div id="pdi-timer-message" class="pdi-timer-message" role="status" aria-live="polite">ELIGE EL TIEMPO Y PULSA EMPEZAR</div>
               <div class="pdi-timer-confetti" aria-hidden="true">${confetti}</div>
             </div>
@@ -362,8 +380,8 @@
     clock?.classList.toggle('is-half', timer.halfWarned && ratio > 0 && ratio <= .5);
     clock?.classList.toggle('is-final', timer.running && seconds <= 5);
     clock?.classList.toggle('is-done', timer.finished);
-    const visibleKernels = Math.round((1 - ratio) * 42);
-    stage.querySelectorAll('.pdi-pop-window>i').forEach((kernel, index) => kernel.classList.toggle('is-popped', index < visibleKernels || timer.finished));
+    const visibleKernels = Math.round((1 - ratio) * 54);
+    stage.querySelectorAll('.pdi-pop-window>.pdi-kernel').forEach((kernel, index) => kernel.classList.toggle('is-popped', index < visibleKernels || timer.finished));
     const time = stage.querySelector('#pdi-timer-time'); if (time) time.textContent = formatTime(timer.remainingMs);
     const status = stage.querySelector('#pdi-timer-status');
     if (status) status.textContent = timer.finished ? '¡TIEMPO!' : timer.running ? (seconds <= 5 ? '¡CUENTA ATRÁS!' : '¡EN MARCHA!') : timer.remainingMs < timer.totalMs ? 'EN PAUSA' : '¡PREPARADOS!';
@@ -394,6 +412,13 @@
     updateTimerDom();
   }
 
+  async function exitTimerMode() {
+    const stage = document.querySelector('#pdi-timer-stage');
+    resetTimer();
+    stage?.classList.remove('timer-expanded');
+    try { if (document.fullscreenElement === stage) await document.exitFullscreen(); } catch {}
+  }
+
   function fixProjectionExtras() {
     const main = document.querySelector('#projector .projection-main');
     if (!main) return;
@@ -418,6 +443,7 @@
       else if (action === 'start') startTimer();
       else if (action === 'pause') pauseTimer();
       else if (action === 'reset') resetTimer();
+      else if (action === 'exit') void exitTimerMode();
       else if (action === 'fullscreen') void toggleTimerFullscreen();
     });
     document.addEventListener('input', event => { if (event.target?.id === 'pdi-timer-range') setMinutes(event.target.value); });

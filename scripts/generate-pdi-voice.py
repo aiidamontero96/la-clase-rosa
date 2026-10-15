@@ -19,8 +19,10 @@ def clip_text(row):
  return row.get('spoken') or row.get('text') or ''
 remaining=[row for row in clips if not valid_audio(out/row['file'])]
 if args.limit:remaining=remaining[:args.limit]
-torch.set_num_threads(6);torch.manual_seed(20260910)
-model=Qwen3TTSModel.from_pretrained(os.environ.get('ROSA_TTS_MODEL','Qwen/Qwen3-TTS-12Hz-0.6B-Base'),device_map='cpu',dtype=torch.bfloat16,attn_implementation='sdpa')
+torch.set_num_threads(6);torch.manual_seed(int(os.environ.get('ROSA_TTS_SEED','20260910')))
+# Float32 is substantially faster than emulated bfloat16 on the Intel CPUs
+# used by the classroom workstation (which do not expose AVX-512 BF16).
+model=Qwen3TTSModel.from_pretrained(os.environ.get('ROSA_TTS_MODEL','Qwen/Qwen3-TTS-12Hz-0.6B-Base'),device_map='cpu',dtype=torch.float32,attn_implementation='sdpa')
 # Keep waveform decoding in small groups so CPU generation fits modest RAM.
 original_decode=model.model.speech_tokenizer.decode
 def decode_in_groups(items,**kwargs):
@@ -38,7 +40,9 @@ while start<len(remaining):
  size=min(args.batch_size,64 if len(clip_text(remaining[start]))<80 else 32)
  batch=remaining[start:start+size];t=time.time()
  texts=[clip_text(row) for row in batch]
- max_tokens=max(96,min(600,int(max(map(len,texts))*1.6)))
+ # A short label such as a letter needs only a few acoustic tokens. Keeping a
+ # 96-token floor made alphabet batches unnecessarily slow on classroom CPUs.
+ max_tokens=max(16,min(600,int(max(map(len,texts))*1.6)))
  print(json.dumps({'generating':len(batch),'first':batch[0]['key']}),flush=True)
  wavs,sr=model.generate_voice_clone(text=texts,language=['Spanish']*len(batch),voice_clone_prompt=prompt,non_streaming_mode=True,max_new_tokens=max_tokens)
  with tempfile.TemporaryDirectory(prefix='rosa-voice-') as folder:

@@ -49,3 +49,26 @@
 .routine-letter .routine-name-chips{align-content:center;padding:18px;border:3px solid #c28ac0;border-radius:25px;background:linear-gradient(145deg,#fff,#fff0f8);box-shadow:inset 0 0 24px #d7a9d02b,0 7px 0 #a977a8}.routine-letter .routine-name-chips>span{border-width:3px;box-shadow:0 5px 0 #dbb5c8;transform:rotate(-1deg)}.routine-letter .routine-name-chips>span:nth-child(3n){border-color:#78b8c7;background:#effcff;transform:rotate(1.2deg)}.routine-letter .routine-name-chips>span:nth-child(3n+1){border-color:#df9a69;background:#fff7df;transform:rotate(-1.4deg)}.routine-letter .routine-name-chips>span:nth-child(3n+2){border-color:#bd83b8;background:#fff1fb;transform:rotate(.7deg)}.routine-letter .routine-name-chips mark{color:#fff;background:#c04f7b;box-shadow:0 3px 0 #85304f;padding:1px 4px}
 @media(max-height:760px){.routine-book header{box-shadow:0 5px 0 #dcb7c6}.routine-book h2{padding:5px 16px}.routine-book-page{box-shadow:0 6px 0 #d7acbd}.routine-page-kicker{padding:4px 10px}.routine-letter .routine-name-chips{padding:9px}}
 @media(max-width:700px){.routine-book header:before,.routine-book header:after{display:none}.routine-book h2{padding:4px 9px}.routine-book-page:after{inset:4px;border-radius:14px}.routine-number .routine-leaf-grid:before{display:none}.routine-letter .routine-name-chips{padding:5px}}
+
+/* Letra protagonista: espacio blanco, nombres grandes y la letra como único foco. */
+#projector .projection-main[data-game="letra"] {padding:8px 20px 12px;background:#fff;}
+#projector .routine-letter {gap:10px;}
+#projector .routine-letter header {min-height:54px;padding:4px 14px;border:0;border-bottom:3px solid #edd4df;border-radius:0;background:#fff;box-shadow:none;overflow:visible;}
+#projector .routine-letter header::before,#projector .routine-letter header::after {display:none;}
+#projector .routine-letter h2 {padding:0;background:none;box-shadow:none;color:#71344f;}
+#projector .routine-letter header label {padding:4px 7px 4px 12px;border:2px solid #e1becd;background:#fff;box-shadow:none;}
+#projector .routine-letter .routine-book-spread {grid-template-columns:minmax(190px,.48fr) minmax(0,1.52fr);gap:18px;padding:0;background:#fff;}
+#projector .routine-letter .routine-book-page {padding:clamp(14px,2vw,26px);border:2px solid #ead6df;border-radius:24px;background:#fff;box-shadow:none;}
+#projector .routine-letter .routine-book-page:first-child {border-color:#c7e3df;background:#f4fbf9;}
+#projector .routine-letter .routine-book-page:last-child {border-color:#ead6df;background:#fff;}
+#projector .routine-letter .routine-book-page::before,#projector .routine-letter .routine-book-page::after {display:none;}
+#projector .routine-letter .routine-page-kicker {padding:0;background:none;box-shadow:none;color:#596b67;}
+#projector .routine-letter .routine-glyph {color:#b63568!important;text-shadow:none!important;-webkit-text-stroke:0;font-size:clamp(170px,35vh,340px);}
+#projector .routine-letter .routine-book-page>p {padding:0;background:none;color:#73505e;}
+#projector .routine-letter .routine-book-page:last-child>p {display:none;}
+#projector .routine-letter .routine-book-page h3 {width:100%;padding-bottom:12px;border-bottom:2px solid #f0dce4;font-size:clamp(20px,2vw,32px);}
+#projector .routine-letter .routine-name-chips {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(64px,auto);align-content:center;gap:clamp(10px,1.5vw,22px);padding:8px;border:0;border-radius:0;background:#fff;box-shadow:none;overflow:auto;}
+#projector .routine-letter .routine-name-chips>span,#projector .routine-letter .routine-name-chips>span:nth-child(n) {display:flex;align-items:center;justify-content:center;min-width:0;padding:6px;background:#fff;border:0;border-radius:0;box-shadow:none;color:#513c45;font-size:clamp(26px,2.8vw,48px);line-height:1.08;transform:none;}
+#projector .routine-letter .routine-name-chips mark {display:inline-block;margin-inline:1px;padding:0 .1em;border-radius:.18em;background:#b52f64;color:#fff;box-shadow:none;}
+#projector .routine-letter .routine-name-empty {grid-column:1/-1;font-size:clamp(25px,3vw,46px);}
+@media(max-width:900px){#projector .routine-letter .routine-name-chips{grid-template-columns:repeat(2,minmax(0,1fr));}#projector .routine-letter .routine-name-chips>span,#projector .routine-letter .routine-name-chips>span:nth-child(n){font-size:clamp(22px,3.8vw,38px);}}

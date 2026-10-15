@@ -122,3 +122,19 @@
 @media (prefers-reduced-motion: reduce) {
   .wagon-curtain,.window-children,#projector .train-wagon {transition: none;}
 }
+
+/* Pase de lista: más escenario para el tren y una pregunta única y legible. */
+#projector .projection-main[data-game="asistencia"] {padding-block:4px;}
+#projector .attendance-train {display:flex;flex-direction:column;max-width:1450px;height:100%;min-height:0;padding-top:8px;}
+#projector .train-heading {flex:0 0 auto;text-align:center;}
+#projector .train-heading h2 {margin:2px 0 4px;font-size:clamp(2rem,3.15vw,3.35rem);}
+#projector .train-station {flex:0 0 clamp(54px,7dvh,76px);}
+#projector .train-carriages {flex:1 1 auto;align-content:stretch;grid-auto-rows:minmax(142px,1fr);min-height:0;padding-top:4px;}
+#projector .train-wagon {height:100%;max-height:190px;}
+#projector .vero-original-train {max-width:1280px;padding:8px 22px 18px;}
+#projector .vero-original-train .train-carriages {flex:1 1 auto;height:auto;min-height:0;grid-template-rows:repeat(6,minmax(58px,1fr));}
+#projector .vero-original-train .train-heading h2 {font-size:clamp(2rem,3vw,3.2rem);}
+@media (max-height:800px) and (min-width:901px) {
+  #projector .train-carriages {grid-auto-rows:minmax(126px,1fr);row-gap:28px;}
+  #projector .vero-original-train .train-carriages {grid-auto-rows:auto;grid-template-rows:repeat(6,minmax(53px,1fr));row-gap:7px;}
+}
