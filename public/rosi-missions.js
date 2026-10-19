@@ -1,6 +1,6 @@
 'use strict';
 window.ROSA_MISSIONS=(()=>{
-  const d=window.ROSA.dinosaurs;
+  const d=window.ROSA.dinosaurs.filter(dino=>dino.mission!==false);
   const task=(type,round=0,level=3)=>({type,round,level});
   const weeks=[
     {week:1,title:'Primeras pistas',focus:'Observamos, comparamos y recordamos antes de elegir.',steps:[task('rasgos',1),task('rasgos',5),task('faltan',0),task('faltan',4),task('orden',1),task('orden',5)]},

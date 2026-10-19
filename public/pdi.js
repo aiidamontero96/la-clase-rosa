@@ -32,6 +32,7 @@ window.ROSA_PDI = (() => {
     ['sumando-falta', 'EL SUMANDO QUE FALTA', '3 + ? = 7', 'COMPLETA SUMAS VISUALES CON UNA CANTIDAD ESCONDIDA.', 'Matemáticas'],
     ['rimas', 'PALABRAS QUE RIMAN', '🎵', 'ESCUCHA Y ENCUENTRA DOS PALABRAS QUE TERMINAN PARECIDO.', 'Lenguaje'],
     ['consonante-inicial', 'PRIMERA CONSONANTE', 'M P S', 'ESCUCHA UNA PALABRA Y ELIGE SU LETRA INICIAL.', 'Lenguaje'],
+    ['palabra-imagen', 'LA GALAXIA DE LAS PALABRAS', 'ABC', 'LEE LA PALABRA Y ENCUENTRA SU DIBUJO.', 'Lenguaje'],
     ['intruso-categorias', 'EL INTRUSO DE LA CATEGORÍA', '◈', 'DESCUBRE QUÉ ELEMENTO NO PERTENECE AL GRUPO.', 'Lógica'],
     ['patrones-avanzados', 'PATRONES AVANZADOS', '● ■ ▲', 'CONTINÚA PATRONES DE TRES ELEMENTOS Y DOBLES REPETICIONES.', 'Lógica'],
     ['problemas-visuales', 'PEQUEÑOS PROBLEMAS', '🧠 123', 'RESUELVE SITUACIONES DE AÑADIR Y QUITAR CON DIBUJOS.', 'Matemáticas']
@@ -144,6 +145,45 @@ window.ROSA_PDI = (() => {
     {unit:['🍎','🍎','🍌','🍌'],shown:7},
     {unit:['🌸','🍃','🌸','☀️'],shown:6}
   ];
+  const wordPictureVocabulary=[
+    {word:'GATO',category:'ANIMALES',src:'assets/vocab-child/cat.webp'},
+    {word:'PERRO',category:'ANIMALES',src:'assets/vocab-child/dog.webp'},
+    {word:'CONEJO',category:'ANIMALES',src:'assets/vocab-child/rabbit.webp'},
+    {word:'PATO',category:'ANIMALES',src:'assets/vocab-child/duck.webp'},
+    {word:'PEZ',category:'ANIMALES',src:'assets/vocab-child/fish.webp'},
+    {word:'MARIPOSA',category:'ANIMALES',src:'assets/vocab-child/butterfly.webp'},
+    {word:'MANZANA',category:'FRUTAS',src:'assets/vocab-child/apple.webp'},
+    {word:'PLÁTANO',category:'FRUTAS',src:'assets/vocab-child/banana.webp'},
+    {word:'NARANJA',category:'FRUTAS',src:'assets/vocab-child/orange.webp'},
+    {word:'PERA',category:'FRUTAS',src:'assets/vocab-child/pear.webp'},
+    {word:'FRESA',category:'FRUTAS',src:'assets/vocab-child/strawberry.webp'},
+    {word:'UVAS',category:'FRUTAS',src:'assets/vocab-child/grapes.webp'},
+    {word:'PELOTA',category:'COLE',src:'assets/vocab-child/ball.webp'},
+    {word:'LIBRO',category:'COLE',src:'assets/vocab-child/open-book.webp'},
+    {word:'LÁPIZ',category:'COLE',src:'assets/vocab-child/pencil.webp'},
+    {word:'TIJERAS',category:'COLE',src:'assets/vocab-child/scissors.webp'},
+    {word:'CUADERNO',category:'COLE',src:'assets/vocab-child/notebook.webp'},
+    {word:'MOCHILA',category:'COLE',src:'assets/pdi-word-picture/mochila.webp'},
+    {word:'ÁRBOL',category:'NATURALEZA',src:'assets/vocab-child/tree.webp'},
+    {word:'FLOR',category:'NATURALEZA',src:'assets/vocab-child/tulip.webp'},
+    {word:'SOL',category:'NATURALEZA',src:'assets/vocab-child/sun.webp'},
+    {word:'NUBE',category:'NATURALEZA',src:'assets/vocab-child/cloud.webp'},
+    {word:'HOJA',category:'NATURALEZA',src:'assets/vocab-child/autumn-leaf.webp'},
+    {word:'PLANTA',category:'NATURALEZA',src:'assets/vocab-child/seedling.webp'},
+    {word:'COCHE',category:'TRANSPORTES',src:'assets/vocab-child/toy-car.webp'},
+    {word:'TREN',category:'TRANSPORTES',src:'assets/pdi-word-picture/tren.webp'},
+    {word:'AVIÓN',category:'TRANSPORTES',src:'assets/pdi-word-picture/avion.webp'},
+    {word:'BARCO',category:'TRANSPORTES',src:'assets/pdi-word-picture/barco.webp'},
+    {word:'BICICLETA',category:'TRANSPORTES',src:'assets/pdi-word-picture/bicicleta.webp'},
+    {word:'CASA',category:'MUNDO',src:'assets/vocab-child/house.webp'},
+    {word:'LLAVE',category:'MUNDO',src:'assets/vocab-child/key.webp'},
+    {word:'LUPA',category:'MUNDO',src:'assets/vocab-child/magnifier.webp'},
+    {word:'PINCEL',category:'MUNDO',src:'assets/vocab-child/paintbrush.webp'},
+    {word:'PALA',category:'MUNDO',src:'assets/vocab-child/shovel.webp'},
+    {word:'OVILLO',category:'MUNDO',src:'assets/vocab-child/yarn.webp'},
+    {word:'OSO',category:'MUNDO',src:'assets/vocab-child/teddy.webp'},
+    {word:'ABRIGO',category:'MUNDO',src:'assets/vocab-child/coat.webp'}
+  ];
 
   const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const at = (items, n) => items[n % items.length];
@@ -165,7 +205,20 @@ window.ROSA_PDI = (() => {
     const vocabImage=item=>'<img class="pdi-vocab-image" src="'+item.src+'" width="150" height="150" alt="'+esc(item.label)+'">';
     let prompt, visual = '', options, answer, explanation, needsReveal = false;
 
-    if (kind === 'parejas') {
+    if(kind==='palabra-imagen'){
+      const target=wordPictureVocabulary[(n*7)%wordPictureVocabulary.length],total=[2,3,4,4][level-1];
+      const categories=[...new Set(wordPictureVocabulary.map(entry=>entry.category))],targetCategory=categories.indexOf(target.category);
+      const otherCategories=Array.from({length:categories.length-1},(_,index)=>categories[(targetCategory+index+1)%categories.length]);
+      const selected=[target,...otherCategories.slice(0,total-1).map((category,index)=>{
+        const entries=wordPictureVocabulary.filter(entry=>entry.category===category);
+        return entries[(n+index*2)%entries.length];
+      })];
+      prompt=target.word;
+      visual='<div class="pdi-word-picture-meta"><span>RONDA '+(n+1)+' DE 5</span></div>';
+      options=selected.map(entry=>option(entry.word,'<span class="pdi-word-picture-art"><img src="'+entry.src+'" width="300" height="300" alt="'+esc(entry.word)+'"></span>'));
+      answer=target.word;
+      explanation='¡MUY BIEN! ES '+target.word+'.';
+    } else if (kind === 'parejas') {
       prompt = '¿Cuál es igual al modelo?';
       const model=vocabAt(n), pool=vocabPool||objects;
       visual = '<div class="pdi-model">'+(model?vocabImage(model):icon(item))+'</div>';

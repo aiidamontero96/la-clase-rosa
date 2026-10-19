@@ -1,0 +1,31 @@
+#projector:has(.projection-main[data-game="talla-calabaza"]) #projection-content{position:relative;background:#071a20}
+#projector:has(.projection-main[data-game="talla-calabaza"]) .projection-toolbar{position:absolute;z-index:50;inset:12px 14px auto auto;width:auto;padding:0;border:0;background:transparent}
+#projector:has(.projection-main[data-game="talla-calabaza"]) .projection-toolbar>strong{display:none}
+#projector:has(.projection-main[data-game="talla-calabaza"]) .projection-toolbar button{border:1px solid #f9dba8aa;border-radius:999px;background:#10282bd9;color:#fff;box-shadow:0 5px 18px #0008;backdrop-filter:blur(8px)}
+#projector:has(.projection-main[data-game="talla-calabaza"]) .projection-footer{display:none}
+#projector .projection-main[data-game="talla-calabaza"]{width:100%;max-width:none;height:100dvh;margin:0;padding:0;overflow:hidden;background:#071a20}
+.pumpkin-carving{position:relative;isolation:isolate;width:100%;height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto;place-items:center;overflow:hidden;color:#fff;background:radial-gradient(ellipse at 50% 58%,#274d45 0 21%,#112f31 48%,#06161d 78%)}
+.pumpkin-night{position:absolute;z-index:-1;inset:0;overflow:hidden;background:linear-gradient(180deg,#07141e 0 28%,transparent 63%),radial-gradient(circle at 12% 17%,#f8e2ab 0 3.4%,#f1c87240 3.6% 6.8%,transparent 7%),linear-gradient(180deg,transparent 64%,#0b1b18 64%)}
+.pumpkin-night::before,.pumpkin-night::after{content:'';position:absolute;left:-4%;right:-4%;bottom:0;height:27%;background:#07120f;clip-path:polygon(0 52%,8% 29%,15% 48%,23% 17%,32% 48%,42% 23%,51% 53%,62% 12%,71% 46%,82% 24%,91% 51%,100% 21%,100% 100%,0 100%)}
+.pumpkin-night::after{bottom:8%;height:19%;opacity:.48;background:#1b3930;transform:scaleX(-1)}
+.pumpkin-night i{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff1bd;box-shadow:0 0 12px #fff}.pumpkin-night i:nth-child(1){left:28%;top:13%}.pumpkin-night i:nth-child(2){left:73%;top:19%}.pumpkin-night i:nth-child(3){left:18%;top:39%}.pumpkin-night i:nth-child(4){right:15%;top:43%}
+.pumpkin-carving>header{position:absolute;z-index:12;left:50%;top:14px;display:grid;justify-items:center;transform:translateX(-50%);pointer-events:none}
+.pumpkin-carving>header span{padding:4px 15px;border-radius:999px;background:#f6c35c;color:#542815;font:900 clamp(.68rem,1vw,.82rem)/1.2 Nunito,sans-serif;letter-spacing:.13em}
+.pumpkin-carving>header h2{margin:4px 0 0!important;color:#fff;font:1000 clamp(1.45rem,2.8vw,2.7rem)/1 Nunito,sans-serif!important;letter-spacing:.035em;text-shadow:0 4px 16px #000}
+.pumpkin-stage{position:relative;align-self:center;width:min(77dvh,78vw,940px);max-width:none!important;aspect-ratio:1;margin-top:clamp(42px,7dvh,68px);touch-action:none;filter:drop-shadow(0 28px 28px #0009)}
+.pumpkin-stage .pumpkin-aura{position:absolute;z-index:-1;inset:19% 13% 8%;border-radius:50%;background:#ff9a2400;filter:blur(42px);transition:background .35s,box-shadow .35s}
+.pumpkin-stage.is-lit.has-carving .pumpkin-aura{background:#ffae296b;box-shadow:0 0 120px 48px #ff9a244d}
+.pumpkin-stage>img,.pumpkin-stage>canvas{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain}
+.pumpkin-stage>img{z-index:1;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.pumpkin-stage>canvas{z-index:3;cursor:crosshair;touch-action:none}
+.pumpkin-stage.just-carved>canvas{animation:pumpkin-carve-flash .5s ease-out}
+@keyframes pumpkin-carve-flash{45%{filter:brightness(1.16);transform:scale(1.004)}}
+.pumpkin-cue{position:absolute;z-index:10;left:50%;bottom:78px;margin:0!important;padding:6px 16px;border:1px solid #ffe5b075;border-radius:999px;background:#091b1dba;color:#fff5df;font:900 clamp(.68rem,1vw,.85rem)/1.1 Nunito,sans-serif!important;letter-spacing:.1em;transform:translateX(-50%);white-space:nowrap;pointer-events:none;transition:opacity .25s}
+.pumpkin-stage.has-carving~.pumpkin-cue{opacity:0}
+.pumpkin-tools{position:absolute;z-index:20;left:50%;bottom:12px;display:flex;align-items:center;gap:7px;padding:7px;border:1px solid #f5d69b5c;border-radius:20px;background:#0a2022df;box-shadow:0 9px 30px #0008;transform:translateX(-50%);backdrop-filter:blur(10px)}
+.pumpkin-tools button{min-height:42px;padding:8px 13px;border:1px solid #f8dca888;border-radius:13px;background:#173538;color:#fff;font:900 clamp(.7rem,1vw,.84rem)/1 Nunito,sans-serif;white-space:nowrap}
+.pumpkin-tools button:hover,.pumpkin-tools button.active{background:#f0a332;color:#3f210d;border-color:#ffe9b8}
+.pumpkin-tools button:disabled{opacity:.38}
+.pumpkin-tools .pumpkin-reset{background:#5c2925}
+@media(max-width:760px){.pumpkin-stage{width:min(75dvh,94vw);margin-top:54px}.pumpkin-carving>header{top:7px}.pumpkin-tools{bottom:7px;max-width:96vw;overflow-x:auto}.pumpkin-tools button{padding:7px 9px}.pumpkin-cue{bottom:71px;font-size:.6rem}}
+@media(prefers-reduced-motion:reduce){.pumpkin-stage .pumpkin-aura{transition:none}.pumpkin-stage.just-carved>canvas{animation:none}}

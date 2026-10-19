@@ -1,5 +1,10 @@
 /* A short footprint trail welcomes children; the edited video plays unchanged. */
 .dinosaur-entry{white-space:normal}
+.dinosaur-entry-video{display:grid!important;grid-template-columns:72px minmax(0,1fr);align-items:center;gap:10px;text-align:left!important;padding:7px 12px!important}
+.dinosaur-entry-video>img{display:block;width:72px;height:46px;object-fit:cover;border:2px solid #fff;border-radius:10px;box-shadow:0 3px 8px #061b2130}
+.dinosaur-entry-video>span{display:flex;min-width:0;flex-direction:column;gap:2px}
+.dinosaur-entry-video small{color:#b22d61;font-size:.64rem;font-weight:1000;letter-spacing:.08em}
+.dinosaur-entry-video strong{font-size:.8rem;line-height:1.1}
 #dinosaur-classroom{position:fixed;inset:0;width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;border:0;border-radius:0!important;background:#182034;color:white;overflow:hidden;font-family:inherit}
 #dinosaur-classroom::backdrop{background:#182034}
 #dinosaur-classroom [hidden]{display:none!important}

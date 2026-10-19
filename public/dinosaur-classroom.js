@@ -1,13 +1,40 @@
 'use strict';
 (() => {
-  const ROUTE='pdi-dinosaurio-clase',VIDEO='video/dinosaurios/aula-dinosaurio.mp4';
+  const EXPERIENCES={
+    'pdi-dinosaurio-clase':{
+      label:'UN DINOSAURIO EN NUESTRA CLASE',
+      title:'HA PASADO UN DINOSAURIO POR NUESTRA CLASE',
+      video:'video/dinosaurios/aula-dinosaurio.mp4',
+      aria:'VÍDEO DE NUESTRA CLASE'
+    },
+    'pdi-dinosaurio-patio':{
+      label:'UN DINOSAURIO EN NUESTRO PATIO',
+      title:'HA APARECIDO UN DINOSAURIO EN NUESTRO PATIO',
+      video:'video/dinosaurios/patio-dinosaurio.mp4',
+      poster:'video/dinosaurios/patio-dinosaurio-poster.webp',
+      aria:'VÍDEO DE NUESTRO PATIO',
+      badge:'NUEVO VÍDEO'
+    }
+  };
   let active=null,lastRoute='pdi-proyectos';
-  const onRoute=()=>location.hash.slice(1).split('?')[0]===ROUTE;
+  const currentRoute=()=>location.hash.slice(1).split('?')[0];
+  const currentExperience=()=>EXPERIENCES[currentRoute()]||null;
+  const onRoute=()=>Boolean(currentExperience());
   function installEntries(){
     for(const area of document.querySelectorAll('.world-dinos .world-actions,.dino-banner .resource-actions')){
-      if(area.querySelector('[data-dinosaur-open]'))continue;
-      const link=document.createElement('a');link.className='button secondary dinosaur-entry';
-      link.href='#'+ROUTE;link.dataset.dinosaurOpen='';link.textContent='UN DINOSAURIO EN NUESTRA CLASE';area.appendChild(link);
+      for(const [route,experience] of Object.entries(EXPERIENCES)){
+        if(area.querySelector('[data-dinosaur-open="'+route+'"]'))continue;
+        const link=document.createElement('a');link.className='button secondary dinosaur-entry'+(experience.poster?' dinosaur-entry-video':'');
+        link.href='#'+route;link.dataset.dinosaurOpen=route;
+        if(experience.poster){
+          const image=document.createElement('img');image.src=experience.poster;image.alt='';image.loading='lazy';
+          const copy=document.createElement('span');
+          if(experience.badge){const badge=document.createElement('small');badge.textContent=experience.badge;copy.appendChild(badge);}
+          const label=document.createElement('strong');label.textContent=experience.label;copy.appendChild(label);
+          link.append(image,copy);
+        }else link.textContent=experience.label;
+        area.appendChild(link);
+      }
     }
   }
   function finish(restoreRoute=true){
@@ -19,25 +46,25 @@
     session.opener?.focus?.();
     if(restoreRoute&&onRoute())location.hash=lastRoute;
   }
-  function open(){
+  function open(route,experience){
     if(active)return;
     window.ROSA_AULA?.stopVoice?.();window.speechSynthesis?.cancel();
-    const dialog=document.createElement('dialog');dialog.id='dinosaur-classroom';dialog.setAttribute('aria-label','UN DINOSAURIO EN NUESTRA CLASE');
+    const dialog=document.createElement('dialog');dialog.id='dinosaur-classroom';dialog.dataset.experience=route;dialog.setAttribute('aria-label',experience.label);
     const footprint='<svg viewBox="0 0 120 150" aria-hidden="true" focusable="false"><path d="M39 68C20 76 5 102 12 123C19 145 101 145 110 123C118 101 97 78 79 68C65 57 53 58 39 68Z"/><path d="M37 67C21 64 10 49 9 20C27 27 45 43 43 58C42 62 40 65 37 67Z"/><path d="M59 61C42 59 41 29 60 1C79 28 80 58 59 61Z"/><path d="M83 67C99 64 110 49 111 20C93 27 75 43 77 58C78 62 80 65 83 67Z"/></svg>';
     dialog.innerHTML=`<button type="button" class="dinosaur-exit">← VOLVER</button>
       <section class="dinosaur-intro" aria-labelledby="dinosaur-intro-title">
       <div class="dinosaur-cloud dinosaur-cloud-one" aria-hidden="true"></div><div class="dinosaur-cloud dinosaur-cloud-two" aria-hidden="true"></div>
       <div class="dinosaur-hills" aria-hidden="true"></div>
       <div class="dinosaur-trail" aria-hidden="true">${Array.from({length:7},(_,i)=>'<span class="dinosaur-track dinosaur-track-'+i+'" style="--step:'+i+'">'+footprint+'</span>').join('')}</div>
-      <div class="dinosaur-intro-copy"><h1 id="dinosaur-intro-title"><span>INCREÍBLE</span> HA PASADO UN DINOSAURIO POR NUESTRA CLASE</h1>
+      <div class="dinosaur-intro-copy"><h1 id="dinosaur-intro-title"><span>INCREÍBLE</span> ${experience.title}</h1>
       <button type="button" class="dinosaur-start" disabled><span class="dinosaur-button-print">${footprint}</span><span class="dinosaur-start-label">PULSA PARA DESCUBRIRLO</span></button>
       <p class="dinosaur-loading" role="status" hidden></p></div></section>
-      <section class="dinosaur-player" hidden><div class="dinosaur-stage"><canvas class="dinosaur-background" width="288" height="512" aria-hidden="true"></canvas><div class="dinosaur-picture"><video playsinline preload="metadata" aria-label="VÍDEO DE NUESTRA CLASE"></video></div></div>
+      <section class="dinosaur-player" hidden><div class="dinosaur-stage"><canvas class="dinosaur-background" width="288" height="512" aria-hidden="true"></canvas><div class="dinosaur-picture"><video playsinline preload="metadata" aria-label="${experience.aria}"></video></div></div>
       <button type="button" class="dinosaur-immersive">OCULTAR CONTROLES</button><p class="dinosaur-status" role="status"></p>
       <nav class="dinosaur-controls" aria-label="CONTROLES DEL VÍDEO"><button type="button" class="dinosaur-play">▶ REPRODUCIR</button><button type="button" class="dinosaur-repeat">↻ REPETIR</button><button type="button" class="dinosaur-fullscreen">⛶ PANTALLA COMPLETA</button><input class="dinosaur-progress" type="range" min="0" max="100" step="0.01" value="0" aria-label="ADELANTAR O RETROCEDER EL VÍDEO"></nav></section>`;
     document.body.appendChild(dialog);
     const $=selector=>dialog.querySelector(selector),video=$('video'),controller=new AbortController(),signal=controller.signal;
-    const session={dialog,video,controller,opener:document.activeElement,cancelFrame:()=>{}};active=session;
+    const session={dialog,video,controller,opener:document.activeElement,route,cancelFrame:()=>{}};active=session;
     const intro=$('.dinosaur-intro'),player=$('.dinosaur-player'),start=$('.dinosaur-start'),status=$('.dinosaur-status'),loading=$('.dinosaur-loading');
     const picture=$('.dinosaur-picture'),stage=$('.dinosaur-stage'),background=$('.dinosaur-background'),bg=background.getContext('2d'),progress=$('.dinosaur-progress');
     let raf=0,frame=0,lastPaint=0;
@@ -100,12 +127,17 @@
     window.addEventListener('resize',resize,{signal});document.addEventListener('fullscreenchange',()=>{$('.dinosaur-fullscreen').textContent=document.fullscreenElement?'⛶ SALIR DE PANTALLA COMPLETA':'⛶ PANTALLA COMPLETA';resize();},{signal});
     const observer=new ResizeObserver(resize);observer.observe(stage);signal.addEventListener('abort',()=>observer.disconnect(),{once:true});
     document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();},{signal});
-    video.src=VIDEO;
+    if(experience.poster)video.poster=experience.poster;
+    video.src=experience.video;
     if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');
 
   }
   function sync(){
-    if(onRoute()){if(!document.documentElement.classList.contains('rosa-login-pending'))open();}else{finish(false);lastRoute=location.hash.slice(1)||'pdi-proyectos';}
+    const route=currentRoute(),experience=currentExperience();
+    if(experience){
+      if(active&&active.route!==route)finish(false);
+      if(!active&&!document.documentElement.classList.contains('rosa-login-pending'))open(route,experience);
+    }else{finish(false);lastRoute=location.hash.slice(1)||'pdi-proyectos';}
     installEntries();
   }
   function install(){

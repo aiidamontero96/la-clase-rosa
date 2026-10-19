@@ -9,7 +9,7 @@ function element(key){if(!elements.has(key))elements.set(key,{innerHTML:'',textC
 const document={querySelector:element,querySelectorAll:()=>[],createElement:tag=>element(tag),body:element('body'),addEventListener:(type,fn)=>(listeners[type]??=[]).push(fn),elementFromPoint:()=>({closest:()=>({dataset:{slot:'0'}})}),elementsFromPoint:()=>[{closest:()=>({dataset:{slot:'0'}})}]};
 const window={addEventListener(){},scrollTo(){},scrollY:0,setTimeout,SpeechSynthesisUtterance:function(text){this.text=text;},speechSynthesis:{getVoices:()=>[{lang:'es-ES',name:'Español'}],addEventListener:(type,fn)=>voiceListeners[type]=fn,cancel(){cancelled++;},speak(utterance){spoken.push(utterance);}},open:()=>({document:{open(){},write(html){printed=html;},close(){}},opener:window})};
 const context=vm.createContext({window,document,location:{hash:'#pdi',href:'https://rosa.example/'},URL,URLSearchParams,localStorage:{getItem:key=>stored.get(key)||null,setItem:(key,value)=>stored.set(key,value)},setTimeout:()=>0,clearTimeout(){},requestAnimationFrame:fn=>fn(),console,fetch:async(url,options={})=>{if(url!=='/api/aula')return {ok:true,json:async()=>manifest};if(options.method==='PUT'){if(failSave)return {ok:false};persisted=JSON.parse(options.body);return {ok:true,json:async()=>({saved:true})};}if(failLoad)return {ok:false};return {ok:true,json:async()=>({book:JSON.parse(JSON.stringify(persisted))})};}});
-for(const file of ['data.js','pdi.js','play-content.js','sheet-content.js','sheet-studio.js','aula.js','classroom.js','app.js'])vm.runInContext(fs.readFileSync(path.join(publicDir,file),'utf8'),context,{filename:file});
+for(const file of ['data.js','pdi.js','play-content.js','sheet-content.js','sheet-studio.js','aula.js','classroom.js','dinosaur-explorer.js','app.js'])vm.runInContext(fs.readFileSync(path.join(publicDir,file),'utf8'),context,{filename:file});
 const run=source=>vm.runInContext(source,context),json=source=>JSON.parse(run('JSON.stringify('+source+')')),drain=()=>new Promise(resolve=>setImmediate(resolve));
 async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JSON.stringify(value)+',{})');await drain();}
 (async()=>{
@@ -18,6 +18,17 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
     const r=json('window.ROSA_PDI.round('+JSON.stringify(kind)+','+n+',true,'+level+')');if(!r)continue;assert(r.options.some(o=>o.value===r.answer));assert.equal(new Set(r.options.map(o=>o.value)).size,r.options.length);
     if(['cantidades','juntar','siguiente'].includes(kind)){assert(Number(r.answer)<=[3,6,10,12][level-1]);if(level===1)assert.equal(r.options.length,2);if(level>=3)assert.equal(r.options.length,4);}
     if(kind==='juntar')assert.equal((r.visual.match(/class="pdi-emoji /g)||[]).length,Number(r.answer));
+  }
+  for(const [level,total] of [[1,2],[2,3],[3,4],[4,4]]){
+    const rounds=Array.from({length:37},(_,n)=>json('window.ROSA_PDI.round("palabra-imagen",'+n+',false,'+level+')'));
+    for(const round of rounds){
+      assert.equal(round.options.length,total,'word-picture options at level '+level);
+      assert.equal(round.prompt,round.prompt.toLocaleUpperCase('es-ES'));
+      assert(!round.answer.includes(' '),'word-picture only uses single words');
+      assert(round.options.every(option=>option.label.includes('<img ')&&!option.label.includes('pdi-emoji')));
+      for(const option of round.options){const src=option.label.match(/src="([^"]+)"/)?.[1];assert(src&&fs.existsSync(path.join(publicDir,src)),src);}
+    }
+    assert.equal(new Set(rounds.map(round=>round.answer)).size,37,'all 37 single words rotate through the activity');
   }
   await action('pdi-favorite','puzzle');await run('A.save()');assert.deepEqual(persisted.favorites,['puzzle']);
   for(const id of ['contar','vocales','memory','cuento'])await action('queue-toggle',id);assert.equal(run('A.ui.book.queue.length'),4);
@@ -53,7 +64,7 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
   assert(!run('window.ROSA_SHEETS.panel()').includes('data-roster-index'));
   run("window.ROSA_SHEETS.ui.mode='dino';window.ROSA_SHEETS.ui.dinoType='conocer'");assert(!run('window.ROSA_SHEETS.panel()').includes('>Nivel<'));
   run("window.ROSA_SHEETS.ui.dinoType='contar'");assert(run('window.ROSA_SHEETS.panel()').includes('>Nivel<'));
-  for(let n=0;n<9;n++){await run('A.launch("dino",{round:'+n+'})');const html=element('#projection-content').innerHTML;assert(html.includes('pdi-dino-presentation'));assert(html.includes(run('D.dinosaurs['+n+'].short')));assert(html.includes('assets/dinos-pdi/'+run('D.dinosaurs['+n+'].id')+'.webp'));}
+  for(let n=0;n<9;n++){await run('A.launch("dino",{round:'+n+'})');const html=element('#projection-content').innerHTML,id=run('D.dinosaurs['+n+'].id');assert(html.includes('dino-explorer-pdi'));assert(html.includes(run('D.dinosaurs['+n+'].short.toLocaleUpperCase("es-ES")')));assert(html.includes('assets/dino-explorer/real/'+id+'.webp'));assert(html.includes('assets/dinos-pdi/'+id+'.webp')||html.includes('assets/dino-explorer/illustrated/'+id+'-v2.webp'));}
   // Generador actual: cantidades válidas 4, 6 y 8. Probamos 6.
   for(const theme of ['Números','Formas','Animales','Naturaleza','Emociones','Dinosaurios'])for(const type of ['contar','memory','series','tarjetas'])for(const size of ['grande','mediana','pequena']){
     const settings={theme,type,size,count:6,max:10,ink:'bn',pattern:'ABC',seed:1};

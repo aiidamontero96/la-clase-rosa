@@ -1,0 +1,247 @@
+.dino-observatory{
+  position:relative;overflow:hidden;margin-top:18px;border-radius:28px;background:#071f28;color:#fff;
+  box-shadow:0 24px 55px #09283336;isolation:isolate
+}
+.dino-observatory:before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg,#051b24df 0 28%,#092a2e55 52%,#051b24df),url('assets/dino-world/cretaceous-valley.webp') center/cover
+}
+.dino-observatory-head{display:flex;align-items:end;justify-content:space-between;gap:20px;padding:24px 28px 14px}
+.dino-observatory-head span{font-size:.75rem;letter-spacing:.15em;color:#ffd978;font-weight:1000}
+.dino-observatory-head h2{margin:4px 0;font-size:clamp(1.7rem,3vw,2.65rem);color:#fff}
+.dino-observatory-head p{margin:0;max-width:720px;font-weight:800;font-size:.85rem;letter-spacing:.04em}
+.dino-observatory-head .button{background:#ffd260;color:#233421;box-shadow:0 6px 0 #8d6725;white-space:nowrap}
+.dino-species-ribbon{display:flex;gap:7px;overflow-x:auto;padding:8px 26px 15px;scrollbar-width:thin}
+.dino-species-ribbon button{flex:0 0 auto;min-height:38px;padding:7px 13px;border:1px solid #fff6;border-radius:999px;background:#0b3439c9;color:#fff;font:900 .78rem Nunito,sans-serif}
+.dino-species-ribbon button.is-active{background:#ffd260;color:#17332f;border-color:#ffe599}
+.dino-catalog-stage{position:relative;min-height:490px;display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,.62fr) minmax(0,1fr);align-items:end;padding:10px 3vw 24px}
+.dino-catalog-stage:after{content:"";position:absolute;inset:auto -5% 0;height:34%;background:linear-gradient(#071b1b00,#051715ef 75%);z-index:-1}
+.dino-catalog-animal{display:flex;min-width:0;height:390px;flex-direction:column;align-items:center;justify-content:flex-end}
+.dino-catalog-animal span{order:2;margin-top:-8px;border-radius:999px;background:#071d24d9;padding:8px 14px;font-size:.69rem;font-weight:1000;letter-spacing:.09em}
+.dino-catalog-animal img{width:100%;height:340px;object-fit:contain;filter:drop-shadow(0 18px 12px #0008)}
+.dino-catalog-real img{transform:scale(1.08)}
+.dino-catalog-center{align-self:center;text-align:center;padding:22px 12px;border:1px solid #ffffff45;border-radius:24px;background:#061c21d9;backdrop-filter:blur(12px);box-shadow:0 16px 30px #0004}
+.dino-catalog-center small{display:inline-block;color:#ffe08b;font-weight:1000;letter-spacing:.12em}
+.dino-catalog-center h3{margin:5px 0 13px;color:white;font-size:clamp(1.6rem,3vw,2.6rem)}
+.dino-catalog-center p{min-height:54px;margin:0;color:white;font-size:.9rem;font-weight:900;line-height:1.35}
+.dino-catalog-center div{display:flex;justify-content:center;gap:5px;flex-wrap:wrap;margin-top:14px}
+.dino-catalog-center button{min-height:35px;padding:7px 9px;border:1px solid #fff7;border-radius:11px;background:transparent;color:#fff;font-size:.66rem;font-weight:1000}
+.dino-catalog-center button.is-active{background:#ffd260;color:#17332f}
+.dino-observatory+*{margin-top:24px}
+
+#projection-content:has(.dino-explorer-pdi)>.projection-toolbar,
+#projection-content:has(.dino-world-pdi)>.projection-toolbar{
+  position:absolute;z-index:70;top:10px;right:12px;border:0;background:transparent;padding:0;min-height:0
+}
+#projection-content:has(.dino-explorer-pdi)>.projection-toolbar>strong,
+#projection-content:has(.dino-world-pdi)>.projection-toolbar>strong{display:none}
+#projection-content:has(.dino-explorer-pdi)>.projection-toolbar button,
+#projection-content:has(.dino-world-pdi)>.projection-toolbar button{
+  min-height:40px;padding:7px 12px;border:1px solid #fff9;background:#08232ae6;color:#fff;backdrop-filter:blur(8px)
+}
+#projection-content:has(.dino-explorer-pdi)>.projection-main,
+#projection-content:has(.dino-world-pdi)>.projection-main{
+  width:100%!important;max-width:none!important;height:100dvh;padding:0!important;margin:0!important;overflow:hidden
+}
+#projection-content:has(.dino-explorer-pdi)>.projection-footer,
+#projection-content:has(.dino-world-pdi)>.projection-footer,
+#projection-content:has(.dino-explorer-pdi)>.aula-projection-controls,
+#projection-content:has(.dino-world-pdi)>.aula-projection-controls,
+#projection-content:has(.dino-explorer-pdi)>#adventure-progress,
+#projection-content:has(.dino-world-pdi)>#adventure-progress{display:none!important}
+
+.dino-explorer-pdi{position:relative;width:100%;height:100%;overflow:hidden;background:#061e27;color:#fff;isolation:isolate}
+.dino-explorer-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:saturate(1.08) brightness(.92);transform:scale(1.01)}
+.dino-explorer-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#061824a8 0,#0618240d 38%,#06182430 70%,#06151fba),linear-gradient(90deg,#06131a36,transparent 38% 62%,#06131a36)}
+.dino-explorer-pdi>header{position:absolute;z-index:3;top:2dvh;left:50%;transform:translateX(-50%);width:min(820px,72vw);text-align:center;text-shadow:0 3px 15px #000}
+.dino-explorer-pdi>header span{display:inline-block;padding:5px 15px;border-radius:999px;background:#ffd361;color:#29372c;font-size:clamp(.7rem,1vw,.9rem);font-weight:1000;letter-spacing:.16em}
+.dino-explorer-pdi>header h2{margin:4px 0!important;color:#fff;font-size:clamp(2rem,4.2vw,4.2rem)!important;line-height:.96!important;letter-spacing:.025em}
+.dino-compare{position:absolute;inset:14dvh 5vw 17dvh;display:grid;grid-template-columns:1fr 1fr;align-items:stretch!important;justify-content:stretch!important;gap:2.2vw;padding:0!important;border-radius:0!important;background:transparent!important}
+.dino-view{position:relative;align-self:stretch;height:100%;min-width:0;min-height:0;overflow:hidden;border:3px solid #ffffffdc;border-radius:30px;background:#f7f3e9ed;box-shadow:0 18px 36px #0018}
+.dino-view-real{background:linear-gradient(180deg,#e8efece8,#f7f2e7ef)}.dino-view-drawn{background:linear-gradient(180deg,#f1eaffeb,#fff4e9ee)}
+.dino-view-open{position:absolute;inset:0;display:flex;min-height:0;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;padding:10px 14px 14px;border:0;background:transparent;color:#173653;border-radius:inherit}
+.dino-view-open>span{position:absolute;z-index:3;top:13px;left:16px;padding:6px 11px;border-radius:999px;background:#061b21e8;color:#ffe083;font-size:clamp(.63rem,.9vw,.8rem);font-weight:1000;letter-spacing:.11em}
+.dino-view-open>.dino-view-animal{width:82%;height:84%;object-fit:contain;filter:drop-shadow(0 16px 10px #0008)}
+.dino-real-scale{position:absolute;inset:7% 2.5% 12%;overflow:hidden;border-radius:18px;background:#fffdf4b8}
+.dino-scale-grid{position:absolute;z-index:0;inset:4% 2% 9% 8%;border-left:3px solid #6d8484;border-bottom:3px solid #6d8484;background-image:linear-gradient(#7d97972e 1px,transparent 1px),linear-gradient(90deg,#7d97972e 1px,transparent 1px);background-size:7% 10%;box-shadow:inset 0 -1px #fff}
+.dino-height-ruler{position:absolute;z-index:2;top:4%;bottom:9%;left:.5%;width:8%;border-right:2px solid #829594;color:#173653}
+.dino-height-ruler span{position:absolute;right:5px;bottom:var(--mark-y);transform:translateY(50%);font-size:clamp(.36rem,.56vw,.5rem);font-weight:1000;white-space:nowrap}
+.dino-height-ruler span:after{content:"";position:absolute;top:50%;left:calc(100% + 4px);width:8px;border-top:2px solid #829594}
+.dino-real-scale>.dino-scale-animal{position:absolute;z-index:2;left:9%;bottom:9%;width:71%;height:var(--dino-height);max-width:71%;object-fit:contain;object-position:left bottom;filter:drop-shadow(0 10px 7px #1736535e)}
+.dino-real-scale figure{position:absolute;z-index:3;left:82%;right:auto;bottom:9%;display:block;width:14%;height:var(--child-height);margin:0}
+.dino-real-scale figure img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 5px 4px #17365345)}
+.dino-real-scale figcaption{position:absolute;left:50%;bottom:-19px;transform:translateX(-50%);padding:2px 5px;border-radius:999px;background:#fff;color:#173653;font-size:clamp(.38rem,.5vw,.47rem);font-weight:1000;white-space:nowrap}
+.dino-scale-ground{position:absolute;z-index:4;right:3%;bottom:calc(9% + 4px);padding:2px 5px;border-radius:6px;background:#fff9;color:#496364;font-size:clamp(.32rem,.44vw,.4rem);font-weight:1000;letter-spacing:.08em;transform:translateY(100%)}
+.dino-real-scale>em{position:absolute;z-index:4;top:6px;right:8px;padding:4px 7px;border-radius:999px;background:#173653;color:#fff;font-size:clamp(.42rem,.58vw,.52rem);font-style:normal;font-weight:1000;letter-spacing:.04em}
+.dino-view-drawn .dino-view-open>.dino-view-animal{width:76%}
+.dino-view-open strong{position:absolute;z-index:3;bottom:40px;padding:6px 12px;border-radius:999px;background:#173653eb;color:#fff;font-size:clamp(.7rem,1vw,.9rem);letter-spacing:.07em}
+.dino-view-open i{font-style:normal;font-size:.64rem;font-weight:1000;letter-spacing:.08em;opacity:.9}
+.dino-focus-back{display:none}
+.dino-discovery{position:absolute;z-index:10;left:50%;bottom:2dvh;transform:translateX(-50%);display:grid;grid-template-columns:minmax(270px,1fr) auto;align-items:center;width:min(1050px,82vw);min-height:76px;padding:9px 13px 9px 21px;border:1px solid #ffffff94;border-radius:23px;background:#061c23e8;box-shadow:0 12px 30px #0008;backdrop-filter:blur(10px)}
+.dino-discovery p{margin:0;color:#fff;font-size:clamp(.82rem,1.4vw,1.18rem);font-weight:1000;letter-spacing:.04em}
+.dino-discovery nav{display:flex;gap:7px}
+.dino-discovery button{min-height:42px;padding:8px 12px;border:1px solid #fff7;border-radius:14px;background:transparent;color:#fff;font:900 clamp(.66rem,.85vw,.8rem) Nunito,sans-serif}
+.dino-discovery button.is-active{background:#ffd260;color:#17332f;border-color:#ffd260}
+.dino-arrow{position:absolute;z-index:20;top:48%;width:48px;height:76px;min-height:0;padding:0;border:1px solid #fff8;border-radius:18px;background:#061b22df;color:#fff;font:900 3rem/1 Nunito,sans-serif;backdrop-filter:blur(8px)}
+.dino-prev{left:10px}.dino-next{right:10px}
+.dino-explorer-pdi[data-focus=real]>header,.dino-explorer-pdi[data-focus=drawn]>header,
+.dino-explorer-pdi[data-focus=real] .dino-discovery,.dino-explorer-pdi[data-focus=drawn] .dino-discovery,
+.dino-explorer-pdi[data-focus=real] .dino-arrow,.dino-explorer-pdi[data-focus=drawn] .dino-arrow{display:none}
+.dino-explorer-pdi[data-focus=real] .dino-view-drawn,.dino-explorer-pdi[data-focus=drawn] .dino-view-real{display:none}
+.dino-explorer-pdi[data-focus=real] .dino-compare,.dino-explorer-pdi[data-focus=drawn] .dino-compare{position:absolute;inset:0;display:block}
+.dino-explorer-pdi[data-focus=real] .dino-view-real,.dino-explorer-pdi[data-focus=drawn] .dino-view-drawn{
+  position:absolute;z-index:40;inset:1.4dvh 1vw;border-radius:28px;background:linear-gradient(180deg,#06252aa8,#04181fbd);border-color:#ffe18f
+}
+.dino-explorer-pdi[data-focus] .dino-view-open{inset:0;padding:2dvh 3vw}
+.dino-explorer-pdi[data-focus] .dino-view-open>span{top:2.2dvh;left:2vw}
+.dino-explorer-pdi[data-focus] .dino-view-open>.dino-view-animal{width:88vw;height:88dvh;max-width:none}
+.dino-explorer-pdi[data-focus] .dino-real-scale{inset:2dvh 3vw 5dvh}.dino-explorer-pdi[data-focus] .dino-real-scale>.dino-scale-animal{width:72%;max-width:72%;height:var(--dino-height)}.dino-explorer-pdi[data-focus] .dino-real-scale figure{left:84%;right:auto;width:10%;height:var(--child-height)}
+.dino-explorer-pdi[data-focus] .dino-view-open strong{bottom:5.8dvh;font-size:1rem}
+.dino-explorer-pdi[data-focus] .dino-view-open i{display:none}
+.dino-explorer-pdi[data-focus] .dino-focus-back{display:block;position:absolute;z-index:45;left:2vw;bottom:2dvh;min-height:43px;padding:8px 14px;border:1px solid #fff9;border-radius:14px;background:#061b21e8;color:#fff;font-weight:1000}
+
+.dino-world-pdi{position:relative;width:100%;height:100%;overflow:hidden;background:#12382f;color:#fff;isolation:isolate;touch-action:none}
+.dino-world-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:saturate(1.03) brightness(1.03)}
+.dino-world-veil{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#fff8e8c7 0,#fff8e829 42%,#eef8ef8f 72%,#fff6e9d9)}
+.dino-world-pdi>header{position:absolute;z-index:20;top:2.1dvh;left:50%;transform:translateX(-50%);width:min(1050px,75vw);text-align:center;text-shadow:none}
+.dino-world-pdi>header span{display:inline-block;padding:6px 15px;border-radius:999px;background:#ffd365;color:#26382f;font-size:clamp(.65rem,.95vw,.85rem);font-weight:1000;letter-spacing:.14em}
+.dino-world-pdi>header h2{margin:5px 0!important;color:#173653;font-size:clamp(1.7rem,3.25vw,3.25rem)!important;line-height:1!important}
+.dino-era-timeline{position:absolute;z-index:4;inset:14dvh 3vw 11dvh;display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;align-items:stretch}
+.dino-era-timeline:before{content:"";position:absolute;z-index:-1;left:9%;right:9%;top:49%;height:8px;border-radius:999px;background:linear-gradient(90deg,#dd8b54,#71b985,#e3be58);box-shadow:0 2px 0 #fff9}
+.dino-era-card{position:relative;display:grid;grid-template-rows:1fr auto auto auto;align-items:end;overflow:hidden;min-width:0;padding:14px 15px 17px;border:5px solid #fff;border-radius:28px;background:#173653;color:#fff;text-align:center;box-shadow:0 16px 28px #354e4e45}
+.dino-era-card:after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,#17365308 32%,#102f3852 60%,#102a35f2 100%)}
+.dino-era-card>small{position:absolute;z-index:3;top:13px;left:14px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#fff;color:#19362f;font-size:1.2rem;font-weight:1000}
+.dino-era-card>.dino-era-landscape{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.1)}
+.dino-era-card>.dino-era-hero{position:absolute;z-index:2;inset:8% 4% 23%;width:92%;height:69%;object-fit:contain;filter:drop-shadow(0 13px 8px #142b2f8f)}
+.dino-era-card>span{position:relative;z-index:2;color:#ffe589;font-size:.66rem;font-weight:1000;letter-spacing:.15em;text-shadow:0 2px 3px #173653}
+.dino-era-card>strong{position:relative;z-index:2;font-size:clamp(1.35rem,2.4vw,2.5rem);line-height:1.05;text-shadow:0 3px 5px #173653}
+.dino-era-card>i{position:relative;z-index:2;margin-top:5px;color:#fff;font-size:clamp(.52rem,.72vw,.68rem);font-style:normal;font-weight:900;letter-spacing:.04em}
+.dino-era-card.is-copper{border-color:#ef9a5f}.dino-era-card.is-green{border-color:#72c48e}.dino-era-card.is-gold{border-color:#efc64f}
+.dino-era-card:active,.dino-challenge-option:active,.dino-food-options button:active{transform:scale(.98)}
+.dino-sort-entry{position:absolute;z-index:8;left:50%;bottom:1.2dvh;transform:translateX(-50%);display:grid;min-height:54px;width:min(560px,43vw);padding:7px 16px;border:3px solid #173653;border-radius:17px;background:#ffda69;color:#173653;font-weight:1000;box-shadow:0 6px 0 #bf873b}.dino-sort-entry>span{font-size:.54rem;letter-spacing:.16em}.dino-sort-entry>strong{font-size:clamp(.72rem,1vw,.9rem)}.dino-sort-entry>small{font-size:.5rem}
+.dino-era-progress{position:absolute;z-index:7;left:2vw;bottom:2dvh;margin:0;padding:7px 12px;border-radius:999px;background:#fff9e9e8;color:#173653;font-size:.64rem;font-weight:1000;letter-spacing:.06em}
+
+.dino-era-prelude .dino-world-veil{background:linear-gradient(180deg,#fff7e32b 0 56%,#102d2a47 100%)}
+.dino-era-prelude.era-triassic .dino-world-veil{background:linear-gradient(180deg,#ffecd126 0 50%,#7d34185c 100%)}
+.dino-era-prelude.era-jurassic .dino-world-veil{background:linear-gradient(180deg,#dffaff2b 0 48%,#0b4a4357 100%)}
+.dino-era-sequence{position:absolute;z-index:20;top:2.5dvh;left:3vw;display:flex;align-items:center;gap:7px;padding:7px 12px;border-radius:18px;background:#fff9e9ee;color:#173653;box-shadow:0 9px 22px #17365330}
+.dino-era-sequence b{display:flex;align-items:center;gap:6px;padding:5px 9px;border:2px solid #9db1ad;border-radius:999px;background:#fff;color:#617573;font-size:clamp(.52rem,.72vw,.68rem);font-weight:1000;letter-spacing:.05em}.dino-era-sequence b em{display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#dce7e3;color:#49615d;font-size:.7rem;font-style:normal}.dino-era-sequence b.is-current{border-color:#e8933f;background:#ffcf61;color:#173653;transform:scale(1.06)}.dino-era-sequence b.is-current em{background:#fff;color:#173653}.dino-era-sequence>span{font-weight:1000;color:#8a9c98}.dino-era-sequence small{margin-left:8px;padding-left:10px;border-left:2px solid #c7d4d0;font-size:.6rem;font-weight:1000;letter-spacing:.08em}
+.dino-era-story{position:absolute;z-index:12;top:10dvh;left:3.3vw;width:min(690px,52vw);padding:16px 22px;border:4px solid #fff;border-radius:27px;background:#fff9e9e8;color:#173653;box-shadow:0 16px 35px #17365345}
+.dino-era-story>span{display:inline-block;padding:5px 11px;border-radius:999px;background:#ffcc59;color:#213b39;font-size:clamp(.55rem,.8vw,.72rem);font-weight:1000;letter-spacing:.1em}
+.dino-era-story h2{margin:7px 0 4px;font-size:clamp(1.55rem,3vw,3rem);line-height:.95}.dino-era-story p{max-width:640px;margin:0;font-size:clamp(.72rem,1.25vw,1.12rem);font-weight:900;line-height:1.18}
+.dino-era-animals{position:absolute;z-index:8;inset:31dvh 3vw 9dvh;display:grid;grid-template-columns:repeat(3,1fr);align-items:end;gap:1.4vw}
+.dino-era-animals figure{position:relative;display:flex;align-items:end;justify-content:center;width:100%;height:100%;margin:0;transform:none}
+.dino-era-animals figure img{width:88%;height:82%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 16px 9px #102a2b94)}
+.dino-era-animals figure.is-small img{width:86%;height:76%}.dino-era-animals figure.is-medium img{width:92%;height:84%}.dino-era-animals figure.is-giant img{width:100%;height:94%}
+.dino-era-animals figcaption{position:absolute;bottom:1%;display:grid;justify-items:center;gap:1px;padding:5px 12px;border:2px solid #fff9;border-radius:14px;background:#12343bf0;color:#fff;font-size:clamp(.58rem,.82vw,.76rem);font-weight:1000;letter-spacing:.04em}.dino-era-animals figcaption small{color:#ffe083;font-size:.48rem;letter-spacing:.12em}
+.dino-era-size-note{position:absolute;z-index:15;left:3vw;bottom:2dvh;padding:7px 12px;border:2px solid #fff;border-radius:999px;background:#fff9e9e8;color:#173653;font-size:.55rem;font-weight:1000;letter-spacing:.09em}
+.dino-era-start{position:absolute;z-index:24;right:2vw;bottom:1.5dvh;display:flex;gap:8px}.dino-era-start button{min-height:45px;padding:9px 15px;border:2px solid #fff;border-radius:15px;background:#12343be8;color:#fff;font-weight:1000}.dino-era-start button:last-child{background:#ffcc59;color:#173653;box-shadow:0 6px 0 #9f6c23}
+
+.dino-mission-map .dino-world-veil{background:linear-gradient(180deg,#fff9e9e8 0 16%,#fff9e924 42%,#eff7e659 74%,#fff3ded8)}
+.dino-mission-map.era-triassic .dino-world-veil{background:linear-gradient(180deg,#fff0dce8 0 16%,#fff0dc20 45%,#8d461a22 74%,#ffe6c4d8)}
+.dino-mission-map.era-jurassic .dino-world-veil{background:linear-gradient(180deg,#eafcf5e8 0 16%,#d7fff020 45%,#164e4729 74%,#eaf8eed8)}
+.dino-mission-map>header p{display:inline-block;margin:4px 0 0;padding:4px 11px;border-radius:999px;background:#173653;color:#fff;font-size:clamp(.55rem,.75vw,.7rem);font-weight:1000;letter-spacing:.08em}
+.dino-mission-board{position:absolute;z-index:12;inset:18dvh 3vw 9dvh;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(2,1fr);gap:1.4dvh 1.2vw}
+.dino-mission-card{position:relative;display:flex;grid-column:span 2;min-width:0;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;padding:8px 10px 11px;border:4px solid #fff;border-radius:25px;background:#fff9eee9;color:#173653;box-shadow:0 13px 25px #17365342}
+.dino-mission-card:nth-child(4){grid-column:2/span 2}.dino-mission-card:nth-child(5){grid-column:4/span 2}
+.dino-mission-card>b{position:absolute;z-index:4;top:9px;left:10px;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#173653;color:#fff;font-size:1.1rem}
+.dino-mission-card>img{position:absolute;inset:5% 4% 23%;width:92%;height:72%;object-fit:contain;filter:drop-shadow(0 11px 7px #17365369)}
+.dino-mission-card>span{position:relative;z-index:3;color:#a75a39;font-size:clamp(.52rem,.72vw,.68rem);font-weight:1000;letter-spacing:.13em}.dino-mission-card>strong{position:relative;z-index:3;font-size:clamp(.7rem,1.05vw,.95rem);line-height:1.05}.dino-mission-card>small{position:absolute;z-index:4;top:10px;right:10px;padding:4px 7px;border-radius:999px;background:#ffce59;color:#173653;font-size:.5rem;font-weight:1000}
+.dino-mission-card.kind-count{border-color:#efaa63}.dino-mission-card.kind-feature{border-color:#7dc6a0}.dino-mission-card.kind-food{border-color:#efc551}.dino-mission-card.kind-find{border-color:#82bccc}
+.dino-mission-card.is-done{border-color:#45a869;background:#effbefeb}.dino-mission-card.is-done:after{content:"✓";position:absolute;z-index:5;inset:0;display:grid;place-items:center;background:#eaf9ecc2;color:#25804b;font-size:clamp(3rem,6vw,6rem);font-weight:1000}.dino-mission-card.is-done>small{z-index:6;background:#45a869;color:#fff}
+
+.dino-world-challenge>header h2{font-size:clamp(1.8rem,3.4vw,3.5rem)!important}
+.dino-world-challenge .dino-world-veil{background:linear-gradient(180deg,#fff8e8e3 0 16%,#fff8e81f 38%,#eff7e652 72%,#fff3ded1)}
+.dino-world-challenge.era-triassic .dino-world-veil{background:linear-gradient(180deg,#fff0dce8 0 16%,#fff0dc21 42%,#8d461a24 72%,#ffe6c4d5)}
+.dino-world-challenge.era-jurassic .dino-world-veil{background:linear-gradient(180deg,#eafcf5e8 0 16%,#d7fff024 42%,#164e4730 72%,#eaf8eed4)}
+.dino-world-challenge.era-cretaceous .dino-world-veil{background:linear-gradient(180deg,#fffbe5e8 0 16%,#fff9d821 42%,#7bbf7130 72%,#fff5d9d2)}
+.dino-round-dots{display:flex;justify-content:center;gap:7px;margin:5px auto 1px}.dino-round-dots i{display:block;width:24px;height:7px;border-radius:999px;background:#a5b6b5}.dino-round-dots i.is-done{background:#3f9a6b}.dino-round-dots i.is-now{width:38px;background:#ff9f43}
+.dino-challenge-main{position:absolute;z-index:12;inset:15dvh 4vw 12dvh;display:grid;place-items:center;pointer-events:none}
+.dino-challenge-main>*{pointer-events:auto}
+.dino-option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5vw;width:100%;height:100%;max-height:66dvh}
+.dino-challenge-option{position:relative;display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;padding:10px 12px 14px;border:4px solid #d7c59b;border-radius:28px;background:#fffaf0e8;color:#173653;box-shadow:0 14px 26px #29434f35}
+.dino-challenge-option img{width:96%;height:86%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 15px 8px #0009);transform:scale(var(--animal-scale,1));transform-origin:50% 100%}
+.dino-challenge-option strong{position:absolute;bottom:12px;padding:6px 13px;border-radius:999px;background:#173653;color:#fff;font-size:clamp(.75rem,1.2vw,1rem);letter-spacing:.06em}
+.dino-option-number{position:absolute;z-index:4;top:12px;left:12px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#fff;border:3px solid #173653;color:#173653;font-size:1.15rem;font-weight:1000;box-shadow:0 5px 10px #17365328}
+.dino-challenge-option.is-answer{border-color:#48a96b;box-shadow:0 0 0 8px #78d99755,0 14px 26px #29434f35}
+.kind-count>header h2{font-size:clamp(1.65rem,2.7vw,2.7rem)!important}.dino-count-targets{position:absolute;z-index:18;top:13.2dvh;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:6px 13px;border:3px solid #fff;border-radius:16px;background:#173653ed;color:#fff;box-shadow:0 8px 18px #17365345}.dino-count-targets span{padding:4px 7px;border-radius:9px;background:#ffcf5b;color:#173653;font-size:.55rem;font-weight:1000;letter-spacing:.1em}.dino-count-targets strong{font-size:clamp(.63rem,.92vw,.82rem);white-space:nowrap}
+.dino-count-pieces{position:absolute;z-index:6;inset:20dvh 2vw 18dvh;overflow:visible}
+.dino-world-piece{position:absolute;z-index:3;left:var(--x);top:var(--y);width:calc(23vw*var(--piece-scale,1));height:27dvh;min-height:0;padding:0;border:0;background:transparent;transform:translate(-50%,-50%);transform-origin:50% 78%;filter:drop-shadow(0 10px 6px #1736536b);touch-action:none;cursor:grab}
+.dino-world-piece>img{width:100%;height:100%;object-fit:contain;pointer-events:none}
+.dino-world-piece>span{position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);padding:4px 8px;border-radius:999px;background:#082b2be8;color:#fff;font-size:.6rem;font-weight:1000;white-space:nowrap}
+.dino-count-palette{position:absolute;z-index:12;left:50%;bottom:0;transform:translateX(-50%);display:flex;gap:8px;width:min(1200px,91vw);height:16dvh;min-height:105px;padding:7px;border:3px solid #86b8ba;border-radius:22px;background:#fff9edef;box-shadow:0 12px 24px #29434f38}
+.dino-count-palette .dino-challenge-option{flex:1;border-radius:16px;padding:3px}
+.dino-count-palette .dino-challenge-option img{height:82%}
+.dino-count-palette .dino-challenge-option strong{bottom:4px;max-width:92%;padding:3px 6px;font-size:clamp(.42rem,.62vw,.56rem);white-space:nowrap}
+.dino-drag-source>span{position:absolute;right:5px;top:5px;padding:3px 6px;border-radius:999px;background:#ffda69;color:#173653;font-size:.52rem;font-weight:1000}
+.dino-drag-source.is-used{opacity:.42;filter:grayscale(.65)}
+.dino-count-meter{position:absolute;z-index:15;top:3dvh;right:12vw;display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:18px;background:#fff8e9eb;border:2px solid #66a97d;color:#173653}
+.dino-count-meter b{font-size:1.45rem;color:#22804e}.dino-count-meter span{font-size:.6rem;font-weight:1000}
+.dino-food-stage{display:grid;grid-template-columns:1.15fr 1fr;gap:3vw;width:100%;height:100%}
+.dino-food-animal{position:relative;display:flex;align-items:center;justify-content:center}
+.dino-food-animal img{width:100%;height:90%;object-fit:contain;filter:drop-shadow(0 18px 11px #0009)}
+.dino-food-animal strong{position:absolute;bottom:4%;padding:7px 14px;border-radius:999px;background:#071f26e8}
+.dino-food-options{display:grid;grid-template-rows:1fr 1fr;gap:1.5dvh}
+.dino-food-options button{display:grid;grid-template-columns:38% 1fr;align-items:center;gap:14px;overflow:hidden;padding:9px 16px;border:4px solid #83bfc7;border-radius:24px;background:#fffaf0ee;color:#173653;box-shadow:0 14px 26px #29434f35}
+.dino-food-options img{width:100%;height:100%;max-height:23dvh;object-fit:contain;filter:drop-shadow(0 10px 6px #0007)}
+.dino-food-options strong{font-size:clamp(.9rem,1.8vw,1.6rem);line-height:1.1}
+.dino-period-choice{display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;width:100%;height:100%}
+.dino-period-choice .dino-era-card{border-radius:24px}
+.dino-period-choice .dino-era-card>img{inset:5% 5% 31%;width:90%;height:62%}
+.dino-period-choice .dino-era-card>i{display:none}
+.dino-challenge-footer{position:absolute;z-index:22;left:1.2vw;right:1.2vw;bottom:1.2dvh;display:flex;align-items:center;gap:7px;pointer-events:none}
+.dino-challenge-footer>button{pointer-events:auto;min-height:39px;padding:7px 11px;border:1px solid #fff8;border-radius:13px;background:#082b30e8;color:#fff;font-size:.65rem;font-weight:1000}
+.dino-challenge-footer>button:disabled{opacity:.35}
+.dino-world-status{margin:0 auto;padding:7px 13px;border-radius:999px;background:#08282ee5;color:#fff;font-size:clamp(.62rem,.9vw,.78rem);font-weight:1000;letter-spacing:.07em;white-space:nowrap}
+.dino-challenge-success{position:absolute;z-index:55;inset:auto 13vw 1.6dvh;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;min-height:76px;padding:9px 13px;border:4px solid #fff;border-radius:24px;background:#fff8ebf2;box-shadow:0 16px 38px #1736536b;color:#173653;text-align:left;backdrop-filter:blur(8px)}
+.dino-challenge-success>span{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#ffe070;color:#1b4634;font-size:2rem;font-weight:1000;box-shadow:0 0 0 7px #ffe07030}
+.dino-challenge-success>strong{font-size:clamp(.72rem,1.2vw,1.05rem);line-height:1.13;text-shadow:none}
+.dino-challenge-success>button{min-height:48px;padding:8px 15px;border:2px solid #fff;border-radius:15px;background:#ffcf57;color:#173a31;font-size:.72rem;font-weight:1000;box-shadow:0 5px 0 #9b6c22}
+
+.dino-world-sort .dino-world-veil{background:linear-gradient(180deg,#fff8e8e8 0 17%,#fff8e83d 45%,#eff8ecb8 100%)}
+.dino-world-sort>header h2{font-size:clamp(1.5rem,2.8vw,2.8rem)!important}
+.dino-sort-score{position:absolute;z-index:25;top:11dvh;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+.dino-sort-score b{padding:7px 15px;border:3px solid;border-radius:999px;background:#fff;font-size:clamp(.7rem,1vw,.9rem);box-shadow:0 7px 15px #29434f2b}
+.dino-sort-score .is-correct{border-color:#45a869;color:#217543}.dino-sort-score .is-wrong{border-color:#df6c6c;color:#b43e48}
+.dino-sort-pool{position:absolute;z-index:15;top:17dvh;left:3vw;right:3vw;height:22dvh;display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.dino-sort-card{position:relative;display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;padding:5px;border:3px solid #d7c59b;border-radius:18px;background:#fffaf1ed;color:#173653;box-shadow:0 10px 20px #29434f2f;touch-action:none}
+.dino-sort-card img{width:100%;height:82%;object-fit:contain;filter:drop-shadow(0 8px 4px #29434f4d);pointer-events:none}
+.dino-sort-card strong{font-size:clamp(.55rem,.8vw,.72rem);line-height:1}.dino-sort-card>span{position:absolute;top:5px;right:5px;padding:2px 5px;border-radius:999px;background:#ffda69;font-size:.48rem;font-weight:1000}
+.dino-sort-card.is-selected{border-color:#ffb83d;box-shadow:0 0 0 5px #ffda6969,0 10px 20px #29434f2f}
+.dino-sort-bins{position:absolute;z-index:12;top:43dvh;left:2vw;right:2vw;bottom:8dvh;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4vw}
+.dino-sort-bin{position:relative;display:grid;grid-template-rows:auto auto 1fr auto;min-width:0;overflow:hidden;padding:10px;border:5px dashed #7fa7ad;border-radius:24px;background-image:linear-gradient(#fffaf1c7,#fffaf1db),var(--era-bg);background-position:center;background-size:cover;color:#173653;text-align:center}
+.dino-sort-bin>span{font-size:.58rem;font-weight:1000;letter-spacing:.12em}.dino-sort-bin>strong{font-size:clamp(1rem,1.8vw,1.65rem)}
+.dino-sort-bin>div{display:flex;align-items:center;justify-content:center;gap:3px;overflow:hidden}.dino-sort-bin img{width:47%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 5px #29434f4b)}
+.dino-sort-bin>small{font-weight:1000}.dino-sort-bin.is-copper{border-color:#e9945f}.dino-sort-bin.is-green{border-color:#66b482}.dino-sort-bin.is-gold{border-color:#dfb42d}
+.dino-drag-ghost{position:fixed!important;z-index:1000!important;left:0;top:0;width:190px!important;height:130px!important;transform:translate(-50%,-50%) scale(1.08)!important;pointer-events:none!important;opacity:.94;box-shadow:0 18px 35px #17365359!important}
+.dino-drag-ghost img{width:100%;height:100%;object-fit:contain}
+
+.dino-world-finish-card{position:absolute;z-index:4;inset:6dvh 18vw;display:grid;grid-template-rows:auto auto 1fr auto auto;justify-items:center;padding:22px;border:2px solid #ffe295;border-radius:34px;background:#08262de8;text-align:center;box-shadow:0 24px 55px #001b;backdrop-filter:blur(10px)}
+.dino-world-finish-card>span{padding:6px 15px;border-radius:999px;background:#ffd566;color:#20372e;font-weight:1000;letter-spacing:.14em}
+.dino-world-finish-card h2{margin:7px 0 0;color:#fff;font-size:clamp(2rem,4.2vw,4.4rem);line-height:1}
+.dino-world-finish-card>img{width:80%;height:44dvh;object-fit:contain;filter:drop-shadow(0 18px 10px #0009)}
+.dino-world-finish-card p{margin:0;font-weight:1000;letter-spacing:.06em}
+.dino-world-finish-card div{display:flex;justify-content:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.dino-world-finish-card button{min-height:48px;padding:9px 16px;border:1px solid #fff8;border-radius:15px;background:#143f3d;color:#fff;font-weight:1000}
+.dino-world-finish-card button:last-child{background:#ffd05e;color:#1d3b32}
+
+/* Neutraliza el hover global rosa dentro de las experiencias de dinosaurios. */
+.dino-explorer-pdi .dino-view-open:hover{background:transparent}.dino-explorer-pdi .dino-arrow:hover,.dino-explorer-pdi .dino-focus-back:hover{background:#061b22df}.dino-explorer-pdi .dino-discovery button:hover{background:#173f45}.dino-explorer-pdi .dino-discovery button.is-active:hover{background:#ffd260}
+.dino-world-pdi .dino-era-card:hover{background:#173653}.dino-world-pdi .dino-mission-card:hover{background:#fff9eee9}.dino-world-pdi .dino-mission-card.is-done:hover{background:#effbefeb}.dino-world-pdi .dino-challenge-option:hover{border-color:#efb744;background:#fffaf0e8;box-shadow:0 0 0 5px #ffda6952,0 14px 26px #29434f35}.dino-world-pdi .dino-food-options button:hover{background:#fffaf0ee}.dino-world-pdi .dino-world-piece:hover{background:transparent}.dino-world-pdi .dino-sort-card:hover{border-color:#efb744;background:#fffaf1ed}.dino-world-pdi .dino-sort-bin:hover{background-color:transparent;background-image:linear-gradient(#fffaf1c7,#fffaf1db),var(--era-bg)}.dino-world-pdi .dino-sort-entry:hover,.dino-world-pdi .dino-challenge-success>button:hover{background:#ffda69;color:#173653}.dino-world-pdi .dino-challenge-footer>button:hover,.dino-world-pdi .dino-era-start button:first-child:hover,.dino-world-pdi .dino-world-finish-card button:hover{background:#143f3d;color:#fff}.dino-world-pdi .dino-era-start button:last-child:hover,.dino-world-pdi .dino-world-finish-card button:last-child:hover{background:#ffd05e;color:#1d3b32}
+.dino-explorer-pdi button:focus-visible,.dino-world-pdi button:focus-visible{outline:5px solid #ffd45f;outline-offset:-5px;box-shadow:0 0 0 3px #17365380}
+
+@media(max-width:1000px),(max-height:760px){
+  .dino-catalog-stage{min-height:410px}.dino-catalog-animal{height:320px}.dino-catalog-animal img{height:280px}
+  .dino-compare{inset:13dvh 4vw 17dvh}.dino-view-open strong{bottom:30px}.dino-view-open i{font-size:.55rem}
+  .dino-era-timeline{inset:19dvh 3vw 5dvh}.dino-era-card{padding:10px 10px 13px}
+  .dino-challenge-main{inset:14dvh 4vw 11dvh}.dino-count-pieces{inset:14dvh 3vw 25dvh}
+}
+@media(max-width:760px){
+  .dino-observatory-head{align-items:start;flex-direction:column}.dino-catalog-stage{grid-template-columns:1fr 1fr}.dino-catalog-center{grid-column:1/-1;grid-row:2}.dino-catalog-animal{height:240px}.dino-catalog-animal img{height:210px}
+  .dino-compare{gap:8px;inset-inline:2vw}.dino-view{border-radius:20px}.dino-view-open>span{display:none}
+  .dino-discovery{width:94vw;grid-template-columns:1fr}.dino-discovery nav{justify-content:center}
+  .dino-era-timeline,.dino-period-choice{gap:7px;inset-inline:1.5vw}.dino-era-card{border-radius:18px;padding-inline:5px}.dino-era-card>small{width:30px;height:30px}.dino-era-card>i{display:none}
+  .dino-option-grid{gap:8px}.dino-challenge-option{border-radius:18px}
+  .dino-food-stage{grid-template-columns:1fr 1.25fr}.dino-world-status{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}

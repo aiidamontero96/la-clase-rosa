@@ -66,6 +66,9 @@ window.ROSA = (() => {
     ['Un cierre tranquilo','Abre y cierra las manos lentamente tres veces. Di, señala o dibuja algo que te gustaría repetir.']
   ].map((x,i)=>({id:'reto-'+(i+1),title:x[0],text:x[1],duration:3+(i%3)}));
   const dinosaurs = [
+    {id:'coelophysis',name:'Coelophysis',short:'Coelophysis',diet:'Carnívoro',fact:'Fue uno de los primeros dinosaurios. Era pequeño, ligero y corría sobre dos patas.',clue:'Soy pequeño, ligero y tengo una cola muy larga.',period:'Triásico',source:'coelophysis',mission:false},
+    {id:'plateosaurus',name:'Plateosaurus',short:'Plateosaurio',diet:'Herbívoro',fact:'Fue un herbívoro del Triásico con cuello largo, cuerpo robusto y manos fuertes.',clue:'Como plantas y mi cuello ya empezaba a ser largo.',period:'Triásico',source:'plateosaurus',mission:false},
+    {id:'herrerasaurus',name:'Herrerasaurus',short:'Herrerasaurio',diet:'Carnívoro',fact:'Fue uno de los primeros grandes cazadores. Caminaba sobre dos patas y tenía una cola larga.',clue:'Corro sobre dos patas y uso mi cola para equilibrarme.',period:'Triásico',source:'herrerasaurus',mission:false},
     {id:'trex',name:'Tyrannosaurus rex',short:'T. rex',diet:'Carnívoro',fact:'Tenía una cabeza grande y unos brazos muy cortos. Caminaba sobre dos patas.',clue:'Tengo una gran cabeza y dos brazos cortitos.',period:'Cretácico',source:'tyrannosaurus'},
     {id:'triceratops',name:'Triceratops',short:'Triceratops',diet:'Herbívoro',fact:'Tenía tres cuernos y una gran gola detrás de la cabeza. Comía plantas.',clue:'Mis tres cuernos y mi gola te dan una pista.',period:'Cretácico',source:'triceratops'},
     {id:'stegosaurus',name:'Stegosaurus',short:'Estegosaurio',diet:'Herbívoro',fact:'Tenía placas sobre el lomo y púas en la cola. No sabemos con seguridad para qué servían todas sus placas.',clue:'Llevo grandes placas sobre la espalda.',period:'Jurásico',source:'stegosaurus'},
@@ -74,7 +77,9 @@ window.ROSA = (() => {
     {id:'ankylosaurus',name:'Ankylosaurus',short:'Anquilosaurio',diet:'Herbívoro',fact:'Su cuerpo estaba protegido por placas óseas. Su cola terminaba en una maza.',clue:'Tengo armadura en el cuerpo y una maza en la cola.',period:'Cretácico',source:'ankylosaurus'},
     {id:'diplodocus',name:'Diplodocus',short:'Diplodocus',diet:'Herbívoro',fact:'Tenía un cuello largo y una cola muy larga, parecida a un látigo. Se alimentaba de plantas.',clue:'Mi cola es larguísima, como un látigo.',period:'Jurásico',source:'diplodocus'},
     {id:'parasaurolophus',name:'Parasaurolophus',short:'Parasaurolofo',diet:'Herbívoro',fact:'Tenía una cresta larga que se curvaba hacia atrás. Comía plantas.',clue:'Una cresta larga se curva detrás de mi cabeza.',period:'Cretácico',source:'parasaurolophus'},
-    {id:'spinosaurus',name:'Spinosaurus',short:'Espinosaurio',diet:'Carnívoro',fact:'Tenía una gran vela en la espalda y un hocico alargado. Entre su alimento había peces.',clue:'Mi espalda parece llevar una vela y mi hocico es largo.',period:'Cretácico',source:'spinosaurus'}
+    {id:'spinosaurus',name:'Spinosaurus',short:'Espinosaurio',diet:'Carnívoro',fact:'Tenía una gran vela en la espalda y un hocico alargado. Entre su alimento había peces.',clue:'Mi espalda parece llevar una vela y mi hocico es largo.',period:'Cretácico',source:'spinosaurus'},
+    {id:'ichthyosaurus',name:'Ichthyosaurus',short:'Ictiosaurio',diet:'Carnívoro',fact:'Fue un reptil marino del Jurásico, no un dinosaurio. Tenía aletas, ojos grandes y un cuerpo preparado para nadar.',clue:'Vivo en el mar, tengo aletas y no soy un dinosaurio.',period:'Jurásico',source:'ichthyosaurus',group:'Reptil marino',mission:false},
+    {id:'mosasaurus',name:'Mosasaurus',short:'Mosasaurio',diet:'Carnívoro',fact:'Fue un gran reptil marino del Cretácico, no un dinosaurio. Tenía un hocico largo con muchos dientes, cuatro aletas y una cola potente.',clue:'Parezco un gran lagarto marino con hocico largo y cuatro aletas.',period:'Cretácico',source:'mosasaurus',group:'Reptil marino',mission:false}
   ];
   const vocab = [
     ['amistad','🤝','Cariño y confianza entre personas que se cuidan y disfrutan juntas.'],
@@ -174,7 +179,7 @@ window.ROSA = (() => {
   add('vocales','Busca la misma letra','Lenguaje','vocales','Discriminar visualmente letras con apoyo de un modelo.','Mira la letra grande y señala las iguales. No exige leer palabras.');
   add('historias','Tres tarjetas, una historia','Lenguaje','historias','Inventar relatos orales breves.','Saca un personaje, un lugar y un objeto. Inventa qué ocurre, con ayuda de la maestra.');
   add('vocab-dino','Palabras de paleontología','Lenguaje','vocabulario','Comprender vocabulario nuevo dentro del proyecto.','Presenta solo tres palabras con gesto y objetos reales; revisa después sus tarjetas.',{project:'Dinosaurios'});
-  add('dinos','Conocemos nueve dinosaurios','Proyecto','dinosaurios','Observar rasgos y comparar dinosaurios.','Presenta un dinosaurio por día. Busca su rasgo distintivo y clasifica por alimentación.',{project:'Dinosaurios'});
+  add('dinos','Dinosaurios y reptiles marinos','Proyecto','dinosaurios','Observar rasgos y comparar animales prehistóricos.','Presenta uno por día. Busca su rasgo distintivo y aclara que el ictiosaurio y el mosasaurio eran reptiles marinos, no dinosaurios.',{project:'Dinosaurios'});
   add('trazos-rectos','Caminos de lado a lado','Grafomotricidad','trazos','Coordinar movimientos amplios horizontales y verticales.','Recorre primero con el dedo, luego con una cera gruesa. Elige solo uno o dos caminos.',{trace:'rectos'});
   add('trazos-curvos','Curvas, ondas y espirales','Grafomotricidad','trazos','Explorar trazos curvos en un recorrido lúdico.','Sigue con el dedo una curva. Crea otra con un cordón antes de llevarla al papel.',{trace:'curvos'});
   add('recorte','Tiras para cortar y construir','Motricidad fina','recorte','Coordinar apertura y cierre de tijeras.','Corta por las líneas anchas y usa los trozos para crear un collage libre.');

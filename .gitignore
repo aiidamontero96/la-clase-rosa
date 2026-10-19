@@ -10,3 +10,9 @@ sources/scenes-voice-pending.json
 # Progreso local reanudable del clon de voz Qwen (no versionar)
 sources/scenes-voice-generation-progress.json
 .venv-pdi-voice/
+
+# Referencias locales facilitadas para diseñar las actividades (no publicar)
+contexto-codex/
+public/Image (3).jpg
+public/Image (4).jpg
+public/video/dinosaurios/202610191704 (1) (1).mp4
