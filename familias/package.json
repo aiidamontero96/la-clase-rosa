@@ -1,0 +1,8 @@
+{
+  "name": "diario-clase-rosa",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/check-diary.mjs"
+  }
+}
