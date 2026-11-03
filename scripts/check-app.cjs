@@ -155,3 +155,14 @@ assert(patternPrint.includes('Volver a Matemáticas'));assert(patternPrint.inclu
 const customPrint=run('window.ROSA_AULA.printHTML()');assert(customPrint.includes('Volver a la app'));assert(customPrint.includes('window.opener.focus()'));assert(customPrint.includes('@page{size:A4 portrait;margin:8mm}'));assert(customPrint.includes('Margen seguro de 8 mm'));
 assert.equal(run("escapeHTML('<script>')"),'&lt;script&gt;');
 console.log(JSON.stringify({resources:data.resources.length,kusamaActivities:kusamaActivities.length,kusamaPrintables:kusamaPrintables.length,printables:printables.length,coloringPrintables:printables.filter(r=>r.coloring).length,questions:Object.values(data.questionGroups).flat().length,challenges:data.challenges.length,pdiModes:run('GAMES.length'),newPdiGames:newGames.length,checks:'passed'}));
+
+// Assembly: one galaxy round between number and protagonist letter.
+run("state.assemblyGroup='rosa';state.assemblyLetter=12;startProjection('numero',0)");
+assert(element('#projection-content').innerHTML.includes('data-value="galaxia"'));
+function galaxyAction(action){const target={dataset:{action,value:action==='routine'?'galaxia':''}};for(const listener of listeners.click||[])listener({target:{closest:()=>target},preventDefault(){}});}
+galaxyAction('routine');assert.equal(run('state.projection.kind'),'palabra-imagen');
+assert(element('#projection-content').innerHTML.includes('LA GALAXIA DE HOY · 1 RONDA'));
+run('A.next()');assert.equal(run('state.projection.kind'),'palabra-imagen','cannot skip unanswered assembly card');
+context.galaxyCorrect=answerTarget(run('state.projection.answer'));run('answer(galaxyCorrect);A.next()');
+assert.equal(run('state.projection.kind'),'letra');assert.equal(run('state.projection.round'),12,'retain protagonist letter');
+console.log('Assembly galaxy flow passed');

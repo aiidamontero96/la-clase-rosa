@@ -182,8 +182,92 @@ window.ROSA_PDI = (() => {
     {word:'PALA',category:'MUNDO',src:'assets/vocab-child/shovel.webp'},
     {word:'OVILLO',category:'MUNDO',src:'assets/vocab-child/yarn.webp'},
     {word:'OSO',category:'MUNDO',src:'assets/vocab-child/teddy.webp'},
-    {word:'ABRIGO',category:'MUNDO',src:'assets/vocab-child/coat.webp'}
+    {word:'ABRIGO',category:'ROPA',src:'assets/vocab-child/coat.webp'},
+    ...[
+      ['ARDILLA','ANIMALES','ardilla'],['AVELLANAS','FRUTAS','avellanas'],
+      ['CAQUI','FRUTAS','caqui'],['CASTAÑAS','FRUTAS','castanas'],
+      ['GRANADA','FRUTAS','granada'],['HIGOS','FRUTAS','higos'],
+      ['MANDARINA','FRUTAS','mandarina'],['MEMBRILLO','FRUTAS','membrillo'],
+      ['NUECES','FRUTAS','nueces'],['CALABAZA','HUERTO','calabaza'],
+      ['SETA','NATURALEZA','seta'],['BOSQUE','NATURALEZA','bosque'],
+      ['CHARCO','NATURALEZA','charco'],['LLUVIA','NATURALEZA','lluvia'],
+      ['BOTAS','ROPA','botas'],['BUFANDA','ROPA','bufanda'],
+      ['CALCETINES','ROPA','calcetines'],['CHAQUETA','ROPA','chaqueta'],
+      ['CHUBASQUERO','ROPA','chubasquero'],['GORRO','ROPA','gorro'],
+      ['JERSEY','ROPA','jersey'],['ZAPATOS','ROPA','zapatos'],
+      ['PARAGUAS','MUNDO','paraguas']
+    ].map(([word,category,file])=>({word,category,src:'assets/autumn-vocab/'+file+'.webp'})),
+    ...[
+      ['PLAYA','NATURALEZA','beach'],['OLA','NATURALEZA','wave'],
+      ['VOLCÁN','NATURALEZA','volcano'],['HIERBA','NATURALEZA','herb'],
+      ['COLEGIO','COLE','school'],['BIBLIOTECA','COLE','library']
+    ].map(([word,category,file])=>({word,category,src:'assets/vocab-child/'+file+'.webp'}))
   ];
+
+  // One shared deck for free play and assembly; words survive reloads on this browser.
+  const galaxyKey='rosa-galaxy-deck-v1';
+  const vocabularyByWord=new Map(wordPictureVocabulary.map(item=>[item.word,item]));
+  let galaxyMemory={remaining:[],recent:[],daily:{},exposure:{},lastCategory:'',lastPosition:-1};
+  function shuffled(items){
+    const result=[...items];
+    for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}
+    return result;
+  }
+  function readGalaxy(){
+    let saved=galaxyMemory;
+    try{saved=JSON.parse(localStorage.getItem(galaxyKey)||'null')||saved;}catch{}
+    const validWords=items=>Array.isArray(items)?[...new Set(items.filter(word=>vocabularyByWord.has(word)))]:[];
+    return {remaining:validWords(saved.remaining),recent:validWords(saved.recent).slice(-8),
+      daily:saved.daily&&typeof saved.daily==='object'?saved.daily:{},
+      exposure:saved.exposure&&typeof saved.exposure==='object'?saved.exposure:{},
+      lastCategory:typeof saved.lastCategory==='string'?saved.lastCategory:'',
+      lastPosition:Number.isInteger(saved.lastPosition)?saved.lastPosition:-1};
+  }
+  function saveGalaxy(deck){galaxyMemory=deck;try{localStorage.setItem(galaxyKey,JSON.stringify(deck));}catch{}}
+  function validGalaxyCard(card){
+    return card&&vocabularyByWord.has(card.word)&&Array.isArray(card.choices)&&card.choices.length===4&&
+      new Set(card.choices).size===4&&card.choices[0]===card.word&&card.choices.every(word=>vocabularyByWord.has(word))&&
+      Number.isInteger(card.position)&&card.position>=0&&card.position<4;
+  }
+  function drawGalaxyCard(dailyGroup){
+    const deck=readGalaxy(),now=new Date(),date=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+    if(dailyGroup&&deck.daily[dailyGroup]?.date===date&&validGalaxyCard(deck.daily[dailyGroup].card))return deck.daily[dailyGroup].card;
+    if(!deck.remaining.length)deck.remaining=shuffled([...vocabularyByWord.keys()]);
+    // At the cycle boundary postpone recent words, then alternate categories where possible.
+    const fresh=deck.remaining.filter(word=>!deck.recent.includes(word));
+    const pool=fresh.length?fresh:deck.remaining;
+    const word=pool.find(word=>vocabularyByWord.get(word).category!==deck.lastCategory)||pool[0];
+    const target=vocabularyByWord.get(word);
+    deck.remaining.splice(deck.remaining.indexOf(word),1);
+    const candidates=shuffled(wordPictureVocabulary.filter(item=>item.category!==target.category));
+    const exposure=word=>Number.isFinite(deck.exposure[word])?deck.exposure[word]:0;
+    candidates.sort((a,b)=>Number(deck.recent.includes(a.word))-Number(deck.recent.includes(b.word))||exposure(a.word)-exposure(b.word));
+    const choices=[word],categories=new Set([target.category]);
+    for(const item of candidates){if(categories.has(item.category))continue;choices.push(item.word);categories.add(item.category);if(choices.length===4)break;}
+    const position=shuffled([0,1,2,3].filter(value=>value!==deck.lastPosition))[0];
+    const card={word,choices,position};
+    for(const choice of choices)deck.exposure[choice]=exposure(choice)+1;
+    deck.recent=[...deck.recent.filter(item=>item!==word),word].slice(-8);
+    deck.lastCategory=target.category;deck.lastPosition=position;
+    if(dailyGroup)deck.daily[dailyGroup]={date,card};
+    saveGalaxy(deck);return card;
+  }
+  function galaxyCard(n,payload){
+    // The payload is part of the existing saved game, so retries/resume keep the same card.
+    if(payload){
+      payload.galaxyRounds=payload.galaxyRounds||{};
+      if(!validGalaxyCard(payload.galaxyRounds[n]))payload.galaxyRounds[n]=drawGalaxyCard(payload.assemblyGalaxy);
+      return payload.galaxyRounds[n];
+    }
+    // Pure deterministic rounds remain available to previews and exercise-rule checks.
+    const target=wordPictureVocabulary[n%wordPictureVocabulary.length];
+    const others=wordPictureVocabulary.filter(item=>item.category!==target.category);
+    const categories=new Set([target.category]),choices=[target.word];
+    for(const item of [...others.slice(n%others.length),...others.slice(0,n%others.length)]){
+      if(categories.has(item.category))continue;choices.push(item.word);categories.add(item.category);if(choices.length===4)break;
+    }
+    return {word:target.word,choices,position:n%4};
+  }
 
   const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const at = (items, n) => items[n % items.length];
@@ -206,15 +290,10 @@ window.ROSA_PDI = (() => {
     let prompt, visual = '', options, answer, explanation, needsReveal = false;
 
     if(kind==='palabra-imagen'){
-      const target=wordPictureVocabulary[(n*7)%wordPictureVocabulary.length],total=[2,3,4,4][level-1];
-      const categories=[...new Set(wordPictureVocabulary.map(entry=>entry.category))],targetCategory=categories.indexOf(target.category);
-      const otherCategories=Array.from({length:categories.length-1},(_,index)=>categories[(targetCategory+index+1)%categories.length]);
-      const selected=[target,...otherCategories.slice(0,total-1).map((category,index)=>{
-        const entries=wordPictureVocabulary.filter(entry=>entry.category===category);
-        return entries[(n+index*2)%entries.length];
-      })];
+      const card=galaxyCard(n,payload),target=vocabularyByWord.get(card.word),total=[2,3,4,4][level-1];
+      const selected=card.choices.slice(0,total).map(word=>vocabularyByWord.get(word));
       prompt=target.word;
-      visual='<div class="pdi-word-picture-meta"><span>RONDA '+(n+1)+' DE 5</span></div>';
+      visual='<div class="pdi-word-picture-meta"><span>'+(payload?.assemblyGalaxy?'LA GALAXIA DE HOY · 1 RONDA':'RONDA '+(n+1)+' DE 5')+'</span></div>';
       options=selected.map(entry=>option(entry.word,'<span class="pdi-word-picture-art"><img src="'+entry.src+'" width="300" height="300" alt="'+esc(entry.word)+'"></span>'));
       answer=target.word;
       explanation='¡MUY BIEN! ES '+target.word+'.';
@@ -395,9 +474,9 @@ window.ROSA_PDI = (() => {
     }
     if(level>=3 && kind==='vocales')options=['A','E','I','O','U'].map(v=>option(v,v));
     // Change the correct button's location between turns, without moving it on a retry.
-    const offset = (n + Math.floor(n / 3)) % options.length;
+    const offset = kind==='palabra-imagen'?galaxyCard(n,payload).position%options.length:(n + Math.floor(n / 3)) % options.length;
     options = [...options.slice(offset), ...options.slice(0, offset)];
     return {prompt, visual, options, answer:String(answer), explanation, needsReveal};
   }
-  return {games, round, whatIfPrompts};
+  return {games, round, whatIfPrompts, wordPictureCount:wordPictureVocabulary.length};
 })();
