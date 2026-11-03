@@ -207,7 +207,7 @@ window.ROSA_PDI = (() => {
   // One shared deck for free play and assembly; words survive reloads on this browser.
   const galaxyKey='rosa-galaxy-deck-v1';
   const vocabularyByWord=new Map(wordPictureVocabulary.map(item=>[item.word,item]));
-  let galaxyMemory={remaining:[],recent:[],daily:{},exposure:{},lastCategory:'',lastPosition:-1};
+  let galaxyMemory={remaining:[],recent:[],recentImages:[],exposure:{},lastCategory:'',lastPosition:-1};
   function shuffled(items){
     const result=[...items];
     for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}
@@ -218,7 +218,7 @@ window.ROSA_PDI = (() => {
     try{saved=JSON.parse(localStorage.getItem(galaxyKey)||'null')||saved;}catch{}
     const validWords=items=>Array.isArray(items)?[...new Set(items.filter(word=>vocabularyByWord.has(word)))]:[];
     return {remaining:validWords(saved.remaining),recent:validWords(saved.recent).slice(-8),
-      daily:saved.daily&&typeof saved.daily==='object'?saved.daily:{},
+      recentImages:validWords(saved.recentImages).slice(-12),
       exposure:saved.exposure&&typeof saved.exposure==='object'?saved.exposure:{},
       lastCategory:typeof saved.lastCategory==='string'?saved.lastCategory:'',
       lastPosition:Number.isInteger(saved.lastPosition)?saved.lastPosition:-1};
@@ -229,19 +229,18 @@ window.ROSA_PDI = (() => {
       new Set(card.choices).size===4&&card.choices[0]===card.word&&card.choices.every(word=>vocabularyByWord.has(word))&&
       Number.isInteger(card.position)&&card.position>=0&&card.position<4;
   }
-  function drawGalaxyCard(dailyGroup){
-    const deck=readGalaxy(),now=new Date(),date=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
-    if(dailyGroup&&deck.daily[dailyGroup]?.date===date&&validGalaxyCard(deck.daily[dailyGroup].card))return deck.daily[dailyGroup].card;
+  function drawGalaxyCard(){
+    const deck=readGalaxy();
     if(!deck.remaining.length)deck.remaining=shuffled([...vocabularyByWord.keys()]);
     // At the cycle boundary postpone recent words, then alternate categories where possible.
-    const fresh=deck.remaining.filter(word=>!deck.recent.includes(word));
+    const fresh=deck.remaining.filter(word=>!deck.recent.includes(word)&&!deck.recentImages.includes(word));
     const pool=fresh.length?fresh:deck.remaining;
     const word=pool.find(word=>vocabularyByWord.get(word).category!==deck.lastCategory)||pool[0];
     const target=vocabularyByWord.get(word);
     deck.remaining.splice(deck.remaining.indexOf(word),1);
     const candidates=shuffled(wordPictureVocabulary.filter(item=>item.category!==target.category));
     const exposure=word=>Number.isFinite(deck.exposure[word])?deck.exposure[word]:0;
-    candidates.sort((a,b)=>Number(deck.recent.includes(a.word))-Number(deck.recent.includes(b.word))||exposure(a.word)-exposure(b.word));
+    candidates.sort((a,b)=>Number(deck.recentImages.includes(a.word))-Number(deck.recentImages.includes(b.word))||exposure(a.word)-exposure(b.word));
     const choices=[word],categories=new Set([target.category]);
     for(const item of candidates){if(categories.has(item.category))continue;choices.push(item.word);categories.add(item.category);if(choices.length===4)break;}
     const position=shuffled([0,1,2,3].filter(value=>value!==deck.lastPosition))[0];
@@ -249,14 +248,14 @@ window.ROSA_PDI = (() => {
     for(const choice of choices)deck.exposure[choice]=exposure(choice)+1;
     deck.recent=[...deck.recent.filter(item=>item!==word),word].slice(-8);
     deck.lastCategory=target.category;deck.lastPosition=position;
-    if(dailyGroup)deck.daily[dailyGroup]={date,card};
+    deck.recentImages=[...deck.recentImages,...choices].slice(-12);
     saveGalaxy(deck);return card;
   }
   function galaxyCard(n,payload){
     // The payload is part of the existing saved game, so retries/resume keep the same card.
     if(payload){
       payload.galaxyRounds=payload.galaxyRounds||{};
-      if(!validGalaxyCard(payload.galaxyRounds[n]))payload.galaxyRounds[n]=drawGalaxyCard(payload.assemblyGalaxy);
+      if(!validGalaxyCard(payload.galaxyRounds[n]))payload.galaxyRounds[n]=drawGalaxyCard();
       return payload.galaxyRounds[n];
     }
     // Pure deterministic rounds remain available to previews and exercise-rule checks.

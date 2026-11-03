@@ -47,7 +47,7 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
   assert.equal(json('window.ROSA_PDI.round("palabra-imagen",0,false,4,window.galaxyPayload)').answer,stable.answer,'level changes retain word');
   const daily=json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{assemblyGalaxy:"rosa"})');
   vm.runInContext(fs.readFileSync(path.join(publicDir,'pdi.js'),'utf8'),context);
-  assert.deepEqual(json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{assemblyGalaxy:"rosa"})'),daily,'same day survives reload');
+  assert.notEqual(json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{assemblyGalaxy:"rosa"})').answer,daily.answer,'new assembly gets a fresh word on the same day');
   assert.notEqual(json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{assemblyGalaxy:"vero"})').answer,daily.answer,'groups have independent daily cards');
   run('window.realDate=Date;Date=class extends window.realDate{constructor(...args){super(...(args.length?args:[new window.realDate().getTime()+86400000]));}}');
   assert.notEqual(json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{assemblyGalaxy:"rosa"})').answer,daily.answer,'new day gets a fresh word');
@@ -61,6 +61,34 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
   vm.runInContext(fs.readFileSync(path.join(publicDir,'pdi.js'),'utf8'),offlineContext);
   const offlineWords=Array.from({length:vocabularyCount},()=>vm.runInContext('window.ROSA_PDI.round("palabra-imagen",0,false,2,{}).answer',offlineContext));
   assert.equal(new Set(offlineWords).size,vocabularyCount,'storage failure still rotates in memory');
+  run('window.recentCards=[]');
+  for(let i=0;i<3;i++){
+    const r=json('window.ROSA_PDI.round("palabra-imagen",0,false,3,{})');
+    const values=r.options.map(o=>o.value);
+    if(i)assert(values.every(word=>!context.previousGalaxyImages.includes(word)),'avoid repeating distractor images in consecutive rounds');
+    context.previousGalaxyImages=values;
+  }
+  for(const group of ['rosa','vero']){
+    const targets=new Set();
+    for(let i=0;i<3;i++){
+      await run('A.launch("palabra-imagen",{round:0,payload:{assemblyGalaxy:'+JSON.stringify(group)+'}})');
+      assert.equal(run('state.projection.level'),3,'assembly defaults to four images');
+      assert.equal((element('#projection-content').innerHTML.match(/class="choice/g)||[]).length>=4,true);
+      targets.add(run('state.projection.answer'));
+    }
+    assert.equal(targets.size,3,'three starts get three different words');
+    const answer=run('state.projection.answer');
+    for(const [level,count] of [[1,2],[2,3],[3,4]]){
+      await run('A.setLevel('+level+')');
+      const projection=json('state.projection');
+      const r=json('window.ROSA_PDI.round("palabra-imagen",0,false,'+level+',state.projection.payload)');
+      assert.equal(r.options.length,count,'every offered level changes option count');
+      assert.equal(r.answer,answer,'changing level retains the current word');
+      const toolbar=run('A.toolbar(state.projection)');
+      assert(!toolbar.includes('value="4"'),'galaxy offers only three distinct levels');
+      assert(toolbar.includes('value="'+level+'" selected'),'selector reflects actual difficulty');
+    }
+  }
   await action('pdi-favorite','puzzle');await run('A.save()');assert.deepEqual(persisted.favorites,['puzzle']);
   for(const id of ['contar','vocales','memory','cuento'])await action('queue-toggle',id);assert.equal(run('A.ui.book.queue.length'),4);
   await action('queue-up','memory');assert.deepEqual(json('A.ui.book.queue'),['contar','memory','vocales','cuento']);
