@@ -39,6 +39,7 @@
           <button type="submit">Entrar a La Clase Rosa →</button>
           <p class="rosa-login-error" role="alert" aria-live="polite"></p>
         </form>
+        <p style="margin:18px 0 0;font-size:.9rem"><a href="https://diario-clase-rosa.amonteroc-ext.chatgpt.site/" style="color:#a6295d;font-weight:700">Diario de familias · La Clase Rosa →</a></p>
       </div>`;
     document.body.prepend(layer);
     window.ROSA_STARTUP?.loginReady();
