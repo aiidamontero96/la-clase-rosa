@@ -6,7 +6,7 @@ Diario privado de una sola clase. La maestra publica texto, fotos, vídeos y aud
 
 - `/`: acceso de las familias mediante cuentas creadas por la maestra.
 - `/panel`: panel de maestra. Usa el inicio de sesión de ChatGPT de la propietaria y comprueba en servidor la identidad autenticada contra `TEACHER_EMAIL`.
-- La contraseña temporal de una familia se muestra una sola vez; en el primer acceso debe cambiarla. Las contraseñas se almacenan con PBKDF2-SHA256 y sal individual, nunca en texto plano.
+- La maestra asigna el usuario y la contraseña de cada familia. Las familias no pueden cambiarlos. No se exige longitud mínima ni composición; el límite técnico es de 128 caracteres. Las contraseñas se almacenan con PBKDF2-SHA256 y sal individual, nunca en texto plano.
 - Sesiones de familias de siete días, token aleatorio almacenado como SHA256, cookie HttpOnly/Secure/SameSite. Restablecer una contraseña o desactivar una cuenta revoca sus sesiones.
 
 ## Datos
@@ -20,8 +20,10 @@ Las tablas se crean mediante la migración de `drizzle/`, no durante las solicit
 ## Validación y construcción
 
 ```sh
-node scripts/check-diary.mjs
+npm test
 ```
+
+Las fotos grandes se optimizan en el navegador hasta 2048 px, antes de transferirse, siempre que el resultado pese menos. Los vídeos mantienen su calidad. Se suben dos archivos como máximo en paralelo, con progreso individual y conservación de los adjuntos que sí llegan si otro falla.
 
 Los tests usan SQLite en memoria y almacenamiento de objetos simulado, sin modificar producción. No hay cuentas o publicaciones de ejemplo en producción. La grabación de voz requiere HTTPS y permiso de micrófono del navegador. Se permite adjuntar una grabación externa si el navegador no admite MediaRecorder.
 
