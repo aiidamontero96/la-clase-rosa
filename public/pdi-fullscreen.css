@@ -806,7 +806,7 @@
 #projector:has(.projection-main[data-game="palabra-imagen"]) .projection-main[data-game="palabra-imagen"]>.pdi-word-picture-meta{margin:4px auto 0}
 #projector:has(.projection-main[data-game="palabra-imagen"]) .projection-main[data-game="palabra-imagen"] .pdi-word-picture-meta>span{padding:5px 17px;font-size:clamp(.78rem,1.2vw,1rem)}
 #projector:has(.projection-main[data-game="palabra-imagen"]) .projection-main[data-game="palabra-imagen"]>.choice-grid{margin:0 auto;gap:clamp(18px,2.6vw,44px)}
-#projector:has(.projection-main[data-game="palabra-imagen"]) .projection-main[data-game="palabra-imagen"] .pdi-word-picture-art{background:transparent!important;border-radius:0!important}
+#projector:has(.projection-main[data-game="palabra-imagen"]) .projection-main[data-game="palabra-imagen"] .pdi-word-picture-art{background:transparent!important;border-radius:0!important;border:0!important;box-shadow:none!important}
 #projector:has(.projection-main[data-game="palabra-imagen"]) .projection-footer{
   position:absolute;z-index:40;left:50%;bottom:12px;width:auto;min-height:0;padding:0;border:0;background:transparent;transform:translateX(-50%);
 }
