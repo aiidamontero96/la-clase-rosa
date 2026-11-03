@@ -602,7 +602,7 @@ function answer(target){
       if(p.payload?.assemblyGalaxy){const next=$('#projection-content .projection-footer [data-action="projection-next"]');if(next)next.disabled=false;}
       const image=target.querySelector?.('img'),src=image?.getAttribute?.('src')||'';
       const sparks=Array.from({length:36},(_,index)=>'<i style="--i:'+index+';--a:'+(index*10)+'deg;--d:'+(28+index%7*6)+'vmin"></i>').join('');
-      fb.innerHTML='<span class="sr-only">RESPUESTA CORRECTA</span><div class="pdi-word-picture-success" aria-hidden="true"><span class="pdi-word-picture-burst">'+sparks+'</span><span class="pdi-word-picture-orbit orbit-one"></span><span class="pdi-word-picture-orbit orbit-two"></span><span class="pdi-word-picture-winner">'+(src?'<img src="'+E(src)+'" alt="">':'')+'</span></div>';
+      fb.innerHTML='<span class="sr-only">RESPUESTA CORRECTA</span><div class="pdi-word-picture-success" aria-hidden="true"><span class="pdi-word-picture-burst">'+sparks+'</span><span class="pdi-word-picture-orbit orbit-one"></span><span class="pdi-word-picture-orbit orbit-two"></span><span class="pdi-word-picture-winner">'+(src?'<img'+(src.startsWith('assets/autumn-vocab/')?' class="pdi-word-picture-photo"':'')+' src="'+E(src)+'" alt="">':'')+'</span></div>';
       setTimeout(()=>fb.querySelector?.('.pdi-word-picture-success')?.remove(),2200);
     }else{
       fb.innerHTML='<span class="sr-only">PRUEBA CON OTRO DIBUJO</span>';

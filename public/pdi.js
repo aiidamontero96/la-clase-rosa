@@ -294,7 +294,7 @@ window.ROSA_PDI = (() => {
       const selected=card.choices.slice(0,total).map(word=>vocabularyByWord.get(word));
       prompt=target.word;
       visual='<div class="pdi-word-picture-meta"><span>'+(payload?.assemblyGalaxy?'LA GALAXIA DE HOY · 1 RONDA':'RONDA '+(n+1)+' DE 5')+'</span></div>';
-      options=selected.map(entry=>option(entry.word,'<span class="pdi-word-picture-art"><img src="'+entry.src+'" width="300" height="300" alt="'+esc(entry.word)+'"></span>'));
+      options=selected.map(entry=>option(entry.word,'<span class="pdi-word-picture-art'+(entry.src.startsWith('assets/autumn-vocab/')?' pdi-word-picture-photo':'')+'"><img src="'+entry.src+'" width="300" height="300" alt="'+esc(entry.word)+'"></span>'));
       answer=target.word;
       explanation='¡MUY BIEN! ES '+target.word+'.';
     } else if (kind === 'parejas') {
