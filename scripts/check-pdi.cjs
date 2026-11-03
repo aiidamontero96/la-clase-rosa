@@ -20,7 +20,7 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
     if(kind==='juntar')assert.equal((r.visual.match(/class="pdi-emoji /g)||[]).length,Number(r.answer));
   }
   for(const [level,total] of [[1,2],[2,3],[3,4],[4,4]]){
-    const rounds=Array.from({length:37},(_,n)=>json('window.ROSA_PDI.round("palabra-imagen",'+n+',false,'+level+')'));
+    const rounds=Array.from({length:json('window.ROSA_PDI.wordPictureCount')},(_,n)=>json('window.ROSA_PDI.round("palabra-imagen",'+n+',false,'+level+')'));
     for(const round of rounds){
       assert.equal(round.options.length,total,'word-picture options at level '+level);
       assert.equal(round.prompt,round.prompt.toLocaleUpperCase('es-ES'));
@@ -28,8 +28,39 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
       assert(round.options.every(option=>option.label.includes('<img ')&&!option.label.includes('pdi-emoji')));
       for(const option of round.options){const src=option.label.match(/src="([^"]+)"/)?.[1];assert(src&&fs.existsSync(path.join(publicDir,src)),src);}
     }
-    assert.equal(new Set(rounds.map(round=>round.answer)).size,37,'all 37 single words rotate through the activity');
+    assert.equal(new Set(rounds.map(round=>round.answer)).size,json('window.ROSA_PDI.wordPictureCount'),'all vocabulary words rotate through the activity');
   }
+  // Real sessions share a persistent shuffled deck, including across module reloads.
+  const vocabularyCount=json('window.ROSA_PDI.wordPictureCount');
+  assert(vocabularyCount>=66);
+  const seen=[];
+  for(let i=0;i<vocabularyCount*3;i++){
+    if(i%7===0)vm.runInContext(fs.readFileSync(path.join(publicDir,'pdi.js'),'utf8'),context);
+    const card=json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{})');
+    assert(!seen.slice(-8).includes(card.answer),'no recent repeats at cycle boundaries');
+    seen.push(card.answer);
+    if((i+1)%vocabularyCount===0)assert.equal(new Set(seen.slice(-vocabularyCount)).size,vocabularyCount,'exhaust every word before repeating');
+  }
+  run('window.galaxyPayload={}');
+  const stable=json('window.ROSA_PDI.round("palabra-imagen",0,false,2,window.galaxyPayload)');
+  assert.deepEqual(json('window.ROSA_PDI.round("palabra-imagen",0,true,2,window.galaxyPayload)'),stable,'retry must retain word and choices');
+  assert.equal(json('window.ROSA_PDI.round("palabra-imagen",0,false,4,window.galaxyPayload)').answer,stable.answer,'level changes retain word');
+  const daily=json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{assemblyGalaxy:"rosa"})');
+  vm.runInContext(fs.readFileSync(path.join(publicDir,'pdi.js'),'utf8'),context);
+  assert.deepEqual(json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{assemblyGalaxy:"rosa"})'),daily,'same day survives reload');
+  assert.notEqual(json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{assemblyGalaxy:"vero"})').answer,daily.answer,'groups have independent daily cards');
+  run('window.realDate=Date;Date=class extends window.realDate{constructor(...args){super(...(args.length?args:[new window.realDate().getTime()+86400000]));}}');
+  assert.notEqual(json('window.ROSA_PDI.round("palabra-imagen",0,false,2,{assemblyGalaxy:"rosa"})').answer,daily.answer,'new day gets a fresh word');
+  run('Date=window.realDate');
+  await run('A.launch("palabra-imagen")');
+  const firstWord=run('state.projection.answer');
+  run('A.next()');assert.notEqual(run('state.projection.answer'),firstWord);
+  await run('A.save()');const savedGalaxy=json('A.snapshot(state.projection)');
+  await run('A.resume()');assert.deepEqual(json('state.projection.payload'),savedGalaxy.payload,'resume preserves complete galaxy card');assert.equal(run('state.projection.round'),savedGalaxy.round);
+  const offlineContext=vm.createContext({window:{ROSA:{students:[]}},localStorage:{getItem(){throw Error('blocked');},setItem(){throw Error('blocked');}}});
+  vm.runInContext(fs.readFileSync(path.join(publicDir,'pdi.js'),'utf8'),offlineContext);
+  const offlineWords=Array.from({length:vocabularyCount},()=>vm.runInContext('window.ROSA_PDI.round("palabra-imagen",0,false,2,{}).answer',offlineContext));
+  assert.equal(new Set(offlineWords).size,vocabularyCount,'storage failure still rotates in memory');
   await action('pdi-favorite','puzzle');await run('A.save()');assert.deepEqual(persisted.favorites,['puzzle']);
   for(const id of ['contar','vocales','memory','cuento'])await action('queue-toggle',id);assert.equal(run('A.ui.book.queue.length'),4);
   await action('queue-up','memory');assert.deepEqual(json('A.ui.book.queue'),['contar','memory','vocales','cuento']);
