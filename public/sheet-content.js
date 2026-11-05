@@ -161,6 +161,12 @@ window.ROSA_SHEET_CONTENT = (() => {
     mezcla:['A','M','E','P','I','S']
   };
   const schoolGlyph=letter=>window.ROSA_SCHOOL_SCRIPT.glyph(letter);
+  const animalOutlines={
+    'assets/symbols/1f981.png':'assets/worksheet-outlines/leon.svg',
+    'assets/symbols/1f418.png':'assets/worksheet-outlines/elefante.svg'
+  };
+  const footprintIds=['ankylosaurus','brachiosaurus','diplodocus','parasaurolophus','spinosaurus',
+    'stegosaurus','trex','triceratops','velociraptor'];
 
   return {
     vocabulary,
@@ -170,7 +176,9 @@ window.ROSA_SHEET_CONTENT = (() => {
     letterSets,
     caseSets,
     schoolGlyph,
+    footprintIds,
     shapeColors:['#f4a3bd','#6eb7e8','#f2c94c','#74c69d'],
-    outlineSrc:src=>src.replace(/(\.[a-z0-9]+)$/i,'-outline$1')
+    outlineSrc:src=>animalOutlines[src]||src.replace(/(\.[a-z0-9]+)$/i,'-outline$1')
   };
 })();
+

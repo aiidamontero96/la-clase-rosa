@@ -28,6 +28,9 @@ window.ROSA_SHEETS=(()=>{
   const pictureKinds={'contar-dibujos':'choose','sumas-dibujos':'add','colorear-cantidades':'color'};
   const modeOptions=[['contar-dibujos','Contar y elegir el número'],['sumas-dibujos','Sumar con dibujos'],['colorear-cantidades','Colorear la cantidad indicada'],['numeros','Repasar y trabajar números'],['formas','Reconocer y dibujar formas'],['nombre','Trabajar el nombre'],['lenguaje','Letras, sílabas y palabras'],['pensar','Atención visual'],['trazos','Trazos y caminos'],['dino','Huellas de dinosaurios'],['policubos','Policubos']];
   function pictureSettings(){return {kind:pictureKinds[ui.mode],theme:ui.pictureTheme,limit:ui.pictureLimit,count:ui.pictureCount,seed:ui.seed,ink:ui.ink};}
+  // Only species with a drawing and a footprint in both ink formats can appear here.
+  const footprintDinosaurs=()=>window.ROSA.dinosaurs.filter(dino=>CONTENT.footprintIds.includes(dino.id));
+  const footprintDinoArt=(dino,cls)=>img({src:'assets/dinos-pdi/'+dino.id+'.webp',label:dino.short},cls);
   function controls(){
     const ink=select('Impresión','ink',[['color','A todo color'],['bn','Blanco y negro'],['coloring','Solo contorno · para colorear']]);
     if(pictureKinds[ui.mode])return select('Dibujos de la ficha','pictureTheme',window.ROSA_WORKSHEET_PICTURES.themes.map(t=>[t,t]))+select(ui.mode==='sumas-dibujos'?'Resultado máximo':'Cantidades hasta el','pictureLimit',[[3,'3 · Primeros pasos'],[5,'5 · Practicamos'],[10,'10 · Un reto más']])+(ui.mode==='contar-dibujos'?'<p class="studio-option-note">4 ejercicios, con tres números para elegir.</p>':select('Ejercicios por ficha','pictureCount',ui.mode==='sumas-dibujos'?[[3,'3 sumas grandes'],[4,'4 sumas']]:[[2,'2 ejercicios grandes'],[3,'3 ejercicios']]))+(ui.mode==='colorear-cantidades'?'<p class="studio-outline-note">✎ Dibujos de contorno negro e interior blanco, listos para colorear.</p>':ink);
@@ -57,7 +60,7 @@ window.ROSA_SHEETS=(()=>{
     if(ui.mode==='dino'){
       const activity=select('Actividad','dinoType',[['conocer','El dinosaurio y su huella'],['relacionar','Une dinosaurio y huella'],['camino','Sigue sus huellas'],['encuentra','Encuentra su huella'],['contar','Cuenta sus huellas']]);
       if(ui.dinoType==='relacionar')return activity+select('Parejas por folio','dinoCount',[[4,'4 parejas · grandes'],[6,'6 parejas · medianas'],[8,'8 parejas · compactas']])+ink;
-      return activity+select('Dinosaurio','dinoId',window.ROSA.dinosaurs.map(d=>[d.id,d.short]))+(ui.dinoType==='conocer'?'':select('Nivel','level',[[1,'Primeros pasos'],[2,'Practicamos'],[3,'Un reto más']]))+ink;
+      return activity+select('Dinosaurio','dinoId',footprintDinosaurs().map(d=>[d.id,d.short]))+(ui.dinoType==='conocer'?'':select('Nivel','level',[[1,'Primeros pasos'],[2,'Practicamos'],[3,'Un reto más']]))+ink;
     }
     return select('Actividad','thinkType',[['intruso','Encuentra el intruso'],['sombras','Une con su sombra'],['busca','Busca y rodea'],['clasifica','Clasifica en dos grupos']])+select('Vocabulario','theme',CONTENT.themeNames.map(v=>[v,v]))+ink;
   }
@@ -230,31 +233,31 @@ window.ROSA_SHEETS=(()=>{
   const footprint=(id,cls='')=>'<img class="footprint '+cls+'" src="assets/dino-footprints/'+esc(id)+(ui.ink==='coloring'?'-outline':'')+'.webp" alt="Huella reconstruida de '+esc(id)+'">';
   function dinoMatchSheet(){
     const count=[4,6,8].includes(Number(ui.dinoCount))?Number(ui.dinoCount):4;
-    const all=window.ROSA.dinosaurs;
+    const all=footprintDinosaurs();
     const chosen=Array.from({length:count},(_,i)=>all[(i+(Number(ui.seed)||0))%all.length]);
     const shift=count===4?1:count===6?2:3;
     const right=chosen.map((_,i)=>chosen[(i+shift)%count]);
-    const dinoPicture=info=>{
-      const index=Math.max(0,all.findIndex(d=>d.id===info.id));
-      return img(PLAY.themes.Dinosaurios[index],'dino-match-picture');
-    };
     return header('Dinosaurios y huellas',count+' parejas · Une cada dinosaurio con su huella.')+
       '<main class="dino-match-sheet match-sheet match-count-'+count+'">'+
         '<div class="match-heading dino-match-heading"><strong>DINOSAURIOS</strong><span></span><strong>HUELLAS</strong></div>'+
         '<div class="match-list">'+chosen.map((info,i)=>
           '<div class="match-row dino-match-row">'+
-            '<div class="dino-match-cell dino-match-left"><span class="dino-match-number">'+(i+1)+'</span>'+dinoPicture(info)+'<strong>'+esc(info.short)+'</strong></div>'+
+            '<div class="dino-match-cell dino-match-left"><span class="dino-match-number">'+(i+1)+'</span>'+footprintDinoArt(info,'dino-match-picture')+'<strong>'+esc(info.short)+'</strong></div>'+
             '<div class="match-draw-space" aria-hidden="true"></div>'+
             '<div class="dino-match-cell dino-match-right">'+footprint(right[i].id,'dino-match-footprint')+'</div>'+
           '</div>'
         ).join('')+'</div>'+
       '</main>';
   }
-  function dinoSheet(){const level=Number(ui.level)||1,index=Math.max(0,window.ROSA.dinosaurs.findIndex(d=>d.id===ui.dinoId)),info=window.ROSA.dinosaurs[index],dino=PLAY.themes.Dinosaurios[index];let body='';
+  function dinoSheet(){
     if(ui.dinoType==='relacionar')return dinoMatchSheet();
-    if(ui.dinoType==='conocer')body='<h2>'+esc(info.short)+' y su tipo de huella</h2><div class="dino-footprint-pair">'+img(dino,'dino-goal')+footprint(info.id,'footprint-large')+'</div><p>Observa sus dedos y repasa el contorno.</p><div class="trace-paths"><span></span><span></span></div>';
-    else if(ui.dinoType==='camino'){const total=[5,8,11][level-1];body='<h2>Sigue las huellas del '+esc(info.short)+'</h2><div class="footprint-path">'+Array.from({length:total},(_,i)=>footprint(info.id,i%2?'flip':'')).join('')+'</div>'+img(dino,'dino-goal')+'<div class="trace-paths"><span></span><span></span></div>';}
-    else if(ui.dinoType==='encuentra'){const others=window.ROSA.dinosaurs.filter(d=>d.id!==info.id),choices=[info,...Array.from({length:[2,5,8][level-1]},(_,i)=>others[(i+ui.seed)%others.length])].sort((a,b)=>(a.id.charCodeAt(0)+ui.seed)%7-(b.id.charCodeAt(0)+ui.seed)%7);body='<h2>Rodea la huella del '+esc(info.short)+'</h2>'+img(dino,'dino-clue')+'<div class="footprint-find">'+choices.map(d=>footprint(d.id)).join('')+'</div>';}
+    const species=footprintDinosaurs();
+    const info=species.find(dino=>dino.id===ui.dinoId)||species.find(dino=>dino.id==='trex');
+    const level=Number(ui.level)||1;
+    let body='';
+    if(ui.dinoType==='conocer')body='<h2>'+esc(info.short)+' y su tipo de huella</h2><div class="dino-footprint-pair">'+footprintDinoArt(info,'dino-goal')+footprint(info.id,'footprint-large')+'</div><p>Observa sus dedos y repasa el contorno.</p><div class="trace-paths"><span></span><span></span></div>';
+    else if(ui.dinoType==='camino'){const total=[5,8,11][level-1];body='<h2>Sigue las huellas del '+esc(info.short)+'</h2><div class="footprint-path">'+Array.from({length:total},(_,i)=>footprint(info.id,i%2?'flip':'')).join('')+'</div>'+footprintDinoArt(info,'dino-goal')+'<div class="trace-paths"><span></span><span></span></div>';}
+    else if(ui.dinoType==='encuentra'){const others=species.filter(d=>d.id!==info.id),choices=[info,...Array.from({length:[2,5,8][level-1]},(_,i)=>others[(i+ui.seed)%others.length])].sort((a,b)=>(a.id.charCodeAt(0)+ui.seed)%7-(b.id.charCodeAt(0)+ui.seed)%7);body='<h2>Rodea la huella del '+esc(info.short)+'</h2>'+footprintDinoArt(info,'dino-clue')+'<div class="footprint-find">'+choices.map(d=>footprint(d.id)).join('')+'</div>';}
     else body='<h2>Cuenta las huellas del '+esc(info.short)+'</h2><div class="count-footprints">'+Array.from({length:4},(_,r)=>'<div><span>'+Array.from({length:Math.min(6,r+2+level)},()=>footprint(info.id)).join('')+'</span><i></i></div>').join('')+'</div>';
     return header('Huellas y dinosaurios','Cada dinosaurio aparece con un tipo de huella reconstruida para el aula.')+'<main>'+body+'</main>';
   }
@@ -398,6 +401,7 @@ window.ROSA_SHEETS=(()=>{
   function change(target){if(target.dataset.studioCustom!==undefined){updateCustomText(target);return true;}if(target.dataset.studioSetting){const key=target.dataset.studioSetting;if(key in ui){if(key==='mode'&&valueIsPicture(target.value))ui.pictureCount=target.value==='colorear-cantidades'?2:3;ui[key]=['level','polyCount','dinoCount','langCount','pictureLimit','pictureCount'].includes(key)?Number(target.value):target.value;refresh();}return true;}if(target.dataset.studioCutouts!==undefined){ui.cutouts=target.checked;refresh();return true;}return false;}
   return {ui,panel,sheet,printHTML,handle,change,openExample,updateCustomText,getRoster:()=>[...roster]};
 })();
+
 
 
 
