@@ -247,3 +247,6 @@
 }
 
 
+
+
+.pond-token-static,.pond-token-static:hover { cursor:default; background:transparent; }

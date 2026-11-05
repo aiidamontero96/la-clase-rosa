@@ -140,10 +140,13 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
   function renderCountGroup(model,key,title){
     const group=model.groups[key];
     const tokens=group.map(({name,display,index})=>{
+      const absent=key==='absent';
+      const art=`${artwork(index,absent)}<span>${esc(display.toLocaleUpperCase('es-ES'))}</span>`;
+      if(absent)return `<div class="pond-token pond-token-static">${art}</div>`;
       const marked=model.marked.has(name);
-      return `<button type="button" class="pond-token${key==='absent'?'':' is-present'}${marked?' is-counted':''}"
+      return `<button type="button" class="pond-token is-present${marked?' is-counted':''}"
         data-action="pond-count-token" data-value="${esc(name)}" aria-label="${esc(display)}" aria-pressed="${marked}">
-        ${artwork(index,key==='absent')}<span>${esc(display.toLocaleUpperCase('es-ES'))}</span><i aria-hidden="true">✓</i></button>`;
+        ${art}<i aria-hidden="true">✓</i></button>`;
     }).join('');
     const empty=key==='absent'?'HAN VENIDO TODOS':'NO HAY PATITOS EN ESTA MESA';
     const heading=title?`<h3>${title}</h3>`:'';
@@ -222,5 +225,6 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
   }
   return {render,update,startCount,renderCount,toggleCounted,bindWriting,clearWriting};
 })();
+
 
 

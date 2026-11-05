@@ -41,7 +41,7 @@
     const session=active;if(!session)return;active=null;
     session.controller.abort();session.video.pause();session.cancelFrame();
     session.video.removeAttribute('src');session.video.load();
-    if(session.ownsFullscreen&&document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+    if(session.ownsFullscreen&&nativePdiFullscreen())exitNativePdiFullscreen();
     if(session.dialog.open)session.dialog.close();session.dialog.remove();
     session.opener?.focus?.();
     if(restoreRoute&&onRoute())location.hash=lastRoute;
@@ -109,13 +109,12 @@
     $('.dinosaur-immersive').addEventListener('click',()=>{
       const immersive=dialog.classList.toggle('is-immersive');$('.dinosaur-immersive').textContent=immersive?'MOSTRAR CONTROLES':'OCULTAR CONTROLES';resize();
     });
+    async function enterFullscreen(){
+      session.ownsFullscreen=await requestNativePdiFullscreen(dialog);
+    }
     $('.dinosaur-fullscreen').addEventListener('click',()=>{
-      if(document.fullscreenElement){document.exitFullscreen().catch(()=>{});session.ownsFullscreen=false;return;}
-      // Browsers disallow requestFullscreen on a dialog. Fullscreen its document instead.
-      const element=document.documentElement;
-      const request=element.requestFullscreen?.bind(element)||element.webkitRequestFullscreen?.bind(element);
-      if(request){Promise.resolve(request()).then(()=>{session.ownsFullscreen=true;}).catch(()=>{status.textContent='PUEDES OCULTAR LOS CONTROLES PARA VERLO MÁS GRANDE';});}
-      else{dialog.classList.add('is-immersive');$('.dinosaur-immersive').textContent='MOSTRAR CONTROLES';status.textContent='USA MOSTRAR CONTROLES PARA VOLVER';resize();}
+      if(nativePdiFullscreen()){exitNativePdiFullscreen();session.ownsFullscreen=false;return;}
+      void enterFullscreen();
     });
     video.addEventListener('loadedmetadata',()=>{progress.max=String(video.duration);background.width=Math.max(1,Math.round(320*video.videoWidth/video.videoHeight));background.height=320;resize();start.disabled=false;});
     video.addEventListener('loadeddata',paint);
@@ -124,12 +123,19 @@
     video.addEventListener('seeking',paint);video.addEventListener('seeked',()=>{paint();if(!video.paused)schedule();});
     video.addEventListener('ended',()=>{session.cancelFrame();paint();status.textContent='¡VAMOS A VERLO OTRA VEZ!';});
     video.addEventListener('error',()=>{start.disabled=true;loading.hidden=false;loading.textContent=status.textContent='NO SE HA PODIDO ABRIR EL VÍDEO';});
-    window.addEventListener('resize',resize,{signal});document.addEventListener('fullscreenchange',()=>{$('.dinosaur-fullscreen').textContent=document.fullscreenElement?'⛶ SALIR DE PANTALLA COMPLETA':'⛶ PANTALLA COMPLETA';resize();},{signal});
+    window.addEventListener('resize',resize,{signal});
+    function fullscreenChanged(){
+      $('.dinosaur-fullscreen').textContent=nativePdiFullscreen()?'⛶ SALIR DE PANTALLA COMPLETA':'⛶ PANTALLA COMPLETA';
+      resize();
+    }
+    document.addEventListener('fullscreenchange',fullscreenChanged,{signal});
+    document.addEventListener('webkitfullscreenchange',fullscreenChanged,{signal});
     const observer=new ResizeObserver(resize);observer.observe(stage);signal.addEventListener('abort',()=>observer.disconnect(),{once:true});
     document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();},{signal});
     if(experience.poster)video.poster=experience.poster;
     video.src=experience.video;
     if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');
+    void enterFullscreen();
 
   }
   function sync(){
@@ -148,3 +154,4 @@
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
+

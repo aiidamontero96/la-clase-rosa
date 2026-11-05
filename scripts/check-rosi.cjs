@@ -11,7 +11,7 @@ class Node{
 const dialog=new Node();
 const document={createElement:()=>dialog,body:{append(){}},activeElement:new Node(),addEventListener:(k,fn)=>events[k]=fn,fullscreenElement:null};
 const window={addEventListener(){},ROSA_AULA:{stopVoice(){}},ROSA_MISSIONS:{start:week=>launched.push(week)}};
-const c=vm.createContext({window,document,localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},requestAnimationFrame:fn=>{frames.set(++frame,fn);return frame;},cancelAnimationFrame:id=>frames.delete(id)});
+const c=vm.createContext({window,document,requestNativePdiFullscreen:async()=>false,localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},requestAnimationFrame:fn=>{frames.set(++frame,fn);return frame;},cancelAnimationFrame:id=>frames.delete(id)});
 for(const file of ['pdi-voice.js','rosi-config.js','rosi-media.js','rosi-episode.js'])vm.runInContext(fs.readFileSync(path.join(root,'public',file),'utf8'),c);
 const C=window.ROSA_EPISODES,M=window.ROSA_EPISODE_MEDIA,P=window.ROSA_EPISODE;
 assert.equal(C.episodes.length,1,'Only one pilot');assert.equal(new Set(C.pupils).size,9);const episode=C.episodes[0],media=M[episode.id];
@@ -22,7 +22,7 @@ assert(media.duration>=media.cues.at(-1).end);assert.equal(media.envelope.length
 for(const file of [C.mascot.atlas,C.mascot.head,C.mascot.background,media.audio,'audio/rosi-valle.mp3'])assert(fs.statSync(path.join(root,'public',file)).size>1000,file);
 const flush=()=>new Promise(r=>setImmediate(r));const action=(s,v)=>P.handle('episode-'+s,v);const voice=()=>nodes.get('#rosi-voice'),music=()=>nodes.get('#rosi-music');
 (async()=>{
- action('open',episode.id);assert(dialog.open);assert(voice().paused,'Opening does not autoplay');assert.equal(voice().playbackRate,1.12);assert.equal(voice().preservesPitch,true);
+ action('open',episode.id);assert(dialog.open);assert(dialog.classList.contains('rosi-expanded'));assert(voice().paused,'Opening does not autoplay');assert.equal(voice().playbackRate,1.12);assert.equal(voice().preservesPitch,true);
  action('mission');assert.equal(launched.length,0,'Mission unlocks only after the episode');
  action('play');await flush();assert(!voice().paused&&!music().paused);assert.equal(frames.size,1);
  voice().currentTime=media.cues[4].start+.3;for(const fn of [...frames.values()])fn();assert.equal(nodes.get('.rosi-caption').textContent,media.cues[4].text);
@@ -34,7 +34,7 @@ const flush=()=>new Promise(r=>setImmediate(r));const action=(s,v)=>P.handle('ep
  voice().currentTime=media.duration;voice().paused=true;voice().emit('ended');assert(!nodes.get('.rosi-finish').hidden);assert(music().paused);action('mission');assert.equal(launched[0],1);assert(!dialog.open&&voice().paused);assert.equal(frames.size,0);
  action('open',episode.id);voice().reject=true;action('play');await flush();assert(nodes.get('.rosi-status').textContent.includes('Reintentar'));assert(music().paused);assert.equal(frames.size,0);voice().reject=false;action('play');await flush();assert(!voice().paused);
  document.hidden=true;events.visibilitychange();assert(voice().paused&&music().paused);assert.equal(frames.size,0);document.hidden=false;
- action('fullscreen');await flush();assert(dialog.classList.contains('rosi-expanded'),'Fullscreen fallback works without native support');action('close');assert(!dialog.classList.contains('rosi-expanded'));
+ action('fullscreen');assert(!dialog.classList.contains('rosi-expanded'));action('fullscreen');await flush();assert(dialog.classList.contains('rosi-expanded'),'Fullscreen fallback works without native support');action('close');assert(!dialog.classList.contains('rosi-expanded'));
  assert.equal(P.handle('answer','0'),false,'Existing PDI actions remain untouched');
  console.log(JSON.stringify({pilot:episode.id,helpers:Array.from(episode.helpers),scenes:media.cues.length,media:'validated',controls:'passed',pauseAndBuffering:'passed',audioRetry:'passed',mission:'six weekly challenges',runtimeGeneration:false}));
 })().catch(e=>{console.error(e);process.exitCode=1;});

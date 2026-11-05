@@ -319,7 +319,7 @@ function illustratedMathPdi(){return '<section class="panel illustrated-pdi-spot
 function pdi(){return A.pdiPage();}
 function storyCredits(book){return '<p class="story-credits"><strong>TEXTO:</strong> '+E(book.author)+' · <strong>ILUSTRACIONES:</strong> '+E(book.illustrator)+' · <strong>TRADUCCIÓN:</strong> '+E(book.translator)+' · '+E(book.publisher)+' · '+E(book.license||'CC BY 4.0')+'</p>';}
 function stories(){const library=window.ROSA_STORIES;const ready=library.ready.map(book=>'<article class="story-card story-ready"><img class="'+(book.coverFit==='contain'?'story-cover-contain':'')+'" src="'+book.cover+'" width="640" height="480" alt="Portada de '+E(book.title)+'"><div><span class="tag">'+E(book.level)+' · DISPONIBLE EN LA APP</span><h2>'+E(book.title)+'</h2><p>'+E(book.description)+'</p><p class="story-by">De '+E(book.author)+' · Ilustraciones de '+E(book.illustrator)+'</p><div class="story-actions">'+btn('LEER / PROYECTAR','story-open',book.id)+'</div></div></article>').join('');return head('Biblioteca Rosa',library.ready.length+' cuentos para leer y proyectar sin salir de La Clase Rosa.','', 'LECTURA COMPARTIDA')+'<section class="panel story-intro"><span aria-hidden="true">▰</span><div><h2>Un cuento, una conversación</h2><p>Abre el cuento, usa pantalla completa y pasa las páginas con botones grandes para la PDI.</p></div></section><div class="story-library">'+ready+'</div><p class="note">Todos los cuentos se leen dentro de la web y conservan sus créditos y licencia.</p>';}
-function openStory(id){const book=window.ROSA_STORIES.ready.find(item=>item.id===id);if(!book)return;state.story={id,page:0};$('#projector').showModal();renderStory();}
+function openStory(id){const book=window.ROSA_STORIES.ready.find(item=>item.id===id);if(!book)return;state.story={id,page:0};openProjector();renderStory();}
 function renderStory(){const s=state.story;if(!s)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===s.id);if(!book)return;const toolbar='<div class="projection-toolbar story-toolbar"><strong>BIBLIOTECA ROSA · '+E(book.title)+'</strong><div>'+btn(fullscreenLabel(),'fullscreen','','secondary small')+btn('× SALIR','story-close','','quiet')+'</div></div>';if(book.readerUrl){$('#projection-content').innerHTML=toolbar+'<main class="story-reader-frame"><iframe src="'+book.readerUrl+'" title="CUENTO '+E(book.title)+'" allowfullscreen></iframe></main><footer class="story-reader-credits">'+storyCredits(book)+'<div>'+btn('CERRAR CUENTO','story-close','','secondary small')+'</div></footer>';return;}const page=book.pages[s.page],first=s.page===0,last=s.page===book.pages.length-1,isYayoiCover=book.id==='yayoi-desde-aqui-hasta-el-infinito'&&first;const text=book.imageOnly?'':page[1]?'<div class="story-page-text">'+E(page[1]).replaceAll('\n','<br>')+'</div>':'<div class="story-cover-title"><h2>'+E(book.title)+'</h2><p>DE '+E(book.author)+'</p></div>';const visual=isYayoiCover?'<div class="yayoi-landscape-cover"><img src="'+page[0]+'" width="1093" height="1439" alt="PORTADA DEL LIBRO '+E(book.title)+'"><section><span>YAYOI KUSAMA</span><h2>DESDE AQUÍ HASTA EL INFINITO</h2><p>UN LIBRO PARA MIRAR JUNTOS</p></section></div>':'<img src="'+page[0]+'" width="1024" height="768" alt="ILUSTRACIÓN DE LA PÁGINA '+(s.page+1)+' DE '+E(book.title)+'">';$('#projection-content').innerHTML=toolbar+'<main class="story-reader '+(book.imageOnly?'story-image-only':'')+(isYayoiCover?' story-yayoi-cover':'')+'"><figure>'+visual+'</figure>'+text+'</main><footer class="story-footer">'+btn('← ANTERIOR','story-prev','',first?'secondary story-disabled':'secondary')+'<span aria-live="polite">PÁGINA '+(s.page+1)+' DE '+book.pages.length+'</span>'+btn(last?'TERMINAR':'SIGUIENTE →',last?'story-close':'story-next')+'</footer>'+(last?'<div class="story-reader-credits">'+storyCredits(book)+'</div>':'');}
 function materialList(ids){const mats=[...new Set(ids.flatMap(id=>getResource(id).materials))];return '<section class="material-check"><h2>Deja preparado</h2><ul>'+mats.map(m=>'<li>'+E(m)+'</li>').join('')+'</ul></section>';}
 function today(){const labels=['Asamblea','Matemáticas','Lenguaje','Manipulación','Juego','Dinosaurios'];return head('¿Qué hago hoy?','Una selección para escoger y combinar. No es un horario ni hace falta hacer las seis.',btn('↻ Dame otras actividades','today-new')+btn('Imprimir selección','print-view','','secondary'))+'<div class="selection-list">'+state.today.map((id,i)=>{const r=getResource(id);return '<article class="selection-item"><span class="round-icon">'+(i+1)+'</span><div><span class="eyebrow">'+labels[i]+' · '+r.duration+' MIN</span><h3 style="margin-top:8px">'+E(r.title)+'</h3><p>'+E(r.preparation)+'</p><div class="resource-actions">'+actions(r)+btn(state.favorites.has(id)?'♥ Guardado':'♡ Guardar','favorite',id,'secondary small')+'</div></div></article>';}).join('')+'</div><div style="margin-top:24px">'+materialList(state.today)+'</div>';}
@@ -351,7 +351,7 @@ function updateProjectedDuty(role,name){
  if(!select||!result){projectionRender();return;}
  select.value=name||'';result.textContent=studentLabel(name||'');result.classList.toggle('is-empty',!name);
 }
-function startProjection(kind,round=0,payload=null){state.projection={kind,round:Number(round)||0,payload,answered:false,answer:null,explanation:'',hidden:false,pattern:'AB',date:new Date(),weather:null,counts:{present:0,absent:0,girls:0,boys:0},countDetails:state.assemblyGroup==='vero',attendance:Object.fromEntries(assemblyStudents().map(name=>[name,state.assemblyGroup==='vero'])),attendanceStep:'names',duties:{saludos:'',luces:'',material:'',jabon:''},memory:[],flipped:[],matched:[],locked:false,pairCelebration:false,nameBuild:[],nameUsed:[],nameMessage:'',nameWrongIndex:null,nameRound:null,relateRound:null,relateItems:[],relateLeftOrder:[],relateRightOrder:[],relateSelected:null,relateMatched:[]};A.setup(state.projection);if($('#resource-dialog').open)$('#resource-dialog').close();if(!$('#projector').open)$('#projector').showModal();projectionRender();$('#projector').scrollTop=0;}
+function startProjection(kind,round=0,payload=null){state.projection={kind,round:Number(round)||0,payload,answered:false,answer:null,explanation:'',hidden:false,pattern:'AB',date:new Date(),weather:null,counts:{present:0,absent:0,girls:0,boys:0},countDetails:state.assemblyGroup==='vero',attendance:Object.fromEntries(assemblyStudents().map(name=>[name,state.assemblyGroup==='vero'])),attendanceStep:'names',duties:{saludos:'',luces:'',material:'',jabon:''},memory:[],flipped:[],matched:[],locked:false,pairCelebration:false,nameBuild:[],nameUsed:[],nameMessage:'',nameWrongIndex:null,nameRound:null,relateRound:null,relateItems:[],relateLeftOrder:[],relateRightOrder:[],relateSelected:null,relateMatched:[]};A.setup(state.projection);if($('#resource-dialog').open)$('#resource-dialog').close();openProjector();projectionRender();$('#projector').scrollTop=0;}
 function veroTrainAttendance(p){const students=assemblyStudents();return '<section class="attendance-train vero-original-train"><header class="train-heading"><span class="train-kicker">EL TREN DE LA CLASE DE VERO</span><h2>¿QUIÉN HA VENIDO HOY?</h2><p>TOCA EL NOMBRE DE QUIEN NO HA VENIDO.</p></header><div class="train-station" aria-hidden="true"><img src="assets/asamblea-ligera/asistencia-tren/locomotora.webp?rev=1" alt=""><span>LA CLASE DE VERO</span><i class="train-cloud"></i><i class="train-cloud cloud-two"></i></div><div class="train-carriages">'+students.map(name=>{const label=studentLabel(name);return '<button type="button" class="train-wagon'+(!p.attendance[name]?' is-absent':'')+'" data-action="attendance-toggle" data-value="'+E(name)+'" aria-pressed="'+String(!p.attendance[name])+'" aria-label="'+E(label)+(p.attendance[name]?', EN CLASE. MARCAR AUSENCIA':', HOY NO HA VENIDO. MARCAR PRESENTE')+'"><span class="wagon-roof" aria-hidden="true"></span><span class="wagon-window" aria-hidden="true"><span class="window-view"></span><span class="wagon-curtain curtain-left"></span><span class="wagon-curtain curtain-right"></span><img class="window-children" src="assets/asamblea-ligera/asamblea-infantil/clase.webp?rev=1" alt=""></span><strong class="wagon-name">'+E(label.toLocaleUpperCase('es-ES'))+'</strong><span class="wagon-status">'+(p.attendance[name]?'EN CLASE':'HOY NO HA VENIDO')+'</span><span class="wagon-wheels" aria-hidden="true"></span></button>';}).join('')+'</div><div class="sr-only" id="attendance-train-status" role="status" aria-live="polite"></div></section>';}
 function attendanceNames(p){
  if(state.assemblyGroup!=='vero')return window.ROSA_PATITOS_ASISTENCIA.render(assemblyStudents(),p.attendance,studentLabel);
@@ -743,7 +743,6 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='start-assembly'){
   state.assemblyLetter=Math.floor(Math.random()*27);
   startProjection('encargado');
-  void enterProjectorFullscreen();
  }
  else if(action==='routine'){if(value==='encargado')state.assemblyLetter=Math.floor(Math.random()*27);if(value==='cancion'){A.stopVoice();$('#projector').close();location.hash='canciones';render();}else if(value==='galaxia')startProjection('palabra-imagen',0,{assemblyGalaxy:state.assemblyGroup});else if(value==='pregunta')startProjection('question',state.questionIndex,state.questionCategory);else if(value==='reto')startProjection('challenge',state.challengeIndex);else startProjection(value,value==='numero'?Math.floor(Math.random()*30):value==='letra'?(Number.isInteger(state.assemblyLetter)?state.assemblyLetter:(state.assemblyLetter=Math.floor(Math.random()*27))):0);}
  else if(action==='random-word')nextRandomWord();
@@ -772,7 +771,7 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='story-open')openStory(value);
  else if(action==='story-prev'){if(state.story&&state.story.page>0){state.story.page--;renderStory();}}
  else if(action==='story-next'){if(state.story){const book=window.ROSA_STORIES.ready.find(item=>item.id===state.story.id);if(book?.pages&&state.story.page<book.pages.length-1){state.story.page++;renderStory();}}}
- else if(action==='story-close'){state.story=null;document.body.classList.remove('story-fullscreen-fallback');if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});$('#projector').close();}
+ else if(action==='story-close'){state.story=null;$('#projector').close();leaveProjectorFullscreen();}
  else if(action==='course-game'){const [kind,round]=value.split('|');void A.launch(kind,{round:Number(round)||0});}
  else if(action==='projection-next')A.next();
  else if(action==='word-picture-restart'){const p=state.projection;if(p?.kind==='palabra-imagen'){p.round=0;p.payload={};p.answered=false;p.rewarded=false;projectionRender();}}
@@ -807,16 +806,10 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='count'){const [key,delta]=value.split('|');state.projection.countDetails=['girls','boys'].includes(key);state.projection.counts[key]=Math.max(0,Math.min(40,state.projection.counts[key]+Number(delta)));projectionRender();}
  else if(action==='reveal-riddle'){$('#riddle-answer').classList.remove('hidden');target.disabled=true;A.feedbackVoice(pick(D.riddles,state.projection.round)[1]);}
  else if(action==='memory-flip')memoryFlip(Number(value));
- else if(action==='close-projection'){A.close();document.body.classList.remove('story-fullscreen-fallback');if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});$('#projector').close();$('#projection-content').innerHTML='';state.projection=null;}
+ else if(action==='close-projection'){A.close();$('#projector').close();leaveProjectorFullscreen();$('#projection-content').innerHTML='';state.projection=null;}
  else if(action==='fullscreen'){
-  if(document.body.classList.contains('story-fullscreen-fallback')){
-   document.body.classList.remove('story-fullscreen-fallback');
-   syncFullscreenButton();
-  }else if(document.fullscreenElement||document.webkitFullscreenElement){
-   (document.exitFullscreen||document.webkitExitFullscreen)?.call(document)?.catch?.(()=>{});
-  }else{
-   void enterProjectorFullscreen();
-  }
+  if(document.body.classList.contains('story-fullscreen-fallback'))leaveProjectorFullscreen();
+  else void enterProjectorFullscreen();
  }
  else if(action==='print-view')window.print();
  else if(action==='name-project'){const name=$('#child-name')?.value.trim();if(name)startProjection('nombre',0,name.toLocaleUpperCase('es-ES').replace(/\s/g,''));else toast('Escribe primero un nombre.');}
@@ -830,37 +823,64 @@ $('#search-toggle').addEventListener('click',()=>{const form=$('#global-search')
 $('#search').addEventListener('keydown',event=>{if(event.key==='Escape'){$('#global-search').classList.remove('expanded');$('#search-toggle').setAttribute('aria-expanded','false');$('#search-toggle').focus();}});
 $('#menu-button').addEventListener('click',()=>{const open=$('#sidebar').classList.toggle('open');$('#menu-button').setAttribute('aria-expanded',String(open));});
 $('#sidebar-close').addEventListener('click',()=>{$('#sidebar').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');$('#menu-button').focus();});
-$('#projector').addEventListener('cancel',()=>{A.close();state.projection=null;state.story=null;document.body.classList.remove('story-fullscreen-fallback');if(document.fullscreenElement)document.exitFullscreen?.();});
+$('#projector').addEventListener('cancel',()=>{
+ A.close();state.projection=null;state.story=null;leaveProjectorFullscreen();
+});
+$('#projector').addEventListener('close',()=>{
+ if(!$('#projector').open)leaveProjectorFullscreen();
+});
+
+let projectorOwnsFullscreen=false;
+const nativePdiFullscreen=()=>document.fullscreenElement||document.webkitFullscreenElement;
+function exitNativePdiFullscreen(){
+ return (document.exitFullscreen||document.webkitExitFullscreen)?.call(document)?.catch?.(()=>{});
+}
+async function requestNativePdiFullscreen(dialog){
+ const root=document.documentElement;
+ const request=root?.requestFullscreen||root?.webkitRequestFullscreen;
+ if(!request||nativePdiFullscreen()||window.navigator?.userActivation?.isActive===false)return false;
+ try{
+  // The document can enter fullscreen even when its modal dialog cannot.
+  await request.call(root);
+  if(!dialog.open){if(nativePdiFullscreen()===root)exitNativePdiFullscreen();return false;}
+  return nativePdiFullscreen()===root;
+ }catch{return false;}
+}
+function openProjector(){
+ const projector=$('#projector');
+ if(!projector.open)projector.showModal();
+ void enterProjectorFullscreen();
+}
 async function enterProjectorFullscreen(){
  const projector=$('#projector');
- if(!projector.open||document.fullscreenElement||document.webkitFullscreenElement||
-    document.body.classList.contains('story-fullscreen-fallback'))return;
-
- const request=projector.requestFullscreen||projector.webkitRequestFullscreen;
- if(request){
-  try{
-   await request.call(projector);
-   return;
-  }catch{
-   // Keep the PDI layout available when the browser denies native fullscreen.
-  }
- }
- if(projector.open){
-  document.body.classList.add('story-fullscreen-fallback');
-  syncFullscreenButton();
+ const mode=document.body.classList;
+ if(!projector.open||mode.contains('story-fullscreen-fallback'))return;
+ mode.add('story-fullscreen-fallback');
+ syncFullscreenButton();
+ projectorOwnsFullscreen=await requestNativePdiFullscreen(projector);
+ if(projectorOwnsFullscreen&&!mode.contains('story-fullscreen-fallback')){
+  projectorOwnsFullscreen=false;
+  exitNativePdiFullscreen();
  }
 }
+function leaveProjectorFullscreen(){
+ document.body.classList.remove('story-fullscreen-fallback');
+ if(projectorOwnsFullscreen&&nativePdiFullscreen())exitNativePdiFullscreen();
+ projectorOwnsFullscreen=false;
+ syncFullscreenButton();
+}
 function fullscreenLabel(){
- const active=document.fullscreenElement||document.webkitFullscreenElement||
-  document.body.classList.contains('story-fullscreen-fallback');
- return active?'SALIR DE PANTALLA COMPLETA':'PANTALLA COMPLETA';
+ return document.body.classList.contains('story-fullscreen-fallback')?'SALIR DE PANTALLA COMPLETA':'PANTALLA COMPLETA';
 }
 function syncFullscreenButton(){
  const button=$('[data-action="fullscreen"]');
  if(button)button.textContent=fullscreenLabel();
 }
-document.addEventListener('fullscreenchange',()=>{document.body.classList.remove('story-fullscreen-fallback');syncFullscreenButton();});
-document.addEventListener('webkitfullscreenchange',()=>{document.body.classList.remove('story-fullscreen-fallback');syncFullscreenButton();});
+function onPdiFullscreenChange(){
+ if(projectorOwnsFullscreen&&!nativePdiFullscreen())leaveProjectorFullscreen();
+}
+document.addEventListener('fullscreenchange',onPdiFullscreenChange);
+document.addEventListener('webkitfullscreenchange',onPdiFullscreenChange);
 document.addEventListener('keydown',event=>{if(!state.story)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===state.story.id);if(!book?.pages)return;if(event.key==='ArrowRight'){event.preventDefault();if(state.story.page<book.pages.length-1){state.story.page++;renderStory();}}else if(event.key==='ArrowLeft'&&state.story.page>0){event.preventDefault();state.story.page--;renderStory();}});
 $('.skip').addEventListener('click',event=>{event.preventDefault();$('#contenido').focus();});
 window.addEventListener('hashchange',resetForRoute);
@@ -869,6 +889,7 @@ window.addEventListener('storage',event=>{if(event.key==='rosa-favorites-v2'){co
 (async()=>{const controller=typeof AbortController==='function'?new AbortController():null;let timer;const deadline=new Promise((resolve,reject)=>{timer=setTimeout(()=>{controller?.abort();reject(new Error('materials-timeout'));},10000);});const request=(async()=>{const r=await fetch('materials.json',{signal:controller?.signal});if(!r.ok)throw new Error('materials');return r.json();})();try{const m=await Promise.race([request,deadline]);state.materials=m;if($('#resource-dialog').open)resourceDialog();}catch{toast('No se pudo cargar el número de páginas. Los PDF siguen disponibles.');}finally{clearTimeout(timer);}})();
 todayNew();resetForRoute();A.init();
 window.ROSA_STARTUP?.appReady();
+
 
 
 

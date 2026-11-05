@@ -7,6 +7,7 @@ window.ROSA_EPISODE=(()=>{
   function puppet(){return '<div class="rosi-puppet" aria-hidden="true"><div class="rosi-shadow"></div><div class="rosi-body-rig">'+part('body','rosi-body')+part('left','rosi-arm rosi-arm-front')+'<div class="rosi-head">'+part('head','rosi-head-art')+'<div class="rosi-eyes">'+part('eyes','rosi-eyes-open')+part('blink','rosi-eyes-blink')+'</div></div></div></div>';}
   const button=(text,action,cls='',attrs='')=>'<button type="button" class="'+cls+'" data-action="episode-'+action+'" '+attrs+'>'+text+'</button>';
   function page(){const e=config.episodes[0];return '<section class="rosi-intro"><div class="rosi-cover">'+puppet()+'<span class="rosi-cover-label">¡Hola, pequeños paleontólogos!</span></div><div class="rosi-intro-copy"><span class="eyebrow">LAS AVENTURAS DE '+esc(config.mascot.name.toUpperCase())+' · SEMANA '+e.week+'</span><h2>'+esc(e.title)+'</h2><p>Una pista, dos ayudantes y una misión para toda la clase. Acompañad a '+esc(config.mascot.name)+' al valle de los dinosaurios.</p><p class="rosi-helper-line"><span>Hoy nos ayudan</span><strong>'+e.helpers.map(esc).join(' y ')+'</strong></p>'+button('▶ Ver capítulo','open','', 'data-value="'+esc(e.id)+'"')+'<p class="hint">Un minuto de aventura. Después, seis retos de la semana 1.</p></div></section>';}
+  let ownsFullscreen=false;
   let dialog,voice,music,stage,caption,progress,clock,playButton,musicButton,subtitlesButton,fullscreenButton,status,finish;
   let episode,media,raf=0,opened=false,playing=false,complete=false,sceneIndex=-1,epoch=0,returnFocus;
   let subtitles=true,musicOn=true;
@@ -28,7 +29,8 @@ window.ROSA_EPISODE=(()=>{
     voice.addEventListener('loadedmetadata',()=>{if(opened)updateFrame();});
     dialog.addEventListener('cancel',event=>{event.preventDefault();close();});
     dialog.addEventListener('close',cleanup);
-    document.addEventListener('fullscreenchange',updateFullscreen);
+    document.addEventListener('fullscreenchange',onFullscreenChange);
+    document.addEventListener('webkitfullscreenchange',onFullscreenChange);
     document.addEventListener('visibilitychange',()=>{if(document.hidden&&opened)pause();});
     window.addEventListener('pagehide',()=>{if(opened)pause();});
     window.addEventListener('hashchange',()=>{if(opened)close();});
@@ -48,7 +50,7 @@ window.ROSA_EPISODE=(()=>{
     voice.src=media.audio+'?v='+media.scriptHash.slice(0,12);window.ROSA_VOICE.configureAudio(voice);music.currentTime=0;q('#rosi-title').textContent=episode.title;
     q('.rosi-transcript div').innerHTML=media.cues.map(c=>'<p>'+esc(c.text)+'</p>').join('');q('.rosi-transcript').open=false;
     q('.rosi-start').hidden=false;finish.hidden=true;stage.classList.remove('is-complete');status.textContent='';playButton.textContent='▶ Reproducir';
-    syncPreferences();updateFrame();dialog.showModal();dialog.scrollTop=0;
+    syncPreferences();updateFrame();if(!dialog.open)dialog.showModal();dialog.scrollTop=0;void expand();
   }
   function freeze(){playing=false;cancelAnimationFrame(raf);raf=0;stage.classList.remove('is-playing');stage.style.setProperty('--mouth','0');music.pause();if(!complete)playButton.textContent='▶ Continuar';}
   function pause(){epoch++;voice.pause();freeze();}
@@ -71,15 +73,28 @@ window.ROSA_EPISODE=(()=>{
     const mouth=playing?(media.envelope[Math.floor(now/media.envelopeStep)]||0)/100:0;stage.style.setProperty('--mouth',String(mouth));
   }
   function tick(){cancelAnimationFrame(raf);updateFrame();if(playing&&opened)raf=requestAnimationFrame(tick);}
-  function cleanup(){if(!opened)return;opened=false;epoch++;voice.pause();freeze();voice.removeAttribute('src');voice.load();music.currentTime=0;dialog.classList.remove('rosi-expanded');if(document.fullscreenElement===dialog)document.exitFullscreen().catch(()=>{});updateFullscreen();if(returnFocus?.isConnected)returnFocus.focus();}
+  function cleanup(){if(!opened)return;opened=false;epoch++;voice.pause();freeze();voice.removeAttribute('src');voice.load();music.currentTime=0;collapse();if(returnFocus?.isConnected)returnFocus.focus();}
   function close(){if(!dialog)return;cleanup();dialog.close();}
-  function updateFullscreen(){if(!fullscreenButton)return;const full=document.fullscreenElement===dialog||dialog.classList.contains('rosi-expanded');fullscreenButton.innerHTML='⛶ <span>'+(full?'Salir de pantalla completa':'Pantalla completa')+'</span>';fullscreenButton.setAttribute('aria-pressed',String(full));}
-  async function fullscreen(){
-    if(document.fullscreenElement===dialog){await document.exitFullscreen().catch(()=>{});}
-    else if(dialog.classList.contains('rosi-expanded'))dialog.classList.remove('rosi-expanded');
-    else if(dialog.requestFullscreen){try{await dialog.requestFullscreen();}catch{if(opened)dialog.classList.add('rosi-expanded');}}
-    else dialog.classList.add('rosi-expanded');
+  function updateFullscreen(){if(!fullscreenButton)return;const full=dialog.classList.contains('rosi-expanded');fullscreenButton.innerHTML='⛶ <span>'+(full?'Salir de pantalla completa':'Pantalla completa')+'</span>';fullscreenButton.setAttribute('aria-pressed',String(full));}
+  function collapse(){
+    dialog.classList.remove('rosi-expanded');
+    if(ownsFullscreen)exitNativePdiFullscreen();
+    ownsFullscreen=false;
     updateFullscreen();
+  }
+  function onFullscreenChange(){
+    if(ownsFullscreen&&!nativePdiFullscreen())collapse();
+  }
+  async function expand(){
+    if(dialog.classList.contains('rosi-expanded'))return;
+    dialog.classList.add('rosi-expanded');
+    updateFullscreen();
+    ownsFullscreen=await requestNativePdiFullscreen(dialog);
+    if(ownsFullscreen&&!dialog.classList.contains('rosi-expanded'))collapse();
+  }
+  function fullscreen(){
+    if(dialog.classList.contains('rosi-expanded'))collapse();
+    else void expand();
   }
   function handle(action,value){
     if(!action?.startsWith('episode-'))return false;
@@ -96,3 +111,4 @@ window.ROSA_EPISODE=(()=>{
   }
   return {page,handle};
 })();
+
