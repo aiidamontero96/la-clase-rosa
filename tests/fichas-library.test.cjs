@@ -37,7 +37,7 @@ test('custom generator saves a real printable; later settings do not change the 
  const a=boot();Object.assign(a.ctx,{URL,location:{href:'https://www.laclaserosa.es/#taller'}});
  Object.assign(a.window,{ROSA_PLAY:{themes:{}},ROSA:{students:['ROSA']},ROSA_SHEET_CONTENT:{playThemes:{},shapeColors:['red','blue'],vocabulary:{},letterSets:{},caseSets:{}}});
  vm.runInNewContext(fs.readFileSync('public/sheet-studio.js','utf8'),a.ctx);
- const gen=a.window.ROSA_SHEETS;gen.handle('studio-save');assert.match(a.api.gallery(),/Números y cantidades · 3/);
+ const gen=a.window.ROSA_SHEETS;gen.ui.mode='numeros';gen.handle('studio-save');assert.match(a.api.gallery(),/Números y cantidades · 3/);
  gen.ui.number=7;gen.handle('studio-print');assert.match(a.written[0],/REPASA EL 7/);
  const rows=JSON.parse(a.storage.get('rosa-generated-sheets-v1'));const savedThree=rows.find(r=>r.title.endsWith('3'));
  a.api.handle('saved-sheet-open',savedThree.id);assert.match(a.written[1],/REPASA EL 3/);assert.doesNotMatch(a.written[1],/REPASA EL 7/);
