@@ -14,7 +14,9 @@ window.ROSA_SHEETS=(()=>{
   const CASE_SETS=CONTENT.caseSets;
   const SHAPE_COLORS=CONTENT.shapeColors;
   const schoolGlyph=CONTENT.schoolGlyph;
-  const ui={mode:'contar-dibujos',pictureTheme:'Material escolar',pictureLimit:5,pictureCount:3,nameType:'repasar',dinoType:'conocer',dinoId:'trex',dinoCount:4,thinkType:'intruso',student:'',customText:'',theme:'Naturaleza',level:1,ink:'color',seed:0,cutouts:false,number:3,numberType:'cantidad',shapeType:'reconocer',traceType:'caminos',polyType:'torres',polyCount:4,langType:'silabas',langSet:'MPS',caseSet:'inicio',langTheme:'Animales',langCount:4};
+  const defaults={mode:'contar-dibujos',pictureTheme:'Material escolar',pictureLimit:5,pictureCount:3,nameType:'repasar',dinoType:'conocer',dinoId:'trex',dinoCount:4,thinkType:'intruso',student:'',customText:'',theme:'Naturaleza',level:1,ink:'color',seed:0,cutouts:false,number:3,numberType:'cantidad',shapeType:'reconocer',traceType:'caminos',polyType:'torres',polyCount:4,langType:'silabas',langSet:'MPS',caseSet:'inicio',langTheme:'Animales',langCount:4};
+  const ui={...defaults};
+  function openExample(settings){Object.assign(ui,defaults,settings);}
   const select=(label,key,values)=>'<label class="field"><span>'+label+'</span><select data-studio-setting="'+key+'">'+values.map(v=>'<option value="'+esc(v[0])+'"'+(String(ui[key])===String(v[0])?' selected':'')+'>'+esc(v[1])+'</option>').join('')+'</select></label>';
   const img=(item,cls='')=>{
     if(item?.color){
@@ -388,9 +390,15 @@ window.ROSA_SHEETS=(()=>{
   function refresh(){window.render?.();}
   function handle(action,value){if(action==='studio-mode'){ui.mode=value;refresh();return true;}if(action==='studio-shuffle'){ui.seed++;refresh();return true;}if(action==='studio-print'){openPrint();return true;}return false;}
   function valueIsPicture(value){return Boolean(pictureKinds[value]);}
-  function change(target){if(target.dataset.studioCustom!==undefined){ui.customText=target.value.trim().slice(0,30);refresh();return true;}if(target.dataset.studioSetting){const key=target.dataset.studioSetting;if(key in ui){if(key==='mode'&&valueIsPicture(target.value))ui.pictureCount=target.value==='colorear-cantidades'?2:3;ui[key]=['level','polyCount','dinoCount','langCount','pictureLimit','pictureCount'].includes(key)?Number(target.value):target.value;refresh();}return true;}if(target.dataset.studioCutouts!==undefined){ui.cutouts=target.checked;refresh();return true;}return false;}
-  return {ui,panel,sheet,printHTML,handle,change,getRoster:()=>[...roster]};
+  function updateCustomText(target){
+    ui.customText=target.value.trim().slice(0,30);
+    const preview=document.querySelector('.studio-preview');
+    if(preview)preview.innerHTML=sheet();
+  }
+  function change(target){if(target.dataset.studioCustom!==undefined){updateCustomText(target);return true;}if(target.dataset.studioSetting){const key=target.dataset.studioSetting;if(key in ui){if(key==='mode'&&valueIsPicture(target.value))ui.pictureCount=target.value==='colorear-cantidades'?2:3;ui[key]=['level','polyCount','dinoCount','langCount','pictureLimit','pictureCount'].includes(key)?Number(target.value):target.value;refresh();}return true;}if(target.dataset.studioCutouts!==undefined){ui.cutouts=target.checked;refresh();return true;}return false;}
+  return {ui,panel,sheet,printHTML,handle,change,openExample,updateCustomText,getRoster:()=>[...roster]};
 })();
+
 
 
 
