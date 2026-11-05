@@ -169,7 +169,26 @@ document.addEventListener('change',event=>{const key=event.target.dataset.worksh
 function persistFavorites(){try{localStorage.setItem('rosa-favorites-v2',JSON.stringify([...state.favorites]));}catch{toast('Guardado durante esta visita. El navegador no permite conservarlo al cerrar.');}}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('#toast').classList.remove('show'),3200);}
 function route(){const view=location.hash.slice(1).split('?')[0]||'inicio';return view==='semana'?'inicio':view;}
-function nav(){const current=route(),pdiViews=['pdi','pdi-proyectos','pdi-dias','pdi-juegos','canciones'],groups=[['EN EL AULA',['inicio','matematicas','lenguaje','logica','motricidad','arte','movimiento','juegos','pdi','asamblea-vero','cuentos']],['PARA PREPARAR',['imprimibles','propuestas','taller','curso']],['PROYECTOS',['dinosaurios','kusama']],['MI ORGANIZACIÓN',['favoritos','hoy']]],byId=new Map(LINKS.map(link=>[link[0],link]));$('#navigation').innerHTML=groups.map(group=>'<span class="nav-label">'+group[0]+'</span>'+group[1].map(id=>byId.get(id)).filter(Boolean).map(l=>{const active=current===l[0]||(l[0]==='pdi'&&pdiViews.includes(current));return '<a class="nav-link '+(active?'active':'')+'" href="#'+l[0]+'"'+(active?' aria-current="page"':'')+'><span class="nav-icon" aria-hidden="true">'+l[1]+'</span>'+l[2]+'</a>';}).join('')).join('');const top=[['inicio','Inicio',['inicio']],['banco','Áreas',['banco','matematicas','lenguaje','logica','motricidad','arte','movimiento','juegos']],['pdi','PDI',[...pdiViews,'asamblea-vero']],['taller','Preparar',['taller','imprimibles','propuestas','curso']],['dinosaurios','Proyectos',['dinosaurios','kusama']]];$('#top-navigation').innerHTML=top.map(l=>{const active=l[2].includes(current);return '<a class="'+(active?'active':'')+'" href="#'+l[0]+'"'+(active?' aria-current="page"':'')+'>'+l[1]+'</a>';}).join('');const date=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});$('#top-date').textContent=date;$('#fav-count').textContent=state.favorites.size+A.ui.book.favorites.length;}
+function nav(){
+ const current=route(),pdiViews=['pdi','pdi-proyectos','pdi-dias','pdi-juegos','canciones'];
+ const entries=[
+  ['inicio','🏠','Inicio'],
+  ['imprimibles','📚','Fichas'],
+  ['pdi','🖥️','PDI'],
+  ['dinosaurios','🌱','Proyecto'],
+  ['asamblea-vero','🐥','Asamblea Vero'],
+  ['https://familias.laclaserosa.es/panel','📔','Acceder al diario']
+ ];
+ $('#navigation').innerHTML=entries.map(([id,icon,label])=>{
+  const external=id.startsWith('https://');
+  const active=!external&&(current===id||(id==='pdi'&&pdiViews.includes(current))||(id==='dinosaurios'&&current==='kusama'));
+  return '<a class="nav-link '+(active?'active':'')+'" href="'+(external?id:'#'+id)+'"'+(external?' target="_blank" rel="noopener noreferrer"':'')+(active?' aria-current="page"':'')+'><span class="nav-icon" aria-hidden="true">'+icon+'</span>'+E(label)+'</a>';
+ }).join('');
+ $('#top-navigation').innerHTML='';
+ const today=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+ $('#top-date').textContent=today;
+ $('#fav-count').textContent=state.favorites.size+A.ui.book.favorites.length;
+}
 function head(title,desc='',action='',eyebrow='MI BANCO DE AULA'){return '<div class="page-head"><div><span class="eyebrow">'+E(eyebrow)+'</span><h1>'+E(title)+'</h1>'+(desc?'<p>'+E(desc)+'</p>':'')+'</div><div class="head-actions">'+action+'</div></div>';}
 const btn=(label,action,value='',cls='')=>'<button type="button" class="'+cls+'" data-action="'+action+'" data-value="'+E(value)+'"'+({'close-resource':'Cerrar material','question':'Proyectar pregunta'}[action]?' aria-label="'+({'close-resource':'Cerrar material','question':'Proyectar pregunta'}[action])+'"':'')+'>'+label+'</button>';
 function favButton(r){const yes=state.favorites.has(r.id);return '<button type="button" class="favorite '+(yes?'saved':'')+'" data-action="favorite" data-value="'+r.id+'" aria-pressed="'+yes+'" aria-label="'+(yes?'Quitar de':'Guardar en')+' favoritos: '+E(r.title)+'">'+(yes?'♥':'♡')+'</button>';}
@@ -192,8 +211,33 @@ function upcomingYearMoments(limit=3){
  return upcoming.sort((a,b)=>a.date-b.date).slice(0,limit);
 }
 function home(){
- const date=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'}).toLocaleUpperCase('es-ES'),assembly=[['encargado','⭐','Encargados'],['asistencia','🙋','¿Quién ha venido?'],['dia-semana','🗓️','¿Qué día es hoy?'],['calendario','📅','Calendario'],['estacion','🍂','Estación y tiempo'],['emociones','🙂','Emociones'],['numero','🔤','Número y letra']],upcoming=upcomingYearMoments();
- return '<section class="home-welcome"><div><span class="eyebrow">'+E(date)+'</span><h1>Tu aula, lista para hoy</h1><p>Elige, prepara y disfruta con tu clase.</p></div><div class="home-welcome-actions"><a class="button secondary" href="#hoy">✧ ¿Qué hago hoy?</a><a class="button secondary home-create-sheets" href="#taller">✂ Crea tus fichas</a><a class="button secondary" href="https://familias.laclaserosa.es/panel" target="_blank" rel="noopener">✿ Acceder al diario</a></div></section><section class="home-assembly panel"><div class="home-assembly-head"><div><span class="round-icon" aria-hidden="true">☀</span><div><span class="eyebrow">EMPEZAMOS EL DÍA</span><h2>Asamblea</h2><p>Las rutinas de cada mañana, en el orden que necesitas.</p></div></div><div class="home-assembly-actions"><a class="button secondary" href="#pdi">Ver toda la PDI</a><button type="button" class="button" data-action="routine" data-value="encargado">Iniciar asamblea</button></div></div><div class="home-assembly-grid">'+assembly.map((item,index)=>'<button type="button" class="assembly-home-step" data-action="routine" data-value="'+item[0]+'"><b>'+(index+1)+'</b><span aria-hidden="true">'+item[1]+'</span><strong>'+item[2]+'</strong></button>').join('')+'</div></section><section class="home-projects-section"><div class="heading-row"><h2>Proyectos del aula</h2><a href="#banco">Ver todos los recursos</a></div><div class="home-project-cards"><a class="home-project-card dino" href="#dinosaurios"><span class="eyebrow">PRIMER TRIMESTRE</span><h2>Entre huellas y dinosaurios</h2><p>Investigación, juego y nuestro museo de aula.</p><img src="assets/dinos-pdi/triceratops.webp" width="418" height="390" alt="Triceratops"></a><a class="home-project-card kusama" href="#kusama"><span class="eyebrow">TODO EL CURSO</span><h2>El mundo de Yayoi Kusama</h2><p>Arte, puntos, color y propuestas para crear.</p><img src="assets/kusama/kusama-sellos.webp" width="512" height="512" alt="Propuesta artística inspirada en Yayoi Kusama"></a></div></section><section class="home-course-section"><div class="heading-row"><h2>Durante el curso</h2><a href="#curso">Ver todo el curso</a></div><div class="home-course-cards">'+upcoming.map(item=>{const m=item.moment,label=item.date.toLocaleDateString('es-ES',{day:'numeric',month:'long'});return '<a class="home-course-card" href="#curso"><span class="home-course-icon" aria-hidden="true">'+m[1]+'</span><span><small>'+E(label)+'</small><strong>'+E(m[2])+'</strong><em>'+E(m[3])+'</em></span><b aria-hidden="true">›</b></a>';}).join('')+'</div></section>';
+ const date=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+ const assembly=[
+  ['encargado','encargados','Encargados'],
+  ['asistencia','asistencia','¿Quién ha venido?'],
+  ['dia-semana','dia','¿Qué día es hoy?'],
+  ['calendario','calendario','Calendario'],
+  ['estacion','estacion','Estación y tiempo'],
+  ['emociones','emociones','Emociones'],
+  ['numero','numero','Número y letra']
+ ];
+ return '<div class="patitos-home">'+
+  '<section class="patitos-stage" aria-label="Bienvenida a la asamblea">'+
+    '<div class="patitos-stage-content">'+
+      '<p class="patitos-date">'+E(date)+'</p>'+
+      '<h1><span>BUENOS DÍAS</span><span>MIS PATITOS</span></h1>'+
+      '<button type="button" class="button patitos-start" data-action="routine" data-value="encargado">Iniciar asamblea</button>'+
+    '</div>'+
+  '</section>'+
+  '<section class="patitos-steps" aria-label="Rutinas de la asamblea">'+
+    assembly.map(([action,icon,label])=>'<button type="button" class="patitos-step" data-action="routine" data-value="'+action+'"><span class="patitos-step-illustration"><svg viewBox="0 0 120 100" aria-hidden="true" focusable="false"><use href="assets/patitos-iconos.svg#'+icon+'"></use></svg></span><strong>'+E(label)+'</strong></button>').join('')+
+  '</section>'+
+  '<h2 class="patitos-section-heading">Proyectos del aula</h2>'+
+  '<section class="patitos-projects" aria-label="Proyectos del aula">'+
+    '<a class="patitos-project" href="#dinosaurios"><span><strong>Dinosaurios</strong><small>Nuestro proyecto del primer trimestre</small></span><img src="assets/dinos-pdi/triceratops.webp" width="418" height="390" loading="lazy" alt=""></a>'+
+    '<a class="patitos-project" href="#kusama"><span><strong>Arte y creatividad</strong><small>Exploramos el mundo de Yayoi Kusama</small></span><img src="assets/kusama/kusama-sellos.webp" width="512" height="512" loading="lazy" alt=""></a>'+
+  '</section>'+
+ '</div>';
 }
 function filterControl(label,id,options,value){return '<div class="field"><label for="'+id+'">'+label+'</label><select id="'+id+'" data-filter="'+id.replace('filter-','')+'">'+options.map(o=>'<option value="'+E(o[0])+'"'+(o[0]===value?' selected':'')+'>'+E(o[1])+'</option>').join('')+'</select></div>';}
 function resourceTypes(r){return [r.printable?'Imprimible':'Actividad',r.area==='Juegos'?'Juego':'',r.area==='Asamblea'?'Asamblea':'',r.type||''].filter(Boolean);}
