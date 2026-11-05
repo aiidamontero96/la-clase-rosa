@@ -9,7 +9,7 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
     ['#a84458','#ef9b9f','#fff0a3','♪'],['#67512c','#d2a962','#ffe286','✚'],
     ['#575389','#b2a0df','#ffe897','❋'],['#387b9f','#a6d6f0','#ffcf6c','❄']
   ];
-  function artwork(index){
+  function artwork(index,eggOnly=false){
     const [cape,mask,feathers,badge]=heroes[index%heroes.length];
     const plume=index%3===0?'M58 34 Q46 24 47 15 Q56 15 62 25 Q63 13 71 13 Q75 22 69 32':
       index%3===1?'M58 33 Q50 20 57 15 Q64 15 65 25 Q71 19 77 22 Q76 29 70 34':
@@ -33,7 +33,7 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
       ['M34 86l7 4-3 6-6-4Z',-32,8,-50],
       ['M98 83l6 3-1 6-7 1Z',26,12,54]
     ].map(([shape,x,y,rotation])=>`<path class="hatch-fragment" d="${shape}" style="--scatter-x:${x}px;--scatter-y:${y}px;--spin:${rotation}deg"/>`).join('');
-    return `<svg class="hatch-art" viewBox="0 0 132 127" aria-hidden="true" focusable="false">
+    return `<svg class="hatch-art" viewBox="${eggOnly?'19 5 94 116':'0 0 132 127'}" aria-hidden="true" focusable="false">
       <defs>
         <radialGradient id="${id}-gold" cx=".34" cy=".25" r=".78">
           <stop stop-color="#fff6bf"/><stop offset=".52" stop-color="${feathers}"/><stop offset="1" stop-color="#edaa56"/>
@@ -143,7 +143,7 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
       const marked=model.marked.has(name);
       return `<button type="button" class="pond-token${key==='absent'?'':' is-present'}${marked?' is-counted':''}"
         data-action="pond-count-token" data-value="${esc(name)}" aria-label="${esc(display)}" aria-pressed="${marked}">
-        ${artwork(index)}<span>${esc(display.toLocaleUpperCase('es-ES'))}</span><i aria-hidden="true">✓</i></button>`;
+        ${artwork(index,key==='absent')}<span>${esc(display.toLocaleUpperCase('es-ES'))}</span><i aria-hidden="true">✓</i></button>`;
     }).join('');
     const empty=key==='absent'?'HAN VENIDO TODOS':'NO HAY PATITOS EN ESTA MESA';
     const heading=title?`<h3>${title}</h3>`:'';
@@ -222,4 +222,5 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
   }
   return {render,update,startCount,renderCount,toggleCounted,bindWriting,clearWriting};
 })();
+
 

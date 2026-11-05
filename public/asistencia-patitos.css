@@ -212,29 +212,38 @@
 .pond-school .pond-group-many .pond-tokens { width:min(100%,490px); margin-inline:auto; }
 .pond-school .pond-group-many .pond-token { width:clamp(55px,7vw,112px); }
 .pond-absent {
-  display:grid; grid-template-rows:auto minmax(min-content,1fr) auto; justify-items:center; align-items:center;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  align-self:stretch; width:100%; margin-inline:auto; min-width:0;
   padding-block:clamp(10px,2.2dvh,28px);
   background:linear-gradient(#fff4dd17,#fff4dd00 68%,#f3dbac38),
     url('assets/patitos-acuarela/nido-en-casa.webp') center 62% / cover no-repeat,#f6e7cf;
 }
+.pond-absent > header { flex:none; width:100%; text-align:center; }
 .pond-home-nest {
-  display:grid; place-items:center; align-self:stretch;
-  width:min(100%,1330px); min-height:clamp(150px,28dvh,300px);
-  padding:clamp(24px,12dvh,115px) clamp(3px,4vw,65px) 0; box-sizing:border-box;
+  display:flex; flex:1 0 auto; align-items:center; justify-content:center; align-self:center;
+  width:min(100%,1400px); min-width:0; min-height:clamp(150px,28dvh,290px);
+  padding:clamp(16px,6dvh,75px) 0 0; box-sizing:border-box;
 }
-.pond-home-nest .pond-count-group { width:100%; }
-.pond-absent .pond-tokens { display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(4px,1.4vw,23px); }
+.pond-home-nest .pond-count-group { width:100%; min-width:0; }
+.pond-absent .pond-tokens {
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-end;
+  width:100%; margin:0 auto; gap:clamp(6px,1.6vw,30px);
+}
 .pond-absent .hatch-leaf,.pond-absent .hatch-water { display:none; }
-.pond-absent .pond-token { width:clamp(60px,9vw,130px); }
-.pond-absent .pond-token .hatch-art { height:clamp(76px,16dvh,162px); }
-.pond-absent .pond-group-many .hatch-art { height:clamp(63px,12dvh,125px); }
-.pond-absent .pond-writing-field { width:min(100%,285px); }
+.pond-absent .pond-token { width:clamp(82px,12vw,184px); }
+.pond-absent .pond-token .hatch-art { width:100%; height:clamp(102px,24dvh,225px); }
+.pond-absent .pond-group-many .pond-token { width:clamp(73px,10vw,147px); }
+.pond-absent .pond-group-many .hatch-art { height:clamp(81px,16dvh,155px); }
+.pond-absent .pond-token span { font-size:clamp(.76rem,1.25vw,1.2rem); }
+.pond-absent .pond-writing-field { flex:none; width:min(100%,285px); margin-inline:auto; }
 .pond-absent .pond-writing-pad { width:min(100%,240px); }
 @media(max-width:720px) {
   .pond-writing { justify-content:flex-start; }
   .pond-token,.pond-school .pond-group-many .pond-token { width:clamp(55px,13vw,79px); }
   .pond-token .hatch-art { height:clamp(46px,10vw,72px); }
   .pond-absent { background-position:center 58%; }
-  .pond-absent .pond-token { width:clamp(58px,17vw,94px); }
+  .pond-absent .pond-token,.pond-absent .pond-group-many .pond-token { width:clamp(66px,20vw,106px); }
+  .pond-absent .pond-token .hatch-art { height:clamp(78px,23vw,125px); }
 }
+
 

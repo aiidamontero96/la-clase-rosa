@@ -513,7 +513,6 @@ function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech
  if(p.kind==='asistencia'&&p.attendanceStep!=='names')p.customSpeech=state.assemblyGroup==='vero'?'¿Cuántos hemos venido hoy al cole?':p.attendanceStep==='absent'?'Cuenta los huevos que siguen cerrados y escribe cuántos faltan.':'Cuenta las niñas y los niños. Escribe cuántos hay en cada mesa y suma el total.';
  if(p.kind==='dia-semana')body=body.replace('<span class="weekday-kicker">NUESTRA RUTINA DE HOY</span>','');
  if(p.kind==='estacion')p.customSpeech='¿En qué estación estamos?';
- if(p.kind==='numero')p.customSpeech='El número protagonista. '+Math.min(30,Math.max(1,n+1))+'.';
  if(p.kind==='letra')p.customSpeech='La letra protagonista. '+('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'[n%27])+'.';
  $('#projection-content').innerHTML='<div class="projection-toolbar"><strong>La Clase Rosa · '+E(title)+'</strong><div>'+btn(fullscreenLabel(),'fullscreen','','secondary small')+btn('× Salir','close-projection','','quiet')+'</div></div>'+A.toolbar(p)+'<div class="projection-main" data-theme="'+E(p.payload?.theme||(p.kind.startsWith('dino')||['expedicion','clasificar','contar','falta','memory'].includes(p.kind)?'Dinosaurios':'General'))+'" data-game="'+E(p.kind)+'" data-level="'+p.level+'">'+body+'</div><div class="projection-footer">'+A.footer(foot)+'</div>';window.ROSA_SCENES?.decorate(p);setupRelateBoard();A.afterRender(body);window.ROSA_PUMPKIN?.init(p);window.ROSA_DINO?.init(p);
  if(p.kind==='asistencia'&&p.hatchCount&&p.attendanceStep!=='names'&&state.assemblyGroup!=='vero'){
@@ -870,6 +869,7 @@ window.addEventListener('storage',event=>{if(event.key==='rosa-favorites-v2'){co
 (async()=>{const controller=typeof AbortController==='function'?new AbortController():null;let timer;const deadline=new Promise((resolve,reject)=>{timer=setTimeout(()=>{controller?.abort();reject(new Error('materials-timeout'));},10000);});const request=(async()=>{const r=await fetch('materials.json',{signal:controller?.signal});if(!r.ok)throw new Error('materials');return r.json();})();try{const m=await Promise.race([request,deadline]);state.materials=m;if($('#resource-dialog').open)resourceDialog();}catch{toast('No se pudo cargar el número de páginas. Los PDF siguen disponibles.');}finally{clearTimeout(timer);}})();
 todayNew();resetForRoute();A.init();
 window.ROSA_STARTUP?.appReady();
+
 
 
 
