@@ -159,7 +159,7 @@ assert.equal(run('state.projection.attendance.Alma'),true);
 assert.equal(run('state.projection.hatchCount.groups.absent.length'),data.students.length-2);
 run("state.assemblyGroup='vero';startProjection('asistencia');state.projection.counts={present:9,absent:3,girls:4,boys:5};state.projection.attendanceStep='count';state.projection.counts={present:0,absent:0,girls:0,boys:0};projectionRender()");assert.deepEqual(JSON.parse(run('JSON.stringify(state.projection.counts)')),{present:0,absent:0,girls:0,boys:0});assert(element('#projection-content').innerHTML.includes('CONTAMOS NUESTRA CLASE'));assert.equal((element('#projection-content').innerHTML.match(/<output[^>]*>0<\/output>/g)||[]).length,4);
 run("state.assemblyGroup='rosa'");
-assert(run('Object.keys(window.ROSA_PLAY.themes).length')>=12);assert(run('window.ROSA_SHEETS.panel()').includes('Fichas con un propósito'));assert.deepEqual(JSON.parse(run('JSON.stringify(window.ROSA_SHEETS.getRoster().slice(0,12))')),['Tristán','Sergio','Alejandro','Marcelo','Alma','Francisco','Abril','Martín','Emma','Álvaro','José Antonio','Mohammed']);
+assert(run('Object.keys(window.ROSA_PLAY.themes).length')>=12);assert(run('window.ROSA_SHEETS.panel()').includes('Fichas con un propósito'));assert.deepEqual(JSON.parse(run('JSON.stringify(window.ROSA_SHEETS.getRoster().slice(0,12))')),['Tristán','Sergio','Alejandro','Marcelo','Alma','Abril','Martín','Emma','Álvaro','José Antonio','Mohammed']);
 for(const mode of ['nombre','dino','pensar']){run('window.ROSA_SHEETS.ui.mode='+JSON.stringify(mode));const studio=run('window.ROSA_SHEETS.sheet()');assert(studio.includes('studio-sheet'));assert(!studio.includes('undefined'),mode);}
 run('Object.assign(window.ROSA_SHEETS.ui,{mode:"dino",ink:"coloring"})');const outlineStudio=run('window.ROSA_SHEETS.sheet()');assert(outlineStudio.includes('studio-outline'));assert(outlineStudio.includes('-outline.'));
 for(const type of ['repasar','inicial','letras','contar']){run('Object.assign(window.ROSA_SHEETS.ui,{mode:"nombre",nameType:'+JSON.stringify(type)+'})');assert(run('window.ROSA_SHEETS.sheet()').length>500,type);}
@@ -183,5 +183,6 @@ run('A.next()');assert.equal(run('state.projection.kind'),'palabra-imagen','cann
 context.galaxyCorrect=answerTarget(run('state.projection.answer'));run('answer(galaxyCorrect);A.next()');
 assert.equal(run('state.projection.kind'),'letra');assert.equal(run('state.projection.round'),12,'retain protagonist letter');
 console.log('Assembly galaxy flow passed');
+
 
 

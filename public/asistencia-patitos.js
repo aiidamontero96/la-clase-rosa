@@ -147,7 +147,7 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
     }).join('');
     const empty=key==='absent'?'HAN VENIDO TODOS':'NO HAY PATITOS EN ESTA MESA';
     const heading=title?`<h3>${title}</h3>`:'';
-    return `<section class="pond-count-group pond-count-${key}"${key==='absent'?' aria-label="Huevos cerrados"':''}>
+    return `<section class="pond-count-group pond-count-${key}${group.length>5?' pond-group-many':''}"${key==='absent'?' aria-label="Huevos cerrados"':''}>
       ${heading}
       ${tokens?`<div class="pond-tokens">${tokens}</div>`:`<p class="pond-empty">${empty}</p>`}
     </section>`;
@@ -156,7 +156,7 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
     if(step==='absent'){
       return `<section class="hatch-attendance pond-writing pond-absent" aria-labelledby="pond-count-title">
         <header><h2 id="pond-count-title">¿CUÁNTOS FALTAN HOY?</h2></header>
-        ${renderCountGroup(model,'absent')}
+        <div class="pond-home-nest">${renderCountGroup(model,'absent')}</div>
         ${writingBox(model,'absent','HOY FALTAN')}
       </section>`;
     }
@@ -165,11 +165,13 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
       <div class="pond-classroom-grid">
         ${renderCountGroup(model,'girls','NIÑAS')}
         ${renderCountGroup(model,'boys','NIÑOS')}
-        <div class="pond-writing-girls">${writingBox(model,'girls','NIÑAS')}</div>
-        <span class="pond-plus" aria-label="más">+</span>
-        <div class="pond-writing-boys">${writingBox(model,'boys','NIÑOS')}</div>
-        <span class="pond-equals" aria-label="igual">=</span>
-        <div class="pond-writing-total">${writingBox(model,'present','EN CLASE')}</div>
+      </div>
+      <div class="pond-equation" role="group" aria-label="Niñas más niños igual a total en clase">
+        ${writingBox(model,'girls','NIÑAS')}
+        <span class="pond-plus" aria-hidden="true">+</span>
+        ${writingBox(model,'boys','NIÑOS')}
+        <span class="pond-equals" aria-hidden="true">=</span>
+        ${writingBox(model,'present','EN CLASE')}
       </div>
     </section>`;
   }
@@ -220,3 +222,4 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
   }
   return {render,update,startCount,renderCount,toggleCounted,bindWriting,clearWriting};
 })();
+

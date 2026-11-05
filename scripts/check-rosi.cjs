@@ -14,7 +14,7 @@ const window={addEventListener(){},ROSA_AULA:{stopVoice(){}},ROSA_MISSIONS:{star
 const c=vm.createContext({window,document,localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},requestAnimationFrame:fn=>{frames.set(++frame,fn);return frame;},cancelAnimationFrame:id=>frames.delete(id)});
 for(const file of ['pdi-voice.js','rosi-config.js','rosi-media.js','rosi-episode.js'])vm.runInContext(fs.readFileSync(path.join(root,'public',file),'utf8'),c);
 const C=window.ROSA_EPISODES,M=window.ROSA_EPISODE_MEDIA,P=window.ROSA_EPISODE;
-assert.equal(C.episodes.length,1,'Only one pilot');assert.equal(new Set(C.pupils).size,10);const episode=C.episodes[0],media=M[episode.id];
+assert.equal(C.episodes.length,1,'Only one pilot');assert.equal(new Set(C.pupils).size,9);const episode=C.episodes[0],media=M[episode.id];
 assert.equal(episode.helpers.length,2);assert.equal(new Set(episode.helpers).size,2);assert(episode.helpers.every(n=>C.pupils.includes(n)));
 assert.deepEqual(Array.from(media.cues,c=>c.text),Array.from(C.lines(episode),c=>c.text),'Changing names or dialogue requires rebuilding voice and cues');
 assert.equal(media.cues[0].start,0);for(let i=0;i<media.cues.length;i++){const cue=media.cues[i];assert(cue.end>cue.start);if(i)assert(cue.start>=media.cues[i-1].end);}
@@ -38,3 +38,4 @@ const flush=()=>new Promise(r=>setImmediate(r));const action=(s,v)=>P.handle('ep
  assert.equal(P.handle('answer','0'),false,'Existing PDI actions remain untouched');
  console.log(JSON.stringify({pilot:episode.id,helpers:Array.from(episode.helpers),scenes:media.cues.length,media:'validated',controls:'passed',pauseAndBuffering:'passed',audioRetry:'passed',mission:'six weekly challenges',runtimeGeneration:false}));
 })().catch(e=>{console.error(e);process.exitCode=1;});
+

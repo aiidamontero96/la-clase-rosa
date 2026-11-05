@@ -2,7 +2,7 @@
 window.ROSA_EPISODES=(()=>{
   // Change the mascot's name here; spoken lines and titles use this value.
   const mascot={name:'Rosi',atlas:'assets/rosi/rosi-atlas.webp',head:'assets/rosi/rosi-head.webp',background:'assets/rosi/valle.webp'};
-  const pupils=['Tristán','Emma','Alma','Alejandro','Marcelo','Sergio','Martín','Abril','Francisco','Álvaro'];
+  const pupils=['Tristán','Emma','Alma','Alejandro','Marcelo','Sergio','Martín','Abril','Álvaro'];
   const episodes=[{
     id:'dinosaurio-escondido',week:1,title:'El dinosaurio escondido',helpers:['Tristán','Emma'],
     mission:{label:'Seis retos de observación, pistas y memoria'},
@@ -23,3 +23,4 @@ window.ROSA_EPISODES=(()=>{
   function lines(episode){return episode.scenes.map(scene=>({...scene,text:scene.text.replaceAll('{mascot}',mascot.name).replaceAll('{helper1}',episode.helpers[0]).replaceAll('{helper2}',episode.helpers[1])}));}
   return {mascot,pupils,episodes,lines};
 })();
+

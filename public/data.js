@@ -1,6 +1,6 @@
 /* Contenido original de La Clase Rosa. No requiere servicios externos. */
 window.ROSA = (() => {
-  const students=['Tristán','Sergio','Alejandro','Marcelo','Alma','Francisco','Abril','Martín','Emma','Álvaro','José Antonio','Mohammed'];
+  const students=['Tristán','Sergio','Alejandro','Marcelo','Alma','Abril','Martín','Emma','Álvaro','José Antonio','Mohammed'];
   const questionGroups = {
     'Emociones': ['¿Qué te ha hecho sonreír esta mañana?','¿Cómo notas en tu cuerpo que estás enfadado?','¿Qué puedes pedir cuando necesitas ayuda?','¿Dónde te gusta estar cuando buscas tranquilidad?','¿Qué podríamos hacer si alguien está triste?','¿Puedes mostrar alegría solo con las manos?','¿Qué te da un poquito de miedo y quién te acompaña?','¿Cuándo te has sentido orgulloso de intentarlo?','¿Cómo te gustaría que te hablaran si te equivocas?','¿Qué emoción traerías hoy dentro de una mochila?'],
     'Familia': ['¿Con qué personas te gusta pasar tiempo fuera del cole?','¿Qué juego podrías enseñar a alguien de tu casa?','¿Quién te cuenta historias o te canta canciones?','¿Qué tarea pequeña te gusta hacer en casa?','¿Qué comida disfrutáis preparando juntos?','¿Qué lugar te gusta visitar con las personas que te cuidan?','¿Qué harías para recibir con cariño a alguien que llega?','¿Qué objeto de casa te recuerda un momento bonito?','¿Cómo avisamos en casa de que necesitamos descansar?','¿Qué te gustaría preguntar a una persona mayor de tu familia?'],
@@ -373,3 +373,4 @@ window.ROSA = (() => {
   ];
   return {students,questionGroups,challenges,dinosaurs,vocab,riddles,songs,resources,truth,stages,kusamaStages};
 })();
+

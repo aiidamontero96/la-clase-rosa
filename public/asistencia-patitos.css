@@ -137,27 +137,22 @@
   background:linear-gradient(#fff9e123,#f6e5c336),
     url('assets/patitos-acuarela/aula-recuento.webp') center / cover no-repeat,#f5e5cc;
 }
+.pond-school { align-items:center; justify-content:center; }
 .pond-classroom-grid {
-  display:grid; flex:1 0 auto; align-content:center; align-items:stretch; justify-items:stretch;
-  grid-template-columns:minmax(0,1fr) auto minmax(0,1.35fr) auto minmax(100px,.55fr);
-  grid-template-areas:"girls girls boys boys ." "girls-ink plus boys-ink equals total-ink";
-  gap:clamp(7px,1.25dvh,16px) clamp(5px,1vw,15px);
-  width:min(100%,1600px); margin:0 auto;
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:stretch;
+  gap:clamp(8px,2.5vw,40px); width:min(100%,1240px);
 }
-.pond-count-girls { grid-area:girls; }
-.pond-count-boys { grid-area:boys; }
-.pond-writing-girls { grid-area:girls-ink; }
-.pond-writing-boys { grid-area:boys-ink; }
-.pond-writing-total { grid-area:total-ink; }
-.pond-plus { grid-area:plus; }
-.pond-equals { grid-area:equals; }
 .pond-count-group { min-width:0; text-align:center; }
 .pond-school .pond-count-group {
-  position:relative; display:flex; flex-direction:column; justify-content:space-between;
-  padding:7px clamp(3px,.8vw,12px) 12px; border:1px solid #fff7df; border-radius:18px;
-  background:linear-gradient(#fff9e1e8 0 74%,#d69b63 74% 84%,#a76a43 84% 91%,transparent 91%),
-    linear-gradient(90deg,transparent 8%,#a46a4e 8% 13%,transparent 13% 87%,#a46a4e 87% 92%,transparent 92%);
-  box-shadow:0 8px 15px #71533d21;
+  display:flex; flex-direction:column; justify-content:center;
+  min-height:clamp(126px,23dvh,240px); padding:clamp(7px,1.1dvh,14px) 5px 16px;
+  border:2px solid #fff8eb; border-radius:20px; background:#fff7e5ed;
+  box-shadow:inset 0 -9px 0 #bd815b,inset 0 -13px 0 #e0af78,0 7px 14px #71533d2e;
+}
+.pond-equation {
+  display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);
+  align-items:center; justify-items:center; gap:clamp(5px,1.4vw,24px);
+  width:min(100%,850px); padding:clamp(5px,1dvh,12px) 0;
 }
 .pond-count-group h3 {
   width:fit-content; margin:0 auto 4px; padding:.25em .65em;
@@ -169,14 +164,14 @@
 .pond-tokens { display:flex; flex-wrap:wrap; justify-content:center; align-items:end; gap:4px; }
 .pond-token {
   position:relative; display:grid; grid-template-rows:auto minmax(1.8em,auto);
-  align-items:center; justify-items:center; min-width:0; min-height:0; width:clamp(48px,7vw,115px);
+  align-items:center; justify-items:center; min-width:0; min-height:0; width:clamp(55px,8vw,112px);
   padding:2px; border:2px solid transparent; border-radius:12px; box-shadow:none;
   background:transparent; color:#44324d; cursor:pointer; touch-action:manipulation;
 }
 .pond-token .hatch-art { height:clamp(49px,11dvh,126px); filter:drop-shadow(0 2px 2px #50432e30); }
 .pond-token span {
   max-width:100%; padding:.22em .35em; border-radius:.55em; background:#fffaf0f5;
-  font-size:clamp(.62rem,1vw,1rem); font-weight:900; line-height:1.06; overflow-wrap:anywhere;
+  font-size:clamp(.61rem,.91vw,.94rem); font-weight:900; line-height:1.12; overflow-wrap:break-word;
 }
 .pond-token:hover { background:#fffdf780; box-shadow:none; }
 .pond-token:focus-visible,.pond-erase:focus-visible { outline:3px solid #6c476b; outline-offset:2px; }
@@ -209,26 +204,34 @@
   box-shadow:none; background:#fff9edf2; color:#65445b; font-size:.73rem; font-weight:800;
 }
 .pond-plus,.pond-equals {
-  align-self:center; display:grid; place-items:center; width:clamp(24px,4vw,66px); aspect-ratio:1;
-  border-radius:.45em; background:#fff9e7ed; color:#44324d;
-  font-size:clamp(1.25rem,3.7vw,3.6rem); font-weight:900; line-height:1;
+  display:grid; place-items:center; align-self:center;
+  width:clamp(33px,6.3vw,105px); aspect-ratio:1; border-radius:.42em;
+  background:#fff9e7f5; color:#44324d; box-shadow:0 3px 8px #59414824;
+  font:900 clamp(2rem,6vw,5.8rem)/1 system-ui,sans-serif;
 }
-.pond-absent { justify-content:center; }
-.pond-absent .pond-tokens {
-  display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); justify-items:center;
-  gap:clamp(2px,.8dvh,9px); width:min(100%,1100px); margin:auto;
+.pond-school .pond-group-many .pond-tokens { width:min(100%,490px); margin-inline:auto; }
+.pond-school .pond-group-many .pond-token { width:clamp(55px,7vw,112px); }
+.pond-absent {
+  justify-content:center; align-items:center;
+  background:radial-gradient(ellipse at center,#fff7e3 24%,#f1d8b5 100%);
 }
-.pond-absent .pond-token { width:min(100%,145px); }
-.pond-absent .pond-token .hatch-art { height:clamp(58px,15dvh,145px); }
+.pond-home-nest {
+  display:grid; place-items:center; width:min(100%,1000px); min-height:clamp(150px,30dvh,320px);
+  padding:clamp(18px,4.5dvh,52px) clamp(12px,4vw,75px) clamp(10px,2dvh,22px); box-sizing:border-box;
+  border:2px solid #fff7e5; border-radius:clamp(16px,3vw,32px);
+  background:#f4dfad url('assets/patitos-acuarela/nido-en-casa.webp') center 64% / cover no-repeat;
+  box-shadow:0 5px 18px #68412728;
+}
+.pond-home-nest .pond-count-group { width:100%; }
+.pond-absent .pond-tokens { display:flex; flex-wrap:wrap; justify-content:center; gap:4px 8px; }
+.pond-absent .pond-token { width:clamp(60px,9vw,130px); }
+.pond-absent .pond-token .hatch-art { height:clamp(58px,13dvh,132px); }
 .pond-absent .pond-writing-field { width:min(100%,285px); }
-.pond-absent .pond-writing-pad { width:min(100%,260px); }
+.pond-absent .pond-writing-pad { width:min(100%,240px); }
 @media(max-width:720px) {
-  .pond-classroom-grid {
-    grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,.75fr);
-    grid-template-areas:"girls girls boys boys boys" "girls-ink plus boys-ink equals total-ink";
-  }
-  .pond-token { width:clamp(47px,12vw,70px); }
-  .pond-token .hatch-art { height:clamp(40px,10vw,63px); }
-  .pond-absent { justify-content:flex-start; }
-  .pond-absent .pond-tokens { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .pond-writing { justify-content:flex-start; }
+  .pond-token,.pond-school .pond-group-many .pond-token { width:clamp(55px,13vw,79px); }
+  .pond-token .hatch-art { height:clamp(46px,10vw,72px); }
+  .pond-home-nest { background-position:center 61%; }
+  .pond-absent .pond-token { width:clamp(58px,17vw,94px); }
 }
