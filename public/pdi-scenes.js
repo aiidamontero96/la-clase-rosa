@@ -61,9 +61,19 @@ window.ROSA_SCENES=(()=>{
  }
  function speechFor(p,body){if(p.kind==='dino-ficha'){const d=C.species[p.round%C.species.length];return d.short+'. '+(p.payload?.fact==='diet'?(d.diet==='Herbívoro'?'Comía plantas.':'Comía otros animales.'):p.payload?.fact==='fact'?d.fact:d.clue);}if(p.kind==='movimiento-guiado')return body.match(/<h2>(.*?)<\/h2>/)?.[1]||'';return '';}
  function decorate(p){const main=document.querySelector('.projection-main');if(!main)return;if(['asistencia','saludo','encargado'].includes(p.kind)){main.classList.add('classroom-scene');if(p.kind!=='asistencia')main.insertAdjacentHTML('afterbegin','<div class="routine-scene-banner">'+image('classroom',sceneAlt.classroom)+'</div>');}
-  if(p.kind==='tiempo'){const scene={Sol:'sol',Nubes:'nubes',Lluvia:'lluvia',Viento:'viento','Sol y nubes':'sol-nubes',Nieve:'nieve'}[p.weather]||'sol';main.classList.add('weather-routine');main.insertAdjacentHTML('afterbegin','<div class="weather-scene weather-panorama" role="img" aria-label="'+E(p.weather?'Un día de '+p.weather.toLowerCase():'Observamos el cielo del jardín')+'" style="background-image:url(assets/asamblea-ligera/cielo-panoramico/'+scene+'.webp?rev=1)">'+(p.weather?'<strong>'+E(p.weather.toUpperCase())+'</strong>':'')+'</div>');p.customSpeech=p.weather?'Hoy observamos '+p.weather+'. ¿Cómo está el cielo de nuestro cole?':'¿Qué vemos en el cielo? Miremos por la ventana.';}
+  if(p.kind==='tiempo'){
+   const fog=p.weather==='Niebla';
+   const scenes={Sol:'sol',Nubes:'nubes',Lluvia:'lluvia',Viento:'viento','Sol y nubes':'sol-nubes',Niebla:'nubes'};
+   const scene=scenes[p.weather]||'sol';
+   const label=fog?'Niebla sobre el jardín':p.weather?'Un día de '+p.weather.toLowerCase():'Observamos el cielo del jardín';
+   const mist=fog?'<div class="weather-fog" aria-hidden="true"><i></i><i></i><i></i></div>':'';
+   main.classList.add('weather-routine');
+   main.insertAdjacentHTML('afterbegin','<div class="weather-scene weather-panorama'+(fog?' is-foggy':'')+'" role="img" aria-label="'+E(label)+'" style="background-image:url(assets/asamblea-ligera/cielo-panoramico/'+scene+'.webp?rev=1)">'+mist+(p.weather?'<strong>'+E(p.weather.toUpperCase())+'</strong>':'')+'</div>');
+   p.customSpeech=p.weather?'Hoy observamos '+p.weather+'. ¿Cómo está el cielo de nuestro cole?':'¿Qué vemos en el cielo? Miremos por la ventana.';
+  }
  }
  function resourceGroups(items){const sheets=items.filter(C.isSheet),proposals=items.filter(C.isProposal);return (sheets.length?'<section class="resource-group"><h2>Fichas para imprimir y usar</h2>'+cards(sheets)+'</section>':'')+(proposals.length?'<section class="resource-group"><h2>Propuestas y materiales para preparar</h2><p>Experiencias, juegos y actividades con sus materiales.</p>'+cards(proposals)+'</section>':'');}
  function handle(action,value){if(action==='lesson-step'){A.stopVoice();state.projection.payload={step:Number(value)};state.projection.answered=false;projectionRender();return true;}if(action==='lesson-cover'){state.projection.payload={...state.projection.payload,covered:!state.projection.payload?.covered};projectionRender();A.feedbackVoice(state.projection.payload.covered?'¿Qué pistas recuerdas?':'Volvemos a mirar las láminas.');return true;}if(action==='andalucia-open'){startProjection('andalucia-cuento',Number(value));return true;}return false;}
  return {projection,decorate,handle,dutySpeech,speechFor,resourceGroups,storyIntros,andalucia,emotions};
 })();
+

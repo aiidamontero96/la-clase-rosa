@@ -212,26 +212,29 @@
 .pond-school .pond-group-many .pond-tokens { width:min(100%,490px); margin-inline:auto; }
 .pond-school .pond-group-many .pond-token { width:clamp(55px,7vw,112px); }
 .pond-absent {
-  justify-content:center; align-items:center;
-  background:radial-gradient(ellipse at center,#fff7e3 24%,#f1d8b5 100%);
+  display:grid; grid-template-rows:auto minmax(min-content,1fr) auto; justify-items:center; align-items:center;
+  padding-block:clamp(10px,2.2dvh,28px);
+  background:linear-gradient(#fff4dd17,#fff4dd00 68%,#f3dbac38),
+    url('assets/patitos-acuarela/nido-en-casa.webp') center 62% / cover no-repeat,#f6e7cf;
 }
 .pond-home-nest {
-  display:grid; place-items:center; width:min(100%,1000px); min-height:clamp(150px,30dvh,320px);
-  padding:clamp(18px,4.5dvh,52px) clamp(12px,4vw,75px) clamp(10px,2dvh,22px); box-sizing:border-box;
-  border:2px solid #fff7e5; border-radius:clamp(16px,3vw,32px);
-  background:#f4dfad url('assets/patitos-acuarela/nido-en-casa.webp') center 64% / cover no-repeat;
-  box-shadow:0 5px 18px #68412728;
+  display:grid; place-items:center; align-self:stretch;
+  width:min(100%,1330px); min-height:clamp(150px,28dvh,300px);
+  padding:clamp(24px,12dvh,115px) clamp(3px,4vw,65px) 0; box-sizing:border-box;
 }
 .pond-home-nest .pond-count-group { width:100%; }
-.pond-absent .pond-tokens { display:flex; flex-wrap:wrap; justify-content:center; gap:4px 8px; }
+.pond-absent .pond-tokens { display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(4px,1.4vw,23px); }
+.pond-absent .hatch-leaf,.pond-absent .hatch-water { display:none; }
 .pond-absent .pond-token { width:clamp(60px,9vw,130px); }
-.pond-absent .pond-token .hatch-art { height:clamp(58px,13dvh,132px); }
+.pond-absent .pond-token .hatch-art { height:clamp(76px,16dvh,162px); }
+.pond-absent .pond-group-many .hatch-art { height:clamp(63px,12dvh,125px); }
 .pond-absent .pond-writing-field { width:min(100%,285px); }
 .pond-absent .pond-writing-pad { width:min(100%,240px); }
 @media(max-width:720px) {
   .pond-writing { justify-content:flex-start; }
   .pond-token,.pond-school .pond-group-many .pond-token { width:clamp(55px,13vw,79px); }
   .pond-token .hatch-art { height:clamp(46px,10vw,72px); }
-  .pond-home-nest { background-position:center 61%; }
+  .pond-absent { background-position:center 58%; }
   .pond-absent .pond-token { width:clamp(58px,17vw,94px); }
 }
+
