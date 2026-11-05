@@ -13,6 +13,7 @@ on:
 permissions:
   contents: read
   pages: write
+  deployments: write
   id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
@@ -33,6 +34,27 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Reconcile the canceled Pages deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          previous=6d3dcf9cbc19bfafc702f6269535efa8703df010
+          pages_status=$(gh api "repos/$GITHUB_REPOSITORY/pages/deployments/$previous" --jq '.status')
+          echo "Pages status for $previous: $pages_status"
+          if [[ "$pages_status" != deployment_cancelled ]]; then
+            exit 0
+          fi
+          deployments=$(gh api --method GET "repos/$GITHUB_REPOSITORY/deployments" -f sha="$previous" -f environment=github-pages --jq '.[].id')
+          for id in $deployments; do
+            endpoint="repos/$GITHUB_REPOSITORY/deployments/$id/statuses"
+            current=$(gh api --method GET "$endpoint" -F per_page=1 --jq '.[0].state // "unknown"')
+            echo "Deployment record $id: $current"
+            case "$current" in
+              queued|pending|in_progress)
+                gh api --method POST "$endpoint" -f state=inactive -F auto_inactive=false -f description="Pages canceled this deployment" --jq '.state'
+                ;;
+            esac
+          done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
