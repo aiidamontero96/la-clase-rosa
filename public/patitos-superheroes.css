@@ -166,3 +166,16 @@ body:has(.patitos-home)::before{left:0;width:100%;background-image:url('assets/p
 @media(max-width:800px){
  .patitos-step-illustration{height:76px;width:65%}.patitos-step,.patitos-step:nth-child(-n+3){min-height:132px}
 }
+
+/* Centrado común de bienvenida y rutinas; ilustración sin velo luminoso. */
+.patitos-stage::before{content:none}
+.patitos-stage-content{margin-left:auto;margin-right:auto;text-align:center}
+.patitos-date{text-transform:uppercase;text-align:center}
+.patitos-stage h1,.patitos-start{align-self:center;text-align:center}
+.patitos-step strong{width:100%;text-align:center;text-transform:uppercase}
+.patitos-start{text-transform:uppercase}
+@media(min-width:801px){
+ .patitos-stage-content{width:76%;margin:0 auto}
+ .patitos-date{width:min(100%,500px);font-size:clamp(.85rem,1.3vw,1.3rem)}
+ .patitos-step strong{font-size:clamp(.8rem,min(1.1vw,2.1dvh),1.1rem)}
+}
