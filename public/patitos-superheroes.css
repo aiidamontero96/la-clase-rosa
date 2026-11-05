@@ -180,31 +180,39 @@ body:has(.patitos-home)::before{left:0;width:100%;background-image:url('assets/p
  .patitos-step strong{font-size:clamp(.8rem,min(1.1vw,2.1dvh),1.1rem)}
 }
 
-/* Bienvenida compacta: cartel completo, saludo en una línea y accesos más arriba. */
+/* Composición equilibrada: fecha anclada arriba y espacio entre personajes y controles. */
 .patitos-stage{overflow:visible}
-.patitos-stage-content{width:100%;padding-top:12px;gap:8px}
-.patitos-date{background-size:contain;flex-shrink:0}
-.patitos-stage h1{white-space:nowrap;font-size:clamp(1rem,3.05vw,3.6rem);max-width:100%;margin:0 0 4px!important}
+.patitos-stage-content{width:100%;margin:0 auto;padding:0;gap:0}
+.patitos-date{
+ --date-height:clamp(100px,15dvh,136px);
+ box-sizing:border-box;width:min(92%,460px);height:var(--date-height);min-height:0;
+ margin:0!important;flex-shrink:0;
+ background-size:100% 100%;background-position:center top;
+ padding:calc(var(--date-height)*.38) 44px 8px;
+ font-size:clamp(.85rem,1.2vw,1.2rem);line-height:1.15;
+}
+.patitos-stage h1{
+ white-space:nowrap;font-size:clamp(1rem,2.5vw,2.85rem);max-width:100%;
+ color:#754c61;text-shadow:0 1px 0 #fff8ed;
+ margin:clamp(12px,2dvh,22px) 0 clamp(14px,2dvh,22px)!important;
+}
 .patitos-stage h1 span{display:inline}
 .patitos-stage h1 span+span::before{content:" "}
-.patitos-stage h1::after{margin-top:8px}
+.patitos-stage h1::after{display:none}
 @media(min-width:801px){
- .patitos-home{grid-template-rows:auto auto;align-content:start;gap:18px;padding-top:12px}
+ .patitos-home{grid-template-rows:minmax(0,44%) minmax(0,44%);align-content:start;gap:3%;padding-top:0}
  .patitos-stage{height:auto}
- .patitos-stage-content{height:auto;width:100%;margin:0 auto;justify-content:flex-start;padding-top:0}
- .patitos-date{width:min(90%,500px);height:clamp(86px,12dvh,116px);margin:0!important;padding:28px 30px 10px}
- .patitos-steps{align-self:start;height:clamp(240px,38dvh,340px);max-height:none}
+ .patitos-stage-content{height:100%;width:100%;justify-content:flex-start;padding:0}
+ .patitos-steps{align-self:start;height:100%;max-height:340px}
 }
 @media(min-width:801px) and (max-height:700px){
- .patitos-home{gap:12px;padding-top:8px}
- .patitos-stage-content{gap:5px}
- .patitos-date{height:76px}
- .patitos-stage h1{font-size:min(3.05vw,5.5dvh)}
- .patitos-steps{height:clamp(180px,37dvh,260px)}
+ .patitos-date{--date-height:90px}
+ .patitos-stage h1{font-size:min(2.5vw,4.5dvh);margin:10px 0 14px!important}
+ .patitos-start{min-height:40px;padding:8px 24px!important}
 }
 @media(max-width:800px){
- .patitos-stage{height:auto;margin-bottom:20px}
- .patitos-stage-content{width:100%;padding-top:12px}
- .patitos-stage h1{font-size:4.35vw}
- .patitos-date{width:min(95%,500px);height:100px;min-height:100px}
+ .patitos-stage{height:auto;margin-bottom:38px}
+ .patitos-stage-content{width:100%;padding:0}
+ .patitos-date{--date-height:118px;width:min(96%,460px);font-size:clamp(.8rem,2.5vw,1rem);padding-left:32px;padding-right:32px}
+ .patitos-stage h1{font-size:3.9vw;margin:20px 0!important}
 }
