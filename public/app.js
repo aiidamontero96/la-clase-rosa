@@ -227,7 +227,7 @@ function home(){
     '<div class="patitos-stage-content">'+
       '<p class="patitos-date">'+E(date.charAt(0).toUpperCase()+date.slice(1))+'</p>'+
       '<h1><span>BUENOS DÍAS</span><span>MIS PATITOS</span></h1>'+
-      '<button type="button" class="button patitos-start" data-action="routine" data-value="encargado">Iniciar asamblea</button>'+
+      '<button type="button" class="button patitos-start" data-action="start-assembly">Iniciar asamblea</button>'+
     '</div>'+
   '</section>'+
   '<section class="patitos-steps" aria-label="Rutinas de la asamblea">'+
@@ -320,7 +320,7 @@ function pdi(){return A.pdiPage();}
 function storyCredits(book){return '<p class="story-credits"><strong>TEXTO:</strong> '+E(book.author)+' · <strong>ILUSTRACIONES:</strong> '+E(book.illustrator)+' · <strong>TRADUCCIÓN:</strong> '+E(book.translator)+' · '+E(book.publisher)+' · '+E(book.license||'CC BY 4.0')+'</p>';}
 function stories(){const library=window.ROSA_STORIES;const ready=library.ready.map(book=>'<article class="story-card story-ready"><img class="'+(book.coverFit==='contain'?'story-cover-contain':'')+'" src="'+book.cover+'" width="640" height="480" alt="Portada de '+E(book.title)+'"><div><span class="tag">'+E(book.level)+' · DISPONIBLE EN LA APP</span><h2>'+E(book.title)+'</h2><p>'+E(book.description)+'</p><p class="story-by">De '+E(book.author)+' · Ilustraciones de '+E(book.illustrator)+'</p><div class="story-actions">'+btn('LEER / PROYECTAR','story-open',book.id)+'</div></div></article>').join('');return head('Biblioteca Rosa',library.ready.length+' cuentos para leer y proyectar sin salir de La Clase Rosa.','', 'LECTURA COMPARTIDA')+'<section class="panel story-intro"><span aria-hidden="true">▰</span><div><h2>Un cuento, una conversación</h2><p>Abre el cuento, usa pantalla completa y pasa las páginas con botones grandes para la PDI.</p></div></section><div class="story-library">'+ready+'</div><p class="note">Todos los cuentos se leen dentro de la web y conservan sus créditos y licencia.</p>';}
 function openStory(id){const book=window.ROSA_STORIES.ready.find(item=>item.id===id);if(!book)return;state.story={id,page:0};$('#projector').showModal();renderStory();}
-function renderStory(){const s=state.story;if(!s)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===s.id);if(!book)return;const toolbar='<div class="projection-toolbar story-toolbar"><strong>BIBLIOTECA ROSA · '+E(book.title)+'</strong><div>'+btn('PANTALLA COMPLETA','fullscreen','','secondary small')+btn('× SALIR','story-close','','quiet')+'</div></div>';if(book.readerUrl){$('#projection-content').innerHTML=toolbar+'<main class="story-reader-frame"><iframe src="'+book.readerUrl+'" title="CUENTO '+E(book.title)+'" allowfullscreen></iframe></main><footer class="story-reader-credits">'+storyCredits(book)+'<div>'+btn('CERRAR CUENTO','story-close','','secondary small')+'</div></footer>';return;}const page=book.pages[s.page],first=s.page===0,last=s.page===book.pages.length-1,isYayoiCover=book.id==='yayoi-desde-aqui-hasta-el-infinito'&&first;const text=book.imageOnly?'':page[1]?'<div class="story-page-text">'+E(page[1]).replaceAll('\n','<br>')+'</div>':'<div class="story-cover-title"><h2>'+E(book.title)+'</h2><p>DE '+E(book.author)+'</p></div>';const visual=isYayoiCover?'<div class="yayoi-landscape-cover"><img src="'+page[0]+'" width="1093" height="1439" alt="PORTADA DEL LIBRO '+E(book.title)+'"><section><span>YAYOI KUSAMA</span><h2>DESDE AQUÍ HASTA EL INFINITO</h2><p>UN LIBRO PARA MIRAR JUNTOS</p></section></div>':'<img src="'+page[0]+'" width="1024" height="768" alt="ILUSTRACIÓN DE LA PÁGINA '+(s.page+1)+' DE '+E(book.title)+'">';$('#projection-content').innerHTML=toolbar+'<main class="story-reader '+(book.imageOnly?'story-image-only':'')+(isYayoiCover?' story-yayoi-cover':'')+'"><figure>'+visual+'</figure>'+text+'</main><footer class="story-footer">'+btn('← ANTERIOR','story-prev','',first?'secondary story-disabled':'secondary')+'<span aria-live="polite">PÁGINA '+(s.page+1)+' DE '+book.pages.length+'</span>'+btn(last?'TERMINAR':'SIGUIENTE →',last?'story-close':'story-next')+'</footer>'+(last?'<div class="story-reader-credits">'+storyCredits(book)+'</div>':'');}
+function renderStory(){const s=state.story;if(!s)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===s.id);if(!book)return;const toolbar='<div class="projection-toolbar story-toolbar"><strong>BIBLIOTECA ROSA · '+E(book.title)+'</strong><div>'+btn(fullscreenLabel(),'fullscreen','','secondary small')+btn('× SALIR','story-close','','quiet')+'</div></div>';if(book.readerUrl){$('#projection-content').innerHTML=toolbar+'<main class="story-reader-frame"><iframe src="'+book.readerUrl+'" title="CUENTO '+E(book.title)+'" allowfullscreen></iframe></main><footer class="story-reader-credits">'+storyCredits(book)+'<div>'+btn('CERRAR CUENTO','story-close','','secondary small')+'</div></footer>';return;}const page=book.pages[s.page],first=s.page===0,last=s.page===book.pages.length-1,isYayoiCover=book.id==='yayoi-desde-aqui-hasta-el-infinito'&&first;const text=book.imageOnly?'':page[1]?'<div class="story-page-text">'+E(page[1]).replaceAll('\n','<br>')+'</div>':'<div class="story-cover-title"><h2>'+E(book.title)+'</h2><p>DE '+E(book.author)+'</p></div>';const visual=isYayoiCover?'<div class="yayoi-landscape-cover"><img src="'+page[0]+'" width="1093" height="1439" alt="PORTADA DEL LIBRO '+E(book.title)+'"><section><span>YAYOI KUSAMA</span><h2>DESDE AQUÍ HASTA EL INFINITO</h2><p>UN LIBRO PARA MIRAR JUNTOS</p></section></div>':'<img src="'+page[0]+'" width="1024" height="768" alt="ILUSTRACIÓN DE LA PÁGINA '+(s.page+1)+' DE '+E(book.title)+'">';$('#projection-content').innerHTML=toolbar+'<main class="story-reader '+(book.imageOnly?'story-image-only':'')+(isYayoiCover?' story-yayoi-cover':'')+'"><figure>'+visual+'</figure>'+text+'</main><footer class="story-footer">'+btn('← ANTERIOR','story-prev','',first?'secondary story-disabled':'secondary')+'<span aria-live="polite">PÁGINA '+(s.page+1)+' DE '+book.pages.length+'</span>'+btn(last?'TERMINAR':'SIGUIENTE →',last?'story-close':'story-next')+'</footer>'+(last?'<div class="story-reader-credits">'+storyCredits(book)+'</div>':'');}
 function materialList(ids){const mats=[...new Set(ids.flatMap(id=>getResource(id).materials))];return '<section class="material-check"><h2>Deja preparado</h2><ul>'+mats.map(m=>'<li>'+E(m)+'</li>').join('')+'</ul></section>';}
 function today(){const labels=['Asamblea','Matemáticas','Lenguaje','Manipulación','Juego','Dinosaurios'];return head('¿Qué hago hoy?','Una selección para escoger y combinar. No es un horario ni hace falta hacer las seis.',btn('↻ Dame otras actividades','today-new')+btn('Imprimir selección','print-view','','secondary'))+'<div class="selection-list">'+state.today.map((id,i)=>{const r=getResource(id);return '<article class="selection-item"><span class="round-icon">'+(i+1)+'</span><div><span class="eyebrow">'+labels[i]+' · '+r.duration+' MIN</span><h3 style="margin-top:8px">'+E(r.title)+'</h3><p>'+E(r.preparation)+'</p><div class="resource-actions">'+actions(r)+btn(state.favorites.has(id)?'♥ Guardado':'♡ Guardar','favorite',id,'secondary small')+'</div></div></article>';}).join('')+'</div><div style="margin-top:24px">'+materialList(state.today)+'</div>';}
 function render(){nav();let view=route();state.assemblyGroup=view==='asamblea-vero'?'vero':'rosa';let body;if(view==='inicio')body=home();else if(view==='asamblea')body=assembly('rosa');else if(view==='asamblea-vero')body=assembly('vero');else if(view==='dinosaurios')body=dinosaurs();else if(view==='kusama')body=kusama();else if(view==='curso')body=course();else if(view==='pdi'||view==='pdi-calendario')body=pdi();else if(view==='pdi-que-pasaria')body=A.pdiWhatIfPage();else if(view==='pdi-cumpleanos')body=window.ROSA_BIRTHDAYS.page(A.pdiNav('cumpleanos'));else if(view==='pdi-proyectos')body=A.pdiProjectsPage();else if(view==='pdi-dias')body=A.pdiSpecialDaysPage();else if(view==='pdi-juegos')body=A.pdiGamesPage();else if(view==='canciones')body=window.ROSA_CLASSROOM.songs(A.pdiNav('canciones'));else if(view==='cuentos')body=stories();else if(view==='taller')body='<div class="fichas-generator-page"><a class="fichas-back" href="#imprimibles">← Volver a fichas</a><h1>Crear ficha a medida</h1>'+window.ROSA_SHEETS.panel()+'</div>';else if(view==='fichas-series'){patternWorkshopOpen=true;body='<div class="fichas-generator-page"><a class="fichas-back" href="#imprimibles">← Volver a fichas</a><h1>Generar series</h1>'+patternWorkshop()+'</div>';}else if(view==='hoy')body=today();else if(view==='recurso'){body=home();const id=location.hash.split('?')[1];if(getResource(id))setTimeout(()=>openResource(id),0);}else {body=bank(view);if(view==='lenguaje')body=body.replace('<div class="filters filters-useful">',window.ROSA_CLASSROOM.alphabet()+nameBuilder()+'<div class="filters filters-useful">');}if(view==='movimiento')body=window.ROSA_CLASSROOM.movementHub()+body;const main=$('#contenido');main.innerHTML=body;window.ROSA_FICHAS.mountPreviews(main);}
@@ -509,7 +509,7 @@ function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech
  if(p.kind==='estacion')p.customSpeech='¿En qué estación estamos?';
  if(p.kind==='numero')p.customSpeech='El número protagonista. '+Math.min(30,Math.max(1,n+1))+'.';
  if(p.kind==='letra')p.customSpeech='La letra protagonista. '+('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'[n%27])+'.';
- $('#projection-content').innerHTML='<div class="projection-toolbar"><strong>La Clase Rosa · '+E(title)+'</strong><div>'+btn('Pantalla completa','fullscreen','','secondary small')+btn('× Salir','close-projection','','quiet')+'</div></div>'+A.toolbar(p)+'<div class="projection-main" data-theme="'+E(p.payload?.theme||(p.kind.startsWith('dino')||['expedicion','clasificar','contar','falta','memory'].includes(p.kind)?'Dinosaurios':'General'))+'" data-game="'+E(p.kind)+'" data-level="'+p.level+'">'+body+'</div><div class="projection-footer">'+A.footer(foot)+'</div>';window.ROSA_SCENES?.decorate(p);setupRelateBoard();A.afterRender(body);window.ROSA_PUMPKIN?.init(p);window.ROSA_DINO?.init(p);
+ $('#projection-content').innerHTML='<div class="projection-toolbar"><strong>La Clase Rosa · '+E(title)+'</strong><div>'+btn(fullscreenLabel(),'fullscreen','','secondary small')+btn('× Salir','close-projection','','quiet')+'</div></div>'+A.toolbar(p)+'<div class="projection-main" data-theme="'+E(p.payload?.theme||(p.kind.startsWith('dino')||['expedicion','clasificar','contar','falta','memory'].includes(p.kind)?'Dinosaurios':'General'))+'" data-game="'+E(p.kind)+'" data-level="'+p.level+'">'+body+'</div><div class="projection-footer">'+A.footer(foot)+'</div>';window.ROSA_SCENES?.decorate(p);setupRelateBoard();A.afterRender(body);window.ROSA_PUMPKIN?.init(p);window.ROSA_DINO?.init(p);
 }
 const PDI_PRAISE=[
   {headline:'¡Muy bien!',voice:'¡Muy bien! ¡Un aplauso para ti!'},
@@ -729,6 +729,11 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='basket-next'){const p=state.projection;if(p?.kind==='cubos-canasta'&&p.answered){if(p.basketRound>=4)p.basketFinished=true;else p.basketRound++;p.answered=false;p.basketOptions=null;p.basketRemoved=[];p.basketShot=null;p.basketFigure=null;projectionRender();}}
  else if(action==='basket-restart'){const p=state.projection;if(p?.kind==='cubos-canasta'){p.basketLevel=null;p.basketRound=0;p.basketFinished=false;p.answered=false;p.basketSequence=null;p.basketOptions=null;p.basketRemoved=[];p.basketShot=null;p.basketFigure=null;projectionRender();}}
  else if(action==='what-if-open')void A.launch('que-pasaria',{round:Number(value)||0});
+ else if(action==='start-assembly'){
+  state.assemblyLetter=Math.floor(Math.random()*27);
+  startProjection('encargado');
+  void enterProjectorFullscreen();
+ }
  else if(action==='routine'){if(value==='encargado')state.assemblyLetter=Math.floor(Math.random()*27);if(value==='cancion'){A.stopVoice();$('#projector').close();location.hash='canciones';render();}else if(value==='galaxia')startProjection('palabra-imagen',0,{assemblyGalaxy:state.assemblyGroup});else if(value==='pregunta')startProjection('question',state.questionIndex,state.questionCategory);else if(value==='reto')startProjection('challenge',state.challengeIndex);else startProjection(value,value==='numero'?Math.floor(Math.random()*30):value==='letra'?(Number.isInteger(state.assemblyLetter)?state.assemblyLetter:(state.assemblyLetter=Math.floor(Math.random()*27))):0);}
  else if(action==='random-word')nextRandomWord();
  else if(action==='attendance-toggle'){const p=state.projection;if(p?.kind==='asistencia'&&Object.hasOwn(p.attendance,value)){p.attendance[value]=!p.attendance[value];if(target.classList.contains('hatch-egg')){window.ROSA_PATITOS_ASISTENCIA.update(target,studentLabel(value),p.attendance[value]);}else if(target.classList.contains('train-wagon')){const absent=!p.attendance[value];target.classList.toggle('is-absent',absent);target.setAttribute('aria-pressed',String(absent));target.setAttribute('aria-label',value+(absent?', HOY NO HA VENIDO. MARCAR PRESENTE':', EN CLASE. MARCAR AUSENCIA'));target.querySelector('.wagon-status').textContent=absent?'HOY NO HA VENIDO':'EN CLASE';$('#attendance-train-status').textContent=value+(absent?' HOY NO HA VENIDO':' ESTÁ EN CLASE');}else projectionRender();}}
@@ -776,7 +781,16 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='reveal-riddle'){$('#riddle-answer').classList.remove('hidden');target.disabled=true;A.feedbackVoice(pick(D.riddles,state.projection.round)[1]);}
  else if(action==='memory-flip')memoryFlip(Number(value));
  else if(action==='close-projection'){A.close();document.body.classList.remove('story-fullscreen-fallback');if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});$('#projector').close();$('#projection-content').innerHTML='';state.projection=null;}
- else if(action==='fullscreen'){const projector=$('#projector'),fallback=document.body.classList.contains('story-fullscreen-fallback'),active=document.fullscreenElement||document.webkitFullscreenElement;if(fallback){document.body.classList.remove('story-fullscreen-fallback');syncFullscreenButton();}else if(active){(document.exitFullscreen||document.webkitExitFullscreen)?.call(document).catch?.(()=>{});}else{const request=projector.requestFullscreen||projector.webkitRequestFullscreen;if(request){Promise.resolve(request.call(projector)).catch(()=>{document.body.classList.add('story-fullscreen-fallback');syncFullscreenButton();});}else{document.body.classList.add('story-fullscreen-fallback');syncFullscreenButton();}}}
+ else if(action==='fullscreen'){
+  if(document.body.classList.contains('story-fullscreen-fallback')){
+   document.body.classList.remove('story-fullscreen-fallback');
+   syncFullscreenButton();
+  }else if(document.fullscreenElement||document.webkitFullscreenElement){
+   (document.exitFullscreen||document.webkitExitFullscreen)?.call(document)?.catch?.(()=>{});
+  }else{
+   void enterProjectorFullscreen();
+  }
+ }
  else if(action==='print-view')window.print();
  else if(action==='name-project'){const name=$('#child-name')?.value.trim();if(name)startProjection('nombre',0,name.toLocaleUpperCase('es-ES').replace(/\s/g,''));else toast('Escribe primero un nombre.');}
  else if(action==='name-print')printName();
@@ -790,7 +804,34 @@ $('#search').addEventListener('keydown',event=>{if(event.key==='Escape'){$('#glo
 $('#menu-button').addEventListener('click',()=>{const open=$('#sidebar').classList.toggle('open');$('#menu-button').setAttribute('aria-expanded',String(open));});
 $('#sidebar-close').addEventListener('click',()=>{$('#sidebar').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');$('#menu-button').focus();});
 $('#projector').addEventListener('cancel',()=>{A.close();state.projection=null;state.story=null;document.body.classList.remove('story-fullscreen-fallback');if(document.fullscreenElement)document.exitFullscreen?.();});
-function syncFullscreenButton(){const button=$('[data-action="fullscreen"]');if(button)button.textContent=(document.fullscreenElement||document.webkitFullscreenElement||document.body.classList.contains('story-fullscreen-fallback'))?'SALIR DE PANTALLA COMPLETA':'PANTALLA COMPLETA';}
+async function enterProjectorFullscreen(){
+ const projector=$('#projector');
+ if(!projector.open||document.fullscreenElement||document.webkitFullscreenElement||
+    document.body.classList.contains('story-fullscreen-fallback'))return;
+
+ const request=projector.requestFullscreen||projector.webkitRequestFullscreen;
+ if(request){
+  try{
+   await request.call(projector);
+   return;
+  }catch{
+   // Keep the PDI layout available when the browser denies native fullscreen.
+  }
+ }
+ if(projector.open){
+  document.body.classList.add('story-fullscreen-fallback');
+  syncFullscreenButton();
+ }
+}
+function fullscreenLabel(){
+ const active=document.fullscreenElement||document.webkitFullscreenElement||
+  document.body.classList.contains('story-fullscreen-fallback');
+ return active?'SALIR DE PANTALLA COMPLETA':'PANTALLA COMPLETA';
+}
+function syncFullscreenButton(){
+ const button=$('[data-action="fullscreen"]');
+ if(button)button.textContent=fullscreenLabel();
+}
 document.addEventListener('fullscreenchange',()=>{document.body.classList.remove('story-fullscreen-fallback');syncFullscreenButton();});
 document.addEventListener('webkitfullscreenchange',()=>{document.body.classList.remove('story-fullscreen-fallback');syncFullscreenButton();});
 document.addEventListener('keydown',event=>{if(!state.story)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===state.story.id);if(!book?.pages)return;if(event.key==='ArrowRight'){event.preventDefault();if(state.story.page<book.pages.length-1){state.story.page++;renderStory();}}else if(event.key==='ArrowLeft'&&state.story.page>0){event.preventDefault();state.story.page--;renderStory();}});
