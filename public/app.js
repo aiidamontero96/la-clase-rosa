@@ -232,11 +232,6 @@ function home(){
   '<section class="patitos-steps" aria-label="Rutinas de la asamblea">'+
     assembly.map(([action,icon,label])=>'<button type="button" class="patitos-step" data-action="routine" data-value="'+action+'"><span class="patitos-step-illustration"><img src="assets/patitos-acuarela/'+icon+'.webp" width="240" height="180" alt=""></span><strong>'+E(label)+'</strong></button>').join('')+
   '</section>'+
-  '<h2 class="patitos-section-heading">Proyectos del aula</h2>'+
-  '<section class="patitos-projects" aria-label="Proyectos del aula">'+
-    '<a class="patitos-project" href="#dinosaurios"><span><strong>Dinosaurios</strong><small>Nuestro proyecto del primer trimestre</small></span><img src="assets/dinos-pdi/triceratops.webp" width="418" height="390" loading="lazy" alt=""></a>'+
-    '<a class="patitos-project" href="#kusama"><span><strong>Arte y creatividad</strong><small>Exploramos el mundo de Yayoi Kusama</small></span><img src="assets/kusama/kusama-sellos.webp" width="512" height="512" loading="lazy" alt=""></a>'+
-  '</section>'+
  '</div>';
 }
 function filterControl(label,id,options,value){return '<div class="field"><label for="'+id+'">'+label+'</label><select id="'+id+'" data-filter="'+id.replace('filter-','')+'">'+options.map(o=>'<option value="'+E(o[0])+'"'+(o[0]===value?' selected':'')+'>'+E(o[1])+'</option>').join('')+'</select></div>';}
