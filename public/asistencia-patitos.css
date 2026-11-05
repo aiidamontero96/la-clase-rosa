@@ -126,3 +126,72 @@
 @media(prefers-reduced-motion:reduce) {
   .is-hatching .hatch-art * { animation:none; }
 }
+
+
+/* Count the same pond characters, with the sum visible throughout. */
+.pond-count {
+  justify-content:flex-start; gap:clamp(6px,1.1dvh,14px);
+  padding-inline:clamp(8px,2.5vw,40px);
+}
+.pond-count-title p {
+  width:fit-content; margin:5px auto 0; padding:4px 10px; border-radius:12px;
+  background:#fff9e9f2; color:#44324d; font-size:clamp(.7rem,1.25vw,1rem); font-weight:800;
+}
+.pond-count-groups { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(6px,1.2vw,16px); }
+.pond-count-group {
+  min-width:0; padding:clamp(5px,.9vw,12px);
+  border:1px solid #fffef6; border-radius:18px; background:#fff8e5eb;
+}
+.pond-count-girls { background:#fff1eaf2; }
+.pond-count-boys { background:#eaf8f0f2; }
+.pond-count-absent { background:#fff6e1f2; }
+.pond-count-group header { display:flex; align-items:center; justify-content:space-between; gap:6px; }
+.pond-count-group h3 {
+  margin:0; color:#44324d; font-size:clamp(.88rem,1.7vw,1.35rem); font-weight:900;
+}
+.pond-number {
+  width:clamp(56px,6.5vw,85px); min-height:44px; padding:3px 6px; border:2px solid #836582;
+  border-radius:12px; background:#fffdf8; color:#3c2e48; text-align:center;
+  font-family:inherit; font-size:clamp(1.15rem,2.2vw,1.8rem); font-weight:900;
+}
+.pond-number[aria-invalid="true"] { border-color:#a94443; outline:2px solid #be5757; background:#fff0e5; }
+.pond-tokens { display:flex; flex-wrap:wrap; justify-content:center; gap:4px; margin-top:4px; }
+.pond-token {
+  position:relative; display:grid; grid-template-rows:auto minmax(2em,auto); justify-items:center; align-items:center;
+  width:clamp(61px,6.1vw,90px); min-width:0; min-height:0; padding:2px;
+  border:2px solid transparent; border-radius:12px; box-shadow:none; background:transparent; color:#44324d;
+  cursor:pointer; touch-action:manipulation;
+}
+.pond-token:hover { background:#fffcf7; box-shadow:none; }
+.pond-token:focus-visible,.pond-number:focus-visible { outline:3px solid #6c476b; outline-offset:2px; }
+.pond-token.is-counted { background:#e3f3cb; border-color:#49754a; }
+.pond-token .hatch-art { height:clamp(42px,7.8dvh,76px); filter:none; }
+.pond-token span { font-size:clamp(.62rem,.85vw,.82rem); font-weight:900; line-height:1.02; overflow-wrap:anywhere; max-width:100%; }
+.pond-token i {
+  position:absolute; top:0; right:0; display:none; place-items:center; width:1.35em; height:1.35em;
+  border-radius:50%; background:#436d45; color:white; font-style:normal; font-weight:900; line-height:1;
+}
+.pond-token.is-counted i { display:grid; }
+.pond-empty { margin:10px 0 5px; color:#4e4352; font-size:clamp(.67rem,1.15vw,.9rem); font-weight:800; text-align:center; }
+.pond-equation {
+  display:flex; flex-wrap:wrap; align-items:end; align-self:center; gap:clamp(6px,1.3vw,18px);
+  padding:5px clamp(7px,1.4vw,20px); border:1px solid #fffdf7; border-radius:18px; background:#fff9e7f5;
+}
+.pond-equation-term { display:grid; justify-items:center; gap:2px; color:#44324d; }
+.pond-equation-term small { font-size:clamp(.62rem,1.12vw,.85rem); font-weight:900; }
+.pond-equation-term output {
+  display:grid; place-items:center; min-width:clamp(41px,5vw,68px); min-height:44px;
+  border-radius:10px; background:#efe4da; font-size:clamp(1.1rem,2.4vw,1.9rem); font-weight:900;
+}
+.pond-equation b { align-self:end; line-height:44px; font-size:clamp(1.2rem,2.4vw,2rem); }
+.pond-count-check { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:6px 12px; }
+.pond-count-check .button { min-height:44px; }
+.pond-count-feedback { margin:0; font-size:clamp(.72rem,1.2vw,1rem); font-weight:900; }
+.pond-count-feedback[data-result] { padding:6px 10px; border-radius:10px; background:#fff9ed; color:#713b3b; }
+.pond-count-feedback[data-result="success"] { background:#e4f3cd; color:#2d542f; }
+@media(max-width:460px) {
+  .pond-count-group header { flex-wrap:wrap; justify-content:center; }
+  .pond-count-absent header { justify-content:space-between; }
+  .pond-token { width:49%; max-width:70px; }
+  .pond-count-absent .pond-token { width:61px; }
+}

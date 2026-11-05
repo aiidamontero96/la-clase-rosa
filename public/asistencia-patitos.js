@@ -113,5 +113,92 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
     button.querySelector('small').textContent=present?'EN CLASE':'TOCA TU HUEVO';
     document.getElementById('hatch-status').textContent=name+(present?' ESTÁ EN CLASE':' HA VUELTO AL HUEVO');
   }
-  return {render,update};
+  // Group membership comes from the Rosa roster, not the hero's outfit or its position.
+  const rosaGirls=new Set(['Alma','Abril','Emma']);
+  const countLabels={girls:'Cuántas niñas han venido',boys:'Cuántos niños han venido',present:'Total en clase',absent:'Cuántos faltan'};
+  function startCount(students,attendance,studentLabel){
+    const groups={girls:[],boys:[],absent:[]};
+    students.forEach((name,index)=>{
+      const display=studentLabel(name);
+      const group=!attendance[name]?'absent':rosaGirls.has(display)?'girls':'boys';
+      groups[group].push({name,display,index});
+    });
+    return {groups,limit:students.length,marked:new Set(),answers:{}};
+  }
+  function countPicker(model,key){
+    const current=model.answers[key];
+    const options=Array.from({length:model.limit+1},(_,i)=>
+      `<option value="${i}"${current===i?' selected':''}>${i}</option>`).join('');
+    return `<select class="pond-number" data-pond-answer="${key}" aria-label="${countLabels[key]}">
+      <option value=""${current===undefined?' selected':''}>?</option>${options}</select>`;
+  }
+  function renderCountGroup(model,key,title){
+    const group=model.groups[key];
+    const tokens=group.map(({name,display,index})=>{
+      const marked=model.marked.has(name);
+      return `<button type="button" class="pond-token${key==='absent'?'':' is-present'}${marked?' is-counted':''}"
+        data-action="pond-count-token" data-value="${esc(name)}" aria-label="${esc(display)}" aria-pressed="${marked}">
+        ${artwork(index)}<span>${esc(display.toLocaleUpperCase('es-ES'))}</span><i aria-hidden="true">✓</i></button>`;
+    }).join('');
+    const empty=key==='absent'?'HAN VENIDO TODOS':'NO HAY PATITOS EN ESTE GRUPO';
+    return `<section class="pond-count-group pond-count-${key}">
+      <header><h3>${title}</h3>${countPicker(model,key)}</header>
+      ${tokens?`<div class="pond-tokens">${tokens}</div>`:`<p class="pond-empty">${empty}</p>`}
+    </section>`;
+  }
+  function renderCount(model){
+    return `<section class="hatch-attendance pond-count" aria-labelledby="pond-count-title">
+      <header class="pond-count-title"><h2 id="pond-count-title">CONTAMOS LOS PATITOS</h2><p>TOCA CADA PATITO O HUEVO AL CONTAR Y ELIGE EL NÚMERO.</p></header>
+      <div class="pond-count-groups">${renderCountGroup(model,'girls','NIÑAS')}${renderCountGroup(model,'boys','NIÑOS')}</div>
+      <div class="pond-equation" role="group" aria-label="Suma de niñas y niños">
+        <span class="pond-equation-term"><small>NIÑAS</small><output data-pond-operand="girls">${model.answers.girls??'?'}</output></span>
+        <b aria-hidden="true">+</b>
+        <span class="pond-equation-term"><small>NIÑOS</small><output data-pond-operand="boys">${model.answers.boys??'?'}</output></span>
+        <b aria-hidden="true">=</b>
+        <span class="pond-equation-term"><small>EN CLASE</small>${countPicker(model,'present')}</span>
+      </div>
+      ${renderCountGroup(model,'absent','HOY FALTAN')}
+      <div class="pond-count-check"><button type="button" class="button" data-action="pond-count-check">COMPROBAR</button>
+        <p class="pond-count-feedback" role="status" aria-live="polite"></p></div>
+    </section>`;
+  }
+  function toggleCounted(model,name,button){
+    const marked=!model.marked.has(name);
+    if(marked)model.marked.add(name);
+    else model.marked.delete(name);
+    button.classList.toggle('is-counted',marked);
+    button.setAttribute('aria-pressed',String(marked));
+  }
+  function setCountAnswer(model,input,root){
+    const key=input.dataset.pondAnswer;
+    if(!Object.hasOwn(countLabels,key))return;
+    const answer=input.value===''?undefined:Number(input.value);
+    if(answer!==undefined&&(!Number.isInteger(answer)||answer<0||answer>model.limit))return;
+    model.answers[key]=answer;
+    const operand=root.querySelector('[data-pond-operand="'+key+'"]');
+    if(operand)operand.textContent=answer??'?';
+    root.querySelectorAll('.pond-number[aria-invalid]').forEach(field=>field.removeAttribute('aria-invalid'));
+    const feedback=root.querySelector('.pond-count-feedback');
+    feedback.textContent='';
+    feedback.removeAttribute('data-result');
+  }
+  function checkCount(model,root){
+    const {girls,boys,absent}=model.groups;
+    const expected={girls:girls.length,boys:boys.length,present:girls.length+boys.length,absent:absent.length};
+    const keys=Object.keys(expected);
+    const empty=keys.filter(key=>model.answers[key]===undefined);
+    const wrong=keys.filter(key=>model.answers[key]!==expected[key]);
+    const review=empty.length?empty:wrong;
+    for(const key of keys){
+      const field=root.querySelector('[data-pond-answer="'+key+'"]');
+      if(review.includes(key))field.setAttribute('aria-invalid','true');
+      else field.removeAttribute('aria-invalid');
+    }
+    const feedback=root.querySelector('.pond-count-feedback');
+    feedback.dataset.result=review.length?'retry':'success';
+    feedback.textContent=empty.length?'ELIGE UN NÚMERO EN CADA CASILLA.':
+      wrong.length?'REVISA LAS CASILLAS MARCADAS Y VUELVE A CONTAR.':'¡MUY BIEN! HABÉIS CONTADO A TODA LA CLASE.';
+    return review.length===0;
+  }
+  return {render,update,startCount,renderCount,toggleCounted,setCountAnswer,checkCount};
 })();
