@@ -13,6 +13,7 @@ on:
 permissions:
   contents: read
   pages: write
+  deployments: write
   id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
@@ -33,6 +34,39 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Remove canceled Pages deployment records
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          previous=6d3dcf9cbc19bfafc702f6269535efa8703df010
+          endpoint="repos/$GITHUB_REPOSITORY"
+          pages_status=$(gh api "$endpoint/pages/deployments/$previous" --jq '.status')
+          echo "Pages deployment $previous: $pages_status"
+          if [[ "$pages_status" != deployment_cancelled ]]; then
+            echo "Expected a canceled Pages deployment."
+            exit 1
+          fi
+          for id in 7581978024 7582402575; do
+            record="$endpoint/deployments/$id"
+            identity=$(gh api "$record" --jq '[.sha, .environment] | join(" ")')
+            if [[ "$identity" != "$previous github-pages" ]]; then
+              echo "Unexpected deployment record $id."
+              exit 1
+            fi
+            state=$(gh api --method GET "$record/statuses" -F per_page=1 --jq '.[0].state')
+            case "$state" in
+              failure|error)
+                gh api --method POST "$record/statuses" -f state=inactive -F auto_inactive=false -f description="Retiring a canceled Pages attempt" --jq '.state'
+                ;;
+              inactive) ;;
+              *) echo "Refusing to remove deployment $id in state $state."; exit 1 ;;
+            esac
+            gh api --method DELETE "$record"
+            echo "Removed deployment record $id."
+          done
+          remaining=$(gh api --method GET "$endpoint/deployments" -f sha="$previous" -f environment=github-pages --jq 'length')
+          test "$remaining" -eq 0
+          sleep 60
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
