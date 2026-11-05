@@ -155,3 +155,14 @@ body:has(.patitos-home) .footer{display:none}
 }
 .sidebar #navigation{max-height:none!important;height:auto!important;overflow:visible!important;padding:0!important;flex:0 0 auto!important}
 .sidebar #navigation .nav-link{flex-shrink:0}
+
+/* Conservar la proporción de la ilustración original, sin estirarla. */
+body:has(.patitos-home)::before{left:0;width:100%;background-image:url('assets/patitos-acuarela/paisaje-hd.webp');background-position:center center;background-size:cover}
+@media(min-width:801px){
+ .patitos-steps{width:90%;max-width:1040px;justify-self:center;align-self:center;height:90%;max-height:340px;gap:12px}
+ .patitos-step-illustration{max-height:94px;width:65%;height:calc(100% - 38px)}
+ .patitos-step strong{font-size:clamp(.88rem,min(1.25vw,2.3dvh),1.25rem)}
+}
+@media(max-width:800px){
+ .patitos-step-illustration{height:76px;width:65%}.patitos-step,.patitos-step:nth-child(-n+3){min-height:132px}
+}
