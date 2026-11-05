@@ -172,17 +172,17 @@ function route(){const view=location.hash.slice(1).split('?')[0]||'inicio';retur
 function nav(){
  const current=route(),pdiViews=['pdi','pdi-proyectos','pdi-dias','pdi-juegos','canciones'];
  const entries=[
-  ['inicio','🏠','Inicio'],
-  ['imprimibles','📚','Fichas'],
-  ['pdi','🖥️','PDI'],
-  ['dinosaurios','🌱','Proyecto'],
-  ['asamblea-vero','🐥','Asamblea Vero'],
-  ['https://familias.laclaserosa.es/panel','📔','Acceder al diario']
+  ['inicio','inicio','Inicio'],
+  ['imprimibles','fichas','Fichas'],
+  ['pdi','pdi','PDI'],
+  ['dinosaurios','proyecto','Proyecto'],
+  ['asamblea-vero','vero','Asamblea Vero'],
+  ['https://familias.laclaserosa.es/panel','diario','Acceder al diario']
  ];
  $('#navigation').innerHTML=entries.map(([id,icon,label])=>{
   const external=id.startsWith('https://');
   const active=!external&&(current===id||(id==='pdi'&&pdiViews.includes(current))||(id==='dinosaurios'&&current==='kusama'));
-  return '<a class="nav-link '+(active?'active':'')+'" href="'+(external?id:'#'+id)+'"'+(external?' target="_blank" rel="noopener noreferrer"':'')+(active?' aria-current="page"':'')+'><span class="nav-icon" aria-hidden="true">'+icon+'</span>'+E(label)+'</a>';
+  return '<a class="nav-link '+(active?'active':'')+'" href="'+(external?id:'#'+id)+'"'+(external?' target="_blank" rel="noopener noreferrer"':'')+(active?' aria-current="page"':'')+'><span class="nav-icon" aria-hidden="true"><img src="assets/patitos-acuarela/'+icon+'.webp" alt="" width="80" height="80"></span>'+E(label)+'</a>';
  }).join('');
  $('#top-navigation').innerHTML='';
  const today=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
@@ -224,13 +224,13 @@ function home(){
  return '<div class="patitos-home">'+
   '<section class="patitos-stage" aria-label="Bienvenida a la asamblea">'+
     '<div class="patitos-stage-content">'+
-      '<p class="patitos-date">'+E(date)+'</p>'+
+      '<p class="patitos-date">'+E(date.charAt(0).toUpperCase()+date.slice(1))+'</p>'+
       '<h1><span>BUENOS DÍAS</span><span>MIS PATITOS</span></h1>'+
       '<button type="button" class="button patitos-start" data-action="routine" data-value="encargado">Iniciar asamblea</button>'+
     '</div>'+
   '</section>'+
   '<section class="patitos-steps" aria-label="Rutinas de la asamblea">'+
-    assembly.map(([action,icon,label])=>'<button type="button" class="patitos-step" data-action="routine" data-value="'+action+'"><span class="patitos-step-illustration"><svg viewBox="0 0 120 100" aria-hidden="true" focusable="false"><use href="assets/patitos-iconos.svg#'+icon+'"></use></svg></span><strong>'+E(label)+'</strong></button>').join('')+
+    assembly.map(([action,icon,label])=>'<button type="button" class="patitos-step" data-action="routine" data-value="'+action+'"><span class="patitos-step-illustration"><img src="assets/patitos-acuarela/'+icon+'.webp" width="240" height="180" alt=""></span><strong>'+E(label)+'</strong></button>').join('')+
   '</section>'+
   '<h2 class="patitos-section-heading">Proyectos del aula</h2>'+
   '<section class="patitos-projects" aria-label="Proyectos del aula">'+
