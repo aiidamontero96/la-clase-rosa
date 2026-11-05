@@ -146,7 +146,14 @@ run("state.assemblyGroup='rosa';startProjection('asistencia');state.projection.a
 assert.deepEqual(JSON.parse(run('JSON.stringify(state.projection.hatchCount.groups.girls.map(student=>student.display))')),['Alma']);
 assert.deepEqual(JSON.parse(run('JSON.stringify(state.projection.hatchCount.groups.boys.map(student=>student.display))')),['Sergio']);
 assert(element('#projection-content').innerHTML.includes('CONTAMOS LOS PATITOS'));
-assert.equal((element('#projection-content').innerHTML.match(/<option value="" selected>/g)||[]).length,4);
+assert.equal((element('#projection-content').innerHTML.match(/data-pond-ink=/g)||[]).length,3);
+assert(!element('#projection-content').innerHTML.includes('pond-count-absent'));
+run("state.projection.hatchCount.ink.girls.push({d:'M 20 30 L 50 70'});state.projection.attendanceStep='absent';projectionRender()");
+assert(element('#projection-content').innerHTML.includes('¿CUÁNTOS FALTAN HOY?'));
+assert.equal((element('#projection-content').innerHTML.match(/data-pond-ink=/g)||[]).length,1);
+assert(!element('#projection-content').innerHTML.includes('pond-plus'));
+run("state.projection.attendanceStep='count';projectionRender()");
+assert(element('#projection-content').innerHTML.includes('M 20 30 L 50 70'));
 run("state.projection.attendanceStep='names';projectionRender();state.projection.attendanceStep='count';projectionRender()");
 assert.equal(run('state.projection.attendance.Alma'),true);
 assert.equal(run('state.projection.hatchCount.groups.absent.length'),data.students.length-2);
@@ -176,4 +183,5 @@ run('A.next()');assert.equal(run('state.projection.kind'),'palabra-imagen','cann
 context.galaxyCorrect=answerTarget(run('state.projection.answer'));run('answer(galaxyCorrect);A.next()');
 assert.equal(run('state.projection.kind'),'letra');assert.equal(run('state.projection.round'),12,'retain protagonist letter');
 console.log('Assembly galaxy flow passed');
+
 

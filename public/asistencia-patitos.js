@@ -115,7 +115,7 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
   }
   // Group membership comes from the Rosa roster, not the hero's outfit or its position.
   const rosaGirls=new Set(['Alma','Abril','Emma']);
-  const countLabels={girls:'Cuántas niñas han venido',boys:'Cuántos niños han venido',present:'Total en clase',absent:'Cuántos faltan'};
+  const writingLabels={girls:'Número de niñas',boys:'Número de niños',present:'Total en clase',absent:'Número de ausentes'};
   function startCount(students,attendance,studentLabel){
     const groups={girls:[],boys:[],absent:[]};
     students.forEach((name,index)=>{
@@ -123,14 +123,19 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
       const group=!attendance[name]?'absent':rosaGirls.has(display)?'girls':'boys';
       groups[group].push({name,display,index});
     });
-    return {groups,limit:students.length,marked:new Set(),answers:{}};
+    return {groups,marked:new Set(),ink:{girls:[],boys:[],present:[],absent:[]}};
   }
-  function countPicker(model,key){
-    const current=model.answers[key];
-    const options=Array.from({length:model.limit+1},(_,i)=>
-      `<option value="${i}"${current===i?' selected':''}>${i}</option>`).join('');
-    return `<select class="pond-number" data-pond-answer="${key}" aria-label="${countLabels[key]}">
-      <option value=""${current===undefined?' selected':''}>?</option>${options}</select>`;
+  function writingBox(model,key,caption){
+    const paths=model.ink[key].map(stroke=>`<path d="${stroke.d}"/>`).join('');
+    return `<div class="pond-writing-field">
+      <span class="pond-writing-label">${caption}</span>
+      <svg class="pond-writing-pad" data-pond-ink="${key}" viewBox="0 0 160 120"
+        preserveAspectRatio="none" role="img" aria-label="${writingLabels[key]}: recuadro para escribir">
+        <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">${paths}</g>
+      </svg>
+      <button type="button" class="pond-erase" data-action="pond-count-erase" data-value="${key}"
+        aria-label="Borrar: ${writingLabels[key]}">BORRAR</button>
+    </div>`;
   }
   function renderCountGroup(model,key,title){
     const group=model.groups[key];
@@ -140,26 +145,32 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
         data-action="pond-count-token" data-value="${esc(name)}" aria-label="${esc(display)}" aria-pressed="${marked}">
         ${artwork(index)}<span>${esc(display.toLocaleUpperCase('es-ES'))}</span><i aria-hidden="true">✓</i></button>`;
     }).join('');
-    const empty=key==='absent'?'HAN VENIDO TODOS':'NO HAY PATITOS EN ESTE GRUPO';
-    return `<section class="pond-count-group pond-count-${key}">
-      <header><h3>${title}</h3>${countPicker(model,key)}</header>
+    const empty=key==='absent'?'HAN VENIDO TODOS':'NO HAY PATITOS EN ESTA MESA';
+    const heading=title?`<h3>${title}</h3>`:'';
+    return `<section class="pond-count-group pond-count-${key}"${key==='absent'?' aria-label="Huevos cerrados"':''}>
+      ${heading}
       ${tokens?`<div class="pond-tokens">${tokens}</div>`:`<p class="pond-empty">${empty}</p>`}
     </section>`;
   }
-  function renderCount(model){
-    return `<section class="hatch-attendance pond-count" aria-labelledby="pond-count-title">
-      <header class="pond-count-title"><h2 id="pond-count-title">CONTAMOS LOS PATITOS</h2><p>TOCA CADA PATITO O HUEVO AL CONTAR Y ELIGE EL NÚMERO.</p></header>
-      <div class="pond-count-groups">${renderCountGroup(model,'girls','NIÑAS')}${renderCountGroup(model,'boys','NIÑOS')}</div>
-      <div class="pond-equation" role="group" aria-label="Suma de niñas y niños">
-        <span class="pond-equation-term"><small>NIÑAS</small><output data-pond-operand="girls">${model.answers.girls??'?'}</output></span>
-        <b aria-hidden="true">+</b>
-        <span class="pond-equation-term"><small>NIÑOS</small><output data-pond-operand="boys">${model.answers.boys??'?'}</output></span>
-        <b aria-hidden="true">=</b>
-        <span class="pond-equation-term"><small>EN CLASE</small>${countPicker(model,'present')}</span>
+  function renderCount(model,step){
+    if(step==='absent'){
+      return `<section class="hatch-attendance pond-writing pond-absent" aria-labelledby="pond-count-title">
+        <header><h2 id="pond-count-title">¿CUÁNTOS FALTAN HOY?</h2></header>
+        ${renderCountGroup(model,'absent')}
+        ${writingBox(model,'absent','HOY FALTAN')}
+      </section>`;
+    }
+    return `<section class="hatch-attendance pond-writing pond-school" aria-labelledby="pond-count-title">
+      <header><h2 id="pond-count-title">CONTAMOS LOS PATITOS</h2></header>
+      <div class="pond-classroom-grid">
+        ${renderCountGroup(model,'girls','NIÑAS')}
+        ${renderCountGroup(model,'boys','NIÑOS')}
+        <div class="pond-writing-girls">${writingBox(model,'girls','NIÑAS')}</div>
+        <span class="pond-plus" aria-label="más">+</span>
+        <div class="pond-writing-boys">${writingBox(model,'boys','NIÑOS')}</div>
+        <span class="pond-equals" aria-label="igual">=</span>
+        <div class="pond-writing-total">${writingBox(model,'present','EN CLASE')}</div>
       </div>
-      ${renderCountGroup(model,'absent','HOY FALTAN')}
-      <div class="pond-count-check"><button type="button" class="button" data-action="pond-count-check">COMPROBAR</button>
-        <p class="pond-count-feedback" role="status" aria-live="polite"></p></div>
     </section>`;
   }
   function toggleCounted(model,name,button){
@@ -169,36 +180,43 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
     button.classList.toggle('is-counted',marked);
     button.setAttribute('aria-pressed',String(marked));
   }
-  function setCountAnswer(model,input,root){
-    const key=input.dataset.pondAnswer;
-    if(!Object.hasOwn(countLabels,key))return;
-    const answer=input.value===''?undefined:Number(input.value);
-    if(answer!==undefined&&(!Number.isInteger(answer)||answer<0||answer>model.limit))return;
-    model.answers[key]=answer;
-    const operand=root.querySelector('[data-pond-operand="'+key+'"]');
-    if(operand)operand.textContent=answer??'?';
-    root.querySelectorAll('.pond-number[aria-invalid]').forEach(field=>field.removeAttribute('aria-invalid'));
-    const feedback=root.querySelector('.pond-count-feedback');
-    feedback.textContent='';
-    feedback.removeAttribute('data-result');
+  function pointInPad(event,pad){
+    const bounds=pad.getBoundingClientRect();
+    const x=Math.max(0,Math.min(160,(event.clientX-bounds.left)*160/bounds.width));
+    const y=Math.max(0,Math.min(120,(event.clientY-bounds.top)*120/bounds.height));
+    return x.toFixed(1)+' '+y.toFixed(1);
   }
-  function checkCount(model,root){
-    const {girls,boys,absent}=model.groups;
-    const expected={girls:girls.length,boys:boys.length,present:girls.length+boys.length,absent:absent.length};
-    const keys=Object.keys(expected);
-    const empty=keys.filter(key=>model.answers[key]===undefined);
-    const wrong=keys.filter(key=>model.answers[key]!==expected[key]);
-    const review=empty.length?empty:wrong;
-    for(const key of keys){
-      const field=root.querySelector('[data-pond-answer="'+key+'"]');
-      if(review.includes(key))field.setAttribute('aria-invalid','true');
-      else field.removeAttribute('aria-invalid');
+  function bindWriting(model,root){
+    if(!root)return;
+    for(const pad of root.querySelectorAll('[data-pond-ink]')){
+      const key=pad.dataset.pondInk;
+      let active=null;
+      pad.addEventListener('pointerdown',event=>{
+        if(event.button!==0||active)return;
+        event.preventDefault();
+        const d='M '+pointInPad(event,pad)+' l .1 0';
+        const stroke={d};
+        model.ink[key].push(stroke);
+        const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+        path.setAttribute('d',d);
+        pad.querySelector('g').append(path);
+        active={id:event.pointerId,stroke,path};
+        pad.setPointerCapture(event.pointerId);
+      });
+      pad.addEventListener('pointermove',event=>{
+        if(active?.id!==event.pointerId)return;
+        const samples=event.getCoalescedEvents?.();
+        for(const sample of samples?.length?samples:[event])active.stroke.d+=' L '+pointInPad(sample,pad);
+        active.path.setAttribute('d',active.stroke.d);
+      });
+      function finish(event){if(active?.id===event.pointerId)active=null;}
+      for(const name of ['pointerup','pointercancel','lostpointercapture'])pad.addEventListener(name,finish);
     }
-    const feedback=root.querySelector('.pond-count-feedback');
-    feedback.dataset.result=review.length?'retry':'success';
-    feedback.textContent=empty.length?'ELIGE UN NÚMERO EN CADA CASILLA.':
-      wrong.length?'REVISA LAS CASILLAS MARCADAS Y VUELVE A CONTAR.':'¡MUY BIEN! HABÉIS CONTADO A TODA LA CLASE.';
-    return review.length===0;
   }
-  return {render,update,startCount,renderCount,toggleCounted,setCountAnswer,checkCount};
+  function clearWriting(model,key,root){
+    if(!Object.hasOwn(writingLabels,key))return;
+    model.ink[key]=[];
+    root.querySelector('[data-pond-ink="'+key+'"] g').replaceChildren();
+  }
+  return {render,update,startCount,renderCount,toggleCounted,bindWriting,clearWriting};
 })();
