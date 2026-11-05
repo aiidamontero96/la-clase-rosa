@@ -5,7 +5,7 @@ const manifest=JSON.parse(fs.readFileSync(path.join(publicDir,'materials.json'),
 const blank=()=>({version:1,favorites:[],queue:[],level:2,cursors:{},last:null,adventure:{theme:'none',steps:0}});
 let persisted=blank(),failSave=false,failLoad=false,spoken=[],cancelled=0,printed='';
 const elements=new Map(),listeners={},voiceListeners={},stored=new Map();
-function element(key){if(!elements.has(key))elements.set(key,{innerHTML:'',textContent:'',style:{setProperty(){}},dataset:{},value:'',open:false,disabled:false,classList:{add(){},remove(){},toggle(){}},focus(){},scrollIntoView(){},setAttribute(){},removeAttribute(){},addEventListener(){},appendChild(){},querySelector:element,querySelectorAll:()=>[],remove(){},getBoundingClientRect:()=>({width:100,height:100}),cloneNode:()=>element('ghost'),showModal(){this.open=true;},close(){this.open=false;}});return elements.get(key);}
+function element(key){if(!elements.has(key))elements.set(key,{innerHTML:'',textContent:'',style:{setProperty(){}},dataset:{},value:'',open:false,disabled:false,classList:{add(){},remove(){},toggle(){},contains(){return false;}},focus(){},scrollIntoView(){},setAttribute(){},removeAttribute(){},addEventListener(){},appendChild(){},querySelector:element,querySelectorAll:()=>[],remove(){},getBoundingClientRect:()=>({width:100,height:100}),cloneNode:()=>element('ghost'),showModal(){this.open=true;},close(){this.open=false;}});return elements.get(key);}
 const document={querySelector:element,querySelectorAll:()=>[],createElement:tag=>element(tag),body:element('body'),addEventListener:(type,fn)=>(listeners[type]??=[]).push(fn),elementFromPoint:()=>({closest:()=>({dataset:{slot:'0'}})}),elementsFromPoint:()=>[{closest:()=>({dataset:{slot:'0'}})}]};
 const window={addEventListener(){},scrollTo(){},scrollY:0,setTimeout,SpeechSynthesisUtterance:function(text){this.text=text;},speechSynthesis:{getVoices:()=>[{lang:'es-ES',name:'Español'}],addEventListener:(type,fn)=>voiceListeners[type]=fn,cancel(){cancelled++;},speak(utterance){spoken.push(utterance);}},open:()=>({document:{open(){},write(html){printed=html;},close(){}},opener:window})};
 const context=vm.createContext({window,document,location:{hash:'#pdi',href:'https://rosa.example/'},URL,URLSearchParams,localStorage:{getItem:key=>stored.get(key)||null,setItem:(key,value)=>stored.set(key,value)},setTimeout:()=>0,clearTimeout(){},requestAnimationFrame:fn=>fn(),console,fetch:async(url,options={})=>{if(url!=='/api/aula')return {ok:true,json:async()=>manifest};if(options.method==='PUT'){if(failSave)return {ok:false};persisted=JSON.parse(options.body);return {ok:true,json:async()=>({saved:true})};}if(failLoad)return {ok:false};return {ok:true,json:async()=>({book:JSON.parse(JSON.stringify(persisted))})};}});
@@ -90,19 +90,16 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
     }
   }
   await action('pdi-favorite','puzzle');await run('A.save()');assert.deepEqual(persisted.favorites,['puzzle']);
-  for(const id of ['contar','vocales','memory','cuento'])await action('queue-toggle',id);assert.equal(run('A.ui.book.queue.length'),4);
-  await action('queue-up','memory');assert.deepEqual(json('A.ui.book.queue'),['contar','memory','vocales','cuento']);
-  await action('session-start');assert.equal(run('state.projection.kind'),'contar');assert.equal(run('A.ui.session.index'),0);
-  await action('session-next');assert.equal(run('state.projection.kind'),'memory');assert.equal(run('A.ui.session.index'),1);
+  assert.doesNotMatch(run('A.pdiPage()'),/Mi sesión de PDI|queue-toggle|session-start/);
+  await action('queue-toggle','memory');assert.equal(run('A.ui.book.queue.length'),0);
+  await run('A.launch("memory",{round:0})');assert.equal(run('A.ui.session'),null);
   await run('A.setLevel(1)');assert.equal(run('state.projection.memory.length'),4);
   const deck=json('state.projection.memory'),same=deck.map((v,i)=>v===deck[0]?i:null).filter(v=>v!==null);run('memoryFlip('+same[0]+');memoryFlip('+same[1]+')');await run('A.save()');const snapshot=JSON.stringify(persisted.last);
   run('state.projection=null');await run('A.resume()');assert.equal(JSON.stringify(json('A.snapshot(state.projection)')),snapshot);assert.equal(run('state.projection.matched.length'),2);
-  await action('session-next');await action('session-next');await action('session-next');assert.equal(run('state.projection.kind'),'session-end');assert.equal(run('A.ui.book.last'),null);
-  for(const id of ['cestas','parejas','cantidades','comparar','juntar'])await action('queue-toggle',id);assert.equal(run('A.ui.book.queue.length'),8);assert.equal(run("A.ui.book.queue.includes('juntar')"),false);
   run("A.ui.book.adventure={theme:'jardin',steps:0}");await run('A.launch("contar",{round:0})');
   for(let i=0;i<7;i++){context.target={dataset:{value:run('state.projection.answer')},classList:{add(){},remove(){}}};run('answer(target);answer(target)');assert.equal(run('A.ui.book.adventure.steps'),Math.min(i+1,6));if(i<6)run('A.next()');}
   assert(element('#game-feedback').innerHTML.includes('pdi-happy-face'));
-  for(const kind of ['puzzle','ordenar-piezas','cestas','ordena-numeros','ordena-historia'])for(let level=1;level<=4;level++){
+  for(const kind of ['puzzle','cestas','ordena-numeros','ordena-historia'])for(let level=1;level<=4;level++){
     await run('A.setLevel('+level+')');await run('A.launch('+JSON.stringify(kind)+',{round:2})');const pieces=json('state.projection.drop.pieces'),goal=run('state.projection.drop.goal');
     run('A.selectPiece("0");A.place("99")');assert.equal(run('Object.keys(state.projection.drop.placed).length'),0);
     for(const piece of pieces.slice(0,goal))run('A.selectPiece('+JSON.stringify(piece.id)+');A.place('+JSON.stringify(piece.slot)+')');
@@ -118,7 +115,7 @@ async function action(name,value=''){run('A.handle('+JSON.stringify(name)+','+JS
     const first=story.nodes.inicio.choices[0][2];run('A.storyChoice('+JSON.stringify(first)+')');await run('A.save()');await run('A.resume()');assert.equal(run('state.projection.storyPath[1]'),first);
     const end=story.nodes[first].choices[0][2];run('A.storyChoice('+JSON.stringify(end)+')');assert(element('#projection-content').innerHTML.includes('¡Un cuento compartido!'));
   }assert.equal(endings,12);
-  await run('A.launch("sorpresa",{round:0})');assert(element('#projection-content').innerHTML.includes('surprise-box'));await action('surprise-open');assert(element('#projection-content').innerHTML.includes('Descubrir respuesta'));await action('surprise-answer');assert(element('#projection-content').innerHTML.includes('surprise-answer'));run('A.next()');assert.equal(run('state.projection.surpriseOpen'),false);
+  run('startProjection("sorpresa")');assert(element('#projection-content').innerHTML.includes('surprise-box'));await action('surprise-open');assert(element('#projection-content').innerHTML.includes('Descubrir respuesta'));await action('surprise-answer');assert(element('#projection-content').innerHTML.includes('surprise-answer'));run('A.next()');assert.equal(run('state.projection.surpriseOpen'),false);
   assert.deepEqual(json('window.ROSA_SHEETS.getRoster()'),['Tristán','Sergio','Alejandro','Marcelo','Alma','Francisco','Abril','Martín','Emma','Álvaro','José Antonio','Mohammed']);
   assert(!run('window.ROSA_SHEETS.panel()').includes('data-roster-index'));
   run("window.ROSA_SHEETS.ui.mode='dino';window.ROSA_SHEETS.ui.dinoType='conocer'");assert(!run('window.ROSA_SHEETS.panel()').includes('>Nivel<'));
