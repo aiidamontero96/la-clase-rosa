@@ -125,10 +125,37 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
     });
     return {groups,marked:new Set(),ink:{girls:[],boys:[],present:[],absent:[]}};
   }
+  const countPortraits={
+    girls:{
+      hairBehind:'<path d="M17 27c-9-4-15 4-12 13 1 4 4 6 8 7-1-5 2-8 6-11m28-9c9-4 15 4 12 13-1 4-4 6-8 7 1-5-2-8-6-11" fill="#683c31"/>',
+      face:'#f7c195',
+      hair:'<path d="M16 31v-7c0-10 7-16 16-16s16 6 16 16v8c-4-3-8-8-10-13-5 5-12 8-22 10z" fill="#683c31"/><path d="m13 26 6 3m32-3-6 3" stroke="#dc5a6e" stroke-width="4"/>',
+      shirt:'<path d="M13 60c1-9 8-15 19-15s18 6 19 15z" fill="#f7d477"/><path d="m23 47 2 6h14l2-6 4 2-2 11H21l-2-11z" fill="#b65376"/>'
+    },
+    boys:{
+      hairBehind:'',
+      face:'#bc805c',
+      hair:'<path d="M16 32c-3-5-3-11-1-15l-4-4 10 1 3-7 6 5 7-7 2 7 10-2-2 7c3 3 3 9 1 15l-4-9c-8 2-14 0-19-4-2 5-5 8-9 10z" fill="#302d40"/>',
+      shirt:'<path d="M13 60c1-9 8-15 19-15s18 6 19 15z" fill="#39867c"/><path d="M18 55h28" stroke="#fff5d8" stroke-width="3"/>'
+    }
+  };
+  function countCaption(key,caption){
+    const portrait=countPortraits[key];
+    if(!portrait)return caption;
+    return `<svg class="pond-count-icon" data-pond-portrait="${key}" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <g stroke="#44324d" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+        ${portrait.hairBehind}
+        ${portrait.shirt}
+        <path d="M17 29c-7-2-8 8 0 8 2 7 8 12 15 12s13-5 15-12c8 0 7-10 0-8v-5c0-8-6-13-15-13s-15 5-15 13z" fill="${portrait.face}"/>
+        ${portrait.hair}
+        <path d="M26 33v1m12-1v1m-10 5q4 5 8 0" fill="none"/>
+      </g>
+    </svg> <span>${caption}</span>`;
+  }
   function writingBox(model,key,caption){
     const paths=model.ink[key].map(stroke=>`<path d="${stroke.d}"/>`).join('');
     return `<div class="pond-writing-field">
-      <span class="pond-writing-label">${caption}</span>
+      <span class="pond-writing-label">${countCaption(key,caption)}</span>
       <svg class="pond-writing-pad" data-pond-ink="${key}" viewBox="0 0 160 120"
         preserveAspectRatio="none" role="img" aria-label="${writingLabels[key]}: recuadro para escribir">
         <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">${paths}</g>
@@ -149,7 +176,7 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
         ${art}<i aria-hidden="true">✓</i></button>`;
     }).join('');
     const empty=key==='absent'?'HAN VENIDO TODOS':'NO HAY PATITOS EN ESTA MESA';
-    const heading=title?`<h3>${title}</h3>`:'';
+    const heading=title?`<h3>${countCaption(key,title)}</h3>`:'';
     return `<section class="pond-count-group pond-count-${key}${group.length>5?' pond-group-many':''}"${key==='absent'?' aria-label="Huevos cerrados"':''}>
       ${heading}
       ${tokens?`<div class="pond-tokens">${tokens}</div>`:`<p class="pond-empty">${empty}</p>`}

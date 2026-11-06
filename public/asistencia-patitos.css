@@ -1,3 +1,12 @@
+#projector {
+  --assembly-pond:linear-gradient(#fff4db55,#e1f6e61a 29%,#2c74602b),
+    url('assets/patitos-acuarela/estanque-asistencia.webp') center / cover no-repeat,#b6dcd1;
+  --assembly-classroom:linear-gradient(#fff9e123,#f6e5c336),
+    url('assets/patitos-acuarela/aula-recuento.webp') center / cover no-repeat,#f5e5cc;
+  --assembly-nest:linear-gradient(#fff4dd17,#fff4dd00 68%,#f3dbac38),
+    url('assets/patitos-acuarela/nido-en-casa.webp') center 62% / cover no-repeat,#f6e7cf;
+}
+
 #projector:has(.projection-main .hatch-attendance) .projection-main {
   width:100%; max-width:none; padding:0; margin:0; display:flex; overflow:auto;
   scrollbar-color:#619487 #c8e1d5;
@@ -8,8 +17,7 @@
   width:100%; min-height:100%; flex:1 0 auto; margin:0;
   padding:clamp(8px,1.5dvh,20px) clamp(10px,3.1vw,60px);
   color:#3c2e48; box-sizing:border-box;
-  background:linear-gradient(#fff4db55,#e1f6e61a 29%,#2c74602b),
-    url('assets/patitos-acuarela/estanque-asistencia.webp') center / cover no-repeat, #b6dcd1;
+  background:var(--assembly-pond);
 }
 .hatch-attendance header { text-align:center; flex:0 0 auto; }
 .hatch-attendance header h2 {
@@ -134,8 +142,7 @@
   padding-inline:clamp(10px,2.6vw,42px);
 }
 .pond-school {
-  background:linear-gradient(#fff9e123,#f6e5c336),
-    url('assets/patitos-acuarela/aula-recuento.webp') center / cover no-repeat,#f5e5cc;
+  background:var(--assembly-classroom);
 }
 .pond-school { align-items:center; justify-content:center; }
 .pond-classroom-grid {
@@ -144,7 +151,7 @@
 }
 .pond-count-group { min-width:0; text-align:center; }
 .pond-school .pond-count-group {
-  display:flex; flex-direction:column; justify-content:center;
+  display:flex; flex-direction:column; justify-content:flex-start;
   min-height:clamp(126px,23dvh,240px); padding:clamp(7px,1.1dvh,14px) 5px 16px;
   border:2px solid #fff8eb; border-radius:20px; background:#fff7e5ed;
   box-shadow:inset 0 -9px 0 #bd815b,inset 0 -13px 0 #e0af78,0 7px 14px #71533d2e;
@@ -159,8 +166,16 @@
   border-radius:.65em; background:#fffaf0; color:#44324d;
   font-size:clamp(.95rem,2vw,1.8rem); font-weight:900;
 }
+.pond-school .pond-count-group > h3 { flex:none; }
+.pond-school .pond-count-group > :is(.pond-tokens,.pond-empty) { margin-block:auto; }
 .pond-count-girls h3 { background:#ffe7eb; }
 .pond-count-boys h3 { background:#e3f2dc; }
+.pond-count-group h3,.pond-writing-label {
+  display:inline-flex; align-items:center; justify-content:center; gap:clamp(3px,1vw,12px);
+}
+.pond-count-icon { display:block; flex:none; width:clamp(28px,4.5vmin,58px); height:auto; }
+.pond-writing-label { min-height:clamp(24px,3.3vmin,42px); box-sizing:content-box; }
+.pond-writing-label .pond-count-icon { width:clamp(24px,3.3vmin,42px); }
 .pond-tokens { display:flex; flex-wrap:wrap; justify-content:center; align-items:end; gap:4px; }
 .pond-token {
   position:relative; display:grid; grid-template-rows:auto minmax(1.8em,auto);
@@ -215,8 +230,7 @@
   display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
   align-self:stretch; width:100%; margin-inline:auto; min-width:0;
   padding-block:clamp(10px,2.2dvh,28px);
-  background:linear-gradient(#fff4dd17,#fff4dd00 68%,#f3dbac38),
-    url('assets/patitos-acuarela/nido-en-casa.webp') center 62% / cover no-repeat,#f6e7cf;
+  background:var(--assembly-nest);
 }
 .pond-absent > header { flex:none; width:100%; text-align:center; }
 .pond-home-nest {
@@ -250,3 +264,88 @@
 
 
 .pond-token-static,.pond-token-static:hover { cursor:default; background:transparent; }
+
+/* Extend the scene behind the controls in native and fallback fullscreen. */
+:is(#projector:fullscreen,#projector:-webkit-full-screen,.story-fullscreen-fallback #projector)
+#projection-content:is(:has(.projection-main:is(
+  [data-game="encargado"],[data-game="dia-semana"],[data-game="calendario"],
+  [data-game="estacion"],[data-game="emociones"],
+  [data-game="numero"],[data-game="letra"]
+),.hatch-attendance),:has(.count-story):not(:has(.count-extra))) {
+  background:var(--assembly-scene,radial-gradient(ellipse at top,#fffbec,#f6e1c5));
+}
+#projection-content:has(.hatch-attendance:not(.pond-writing)) { --assembly-scene:var(--assembly-pond); }
+#projection-content:has(.pond-school) { --assembly-scene:var(--assembly-classroom); }
+#projection-content:has(.pond-absent) { --assembly-scene:var(--assembly-nest); }
+#projection-content:has(.count-story):not(:has(.count-extra)) {
+  --assembly-scene:radial-gradient(ellipse at center,#fff7e0,#dfede1);
+}
+#projection-content:has(.projection-main[data-game="estacion"]) {
+  --assembly-scene:linear-gradient(#f9edd7,#e4eedc);
+}
+
+:is(#projector:fullscreen,#projector:-webkit-full-screen,.story-fullscreen-fallback #projector)
+.projection-main:is(
+  [data-game="encargado"],[data-game="dia-semana"],[data-game="calendario"],
+  [data-game="estacion"],[data-game="emociones"],
+  [data-game="numero"],[data-game="letra"],
+  :has(.hatch-attendance),:has(.count-story):not(:has(.count-extra))
+) { width:100%; max-width:none; }
+
+:is(#projector:fullscreen,#projector:-webkit-full-screen,.story-fullscreen-fallback #projector)
+#projection-content:is(:has(.projection-main:is(
+  [data-game="encargado"],[data-game="dia-semana"],[data-game="calendario"],
+  [data-game="estacion"],[data-game="emociones"],
+  [data-game="numero"],[data-game="letra"]
+),.hatch-attendance),:has(.count-story):not(:has(.count-extra)))
+> :is(.projection-toolbar,.aula-projection-controls,.projection-footer) {
+  background:#fffaf0e6;
+}
+
+:is(#projector:fullscreen,#projector:-webkit-full-screen,.story-fullscreen-fallback #projector)
+.projection-main:is(:has(.hatch-attendance),:has(.count-story):not(:has(.count-extra))),
+:is(#projector:fullscreen,#projector:-webkit-full-screen,.story-fullscreen-fallback #projector)
+.hatch-attendance { background:transparent; }
+
+/* Reserve the toolbar and footer first; the activity uses the remaining height. */
+:is(#projector:fullscreen,#projector:-webkit-full-screen,.story-fullscreen-fallback #projector)
+#projection-content:has(.pond-absent) > .projection-main {
+  flex:1 1 0;
+  min-height:0;
+  width:100%;
+  max-width:none;
+  align-self:stretch;
+  margin:0;
+}
+
+:is(#projector:fullscreen,#projector:-webkit-full-screen,.story-fullscreen-fallback #projector)
+#projection-content > .projection-main:has(.pond-absent) {
+  container-type:size;
+  overflow:auto;
+  padding:0;
+}
+
+/* Size the eggs and writing pad against the space available inside the visor. */
+@container (min-height:0px) {
+  .pond-absent {
+    display:grid;
+    grid-template-rows:auto minmax(min-content,1fr) auto;
+    justify-items:center;
+    align-items:center;
+    min-height:max(100%,380px);
+    padding-block:clamp(5px,1.3cqh,16px);
+    gap:clamp(5px,1.1cqh,14px);
+  }
+  .pond-absent .pond-home-nest { min-height:0; padding:0; }
+  .pond-absent .pond-token .hatch-art { height:clamp(58px,23cqh,190px); }
+  .pond-absent .pond-group-many .pond-token .hatch-art { height:clamp(42px,14cqh,135px); }
+  .pond-absent .pond-writing-pad { height:clamp(68px,15cqh,145px); }
+}
+
+@media (max-width:720px) {
+  @container (min-height:0px) {
+    .pond-absent .pond-group-many .pond-token { width:clamp(36px,12.4vw,88px); }
+    .pond-absent .pond-group-many .pond-token span { font-size:clamp(.64rem,1.8vw,.76rem); }
+    .pond-absent .pond-group-many .pond-token .hatch-art { height:clamp(35px,11cqh,90px); }
+  }
+}

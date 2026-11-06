@@ -122,7 +122,6 @@
         <section id="pdi-timer-stage" class="panel pdi-timer-stage" aria-label="Cronómetro de La Clase Rosa">
           <div class="pdi-timer-title">
             <div><span class="eyebrow">TIEMPO PARA NUESTRO RETO</span><h2>El reloj de la clase</h2></div>
-            <button type="button" class="secondary pdi-timer-fullscreen" data-timer-action="fullscreen">⛶ Pantalla completa</button>
           </div>
           <div class="pdi-timer-layout">
             <div class="pdi-timer-visual">
@@ -135,7 +134,6 @@
                 <strong id="pdi-timer-status">¡PREPARADOS!</strong>
                 <div id="pdi-timer-countdown" class="pdi-timer-countdown" aria-live="assertive" hidden></div>
               </div>
-              <div class="pdi-timer-teacher-controls" aria-label="Control de la docente"><button type="button" class="quiet pdi-timer-exit" data-timer-action="exit" aria-label="Salir del cronómetro">✕ SALIR</button></div>
               <div id="pdi-timer-message" class="pdi-timer-message" role="status" aria-live="polite">ELIGE EL TIEMPO Y PULSA EMPEZAR</div>
               <div class="pdi-timer-confetti" aria-hidden="true">${confetti}</div>
             </div>
@@ -398,26 +396,6 @@
     stage.classList.toggle('timer-running', timer.running);
     stage.classList.toggle('timer-started', timer.started);
     stage.classList.toggle('timer-finished', timer.finished);
-    const full = document.fullscreenElement === stage;
-    const fullButton = stage.querySelector('[data-timer-action="fullscreen"]'); if (fullButton) fullButton.textContent = full ? '⛶ Salir de pantalla completa' : '⛶ Pantalla completa';
-  }
-
-  async function toggleTimerFullscreen() {
-    const stage = document.querySelector('#pdi-timer-stage');
-    if (!stage) return;
-    try {
-      if (document.fullscreenElement === stage) await document.exitFullscreen();
-      else if (stage.requestFullscreen) await stage.requestFullscreen();
-      else stage.classList.toggle('timer-expanded');
-    } catch { stage.classList.toggle('timer-expanded'); }
-    updateTimerDom();
-  }
-
-  async function exitTimerMode() {
-    const stage = document.querySelector('#pdi-timer-stage');
-    resetTimer();
-    stage?.classList.remove('timer-expanded');
-    try { if (document.fullscreenElement === stage) await document.exitFullscreen(); } catch {}
   }
 
   function fixProjectionExtras() {
@@ -444,12 +422,13 @@
       else if (action === 'start') startTimer();
       else if (action === 'pause') pauseTimer();
       else if (action === 'reset') resetTimer();
-      else if (action === 'exit') void exitTimerMode();
-      else if (action === 'fullscreen') void toggleTimerFullscreen();
+
     });
     document.addEventListener('input', event => { if (event.target?.id === 'pdi-timer-range') setMinutes(event.target.value); });
-    document.addEventListener('fullscreenchange', updateTimerDom);
-    window.addEventListener('hashchange', () => setTimeout(routeSync, 0));
+    window.addEventListener('hashchange', event => {
+      if(new URL(event.oldURL).hash==='#pdi-cronometro'&&!timerRoute())resetTimer();
+      setTimeout(routeSync,0);
+    });
     setTimeout(() => { routeSync(); fixProjectionExtras(); }, 0);
   }
 

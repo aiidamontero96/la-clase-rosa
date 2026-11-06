@@ -304,33 +304,18 @@
   backdrop-filter: blur(6px);
 }
 
-.pdi-mode-floating {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 3500;
-  min-height: 48px;
-  padding: 10px 16px;
-  border: 2px solid #fff;
-  border-radius: 999px;
-  background: #7f1847;
-  color: #fff;
-  box-shadow: 0 8px 24px rgba(70, 24, 45, .26);
-  font-weight: 900;
-  letter-spacing: .02em;
-}
-
-.pdi-mode-floating:hover,
-.pdi-mode-floating:focus-visible {
-  background: #641137;
-}
-
-.pdi-mode-floating.is-active {
-  background: #2d5543;
-}
-
-.pdi-projector-mode {
-  margin-left: auto;
+.pdi-tool-back {
+  position:sticky;
+  top:0;
+  z-index:100003;
+  min-height:42px;
+  margin:0 0 6px;
+  padding:7px 16px;
+  border:1px solid #a85d79;
+  border-radius:999px;
+  background:#fff9f5;
+  color:#72394f;
+  font-weight:900;
 }
 
 /* Modo PDI real para páginas de la sección */
@@ -372,7 +357,7 @@
 #contenido:-webkit-full-screen .pdi-board-shell,
 .pdi-mode-fallback #contenido.pdi-mode-target .pdi-board-shell {
   width: 100%;
-  height: calc(100dvh - 20px);
+  height: calc(100dvh - 70px);
   min-height: 0;
   grid-template-rows: auto auto minmax(0, 1fr);
   margin: 0;
@@ -388,19 +373,6 @@
 /* Fallback para navegadores/PDI que no concedan Fullscreen API */
 .pdi-mode-fallback {
   overflow: hidden !important;
-}
-
-.pdi-mode-fallback #projector.pdi-mode-target {
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 9999 !important;
-  display: block !important;
-  width: 100vw !important;
-  height: 100dvh !important;
-  max-width: none !important;
-  max-height: none !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
 }
 
 @media (max-width: 760px) {
@@ -438,92 +410,7 @@
     margin-left: 0;
   }
 
-  .pdi-mode-floating {
-    right: 10px;
-    bottom: 10px;
-    min-height: 44px;
-    padding: 8px 12px;
-  }
 }
-
-/* Dentro del Modo PDI ya estamos a pantalla completa:
-   ocultamos controles internos redundantes y dejamos una única salida clara. */
-.pdi-mode-active .pdi-internal-fullscreen {
-  display: none !important;
-}
-
-/* Si el control vive dentro de un iframe propio de La Clase Rosa,
-   pdi-local-tools.js replica esta clase en el documento del iframe. */
-html.pdi-mode-active .pdi-internal-fullscreen,
-body.pdi-mode-active .pdi-internal-fullscreen {
-  display: none !important;
-}
-
-.pdi-mode-active .pdi-mode-floating.is-active {
-  min-width: 210px;
-  background: #2d5543;
-  color: #fff;
-}
-
-/* Modo PDI v3 · las actividades abiertas heredan el viewport completo.
-   Evita que calendario, encargados, tiempo, juegos, etc. queden como modal centrado. */
-html.pdi-mode-active #projector[open],
-body.pdi-mode-active #projector[open] {
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 10000 !important;
-  display: block !important;
-  width: 100vw !important;
-  height: 100dvh !important;
-  max-width: none !important;
-  max-height: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  overflow: hidden !important;
-  background: #fffaf6 !important;
-}
-
-html.pdi-mode-active #projector[open]::backdrop,
-body.pdi-mode-active #projector[open]::backdrop {
-  background: #fffaf6 !important;
-}
-
-html.pdi-mode-active #projector[open] #projection-content,
-body.pdi-mode-active #projector[open] #projection-content {
-  box-sizing: border-box !important;
-  width: 100vw !important;
-  height: 100dvh !important;
-  min-height: 100dvh !important;
-  max-width: none !important;
-  max-height: 100dvh !important;
-  margin: 0 !important;
-  overflow: hidden !important;
-}
-
-html.pdi-mode-active #projector[open] .projection-toolbar,
-body.pdi-mode-active #projector[open] .projection-toolbar {
-  width: 100% !important;
-  max-width: none !important;
-  border-radius: 0 !important;
-}
-
-html.pdi-mode-active #projector[open] .projection-main,
-body.pdi-mode-active #projector[open] .projection-main {
-  box-sizing: border-box !important;
-  width: min(1500px, 96vw) !important;
-  max-width: 1500px !important;
-  flex: 1 1 auto !important;
-  min-height: 0 !important;
-  margin-inline: auto !important;
-}
-
-html.pdi-mode-active:has(#projector[open]) .pdi-mode-floating,
-body.pdi-mode-active:has(#projector[open]) .pdi-mode-floating {
-  visibility: hidden !important;
-}
-
 
 /* Recorrido · vocabulario de otoño con fotos reales */
 .autumn-page {
@@ -967,4 +854,13 @@ body.pdi-mode-active:has(#projector[open]) .pdi-mode-floating {
 @media (prefers-reduced-motion: reduce) {
   .letter-protagonist-a,
   .letter-protagonist-star { animation: none; }
+}
+
+.pdi-mode-fallback #contenido.pdi-mode-target .pdi-timer-page-head { display:none; }
+.pdi-mode-fallback #contenido.pdi-mode-target .pdi-timer-stage {
+  min-height:calc(100dvh - 76px);
+  margin:0;
+}
+.pdi-mode-fallback #contenido.pdi-mode-target .timer-started .pdi-timer-layout {
+  min-height:calc(100dvh - 125px);
 }

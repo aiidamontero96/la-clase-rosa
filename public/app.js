@@ -31,7 +31,7 @@ window.ROSA_PERMANENT_SONGS=PERMANENT_SONGS;
 const DEFAULT_SONG_LINKS=PERMANENT_SONGS.map(song=>song.url);
 const savedSongLinks=readLocal('rosa-song-links-v1',[]);
 const initialSongLinks=[...DEFAULT_SONG_LINKS,...(Array.isArray(savedSongLinks)?savedSongLinks:[])].filter(link=>typeof link==='string'&&youtubeId(link)).filter((link,index,links)=>links.findIndex(other=>youtubeId(other)===youtubeId(link))===index).slice(0,30);
-const state={favorites:new Set(Array.isArray(saved)?saved.filter(id=>R.some(r=>r.id===id)):[]),ink:['color','bn','coloring'].includes(savedInk)?savedInk:'color',filter:{area:'',type:'',project:'',q:''},today:[],questionCategory:'Emociones',questionIndex:0,challengeIndex:0,assemblyTab:'preguntas',assemblyGroup:'rosa',assemblyDuties:{saludos:'',luces:'',material:'',jabon:''},veroAssemblyDuties:{saludos:'',luces:'',material:'',jabon:''},songLinks:initialSongLinks,wordBag:[],lastWord:-1,dinoTab:'ruta',kusamaTab:'conocer',materials:{},dialogId:null,projection:null,story:null};
+const state={favorites:new Set(Array.isArray(saved)?saved.filter(id=>R.some(r=>r.id===id)):[]),ink:['color','bn','coloring'].includes(savedInk)?savedInk:'color',filter:{area:'',type:'',project:'',q:''},today:[],questionCategory:'Emociones',questionIndex:0,challengeIndex:0,assemblyTab:'preguntas',assemblyGroup:'rosa',assemblyDuties:{saludos:'',luces:'',material:'',jabon:''},veroAssemblyDuties:{saludos:'',luces:'',material:'',jabon:''},songLinks:initialSongLinks,wordBag:[],lastWord:-1,dinoTab:'etapas',kusamaTab:'conocer',materials:{},dialogId:null,projection:null,story:null};
 const AREAS=['Asamblea','Matemáticas','Lenguaje','Lógica','Grafomotricidad','Motricidad fina','Arte','Psicomotricidad','Proyecto','Juegos'];
 const ICONS={'Asamblea':'☀','Matemáticas':'1','Lenguaje':'A','Lógica':'◈','Grafomotricidad':'〰','Motricidad fina':'✂','Arte':'◒','Psicomotricidad':'↟','Proyecto':'🦕','Juegos':'⚄'};
 const LINKS=[['inicio','⌂','Inicio'],['matematicas','1','Matemáticas'],['lenguaje','A','Lenguaje'],['logica','◈','Lógica'],['motricidad','✂','Motricidad fina'],['arte','◒','Arte'],['movimiento','↟','Psicomotricidad'],['juegos','⚄','Juegos'],['imprimibles','▤','Imprimibles / Fichas'],['propuestas','✋','Propuestas'],['pdi','▣','Pizarra digital'],['asamblea-vero','☀','Asamblea Vero'],['canciones','♪','Canciones'],['cuentos','▰','Biblioteca Rosa'],['dinosaurios','🦕','Dinosaurios'],['kusama','●','Yayoi Kusama'],['curso','✦','Durante el curso'],['favoritos','♡','Mis favoritos'],['hoy','✧','¿Qué hago hoy?']];
@@ -45,12 +45,13 @@ const HIDDEN_LANGUAGE_RESOURCES=new Set(['carteleria-abecedario','bandeja-nombre
 const PDI_HIDDEN_GAMES=new Set([
  'calendario','tiempo','emociones','fechas-especiales','sorpresa',
  'series-ilustradas','tamanos','ordenar-piezas',
- 'vocales-ilustradas','vocabulario','silabas','posiciones','movimiento-guiado'
+ 'vocales-ilustradas','vocabulario','silabas','posiciones','movimiento-guiado',
+ 'letras','cuento','parejas','colores','dino-ficha'
 ]);
 const GAMES=[
  ['cubos-canasta','CUENTA Y ENCESTA','🏀','CUENTA LOS CUBOS DEL 1 AL 15 Y LANZA A CANASTA EL BALÓN CON LA CANTIDAD CORRECTA.','Matemáticas'],
  ['talla-calabaza','TALLA TU CALABAZA','🎃','DIBUJA CORTES SOBRE UNA CALABAZA REAL Y ENCIENDE SU LUZ INTERIOR.','Arte'],
- ['dino-world','VIAJE POR LAS TRES ETAPAS','<img class="game-symbol-art" src="assets/dino-explorer/real/triceratops.webp" alt="">','QUINCE RETOS PARA DESCUBRIR EL TRIÁSICO, EL JURÁSICO Y EL CRETÁCICO.','Proyecto'],
+ ['dino-world','DOCUMENTAL · LAS TRES ETAPAS','<img class="game-symbol-art" src="assets/dino-explorer/real/triceratops.webp" alt="">','UN VIAJE ILUSTRADO POR EL TRIÁSICO, EL JURÁSICO Y EL CRETÁCICO.','Proyecto'],
  ['que-pasaria','¿QUÉ PASARÍA SI…?','💭','PREGUNTAS DISPARATADAS PARA IMAGINAR, CONVERSAR Y ESCUCHAR IDEAS DIFERENTES.','Lenguaje'],
  ['contar','Cuenta conmigo','123','Cuenta dibujos del vocabulario elegido y elige la cantidad.'],['series','Continúa la serie','● ■ ●','Completa patrones con formas; elige el nivel.'],['series-ilustradas','Series ilustradas','🖼️','Cuatro escenas grandes para observar el patrón y elegir qué viene después.','Matemáticas'],['falta','¿Qué falta?','?','Mira dibujos, tapa uno y recuérdalo.'],['intruso','Encuentra el diferente','◈','Observa las formas y elige la que cambia.'],['clasificar','¿Qué comía?','🌿','Lleva cada dinosaurio a su grupo de alimentación.'],['letras','Busca la misma letra','Aa','Compara una letra modelo con tres opciones.'],['vocales-ilustradas','Vocales ilustradas','🖼️','Cuatro escenas grandes para reconocer A, E e I.','Lenguaje'],['emociones','Así me siento','🙂','Elige una emoción, un gesto o pasar turno.'],['calendario','Nuestro calendario','📅','Sitúa el día, el mes y el año de la asamblea.'],['tiempo','Miramos el cielo','🌤️','Elige el tiempo que observamos hoy.'],['dino','Dinosaurio del día','🦕','Doce dinosaurios de las tres etapas para descubrir uno a uno.'],['verdadero','¿Sí o no?','✓ ?','Doce afirmaciones con explicación al responder.'],['adivinanza','Escucha las pistas','💬','Adivinanzas con respuesta que se puede descubrir.'],['memory','Memory cooperativo','▦','Encuentra parejas con el vocabulario elegido.'],['vocabulario','Palabras del proyecto','🔎','Tarjetas grandes para conversar y señalar.'],['nombre-escribe','Escribe tu nombre','A B C','Mira tu nombre, tápalo y busca sus letras en orden.'],
  ...window.ROSA_PDI.games,...window.ROSA_PLAY.gameCatalog,...(window.ROSA_CLASSROOM?.games||[])
@@ -181,14 +182,15 @@ function nav(){
   ['inicio','inicio','Inicio'],
   ['imprimibles','fichas','Fichas'],
   ['pdi','pdi','PDI'],
-  ['dinosaurios','proyecto','Proyecto'],
+  ['dinosaurios','patitos-acuarela/dinosaurio-proyecto.webp','Proyecto'],
+  ['cuentos','vocab-child/open-book.webp','Biblioteca Rosa'],
   ['asamblea-vero','vero','Asamblea Vero'],
   ['https://familias.laclaserosa.es/panel','diario','Acceder al diario']
  ];
  $('#navigation').innerHTML=entries.map(([id,icon,label])=>{
   const external=id.startsWith('https://');
   const active=!external&&(current===id||(id==='imprimibles'&&['taller','fichas-series'].includes(current))||(id==='pdi'&&pdiViews.includes(current))||(id==='dinosaurios'&&current==='kusama'));
-  return '<a class="nav-link '+(active?'active':'')+'" href="'+(external?id:'#'+id)+'"'+(external?' target="_blank" rel="noopener noreferrer"':'')+(active?' aria-current="page"':'')+'><span class="nav-icon" aria-hidden="true"><img src="assets/patitos-acuarela/'+icon+'.webp" alt="" width="80" height="80"></span>'+E(label)+'</a>';
+  return '<a class="nav-link '+(active?'active':'')+'" href="'+(external?id:'#'+id)+'"'+(external?' target="_blank" rel="noopener noreferrer"':'')+(active?' aria-current="page"':'')+'><span class="nav-icon" aria-hidden="true"><img src="assets/'+(icon.includes('/')?icon:'patitos-acuarela/'+icon+'.webp')+'" alt="" width="80" height="80"></span>'+E(label)+'</a>';
  }).join('');
  $('#top-navigation').innerHTML='';
  const today=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
@@ -236,7 +238,7 @@ function home(){
     '</div>'+
   '</section>'+
   '<section class="patitos-steps" aria-label="Rutinas de la asamblea">'+
-    assembly.map(([action,icon,label])=>'<button type="button" class="patitos-step" data-action="routine" data-value="'+action+'"><span class="patitos-step-illustration"><img src="assets/patitos-acuarela/'+icon+'.webp" width="240" height="180" alt=""></span><strong>'+E(label)+'</strong></button>').join('')+
+    assembly.map(([action,icon,label])=>'<button type="button" class="patitos-step" data-action="routine" data-value="'+action+'"><span class="patitos-step-illustration"><img src="assets/patitos-acuarela/'+icon+'.webp" width="240" height="180" loading="lazy" decoding="async" alt=""></span><strong>'+E(label)+'</strong></button>').join('')+
   '</section>'+
  '</div>';
 }
@@ -305,12 +307,57 @@ function assembly(group='rosa'){state.assemblyGroup=group;if(group==='vero')retu
 function veroAssemblyHub(){const steps=[['1','⭐','ENCARGADOS','encargado'],['2','🙋','¿QUIÉN HA VENIDO?','asistencia'],['3','🗓️','¿QUÉ DÍA ES HOY?','dia-semana'],['4','📅','CALENDARIO','calendario'],['5','🍂','ESTACIÓN Y TIEMPO','estacion'],['6','🙂','EMOCIONES','emociones'],['7','123','NÚMERO PROTAGONISTA','numero'],['8','🌌','LA GALAXIA DE LAS PALABRAS','galaxia'],['9','Aa','LETRA PROTAGONISTA','letra']];return '<section class="panel pdi-assembly-hub vero-assembly-hub"><div class="pdi-assembly-heading"><div><span class="eyebrow">EMPEZAMOS EL DÍA</span><h1>ASAMBLEA VERO</h1><p>LAS RUTINAS DE CADA MAÑANA, EN EL ORDEN QUE NECESITES.</p></div><div class="vero-assembly-actions"><a class="button secondary" href="#pdi">VER TODA LA PDI</a>'+btn('INICIAR ASAMBLEA','routine','encargado')+'</div></div><ol class="pdi-assembly-steps">'+steps.map(step=>'<li><button type="button" data-action="routine" data-value="'+step[3]+'"><b>'+step[0]+'</b><span aria-hidden="true">'+step[1]+'</span><strong>'+step[2]+'</strong></button></li>').join('')+'</ol></section>';}
 function course(){return head('Durante el curso','Ideas breves para que las fechas especiales tengan intención educativa y no sean solo decoración.')+'<section class="panel year-intro"><div><span class="eyebrow">DE SEPTIEMBRE A JUNIO</span><h2>Un año lleno de momentos para aprender</h2><p>Cada bloque incluye propuestas para 4 años y varias opciones imprimibles.</p></div><span aria-hidden="true">✦</span></section><div class="year-grid">'+YEAR_MOMENTS.map(m=>{const printIds=COURSE_PRINTABLES[m[0]];return '<article class="year-card" id="momento-'+m[0]+'"><div class="year-card-head"><span aria-hidden="true">'+m[1]+'</span><div><small>'+m[0].replace('-andalucia','').toLocaleUpperCase('es-ES')+'</small><h2>'+m[2]+'</h2></div></div><p>'+m[3]+'</p><h3>Tres propuestas</h3><ul>'+m[4].map(a=>'<li>'+E(a)+'</li>').join('')+'</ul><div class="year-actions">'+(m[0]==='febrero-andalucia'?btn('Paseo ilustrado en PDI','andalucia-open','0')+btn('Series blanco y verde','theme-game','tema-series|Andalucía','secondary'):'')+'</div><details class="year-printables"><summary>'+printIds.length+' imprimibles <span>ver opciones</span></summary><div>'+printIds.map(id=>'<button type="button" data-action="open" data-value="'+id+'">'+E(getResource(id).title)+'</button>').join('')+'</div></details></article>';}).join('')+'</div><p class="note">Son propuestas abiertas: puedes moverlas, repetirlas o saltarlas según el calendario del centro, los intereses del grupo y las experiencias familiares.</p>';}
 function nameBuilder(){return '<section class="name-builder"><div class="field"><label for="child-name">Un nombre para construir con letras</label><input id="child-name" type="text" maxlength="24" placeholder="Escribe el nombre" autocomplete="off"><small class="hint">No se guarda ni se envía.</small></div>'+btn('Proyectar nombre','name-project')+btn('Imprimir piezas','name-print','','secondary')+'</section>';}
-function dinosaurs(){let section='';if(state.dinoTab==='ruta'){section=window.ROSA_CLASSROOM.expeditionHub();}
- else if(state.dinoTab==='aventuras')section=window.ROSA_EPISODE.page()+window.ROSA_MISSIONS.page();
- else if(state.dinoTab==='especies')section=window.ROSA_DINO.catalog();
- else if(state.dinoTab==='ciencia')section='<div class="two-col"><section class="panel"><h2>Para explicar en la asamblea</h2><p>Los dinosaurios son un grupo de animales. El T. rex y el Triceratops vivieron muchísimo antes que las personas. Las aves son dinosaurios que siguen viviendo hoy.</p><p>Los fósiles son restos o señales de seres vivos antiguos. Un juguete y un molde de plastilina son representaciones.</p><p>Hace unos 66 millones de años, el impacto de un asteroide contribuyó decisivamente a la desaparición de los dinosaurios no avianos. Las aves sobrevivieron.</p><p class="hint">No hace falta memorizar fechas. Para el alumnado: «Hace muchísimo tiempo, la Tierra cambió y muchos animales desaparecieron». <a href="fundamento.html#ciencia">Fundamento y matices científicos</a>.</p></section><section class="panel"><h2>Preguntas que abren el proyecto</h2><p>¿Qué creemos saber? ¿Cómo podríamos comprobarlo? ¿Qué pista hemos encontrado? ¿Qué seguimos sin saber?</p>'+btn('Proyectar vocabulario','game','dino-vocabulario')+'<p class="hint" style="margin-top:20px">Usa las tarjetas de verdadero/falso para revisar ideas. La experiencia del volcán es un modelo de burbujas, no una explicación de la extinción.</p></section></div><div class="heading-row"><h2>Pequeñas investigaciones</h2></div>'+cards(['excavacion','fosiles','hielo','volcan','medimos','huellas-pintura'].map(getResource));
- else {const list=R.filter(r=>r.project==='Dinosaurios'&&(state.dinoTab==='todos'||(state.dinoTab==='matematicas'&&['Matemáticas','Lógica'].includes(r.area))||(state.dinoTab==='lenguaje'&&['Lenguaje','Asamblea'].includes(r.area))||(state.dinoTab==='juegos'&&r.area==='Juegos')||(state.dinoTab==='taller'&&['Arte','Motricidad fina','Psicomotricidad'].includes(r.area))||(state.dinoTab==='rincon'&&['carteles','carnets','descubrimiento','etiquetas','diplomas','museo','excavacion'].includes(r.id))));section=window.ROSA_SCENES.resourceGroups(list);}
- return '<section class="panel dino-banner"><div><span class="eyebrow">PROYECTO DEL PRIMER TRIMESTRE</span><h1>Entre huellas y dinosaurios</h1><p>Observamos, preguntamos, construimos y compartimos. Un centro de recursos para vivir el proyecto en el aula.</p><div class="resource-actions">'+btn('Ver el capítulo de '+window.ROSA_EPISODES.mascot.name,'episode-open',window.ROSA_EPISODES.episodes[0].id)+btn('Explorar dinosaurios','game','dino','secondary')+btn('Viajar por las tres etapas','game','dino-world','secondary')+'<a class="button secondary" href="#inicio">Ir a Inicio</a></div></div><img src="assets/dinos-pdi/brachiosaurus.webp" width="544" height="544" alt="Ilustración de un Brachiosaurus"></section><div class="chips">'+[['ruta','Ruta del trimestre'],['aventuras','Aventuras de '+window.ROSA_EPISODES.mascot.name],['especies','12 dinosaurios'],['ciencia','Ciencia y experimentos'],['matematicas','Matemáticas'],['lenguaje','Lenguaje y asamblea'],['juegos','Juegos'],['taller','Arte y movimiento'],['rincon','Rincón y museo'],['todos','Todo el proyecto']].map(x=>btn(x[1],'dino-tab',x[0],'chip '+(state.dinoTab===x[0]?'active':''))).join('')+'</div>'+section;}
+const DINO_VIDEO_KEY='rosa-dino-videos-v1';
+const savedDinoVideos=readLocal(DINO_VIDEO_KEY,[]);
+const dinoVideos=Array.isArray(savedDinoVideos)?savedDinoVideos.filter(video=>video&&/^[A-Za-z0-9_-]{11}$/.test(video.id)&&typeof video.title==='string').slice(0,30):[];
+function dinosaurVideos(){
+ const added=dinoVideos.map(({id,title})=>'<li><button type="button" class="secondary" data-action="dino-video-play" data-value="'+id+'">▶ '+E(title)+'</button>'+
+  '<button type="button" class="quiet small" data-action="dino-video-remove" data-value="'+id+'" aria-label="Quitar '+E(title)+'">Quitar</button></li>').join('');
+ return '<section class="panel dino-videos"><h2>Vídeos del proyecto</h2><div class="dino-video-grid"></div>'+
+  '<form class="dino-video-form" id="dino-video-form"><label>Título<input name="title" required maxlength="100" placeholder="Ej. Cómo vivían los dinosaurios"></label>'+
+  '<label>Enlace de YouTube<input name="url" type="url" required placeholder="https://www.youtube.com/watch?v=…"></label><button type="submit">Añadir vídeo</button></form>'+
+  '<ul class="dino-video-links" aria-label="Vídeos de YouTube">'+added+'</ul><div id="dino-video-player" hidden></div></section>';
+}
+function saveDinoVideos(){
+ try{localStorage.setItem(DINO_VIDEO_KEY,JSON.stringify(dinoVideos));return true;}
+ catch{toast('El navegador no ha podido guardar los cambios.');return false;}
+}
+function addDinoVideo(form){
+ const fields=new FormData(form),title=String(fields.get('title')||'').trim();
+ if(!title){toast('Escribe un título para el vídeo.');return;}
+ let id='';
+ try{
+  const url=new URL(String(fields.get('url')||'').trim());
+  if(['https:','http:'].includes(url.protocol)&&['youtu.be','youtube.com','www.youtube.com','m.youtube.com','www.youtube-nocookie.com'].includes(url.hostname)){
+   id=youtubeId(url.href)||(/^\/live\//.test(url.pathname)?url.pathname.split('/')[2]:'');
+  }
+ }catch{}
+ if(!/^[A-Za-z0-9_-]{11}$/.test(id)){toast('Pega un enlace válido de YouTube.');return;}
+ if(dinoVideos.some(video=>video.id===id)){toast('Ese vídeo ya está en el proyecto.');return;}
+ if(dinoVideos.length>=30){toast('Puedes guardar hasta 30 vídeos en este navegador.');return;}
+ dinoVideos.push({id,title});
+ if(!saveDinoVideos()){dinoVideos.pop();return;}
+ render();
+ $('#dino-video-form [name="title"]')?.focus();
+ toast('Vídeo guardado en este navegador.');
+}
+function playDinoVideo(id){
+ const video=dinoVideos.find(item=>item.id===id),player=$('#dino-video-player');
+ if(!video||!player)return;
+ player.innerHTML='<h3>'+E(video.title)+'</h3><iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1" title="'+E(video.title)+'" '+
+  'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>'+
+  '<a href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener noreferrer">Abrir en YouTube</a>';
+ player.hidden=false;
+ player.scrollIntoView({block:'nearest'});
+}
+function dinosaurs(){
+ const tabs=[['etapas','Las tres etapas'],['especies','12 dinosaurios'],['marinos','Reptiles marinos'],['voladores','Reptiles voladores'],['ruta','Ruta del trimestre'],['videos','Vídeos'],['cuentos','Cuentos']];
+ const sections={videos:dinosaurVideos,ruta:window.ROSA_DINO_ROUTE.hub,etapas:window.ROSA_DINO.stages,cuentos:dinosaurStories};
+ const section=Object.hasOwn(sections,state.dinoTab)?sections[state.dinoTab]():window.ROSA_DINO.catalog(state.dinoTab);
+ return '<section class="panel dino-banner dino-project-heading"><div><span class="eyebrow">PROYECTO DEL PRIMER TRIMESTRE</span><h1>UN DINOSAURIO ES <em>UN LAGARTO TERRIBLE</em></h1></div>'+
+  '<img src="assets/dino-explorer/real/triceratops.webp" width="544" height="544" alt=""></section><div class="chips dino-project-tabs">'+
+  tabs.map(([id,label])=>'<button type="button" class="chip'+(state.dinoTab===id?' active':'')+'" data-action="dino-tab" data-value="'+id+'" aria-pressed="'+(state.dinoTab===id)+'">'+label+'</button>').join('')+'</div>'+section;
+}
 function kusama(){
  const project=R.filter(r=>r.project==='Yayoi Kusama'),activities=project.filter(r=>!window.ROSA_CLASSROOM.isSheet(r)),printables=project.filter(window.ROSA_CLASSROOM.isSheet);let section='';
  if(state.kusamaTab==='conocer')section='<section class="panel kusama-about"><figure><img src="assets/kusama/yayoi-kusama-portrait.webp?rev=4" width="1080" height="1080" alt="Ilustración de Yayoi Kusama con el pelo y la ropa rojos, rodeada de puntos rojos"><figcaption>Yayoi Kusama y su mundo de puntos.</figcaption></figure><div><span class="eyebrow">CONOCEMOS A LA ARTISTA</span><h2>Una artista que llenó el mundo de puntos</h2><p>Yayoi Kusama nació en Japón y empezó a dibujar cuando era pequeña. Convirtió los puntos, las redes, las flores, las calabazas y hasta habitaciones enteras en un lenguaje artístico propio.</p><p>Miraremos sus obras como pequeños exploradores: descubriremos qué se repite, qué colores aparecen, qué formas crecen y cómo cambia un espacio cuando todos colaboramos.</p><div class="kusama-clues"><span><b>●</b>Puntos y series</span><span><b>🎃</b>Calabazas y naturaleza</span><span><b>∞</b>Espejos y espacios</span></div><aside><strong>¿Por qué la trabajamos durante todo el curso?</strong><p>Porque permite observar, contar, comparar, hablar, moverse y crear en grupo. No buscamos copiar sus obras: aprendemos a mirar y después inventamos las nuestras.</p></aside><div class="kusama-files"><h3>Libro de Yayoi para el aula</h3><p>Los tres archivos que has aportado quedan disponibles desde aquí.</p><div class="kusama-book-actions"><a class="button" href="libros/Yayoi_Kusama_PDI.html" target="_blank" rel="noopener">ABRIR PDI</a><a class="button secondary" href="libros/Yayoi_Kusama_libro.pdf" target="_blank" rel="noopener">ABRIR LIBRO PDF</a><a class="button secondary" href="libros/Yayoi_Kusama_PDI(1).html" target="_blank" rel="noopener">ABRIR SEGUNDA PDI</a></div></div>'+btn('ABRIR EL CUENTO DENTRO DE LA WEB','story-open','yayoi-desde-aqui-hasta-el-infinito','secondary')+'</div></section><section class="panel kusama-video"><div><span class="eyebrow">PARA PROYECTAR EN LA PDI</span><h2>Conocemos a Yayoi Kusama</h2><p>Reproduce el vídeo a pantalla completa y haz pequeñas pausas para comentar los puntos, colores, formas y espacios que aparecen.</p></div><div class="video-frame"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/9z6geQASZiY?start=1&amp;rel=0" title="Vídeo para conocer a Yayoi Kusama" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></section>';
@@ -323,12 +370,31 @@ function gameTiles(games=GAMES){return '<div class="game-grid">'+games.map(g=>'<
 function illustratedMathPdi(){return '<section class="panel illustrated-pdi-spotlight"><img src="assets/pdi-series/01-circulo-cuadrado.webp" width="1200" height="900" alt="Niño jugando con una serie de círculo rojo y cuadrado azul"><div><span class="eyebrow">PDI · ACTIVIDAD ILUSTRADA</span><h2>Series ilustradas</h2><p>Cuatro escenas grandes para mirar el patrón, pensar y elegir qué debería ir en el hueco.</p>'+btn('JUGAR / PROYECTAR','game','series-ilustradas')+'</div></section>'; }
 function pdi(){return A.pdiPage();}
 function storyCredits(book){return '<p class="story-credits"><strong>TEXTO:</strong> '+E(book.author)+' · <strong>ILUSTRACIONES:</strong> '+E(book.illustrator)+' · <strong>TRADUCCIÓN:</strong> '+E(book.translator)+' · '+E(book.publisher)+' · '+E(book.license||'CC BY 4.0')+'</p>';}
-function stories(){const library=window.ROSA_STORIES;const ready=library.ready.map(book=>'<article class="story-card story-ready"><img class="'+(book.coverFit==='contain'?'story-cover-contain':'')+'" src="'+book.cover+'" width="640" height="480" alt="Portada de '+E(book.title)+'"><div><span class="tag">'+E(book.level)+' · DISPONIBLE EN LA APP</span><h2>'+E(book.title)+'</h2><p>'+E(book.description)+'</p><p class="story-by">De '+E(book.author)+' · Ilustraciones de '+E(book.illustrator)+'</p><div class="story-actions">'+btn('LEER / PROYECTAR','story-open',book.id)+'</div></div></article>').join('');return head('Biblioteca Rosa',library.ready.length+' cuentos para leer y proyectar sin salir de La Clase Rosa.','', 'LECTURA COMPARTIDA')+'<section class="panel story-intro"><span aria-hidden="true">▰</span><div><h2>Un cuento, una conversación</h2><p>Abre el cuento, usa pantalla completa y pasa las páginas con botones grandes para la PDI.</p></div></section><div class="story-library">'+ready+'</div><p class="note">Todos los cuentos se leen dentro de la web y conservan sus créditos y licencia.</p>';}
+function storyCard(book){
+ return '<article class="story-card story-ready"><img class="'+(book.coverFit==='contain'?'story-cover-contain':'')+
+  '" src="'+book.cover+'" width="640" height="480" loading="lazy" alt="Portada de '+E(book.title)+'"><div>'+
+  '<span class="tag">'+E(book.level)+' · DISPONIBLE EN LA APP</span><h2>'+E(book.title)+'</h2><p>'+E(book.description)+'</p>'+
+  '<p class="story-by">De '+E(book.author)+' · Ilustraciones de '+E(book.illustrator)+'</p>'+
+  '<div class="story-actions">'+btn('LEER / PROYECTAR','story-open',book.id)+'</div></div></article>';
+}
+function dinosaurStories(){
+ const books=window.ROSA_STORIES.ready.filter(book=>book.project==='dinosaurios');
+ return head('Cuentos','Leemos juntos en la PDI.','','PROYECTO DINOSAURIOS')+
+  '<div class="story-library">'+books.map(storyCard).join('')+'</div>';
+}
+function stories(){
+ const {ready}=window.ROSA_STORIES;
+ return head('Biblioteca Rosa',ready.length+' cuentos para leer y proyectar sin salir de La Clase Rosa.','', 'LECTURA COMPARTIDA')+
+  '<section class="panel story-intro"><span aria-hidden="true">▰</span><div><h2>Un cuento, una conversación</h2>'+
+  '<p>Abre el cuento, usa pantalla completa y pasa las páginas con botones grandes para la PDI.</p></div></section>'+
+  '<div class="story-library">'+ready.map(storyCard).join('')+'</div>'+
+  '<p class="note">Todos los cuentos se leen dentro de la web y conservan sus créditos.</p>';
+}
 function openStory(id){const book=window.ROSA_STORIES.ready.find(item=>item.id===id);if(!book)return;state.story={id,page:0};openProjector();renderStory();}
-function renderStory(){const s=state.story;if(!s)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===s.id);if(!book)return;const toolbar='<div class="projection-toolbar story-toolbar"><strong>BIBLIOTECA ROSA · '+E(book.title)+'</strong><div>'+btn(fullscreenLabel(),'fullscreen','','secondary small')+btn('× SALIR','story-close','','quiet')+'</div></div>';if(book.readerUrl){$('#projection-content').innerHTML=toolbar+'<main class="story-reader-frame"><iframe src="'+book.readerUrl+'" title="CUENTO '+E(book.title)+'" allowfullscreen></iframe></main><footer class="story-reader-credits">'+storyCredits(book)+'<div>'+btn('CERRAR CUENTO','story-close','','secondary small')+'</div></footer>';return;}const page=book.pages[s.page],first=s.page===0,last=s.page===book.pages.length-1,isYayoiCover=book.id==='yayoi-desde-aqui-hasta-el-infinito'&&first;const text=book.imageOnly?'':page[1]?'<div class="story-page-text">'+E(page[1]).replaceAll('\n','<br>')+'</div>':'<div class="story-cover-title"><h2>'+E(book.title)+'</h2><p>DE '+E(book.author)+'</p></div>';const visual=isYayoiCover?'<div class="yayoi-landscape-cover"><img src="'+page[0]+'" width="1093" height="1439" alt="PORTADA DEL LIBRO '+E(book.title)+'"><section><span>YAYOI KUSAMA</span><h2>DESDE AQUÍ HASTA EL INFINITO</h2><p>UN LIBRO PARA MIRAR JUNTOS</p></section></div>':'<img src="'+page[0]+'" width="1024" height="768" alt="ILUSTRACIÓN DE LA PÁGINA '+(s.page+1)+' DE '+E(book.title)+'">';$('#projection-content').innerHTML=toolbar+'<main class="story-reader '+(book.imageOnly?'story-image-only':'')+(isYayoiCover?' story-yayoi-cover':'')+'"><figure>'+visual+'</figure>'+text+'</main><footer class="story-footer">'+btn('← ANTERIOR','story-prev','',first?'secondary story-disabled':'secondary')+'<span aria-live="polite">PÁGINA '+(s.page+1)+' DE '+book.pages.length+'</span>'+btn(last?'TERMINAR':'SIGUIENTE →',last?'story-close':'story-next')+'</footer>'+(last?'<div class="story-reader-credits">'+storyCredits(book)+'</div>':'');}
+function renderStory(){const s=state.story;if(!s)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===s.id);if(!book)return;const toolbar='<div class="projection-toolbar story-toolbar"><strong>BIBLIOTECA ROSA · '+E(book.title)+'</strong><div>'+btn('← VOLVER','story-close','','quiet')+'</div></div>';if(book.readerUrl){$('#projection-content').innerHTML=toolbar+'<main class="story-reader-frame"><iframe src="'+book.readerUrl+'" title="CUENTO '+E(book.title)+'" allowfullscreen></iframe></main><footer class="story-reader-credits">'+storyCredits(book)+'</footer>';return;}const page=book.pages[s.page],first=s.page===0,last=s.page===book.pages.length-1,isYayoiCover=book.id==='yayoi-desde-aqui-hasta-el-infinito'&&first;const text=book.imageOnly?'':page[1]?'<div class="story-page-text">'+E(page[1]).replaceAll('\n','<br>')+'</div>':'<div class="story-cover-title"><h2>'+E(book.title)+'</h2><p>DE '+E(book.author)+'</p></div>';const visual=isYayoiCover?'<div class="yayoi-landscape-cover"><img src="'+page[0]+'" width="1093" height="1439" alt="PORTADA DEL LIBRO '+E(book.title)+'"><section><span>YAYOI KUSAMA</span><h2>DESDE AQUÍ HASTA EL INFINITO</h2><p>UN LIBRO PARA MIRAR JUNTOS</p></section></div>':'<img src="'+page[0]+'" width="1024" height="768" alt="ILUSTRACIÓN DE LA PÁGINA '+(s.page+1)+' DE '+E(book.title)+'">';$('#projection-content').innerHTML=toolbar+'<main class="story-reader '+(book.imageOnly?'story-image-only':'')+(isYayoiCover?' story-yayoi-cover':'')+'"><figure>'+visual+'</figure>'+text+'</main><footer class="story-footer">'+btn('← ANTERIOR','story-prev','',first?'secondary story-disabled':'secondary')+'<span aria-live="polite">PÁGINA '+(s.page+1)+' DE '+book.pages.length+'</span>'+(last?'<span></span>':btn('SIGUIENTE →','story-next'))+'</footer>'+(last?'<div class="story-reader-credits">'+storyCredits(book)+'</div>':'');}
 function materialList(ids){const mats=[...new Set(ids.flatMap(id=>getResource(id).materials))];return '<section class="material-check"><h2>Deja preparado</h2><ul>'+mats.map(m=>'<li>'+E(m)+'</li>').join('')+'</ul></section>';}
 function today(){const labels=['Asamblea','Matemáticas','Lenguaje','Manipulación','Juego','Dinosaurios'];return head('¿Qué hago hoy?','Una selección para escoger y combinar. No es un horario ni hace falta hacer las seis.',btn('↻ Dame otras actividades','today-new')+btn('Imprimir selección','print-view','','secondary'))+'<div class="selection-list">'+state.today.map((id,i)=>{const r=getResource(id);return '<article class="selection-item"><span class="round-icon">'+(i+1)+'</span><div><span class="eyebrow">'+labels[i]+' · '+r.duration+' MIN</span><h3 style="margin-top:8px">'+E(r.title)+'</h3><p>'+E(r.preparation)+'</p><div class="resource-actions">'+actions(r)+btn(state.favorites.has(id)?'♥ Guardado':'♡ Guardar','favorite',id,'secondary small')+'</div></div></article>';}).join('')+'</div><div style="margin-top:24px">'+materialList(state.today)+'</div>';}
-function render(){nav();let view=route();state.assemblyGroup=view==='asamblea-vero'?'vero':'rosa';let body;if(view==='inicio')body=home();else if(view==='asamblea-vero')body=assembly('vero');else if(view==='dinosaurios')body=dinosaurs();else if(view==='kusama')body=kusama();else if(view==='curso')body=course();else if(view==='pdi'||view==='pdi-calendario')body=pdi();else if(view==='pdi-que-pasaria')body=A.pdiWhatIfPage();else if(view==='pdi-cumpleanos')body=window.ROSA_BIRTHDAYS.page(A.pdiNav('cumpleanos'));else if(view==='pdi-proyectos')body=A.pdiProjectsPage();else if(view==='pdi-dias')body=A.pdiSpecialDaysPage();else if(view==='pdi-juegos')body=A.pdiGamesPage();else if(view==='canciones')body=window.ROSA_CLASSROOM.songs(A.pdiNav('canciones'));else if(view==='cuentos')body=stories();else if(view==='taller')body='<div class="fichas-generator-page"><a class="fichas-back" href="#imprimibles">← Volver a fichas</a><h1>Crear ficha a medida</h1>'+window.ROSA_SHEETS.panel()+'</div>';else if(view==='fichas-series'){patternWorkshopOpen=true;body='<div class="fichas-generator-page"><a class="fichas-back" href="#imprimibles">← Volver a fichas</a><h1>Generar series</h1>'+patternWorkshop()+'</div>';}else if(view==='hoy')body=today();else if(view==='recurso'){body=home();const id=location.hash.split('?')[1];if(getResource(id))setTimeout(()=>openResource(id),0);}else {body=bank(view);if(view==='lenguaje')body=body.replace('<div class="filters filters-useful">',window.ROSA_CLASSROOM.alphabet()+nameBuilder()+'<div class="filters filters-useful">');}const main=$('#contenido');main.innerHTML=body;window.ROSA_FICHAS.mountPreviews(main);}
+function render(){nav();let view=route();state.assemblyGroup=view==='asamblea-vero'?'vero':'rosa';let body;if(view==='inicio')body=home();else if(view==='asamblea-vero')body=assembly('vero');else if(view==='dinosaurios')body=dinosaurs();else if(view==='kusama')body=kusama();else if(view==='curso')body=course();else if(view==='pdi'||view==='pdi-calendario')body=pdi();else if(view==='pdi-que-pasaria')body=A.pdiWhatIfPage();else if(view==='pdi-cumpleanos')body=window.ROSA_BIRTHDAYS.page(A.pdiNav('cumpleanos'));else if(view==='pdi-proyectos')body=A.pdiProjectsPage();else if(view==='pdi-jardin-calma')body=window.ROSA_CALM_GARDEN.page(A.pdiNav(view));else if(view==='pdi-dias')body=A.pdiSpecialDaysPage();else if(view==='pdi-juegos')body=A.pdiGamesPage();else if(view==='canciones')body=window.ROSA_CLASSROOM.songs(A.pdiNav('canciones'));else if(view==='cuentos')body=stories();else if(view==='taller')body='<div class="fichas-generator-page"><a class="fichas-back" href="#imprimibles">← Volver a fichas</a><h1>Crear ficha a medida</h1>'+window.ROSA_SHEETS.panel()+'</div>';else if(view==='fichas-series'){patternWorkshopOpen=true;body='<div class="fichas-generator-page"><a class="fichas-back" href="#imprimibles">← Volver a fichas</a><h1>Generar series</h1>'+patternWorkshop()+'</div>';}else if(view==='hoy')body=today();else if(view==='recurso'){body=home();const id=location.hash.split('?')[1];if(getResource(id))setTimeout(()=>openResource(id),0);}else {body=bank(view);if(view==='lenguaje')body=body.replace('<div class="filters filters-useful">',window.ROSA_CLASSROOM.alphabet()+nameBuilder()+'<div class="filters filters-useful">');}const main=$('#contenido');main.innerHTML=body;window.ROSA_FICHAS.mountPreviews(main);}
 function configureWorksheetExample(view){
  if(view!=='taller'&&view!=='fichas-series')return;
  const params=new URLSearchParams(location.hash.split('?')[1]||'');
@@ -337,7 +403,7 @@ function configureWorksheetExample(view){
  if(view==='fichas-series')Object.assign(patternState,settings);
  else window.ROSA_SHEETS.openExample(settings);
 }
-function resetForRoute(){const view=route();configureWorksheetExample(view);if(AREA_ROUTES[view])state.filter={area:AREA_ROUTES[view],type:'',project:'',q:''};else if(['banco','imprimibles','propuestas','favoritos'].includes(view)){state.filter.area='';state.filter.type='';state.filter.project='';}else state.filter.q='';$('#search').value=state.filter.q;render();$('#sidebar').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');$('#global-search').classList.remove('expanded');$('#search-toggle').setAttribute('aria-expanded','false');window.scrollTo({top:0});}
+function resetForRoute(){const view=route();if(state.projection?.kind==='calm-garden'&&view!=='pdi-jardin-calma')closeProjector();if(view==='pdi'||view==='pdi-juegos')A.ui.filter='Todas';configureWorksheetExample(view);if(AREA_ROUTES[view])state.filter={area:AREA_ROUTES[view],type:'',project:'',q:''};else if(['banco','imprimibles','propuestas','favoritos'].includes(view)){state.filter.area='';state.filter.type='';state.filter.project='';}else state.filter.q='';$('#search').value=state.filter.q;render();$('#sidebar').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');$('#global-search').classList.remove('expanded');$('#search-toggle').setAttribute('aria-expanded','false');window.scrollTo({top:0});}
 function openResource(id){const r=getResource(id);if(!r)return;if(GENERATABLE_PRINTABLE_IDS.has(id)){patternState.pattern=r.pattern||'AB';patternState.theme=r.theme==='dinos'?'Dinosaurios':'Formas';patternState.ink=state.ink;patternWorkshopOpen=true;$('#resource-dialog').close();location.hash='fichas-series';render();document.querySelector('.pattern-workshop')?.scrollIntoView({block:'start'});return;}state.dialogId=id;resourceDialog();if(!$('#resource-dialog').open)$('#resource-dialog').showModal();}
 function resourceDialog(){const r=getResource(state.dialogId),printSupport=relatedPrintables(r),activitySupport=relatedActivities(r);if(state.ink==='coloring'&&!r.coloring)state.ink='color';const printableDetail=r.printable?'':printSupport.length?'<section class="printable-detail has-printable"><strong>Material imprimible opcional</strong><p>'+printSupport.map(item=>'<a href="#recurso?'+item.id+'" data-action="open" data-value="'+item.id+'">'+E(item.title)+'</a>').join('</p><p>')+'</p></section>':'<section class="printable-detail no-printable"><strong>No necesita material imprimible.</strong><p>Prepara únicamente lo indicado en «Materiales».</p></section>';const example=r.example?'<div class="example-caption"><strong>Ejemplo de montaje</strong><p>'+E(r.example)+'</p></div>':'';$('#dialog-content').innerHTML='<div class="dialog-header"><h2 id="dialog-title">'+E(r.title)+'</h2>'+btn('×','close-resource','','quiet close-button')+'</div><div class="dialog-body"><div class="dialog-preview">'+resourceArt(r)+example+'</div><div class="dialog-details"><div class="resource-meta"><span class="tag">'+E(r.area)+'</span><span>4 años · '+r.duration+' minutos</span></div>'+(r.sourceNote?'<p class="source-note">'+E(r.sourceNote)+'</p>':'')+'<h3>Para qué</h3><p>'+E(r.objective)+'</p><h3>Materiales exactos</h3><ul>'+r.materials.map(t=>'<li>'+E(t)+'</li>').join('')+'</ul>'+printableDetail+'<h3>Antes de empezar</h3><p>'+E(r.preparation)+'</p><h3>Así jugamos</h3><ol>'+r.steps.map(t=>'<li>'+E(t)+'</li>').join('')+'</ol><div class="adaptations"><p><strong>Más sencillo:</strong> '+E(r.easy)+'</p><p><strong>Para ampliar:</strong> '+E(r.extend)+'</p></div>'+(r.safety?'<p class="safety" style="margin-top:18px">'+E(r.safety)+'</p>':'')+
  (r.printable?'<div class="print-options"><label for="ink-mode">Versión del imprimible</label><select id="ink-mode"><option value="color"'+(state.ink==='color'?' selected':'')+'>Color</option><option value="bn"'+(state.ink==='bn'?' selected':'')+'>Blanco y negro</option><option value="coloring"'+(state.ink==='coloring'?' selected':'')+'>Solo contorno · para colorear</option></select><small>Solo contorno elimina los rellenos y conserva líneas negras claras.</small></div><div class="dialog-actions print-dialog-actions">'+printableActions(r,'')+'</div>':'')+'<div class="dialog-actions">'+btn(state.favorites.has(r.id)?'♥ Guardado':'♡ Guardar','favorite',r.id,'secondary')+(r.kind==='memory'?btn('Jugar en la pizarra','game','memory','secondary'):'')+'</div>'+(activitySupport.length?'<h3>Propuestas relacionadas</h3>'+activitySupport.map(item=>'<p><a href="#recurso?'+item.id+'" data-action="open" data-value="'+item.id+'">'+E(item.title)+'</a></p>').join(''):'')+'</div></div>';}
@@ -359,10 +425,23 @@ const ILLUSTRATED_VOWELS=[
  {image:'assets/pdi-language/04-vocal-a-bloques.webp',alt:'Niño mostrando una vocal A construida con bloques',prompt:'¿QUÉ VOCAL HA CONSTRUIDO CON BLOQUES?',answer:'A',explanation:'HA CONSTRUIDO LA VOCAL A.',options:['A','E','I']}
 ];
 function nextRandomWord(){if(!state.wordBag.length){state.wordBag=shuffle(Array.from({length:D.vocab.length},(_,i)=>i).filter(i=>D.vocab.length<2||i!==state.lastWord));}const index=state.wordBag.pop();state.lastWord=index;startProjection('vocabulario',index);}
+function greetingDutyIndex(p){
+ return state.assemblyGroup==='rosa'?D.students.indexOf(p.duties.saludos):-1;
+}
+function dutiesNextLabel(p){
+ return greetingDutyIndex(p)>=0?'Escribe tu nombre →':'¿Quién ha venido? →';
+}
+function nameStudent(p){
+ return studentLabel(D.students[p.round%D.students.length]);
+}
 function updateProjectedDuty(role,name){
  const select=document.querySelector('#projector [data-duty-role="'+role+'"]'),result=select?.closest('.duty-card')?.querySelector('.duty-result');
  if(!select||!result){projectionRender();return;}
  select.value=name||'';result.textContent=studentLabel(name||'');result.classList.toggle('is-empty',!name);
+ if(role==='saludos'){
+  const next=$('#projector [data-action="assembly-after-duties"]');
+  if(next)next.textContent=dutiesNextLabel(state.projection);
+ }
 }
 function startProjection(kind,round=0,payload=null){state.projection={kind,round:Number(round)||0,payload,answered:false,answer:null,explanation:'',hidden:false,pattern:'AB',date:new Date(),weather:null,counts:{present:0,absent:0,girls:0,boys:0},countDetails:state.assemblyGroup==='vero',attendance:Object.fromEntries(assemblyStudents().map(name=>[name,state.assemblyGroup==='vero'])),attendanceStep:'names',duties:{saludos:'',luces:'',material:'',jabon:''},memory:[],flipped:[],matched:[],locked:false,pairCelebration:false,nameBuild:[],nameUsed:[],nameMessage:'',nameWrongIndex:null,nameRound:null,relateRound:null,relateItems:[],relateLeftOrder:[],relateRightOrder:[],relateSelected:null,relateMatched:[]};A.setup(state.projection);if($('#resource-dialog').open)$('#resource-dialog').close();openProjector();projectionRender();$('#projector').scrollTop=0;}
 function veroTrainAttendance(p){const students=assemblyStudents();return '<section class="attendance-train vero-original-train"><header class="train-heading"><span class="train-kicker">EL TREN DE LA CLASE DE VERO</span><h2>¿QUIÉN HA VENIDO HOY?</h2><p>TOCA EL NOMBRE DE QUIEN NO HA VENIDO.</p></header><div class="train-station" aria-hidden="true"><img src="assets/asamblea-ligera/asistencia-tren/locomotora.webp?rev=1" alt=""><span>LA CLASE DE VERO</span><i class="train-cloud"></i><i class="train-cloud cloud-two"></i></div><div class="train-carriages">'+students.map(name=>{const label=studentLabel(name);return '<button type="button" class="train-wagon'+(!p.attendance[name]?' is-absent':'')+'" data-action="attendance-toggle" data-value="'+E(name)+'" aria-pressed="'+String(!p.attendance[name])+'" aria-label="'+E(label)+(p.attendance[name]?', EN CLASE. MARCAR AUSENCIA':', HOY NO HA VENIDO. MARCAR PRESENTE')+'"><span class="wagon-roof" aria-hidden="true"></span><span class="wagon-window" aria-hidden="true"><span class="window-view"></span><span class="wagon-curtain curtain-left"></span><span class="wagon-curtain curtain-right"></span><img class="window-children" src="assets/asamblea-ligera/asamblea-infantil/clase.webp?rev=1" alt=""></span><strong class="wagon-name">'+E(label.toLocaleUpperCase('es-ES'))+'</strong><span class="wagon-status">'+(p.attendance[name]?'EN CLASE':'HOY NO HA VENIDO')+'</span><span class="wagon-wheels" aria-hidden="true"></span></button>';}).join('')+'</div><div class="sr-only" id="attendance-train-status" role="status" aria-live="polite"></div></section>';}
@@ -371,6 +450,26 @@ function attendanceNames(p){
  return veroTrainAttendance(p)
   .replace('¿QUIÉN HA VENIDO HOY?','¿QUIÉN NO HA VENIDO HOY AL COLE?')
   .replace('<p>TOCA EL NOMBRE DE QUIEN NO HA VENIDO.</p>','');
+}
+function attendanceCounters(p,vero){
+ const places=vero
+  ?[['present','EN CLASE','clase'],['absent','HOY FALTAN','casa']]
+  :[['absent','EN CASA','casa'],['present','EN EL COLE','clase']];
+ const counters=places.map(([key,label,image])=>`
+  <section class="count-scene count-${key}">
+   <h3>${label}</h3>
+   <img class="count-illustration" src="assets/asamblea-ligera/asamblea-infantil/${image}.webp?rev=1" alt="">
+   <div class="counter-group">
+    <button type="button" class="count-step secondary" data-action="count" data-value="${key}|-1" aria-label="Restar uno: ${label}">−</button>
+    <output aria-label="${label}">${p.counts[key]}</output>
+    <button type="button" class="count-step secondary" data-action="count" data-value="${key}|1" aria-label="Sumar uno: ${label}">+</button>
+   </div>
+  </section>`).join('');
+ const extra=vero?`<details class="count-extra" ${p.countDetails?'open':''}><summary>CONTAR NIÑAS Y NIÑOS</summary><div class="choice-grid">${[['girls','NIÑAS'],['boys','NIÑOS']].map(([key,label])=>`
+  <div><label>${label}</label><div class="counter-group">${btn('−','count',key+'|-1','secondary')}<output>${p.counts[key]}</output>${btn('+','count',key+'|1','secondary')}</div></div>`).join('')}</div></details>`:'';
+ return `<section class="count-story"><span class="count-kicker">CONTAMOS NUESTRA CLASE</span>
+  <h2>${vero?'¿CUÁNTOS HEMOS VENIDO?':'¿CUÁNTOS ESTÁN EN CASA Y CUÁNTOS EN EL COLE?'}</h2>
+  <div class="attendance-count-grid">${counters}</div>${extra}</section>`;
 }
 function choices(values,answer){state.projection.answer=answer;if(state.projection.level===1&&values.length>2&&state.projection.kind!=='intruso'){const valueOf=v=>String(typeof v==='object'?v.value:v);const wrong=values.find(v=>valueOf(v)!==String(answer));values=values.filter(v=>valueOf(v)===String(answer)||v===wrong);}return '<div class="choice-grid">'+values.map(v=>btn(typeof v==='object'?v.label:E(v),'answer',typeof v==='object'?v.value:v,'choice')).join('')+'</div><div id="game-feedback" class="feedback" role="status" aria-live="polite"></div>';}
 const BASKET_FIGURES={
@@ -448,6 +547,18 @@ function isSchoolHoliday(date){
 }
 function calendarHTML(date,external=false){const y=date.getFullYear(),m=date.getMonth(),count=new Date(y,m+1,0).getDate(),offset=(new Date(y,m,1).getDay()+6)%7,now=new Date();now.setHours(0,0,0,0);const reference=external?now:new Date(y,m,date.getDate());return '<div class="calendar-mini '+(external?'calendar-external':'')+'">'+['L','M','X','J','V','S','D'].map(x=>'<b>'+x+'</b>').join('')+'<i style="grid-column:span '+(offset||1)+';'+(!offset?'display:none':'')+'"></i>'+Array.from({length:count},(_,i)=>{const day=new Date(y,m,i+1),weekend=day.getDay()===0||day.getDay()===6,holiday=isSchoolHoliday(day),today=external?day.getTime()===now.getTime():i+1===date.getDate(),past=day<reference,cls=[today?'today':'',past?'past':'',weekend?'weekend':'',holiday?'holiday':''].filter(Boolean).join(' ');return '<span class="'+cls+'"'+(holiday?' aria-label="Día festivo o sin cole"':weekend?' aria-label="Fin de semana"':'')+'><strong class="calendar-day-number">'+(i+1)+'</strong>'+(!external&&(weekend||holiday)?'<small aria-hidden="true">'+(holiday?'🏖️':'☀️')+'</small>':'')+'</span>';}).join('')+'</div>';}
 function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech='';const n=p.round;let title=GAMES.find(g=>g[0]===p.kind)?.[1]||ROUTINES.find(r=>r[0]===p.kind)?.[2]||'Nuestra asamblea',body='',foot='';
+ if(p.kind==='calm-garden'){
+  const content=$('#projection-content');
+  content.innerHTML=window.ROSA_CALM_GARDEN.markup();
+  window.ROSA_CALM_GARDEN.mount(content);
+  return;
+ }
+ if(p.kind==='dino-route'){
+  const content=$('#projection-content');
+  content.innerHTML=window.ROSA_DINO_ROUTE.project(p);
+  window.ROSA_DINO_ROUTE.mount(content);
+  return;
+ }
  if(p.kind==='dia-semana')title='Día de la semana';
  if(p.payload?.missionWeek)title='Misión de la semana '+p.payload.missionWeek;
  const next=btn('Otra propuesta →','projection-next');
@@ -460,12 +571,15 @@ function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech
  else if(extra){p.customSpeech=p.kind==='palabra-imagen'?' ':p.kind==='nombre-letras'?'¿Cuántas letras tiene este nombre?':extra.prompt;p.explanation=extra.explanation;body='<h2>'+E(extra.prompt)+'</h2>'+extra.visual+(extra.needsReveal?btn(p.kind==='nombre-falta'?'Ya miramos. Tapar un nombre':'Ya miramos. Tapar los dibujos','hide-piece','','secondary'):choices(extra.options,extra.answer));foot=p.kind==='palabra-imagen'?(p.payload?.assemblyGalaxy?'<button type="button" data-action="projection-next"'+(p.answered?'':' disabled')+'>LETRA PROTAGONISTA →</button>':btn(n===4?'TERMINAR':'SIGUIENTE · '+(n+2)+' / 5','projection-next')):next;}
  else if(p.kind==='nombre-escribe'){
    if(p.nameRound!==n){p.nameRound=n;p.hidden=false;p.nameBuild=[];p.nameUsed=[];p.nameMessage='';p.nameWrongIndex=null;p.answered=false;}
-   const student=D.students[n%D.students.length],upper=student.toLocaleUpperCase('es-ES'),letters=[...upper.replace(/\s/g,'')],shift=n%letters.length,bank=[...letters.map((letter,index)=>({letter,index}))];bank.push(...bank.splice(0,shift));
-   const select='<label class="name-student-picker">Le toca a <select id="name-student">'+D.students.map((name,index)=>'<option value="'+index+'"'+(index===n%D.students.length?' selected':'')+'>'+E(name)+'</option>').join('')+'</select></label>';
-   if(!p.hidden){p.customSpeech='Escribe tu nombre. Miramos y decimos el nombre. Tocamos cada letra de izquierda a derecha.';body=select+'<h2>Escribe tu nombre</h2><div class="pdi-name-copy">'+E(upper)+'</div><p>Miramos el nombre y tocamos cada letra de izquierda a derecha.</p>'+btn('Ya lo hemos visto. Tapar','hide-name-model','','secondary');}
+   const student=nameStudent(p),upper=student.toLocaleUpperCase('es-ES'),letters=[...upper.replace(/\s/g,'')],shift=n%letters.length,bank=[...letters.map((letter,index)=>({letter,index}))];bank.push(...bank.splice(0,shift));
+   const assemblyGreeting=p.payload?.assemblyGreeting;
+   const select=assemblyGreeting
+    ?'<p class="name-student-picker">Saludo de hoy · <strong>'+E(student)+'</strong></p>'
+    :'<label class="name-student-picker">Le toca a <select id="name-student">'+D.students.map((name,index)=>'<option value="'+index+'"'+(index===n%D.students.length?' selected':'')+'>'+E(studentLabel(name))+'</option>').join('')+'</select></label>';
+   if(!p.hidden){p.customSpeech=(assemblyGreeting?student+', es tu turno. ':'')+'Escribe tu nombre. Miramos y decimos el nombre. Tocamos cada letra de izquierda a derecha.';body=select+'<h2>Escribe tu nombre</h2><div class="pdi-name-copy">'+E(upper)+'</div><p>Miramos el nombre y tocamos cada letra de izquierda a derecha.</p>'+btn('Ya lo hemos visto. Tapar','hide-name-model','','secondary');}
    else if(p.answered){p.customSpeech='¡Nombre completo!';body=select+celebration(n,'Has construido '+student+'.','¡Nombre completo!');}
    else{p.customSpeech='Escribe tu nombre. Busca las letras en orden. Empieza por la primera letra.';let cursor=0;const slots=upper.split(' ').map(word=>'<span class="pdi-name-word">'+[...word].map(()=>'<i>'+(p.nameBuild[cursor++]||'')+'</i>').join('')+'</span>').join('<b aria-label="espacio"></b>');body=select+'<h2>Escribe tu nombre</h2><p class="hint">Busca las letras en orden.</p><div class="pdi-name-slots">'+slots+'</div><div class="pdi-letter-bank">'+bank.map(item=>btn(E(item.letter),'name-letter',item.index+'|'+encodeURIComponent(item.letter),'name-letter '+(p.nameUsed.includes(item.index)?'used':p.nameWrongIndex===item.index?'incorrect':''))).join('')+'</div><div class="feedback" id="name-feedback" role="status" aria-live="polite">'+E(p.nameMessage||'Empieza por la primera letra.')+'</div>';}
-   foot=next;
+   foot=assemblyGreeting?btn('¿Quién ha venido? →','routine','asistencia'):next;
  }
  else if(['relaciona-dino','relaciona-vocabulario','relaciona-cantidades'].includes(p.kind)){
    if(p.relateRound!==n){
@@ -509,26 +623,46 @@ function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech
  else if(p.kind==='challenge'){const ch=pick(D.challenges,n);body='<span class="eyebrow">UN RETO DE '+ch.duration+' MINUTOS</span><h2>'+E(ch.title)+'</h2><p>'+E(ch.text)+'</p>';foot=next;}
  else if(p.kind==='cancion'){const s=pick(D.songs,n);body='<span class="prompt-symbol">♪</span><h2>'+E(s[0])+'</h2><p style="font-size:1.8rem">'+E(s[1]).replaceAll(' / ','<br>')+'</p><p class="hint" style="font-size:1rem">'+E(s[2])+'</p>';foot=next;}
  else if(p.kind==='saludo'){body='<span class="prompt-symbol">👋</span><h2>¡Buenos días, clase!</h2><p>¿Con la mano, con una palabra o con un gesto?</p><p>También puedes mirar y escuchar.</p>';foot=btn('¿Quién ha venido? →','routine','asistencia');}
- else if(p.kind==='asistencia'){if(p.attendanceStep==='names'){body=attendanceNames(p);foot=btn('Continuar al conteo →','attendance-count');}else if(state.assemblyGroup!=='vero'){
-  p.hatchCount??=window.ROSA_PATITOS_ASISTENCIA.startCount(assemblyStudents(),p.attendance,studentLabel);
-  body=window.ROSA_PATITOS_ASISTENCIA.renderCount(p.hatchCount,p.attendanceStep);
-  foot=p.attendanceStep==='absent'
-   ?btn('← Volver a la suma','attendance-count','','secondary')+btn('¿Qué día es hoy? →','routine','dia-semana')
-   :btn('← Volver al estanque','attendance-names','','secondary')+btn('Contar los que faltan →','attendance-absent');
- }else{body='<section class="count-story"><span class="count-kicker">CONTAMOS NUESTRA CLASE</span><h2>¿CUÁNTOS HEMOS VENIDO?</h2><div class="attendance-count-grid">'+[['present','EN CLASE','clase'],['absent','HOY FALTAN','casa']].map(a=>'<section class="count-scene count-'+a[0]+'"><h3>'+a[1]+'</h3><img class="count-illustration" src="assets/asamblea-ligera/asamblea-infantil/'+a[2]+'.webp?rev=1" alt=""><div class="counter-group">'+btn('−','count',a[0]+'|-1','count-step secondary')+'<output aria-label="'+a[1]+'">'+p.counts[a[0]]+'</output>'+btn('+','count',a[0]+'|1','count-step secondary')+'</div></section>').join('')+'</div><details class="count-extra" '+(p.countDetails?'open ':'')+'><summary>CONTAR NIÑAS Y NIÑOS</summary><div class="choice-grid">'+[['girls','NIÑAS'],['boys','NIÑOS']].map(a=>'<div><label>'+a[1]+'</label><div class="counter-group">'+btn('−','count',a[0]+'|-1','secondary')+'<output>'+p.counts[a[0]]+'</output>'+btn('+','count',a[0]+'|1','secondary')+'</div></div>').join('')+'</div></details></section>';foot=btn('← Volver a los nombres','attendance-names','','secondary')+btn('¿Qué día es hoy? →','routine','dia-semana');}}
+ else if(p.kind==='asistencia'){
+  const vero=state.assemblyGroup==='vero';
+  if(p.attendanceStep==='names'){
+   body=attendanceNames(p);
+   foot=btn('Continuar al conteo →',vero?'attendance-count':'attendance-tally');
+  }else if(vero||p.attendanceStep==='tally'){
+   body=attendanceCounters(p,vero);
+   foot=vero
+    ?btn('← Volver a los nombres','attendance-names','','secondary')+btn('¿Qué día es hoy? →','routine','dia-semana')
+    :btn('← Volver al estanque','attendance-names','','secondary')+btn('Contar niñas y niños →','attendance-count');
+  }else{
+   p.hatchCount??=window.ROSA_PATITOS_ASISTENCIA.startCount(assemblyStudents(),p.attendance,studentLabel);
+   body=window.ROSA_PATITOS_ASISTENCIA.renderCount(p.hatchCount,p.attendanceStep);
+   foot=p.attendanceStep==='absent'
+    ?btn('← Volver a la suma','attendance-count','','secondary')+btn('¿Qué día es hoy? →','routine','dia-semana')
+    :btn('← Volver al recuento','attendance-tally','','secondary')+btn('Contar los que faltan →','attendance-absent');
+  }
+ }
  else if(p.kind==='estacion'){body='<section class="season-story"><h2>¿EN QUÉ ESTACIÓN ESTAMOS?</h2><div class="season-story-choices">'+[['primavera','Primavera'],['verano','Verano'],['otono','Otoño'],['invierno','Invierno']].map(a=>btn('<img src="assets/asamblea-ligera/estaciones-cuento/'+a[0]+'.webp?rev=1" alt="" width="1024" height="1536"><strong>'+a[1].toLocaleUpperCase('es-ES')+'</strong>','season',a[1],'season-story-card season-'+a[0])).join('')+'</div><div id="game-feedback" class="feedback season-story-feedback" role="status"></div></section>';foot=btn('Miramos el tiempo →','routine','tiempo');}
- else if(p.kind==='encargado'){const roles=[['luces','💡','Luces'],['saludos','👋','Saludos'],['material','🧺','Material'],['jabon','🧼','Jabón']],students=assemblyStudents();body='<section class="duties-activity"><span class="duties-kicker">NUESTRO EQUIPO DE HOY</span><h2>Encargados de hoy</h2><p>Elige un nombre o deja que la PDI lo escoja al azar.</p><div class="duty-grid">'+roles.map(role=>'<section class="duty-card duty-card-'+role[0]+'"><span class="duty-art" aria-hidden="true"><img src="assets/asamblea-ligera/encargados/'+role[0]+'.webp?rev=1" alt=""></span><h3>'+role[2]+'</h3><label><span class="sr-only">Encargado de '+role[2]+'</span><select data-duty-role="'+role[0]+'"><option value="">Elegir nombre</option>'+students.map(name=>'<option value="'+E(name)+'"'+(p.duties[role[0]]===name?' selected':'')+'>'+E(studentLabel(name))+'</option>').join('')+'</select></label>'+btn('Elegir al azar','duty-random',role[0],'secondary')+'<strong class="duty-result'+(p.duties[role[0]]?'':' is-empty')+'">'+E(studentLabel(p.duties[role[0]]||''))+'</strong>'+'</section>').join('')+'</div><div id="game-feedback" class="feedback" role="status"></div></section>';foot=btn('¿Quién ha venido? →','routine','asistencia');}
+ else if(p.kind==='encargado'){const roles=[['luces','💡','Luces'],['saludos','👋','Saludos'],['material','🧺','Material'],['jabon','🧼','Jabón']],students=assemblyStudents();body='<section class="duties-activity"><span class="duties-kicker">NUESTRO EQUIPO DE HOY</span><h2>Encargados de hoy</h2><p>Elige un nombre o deja que la PDI lo escoja al azar.</p><div class="duty-grid">'+roles.map(role=>'<section class="duty-card duty-card-'+role[0]+'"><span class="duty-art" aria-hidden="true"><img src="assets/asamblea-ligera/encargados/'+role[0]+'.webp?rev=1" alt=""></span><h3>'+role[2]+'</h3><label><span class="sr-only">Encargado de '+role[2]+'</span><select data-duty-role="'+role[0]+'"><option value="">Elegir nombre</option>'+students.map(name=>'<option value="'+E(name)+'"'+(p.duties[role[0]]===name?' selected':'')+'>'+E(studentLabel(name))+'</option>').join('')+'</select></label>'+btn('Elegir al azar','duty-random',role[0],'secondary')+'<strong class="duty-result'+(p.duties[role[0]]?'':' is-empty')+'">'+E(studentLabel(p.duties[role[0]]||''))+'</strong>'+'</section>').join('')+'</div><div id="game-feedback" class="feedback" role="status"></div></section>';foot=state.assemblyGroup==='vero'
+  ?btn('¿Quién ha venido? →','routine','asistencia')
+  :btn(dutiesNextLabel(p),'assembly-after-duties');}
  else if(p.kind==='numero'){const v=Math.min(30,Math.max(1,n+1)),density=v<=10?'few':v<=20?'medium':'many';body='<section class="routine-book routine-number"><header><h2>EL NÚMERO PROTAGONISTA</h2><label>ELEGIR NÚMERO <select id="assembly-number">'+Array.from({length:30},(_,i)=>'<option value="'+i+'"'+(i===v-1?' selected':'')+'>'+(i+1)+'</option>').join('')+'</select></label></header><div class="routine-book-spread"><section class="routine-book-page"><span class="routine-page-kicker">NUESTRO NÚMERO DE HOY</span><strong class="routine-glyph" aria-label="Número '+v+'">'+v+'</strong><p>LO DIBUJAMOS EN EL AIRE</p></section><section class="routine-book-page"><h3>CONTAMOS '+v+' '+(v===1?'HOJA DE OTOÑO':'HOJAS DE OTOÑO')+'</h3><div class="routine-leaf-grid routine-leaf-grid-'+density+'" style="--leaf-count:'+v+'" role="img" aria-label="'+v+' '+(v===1?'hoja de otoño':'hojas de otoño')+'">'+Array.from({length:v},(_,i)=>'<span class="routine-leaf" style="--leaf-index:'+i+';--leaf-turn:'+((i%5)-2)*7+'deg" aria-hidden="true"><img src="assets/vocab-child/autumn-leaf.webp" alt=""></span>').join('')+'</div><p>LAS CONTAMOS UNA A UNA</p></section></div></section>';foot=btn('La galaxia de las palabras →','routine','galaxia');}
  else if(p.kind==='letra'){const alphabet='ABCDEFGHIJKLMNÑOPQRSTUVWXYZ',l=alphabet[n%alphabet.length],same=char=>char.toLocaleUpperCase('es-ES').normalize('NFD').replace(/[\u0301\u0308]/g,'').normalize('NFC')===l,names=assemblyStudents().filter(name=>[...studentLabel(name)].some(same));p.customSpeech='La letra protagonista es '+l;body='<section class="routine-book routine-letter"><header><h2>LA LETRA PROTAGONISTA</h2><label>ELEGIR LETRA <select id="assembly-letter">'+[...alphabet].map((a,i)=>'<option value="'+i+'"'+(a===l?' selected':'')+'>'+a+'</option>').join('')+'</select></label></header><div class="routine-book-spread"><section class="routine-book-page"><span class="routine-page-kicker">NUESTRA LETRA DE HOY</span><strong class="routine-glyph" aria-label="Letra '+l+'">'+l+'</strong><p>LA DIBUJAMOS EN EL AIRE</p></section><section class="routine-book-page"><h3>LA BUSCAMOS EN NUESTROS NOMBRES</h3><div class="routine-name-chips">'+(names.length?names.map(name=>'<span>'+[...studentLabel(name).toLocaleUpperCase('es-ES')].map(char=>same(char)?'<mark>'+E(char)+'</mark>':E(char)).join('')+'</span>').join(''):'<p class="routine-name-empty">BUSCAMOS PALABRAS CON LA '+l+'</p>')+'</div><p>¿DÓNDE MÁS LA VEMOS?</p></section></div></section>';foot=btn('Palabra del día aleatoria →','random-word');}
  else if(p.kind==='nombre'){body='<h2>Así es mi nombre</h2><div class="name-letters">'+[...p.payload].map(l=>'<span>'+E(l)+'</span>').join('')+'</div><p>Busco las mismas letras y las coloco en orden.</p>';}
  if(p.kind==='encargado')p.customSpeech='Vamos a elegir quién se encarga de las luces, de los saludos, del material y del jabón.';
  if(p.kind==='asistencia'&&p.attendanceStep==='names')p.customSpeech=state.assemblyGroup==='vero'?'¿Quién no ha venido hoy al cole?':'¿Quién ha venido hoy? Toca el huevo con tu nombre.';
- if(p.kind==='asistencia'&&p.attendanceStep!=='names')p.customSpeech=state.assemblyGroup==='vero'?'¿Cuántos hemos venido hoy al cole?':p.attendanceStep==='absent'?'Cuenta los huevos que siguen cerrados y escribe cuántos faltan.':'Cuenta las niñas y los niños. Escribe cuántos hay en cada mesa y suma el total.';
+ if(p.kind==='asistencia'&&p.attendanceStep!=='names'){
+  const prompts={
+   tally:'¿Cuántos están en casa y cuántos están en el cole? Toca el más una vez por cada persona.',
+   count:'Cuenta las niñas y los niños. Escribe cuántos hay en cada mesa y suma el total.',
+   absent:'Cuenta los huevos que siguen cerrados y escribe cuántos faltan.'
+  };
+  p.customSpeech=state.assemblyGroup==='vero'?'¿Cuántos hemos venido hoy al cole?':prompts[p.attendanceStep];
+ }
  if(p.kind==='dia-semana')body=body.replace('<span class="weekday-kicker">NUESTRA RUTINA DE HOY</span>','');
  if(p.kind==='estacion')p.customSpeech='¿En qué estación estamos?';
  if(p.kind==='letra')p.customSpeech='La letra protagonista. '+('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'[n%27])+'.';
- $('#projection-content').innerHTML='<div class="projection-toolbar"><strong>La Clase Rosa · '+E(title)+'</strong><div>'+btn(fullscreenLabel(),'fullscreen','','secondary small')+btn('× Salir','close-projection','','quiet')+'</div></div>'+A.toolbar(p)+'<div class="projection-main" data-theme="'+E(p.payload?.theme||(p.kind.startsWith('dino')||['expedicion','clasificar','contar','falta','memory'].includes(p.kind)?'Dinosaurios':'General'))+'" data-game="'+E(p.kind)+'" data-level="'+p.level+'">'+body+'</div><div class="projection-footer">'+A.footer(foot)+'</div>';window.ROSA_SCENES?.decorate(p);setupRelateBoard();A.afterRender(body);window.ROSA_PUMPKIN?.init(p);window.ROSA_DINO?.init(p);
- if(p.kind==='asistencia'&&p.hatchCount&&p.attendanceStep!=='names'&&state.assemblyGroup!=='vero'){
+ $('#projection-content').innerHTML='<div class="projection-toolbar"><strong>La Clase Rosa · '+E(title)+'</strong><div>'+btn('← Volver','close-projection','','quiet')+'</div></div>'+A.toolbar(p)+'<div class="projection-main" data-theme="'+E(p.payload?.theme||(p.kind.startsWith('dino')||['expedicion','clasificar','contar','falta','memory'].includes(p.kind)?'Dinosaurios':'General'))+'" data-game="'+E(p.kind)+'" data-level="'+p.level+'">'+body+'</div><div class="projection-footer">'+A.footer(foot)+'</div>';window.ROSA_SCENES?.decorate(p);setupRelateBoard();A.afterRender(body);window.ROSA_PUMPKIN?.init(p);window.ROSA_DINO?.init(p);
+ if(p.kind==='asistencia'&&p.hatchCount&&['count','absent'].includes(p.attendanceStep)&&state.assemblyGroup!=='vero'){
   window.ROSA_PATITOS_ASISTENCIA.bindWriting(p.hatchCount,$('.pond-writing'));
  }
 }
@@ -757,9 +891,16 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
   state.assemblyLetter=Math.floor(Math.random()*27);
   startProjection('encargado');
  }
+ else if(action==='assembly-after-duties'){
+  const p=state.projection;
+  if(p?.kind!=='encargado')return;
+  const index=greetingDutyIndex(p);
+  if(index>=0)startProjection('nombre-escribe',index,{assemblyGreeting:true});
+  else startProjection('asistencia');
+ }
  else if(action==='routine'){if(value==='encargado')state.assemblyLetter=Math.floor(Math.random()*27);if(value==='cancion'){A.stopVoice();$('#projector').close();location.hash='canciones';render();}else if(value==='galaxia')startProjection('palabra-imagen',0,{assemblyGalaxy:state.assemblyGroup});else if(value==='pregunta')startProjection('question',state.questionIndex,state.questionCategory);else if(value==='reto')startProjection('challenge',state.challengeIndex);else startProjection(value,value==='numero'?Math.floor(Math.random()*30):value==='letra'?(Number.isInteger(state.assemblyLetter)?state.assemblyLetter:(state.assemblyLetter=Math.floor(Math.random()*27))):0);}
  else if(action==='random-word')nextRandomWord();
- else if(action==='attendance-toggle'){const p=state.projection;if(p?.kind==='asistencia'&&Object.hasOwn(p.attendance,value)){p.attendance[value]=!p.attendance[value];if(target.classList.contains('hatch-egg')){p.hatchCount=null;window.ROSA_PATITOS_ASISTENCIA.update(target,studentLabel(value),p.attendance[value]);}else if(target.classList.contains('train-wagon')){const absent=!p.attendance[value];target.classList.toggle('is-absent',absent);target.setAttribute('aria-pressed',String(absent));target.setAttribute('aria-label',value+(absent?', HOY NO HA VENIDO. MARCAR PRESENTE':', EN CLASE. MARCAR AUSENCIA'));target.querySelector('.wagon-status').textContent=absent?'HOY NO HA VENIDO':'EN CLASE';$('#attendance-train-status').textContent=value+(absent?' HOY NO HA VENIDO':' ESTÁ EN CLASE');}else projectionRender();}}
+ else if(action==='attendance-toggle'){const p=state.projection;if(p?.kind==='asistencia'&&Object.hasOwn(p.attendance,value)){p.attendance[value]=!p.attendance[value];if(target.classList.contains('hatch-egg')){p.hatchCount=null;p.counts.present=0;p.counts.absent=0;window.ROSA_PATITOS_ASISTENCIA.update(target,studentLabel(value),p.attendance[value]);}else if(target.classList.contains('train-wagon')){const absent=!p.attendance[value];target.classList.toggle('is-absent',absent);target.setAttribute('aria-pressed',String(absent));target.setAttribute('aria-label',value+(absent?', HOY NO HA VENIDO. MARCAR PRESENTE':', EN CLASE. MARCAR AUSENCIA'));target.querySelector('.wagon-status').textContent=absent?'HOY NO HA VENIDO':'EN CLASE';$('#attendance-train-status').textContent=value+(absent?' HOY NO HA VENIDO':' ESTÁ EN CLASE');}else projectionRender();}}
  else if(action==='pond-count-token'||action==='pond-count-erase'){
   const p=state.projection;
   const root=target.closest('.pond-writing');
@@ -776,20 +917,56 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
    projectionRender();
   }
  }
+ else if(action==='attendance-tally'){
+  const p=state.projection;
+  if(p?.kind==='asistencia'&&state.assemblyGroup!=='vero'){
+   p.attendanceStep='tally';
+   projectionRender();
+  }
+ }
  else if(action==='attendance-count'){const p=state.projection;if(p?.kind==='asistencia'){p.attendanceStep='count';if(state.assemblyGroup==='vero')p.counts={present:0,absent:0,girls:0,boys:0};projectionRender();}}
  else if(action==='attendance-names'){const p=state.projection;if(p?.kind==='asistencia'){p.attendanceStep='names';projectionRender();}}
  else if(action==='dino')startProjection('dino',value);
+ else if(action==='dino-project-species'){
+  const catalog=target.closest('[data-dino-catalog-root]');
+  const fact=catalog?.querySelector('button[data-dino-catalog-fact][aria-pressed="true"]');
+  startProjection('dino',value,{projectSpecies:target.dataset.speciesGroup||'especies',catalogFact:fact?.dataset.dinoCatalogFact});
+ }
+ else if(action==='calm-garden-open')startProjection('calm-garden');
+ else if(action==='dino-route-open'){
+  const index=Number(value);
+  if(Number.isInteger(index)&&index>=0&&index<window.ROSA_DINO_ROUTE.count){
+   startProjection('dino-route',index);
+   $('#projection-content .route-pdi h2')?.focus();
+  }
+ }
+ else if(action.startsWith('dino-route-')&&state.projection?.kind==='dino-route'){
+  if(window.ROSA_DINO_ROUTE.update(state.projection,action.slice('dino-route-'.length),Number(value))){
+   projectionRender();
+   const selector=action==='dino-route-answer'?'[data-action="dino-route-answer"][data-value="'+value+'"]':['dino-route-step','dino-route-erase'].includes(action)?'.route-pdi h3':'.route-pdi h2';
+   $('#projection-content '+selector)?.focus();
+  }
+ }
+ else if(action==='dino-era-open')startProjection('dino-world',0,{era:value});
  else if(action==='dino-tab'){state.dinoTab=value;render();}
+ else if(action==='dino-video-play')playDinoVideo(value);
+ else if(action==='dino-video-remove'){
+  const index=dinoVideos.findIndex(video=>video.id===value);
+  if(index<0)return;
+  const [video]=dinoVideos.splice(index,1);
+  if(!saveDinoVideos()){dinoVideos.splice(index,0,video);return;}
+  render();
+ }
  else if(action==='kusama-tab'){state.kusamaTab=value;render();}
  else if(action==='story-open')openStory(value);
  else if(action==='story-prev'){if(state.story&&state.story.page>0){state.story.page--;renderStory();}}
  else if(action==='story-next'){if(state.story){const book=window.ROSA_STORIES.ready.find(item=>item.id===state.story.id);if(book?.pages&&state.story.page<book.pages.length-1){state.story.page++;renderStory();}}}
- else if(action==='story-close'){state.story=null;$('#projector').close();leaveProjectorFullscreen();}
+ else if(action==='story-close')closeProjector();
  else if(action==='projection-next')A.next();
  else if(action==='word-picture-restart'){const p=state.projection;if(p?.kind==='palabra-imagen'){p.round=0;p.payload={};p.answered=false;p.rewarded=false;projectionRender();}}
  else if(action==='hide-piece'){state.projection.hidden=true;projectionRender();}
  else if(action==='hide-name-model'){state.projection.hidden=true;state.projection.nameBuild=[];state.projection.nameUsed=[];state.projection.nameMessage='';projectionRender();}
- else if(action==='name-letter'){const p=state.projection;if(!p||p.kind!=='nombre-escribe'||p.answered)return;const split=value.indexOf('|'),index=Number(value.slice(0,split)),letter=decodeURIComponent(value.slice(split+1)),target=[...D.students[p.round%D.students.length].toLocaleUpperCase('es-ES').replace(/\s/g,'')];if(p.nameUsed.includes(index))return;let voice='';if(letter===target[p.nameBuild.length]){p.nameWrongIndex=null;p.nameBuild.push(letter);p.nameUsed.push(index);p.nameMessage='¡Sí! Busca la siguiente letra.';voice='¡Muy bien! Busca la siguiente letra.';if(p.nameBuild.length===target.length){p.answered=true;p.nameMessage='¡Nombre completo!';voice=pdiPraiseVoice(p.round);window.ROSA_PDI_REWARD?.applause();window.ROSA_CLASSROOM?.burstConfetti?.();window.ROSA_PDI_REWARD?.confetti?.();}}else{p.nameWrongIndex=index;p.nameMessage='Esa no es la letra que sigue. Busca otra.';voice='Esa no es la letra que sigue. Busca otra.';}projectionRender();A.feedbackVoice(voice);}
+ else if(action==='name-letter'){const p=state.projection;if(!p||p.kind!=='nombre-escribe'||p.answered)return;const split=value.indexOf('|'),index=Number(value.slice(0,split)),letter=decodeURIComponent(value.slice(split+1)),target=[...nameStudent(p).toLocaleUpperCase('es-ES').replace(/\s/g,'')];if(p.nameUsed.includes(index))return;let voice='';if(letter===target[p.nameBuild.length]){p.nameWrongIndex=null;p.nameBuild.push(letter);p.nameUsed.push(index);p.nameMessage='¡Sí! Busca la siguiente letra.';voice='¡Muy bien! Busca la siguiente letra.';if(p.nameBuild.length===target.length){p.answered=true;p.nameMessage='¡Nombre completo!';voice=pdiPraiseVoice(p.round);window.ROSA_PDI_REWARD?.applause();window.ROSA_CLASSROOM?.burstConfetti?.();window.ROSA_PDI_REWARD?.confetti?.();}}else{p.nameWrongIndex=index;p.nameMessage='Esa no es la letra que sigue. Busca otra.';voice='Esa no es la letra que sigue. Busca otra.';}projectionRender();A.feedbackVoice(voice);}
  else if(action==='answer')answer(target);
  else if(action==='relate-pick'){
   const p=state.projection;if(!p||!['relaciona-dino','relaciona-vocabulario','relaciona-cantidades'].includes(p.kind)||p.answered)return;
@@ -815,14 +992,19 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='song-manager'){A.stopVoice();if($('#projector').open)$('#projector').close();location.hash='canciones';render();}
  else if(action==='calendar-today'){state.projection.date=new Date();projectionRender();}
  else if(action==='calendar-month'){const p=state.projection;if(p?.kind==='calendario'&&p.payload?.externalCalendar){const next=new Date(p.date);next.setDate(1);next.setMonth(next.getMonth()+Number(value));p.date=next;projectionRender();}}
- else if(action==='count'){const [key,delta]=value.split('|');state.projection.countDetails=['girls','boys'].includes(key);state.projection.counts[key]=Math.max(0,Math.min(40,state.projection.counts[key]+Number(delta)));projectionRender();}
+ else if(action==='count'){
+  const [key,delta]=value.split('|'),p=state.projection;
+  p.counts[key]=Math.max(0,Math.min(40,p.counts[key]+Number(delta)));
+  if(p.attendanceStep==='tally'){
+   target.closest('.counter-group').querySelector('output').value=p.counts[key];
+  }else{
+   p.countDetails=['girls','boys'].includes(key);
+   projectionRender();
+  }
+ }
  else if(action==='reveal-riddle'){$('#riddle-answer').classList.remove('hidden');target.disabled=true;A.feedbackVoice(pick(D.riddles,state.projection.round)[1]);}
  else if(action==='memory-flip')memoryFlip(Number(value));
- else if(action==='close-projection'){A.close();$('#projector').close();leaveProjectorFullscreen();$('#projection-content').innerHTML='';state.projection=null;}
- else if(action==='fullscreen'){
-  if(document.body.classList.contains('story-fullscreen-fallback'))leaveProjectorFullscreen();
-  else void enterProjectorFullscreen();
- }
+ else if(action==='close-projection')closeProjector();
  else if(action==='print-view')window.print();
  else if(action==='name-project'){const name=$('#child-name')?.value.trim();if(name)startProjection('nombre',0,name.toLocaleUpperCase('es-ES').replace(/\s/g,''));else toast('Escribe primero un nombre.');}
  else if(action==='name-print')printName();
@@ -834,69 +1016,73 @@ document.addEventListener('input',event=>{
  if(input.dataset?.studioCustom!==undefined)window.ROSA_SHEETS.updateCustomText(input);
 });
 document.addEventListener('change',event=>{const t=event.target;if(window.ROSA_MISSIONS?.change(event))return;if(A.change(t))return;if(t.dataset.filter){state.filter[t.dataset.filter]=t.value;render();}else if(t.id==='ink-mode'){state.ink=t.value;try{localStorage.setItem('rosa-ink',JSON.stringify(state.ink));}catch{}resourceDialog();}else if(t.id==='pattern-mode'){state.projection.pattern=t.value;state.projection.answered=false;projectionRender();}else if(t.id==='name-student'){state.projection.round=Number(t.value);state.projection.nameRound=null;projectionRender();}else if(t.id==='assembly-letter'){state.projection.round=Number(t.value);state.assemblyLetter=Number(t.value);projectionRender();}else if(t.id==='assembly-number'){state.projection.round=Number(t.value);projectionRender();}else if(t.dataset.dutyRole){state.projection.duties[t.dataset.dutyRole]=t.value;updateProjectedDuty(t.dataset.dutyRole,t.value);if(t.value)A.feedbackVoice(window.ROSA_SCENES.dutySpeech(t.dataset.dutyRole,t.value));}else if(t.dataset.assemblyDutyRole){state.assemblyDuties[t.dataset.assemblyDutyRole]=t.value;render();if(t.value)A.announce(window.ROSA_SCENES.dutySpeech(t.dataset.assemblyDutyRole,t.value));}else if(t.id==='assembly-date'&&t.value){const dt=new Date(t.value+'T12:00:00');if(!isNaN(dt)){state.projection.date=dt;projectionRender();}}});
+document.addEventListener('submit',event=>{if(event.target.id==='dino-video-form'){event.preventDefault();addDinoVideo(event.target);}});
 $('#global-search').addEventListener('submit',event=>{event.preventDefault();state.filter={area:'',type:'',project:'',q:$('#search').value.trim()};if(route()==='banco')render();else location.hash='banco';});
 $('#search-toggle').addEventListener('click',()=>{const form=$('#global-search'),open=form.classList.toggle('expanded');$('#search-toggle').setAttribute('aria-expanded',String(open));if(open)$('#search').focus();else $('#search-toggle').blur();});
 $('#search').addEventListener('keydown',event=>{if(event.key==='Escape'){$('#global-search').classList.remove('expanded');$('#search-toggle').setAttribute('aria-expanded','false');$('#search-toggle').focus();}});
 $('#menu-button').addEventListener('click',()=>{const open=$('#sidebar').classList.toggle('open');$('#menu-button').setAttribute('aria-expanded',String(open));});
 $('#sidebar-close').addEventListener('click',()=>{$('#sidebar').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');$('#menu-button').focus();});
-$('#projector').addEventListener('cancel',()=>{
- A.close();state.projection=null;state.story=null;leaveProjectorFullscreen();
+$('#projector').addEventListener('cancel',event=>{
+ event.preventDefault();
+ closeProjector();
 });
 $('#projector').addEventListener('close',()=>{
- if(!$('#projector').open)leaveProjectorFullscreen();
+ if(!$('#projector').open)finishProjector();
 });
 
-let projectorOwnsFullscreen=false;
+let activePdiSurface=null,pdiOwnsNative=false,pdiRequestPending=false;
 const nativePdiFullscreen=()=>document.fullscreenElement||document.webkitFullscreenElement;
 function exitNativePdiFullscreen(){
  return (document.exitFullscreen||document.webkitExitFullscreen)?.call(document)?.catch?.(()=>{});
 }
-async function requestNativePdiFullscreen(dialog){
+async function enterPdiFullscreen(surface){
+ activePdiSurface=surface;
  const root=document.documentElement;
  const request=root?.requestFullscreen||root?.webkitRequestFullscreen;
- if(!request||nativePdiFullscreen()||window.navigator?.userActivation?.isActive===false)return false;
+ if(!request||nativePdiFullscreen()||pdiRequestPending||window.navigator?.userActivation?.isActive===false)return;
+ pdiRequestPending=true;
  try{
-  // The document can enter fullscreen even when its modal dialog cannot.
+  // Keep modal dialogs and any nested player visible in the fullscreen document.
   await request.call(root);
-  if(!dialog.open){if(nativePdiFullscreen()===root)exitNativePdiFullscreen();return false;}
-  return nativePdiFullscreen()===root;
- }catch{return false;}
+  pdiOwnsNative=nativePdiFullscreen()===root;
+  if(!activePdiSurface&&pdiOwnsNative){
+   pdiOwnsNative=false;
+   exitNativePdiFullscreen();
+  }
+ }catch{/* The surface already fills the viewport when native fullscreen is unavailable. */}
+ finally{pdiRequestPending=false;}
 }
-function openProjector(){
- const projector=$('#projector');
- if(!projector.open)projector.showModal();
- void enterProjectorFullscreen();
-}
-async function enterProjectorFullscreen(){
- const projector=$('#projector');
- const mode=document.body.classList;
- if(!projector.open||mode.contains('story-fullscreen-fallback'))return;
- mode.add('story-fullscreen-fallback');
- syncFullscreenButton();
- projectorOwnsFullscreen=await requestNativePdiFullscreen(projector);
- if(projectorOwnsFullscreen&&!mode.contains('story-fullscreen-fallback')){
-  projectorOwnsFullscreen=false;
-  exitNativePdiFullscreen();
- }
-}
-function leaveProjectorFullscreen(){
- document.body.classList.remove('story-fullscreen-fallback');
- if(projectorOwnsFullscreen&&nativePdiFullscreen())exitNativePdiFullscreen();
- projectorOwnsFullscreen=false;
- syncFullscreenButton();
-}
-function fullscreenLabel(){
- return document.body.classList.contains('story-fullscreen-fallback')?'SALIR DE PANTALLA COMPLETA':'PANTALLA COMPLETA';
-}
-function syncFullscreenButton(){
- const button=$('[data-action="fullscreen"]');
- if(button)button.textContent=fullscreenLabel();
+function leavePdiFullscreen(surface){
+ if(activePdiSurface!==surface)return;
+ activePdiSurface=null;
+ if(pdiOwnsNative&&nativePdiFullscreen())exitNativePdiFullscreen();
+ pdiOwnsNative=false;
 }
 function onPdiFullscreenChange(){
- if(projectorOwnsFullscreen&&!nativePdiFullscreen())leaveProjectorFullscreen();
+ if(!nativePdiFullscreen())pdiOwnsNative=false;
 }
 document.addEventListener('fullscreenchange',onPdiFullscreenChange);
 document.addEventListener('webkitfullscreenchange',onPdiFullscreenChange);
+function openProjector(){
+ const projector=$('#projector');
+ if(!projector.open)projector.showModal();
+ document.body.classList.add('story-fullscreen-fallback');
+ if(activePdiSurface!==projector)void enterPdiFullscreen(projector);
+}
+function finishProjector(){
+ if(state.projection?.kind==='calm-garden')window.ROSA_CALM_GARDEN.close();
+ if(state.projection)A.close();
+ state.projection=null;
+ state.story=null;
+ $('#projection-content').innerHTML='';
+ document.body.classList.remove('story-fullscreen-fallback');
+ leavePdiFullscreen($('#projector'));
+}
+function closeProjector(){
+ const projector=$('#projector');
+ if(projector.open)projector.close();
+ finishProjector();
+}
 document.addEventListener('keydown',event=>{if(!state.story)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===state.story.id);if(!book?.pages)return;if(event.key==='ArrowRight'){event.preventDefault();if(state.story.page<book.pages.length-1){state.story.page++;renderStory();}}else if(event.key==='ArrowLeft'&&state.story.page>0){event.preventDefault();state.story.page--;renderStory();}});
 $('.skip').addEventListener('click',event=>{event.preventDefault();$('#contenido').focus();});
 window.addEventListener('hashchange',resetForRoute);

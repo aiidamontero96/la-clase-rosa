@@ -1,6 +1,21 @@
 'use strict';
 window.ROSA_STORIES={
   ready:[{
+    id:'el-tesoro-de-los-dinosaurios',
+    title:'El tesoro de los dinosaurios',
+    project:'dinosaurios',
+    level:'Infantil · PDI',
+    author:'Alicia Acosta',
+    illustrator:'Mónica Carretero',
+    translator:'Original en español',
+    publisher:'NubeOcho · 2024',
+    description:'El pequeño pirata Serafín y su tripulación siguen un mapa hasta una isla llena de dinosaurios.',
+    license:'Todos los derechos reservados',
+    cover:'assets/stories/tesoro-dinosaurios/page-01.webp',
+    coverFit:'contain',
+    imageOnly:true,
+    pages:Array.from({length:22},(_,i)=>['assets/stories/tesoro-dinosaurios/page-'+String(i+1).padStart(2,'0')+'.webp',''])
+  },{
     id:'yayoi-desde-aqui-hasta-el-infinito',
     title:'Yayoi Kusama: Desde aquí hasta el infinito',
     level:'4 años · PDI',

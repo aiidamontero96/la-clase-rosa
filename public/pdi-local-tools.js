@@ -3,7 +3,7 @@
 (() => {
   const BOARD_HASH = 'pdi-pizarra';
   const GUIDED_HASH = 'pdi-pizarra-guiada';
-  const AUTUMN_HASH = 'pdi-otono-vocabulario';
+  const AUTUMN_HASH = 'pdi-otono';
   const FALLBACK_CLASS = 'pdi-mode-fallback';
   const BOARD_LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
   const BOARD_SHAPES = [
@@ -34,7 +34,7 @@
   const content = () => document.querySelector('#contenido');
 
   function pdiNav() {
-    return window.ROSA_AULA?.pdiNav?.('') || '';
+    return window.ROSA_AULA?.pdiNav?.(route()) || '';
   }
 
   function boardPage() {
@@ -265,7 +265,7 @@
             <div>
               <span class="eyebrow">PIZARRA DIGITAL</span>
               <h1>Conocemos el otoño</h1>
-              <p>Un recorrido con fotografías reales para descubrir la ropa y los accesorios típicos de esta estación.</p>
+              <p>Un recorrido con fotografías reales para descubrir la ropa, los frutos y otros detalles de esta estación.</p>
             </div>
           </div>
 
@@ -277,12 +277,12 @@
               <h2>OBSERVAMOS · NOMBRAMOS · DESCUBRIMOS</h2>
               <p>Cada foto oculta su palabra. Primero miramos la prenda, hablamos entre todos y después pulsamos para descubrirla en MAYÚSCULAS.</p>
               <ul class="autumn-hero-list">
-                <li>4 imágenes arriba y 4 abajo en la primera lámina.</li>
-                <li>Segunda lámina con más ropa y accesorios de otoño.</li>
+                <li>Cinco láminas de vocabulario con fotografías reales.</li>
+                <li>Pulsa cada foto para descubrir su nombre.</li>
                 <li>Sin sonido, lista para usar directamente en la PDI.</li>
               </ul>
               <div class="autumn-actions">
-                <button type="button" data-autumn-action="start">EMPEZAR RECORRIDO</button>
+                <a class="button" href="#pdi-otono-vocabulario?desde=otono">EMPEZAR RECORRIDO</a>
               </div>
             </div>
             <div class="autumn-preview">
@@ -338,40 +338,6 @@
           </div>
         </section>
       </div>`;
-  }
-
-  function addAutumnNavLink() {
-    document.querySelectorAll('.pdi-section-nav').forEach(nav => {
-      let link = nav.querySelector('a[href="#pdi-otono-vocabulario"]');
-      if (!link) {
-        link = document.createElement('a');
-        link.href = '#pdi-otono-vocabulario';
-        link.innerHTML = '🍂 Otoño';
-
-        const board = nav.querySelector('a[href="#pdi-pizarra"]');
-        const calendar = nav.querySelector('a[href="#pdi-calendario"]');
-        const timer = nav.querySelector('a[href="#pdi-cronometro"]');
-        const songs = nav.querySelector('a[href="#canciones"]');
-        const anchor = board || calendar || timer;
-
-        if (anchor) anchor.insertAdjacentElement('afterend', link);
-        else nav.insertBefore(link, songs || null);
-      }
-
-      const active = isAutumnRoute();
-      link.classList.toggle('active', active);
-      if (active) {
-        link.setAttribute('aria-current', 'page');
-        nav.querySelectorAll('a').forEach(other => {
-          if (other !== link) {
-            other.classList.remove('active');
-            other.removeAttribute('aria-current');
-          }
-        });
-      } else {
-        link.removeAttribute('aria-current');
-      }
-    });
   }
 
   function handleAutumnAction(action) {
@@ -839,183 +805,44 @@
   }
 
   function guidedValues(){return [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ',...Array.from({length:10},(_,i)=>String(i+1))];}
-  function setGuidedValue(value){value=String(value||'').trim().replace(/\s+/g,' ').toLocaleUpperCase('es-ES').slice(0,24);if(!value||!/^[A-ZÁÉÍÓÚÜÑ0-9 ]+$/u.test(value))return;guidedState.value=value;const main=content();if(main)main.innerHTML=guidedPage();activateGlobalPdiNav();addBoardNavLink();addGuidedNavLink();addAutumnNavLink();mountGuidedBoard();mountPagePdiButton();syncPdiModeState();}
+  function setGuidedValue(value){value=String(value||'').trim().replace(/\s+/g,' ').toLocaleUpperCase('es-ES').slice(0,24);if(!value||!/^[A-ZÁÉÍÓÚÜÑ0-9 ]+$/u.test(value))return;guidedState.value=value;const main=content();if(main)main.innerHTML=guidedPage();activateGlobalPdiNav();addBoardNavLink();addGuidedNavLink();mountGuidedBoard();syncToolPresentation(main);}
 
-  function pdiContextAvailable() {
-    return isBoardRoute() || isGuidedRoute() || !!document.querySelector('#contenido .pdi-section-nav');
-  }
+  let activeToolRoute='',toolReturnHash='#pdi',lastHash=location.hash;
+  const toolRoutes=new Set([BOARD_HASH,GUIDED_HASH,AUTUMN_HASH,'pdi-cronometro']);
+  const hashRoute=hash=>hash.slice(1).split('?')[0];
 
-  function fallbackTarget() {
-    return document.querySelector('.pdi-mode-target');
-  }
-
-  function leaveFallback() {
-    document.documentElement.classList.remove(FALLBACK_CLASS);
-    document.body.classList.remove(FALLBACK_CLASS);
-    document.querySelectorAll('.pdi-mode-target').forEach(el => el.classList.remove('pdi-mode-target'));
-    syncFullscreenButtons();
-  }
-
-  async function toggleFullscreen(target) {
-    if (!target) return;
-
-    if (document.fullscreenElement || document.webkitFullscreenElement) {
-      try {
-        if (document.exitFullscreen) await document.exitFullscreen();
-        else document.webkitExitFullscreen?.();
-      } catch {}
+  function syncToolPresentation(main){
+    const hash=location.hash;
+    const current=hashRoute(hash);
+    if(hash!==lastHash){
+      if(toolRoutes.has(current)&&!toolRoutes.has(hashRoute(lastHash)))toolReturnHash=lastHash||'#pdi';
+      lastHash=hash;
+    }
+    if(!toolRoutes.has(current)){
+      if(activeToolRoute){
+        activeToolRoute='';
+        main.classList.remove('pdi-mode-target');
+        document.documentElement.classList.remove(FALLBACK_CLASS);
+        leavePdiFullscreen(main);
+      }
       return;
     }
-
-    if (fallbackTarget()) {
-      leaveFallback();
-      return;
+    const timer=main.querySelector('#pdi-timer-stage');
+    if(current==='pdi-cronometro'&&!timer)return;
+    if(activeToolRoute!==current){
+      activeToolRoute=current;
+      main.classList.add('pdi-mode-target');
+      document.documentElement.classList.add(FALLBACK_CLASS);
+      void enterPdiFullscreen(main);
     }
-
-    const request = target.requestFullscreen || target.webkitRequestFullscreen;
-    if (request) {
-      try {
-        await request.call(target);
-        return;
-      } catch {}
+    if(!main.querySelector('[data-pdi-tool-back]')){
+      const button=document.createElement('button');
+      button.type='button';
+      button.className='pdi-tool-back';
+      button.dataset.pdiToolBack='';
+      button.textContent='← Volver';
+      main.prepend(button);
     }
-
-    target.classList.add('pdi-mode-target');
-    document.documentElement.classList.add(FALLBACK_CLASS);
-    document.body.classList.add(FALLBACK_CLASS);
-    syncFullscreenButtons();
-  }
-
-  function isFullscreenFor(target) {
-    return document.fullscreenElement === target ||
-      document.webkitFullscreenElement === target ||
-      (target?.classList.contains('pdi-mode-target') && document.documentElement.classList.contains(FALLBACK_CLASS));
-  }
-
-  function normalizeUiText(value) {
-    return String(value || '')
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .toLowerCase();
-  }
-
-  function markInternalFullscreenControls(root = document) {
-    let buttons = [];
-    try {
-      buttons = [...root.querySelectorAll('button, [role="button"]')];
-    } catch {
-      return;
-    }
-
-    buttons.forEach(button => {
-      if (button.matches?.('[data-pdi-mode-toggle]')) return;
-      const text = normalizeUiText(button.textContent || button.getAttribute?.('aria-label'));
-      const explicit =
-        button.matches?.('.pdi-timer-fullscreen, [data-timer-action="fullscreen"], [data-action="fullscreen"], [data-action="toggle-fullscreen"], [data-fullscreen]');
-      const byText = text === 'pantalla completa' || text === '⛶ pantalla completa' || text === 'fullscreen';
-
-      if (explicit || byText) button.classList.add('pdi-internal-fullscreen');
-    });
-
-    try {
-      root.querySelectorAll('iframe').forEach(frame => {
-        const scanFrame = () => {
-          try {
-            if (frame.contentDocument) markInternalFullscreenControls(frame.contentDocument);
-          } catch {}
-        };
-        scanFrame();
-        if (frame.dataset.pdiFullscreenWatch !== '1') {
-          frame.dataset.pdiFullscreenWatch = '1';
-          frame.addEventListener('load', scanFrame);
-        }
-      });
-    } catch {}
-  }
-
-  function syncPdiModeState() {
-    const active = !!(
-      document.fullscreenElement ||
-      document.webkitFullscreenElement ||
-      fallbackTarget()
-    );
-
-    document.documentElement.classList.toggle('pdi-mode-active', active);
-    document.body.classList.toggle('pdi-mode-active', active);
-
-    markInternalFullscreenControls(document);
-
-    try {
-      document.querySelectorAll('iframe').forEach(frame => {
-        try {
-          if (frame.contentDocument) {
-            frame.contentDocument.documentElement.classList.toggle('pdi-mode-active', active);
-            frame.contentDocument.body?.classList.toggle('pdi-mode-active', active);
-            markInternalFullscreenControls(frame.contentDocument);
-          }
-        } catch {}
-      });
-    } catch {}
-
-    return active;
-  }
-
-  function syncFullscreenButtons() {
-    syncPdiModeState();
-
-    document.querySelectorAll('[data-pdi-mode-toggle]').forEach(button => {
-      const selector = button.dataset.pdiModeTarget;
-      const target = selector ? document.querySelector(selector) : content();
-      const active = isFullscreenFor(target);
-      button.classList.toggle('is-active', active);
-      button.setAttribute('aria-pressed', String(active));
-      button.innerHTML = active ? '← SALIR DEL MODO PDI' : '⛶ MODO PDI';
-      button.setAttribute('aria-label', active ? 'Salir del modo PDI' : 'Abrir modo PDI a pantalla completa');
-    });
-  }
-
-  function mountPagePdiButton() {
-    const main = content();
-    if (!main || !pdiContextAvailable()) {
-      document.querySelector('.pdi-mode-floating')?.remove();
-      return;
-    }
-
-    let button = main.querySelector(':scope > .pdi-mode-floating');
-    if (!button) {
-      button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'pdi-mode-floating';
-      button.dataset.pdiModeToggle = '1';
-      button.dataset.pdiModeTarget = '#contenido';
-      button.innerHTML = '⛶ MODO PDI';
-      button.setAttribute('aria-pressed', 'false');
-      main.appendChild(button);
-    }
-    syncFullscreenButtons();
-  }
-
-  function mountProjectorPdiButton() {
-    const projector = document.querySelector('#projector');
-    if (!projector || !projector.open) return;
-
-    const toolbar = projector.querySelector('.projection-toolbar');
-    if (!toolbar || toolbar.querySelector('[data-pdi-mode-toggle]')) return;
-
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'secondary pdi-projector-mode';
-    button.dataset.pdiModeToggle = '1';
-    button.dataset.pdiModeTarget = '#projector';
-    button.innerHTML = '⛶ MODO PDI';
-
-    const close = toolbar.querySelector('[data-action="close-projection"], [data-aula-action="close"], button:last-child');
-    if (close) toolbar.insertBefore(button, close);
-    else toolbar.appendChild(button);
-
-    syncFullscreenButtons();
   }
 
   function syncRoute() {
@@ -1032,7 +859,6 @@
       activateGlobalPdiNav();
       addBoardNavLink();
       addGuidedNavLink();
-      addAutumnNavLink();
       mountBoard();
     } else if (isGuidedRoute()) {
       if (!main.querySelector('#pdi-guided-page')) {
@@ -1042,7 +868,6 @@
       activateGlobalPdiNav();
       addBoardNavLink();
       addGuidedNavLink();
-      addAutumnNavLink();
       mountGuidedBoard();
     } else if (isAutumnRoute()) {
       if (!main.querySelector('#pdi-autumn-page')) {
@@ -1051,16 +876,12 @@
       activateGlobalPdiNav();
       addBoardNavLink();
       addGuidedNavLink();
-      addAutumnNavLink();
     } else {
       addBoardNavLink();
       addGuidedNavLink();
-      addAutumnNavLink();
     }
 
-    mountPagePdiButton();
-    mountProjectorPdiButton();
-    syncPdiModeState();
+    syncToolPresentation(main);
   }
 
   function queueSync() {
@@ -1153,9 +974,7 @@
         if (main) main.innerHTML = autumnPage();
         activateGlobalPdiNav();
         addBoardNavLink();
-        addAutumnNavLink();
-        mountPagePdiButton();
-        syncPdiModeState();
+        syncToolPresentation(main);
       }
       return;
     }
@@ -1168,17 +987,11 @@
       if (main) main.innerHTML = autumnPage();
       activateGlobalPdiNav();
       addBoardNavLink();
-      addAutumnNavLink();
-      mountPagePdiButton();
-      syncPdiModeState();
+      syncToolPresentation(main);
       return;
     }
 
-    const mode = event.target.closest('[data-pdi-mode-toggle]');
-    if (mode) {
-      const target = document.querySelector(mode.dataset.pdiModeTarget);
-      toggleFullscreen(target);
-    }
+    if(event.target.closest('[data-pdi-tool-back]'))location.hash=toolReturnHash;
   });
 
   document.addEventListener('input', event => {
@@ -1199,8 +1012,6 @@
   });
   document.addEventListener('keydown',event=>{if(event.key==='Enter'&&event.target.matches('[data-guided-word]')){event.preventDefault();setGuidedValue(event.target.value);}});
 
-  document.addEventListener('fullscreenchange', syncFullscreenButtons);
-  document.addEventListener('webkitfullscreenchange', syncFullscreenButtons);
   window.addEventListener('hashchange', () => setTimeout(queueSync, 0));
   window.addEventListener('resize', () => {
     canvasState?.resizeBoard();
@@ -1211,15 +1022,6 @@
     const main = content();
     if (main) {
       new MutationObserver(queueSync).observe(main, { childList: true, subtree: true });
-    }
-    const projector = document.querySelector('#projector');
-    if (projector) {
-      new MutationObserver(queueSync).observe(projector, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['open']
-      });
     }
     queueSync();
   };

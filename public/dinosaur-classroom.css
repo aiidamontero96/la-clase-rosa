@@ -61,3 +61,143 @@
 @media print{#dinosaur-classroom{display:none!important}}
 /* Keep the activity's fullscreen exit available inside the existing PDI mode. */
 #dinosaur-classroom .dinosaur-controls .dinosaur-fullscreen{display:block!important}
+
+.dino-video-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(10px,2vw,20px);
+}
+.dino-video-grid .dinosaur-entry {
+  display:flex!important;
+  align-items:center;
+  justify-content:flex-start;
+  min-height:76px;
+  padding:10px 14px!important;
+  gap:12px;
+  border:1px solid #e8dac8;
+  border-radius:16px;
+  background:#fffdf9;
+  color:#203467;
+  text-align:left;
+}
+.dino-video-grid .dinosaur-entry:not(.dinosaur-entry-video)::before {
+  content:"▶";
+  display:grid;
+  place-items:center;
+  flex:0 0 72px;
+  height:46px;
+  border-radius:10px;
+  background:#e8efd9;
+  color:#3d603f;
+}
+.dino-video-grid .dinosaur-entry:hover { background:#f0f4e7; }
+@media(max-width:640px) { .dino-video-grid { grid-template-columns:minmax(0,1fr); } }
+
+.dino-banner.dino-project-heading {
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  margin-bottom:12px;
+  padding:clamp(10px,1.8vw,20px) clamp(14px,2.2vw,28px);
+  background:#fffdf9;
+  border-color:#e8dac8;
+  border-radius:18px;
+}
+.dino-project-heading h1 {
+  margin:3px 0 0;
+  color:#203467;
+  font:800 clamp(1.45rem,3vw,2.7rem)/1.05 'DM Sans',sans-serif;
+}
+.dino-project-heading img {
+  display:block;
+  width:clamp(52px,8vw,100px);
+  height:clamp(56px,7.5vw,92px);
+}
+.dino-project-tabs { margin-block:0 14px; }
+.dino-project-tabs .chip {
+  background:#fffdf9; border:1px solid #e8dac8; color:#203467; border-radius:12px;
+}
+.dino-project-tabs .chip.active { background:#e8efd9; border-color:#c6d3ad; }
+.dino-video-form {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto;
+  align-items:end;
+  gap:10px;
+  margin-top:20px;
+  padding-top:16px;
+  border-top:1px solid #e8dac8;
+}
+.dino-video-form label { display:grid; gap:5px; min-width:0; font-weight:700; }
+.dino-video-form input {
+  width:100%; min-width:0; min-height:44px; padding:8px 10px;
+  border:1px solid #d8cabb; border-radius:10px; background:#fffdf9; color:#203467;
+}
+.dino-video-links { display:grid; gap:8px; margin:16px 0; padding:0; list-style:none; }
+.dino-video-links:empty { display:none; }
+.dino-video-links li { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+.dino-video-links button { white-space:normal; overflow-wrap:anywhere; }
+#dino-video-player iframe {
+  display:block;
+  width:min(100%,900px);
+  height:auto;
+  aspect-ratio:16/9;
+  margin:8px 0;
+  border:0;
+  border-radius:16px;
+  background:#203467;
+}
+@media(max-width:700px) { .dino-video-form { grid-template-columns:minmax(0,1fr); } }
+
+.dino-banner.dino-project-heading {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:clamp(118px,14vw,196px);
+  grid-template-columns:minmax(0,1.4fr) minmax(110px,1fr);
+  gap:8px;
+  padding:clamp(13px,2.4vw,30px);
+  background:#e8efd9;
+  background-image:linear-gradient(90deg,#fff9ed 0%,#fff9edf0 39%,#fff9ed22 72%),url('assets/dino-world/cretaceous-valley.webp');
+  background-size:cover;
+  background-position:center 47%;
+  box-shadow:0 5px 18px #536a4120;
+}
+.dino-project-heading .eyebrow {
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:99px;
+  background:#e8efd9;
+  color:#395849;
+}
+.dino-project-heading h1 {
+  max-width:19ch;
+  margin:8px 0 0;
+  font-size:clamp(1.55rem,3.6vw,3.55rem);
+  text-wrap:balance;
+}
+.dino-project-heading img {
+  justify-self:end;
+  width:min(100%,370px);
+  height:clamp(95px,11vw,160px);
+  mix-blend-mode:normal;
+  filter:drop-shadow(0 9px 6px #465a454a);
+}
+@media (max-width:560px) {
+  .dino-banner.dino-project-heading { grid-template-columns:minmax(0,1.45fr) minmax(90px,1fr); }
+  .dino-project-heading .eyebrow { font-size:.61rem; }
+}
+
+.dino-project-heading h1 {
+  max-width:23ch;
+  color:#253b2d;
+  font-family:Nunito,"Arial Rounded MT Bold",system-ui,sans-serif;
+  font-size:clamp(1.28rem,3.2vw,3.45rem);
+  font-weight:1000;
+  letter-spacing:-.045em;
+  line-height:1.02;
+}
+.dino-project-heading h1 em {
+  display:block;
+  color:#77432c;
+  font-style:normal;
+  letter-spacing:-.045em;
+}

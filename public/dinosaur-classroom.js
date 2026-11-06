@@ -12,8 +12,7 @@
       title:'HA APARECIDO UN DINOSAURIO EN NUESTRO PATIO',
       video:'video/dinosaurios/patio-dinosaurio.mp4',
       poster:'video/dinosaurios/patio-dinosaurio-poster.webp',
-      aria:'VÍDEO DE NUESTRO PATIO',
-      badge:'NUEVO VÍDEO'
+      aria:'VÍDEO DE NUESTRO PATIO'
     }
   };
   let active=null,lastRoute='pdi-proyectos';
@@ -21,7 +20,7 @@
   const currentExperience=()=>EXPERIENCES[currentRoute()]||null;
   const onRoute=()=>Boolean(currentExperience());
   function installEntries(){
-    for(const area of document.querySelectorAll('.world-dinos .world-actions,.dino-banner .resource-actions')){
+    for(const area of document.querySelectorAll('.dino-video-grid')){
       for(const [route,experience] of Object.entries(EXPERIENCES)){
         if(area.querySelector('[data-dinosaur-open="'+route+'"]'))continue;
         const link=document.createElement('a');link.className='button secondary dinosaur-entry'+(experience.poster?' dinosaur-entry-video':'');
@@ -29,7 +28,6 @@
         if(experience.poster){
           const image=document.createElement('img');image.src=experience.poster;image.alt='';image.loading='lazy';
           const copy=document.createElement('span');
-          if(experience.badge){const badge=document.createElement('small');badge.textContent=experience.badge;copy.appendChild(badge);}
           const label=document.createElement('strong');label.textContent=experience.label;copy.appendChild(label);
           link.append(image,copy);
         }else link.textContent=experience.label;
@@ -41,7 +39,7 @@
     const session=active;if(!session)return;active=null;
     session.controller.abort();session.video.pause();session.cancelFrame();
     session.video.removeAttribute('src');session.video.load();
-    if(session.ownsFullscreen&&nativePdiFullscreen())exitNativePdiFullscreen();
+    leavePdiFullscreen(session.dialog);
     if(session.dialog.open)session.dialog.close();session.dialog.remove();
     session.opener?.focus?.();
     if(restoreRoute&&onRoute())location.hash=lastRoute;
@@ -61,7 +59,7 @@
       <p class="dinosaur-loading" role="status" hidden></p></div></section>
       <section class="dinosaur-player" hidden><div class="dinosaur-stage"><canvas class="dinosaur-background" width="288" height="512" aria-hidden="true"></canvas><div class="dinosaur-picture"><video playsinline preload="metadata" aria-label="${experience.aria}"></video></div></div>
       <button type="button" class="dinosaur-immersive">OCULTAR CONTROLES</button><p class="dinosaur-status" role="status"></p>
-      <nav class="dinosaur-controls" aria-label="CONTROLES DEL VÍDEO"><button type="button" class="dinosaur-play">▶ REPRODUCIR</button><button type="button" class="dinosaur-repeat">↻ REPETIR</button><button type="button" class="dinosaur-fullscreen">⛶ PANTALLA COMPLETA</button><input class="dinosaur-progress" type="range" min="0" max="100" step="0.01" value="0" aria-label="ADELANTAR O RETROCEDER EL VÍDEO"></nav></section>`;
+      <nav class="dinosaur-controls" aria-label="CONTROLES DEL VÍDEO"><button type="button" class="dinosaur-play">▶ REPRODUCIR</button><button type="button" class="dinosaur-repeat">↻ REPETIR</button><input class="dinosaur-progress" type="range" min="0" max="100" step="0.01" value="0" aria-label="ADELANTAR O RETROCEDER EL VÍDEO"></nav></section>`;
     document.body.appendChild(dialog);
     const $=selector=>dialog.querySelector(selector),video=$('video'),controller=new AbortController(),signal=controller.signal;
     const session={dialog,video,controller,opener:document.activeElement,route,cancelFrame:()=>{}};active=session;
@@ -109,13 +107,6 @@
     $('.dinosaur-immersive').addEventListener('click',()=>{
       const immersive=dialog.classList.toggle('is-immersive');$('.dinosaur-immersive').textContent=immersive?'MOSTRAR CONTROLES':'OCULTAR CONTROLES';resize();
     });
-    async function enterFullscreen(){
-      session.ownsFullscreen=await requestNativePdiFullscreen(dialog);
-    }
-    $('.dinosaur-fullscreen').addEventListener('click',()=>{
-      if(nativePdiFullscreen()){exitNativePdiFullscreen();session.ownsFullscreen=false;return;}
-      void enterFullscreen();
-    });
     video.addEventListener('loadedmetadata',()=>{progress.max=String(video.duration);background.width=Math.max(1,Math.round(320*video.videoWidth/video.videoHeight));background.height=320;resize();start.disabled=false;});
     video.addEventListener('loadeddata',paint);
     video.addEventListener('play',()=>{$('.dinosaur-play').textContent='Ⅱ PAUSAR';schedule();});
@@ -124,18 +115,12 @@
     video.addEventListener('ended',()=>{session.cancelFrame();paint();status.textContent='¡VAMOS A VERLO OTRA VEZ!';});
     video.addEventListener('error',()=>{start.disabled=true;loading.hidden=false;loading.textContent=status.textContent='NO SE HA PODIDO ABRIR EL VÍDEO';});
     window.addEventListener('resize',resize,{signal});
-    function fullscreenChanged(){
-      $('.dinosaur-fullscreen').textContent=nativePdiFullscreen()?'⛶ SALIR DE PANTALLA COMPLETA':'⛶ PANTALLA COMPLETA';
-      resize();
-    }
-    document.addEventListener('fullscreenchange',fullscreenChanged,{signal});
-    document.addEventListener('webkitfullscreenchange',fullscreenChanged,{signal});
     const observer=new ResizeObserver(resize);observer.observe(stage);signal.addEventListener('abort',()=>observer.disconnect(),{once:true});
     document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();},{signal});
     if(experience.poster)video.poster=experience.poster;
     video.src=experience.video;
     if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');
-    void enterFullscreen();
+    void enterPdiFullscreen(dialog);
 
   }
   function sync(){

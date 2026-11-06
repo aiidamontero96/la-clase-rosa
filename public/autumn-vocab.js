@@ -11,9 +11,15 @@
   const titles=['','NOS VESTIMOS EN OTOÑO','MÁS ROPA DE OTOÑO','FRUTAS DE OTOÑO','FRUTAS Y FRUTOS DE OTOÑO','DESCUBRIMOS EL OTOÑO'];
   const route='pdi-otono-vocabulario';
   const onRoute=()=>location.hash.slice(1).split('?')[0]===route;
-  const href=n=>'#'+route+(n?'?page='+n:'');
+  const routeParams=()=>new URLSearchParams(location.hash.split('?')[1]||'');
+  const returnRoute=()=>routeParams().get('desde')==='otono'?'pdi-otono':'pdi-proyectos';
+  const href=n=>{
+    const params=routeParams();
+    if(n)params.set('page',String(n));else params.delete('page');
+    return '#'+route+(params.size?'?'+params.toString():'');
+  };
   const initialPage=()=>{
-    const n=Number(new URLSearchParams(location.hash.split('?')[1]||'').get('page')||0);
+    const n=Number(routeParams().get('page')||0);
     return Number.isInteger(n)?Math.max(0,Math.min(5,n)):0;
   };
   let page=initialPage(),revealed=new Set();
@@ -41,13 +47,13 @@
       '<img src="assets/autumn-vocab/'+file+'.webp" width="440" height="560" alt="IMAGEN DE OTOÑO">'+
       '<span class="autumn-caption">PULSA PARA DESCUBRIR</span></button>').join(''):'';
     node.innerHTML='<nav class="autumn-toolbar" aria-label="CONTROLES DE LA PDI">'+
-      '<span>'+(page?'PÁGINA '+(page+1)+' DE 6':'')+'</span><a href="#pdi-proyectos" aria-label="SALIR DEL RECORRIDO">× SALIR</a></nav>'+
+      '<span>'+(page?'PÁGINA '+(page+1)+' DE 6':'')+'</span><a href="#'+returnRoute()+'" aria-label="SALIR DEL RECORRIDO">× SALIR</a></nav>'+
       '<main class="autumn-stage">'+(page?'<h1>'+titles[page]+'</h1><div class="autumn-grid">'+cards+'</div>':
       '<div class="autumn-cover"><img src="assets/autumn-vocab/hoja-portada.webp" alt="HOJA NARANJA DE OTOÑO" width="443" height="443"><h1>CONOCEMOS EL OTOÑO</h1></div>')+'</main>'+
       '<nav class="autumn-pagination" aria-label="PÁGINAS DE OTOÑO">'+
       (page?'<button type="button" data-autumn-page="'+(page-1)+'">← ANTERIOR</button>':'<span></span>')+
       '<span>'+(page?'PÁGINA '+(page+1)+' / 6':'')+'</span>'+
-      (page<5?'<button type="button" data-autumn-page="'+(page+1)+'">SIGUIENTE →</button>':'<a href="#pdi-proyectos">TERMINAR</a>')+'</nav>';
+      (page<5?'<button type="button" data-autumn-page="'+(page+1)+'">SIGUIENTE →</button>':'<a href="#'+returnRoute()+'">TERMINAR</a>')+'</nav>';
     node.querySelectorAll('[data-autumn-page]').forEach(button=>{
       button.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();go(Number(button.dataset.autumnPage));});
     });
@@ -77,7 +83,7 @@
       if(!onRoute())return;
       if(event.key==='ArrowRight'){event.preventDefault();go(page+1);}
       if(event.key==='ArrowLeft'){event.preventDefault();go(page-1);}
-      if(event.key==='Escape')location.hash='pdi-proyectos';
+      if(event.key==='Escape')location.hash=returnRoute();
     });
     sync();
   }

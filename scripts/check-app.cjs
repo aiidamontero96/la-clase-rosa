@@ -8,7 +8,7 @@ function element(id){if(!elements.has(id))elements.set(id,{innerHTML:'',textCont
 const document={querySelector:element,querySelectorAll(){return[];},getElementById:element,createElement(tag){return element('created:'+tag);},body:element('body'),fullscreenElement:null,webkitFullscreenElement:null,elementFromPoint(){return null;},exitFullscreen(){return Promise.resolve();},addEventListener(type,fn){(listeners[type]??=[]).push(fn);}};
 const window={addEventListener(){},scrollTo(){},scrollY:0,setTimeout(){return 0;},AudioContext:null,webkitAudioContext:null};
 const context=vm.createContext({document,window,location:{hash:'',href:'https://example.test/'},URL,URLSearchParams,CSS:{escape:value=>String(value)},requestAnimationFrame:fn=>{fn();return 1;},cancelAnimationFrame(){},getComputedStyle:()=>({}),localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},fetch:async()=>({ok:true,json:async()=>manifest}),setTimeout:()=>0,clearTimeout(){},console});
-for(const file of ['data.js','pdi.js','play-content.js','sheet-content.js','fichas-library.js','worksheet-pictures.js','sheet-studio.js','aula.js','rosi-config.js','rosi-media.js','rosi-episode.js','rosi-missions.js','classroom.js','pdi-scenes.js','pumpkin-carving.js','dinosaur-explorer.js','asistencia-patitos.js','app.js'])vm.runInContext(fs.readFileSync(path.join(dist,file),'utf8'),context,{filename:file});
+for(const file of ['data.js','pdi.js','play-content.js','sheet-content.js','fichas-library.js','worksheet-pictures.js','sheet-studio.js','aula.js','rosi-config.js','rosi-media.js','rosi-episode.js','rosi-missions.js','classroom.js','pdi-scenes.js','pumpkin-carving.js','dinosaur-explorer.js','asistencia-patitos.js','stories.js','app.js'])vm.runInContext(fs.readFileSync(path.join(dist,file),'utf8'),context,{filename:file});
 const run=code=>vm.runInContext(code,context);
 const data=JSON.parse(run('JSON.stringify(D)'));
 assert.equal(Object.values(data.questionGroups).flat().length,100);
@@ -65,7 +65,7 @@ assert.equal(mathPdiCount,(mathPdiHtml.match(/class="game-tile"/g)||[]).length);
 run("state.filter={area:'',type:'',project:'',q:''}");const printBank=run("bank('imprimibles')");assert(!printBank.includes('filter-age'));assert(!printBank.includes('>Experimento<'));assert(printBank.includes('Fichas de ejemplo'));assert.equal((printBank.match(/data-example-preview/g)||[]).length,16);assert(!printBank.includes('TU COLECCIÓN'));
 const homeHtml=run('home()');assert.equal((homeHtml.match(/class="patitos-step"/g)||[]).length,7);assert(homeHtml.includes('¿Qué día es hoy?'));assert(!homeHtml.includes('Proyectos del aula'));assert(!homeHtml.includes('patitos-project'));
 for(const asset of homeHtml.matchAll(/src="(assets\/patitos-acuarela\/[^"]+)"/g))assert(fs.existsSync(path.join(dist,asset[1])),asset[1]);assert(!homeHtml.includes('dino-lapiz.png'));
-assert(!run('nav();home()').includes('#semana'));assert(!element('#navigation').innerHTML.includes('#semana'));assert(!element('#navigation').innerHTML.includes('href="#asamblea"'));assert(element('#navigation').innerHTML.includes('href="#asamblea-vero"'));assert.equal((element('#navigation').innerHTML.match(/class="nav-link/g)||[]).length,6);assert(element('#navigation').innerHTML.includes('https://familias.laclaserosa.es/panel'));
+assert(!run('nav();home()').includes('#semana'));assert(!element('#navigation').innerHTML.includes('#semana'));assert(!element('#navigation').innerHTML.includes('href="#asamblea"'));assert(element('#navigation').innerHTML.includes('href="#asamblea-vero"'));assert.equal((element('#navigation').innerHTML.match(/class="nav-link/g)||[]).length,7);assert(element('#navigation').innerHTML.includes('href="#cuentos"'));assert(element('#navigation').innerHTML.includes('https://familias.laclaserosa.es/panel'));
 for(const route of ['inicio','asamblea','matematicas','lenguaje','logica','motricidad','arte','movimiento','juegos','imprimibles','fichas-series','pdi','taller','dinosaurios','kusama','curso','favoritos','hoy','semana','banco']){context.location.hash='#'+route;run('resetForRoute()');assert(element('#contenido').innerHTML.length>200,route);}
 for(const tab of ['ruta','aventuras','especies','ciencia','matematicas','lenguaje','juegos','taller','rincon','todos']){run('state.dinoTab='+JSON.stringify(tab));assert(run('dinosaurs()').length>1000,tab);}
 for(const tab of ['conocer','ruta','imprimibles','puntos','formas','espacios','lenguaje','todos']){run('state.kusamaTab='+JSON.stringify(tab));const html=run('kusama()');assert(html.length>1000,tab);assert(!html.includes('undefined'),tab);if(tab==='conocer'){assert(html.includes('9z6geQASZiY'));assert(!html.includes('tienda.grupo-sm.com'));assert(!html.includes('kusama-book-file'));}}
@@ -94,11 +94,47 @@ assert(dinosaurVideoSource.includes('UN DINOSAURIO EN NUESTRO PATIO'),'patio din
 run("startProjection('dino',0)");assert(element('#projection-content').innerHTML.includes('scale-child-v1.webp'));assert(element('#projection-content').innerHTML.includes('NIÑO/A DE 4 AÑOS'));assert(element('#projection-content').innerHTML.includes('dino-scale-child'));assert(element('#projection-content').innerHTML.includes('MISMO SUELO'));assert(element('#projection-content').innerHTML.includes('dino-scale-grid'));assert(element('#projection-content').innerHTML.includes('assets/dino-explorer/illustrated/coelophysis-v2.webp'));assert(element('#projection-content').innerHTML.includes('RECONSTRUCCIÓN REAL'));assert(element('#projection-content').innerHTML.includes('ILUSTRACIÓN'));
 run("startProjection('dino',window.ROSA.dinosaurs.length-1)");assert(element('#projection-content').innerHTML.includes('MOSASAURIO'));assert(element('#projection-content').innerHTML.includes('REPTIL MARINO'));assert(element('#projection-content').innerHTML.includes('assets/dino-explorer/real/mosasaurus.webp'));assert(element('#projection-content').innerHTML.includes('assets/dino-explorer/illustrated/mosasaurus-v2.webp'));
 run("startProjection('talla-calabaza')");assert(element('#projection-content').innerHTML.includes('data-pumpkin-canvas'));assert(element('#projection-content').innerHTML.includes('APAGAR LUZ'));assert(!element('#projection-content').innerHTML.includes('Escuchar'));
-run("startProjection('dino-world')");assert(element('#projection-content').innerHTML.includes('data-dino-world'));assert(element('#projection-content').innerHTML.includes('ELIGE UNA ETAPA'));assert(element('#projection-content').innerHTML.includes('TRIÁSICO'));assert(element('#projection-content').innerHTML.includes('JURÁSICO'));assert(element('#projection-content').innerHTML.includes('CRETÁCICO'));assert(element('#projection-content').innerHTML.includes('RETO FINAL'));assert(element('#projection-content').innerHTML.includes('CONTADORES VERDE Y ROJO'));assert(!element('#projection-content').innerHTML.includes('Escuchar'));
-for(const era of ['triassic','jurassic','cretaceous'])for(let worldRound=0;worldRound<5;worldRound++){run('state.projection.worldEra='+JSON.stringify(era)+';state.projection.worldStage="challenges";state.projection.worldRound='+worldRound+';state.projection.worldItems=[];state.projection.worldWon=false;projectionRender()');const html=element('#projection-content').innerHTML;assert(html.includes('aria-label="Reto '+(worldRound+1)+' de 5"'),era+' round '+worldRound);assert(html.includes(era+'-landscape'),era+' must have its own landscape');assert(!html.includes('undefined'),era+' round '+worldRound);assert(!html.includes('COBRAR VIDA'),era+' must not contain fake animation controls');}
-run('state.projection.worldEra="cretaceous";state.projection.worldStage="challenges";state.projection.worldRound=1;state.projection.worldItems=[];state.projection.worldWon=false;projectionRender()');assert(element('#projection-content').innerHTML.includes('T. REX · TRICERATOPS · VELOCIRAPTOR'));assert(element('#projection-content').innerHTML.includes('dino-count-targets'));
-function dinoWorldAction(action,type=''){const target={dataset:{dwAction:action,worldType:type},closest:selector=>selector==='[data-dw-action]'?target:null};for(const listener of listeners.click||[])listener({target,preventDefault(){},stopImmediatePropagation(){}});}
-run("startProjection('dino-world')");dinoWorldAction('choose-era','triassic');assert.equal(run('state.projection.worldEra'),'triassic');assert.equal(run('state.projection.worldStage'),'era-intro');assert(element('#projection-content').innerHTML.includes('LLEGAN LOS PRIMEROS DINOSAURIOS'));dinoWorldAction('start-era');assert.equal(run('state.projection.worldStage'),'challenges');assert.equal(run('state.projection.worldRound'),0);assert(!element('#projection-content').innerHTML.includes('>COELOPHYSIS</strong>'),'answer name must be hidden before answering');dinoWorldAction('answer','coelophysis');assert.equal(run('state.projection.worldWon'),true);assert(element('#projection-content').innerHTML.includes('SIGUIENTE RETO'));dinoWorldAction('next');assert.equal(run('state.projection.worldStage'),'challenges');assert.equal(run('state.projection.worldRound'),1);assert(run('state.projection.worldSolved.triassic.includes(0)'));dinoWorldAction('add','plateosaurus');assert.equal(run('state.projection.worldItems.length'),0,'count challenge only accepts drag');dinoWorldAction('change-era');dinoWorldAction('open-sort');assert.equal(run('state.projection.worldMode'),'sort');assert(element('#projection-content').innerHTML.includes('0 BIEN'));assert(element('#projection-content').innerHTML.includes('0 A REVISAR'));assert.equal((element('#projection-content').innerHTML.match(/data-sort-bin=/g)||[]).length,3);run("state.projection.worldSortSelected='coelophysis'");dinoWorldAction('sort-drop','triassic');assert.equal(run('Object.keys(state.projection.worldSortPlaced).length'),1);run("state.projection.worldSortSelected='plateosaurus'");dinoWorldAction('sort-drop','jurassic');assert.equal(run('state.projection.worldSortWrong'),1);assert.equal(run("Boolean(state.projection.worldSortPlaced.plateosaurus)"),false);
+const documentaryHTML=()=>element('#projection-content').innerHTML;
+function dinoWorldAction(action,type=''){
+  const target={dataset:{dwAction:action,worldType:type},closest:selector=>selector==='[data-dw-action]'?target:null};
+  for(const listener of listeners.click||[])listener({target,preventDefault(){},stopImmediatePropagation(){}});
+}
+run("startProjection('dino-world')");
+assert(documentaryHTML().includes('Viaje por las tres etapas'));
+assert(!/RETO|HERRERASAURIO/i.test(documentaryHTML()));
+for(const [era,animals] of Object.entries({
+  triassic:['Eoraptor','Plateosaurio','Coelophysis','Shonisaurus','Eudimorfodón'],
+  jurassic:['Diplodocus y Estegosaurio','Plesiosaurio','Pterodáctilo','Braquiosaurio','Arqueoptérix'],
+  cretaceous:['Triceratops y T. rex','Mosasaurio','Pteranodon','Anquilosaurio','Paquicefalosaurio']
+})){
+  dinoWorldAction('choose-era',era);
+  assert(documentaryHTML().includes('Ver la primera escena'));
+  for(const [index,animal] of animals.entries()){
+    dinoWorldAction('documentary-page',String(index+1));
+    const html=documentaryHTML();
+    assert(html.includes('>'+animal+'</h2>'),animal);
+    const asset=html.match(/class="dino-documentary-panorama"[^>]*><img src="([^"]+)"/)[1];
+    assert(fs.statSync(path.join(dist,asset)).size>0,asset);
+    assert.equal((html.match(/data-documentary-answer=/g)||[]).length,2,animal);
+    assert(!/RETO|HERRERASAURIO|undefined/i.test(html),animal);
+  }
+}
+dinoWorldAction('choose-era','triassic');
+dinoWorldAction('documentary-page','5');
+dinoWorldAction('documentary-cover','jurassic');
+assert(documentaryHTML().includes('PRÓXIMA PARADA'));
+assert(documentaryHTML().includes('Entrar en el JURÁSICO'));
+assert(!documentaryHTML().includes('dino-documentary-preview'));
+dinoWorldAction('documentary-page','5');
+assert(documentaryHTML().includes('Eudimorfodón'));
+const storyId='el-tesoro-de-los-dinosaurios';
+assert(run('stories()').includes(storyId));
+assert(run('dinosaurStories()').includes(storyId));
+const storyPages=run("window.ROSA_STORIES.ready.find(book=>book.id==='el-tesoro-de-los-dinosaurios').pages");
+assert.equal(storyPages.length,22);
+for(const [asset] of storyPages)assert(fs.statSync(path.join(dist,asset)).size>0,asset);
+dinoWorldAction('choose-era','');
+assert(documentaryHTML().includes('Elige un capítulo para empezar.'));
 const hiddenPdiIds=['calendario','tiempo','emociones','fechas-especiales','sorpresa','series-ilustradas','tamanos','ordenar-piezas','vocales-ilustradas','vocabulario','silabas','posiciones','movimiento-guiado'];
 for(const id of newGames)assert.equal(allGameIds.includes(id),!hiddenPdiIds.includes(id),id+' catalog visibility');
 for(const id of hiddenPdiIds)assert(!allGameIds.includes(id),id+' must be hidden');

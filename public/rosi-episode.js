@@ -7,8 +7,7 @@ window.ROSA_EPISODE=(()=>{
   function puppet(){return '<div class="rosi-puppet" aria-hidden="true"><div class="rosi-shadow"></div><div class="rosi-body-rig">'+part('body','rosi-body')+part('left','rosi-arm rosi-arm-front')+'<div class="rosi-head">'+part('head','rosi-head-art')+'<div class="rosi-eyes">'+part('eyes','rosi-eyes-open')+part('blink','rosi-eyes-blink')+'</div></div></div></div>';}
   const button=(text,action,cls='',attrs='')=>'<button type="button" class="'+cls+'" data-action="episode-'+action+'" '+attrs+'>'+text+'</button>';
   function page(){const e=config.episodes[0];return '<section class="rosi-intro"><div class="rosi-cover">'+puppet()+'<span class="rosi-cover-label">¡Hola, pequeños paleontólogos!</span></div><div class="rosi-intro-copy"><span class="eyebrow">LAS AVENTURAS DE '+esc(config.mascot.name.toUpperCase())+' · SEMANA '+e.week+'</span><h2>'+esc(e.title)+'</h2><p>Una pista, dos ayudantes y una misión para toda la clase. Acompañad a '+esc(config.mascot.name)+' al valle de los dinosaurios.</p><p class="rosi-helper-line"><span>Hoy nos ayudan</span><strong>'+e.helpers.map(esc).join(' y ')+'</strong></p>'+button('▶ Ver capítulo','open','', 'data-value="'+esc(e.id)+'"')+'<p class="hint">Un minuto de aventura. Después, seis retos de la semana 1.</p></div></section>';}
-  let ownsFullscreen=false;
-  let dialog,voice,music,stage,caption,progress,clock,playButton,musicButton,subtitlesButton,fullscreenButton,status,finish;
+  let dialog,voice,music,stage,caption,progress,clock,playButton,musicButton,subtitlesButton,status,finish;
   let episode,media,raf=0,opened=false,playing=false,complete=false,sceneIndex=-1,epoch=0,returnFocus;
   let subtitles=true,musicOn=true;
   try{subtitles=localStorage.getItem('rosa-episode-subtitles')!=='off';musicOn=localStorage.getItem('rosa-episode-music')!=='off';}catch{}
@@ -17,9 +16,9 @@ window.ROSA_EPISODE=(()=>{
   function make(){
     if(dialog)return;
     dialog=document.createElement('dialog');dialog.id='rosi-dialog';dialog.className='rosi-dialog';dialog.setAttribute('aria-labelledby','rosi-title');
-    dialog.innerHTML='<div class="rosi-player"><header class="rosi-player-header"><div><span class="rosi-kicker">LAS AVENTURAS DE '+esc(config.mascot.name.toUpperCase())+'</span><h2 id="rosi-title"></h2></div>'+button('✕ <span>Cerrar</span>','close','rosi-close secondary','aria-label="Cerrar el capítulo"')+'</header><div class="rosi-stage" data-expression="happy" data-gesture="wave"><img class="rosi-landscape" src="'+esc(config.mascot.background)+'" alt="Un valle prehistórico con helechos, un lago y huevos de dinosaurio"><div class="rosi-sunlight"></div><div class="rosi-motes" aria-hidden="true">'+Array.from({length:7},(_,i)=>'<i style="--i:'+i+'"></i>').join('')+'</div><div class="rosi-leaves" aria-hidden="true">'+[0,1,2].map(i=>'<img src="assets/symbols/1f33f.png" alt="" style="--i:'+i+'">').join('')+'</div>'+puppet()+'<div class="rosi-props" aria-live="off"></div><div class="rosi-start">'+button('▶ <span>¡Vamos de aventura!</span>','play','rosi-start-button')+'</div><div class="rosi-finish" hidden><span class="rosi-finish-star" aria-hidden="true">✦</span><h3>¡Misión preparada!</h3><p>Seis retos de pistas, observación y memoria.</p>'+button('Empezar misión →','mission')+'</div><div class="rosi-caption" aria-live="off"></div></div><div class="rosi-controls"><div class="rosi-progress"><progress max="1" value="0" aria-label="Progreso del capítulo"></progress><span class="rosi-clock">0:00 / 0:00</span></div><div class="rosi-control-buttons">'+button('▶ Reproducir','play','rosi-play')+button('↻ <span>Reiniciar</span>','restart','secondary')+button('CC <span>Subtítulos</span>','subtitles','secondary','aria-pressed="true"')+button('♫ <span>Música</span>','music','secondary','aria-pressed="true"')+button('⛶ <span>Pantalla completa</span>','fullscreen','secondary')+'</div><p class="rosi-status" role="status"></p></div><details class="rosi-transcript"><summary>Leer el capítulo</summary><div></div></details><audio id="rosi-voice" preload="metadata"></audio><audio id="rosi-music" preload="none" loop src="audio/rosi-valle.mp3"></audio></div>';
+    dialog.innerHTML='<div class="rosi-player"><header class="rosi-player-header"><div><span class="rosi-kicker">LAS AVENTURAS DE '+esc(config.mascot.name.toUpperCase())+'</span><h2 id="rosi-title"></h2></div>'+button('✕ <span>Cerrar</span>','close','rosi-close secondary','aria-label="Cerrar el capítulo"')+'</header><div class="rosi-stage" data-expression="happy" data-gesture="wave"><img class="rosi-landscape" src="'+esc(config.mascot.background)+'" alt="Un valle prehistórico con helechos, un lago y huevos de dinosaurio"><div class="rosi-sunlight"></div><div class="rosi-motes" aria-hidden="true">'+Array.from({length:7},(_,i)=>'<i style="--i:'+i+'"></i>').join('')+'</div><div class="rosi-leaves" aria-hidden="true">'+[0,1,2].map(i=>'<img src="assets/symbols/1f33f.png" alt="" style="--i:'+i+'">').join('')+'</div>'+puppet()+'<div class="rosi-props" aria-live="off"></div><div class="rosi-start">'+button('▶ <span>¡Vamos de aventura!</span>','play','rosi-start-button')+'</div><div class="rosi-finish" hidden><span class="rosi-finish-star" aria-hidden="true">✦</span><h3>¡Misión preparada!</h3><p>Seis retos de pistas, observación y memoria.</p>'+button('Empezar misión →','mission')+'</div><div class="rosi-caption" aria-live="off"></div></div><div class="rosi-controls"><div class="rosi-progress"><progress max="1" value="0" aria-label="Progreso del capítulo"></progress><span class="rosi-clock">0:00 / 0:00</span></div><div class="rosi-control-buttons">'+button('▶ Reproducir','play','rosi-play')+button('↻ <span>Reiniciar</span>','restart','secondary')+button('CC <span>Subtítulos</span>','subtitles','secondary','aria-pressed="true"')+button('♫ <span>Música</span>','music','secondary','aria-pressed="true"')+'</div><p class="rosi-status" role="status"></p></div><details class="rosi-transcript"><summary>Leer el capítulo</summary><div></div></details><audio id="rosi-voice" preload="metadata"></audio><audio id="rosi-music" preload="none" loop src="audio/rosi-valle.mp3"></audio></div>';
     document.body.append(dialog);
-    voice=q('#rosi-voice');music=q('#rosi-music');stage=q('.rosi-stage');caption=q('.rosi-caption');progress=q('progress');clock=q('.rosi-clock');playButton=q('.rosi-play');musicButton=q('[data-action="episode-music"]');subtitlesButton=q('[data-action="episode-subtitles"]');fullscreenButton=q('[data-action="episode-fullscreen"]');status=q('.rosi-status');finish=q('.rosi-finish');
+    voice=q('#rosi-voice');music=q('#rosi-music');stage=q('.rosi-stage');caption=q('.rosi-caption');progress=q('progress');clock=q('.rosi-clock');playButton=q('.rosi-play');musicButton=q('[data-action="episode-music"]');subtitlesButton=q('[data-action="episode-subtitles"]');status=q('.rosi-status');finish=q('.rosi-finish');
     window.ROSA_VOICE.configureAudio(voice);music.volume=.12;
     voice.addEventListener('playing',()=>{if(!opened||voice.paused)return;playing=true;stage.classList.add('is-playing');playButton.textContent='Ⅱ Pausar';status.textContent='';syncMusic();tick();});
     voice.addEventListener('pause',freeze);
@@ -29,8 +28,6 @@ window.ROSA_EPISODE=(()=>{
     voice.addEventListener('loadedmetadata',()=>{if(opened)updateFrame();});
     dialog.addEventListener('cancel',event=>{event.preventDefault();close();});
     dialog.addEventListener('close',cleanup);
-    document.addEventListener('fullscreenchange',onFullscreenChange);
-    document.addEventListener('webkitfullscreenchange',onFullscreenChange);
     document.addEventListener('visibilitychange',()=>{if(document.hidden&&opened)pause();});
     window.addEventListener('pagehide',()=>{if(opened)pause();});
     window.addEventListener('hashchange',()=>{if(opened)close();});
@@ -50,7 +47,7 @@ window.ROSA_EPISODE=(()=>{
     voice.src=media.audio+'?v='+media.scriptHash.slice(0,12);window.ROSA_VOICE.configureAudio(voice);music.currentTime=0;q('#rosi-title').textContent=episode.title;
     q('.rosi-transcript div').innerHTML=media.cues.map(c=>'<p>'+esc(c.text)+'</p>').join('');q('.rosi-transcript').open=false;
     q('.rosi-start').hidden=false;finish.hidden=true;stage.classList.remove('is-complete');status.textContent='';playButton.textContent='▶ Reproducir';
-    syncPreferences();updateFrame();if(!dialog.open)dialog.showModal();dialog.scrollTop=0;void expand();
+    syncPreferences();updateFrame();if(!dialog.open)dialog.showModal();dialog.scrollTop=0;dialog.classList.add('rosi-expanded');void enterPdiFullscreen(dialog);
   }
   function freeze(){playing=false;cancelAnimationFrame(raf);raf=0;stage.classList.remove('is-playing');stage.style.setProperty('--mouth','0');music.pause();if(!complete)playButton.textContent='▶ Continuar';}
   function pause(){epoch++;voice.pause();freeze();}
@@ -73,29 +70,8 @@ window.ROSA_EPISODE=(()=>{
     const mouth=playing?(media.envelope[Math.floor(now/media.envelopeStep)]||0)/100:0;stage.style.setProperty('--mouth',String(mouth));
   }
   function tick(){cancelAnimationFrame(raf);updateFrame();if(playing&&opened)raf=requestAnimationFrame(tick);}
-  function cleanup(){if(!opened)return;opened=false;epoch++;voice.pause();freeze();voice.removeAttribute('src');voice.load();music.currentTime=0;collapse();if(returnFocus?.isConnected)returnFocus.focus();}
+  function cleanup(){if(!opened)return;opened=false;epoch++;voice.pause();freeze();voice.removeAttribute('src');voice.load();music.currentTime=0;dialog.classList.remove('rosi-expanded');leavePdiFullscreen(dialog);if(returnFocus?.isConnected)returnFocus.focus();}
   function close(){if(!dialog)return;cleanup();dialog.close();}
-  function updateFullscreen(){if(!fullscreenButton)return;const full=dialog.classList.contains('rosi-expanded');fullscreenButton.innerHTML='⛶ <span>'+(full?'Salir de pantalla completa':'Pantalla completa')+'</span>';fullscreenButton.setAttribute('aria-pressed',String(full));}
-  function collapse(){
-    dialog.classList.remove('rosi-expanded');
-    if(ownsFullscreen)exitNativePdiFullscreen();
-    ownsFullscreen=false;
-    updateFullscreen();
-  }
-  function onFullscreenChange(){
-    if(ownsFullscreen&&!nativePdiFullscreen())collapse();
-  }
-  async function expand(){
-    if(dialog.classList.contains('rosi-expanded'))return;
-    dialog.classList.add('rosi-expanded');
-    updateFullscreen();
-    ownsFullscreen=await requestNativePdiFullscreen(dialog);
-    if(ownsFullscreen&&!dialog.classList.contains('rosi-expanded'))collapse();
-  }
-  function fullscreen(){
-    if(dialog.classList.contains('rosi-expanded'))collapse();
-    else void expand();
-  }
   function handle(action,value){
     if(!action?.startsWith('episode-'))return false;
     if(action==='episode-open')open(value);
@@ -105,7 +81,6 @@ window.ROSA_EPISODE=(()=>{
     else if(action==='episode-restart')restart();
     else if(action==='episode-subtitles'){subtitles=!subtitles;save('rosa-episode-subtitles',subtitles);syncPreferences();}
     else if(action==='episode-music'){musicOn=!musicOn;save('rosa-episode-music',musicOn);syncPreferences();syncMusic();}
-    else if(action==='episode-fullscreen')fullscreen();
     else if(action==='episode-mission'&&complete){const week=episode.week;close();window.ROSA_MISSIONS.start(week);}
     return true;
   }

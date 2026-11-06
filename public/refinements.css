@@ -239,12 +239,65 @@
 .adventure-track.puntos .adventure-step.done{color:#1f7a49;background:#dff3e5;border-color:#3f9862}
 .story-fullscreen-fallback #projector{position:fixed;inset:0;z-index:9999;display:block;max-width:none;max-height:none;width:100vw;height:100dvh}
 .story-fullscreen-fallback .projection-toolbar{position:relative;z-index:1;width:100%;flex:0 0 auto}
-.story-fullscreen-fallback .story-reader-frame{padding:0}
-.story-fullscreen-fallback .story-reader-frame iframe{min-height:calc(100dvh - 74px);border-radius:0}
-.story-fullscreen-fallback .story-reader-frame+.story-reader-credits{display:none}
-.story-fullscreen-fallback .story-image-only figure img{max-height:100dvh}
 #projector:fullscreen,#projector:-webkit-full-screen{width:100vw;height:100dvh;max-width:none;max-height:none;background:#fffaf5}
-#projector:fullscreen .story-reader-frame iframe,#projector:-webkit-full-screen .story-reader-frame iframe{min-height:calc(100dvh - 74px)}
+
+#projector #projection-content:has(.story-toolbar) {
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+#projector .story-toolbar,
+#projector .story-footer,
+#projector .story-reader-credits {
+  flex:none;
+}
+#projector .story-reader,
+#projector .story-reader-frame {
+  flex:1 1 0;
+  width:100%;
+  min-height:0;
+  max-width:none;
+  margin:0;
+}
+#projector .story-reader {
+  grid-template-rows:minmax(0,1fr);
+  overflow:hidden;
+}
+#projector .story-reader figure {
+  display:grid;
+  grid-template-rows:minmax(0,1fr);
+  min-height:0;
+  min-width:0;
+  padding:clamp(4px,1vw,16px);
+  overflow:hidden;
+}
+#projector .story-reader figure>img {
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+  max-height:none;
+  object-fit:contain;
+  box-shadow:none;
+}
+#projector .story-page-text,
+#projector .story-cover-title {
+  min-height:0;
+  overflow:auto;
+  justify-content:safe center;
+}
+#projector .story-reader-frame { padding:0; }
+#projector .story-reader-frame iframe { min-height:0; border-radius:0; }
+#projector .story-toolbar { padding-block:6px; }
+#projector .story-footer { padding-block:6px; }
+@media(max-width:780px){
+  #projector .story-reader:not(.story-image-only) {
+    grid-template-rows:minmax(0,1.05fr) minmax(0,.95fr);
+  }
+  #projector .story-reader-credits { padding:5px 10px; }
+}
 @media(max-width:980px){.pattern-workshop .workshop-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.pattern-print-button{width:100%}.song-link-list{grid-template-columns:1fr}}
 @media(max-width:520px){.pattern-workshop .workshop-controls{grid-template-columns:1fr}.song-card{grid-template-columns:112px minmax(0,1fr)}.song-thumb{width:112px;height:68px}.pdi-teacher-tools>summary small{display:none}.attendance-count-grid{grid-template-columns:1fr}}
 

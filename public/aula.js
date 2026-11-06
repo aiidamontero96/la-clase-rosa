@@ -55,7 +55,9 @@ window.ROSA_AULA=(()=>{
     })();return ui.loading;
   }
   function refreshPage(){if(['pdi','pdi-juegos','favoritos'].includes(route()))render();else nav();}
-  function statusHTML(){return '<div class="aula-save-status" role="status">'+(ui.saveError?'No se ha podido guardar todavía. '+btn('Reintentar','aula-retry','','quiet small'):ui.saving?'Guardando la selección…':ui.dirty?'Hay cambios pendientes de guardar.':ui.loaded?'Tu selección y la partida se conservan para cuando vuelvas con este navegador.':'Recuperando tu selección…')+'</div>';}
+  function statusHTML(){
+    return ui.saveError ? '<div class="aula-save-status" role="status">No se ha podido guardar todavía. '+btn('Reintentar','aula-retry','','quiet small')+'</div>' : '';
+  }
   function refreshStatus(){const el=$('#aula-save-status');if(el)el.innerHTML=statusHTML();}
   function saveSoon(keys=['last','cursors']){for(const key of keys)ui.pendingFields.add(key);ui.dirty=true;clearTimeout(ui.saveTimer);ui.saveTimer=setTimeout(save,350);}
   async function save(){
@@ -77,7 +79,7 @@ window.ROSA_AULA=(()=>{
   }
   async function retry(){if(!ui.loaded&&!await load()){toast('No se ha podido recuperar la selección. Puedes seguir jugando y volver a intentarlo.');return;}await save();refreshPage();}
   function snapshot(p){
-    if(!p||p.payload?.missionWeek||!known(p.kind))return null;
+    if(!p||p.payload?.missionWeek||p.payload?.assemblyGreeting||!known(p.kind))return null;
     return {kind:p.kind,payload:p.payload,round:p.round,level:p.level,pattern:p.pattern,hidden:p.hidden,answered:p.answered,memory:p.memory,matched:p.matched,placed:p.drop?.placed||{},storyId:p.storyId,storyPath:p.storyPath,surpriseOpen:p.surpriseOpen,surpriseType:p.surpriseType,session:ui.session?safeCopy(ui.session):null};
   }
   function remember(){const p=state.projection,snap=snapshot(p);if(!snap)return;ui.book.last=snap;ui.book.cursors[p.kind]=p.round;saveSoon();}
@@ -113,17 +115,68 @@ window.ROSA_AULA=(()=>{
   function adventureHTML(){const a=ui.book.adventure;if(a.theme==='none')return '';const complete=a.steps>=6;return '<div class="adventure-track puntos" aria-label="'+a.steps+' de 6 puntos verdes"><strong>'+(complete?'¡Seis puntos verdes conseguidos!':'Nuestros puntos verdes')+'</strong><div class="adventure-steps" aria-hidden="true">'+Array.from({length:6},(_,i)=>'<span class="adventure-step '+(i<a.steps?'done':'')+'">'+(i<a.steps?'●':'○')+'</span>').join('')+'</div><small>'+a.steps+' de 6 puntos</small></div>';}
   function won(p,headline){if(p.payload?.missionWeek){window.ROSA_MISSIONS.update(p);return headline;}const a=ui.book.adventure;if(a.theme!=='none'&&a.steps<6){a.steps++;saveSoon(['adventure']);const el=$('#adventure-progress');if(el)el.innerHTML=adventureHTML();if(a.steps===6)headline='¡Seis puntos verdes conseguidos!';}remember();return headline;}
   const external=(label,url,cls='secondary')=>'<a class="button '+cls+'" href="'+E(url)+'" target="_blank" rel="noopener">'+label+' <span aria-hidden="true">↗</span></a>';
-  function expandProjectCards(html){return html.replaceAll('<details class="world-card ','<article class="world-card world-card-expanded ').replaceAll('<summary>','<div class="world-card-heading">').replaceAll('</summary>','</div>').replaceAll('</details>','</article>');}
   function expandSpecialCards(html){return html.replaceAll('<details class="special-choice">','<article class="special-choice special-choice-expanded">').replaceAll('<summary>','<div class="special-choice-heading">').replaceAll('</summary>','</div>').replaceAll('</details>','</article>');}
-  function projectHubs(){return expandProjectCards(window.ROSA_CLASSROOM.projectHubs());}
   function specialDaysHub(){return expandSpecialCards(window.ROSA_CLASSROOM.specialDays());}
-  function pdiNav(active='juegos'){const links=[['juegos','#pdi','◈','Todos los juegos'],['que-pasaria','#pdi-que-pasaria','💭','¿QUÉ PASARÍA SI…?'],['cumpleanos','#pdi-cumpleanos','🎂','Cumpleaños'],['proyectos','#pdi-proyectos','🦕','Proyectos'],['dias','#pdi-dias','🎉','Días especiales'],['canciones','#canciones','♪','Canciones']];return '<nav class="pdi-quick-nav pdi-section-nav" aria-label="Secciones de PDI">'+links.map(([id,href,icon,label])=>'<a class="'+(active===id?'active':'')+'" href="'+href+'"'+(active===id?' aria-current="page"':'')+'>'+icon+' '+label+'</a>').join('')+'</nav>';}
-  function pdiGameList(selected){if(!selected.length)return '<div class="empty"><h3>No hay juegos en este filtro</h3><p>Prueba otra categoría para encontrar un juego.</p>'+btn('Ver todos los juegos','pdi-filter','Todas')+'</div>';if(ui.filter!=='Todas')return gameTiles(selected);const order=['Matemáticas','Lenguaje','Lógica','Arte','Proyecto','Juegos','Carnaval'];return order.map(name=>{const games=selected.filter(g=>area(g)===name);return games.length?'<section class="pdi-category"><div class="heading-row"><h2>'+E(name)+'</h2><span class="tag">'+games.length+' propuestas</span></div>'+gameTiles(games)+'</section>':'';}).join('');}
+  function pdiNav(active='juegos'){
+    const links = [
+      ['juegos','pdi','patitos-acuarela/pdi.webp','Todos los juegos'],
+      ['que-pasaria','pdi-que-pasaria','symbols/1f4ad.png','¿Qué pasaría si…?'],
+      ['cumpleanos','pdi-cumpleanos','pdi-catalogo/tarta.svg','Cumpleaños'],
+      ['proyectos','pdi-proyectos','patitos-acuarela/proyecto.webp','Proyectos'],
+      ['dias','pdi-dias','patitos-acuarela/calendario.webp','Días especiales'],
+      ['otono','pdi-otono','symbols/1f342.png','Otoño'],
+      ['pizarra','pdi-pizarra','vocab-child/pencil.webp','Pizarra libre'],
+      ['guiada','pdi-pizarra-guiada','brand/dino-lapiz.png','Pizarra guiada'],
+      ['cronometro','pdi-cronometro','symbols/231b.png','Cronómetro'],
+      ['jardin','pdi-jardin-calma','calm-garden/mariposa.webp','Jardín de la calma'],
+      ['canciones','canciones','symbols/1f3b5.png','Canciones']
+    ];
+    return '<nav class="pdi-quick-nav pdi-section-nav" aria-label="Secciones de PDI">'+links.map(([id,route,icon,label])=>{
+      const current=active===id||active===route;
+      return '<a class="'+(current?'active':'')+'" href="#'+route+'"'+(current?' aria-current="page"':'')+'>'+pdiTabIcon(icon)+E(label)+'</a>';
+    }).join('')+'</nav>';
+  }
+  function pdiTabIcon(icon){
+    return '<img class="pdi-tab-icon" src="assets/'+icon+'" width="40" height="40" alt="">';
+  }
+  function pdiCatalogTiles(games){
+    return '<div class="pdi-catalog-grid">'+games.map(([id,title])=>
+      '<button type="button" class="pdi-catalog-card" data-action="game" data-value="'+E(id)+'">'+
+      '<img src="assets/pdi-catalogo/'+E(id)+'.webp" width="480" height="270" loading="lazy" decoding="async" alt="">'+
+      '<span class="pdi-catalog-caption"><strong>'+E(title)+'</strong><span aria-hidden="true">▶</span></span></button>'
+    ).join('')+'</div>';
+  }
+  function pdiGameList(selected){
+    if(!selected.length)return '<div class="empty"><h3>No hay juegos en este filtro</h3><p>Prueba otra categoría para encontrar un juego.</p>'+btn('Ver todos los juegos','pdi-filter','Todas')+'</div>';
+    if(ui.filter!=='Todas')return pdiCatalogTiles(selected);
+    const order=['Matemáticas','Lenguaje','Lógica','Arte','Proyecto','Juegos','Carnaval'];
+    return order.map(name=>{
+      const games=selected.filter(game=>area(game)===name);
+      return games.length?'<section class="pdi-category"><div class="heading-row"><h2>'+E(name)+'</h2><span class="tag">'+games.length+' propuestas</span></div>'+pdiCatalogTiles(games)+'</section>':'';
+    }).join('');
+  }
   function pdiPage(){return pdiGamesPage();}
   function pdiWhatIfPage(){const prompts=window.ROSA_PDI.whatIfPrompts;return head('¿QUÉ PASARÍA SI…?','PREGUNTAS IMPOSIBLES PARA PENSAR SIN PRISA, IMAGINAR Y CONTAR NUESTRAS IDEAS.',btn('EMPEZAR A IMAGINAR','game','que-pasaria'),'PIZARRA DIGITAL')+pdiNav('que-pasaria')+'<section class="panel what-if-intro"><div class="what-if-intro-art" aria-hidden="true"><span>💡</span><b>?</b></div><div><span class="eyebrow">LENGUAJE ORAL · IMAGINACIÓN</span><h2>AQUÍ TODAS LAS IDEAS CABEN</h2><p>PROYECTA UNA TARJETA, DEJA UN MOMENTO PARA PENSAR Y ESCUCHA VARIAS RESPUESTAS. NO HAY UNA ÚNICA SOLUCIÓN.</p><div class="what-if-stats"><strong>'+prompts.length+' PREGUNTAS</strong><span>UNA POR PANTALLA</span><span>SIN RESPUESTAS CORRECTAS</span></div>'+btn('ABRIR UNA PREGUNTA','game','que-pasaria')+'</div></section>';}
-  function pdiProjectsPage(){return head('Proyectos','Cada proyecto en su propio espacio de PDI.','','PIZARRA DIGITAL')+pdiNav('proyectos')+projectHubs();}
+  function pdiProjectsPage(){return head('Proyectos','Cada proyecto en su propio espacio de PDI.','','PIZARRA DIGITAL')+pdiNav('proyectos')+window.ROSA_CLASSROOM.projectHubs();}
   function pdiSpecialDaysPage(){return head('Días especiales','Accesos directos a los momentos especiales del curso.','','PIZARRA DIGITAL')+pdiNav('dias')+specialDaysHub();}
-  function pdiGamesPage(){const selected=GAMES.filter(g=>ui.filter==='Favoritos'?ui.book.favorites.includes(g[0]):ui.filter==='Todas'||area(g)===ui.filter);return head('Todos los juegos','Elige una categoría o abre directamente un juego.',known(ui.book.last?.kind)?btn('↩ Continuar','pdi-resume','','secondary'):'','PIZARRA DIGITAL')+'<div id="aula-save-status">'+statusHTML()+'</div>'+pdiNav('juegos')+'<section class="panel pdi-games-browser"><div class="heading-row"><div><span class="eyebrow">BANCO DE JUEGOS</span><h2>Elige una categoría</h2></div><span class="tag">'+selected.length+' juegos</span></div><div class="chips pdi-filter-chips">'+['Todas','Favoritos','Matemáticas','Lenguaje','Lógica','Arte','Proyecto','Juegos','Carnaval'].map(name=>btn(name,'pdi-filter',name,'chip '+(ui.filter===name?'active':''))).join('')+'</div>'+pdiGameList(selected)+'</section>';}
+  function pdiGamesPage(){
+    const filters = [
+      ['Todas','patitos-acuarela/pdi.webp'],
+      ['Matemáticas','patitos-acuarela/numero.webp'],
+      ['Lenguaje','symbols/1f524.png'],
+      ['Lógica','patitos-acuarela/fichas.webp'],
+      ['Arte','symbols/1f3a8.png'],
+      ['Juegos','symbols/1f3af.png']
+    ];
+    const selected = GAMES.filter(game => ui.filter === 'Todas' || area(game) === ui.filter);
+    const resumeAction = known(ui.book.last?.kind) ? btn('↩ Continuar','pdi-resume','','secondary') : '';
+    const filterButtons = filters.map(([name,icon]) => '<button type="button" class="chip" data-action="pdi-filter" data-value="'+E(name)+'" aria-pressed="'+(ui.filter === name)+'">'+pdiTabIcon(icon)+E(name)+'</button>').join('');
+    return head('Todos los juegos','',resumeAction,'PIZARRA DIGITAL')+pdiNav('juegos')+
+      '<div id="aula-save-status">'+statusHTML()+'</div>'+
+      '<section class="panel pdi-games-browser" aria-label="Catálogo de juegos">'+
+      '<div class="chips pdi-filter-chips" role="group" aria-label="Filtrar juegos">'+filterButtons+'</div>'+
+      pdiGameList(selected)+'</section>';
+  }
 
   function area(g){return g[4]||({contar:'Matemáticas',series:'Matemáticas',falta:'Lógica',intruso:'Lógica',clasificar:'Proyecto',letras:'Lenguaje','nombre-escribe':'Lenguaje',dino:'Proyecto',verdadero:'Proyecto',adivinanza:'Lenguaje',memory:'Juegos'}[g[0]]);}
   function vocabSelect(p){if(!vocabGames.includes(p.kind))return '';const selected=p.payload?.theme||'Dinosaurios';return '<label class="aula-level aula-vocab" for="projection-vocab">Vocabulario <select id="projection-vocab">'+vocabThemes().map(theme=>'<option value="'+E(theme)+'"'+(theme===selected?' selected':'')+'>'+E(theme)+'</option>').join('')+'</select></label>';}
@@ -285,7 +338,11 @@ window.ROSA_AULA=(()=>{
     if(window.ROSA_SHEETS.handle(action,value,target))return true;
     const handlers={
       'pdi-favorite':()=>toggleFavorite(value),'session-next':sessionNext,
-      'pdi-resume':resume,'pdi-filter':()=>{ui.filter=value;render();},'aula-retry':retry,'speak':()=>speak(),'stop-voice':stopVoice,'voice-preview':()=>speak(true),
+      'pdi-resume':resume,'pdi-filter':()=>{
+        ui.filter=value;
+        render();
+        $('.pdi-filter-chips [aria-pressed="true"]')?.focus({preventScroll:true});
+      },'aula-retry':retry,'speak':()=>speak(),'stop-voice':stopVoice,'voice-preview':()=>speak(true),
       'adventure-start':()=>startAdventure(value),'adventure-continue':()=>launch(ui.book.queue[0]||'contar'),'adventure-stop':()=>{ui.book.adventure={theme:'none',steps:0};saveSoon(['adventure']);refreshPage();},
       'pick-piece':()=>{if(Date.now()>ui.ignoreClick)selectPiece(value);},'place-piece':()=>{if(Date.now()>ui.ignoreClick)place(value);},
       'story-choice':()=>storyChoice(value),'story-back':()=>{if(state.projection.storyPath.length>1){stopVoice();state.projection.storyPath.pop();projectionRender();}},'story-restart':()=>chooseStory(state.projection.storyId),
