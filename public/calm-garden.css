@@ -117,7 +117,7 @@ body:has(#projector[open] .calm-pdi) > :is(.sidebar,.workspace) { visibility:hid
   opacity:1;
   animation:var(--arrival) var(--pace) ease-out both;
 }
-.calm-resident.is-leaving { animation:var(--departure) .85s ease-in both; }
+.calm-resident.is-leaving { animation:var(--departure) 1.15s ease-in-out both; }
 .calm-animal {
   position:relative;
   width:100%;
@@ -147,7 +147,7 @@ body:has(#projector[open] .calm-pdi) > :is(.sidebar,.workspace) { visibility:hid
   --pace:1.65s;
   z-index:2;
 }
-.calm-motion-flight { --approach:250%; --retreat:-280%; }
+.calm-motion-flight { --approach:-560%; --retreat:-440%; --pace:2.45s; --arrival:calm-perch; }
 .calm-motion-flight::before,.calm-motion-flutter::before { display:none; }
 .calm-motion-flutter.is-visible .calm-animal {
   animation:calm-flap .58s ease-in-out infinite;
@@ -222,6 +222,13 @@ body:has(#projector[open] .calm-pdi) > :is(.sidebar,.workspace) { visibility:hid
   44% { opacity:1; transform:translate(calc(var(--approach) * .48 - 26%),-176%) rotate(10deg); }
   78% { transform:translate(-67%,-116%) rotate(-5deg); }
   to { transform:translate(-50%,-100%); }
+}
+@keyframes calm-perch {
+  from { opacity:0; transform:translate(var(--approach),-43%) rotate(9deg) scale(.84); }
+  35% { opacity:1; transform:translate(-360%,-144%) rotate(-12deg) scale(.95); }
+  75% { transform:translate(-111%,-152%) rotate(-6deg); }
+  92% { transform:translate(-54%,-101%) rotate(2deg); }
+  to { opacity:1; transform:translate(-50%,-100%); }
 }
 @keyframes calm-fly-out {
   from { opacity:1; transform:translate(-50%,-100%); }
@@ -335,3 +342,5 @@ body:has(#projector[open] .calm-pdi) > :is(.sidebar,.workspace) { visibility:hid
   .calm-resident.is-visible,.calm-resident.is-leaving,
   .calm-resident.is-visible .calm-animal,.calm-resident.is-visible::before { animation:none; }
 }
+
+.calm-wait { display:inline-block; min-height:1.15em; font-size:.8rem; font-weight:800; font-variant-numeric:tabular-nums; }

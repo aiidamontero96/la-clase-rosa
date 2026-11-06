@@ -20,8 +20,10 @@ window.ROSA_VOICE=(()=>{
   }
   function resolve(text){
     const files=window.ROSA_VOICE_FILES?.files||{};
-    if(files[key(text)])return [{text:normalize(text),url:files[key(text)]}];
-    const segments=parts(text,files),clips=[];for(let i=0;i<segments.length;){let end=segments.length;while(end>i+1&&!files[key(segments.slice(i,end).join(' '))])end--;const part=segments.slice(i,end).join(' ');clips.push({text:part,url:files[key(part)]});i=end;}return clips;
+    // Reuse the existing recordings for the renamed on-screen animal.
+    const clipFor=value=>files[key(value)]||files[key(value).replaceAll('parasaurolopus','parasaurolofo')];
+    if(clipFor(text))return [{text:normalize(text),url:clipFor(text)}];
+    const segments=parts(text,files),clips=[];for(let i=0;i<segments.length;){let end=segments.length;while(end>i+1&&!clipFor(segments.slice(i,end).join(' ')))end--;const part=segments.slice(i,end).join(' ');clips.push({text:part,url:clipFor(part)});i=end;}return clips;
   }
   return {normalize,key,sentences,parts,resolve,playbackRate,configureAudio};
 })();

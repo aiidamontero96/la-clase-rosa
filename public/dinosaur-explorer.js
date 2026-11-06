@@ -127,7 +127,8 @@ window.ROSA_DINO=(()=>{
     return projectGroups[group].ids.map((id,index)=>{
       const d=projectAnimal(id),current=d.id===active;
       return '<button type="button" '+action+'="'+index+'" class="'+(current?'is-active':'')+'"'+
-      (projector?'':' aria-pressed="'+current+'"')+'><img src="'+real(d.id)+'" alt="" loading="lazy"><span>'+esc(d.short)+'</span></button>';
+      (projector?'':' aria-pressed="'+current+'"')+
+      (!projector&&group==='especies'?' data-action="dino-project-species" data-species-group="'+group+'" data-species-detail data-value="'+index+'" aria-haspopup="dialog"':'')+'><img src="'+real(d.id)+'" alt="" loading="lazy"><span>'+esc(d.short)+'</span></button>';
     }).join('');
   }
   function catalogHeading(group,action=''){
@@ -157,7 +158,7 @@ window.ROSA_DINO=(()=>{
       (projector?'<button type="button" class="dino-size-button" data-project-species-view="scale">LO COMPARAMOS CON NOSOTROS</button>':'')+'</div></div>';
   }
   function projectSpecies(p){
-    const group=projectGroup(p.payload.projectSpecies),spec=projectGroups[group],d=projectAnimalAt(group,p.round),view=p.projectSpeciesView;
+    const group=projectGroup(p.payload.projectSpecies),spec=projectGroups[group],d=projectAnimalAt(group,p.round),view=p.projectSpeciesView??(p.payload.inlineSpecies?'detail':undefined);
     if(view==='scale'){
       p.customSpeech='Comparamos el tamaño de '+d.short+' con el de un niño.';
       return {body:'<section class="dino-explorer-pdi dino-project-scale" data-focus="real" aria-label="¿Cuánto mide '+esc(d.short)+'?">'+
@@ -167,7 +168,7 @@ window.ROSA_DINO=(()=>{
     if(view==='detail'){
       p.customSpeech=d.short+'. '+(d.fact||d.body);
       return {body:frame+' data-dino-catalog-root data-index="'+p.round+'">'+
-        '<button type="button" class="dino-species-back" data-project-species-view="catalog">← '+esc(spec.title)+'</button>'+
+        '<button type="button" class="dino-species-back" '+(p.payload.inlineSpecies?'data-action="close-projection"':'data-project-species-view="catalog"')+'>← '+esc(spec.title)+'</button>'+
         catalogStage(d,true)+'</section>',foot:''};
     }
     p.customSpeech=spec.heading+' para verlo de cerca.';

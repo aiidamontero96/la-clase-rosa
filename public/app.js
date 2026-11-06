@@ -443,7 +443,7 @@ function updateProjectedDuty(role,name){
   if(next)next.textContent=dutiesNextLabel(state.projection);
  }
 }
-function startProjection(kind,round=0,payload=null){state.projection={kind,round:Number(round)||0,payload,answered:false,answer:null,explanation:'',hidden:false,pattern:'AB',date:new Date(),weather:null,counts:{present:0,absent:0,girls:0,boys:0},countDetails:state.assemblyGroup==='vero',attendance:Object.fromEntries(assemblyStudents().map(name=>[name,state.assemblyGroup==='vero'])),attendanceStep:'names',duties:{saludos:'',luces:'',material:'',jabon:''},memory:[],flipped:[],matched:[],locked:false,pairCelebration:false,nameBuild:[],nameUsed:[],nameMessage:'',nameWrongIndex:null,nameRound:null,relateRound:null,relateItems:[],relateLeftOrder:[],relateRightOrder:[],relateSelected:null,relateMatched:[]};A.setup(state.projection);if($('#resource-dialog').open)$('#resource-dialog').close();openProjector();projectionRender();$('#projector').scrollTop=0;}
+function startProjection(kind,round=0,payload=null){state.projection={kind,round:Number(round)||0,payload,answered:false,answer:null,explanation:'',hidden:false,pattern:'AB',date:new Date(),weather:null,counts:{present:0,absent:0,girls:0,boys:0},countDetails:state.assemblyGroup==='vero',attendance:Object.fromEntries(assemblyStudents().map(name=>[name,state.assemblyGroup==='vero'])),attendanceStep:'names',duties:{saludos:'',luces:'',material:'',jabon:''},memory:[],flipped:[],matched:[],locked:false,pairCelebration:false,nameBuild:[],nameUsed:[],nameMessage:'',nameWrongIndex:null,nameRound:null,relateRound:null,relateItems:[],relateLeftOrder:[],relateRightOrder:[],relateSelected:null,relateMatched:[]};A.setup(state.projection);if($('#resource-dialog').open)$('#resource-dialog').close();openProjector(!payload?.inlineSpecies);projectionRender();$('#projector').scrollTop=0;}
 function veroTrainAttendance(p){const students=assemblyStudents();return '<section class="attendance-train vero-original-train"><header class="train-heading"><span class="train-kicker">EL TREN DE LA CLASE DE VERO</span><h2>¿QUIÉN HA VENIDO HOY?</h2><p>TOCA EL NOMBRE DE QUIEN NO HA VENIDO.</p></header><div class="train-station" aria-hidden="true"><img src="assets/asamblea-ligera/asistencia-tren/locomotora.webp?rev=1" alt=""><span>LA CLASE DE VERO</span><i class="train-cloud"></i><i class="train-cloud cloud-two"></i></div><div class="train-carriages">'+students.map(name=>{const label=studentLabel(name);return '<button type="button" class="train-wagon'+(!p.attendance[name]?' is-absent':'')+'" data-action="attendance-toggle" data-value="'+E(name)+'" aria-pressed="'+String(!p.attendance[name])+'" aria-label="'+E(label)+(p.attendance[name]?', EN CLASE. MARCAR AUSENCIA':', HOY NO HA VENIDO. MARCAR PRESENTE')+'"><span class="wagon-roof" aria-hidden="true"></span><span class="wagon-window" aria-hidden="true"><span class="window-view"></span><span class="wagon-curtain curtain-left"></span><span class="wagon-curtain curtain-right"></span><img class="window-children" src="assets/asamblea-ligera/asamblea-infantil/clase.webp?rev=1" alt=""></span><strong class="wagon-name">'+E(label.toLocaleUpperCase('es-ES'))+'</strong><span class="wagon-status">'+(p.attendance[name]?'EN CLASE':'HOY NO HA VENIDO')+'</span><span class="wagon-wheels" aria-hidden="true"></span></button>';}).join('')+'</div><div class="sr-only" id="attendance-train-status" role="status" aria-live="polite"></div></section>';}
 function attendanceNames(p){
  if(state.assemblyGroup!=='vero')return window.ROSA_PATITOS_ASISTENCIA.render(assemblyStudents(),p.attendance,studentLabel);
@@ -930,7 +930,7 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='dino-project-species'){
   const catalog=target.closest('[data-dino-catalog-root]');
   const fact=catalog?.querySelector('button[data-dino-catalog-fact][aria-pressed="true"]');
-  startProjection('dino',value,{projectSpecies:target.dataset.speciesGroup||'especies',catalogFact:fact?.dataset.dinoCatalogFact});
+  startProjection('dino',value,{projectSpecies:target.dataset.speciesGroup||'especies',catalogFact:fact?.dataset.dinoCatalogFact,inlineSpecies:target.hasAttribute('data-species-detail')});
  }
  else if(action==='calm-garden-open')startProjection('calm-garden');
  else if(action==='dino-route-open'){
@@ -1063,11 +1063,11 @@ function onPdiFullscreenChange(){
 }
 document.addEventListener('fullscreenchange',onPdiFullscreenChange);
 document.addEventListener('webkitfullscreenchange',onPdiFullscreenChange);
-function openProjector(){
+function openProjector(fullscreen=true){
  const projector=$('#projector');
  if(!projector.open)projector.showModal();
  document.body.classList.add('story-fullscreen-fallback');
- if(activePdiSurface!==projector)void enterPdiFullscreen(projector);
+ if(fullscreen&&activePdiSurface!==projector)void enterPdiFullscreen(projector);
 }
 function finishProjector(){
  if(state.projection?.kind==='calm-garden')window.ROSA_CALM_GARDEN.close();
