@@ -26,13 +26,15 @@
   margin:.3em 0;
   font:900 clamp(1.7rem,3.5vw,3.3rem)/1.04 Nunito,system-ui,sans-serif;
 }
-.calm-preview p { font-weight:750; }
-.calm-preview button {
+.calm-preview p { margin:12px 0 0; font-weight:750; }
+.calm-preview .button {
   background:#527451;
   color:#fff;
   border-radius:12px;
 }
-.calm-preview button:hover { background:#385e42; }
+.calm-preview .button:hover { background:#385e42; }
+.calm-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+.calm-links .button { flex:1 1 auto; min-height:48px; text-align:center; }
 body:has(#projector[open] .calm-pdi) > :is(.sidebar,.workspace) { visibility:hidden; }
 #projector:has(.calm-pdi) #projection-content { display:block; padding:0; }
 .calm-pdi {

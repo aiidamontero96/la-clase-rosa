@@ -24,9 +24,11 @@
 
   function page(nav){
     return '<div class="page-head"><div><span class="eyebrow">PIZARRA DIGITAL · CALMA</span><h1>Jardín de la calma</h1></div></div>'+nav+
-      '<section class="calm-preview"><div><span class="eyebrow">UN RATITO DE SILENCIO</span><h2>¿QUIÉN VENDRÁ AL JARDÍN?</h2>'+
-      '<p>Cuando baja el ruido, los animales se acercan. Si el ruido fuerte se mantiene, vuelven a esconderse.</p>'+
-      '<button type="button" data-action="calm-garden-open">ABRIR EL JARDÍN</button></div></section>';
+      '<section class="calm-preview"><div><span class="eyebrow">UN RATITO DE SILENCIO</span><h2>ELIGE TU ESCENA</h2>'+
+      '<nav class="calm-links" aria-label="Escenas de calma">'+
+      '<a class="button" href="https://www.shysafari.com/" target="_blank" rel="noopener noreferrer">Shy Safari · Dinosaurios ↗</a>'+
+      '<a class="button" href="https://shushmeter.com/es/aquarium" target="_blank" rel="noopener noreferrer">Acuario ↗</a>'+
+      '</nav><p>En Shy Safari, elige la escena prehistórica. Para empezar, permite el micrófono si te lo pide el navegador.</p></div></section>';
   }
 
   function markup(){

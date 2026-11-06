@@ -128,7 +128,7 @@ window.ROSA_AULA=(()=>{
       ['pizarra','pdi-pizarra','vocab-child/pencil.webp','Pizarra libre'],
       ['guiada','pdi-pizarra-guiada','brand/dino-lapiz.png','Pizarra guiada'],
       ['cronometro','pdi-cronometro','symbols/231b.png','Cronómetro'],
-      ['jardin','pdi-jardin-calma','calm-garden/mariposa.webp','Jardín de la calma'],
+      ['jardin','pdi-jardin-calma','calm-garden/icono-calma.svg','Jardín de la calma'],
       ['canciones','canciones','symbols/1f3b5.png','Canciones']
     ];
     return '<nav class="pdi-quick-nav pdi-section-nav" aria-label="Secciones de PDI">'+links.map(([id,route,icon,label])=>{
