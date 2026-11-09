@@ -223,7 +223,7 @@ function home(){
  const assembly=[
   ['encargado','encargados','Encargados'],
   ['asistencia','asistencia','¿Quién ha venido?'],
-  ['dia-semana','dia','¿Qué día es hoy?'],
+  ['dia-semana','dia-limpio','¿Qué día es hoy?'],
   ['calendario','calendario','Calendario'],
   ['estacion','estacion','Estación y tiempo'],
   ['emociones','emociones','Emociones'],
@@ -391,7 +391,7 @@ function stories(){
   '<p class="note">Todos los cuentos se leen dentro de la web y conservan sus créditos.</p>';
 }
 function openStory(id){const book=window.ROSA_STORIES.ready.find(item=>item.id===id);if(!book)return;state.story={id,page:0};openProjector();renderStory();}
-function renderStory(){const s=state.story;if(!s)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===s.id);if(!book)return;const toolbar='<div class="projection-toolbar story-toolbar"><strong>BIBLIOTECA ROSA · '+E(book.title)+'</strong><div>'+btn('← VOLVER','story-close','','quiet')+'</div></div>';if(book.readerUrl){$('#projection-content').innerHTML=toolbar+'<main class="story-reader-frame"><iframe src="'+book.readerUrl+'" title="CUENTO '+E(book.title)+'" allowfullscreen></iframe></main><footer class="story-reader-credits">'+storyCredits(book)+'</footer>';return;}const page=book.pages[s.page],first=s.page===0,last=s.page===book.pages.length-1,isYayoiCover=book.id==='yayoi-desde-aqui-hasta-el-infinito'&&first;const text=book.imageOnly?'':page[1]?'<div class="story-page-text">'+E(page[1]).replaceAll('\n','<br>')+'</div>':'<div class="story-cover-title"><h2>'+E(book.title)+'</h2><p>DE '+E(book.author)+'</p></div>';const visual=isYayoiCover?'<div class="yayoi-landscape-cover"><img src="'+page[0]+'" width="1093" height="1439" alt="PORTADA DEL LIBRO '+E(book.title)+'"><section><span>YAYOI KUSAMA</span><h2>DESDE AQUÍ HASTA EL INFINITO</h2><p>UN LIBRO PARA MIRAR JUNTOS</p></section></div>':'<img src="'+page[0]+'" width="1024" height="768" alt="ILUSTRACIÓN DE LA PÁGINA '+(s.page+1)+' DE '+E(book.title)+'">';$('#projection-content').innerHTML=toolbar+'<main class="story-reader '+(book.imageOnly?'story-image-only':'')+(isYayoiCover?' story-yayoi-cover':'')+'"><figure>'+visual+'</figure>'+text+'</main><footer class="story-footer">'+btn('← ANTERIOR','story-prev','',first?'secondary story-disabled':'secondary')+'<span aria-live="polite">PÁGINA '+(s.page+1)+' DE '+book.pages.length+'</span>'+(last?'<span></span>':btn('SIGUIENTE →','story-next'))+'</footer>'+(last?'<div class="story-reader-credits">'+storyCredits(book)+'</div>':'');}
+function renderStory(){const s=state.story;if(!s)return;const book=window.ROSA_STORIES.ready.find(item=>item.id===s.id);if(!book)return;const toolbar='<div class="projection-toolbar story-toolbar"><strong>BIBLIOTECA ROSA · '+E(book.title)+'</strong><div>'+btn('← VOLVER','story-close','','quiet')+'</div></div>';if(book.readerUrl){$('#projection-content').innerHTML=toolbar+'<main class="story-reader-frame"><iframe src="'+book.readerUrl+'" title="CUENTO '+E(book.title)+'" allowfullscreen></iframe></main><footer class="story-reader-credits">'+storyCredits(book)+'</footer>';return;}const page=book.pages[s.page],first=s.page===0,last=s.page===book.pages.length-1,isYayoiCover=book.id==='yayoi-desde-aqui-hasta-el-infinito'&&first;const text=book.imageOnly?'':page[1]?'<div class="story-page-text">'+E(page[1]).replaceAll('\n','<br>')+'</div>':'<div class="story-cover-title"><h2>'+E(book.title)+'</h2><p>DE '+E(book.author)+'</p></div>';const visual=isYayoiCover?'<div class="yayoi-landscape-cover"><img src="'+page[0]+'" width="1093" height="1439" alt="PORTADA DEL LIBRO '+E(book.title)+'"><section><span>YAYOI KUSAMA</span><h2>DESDE AQUÍ HASTA EL INFINITO</h2><p>UN LIBRO PARA MIRAR JUNTOS</p></section></div>':'<img src="'+page[0]+'" width="1024" height="768" alt="ILUSTRACIÓN DE LA PÁGINA '+(s.page+1)+' DE '+E(book.title)+'">';$('#projection-content').innerHTML=toolbar+'<main class="story-reader '+(book.imageOnly?'story-image-only':'')+(isYayoiCover?' story-yayoi-cover':'')+'"><figure>'+visual+'</figure>'+text+'</main><footer class="story-footer">'+btn('← ANTERIOR','story-prev','',first?'secondary story-disabled':'secondary')+'<span aria-live="polite">PÁGINA '+(s.page+1)+' DE '+book.pages.length+'</span>'+(last?'<span></span>':btn('SIGUIENTE →','story-next'))+'</footer>'+(last?'<div class="story-reader-credits">'+storyCredits(book)+'</div>':'');window.ROSA_IMAGE_LOADING?.afterVisible($('#projection-content'),book.pages.slice(s.page+1,s.page+3).map(page=>page[0]));}
 function materialList(ids){const mats=[...new Set(ids.flatMap(id=>getResource(id).materials))];return '<section class="material-check"><h2>Deja preparado</h2><ul>'+mats.map(m=>'<li>'+E(m)+'</li>').join('')+'</ul></section>';}
 function today(){const labels=['Asamblea','Matemáticas','Lenguaje','Manipulación','Juego','Dinosaurios'];return head('¿Qué hago hoy?','Una selección para escoger y combinar. No es un horario ni hace falta hacer las seis.',btn('↻ Dame otras actividades','today-new')+btn('Imprimir selección','print-view','','secondary'))+'<div class="selection-list">'+state.today.map((id,i)=>{const r=getResource(id);return '<article class="selection-item"><span class="round-icon">'+(i+1)+'</span><div><span class="eyebrow">'+labels[i]+' · '+r.duration+' MIN</span><h3 style="margin-top:8px">'+E(r.title)+'</h3><p>'+E(r.preparation)+'</p><div class="resource-actions">'+actions(r)+btn(state.favorites.has(id)?'♥ Guardado':'♡ Guardar','favorite',id,'secondary small')+'</div></div></article>';}).join('')+'</div><div style="margin-top:24px">'+materialList(state.today)+'</div>';}
 function render(){nav();let view=route();state.assemblyGroup=view==='asamblea-vero'?'vero':'rosa';let body;if(view==='inicio')body=home();else if(view==='asamblea-vero')body=assembly('vero');else if(view==='dinosaurios')body=dinosaurs();else if(view==='kusama')body=kusama();else if(view==='curso')body=course();else if(view==='pdi'||view==='pdi-calendario')body=pdi();else if(view==='pdi-que-pasaria')body=A.pdiWhatIfPage();else if(view==='pdi-cumpleanos')body=window.ROSA_BIRTHDAYS.page(A.pdiNav('cumpleanos'));else if(view==='pdi-proyectos')body=A.pdiProjectsPage();else if(view==='pdi-jardin-calma')body=window.ROSA_CALM_GARDEN.page(A.pdiNav(view));else if(view==='pdi-dias')body=A.pdiSpecialDaysPage();else if(view==='pdi-juegos')body=A.pdiGamesPage();else if(view==='canciones')body=window.ROSA_CLASSROOM.songs(A.pdiNav('canciones'));else if(view==='cuentos')body=stories();else if(view==='taller')body='<div class="fichas-generator-page"><a class="fichas-back" href="#imprimibles">← Volver a fichas</a><h1>Crear ficha a medida</h1>'+window.ROSA_SHEETS.panel()+'</div>';else if(view==='fichas-series'){patternWorkshopOpen=true;body='<div class="fichas-generator-page"><a class="fichas-back" href="#imprimibles">← Volver a fichas</a><h1>Generar series</h1>'+patternWorkshop()+'</div>';}else if(view==='hoy')body=today();else if(view==='recurso'){body=home();const id=location.hash.split('?')[1];if(getResource(id))setTimeout(()=>openResource(id),0);}else {body=bank(view);if(view==='lenguaje')body=body.replace('<div class="filters filters-useful">',window.ROSA_CLASSROOM.alphabet()+nameBuilder()+'<div class="filters filters-useful">');}const main=$('#contenido');main.innerHTML=body;window.ROSA_FICHAS.mountPreviews(main);}
@@ -625,20 +625,19 @@ function projectionRender(){window.ROSA_DINO_ROUTE?.unmount();const p=state.proj
  else if(p.kind==='saludo'){body='<span class="prompt-symbol">👋</span><h2>¡Buenos días, clase!</h2><p>¿Con la mano, con una palabra o con un gesto?</p><p>También puedes mirar y escuchar.</p>';foot=btn('¿Quién ha venido? →','routine','asistencia');}
  else if(p.kind==='asistencia'){
   const vero=state.assemblyGroup==='vero';
+  if(!vero&&p.attendanceStep==='tally')p.attendanceStep='count';
   if(p.attendanceStep==='names'){
    body=attendanceNames(p);
-   foot=btn('Continuar al conteo →',vero?'attendance-count':'attendance-tally');
-  }else if(vero||p.attendanceStep==='tally'){
+   foot=btn('Continuar al conteo →','attendance-count');
+  }else if(vero){
    body=attendanceCounters(p,vero);
-   foot=vero
-    ?btn('← Volver a los nombres','attendance-names','','secondary')+btn('¿Qué día es hoy? →','routine','dia-semana')
-    :btn('← Volver al estanque','attendance-names','','secondary')+btn('Contar niñas y niños →','attendance-count');
+   foot=btn('← Volver a los nombres','attendance-names','','secondary')+btn('¿Qué día es hoy? →','routine','dia-semana');
   }else{
    p.hatchCount??=window.ROSA_PATITOS_ASISTENCIA.startCount(assemblyStudents(),p.attendance,studentLabel);
    body=window.ROSA_PATITOS_ASISTENCIA.renderCount(p.hatchCount,p.attendanceStep);
    foot=p.attendanceStep==='absent'
     ?btn('← Volver a la suma','attendance-count','','secondary')+btn('¿Qué día es hoy? →','routine','dia-semana')
-    :btn('← Volver al recuento','attendance-tally','','secondary')+btn('Contar los que faltan →','attendance-absent');
+    :btn('← Volver al estanque','attendance-names','','secondary')+btn('Contar los que faltan →','attendance-absent');
   }
  }
  else if(p.kind==='estacion'){body='<section class="season-story"><h2>¿EN QUÉ ESTACIÓN ESTAMOS?</h2><div class="season-story-choices">'+[['primavera','Primavera'],['verano','Verano'],['otono','Otoño'],['invierno','Invierno']].map(a=>btn('<img src="assets/asamblea-ligera/estaciones-cuento/'+a[0]+'.webp?rev=1" alt="" width="1024" height="1536"><strong>'+a[1].toLocaleUpperCase('es-ES')+'</strong>','season',a[1],'season-story-card season-'+a[0])).join('')+'</div><div id="game-feedback" class="feedback season-story-feedback" role="status"></div></section>';foot=btn('Miramos el tiempo →','routine','tiempo');}
@@ -920,7 +919,7 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
  else if(action==='attendance-tally'){
   const p=state.projection;
   if(p?.kind==='asistencia'&&state.assemblyGroup!=='vero'){
-   p.attendanceStep='tally';
+   p.attendanceStep='count';
    projectionRender();
   }
  }
