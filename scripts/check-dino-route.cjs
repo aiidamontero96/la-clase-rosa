@@ -4,6 +4,7 @@ const context={window:{}};vm.runInNewContext(source,context);const route=context
 const used=new Map(),words=new Set(),drawings=new Set();let photos=0,paintPages=0;
 assert.equal(route.count,10);assert.equal((route.hub().match(/data-action="dino-route-open"/g)||[]).length,10);
 assert.equal((route.hub().match(/<img/g)||[]).length,10);
+assert(!route.hub().includes('resumen-trimestre.pptx'));assert.equal((route.hub().match(/nb-presentation-button/g)||[]).length,1);assert(route.hub().includes('resumen-trimestre.html'));
 for(let round=0;round<10;round++){
  const p={round};
  for(let page=0;page<12;page++){
@@ -13,7 +14,7 @@ for(let round=0;round<10;round++){
   for(const m of html.matchAll(/(?:src|href)="(assets\/[^"?]+)/g))assert(fs.existsSync(path.join(publicDir,m[1])),m[1]);
   if(page<11)assert(html.includes('data-value="'+(page+1)+'" >SIGUIENTE'));else assert(html.includes('disabled>FIN DEL CUADERNO'));
   if(page===0)assert(html.includes('disabled>← ANTERIOR'));
-  if(page>=1&&page<=7){
+  if(page>=1&&page<=6){
    const files=new Set([...html.matchAll(/<img[^>]*src="([^"]+)"/g)].map(x=>x[1]));
    for(const file of files){const hash=crypto.createHash('sha256').update(fs.readFileSync(path.join(publicDir,file))).digest('hex');assert(!used.has(hash),`Imagen repetida: ${file}; ya estaba en ${used.get(hash)}`);used.set(hash,`${round+1}/${page+1}`);photos++;}
    assert(!html.includes('route-notebook/fossil.jpg'),'La foto señalada no vuelve a usarse como comodín');
@@ -31,14 +32,14 @@ for(let round=0;round<10;round++){
     route.update(p,'paint-reset');assert.equal(Object.keys(p.routeSession.painted).length,0);
    }else assert(html.includes('data-nb-draw'));
   }
-  if(page===7){assert(!html.includes('nb-choice-icon'));assert(!html.includes('HACEMOS UN GESTO'));assert.equal((html.match(/<article>/g)||[]).length,2);assert(html.includes('DESCUBRIMOS PALABRAS NUEVAS'));}
+  if(page===7){assert(!html.includes('nb-choice-icon'));assert(!html.includes('HACEMOS UN GESTO'));assert.equal((html.match(/<article>/g)||[]).length,2);assert(html.includes('DESCUBRIMOS PALABRAS NUEVAS'));assert.equal((html.match(/<img/g)||[]).length,2);}
   if(page===8)words.add(html.match(/data-word="([^"]+)"/)[1]);
   if(page===9||page===10){
    assert(html.includes('nb-summary-reader'));assert(html.includes(`resumen-${round+1}-${page-8}.webp`));assert(!html.includes('AMPLIAR RESUMEN'));
-   const pdf=`assets/route-notebook-v5/semana-${round+1}.pdf`;assert(html.includes(pdf));assert.equal(fs.readFileSync(path.join(publicDir,pdf)).subarray(0,4).toString(),'%PDF');
+   const pdf=`assets/route-notebook-v5/semana-${round+1}.pdf`;assert(!html.includes('download='));assert.equal(fs.readFileSync(path.join(publicDir,pdf)).subarray(0,4).toString(),'%PDF');
    route.update(p,'page',page+1);assert(route.project(p).includes(page===9?`resumen-${round+1}-2.webp`:'GUÍA DE LA SEÑO'));route.update(p,'page',page);
   }
-  if(page===11)assert(html.includes('GUÍA DE LA SEÑO'));
+  if(page===11){assert(html.includes('GUÍA DE LA SEÑO'));assert.equal((html.match(/<article>/g)||[]).length,2);assert.equal((html.match(/<li>/g)||[]).length,6);assert(html.includes('Materiales:'));assert(html.includes('Fíjate en si…'));}
   if(page===4||page===5){
    const n=(html.match(/data-action="dino-route-answer"/g)||[]).length;assert(n>=2&&n<=3);assert(!route.update(p,'answer',-1));assert(!route.update(p,'answer',n));let correct=0,retry=0;
    for(let c=0;c<n;c++){assert(route.update(p,'answer',c));const h=route.project(p);correct+=Number(h.includes('class="is-correct"'));retry+=Number(h.includes('class="is-retry"'));}assert.equal(correct,1);assert.equal(retry,n-1);

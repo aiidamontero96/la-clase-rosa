@@ -31,7 +31,7 @@ window.ROSA_PERMANENT_SONGS=PERMANENT_SONGS;
 const DEFAULT_SONG_LINKS=PERMANENT_SONGS.map(song=>song.url);
 const savedSongLinks=readLocal('rosa-song-links-v1',[]);
 const initialSongLinks=[...DEFAULT_SONG_LINKS,...(Array.isArray(savedSongLinks)?savedSongLinks:[])].filter(link=>typeof link==='string'&&youtubeId(link)).filter((link,index,links)=>links.findIndex(other=>youtubeId(other)===youtubeId(link))===index).slice(0,30);
-const state={favorites:new Set(Array.isArray(saved)?saved.filter(id=>R.some(r=>r.id===id)):[]),ink:['color','bn','coloring'].includes(savedInk)?savedInk:'color',filter:{area:'',type:'',project:'',q:''},today:[],questionCategory:'Emociones',questionIndex:0,challengeIndex:0,assemblyTab:'preguntas',assemblyGroup:'rosa',assemblyDuties:{saludos:'',luces:'',material:'',jabon:''},veroAssemblyDuties:{saludos:'',luces:'',material:'',jabon:''},songLinks:initialSongLinks,wordBag:[],lastWord:-1,dinoTab:'etapas',kusamaTab:'conocer',materials:{},dialogId:null,projection:null,story:null};
+const state={favorites:new Set(Array.isArray(saved)?saved.filter(id=>R.some(r=>r.id===id)):[]),ink:['color','bn','coloring'].includes(savedInk)?savedInk:'color',filter:{area:'',type:'',project:'',q:''},today:[],questionCategory:'Emociones',questionIndex:0,challengeIndex:0,assemblyTab:'preguntas',assemblyGroup:'rosa',assemblyDuties:{saludos:'',luces:'',material:'',jabon:''},veroAssemblyDuties:{saludos:'',luces:'',material:'',jabon:''},songLinks:initialSongLinks,wordBag:[],lastWord:-1,dinoTab:'ruta',kusamaTab:'conocer',materials:{},dialogId:null,projection:null,story:null};
 const AREAS=['Asamblea','Matemáticas','Lenguaje','Lógica','Grafomotricidad','Motricidad fina','Arte','Psicomotricidad','Proyecto','Juegos'];
 const ICONS={'Asamblea':'☀','Matemáticas':'1','Lenguaje':'A','Lógica':'◈','Grafomotricidad':'〰','Motricidad fina':'✂','Arte':'◒','Psicomotricidad':'↟','Proyecto':'🦕','Juegos':'⚄'};
 const LINKS=[['inicio','⌂','Inicio'],['matematicas','1','Matemáticas'],['lenguaje','A','Lenguaje'],['logica','◈','Lógica'],['motricidad','✂','Motricidad fina'],['arte','◒','Arte'],['movimiento','↟','Psicomotricidad'],['juegos','⚄','Juegos'],['imprimibles','▤','Imprimibles / Fichas'],['propuestas','✋','Propuestas'],['pdi','▣','Pizarra digital'],['asamblea-vero','☀','Asamblea Vero'],['canciones','♪','Canciones'],['cuentos','▰','Biblioteca Rosa'],['dinosaurios','🦕','Dinosaurios'],['kusama','●','Yayoi Kusama'],['curso','✦','Durante el curso'],['favoritos','♡','Mis favoritos'],['hoy','✧','¿Qué hago hoy?']];
@@ -351,7 +351,7 @@ function playDinoVideo(id){
  player.scrollIntoView({block:'nearest'});
 }
 function dinosaurs(){
- const tabs=[['etapas','Las tres etapas'],['especies','12 dinosaurios'],['marinos','Reptiles marinos'],['voladores','Reptiles voladores'],['ruta','Ruta del trimestre'],['videos','Vídeos'],['cuentos','Cuentos']];
+ const tabs=[['ruta','Ruta del trimestre'],['etapas','Las tres etapas'],['especies','12 dinosaurios'],['marinos','Reptiles marinos'],['voladores','Reptiles voladores'],['videos','Vídeos'],['cuentos','Cuentos']];
  const sections={videos:dinosaurVideos,ruta:window.ROSA_DINO_ROUTE.hub,etapas:window.ROSA_DINO.stages,cuentos:dinosaurStories};
  const section=Object.hasOwn(sections,state.dinoTab)?sections[state.dinoTab]():window.ROSA_DINO.catalog(state.dinoTab);
  return '<section class="panel dino-banner dino-project-heading"><div><span class="eyebrow">PROYECTO DEL PRIMER TRIMESTRE</span><h1>UN DINOSAURIO ES <em>UN LAGARTO TERRIBLE</em></h1></div>'+

@@ -125,3 +125,6 @@ button:hover,
   box-shadow:0 9px 22px rgba(49,91,87,.13);
   transform:translateY(-1px);
 }
+
+/* Menú móvil opaco para mantener legibles sus enlaces. */
+@media screen and (max-width:1100px){#sidebar.sidebar,#sidebar.sidebar.open{background:#fff!important;opacity:1!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}#sidebar .brand,#sidebar .sidebar-bottom{background:#fff!important}}
