@@ -2,7 +2,7 @@
 window.ROSA_VOICE=(()=>{
   const playbackRate=1.12;
   function configureAudio(audio){audio.defaultPlaybackRate=audio.playbackRate=playbackRate;audio.preservesPitch=true;if('webkitPreservesPitch' in audio)audio.webkitPreservesPitch=true;return audio;}
-  const normalize=text=>String(text||'').replace(/Tyrannosaurus rex|T\.\s*rex/gi,'Tiranosaurio rex').replace(/\s*\/\s*/g,', ').replace(/\s+/g,' ').trim();
+  const normalize=text=>String(text||'').replace(/Parasaurolopus/gi,'Parasaurolopus').replace(/Tyrannosaurus rex|T\.\s*rex/gi,'Tiranosaurio rex').replace(/\s*\/\s*/g,', ').replace(/\s+/g,' ').trim();
   const key=text=>normalize(text).toLocaleLowerCase('es-ES').replace(/[.!?]+$/g,'').trim();
   const sentences=text=>normalize(text).replace(/([.!?])\s+/g,'$1\n').split('\n').filter(Boolean);
   const calendarPattern=/^(lunes|martes|miércoles|jueves|viernes|sábado|domingo),? (\d{1,2}) de ([a-záéíóú]+) de (\d{1,6})$/i;
@@ -20,8 +20,8 @@ window.ROSA_VOICE=(()=>{
   }
   function resolve(text){
     const files=window.ROSA_VOICE_FILES?.files||{};
-    // Reuse the existing recordings for the renamed on-screen animal.
-    const clipFor=value=>files[key(value)]||files[key(value).replaceAll('parasaurolopus','parasaurolofo')];
+    // Never reuse recordings with the previous pronunciation.
+    const clipFor=value=>(/parasaurolopus/i.test(value)?undefined:files[key(value)]);
     if(clipFor(text))return [{text:normalize(text),url:clipFor(text)}];
     const segments=parts(text,files),clips=[];for(let i=0;i<segments.length;){let end=segments.length;while(end>i+1&&!clipFor(segments.slice(i,end).join(' ')))end--;const part=segments.slice(i,end).join(' ');clips.push({text:part,url:clipFor(part)});i=end;}return clips;
   }

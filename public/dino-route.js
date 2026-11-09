@@ -794,7 +794,7 @@
       {
         "image": "parasaurolophus",
         "title": "SABEMOS OBSERVAR",
-        "text": "PARASAUROLOFO TENÍA UNA CRESTA LARGA EN LA CABEZA. SUS RASGOS NOS AYUDAN A RECONOCERLO.",
+        "text": "PARASAUROLOPUS TENÍA UNA CRESTA LARGA EN LA CABEZA. SUS RASGOS NOS AYUDAN A RECONOCERLO.",
         "question": "DESCRIBE SU CRESTA SIN DECIR EL NOMBRE DEL ANIMAL."
       },
       {
@@ -1042,7 +1042,7 @@
   ],
   "parasaurolophus": [
     "assets/dino-explorer/real/parasaurolophus.webp",
-    "Parasaurolofo",
+    "Parasaurolopus",
     "RECONSTRUCCIÓN"
   ],
   "triassic": [

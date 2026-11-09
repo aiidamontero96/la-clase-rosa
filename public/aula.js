@@ -196,6 +196,7 @@ window.ROSA_AULA=(()=>{
   }
   function voiceSettingsHTML(){return '<details class="voice-settings"><summary>La voz de la clase</summary><div class="voice-sample">'+btn('🔊 Probar voz','voice-preview','','secondary small')+'<p class="hint">Una voz suave para escuchar y jugar juntos.</p></div></details>';}
   function stopVoice(){
+    window.speechSynthesis?.cancel();
     voiceVersion++;clearTimeout(autoVoiceTimer);
     if(voiceAudio){voiceAudio.onended=null;voiceAudio.onerror=null;voiceAudio.pause();voiceAudio.removeAttribute('src');voiceAudio.load();}
     const status=$('#pdi-voice-status');if(status)status.textContent='';
@@ -206,6 +207,15 @@ window.ROSA_AULA=(()=>{
   function speak(preview=false,explicitText=null,automatic=false){
     const p=state.projection;if(!p&&!explicitText)return;stopVoice();
     const text=explicitText||(preview?'¡Hola, peques! ¿Jugamos juntos? Mirad con calma. ¡Vamos a descubrirlo!':p.voiceFeedback||p.speak||title(p.kind));
+    const spoken=window.ROSA_VOICE?.normalize(text)||text;
+    if(/parasaurolopus/i.test(spoken)){
+      if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(!automatic)toast('Esta lectura necesita una voz en español instalada en el dispositivo.');return;}
+      const utterance=new window.SpeechSynthesisUtterance(spoken);utterance.lang='es-ES';utterance.rate=.9;
+      const voices=window.speechSynthesis.getVoices();utterance.voice=voices.find(v=>v.lang==='es-ES')||voices.find(v=>/^es/i.test(v.lang))||null;
+      const status=$('#pdi-voice-status');if(status)status.textContent='Escuchando…';
+      const version=voiceVersion;utterance.onend=()=>{if(version===voiceVersion)stopVoice();};utterance.onerror=()=>{if(version===voiceVersion){stopVoice();if(!automatic)toast('No se ha podido reproducir la voz en español del dispositivo.');}};
+      window.speechSynthesis.speak(utterance);return;
+    }
     const clips=window.ROSA_VOICE?.resolve(text)||[];
     if(!clips.length||clips.some(c=>!c.url)){if(!automatic)toast('No se ha podido cargar esta lectura. Vuelve a abrir la actividad e inténtalo de nuevo.');return;}
     for(const clip of clips.slice(0,4)){const warm=new window.Audio();warm.preload='auto';warm.src=clip.url;try{warm.load();}catch{}}

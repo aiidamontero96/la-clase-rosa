@@ -1,6 +1,21 @@
 'use strict';
 window.ROSA_STORIES={
   ready:[{
+    id:'un-dinosaurio-en-la-clase-rosa',
+    title:'Un dinosaurio en La Clase Rosa',
+    project:'dinosaurios',
+    level:'4 años · Libro ilustrado',
+    author:'La Clase Rosa',
+    illustrator:'Ilustraciones del cuento aportado por la seño',
+    translator:'Original en español',
+    publisher:'Material de aula · La Clase Rosa',
+    description:'Nuestra clase vive una aventura entre dinosaurios. Un cuento ilustrado para descubrir y leer juntos.',
+    license:'Material aportado por la maestra para el aula',
+    cover:'assets/stories/un-dinosaurio-clase-rosa/page-01.webp',
+    coverFit:'contain',
+    imageOnly:true,
+    pages:Array.from({length:13},(_,i)=>['assets/stories/un-dinosaurio-clase-rosa/page-'+String(i+1).padStart(2,'0')+'.webp',''])
+  },{
     id:'el-tesoro-de-los-dinosaurios',
     title:'El tesoro de los dinosaurios',
     project:'dinosaurios',
