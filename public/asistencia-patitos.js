@@ -153,13 +153,10 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
     </svg> <span>${caption}</span>`;
   }
   function writingBox(model,key,caption){
-    const paths=model.ink[key].map(stroke=>`<path d="${stroke.d}"/>`).join('');
     return `<div class="pond-writing-field">
       <span class="pond-writing-label">${countCaption(key,caption)}</span>
-      <svg class="pond-writing-pad" data-pond-ink="${key}" viewBox="0 0 160 120"
-        preserveAspectRatio="none" role="img" aria-label="${writingLabels[key]}: recuadro para escribir">
-        <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">${paths}</g>
-      </svg>
+      <canvas class="pond-writing-pad" data-pond-ink="${key}" width="320" height="240"
+        role="img" aria-label="${writingLabels[key]}: recuadro para escribir"></canvas>
       <button type="button" class="pond-erase" data-action="pond-count-erase" data-value="${key}"
         aria-label="Borrar: ${writingLabels[key]}">BORRAR</button>
     </div>`;
@@ -212,43 +209,65 @@ window.ROSA_PATITOS_ASISTENCIA=(()=>{
     button.classList.toggle('is-counted',marked);
     button.setAttribute('aria-pressed',String(marked));
   }
-  function pointInPad(event,pad){
-    const bounds=pad.getBoundingClientRect();
-    const x=Math.max(0,Math.min(160,(event.clientX-bounds.left)*160/bounds.width));
-    const y=Math.max(0,Math.min(120,(event.clientY-bounds.top)*120/bounds.height));
-    return x.toFixed(1)+' '+y.toFixed(1);
-  }
+  const writingPads=new WeakMap();
+  let disposeWriting=()=>{};
   function bindWriting(model,root){
+    disposeWriting();const cleanup=[];disposeWriting=()=>{cleanup.forEach(fn=>fn());cleanup.length=0;};
     if(!root)return;
     for(const pad of root.querySelectorAll('[data-pond-ink]')){
       const key=pad.dataset.pondInk;
-      let active=null;
-      pad.addEventListener('pointerdown',event=>{
-        if(event.button!==0||active)return;
-        event.preventDefault();
-        const d='M '+pointInPad(event,pad)+' l .1 0';
-        const stroke={d};
-        model.ink[key].push(stroke);
-        const path=document.createElementNS('http://www.w3.org/2000/svg','path');
-        path.setAttribute('d',d);
-        pad.querySelector('g').append(path);
-        active={id:event.pointerId,stroke,path};
-        pad.setPointerCapture(event.pointerId);
-      });
-      pad.addEventListener('pointermove',event=>{
+      const ctx=pad.getContext('2d',{alpha:false,desynchronized:true});if(!ctx)continue;
+      let active=null,bounds=null;
+      // Disable browser pan/zoom arbitration before the first touch arrives.
+      pad.style.backgroundColor='#fffef9';pad.style.colorScheme='light';pad.style.touchAction='none';pad.style.userSelect='none';pad.style.webkitUserSelect='none';
+      function configure(){ctx.setTransform(pad.width/160,0,0,pad.height/120,0,0);ctx.lineWidth=4;ctx.lineCap='round';ctx.lineJoin='round';ctx.fillStyle='#fffef9';ctx.strokeStyle='#242036';}
+      function redraw(){ctx.fillRect(0,0,160,120);for(const stroke of model.ink[key])ctx.stroke(new Path2D(stroke.d));}
+      function resize(){
+        if(active)return;
+        const r=pad.getBoundingClientRect();if(!r.width||!r.height)return;
+        const dpr=Math.min(window.devicePixelRatio||1,2),width=Math.max(1,Math.round(r.width*dpr)),height=Math.max(1,Math.round(r.height*dpr));
+        if(pad.width!==width||pad.height!==height){pad.width=width;pad.height=height;configure();redraw();}
+      }
+      function point(event){return {x:Math.max(0,Math.min(160,(event.clientX-bounds.left)*160/bounds.width)),y:Math.max(0,Math.min(120,(event.clientY-bounds.top)*120/bounds.height))};}
+      const number=n=>n.toFixed(1),coords=p=>number(p.x)+' '+number(p.y);
+      function down(event){
+        if(active||(event.button!==undefined&&event.button!==0))return;
+        event.preventDefault();bounds=pad.getBoundingClientRect();if(!bounds.width||!bounds.height)return;
+        resize();const p=point(event),stroke={d:'M '+coords(p)+' l .1 0'};
+        model.ink[key].push(stroke);active={id:event.pointerId,stroke,last:p};
+        ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x+.1,p.y);ctx.stroke();
+        try{pad.setPointerCapture(event.pointerId);}catch{}
+      }
+      function move(event){
         if(active?.id!==event.pointerId)return;
-        const samples=event.getCoalescedEvents?.();
-        for(const sample of samples?.length?samples:[event])active.stroke.d+=' L '+pointInPad(sample,pad);
-        active.path.setAttribute('d',active.stroke.d);
-      });
-      function finish(event){if(active?.id===event.pointerId)active=null;}
-      for(const name of ['pointerup','pointercancel','lostpointercapture'])pad.addEventListener(name,finish);
+        event.preventDefault();const samples=event.getCoalescedEvents?.();
+        ctx.beginPath();ctx.moveTo(active.last.x,active.last.y);
+        for(const sample of samples?.length?samples:[event]){
+          const p=point(sample);if(Math.abs(p.x-active.last.x)+Math.abs(p.y-active.last.y)<.05)continue;
+          active.stroke.d+=' L '+coords(p);ctx.lineTo(p.x,p.y);active.last=p;
+        }
+        ctx.stroke();
+      }
+      function finish(event){
+        if(active?.id!==event.pointerId)return;
+        if(event.type==='pointerup')move(event);
+        active=null;try{if(pad.hasPointerCapture(event.pointerId))pad.releasePointerCapture(event.pointerId);}catch{}
+        resize();
+      }
+      const movement=window.isSecureContext&&'onpointerrawupdate' in window?'pointerrawupdate':'pointermove';
+      pad.addEventListener('pointerdown',down,{passive:false});pad.addEventListener(movement,move,{passive:false});
+      for(const name of ['pointerup','pointercancel','lostpointercapture'])pad.addEventListener(name,finish,{passive:false});
+      configure();resize();redraw();
+      const observer=typeof ResizeObserver==='function'?new ResizeObserver(resize):null;observer?.observe(pad);
+      writingPads.set(pad,()=>{active=null;ctx.fillRect(0,0,160,120);});
+      cleanup.push(()=>{active=null;observer?.disconnect();pad.removeEventListener('pointerdown',down);pad.removeEventListener(movement,move);for(const name of ['pointerup','pointercancel','lostpointercapture'])pad.removeEventListener(name,finish);writingPads.delete(pad);});
     }
   }
   function clearWriting(model,key,root){
     if(!Object.hasOwn(writingLabels,key))return;
     model.ink[key]=[];
-    root.querySelector('[data-pond-ink="'+key+'"] g').replaceChildren();
+    const pad=root.querySelector('[data-pond-ink="'+key+'"]');
+    if(pad)writingPads.get(pad)?.();
   }
   return {render,update,startCount,renderCount,toggleCounted,bindWriting,clearWriting};
 })();
