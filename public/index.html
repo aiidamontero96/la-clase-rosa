@@ -99,7 +99,7 @@
 
 <link rel="stylesheet" href="autumn-vocab.css?rev=5">
 <script src="autumn-vocab.js?rev=nombre-corregido-2" defer></script>
-<link rel="stylesheet" href="dinosaur-classroom.css?rev=cuaderno2">
+<link rel="stylesheet" href="dinosaur-classroom.css?rev=cabecera-completa2">
 <script src="dinosaur-classroom.js?rev=nombre-corregido-2" defer></script>
 <link rel="stylesheet" href="asistencia-tren.css?rev=5">
 <link rel="stylesheet" href="asamblea-infantil.css?rev=6">
@@ -114,6 +114,44 @@
 <link rel="stylesheet" href="patitos-superheroes.css?rev=9">
 <link rel="stylesheet" href="fichas-library.css?rev=4">
 <link rel="stylesheet" href="asistencia-patitos.css?rev=13">
+
+
+<style id="cabecera-completa">
+#contenido .dino-banner.dino-project-heading {
+  box-sizing: border-box;
+  aspect-ratio: auto !important;
+  height: clamp(170px, 16vw, 250px) !important;
+  min-height: 0 !important;
+  padding: clamp(16px, 2vw, 30px) !important;
+  background-size: auto 100% !important;
+  background-position: right center !important;
+  background-repeat: no-repeat !important;
+  background-color: #fff3d5 !important;
+  align-items: center;
+}
+#contenido .dino-project-heading > div {
+  width: 65%;
+}
+#contenido .dino-project-heading h1 {
+  font-size: clamp(22px, 2.6vw, 38px);
+}
+@media (max-width: 560px) {
+  #contenido .dino-banner.dino-project-heading {
+    height: 180px !important;
+  }
+  #contenido .dino-project-heading > div {
+    width: 60%;
+  }
+  #contenido .dino-project-heading h1 {
+    font-size: 18px;
+  }
+  #contenido .dino-project-heading .eyebrow {
+    font-size: 8px;
+  }
+}
+</style>
+
+
 </head>
 <body>
   <section id="rosa-startup-notice" hidden role="status" aria-live="polite"><h2>La Clase Rosa</h2><p>Estamos preparando tus recursos.</p><button type="button" id="rosa-startup-retry">Reintentar</button><a href="diagnostico-red.html" target="_blank" rel="noopener">Comprobar conexión</a></section>
