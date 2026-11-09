@@ -1,0 +1,42 @@
+[
+  {
+    "key": "eggs",
+    "title": "File:Fossil Dinosaur Eggs - Troodontid Eggs.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Fossil_Dinosaur_Eggs_-_Troodontid_Eggs.jpg",
+    "author": "Gary Todd",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  },
+  {
+    "key": "fossil",
+    "title": "File:Dinosaur Egg Museum, Xixia Dinosaur Park- Psittacosaurus Skeleton 01.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Dinosaur_Egg_Museum,_Xixia_Dinosaur_Park-_Psittacosaurus_Skeleton_01.jpg",
+    "author": "Gary Todd",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  },
+  {
+    "key": "tooth",
+    "title": "File:The Childrens Museum of Indianapolis - Tyrannosaurus rex tooth - detail.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Childrens_Museum_of_Indianapolis_-_Tyrannosaurus_rex_tooth_-_detail.jpg",
+    "author": "The Children's Museum of Indianapolis",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "key": "bird",
+    "title": "File:Passer domesticus (male) version 2, Geneve, Switzerland.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Passer_domesticus_(male)_version_2,_Geneve,_Switzerland.jpg",
+    "author": "Terragio67",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "key": "fern",
+    "title": "File:Yellow-green fern fronds above bark mulch, Kubota Garden, Seattle.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Yellow-green_fern_fronds_above_bark_mulch,_Kubota_Garden,_Seattle.jpg",
+    "author": "Z3lvs",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  }
+]

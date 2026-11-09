@@ -147,20 +147,20 @@
       </div>`;
   }
 
-  function guidedPage() {
+  function guidedPage(embedded = false) {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     const numbers = Array.from({length:10},(_,i)=>String(i+1));
     const students = Array.isArray(window.ROSA?.students) ? window.ROSA.students : [];
     const safe = value => String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
     return `
       <div id="pdi-guided-page" class="pdi-guided-page">
-        <div class="page-head pdi-board-head">
+        ${embedded ? '' : `<div class="page-head pdi-board-head">
           <div><span class="eyebrow">PIZARRA DIGITAL · GRAFOMOTRICIDAD</span><h1>Pizarra guiada</h1><p>Repasa dos letras o números grandes. El lápiz solo pinta dentro del camino.</p></div>
         </div>
-        ${pdiNav()}
+        ${pdiNav()}`}
         <section class="panel guided-board-shell" aria-label="Pizarra guiada de letras y números">
           <div class="guided-board-toolbar">
-            <div class="guided-board-selector">
+            ${embedded ? '' : `            <div class="guided-board-selector">
               <span>PLANTILLA</span>
               <details class="guided-board-palette"><summary data-guided-current>${guidedState.value}</summary><div class="guided-board-options">
                 <div><strong>LETRAS</strong>${letters.map(value=>`<button type="button" data-guided-value="${value}" class="${guidedState.value===value?'is-active':''}">${value}</button>`).join('')}</div>
@@ -170,11 +170,13 @@
             <div class="guided-board-nav" aria-label="Cambiar plantilla"><button type="button" class="secondary" data-guided-action="prev">← ANTERIOR</button><button type="button" class="secondary" data-guided-action="next">SIGUIENTE →</button></div>
             <details class="guided-student-picker"><summary>👧 NOMBRES</summary><div>${students.map(name=>`<button type="button" data-guided-name="${safe(name)}">${safe(name.toLocaleUpperCase('es-ES'))}</button>`).join('')}</div></details>
             <label class="guided-word-input"><span>PALABRA</span><input type="text" maxlength="24" data-guided-word placeholder="OTOÑO" autocomplete="off"><button type="button" data-guided-action="word">MOSTRAR</button></label>
+`}
             <div class="guided-board-colors" aria-label="Color del lápiz">${[['#c83269','ROSA'],['#2368c4','AZUL'],['#21865b','VERDE'],['#e27719','NARANJA'],['#7a4bb7','MORADO']].map(([value,label])=>`<button type="button" data-guided-color="${value}" class="${guidedState.color===value?'is-active':''}" style="--swatch:${value}" aria-label="${label}"></button>`).join('')}</div>
             <button type="button" class="secondary" data-guided-action="undo" disabled>↶ DESHACER</button>
             <button type="button" class="quiet" data-guided-action="clear">🧽 BORRAR</button>
           </div>
-          <div class="guided-board-instruction"><span aria-hidden="true">✏️</span><strong>${guidedState.value.length===1||/^10$/.test(guidedState.value)?'RELLENA LOS DOS MODELOS':'REPASA EL NOMBRE O LA PALABRA'} SIN SALIRTE DEL CAMINO</strong><small>USA EL DEDO, EL LÁPIZ DE LA PDI O EL RATÓN</small></div>
+          ${embedded ? '' : `          <div class="guided-board-instruction"><span aria-hidden="true">✏️</span><strong>${guidedState.value.length===1||/^10$/.test(guidedState.value)?'RELLENA LOS DOS MODELOS':'REPASA EL NOMBRE O LA PALABRA'} SIN SALIRTE DEL CAMINO</strong><small>USA EL DEDO, EL LÁPIZ DE LA PDI O EL RATÓN</small></div>
+`}
           <div class="guided-board-stage" data-guided-stage>
             <canvas class="guided-template-canvas" data-guided-template aria-hidden="true"></canvas>
             <canvas class="guided-ink-canvas" data-guided-ink aria-label="Zona para repasar ${guidedState.value}"></canvas>
@@ -793,7 +795,7 @@
     canvas.addEventListener('pointermove',event=>{if(!state.drawing||event.pointerId!==state.pointerId)return;event.preventDefault();const p=point(event);ctx.strokeStyle=guidedState.color;ctx.lineWidth=Math.max(14,state.fontSize*.115);ctx.globalCompositeOperation='source-over';ctx.beginPath();ctx.moveTo(state.last.x,state.last.y);ctx.lineTo(p.x,p.y);ctx.stroke();state.last=p;applyMask();});
     const stop=event=>{if(event.pointerId!==state.pointerId)return;state.drawing=false;state.pointerId=null;state.last=null;};
     canvas.addEventListener('pointerup',stop);canvas.addEventListener('pointercancel',stop);
-    const observer=new ResizeObserver(resize);observer.observe(stage);requestAnimationFrame(resize);
+    const observer=new ResizeObserver(resize);state.dispose=()=>observer.disconnect();observer.observe(stage);resize();requestAnimationFrame(resize);
   }
 
   function clearGuidedBoard(remember=true) {
@@ -806,6 +808,27 @@
 
   function guidedValues(){return [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ',...Array.from({length:10},(_,i)=>String(i+1))];}
   function setGuidedValue(value){value=String(value||'').trim().replace(/\s+/g,' ').toLocaleUpperCase('es-ES').slice(0,24);if(!value||!/^[A-ZÁÉÍÓÚÜÑ0-9 ]+$/u.test(value))return;guidedState.value=value;const main=content();if(main)main.innerHTML=guidedPage();activateGlobalPdiNav();addBoardNavLink();addGuidedNavLink();mountGuidedBoard();syncToolPresentation(main);}
+
+  const notebookWords=new Map();
+  let notebookMount=null;
+  function unmountWord(){
+    if(!notebookMount)return;
+    const {state,word,previous}=notebookMount;
+    if(state?.canvas?.width)notebookWords.set(word,{ink:state.canvas.toDataURL(),color:guidedState.color});
+    state?.dispose?.();
+    Object.assign(guidedState,previous);guidedCanvasState=null;notebookMount=null;
+  }
+  function mountWord(host,word){
+    unmountWord();
+    const safe=String(word).toLocaleUpperCase('es-ES').trim();
+    if(!/^[A-ZÁÉÍÓÚÜÑ ]{1,24}$/.test(safe))return;
+    const previous={...guidedState},saved=notebookWords.get(safe);
+    guidedState.value=safe;guidedState.color=saved?.color||'#c83269';
+    host.innerHTML=guidedPage(true);guidedCanvasState=null;mountGuidedBoard();
+    const state=guidedCanvasState;notebookMount={state,word:safe,previous};
+    if(saved?.ink&&state){const picture=new Image();picture.onload=()=>{if(notebookMount?.state!==state||!state.canvas.isConnected)return;state.ctx.save();state.ctx.setTransform(1,0,0,1,0,0);state.ctx.drawImage(picture,0,0,state.canvas.width,state.canvas.height);state.ctx.restore();state.applyMask();};picture.src=saved.ink;}
+  }
+  window.ROSA_GUIDED={mountWord,unmountWord};
 
   let activeToolRoute='',toolReturnHash='#pdi',lastHash=location.hash;
   const toolRoutes=new Set([BOARD_HASH,GUIDED_HASH,AUTUMN_HASH,'pdi-cronometro']);

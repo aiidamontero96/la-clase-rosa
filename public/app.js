@@ -546,7 +546,7 @@ function isSchoolHoliday(date){
  return false;
 }
 function calendarHTML(date,external=false){const y=date.getFullYear(),m=date.getMonth(),count=new Date(y,m+1,0).getDate(),offset=(new Date(y,m,1).getDay()+6)%7,now=new Date();now.setHours(0,0,0,0);const reference=external?now:new Date(y,m,date.getDate());return '<div class="calendar-mini '+(external?'calendar-external':'')+'">'+['L','M','X','J','V','S','D'].map(x=>'<b>'+x+'</b>').join('')+'<i style="grid-column:span '+(offset||1)+';'+(!offset?'display:none':'')+'"></i>'+Array.from({length:count},(_,i)=>{const day=new Date(y,m,i+1),weekend=day.getDay()===0||day.getDay()===6,holiday=isSchoolHoliday(day),today=external?day.getTime()===now.getTime():i+1===date.getDate(),past=day<reference,cls=[today?'today':'',past?'past':'',weekend?'weekend':'',holiday?'holiday':''].filter(Boolean).join(' ');return '<span class="'+cls+'"'+(holiday?' aria-label="Día festivo o sin cole"':weekend?' aria-label="Fin de semana"':'')+'><strong class="calendar-day-number">'+(i+1)+'</strong>'+(!external&&(weekend||holiday)?'<small aria-hidden="true">'+(holiday?'🏖️':'☀️')+'</small>':'')+'</span>';}).join('')+'</div>';}
-function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech='';const n=p.round;let title=GAMES.find(g=>g[0]===p.kind)?.[1]||ROUTINES.find(r=>r[0]===p.kind)?.[2]||'Nuestra asamblea',body='',foot='';
+function projectionRender(){window.ROSA_DINO_ROUTE?.unmount();const p=state.projection;if(!p)return;p.customSpeech='';const n=p.round;let title=GAMES.find(g=>g[0]===p.kind)?.[1]||ROUTINES.find(r=>r[0]===p.kind)?.[2]||'Nuestra asamblea',body='',foot='';
  if(p.kind==='calm-garden'){
   const content=$('#projection-content');
   content.innerHTML=window.ROSA_CALM_GARDEN.markup();
@@ -661,7 +661,7 @@ function projectionRender(){const p=state.projection;if(!p)return;p.customSpeech
  if(p.kind==='dia-semana')body=body.replace('<span class="weekday-kicker">NUESTRA RUTINA DE HOY</span>','');
  if(p.kind==='estacion')p.customSpeech='¿En qué estación estamos?';
  if(p.kind==='letra')p.customSpeech='La letra protagonista. '+('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'[n%27])+'.';
- $('#projection-content').innerHTML='<div class="projection-toolbar"><strong>La Clase Rosa · '+E(title)+'</strong><div>'+btn('← Volver','close-projection','','quiet')+'</div></div>'+A.toolbar(p)+'<div class="projection-main" data-theme="'+E(p.payload?.theme||(p.kind.startsWith('dino')||['expedicion','clasificar','contar','falta','memory'].includes(p.kind)?'Dinosaurios':'General'))+'" data-game="'+E(p.kind)+'" data-level="'+p.level+'">'+body+'</div><div class="projection-footer">'+A.footer(foot)+'</div>';window.ROSA_SCENES?.decorate(p);setupRelateBoard();A.afterRender(body);window.ROSA_PUMPKIN?.init(p);window.ROSA_DINO?.init(p);
+ $('#projection-content').innerHTML='<div class="projection-toolbar"><strong>La Clase Rosa · '+E(title)+'</strong><div>'+btn(p.payload?.routeNotebook?'← VOLVER AL CUADERNO':'← Volver','close-projection','','quiet')+'</div></div>'+A.toolbar(p)+'<div class="projection-main" data-theme="'+E(p.payload?.theme||(p.kind.startsWith('dino')||['expedicion','clasificar','contar','falta','memory'].includes(p.kind)?'Dinosaurios':'General'))+'" data-game="'+E(p.kind)+'" data-level="'+p.level+'">'+body+'</div><div class="projection-footer">'+A.footer(foot)+'</div>';window.ROSA_SCENES?.decorate(p);setupRelateBoard();A.afterRender(body);window.ROSA_PUMPKIN?.init(p);window.ROSA_DINO?.init(p);
  if(p.kind==='asistencia'&&p.hatchCount&&['count','absent'].includes(p.attendanceStep)&&state.assemblyGroup!=='vero'){
   window.ROSA_PATITOS_ASISTENCIA.bindWriting(p.hatchCount,$('.pond-writing'));
  }
@@ -940,6 +940,14 @@ document.addEventListener('click',event=>{const target=event.target.closest('[da
    $('#projection-content .route-pdi h2')?.focus();
   }
  }
+ else if(action==='dino-route-era'&&state.projection?.kind==='dino-route'){
+  if(['triassic','jurassic','cretaceous'].includes(value)){
+   const notebook=state.projection;
+   window.ROSA_DINO_ROUTE.unmount();
+   startProjection('dino-world',0,{era:value,routeNotebook:notebook});
+  }
+ }
+ else if(action==='dino-route-return')restoreRouteNotebook();
  else if(action.startsWith('dino-route-')&&state.projection?.kind==='dino-route'){
   if(window.ROSA_DINO_ROUTE.update(state.projection,action.slice('dino-route-'.length),Number(value))){
    projectionRender();
@@ -1070,6 +1078,7 @@ function openProjector(fullscreen=true){
  if(fullscreen&&activePdiSurface!==projector)void enterPdiFullscreen(projector);
 }
 function finishProjector(){
+ window.ROSA_DINO_ROUTE?.unmount();
  if(state.projection?.kind==='calm-garden')window.ROSA_CALM_GARDEN.close();
  if(state.projection)A.close();
  state.projection=null;
@@ -1078,7 +1087,17 @@ function finishProjector(){
  document.body.classList.remove('story-fullscreen-fallback');
  leavePdiFullscreen($('#projector'));
 }
+function restoreRouteNotebook(){
+ const notebook=state.projection?.payload?.routeNotebook;
+ if(!notebook)return false;
+ A.stopVoice?.();state.projection=notebook;projectionRender();
+ $('#projector').scrollTop=0;$('#projection-content .nb-page-heading h2')?.focus();
+ return true;
+}
+$('#projector').addEventListener('cancel',event=>{if(state.projection?.payload?.routeNotebook){event.preventDefault();restoreRouteNotebook();}});
 function closeProjector(){
+ if(restoreRouteNotebook())return;
+
  const projector=$('#projector');
  if(projector.open)projector.close();
  finishProjector();

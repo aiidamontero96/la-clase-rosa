@@ -201,3 +201,8 @@
   font-style:normal;
   letter-spacing:-.045em;
 }
+
+/* Cabecera elegida por Rosa: imagen completa, sin otro dinosaurio superpuesto. */
+.dino-banner.dino-project-heading{background:#fff3d5 url('assets/route-notebook/cabecera.png') center/cover no-repeat;grid-template-columns:minmax(0,1fr);min-height:clamp(160px,22vw,320px);padding:clamp(18px,3vw,44px);}
+.dino-project-heading>div{width:60%;}.dino-project-heading>img{display:none}.dino-project-heading h1{font-size:clamp(22px,3.2vw,46px);max-width:22ch}.dino-project-heading .eyebrow{background:#fff9e8d9}
+@media(max-width:560px){.dino-banner.dino-project-heading{background-position:65% center;min-height:190px;grid-template-columns:1fr}.dino-project-heading>div{width:58%}.dino-project-heading h1{font-size:22px}.dino-project-heading .eyebrow{font-size:9px}}
